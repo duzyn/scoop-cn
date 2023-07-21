@@ -1,0 +1,68 @@
+{
+    "version": "3.13.0",
+    "description": "Real-time 3D strategy game",
+    "homepage": "https://megaglest.org/",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/MegaGlest/megaglest-source/releases/download/3.13.0/MegaGlest-Installer-3.13.0_windows_32bit.exe#/dl.7z",
+            "hash": "84eade59226fe52f8349bfcffec1b71a4d45760671f59e4d7d25c1c991a9610d",
+            "bin": [
+                "megaglest.exe",
+                "megaglest_editor.exe",
+                "megaglest_g3dviewer.exe"
+            ],
+            "shortcuts": [
+                [
+                    "megaglest.exe",
+                    "MegaGlest"
+                ],
+                [
+                    "megaglest_editor.exe",
+                    "MegaGlest Editor"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/MegaGlest/megaglest-source/releases/download/3.13.0/MegaGlest-Installer-3.13.0_windows_64bit.exe#/dl.7z",
+            "hash": "d08d6248b1d9edadb5709d84eb39af61fbcd2fbb8edd649ccebe3e96541e3847",
+            "bin": [
+                [
+                    "megaglestx64.exe",
+                    "megaglest"
+                ],
+                [
+                    "megaglest_editorx64.exe",
+                    "megaglest_editor"
+                ],
+                [
+                    "megaglest_g3dviewerx64.exe",
+                    "megaglest_g3dviewer"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "megaglestx64.exe",
+                    "MegaGlest"
+                ],
+                [
+                    "megaglest_editorx64.exe",
+                    "MegaGlest Editor"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/MegaGlest/megaglest-source"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/MegaGlest/megaglest-source/releases/download/$version/MegaGlest-Installer-$version_windows_32bit.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/MegaGlest/megaglest-source/releases/download/$version/MegaGlest-Installer-$version_windows_64bit.exe#/dl.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "version": "2.02",
+    "description": "Simplifies the migration of physical systems into virtual machines.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/disk2vhd",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Disk2vhd.zip",
+    "hash": "c294d279bf98645f84452989f320b561bf58609e35d85de47ea19ef583880821",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "disk2vhd64.exe",
+                    "disk2vhd"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "disk2vhd64.exe",
+                    "scoop-cn/Disk2vhd",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "disk2vhd.exe",
+            "shortcuts": [
+                [
+                    "disk2vhd.exe",
+                    "scoop-cn/Disk2vhd",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "disk2vhd64a.exe",
+                    "disk2vhd"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "disk2vhd64a.exe",
+                    "scoop-cn/Disk2vhd",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/disk2vhd.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Disk2vhd.zip"
+    }
+}

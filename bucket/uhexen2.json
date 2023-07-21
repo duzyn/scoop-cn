@@ -1,0 +1,43 @@
+{
+    "version": "1.5.9",
+    "description": "Faithful Hexen II source port (also known as Hammer of Thyrion)",
+    "homepage": "http://uhexen2.sourceforge.net/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place game data files (pak0.pak, pak1.pak) in:",
+        "",
+        "    $persist_dir\\data1\\"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/uhexen2/Hammer%20of%20Thyrion/1.5.9/Windows/hexen2-1.5.9-win32.zip",
+            "hash": "ae180c355416d10a17beded7e50c4d3e2e3c0f95646262ebf411e9d38e16e1a4"
+        },
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/uhexen2/Hammer%20of%20Thyrion/1.5.9/Win64/hexen2-1.5.9-win64.zip",
+            "hash": "938d5e4bc394bd91aafa2e81cea78630bcefd0f00211d59238cf06cbc6c62c2a"
+        }
+    },
+    "extract_dir": "hexen2-1.5.9",
+    "shortcuts": [
+        [
+            "glh2.exe",
+            "uHexen2 - Hammer of Thyrion"
+        ]
+    ],
+    "persist": "data1",
+    "checkver": {
+        "url": "http://uhexen2.sourceforge.net/download.html",
+        "regex": "Latest Hammer of Thyrion version is ([\\d.r]+)<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/uhexen2/Hammer%20of%20Thyrion/$version/Windows/hexen2-$version-win32.zip"
+            },
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/uhexen2/Hammer%20of%20Thyrion/$version/Win64/hexen2-$version-win64.zip"
+            }
+        }
+    }
+}

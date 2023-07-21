@@ -1,0 +1,45 @@
+{
+    "version": "2.25.3700.0",
+    "description": "Japanese input method (IME) by Google.",
+    "homepage": "https://www.google.co.jp/ime/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://tools.google.com/dlpage/japaneseinput/eula.html?platform=win&hl=en"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.google.com/japanese-ime/2.25.3700.0/googlejapaneseinput64.msi#/setup.msi_",
+            "hash": "a199b9731008215f3ed9ba06b00a3d62bf7407781418a5f7c37612ab6483b773"
+        },
+        "32bit": {
+            "url": "https://dl.google.com/japanese-ime/2.25.3700.0/googlejapaneseinput32.msi#/setup.msi_",
+            "hash": "b88c352448047d53733514b15e17e2f8fa75483c093b79f328533ce1774c7809"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn', '/norestart') -Wait -Verb RunAs | Out-Null"
+        ]
+    },
+    "checkver": {
+        "url": "https://forest.watch.impress.co.jp/library/software/googleime/",
+        "regex": ">v([\\d.]+)</dd>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.google.com/japanese-ime/$version/googlejapaneseinput64.msi#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://dl.google.com/japanese-ime/$version/googlejapaneseinput32.msi#/setup.msi_"
+            }
+        }
+    }
+}

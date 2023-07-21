@@ -1,0 +1,30 @@
+{
+    "version": "1.2.1",
+    "description": "Manage Podman and other container engines from a single UI and tray",
+    "homepage": "https://github.com/containers/podman-desktop",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/containers/podman-desktop/releases/download/v1.2.1/podman-desktop-1.2.1.exe#/dl.7z",
+            "hash": "aca943e4aa5b3efad800c59e51c042fd9a5767a98a8f36182f80b8626bf61cba",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ],
+            "shortcuts": [
+                [
+                    "Podman Desktop.exe",
+                    "Podman Desktop"
+                ]
+            ]
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/containers/podman-desktop/releases/download/v$version/podman-desktop-$version.exe#/dl.7z"
+            }
+        }
+    }
+}

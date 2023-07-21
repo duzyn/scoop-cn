@@ -1,0 +1,21 @@
+{
+    "description": "BellSoft Liberica is a 100% open-source Java 13 implementation",
+    "homepage": "https://bell-sw.com/java",
+    "version": "13.0.2-9",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/bell-sw/Liberica/releases/download/13.0.2%2B9/bellsoft-jdk13.0.2%2B9-windows-amd64-full.zip",
+            "hash": "sha1:fae997952e3b362203d0883265d852b5e0bcf865"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/bell-sw/Liberica/releases/download/13.0.2%2B9/bellsoft-jdk13.0.2%2B9-windows-i586-full.zip",
+            "hash": "sha1:c7e2efa398bb697da106850826218b7c10d0ee8c"
+        }
+    },
+    "extract_dir": "jdk-13.0.2",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

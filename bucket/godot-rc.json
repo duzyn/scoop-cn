@@ -1,0 +1,45 @@
+{
+    "version": "4.1.1-rc1",
+    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+    "homepage": "https://godotengine.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.1.1/rc1/Godot_v4.1.1-rc1_win64.exe.zip",
+            "hash": "sha512:ecf66a58f1f4f7037ea05b6e9b562c92302446189cb2515ded25da44b9a4e45aab886e4835774061aa191d147f0c627ae6170068ff4394e41c719256b455ca08"
+        },
+        "32bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.1.1/rc1/Godot_v4.1.1-rc1_win32.exe.zip",
+            "hash": "sha512:b0abb848a13a3059ea599c617bf6560e0dab3dadcc88a30cc80a2d19ddbc9e9b9c5c39fb50896e3895f925b05d7fca1609defbe12c86f080fc7e07829b5b8908"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot.exe'"
+    ],
+    "bin": "godot.exe",
+    "shortcuts": [
+        [
+            "godot.exe",
+            "Godot Engine"
+        ]
+    ],
+    "checkver": {
+        "url": "https://godotengine.org/blog/pre-release/",
+        "regex": "Release candidate: Godot (?<ver>[\\d.]+) RC (?<rc>[\\d.]+)",
+        "replace": "${1}-rc${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/rc$matchRc/Godot_v$version_win64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/rc$matchRc/Godot_v$version_win32.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
+    }
+}

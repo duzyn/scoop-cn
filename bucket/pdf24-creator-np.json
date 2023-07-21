@@ -1,0 +1,48 @@
+{
+    "version": "11.13.2",
+    "homepage": "https://tools.pdf24.org/en/creator",
+    "description": "Free and easy to use PDF software with several functions",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.pdf24.org/en/terms-of-use"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.pdf24.org/pdf24-creator-11.13.2-x64.msi#/setup.msi_",
+            "hash": "8b78240a9e3eb9c6e692807f6694474c6ffdc938e2fbed70a51d15e2e6fb61b3"
+        },
+        "32bit": {
+            "url": "https://download.pdf24.org/pdf24-creator-11.13.2-x86.msi#/setup.msi_",
+            "hash": "70d1dd785a6f2fbd5cb6f74a8ec1347f9c80530f6146c7e46d24d4672b386956"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', \"INSTALLDIR=$dir\", \"TARGETDIR=$dir\")",
+        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
+        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Stop-Service -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'pdf24' -Force -ErrorAction 'SilentlyContinue'",
+        "Write-Host \"Please wait and don't cancel the script...\" -F 'Yellow'",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')",
+        "Stop-Process -Name 'explorer' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 3"
+    ],
+    "checkver": "Version\\s([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.pdf24.org/pdf24-creator-$version-x64.msi#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://download.pdf24.org/pdf24-creator-$version-x86.msi#/setup.msi_"
+            }
+        },
+        "hash": {
+            "url": "https://creator.pdf24.org/listVersions.php",
+            "regex": "$basename</a></td>\\n<td>$sha256"
+        }
+    }
+}

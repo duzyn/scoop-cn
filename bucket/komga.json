@@ -1,0 +1,32 @@
+{
+    "version": "1.2.1",
+    "description": "Media server for comics/mangas/BDs with API and OPDS support",
+    "homepage": "https://komga.org/",
+    "license": "MIT",
+    "suggest": {
+        "JDK": [
+            "scoop-cn/oraclejdk",
+            "scoop-cn/openjdk"
+        ]
+    },
+    "notes": "Default URL is http://localhost:25600",
+    "url": "https://ghproxy.com/https://github.com/gotson/komga/releases/download/v1.2.1/komga-1.2.1.jar#/komga.jar",
+    "hash": "fb802de687ff8daa25e1cd5e125a70fc3f610e759291cf31e200a6aaa83cf1ab",
+    "bin": [
+        [
+            "komga.jar",
+            "komga",
+            "--komga.config-dir=\"$dir\\config\""
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "github": "https://github.com/gotson/komga"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/gotson/komga/releases/download/v$version/komga-$version.jar#/komga.jar",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

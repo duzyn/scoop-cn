@@ -1,0 +1,17 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 9",
+    "homepage": "https://jdk.java.net/9/",
+    "version": "9.0.4-12",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk9/9.0.4/binaries/openjdk-9.0.4_windows-x64_bin.tar.gz",
+            "hash": "d30c3f4357bced30bfa2479a5363cd73325e7bce393f6bff42a91b72cb3d4259"
+        }
+    },
+    "extract_dir": "jdk-9.0.4",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

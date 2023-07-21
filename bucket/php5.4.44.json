@@ -1,0 +1,22 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "5.4.44",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-5.4.44-Win32-VC9-x86.zip",
+    "hash": "f461ac436862ad073cda62e4733ffe2a8d2d18fbe12e62715711d597e47dac9c",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2008"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/officeins.html",
+    "checkver": "OfficeIns v(\\d+\\.\\d\\d)",
+    "version": "1.20",
+    "license": "freeware",
+    "description": "OfficeIns is a small utility that displays the details of all installed Microsoft Office add-ins on your computer, and allows you to disable/enable them.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/officeins-x64.zip",
+            "hash": "ea1d9741db87493decdc5981a4347217a9b767ed454f362aa331f6022e39c4a2"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/officeins.zip",
+            "hash": "e8abe0f5dde125e3f97c8039aa4bc4c9078ce6961797e0532a934567ea1b594e"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/officeins-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/officeins.zip"
+            }
+        }
+    },
+    "bin": "OfficeIns.exe",
+    "shortcuts": [
+        [
+            "OfficeIns.exe",
+            "NirSoft\\OfficeIns - Microsoft Office add-ins Manager"
+        ]
+    ]
+}

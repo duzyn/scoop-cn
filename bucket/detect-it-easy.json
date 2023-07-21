@@ -1,0 +1,49 @@
+{
+    "version": "3.07",
+    "description": "Program for determining types of files",
+    "homepage": "http://ntinfo.biz",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/horsicq/DIE-engine/releases/download/3.07/die_win64_portable_3.07.zip",
+            "hash": "3450169643be76484ac4bd5e1473f6f4745d9825c8a07255a3925a4a6e8bad7e"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/horsicq/DIE-engine/releases/download/3.07/die_win32_portable_3.07.zip",
+            "hash": "c7f16841df475d6f09d37cf745804c866c823876c4605b5958376402cbb64eca"
+        }
+    },
+    "pre_install": [
+        "'die.ini', 'shortcuts.ini' | ForEach-Object {",
+        "   if(!(Test-Path \"$persist_dir\\$_\")) {New-Item \"$dir\\$_\" -ItemType File | Out-Null}",
+        "}"
+    ],
+    "bin": "diec.exe",
+    "shortcuts": [
+        [
+            "die.exe",
+            "Detect It Easy"
+        ]
+    ],
+    "persist": [
+        "die.ini",
+        "shortcuts.ini",
+        "db",
+        "info",
+        "qss",
+        "signatures"
+    ],
+    "checkver": {
+        "github": "https://github.com/horsicq/DIE-engine"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/horsicq/DIE-engine/releases/download/$version/die_win64_portable_$version.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/horsicq/DIE-engine/releases/download/$version/die_win32_portable_$version.zip"
+            }
+        }
+    }
+}

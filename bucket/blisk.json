@@ -1,0 +1,32 @@
+{
+    "version": "20.1.42.63",
+    "description": "First developer-oriented browser.",
+    "homepage": "https://blisk.io/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://blisk.io/eula"
+    },
+    "url": "https://bliskcloudstorage.blob.core.windows.net/win-installers/BliskInstaller_20.1.42.63.exe#/cosi.7z",
+    "hash": "14a32782285ee157dad2e2027dacde9b7711a39560a37a3a3a6edbe52a473e71",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\chrome.7z\" \"$dir\"",
+            "Move-Item \"$dir\\Chrome-bin\\*\" \"$dir\" -Force",
+            "Remove-Item \"$dir\\chrome.7z\", \"$dir\\Chrome-bin\" -Force -Recurse"
+        ]
+    },
+    "bin": "blisk.exe",
+    "shortcuts": [
+        [
+            "blisk.exe",
+            "Blisk"
+        ]
+    ],
+    "checkver": {
+        "url": "https://blisk.io/questions/install-blisk-browser-offline",
+        "regex": "BliskInstaller_([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://bliskcloudstorage.blob.core.windows.net/win-installers/BliskInstaller_$version.exe#/cosi.7z"
+    }
+}

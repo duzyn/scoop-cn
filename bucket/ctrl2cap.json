@@ -1,0 +1,19 @@
+{
+    "version": "2.0",
+    "description": "A kernel-mode driver that demonstrates keyboard input filtering in order to turn caps-locks into control keys. ",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/ctrl2cap",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Ctrl2Cap.zip",
+    "hash": "2d8c06374da140beda79ac1940ab2b06a56a9af182dba70a6338313d768a2ac2",
+    "bin": "ctrl2cap.exe",
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/ctrl2cap.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Ctrl2Cap.zip"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "version": "2023.1.3-231.9161.27",
+    "description": "Cross-Platform IDE for Data Scientists by JetBrains. (Release Candidate)",
+    "homepage": "https://www.jetbrains.com/dataspell/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/python/dataspell-231.9161.27.exe#/dl.7z",
+            "hash": "ee6bfba0ad63d69e1c212c260c8a2e1439eee0f86a233564856ad83b22509dfd",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\dataspell64.exe",
+                    "JetBrains\\DataSpell (Release Candidate)"
+                ]
+            ]
+        }
+    },
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=DS&latest=true&platform=zip&type=rc",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/python/dataspell-$preReleaseVersion.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

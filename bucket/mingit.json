@@ -1,0 +1,47 @@
+{
+    "version": "2.41.0.3",
+    "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.",
+    "homepage": "https://git-for-windows.github.io/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "To get Git to recognise OpenSSH, you will need to run",
+        "",
+        "scoop install openssh",
+        "[environment]::setenvironmentvariable('GIT_SSH', (resolve-path (scoop which ssh)), 'USER')",
+        "",
+        "and then restart powershell."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/MinGit-2.41.0.3-64-bit.zip",
+            "hash": "b7487724fbd85dd345e7deb4c37c1d3958b139904a6981fb80ec5b31728cd0f2"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/MinGit-2.41.0.3-32-bit.zip",
+            "hash": "a9d7c3ae343676c57f9b55828c0137829611a4d125c042129c02b46044cf7a9b"
+        }
+    },
+    "bin": "cmd\\git.exe",
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/git-for-windows/git/releases/latest",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/MinGit-([\\d.]+)-64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-64-bit.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-32-bit.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$matchTag",
+            "regex": "(?s)$basename.*?$sha256"
+        }
+    }
+}

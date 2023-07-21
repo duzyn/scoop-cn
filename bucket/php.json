@@ -1,0 +1,61 @@
+{
+    "version": "8.2.8",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (thread safe)",
+    "homepage": "https://windows.php.net/",
+    "license": "PHP-3.01",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.2.8-Win32-vs16-x64.zip",
+            "hash": "02b7dc5b35510c260c904aa2ddf762d8685a964946b6cdca04391d234ca38884"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.2.8-Win32-vs16-x86.zip",
+            "hash": "f90a3f3e587d24adbd24d5471bbec9b803741cec061f6ac9214cb0746c4c5c60"
+        }
+    },
+    "pre_install": [
+        "# Create directory for custom PHP configuration",
+        "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
+        "    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
+    ],
+    "bin": [
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
+    },
+    "persist": [
+        "cli",
+        [
+            "php.ini-production",
+            "cli\\php.ini"
+        ]
+    ],
+    "checkver": {
+        "url": "https://windows.php.net/download/",
+        "regex": "<h3 id=\"php-[\\d.]+\".*?>.*?\\(([\\d.]+)\\)</h3>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x64.zip"
+            },
+            "32bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
+    }
+}

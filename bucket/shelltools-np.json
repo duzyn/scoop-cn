@@ -1,0 +1,25 @@
+{
+    "version": "2.5.0",
+    "description": "Collection of Windows shell extensions.",
+    "homepage": "http://www.moonsoftware.com/shell_tools",
+    "license": "Freeware",
+    "suggest": {
+        "imagemagick": "imagemagick"
+    },
+    "url": "http://www.moonsoftware.com/files/Shell_Tools_250.zip",
+    "hash": "9dca0c1a3812f8a4f7e24754b6ec16db89a0d1a8b8da139daa87e572264e3f37",
+    "bin": "ShellToolsConfig.exe",
+    "shortcuts": [
+        [
+            "ShellToolsConfig.exe",
+            "ShellTools"
+        ]
+    ],
+    "checkver": {
+        "url": "https://moonsoftware.com/freeware/shell-tools/",
+        "regex": "Shell Tools ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://www.moonsoftware.com/files/Shell_Tools_$cleanVersion.zip"
+    }
+}

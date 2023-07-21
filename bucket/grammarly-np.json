@@ -1,0 +1,55 @@
+{
+    "version": "1.0.36.694",
+    "homepage": "https://www.grammarly.com/",
+    "description": "An AI-powered grammar assistant and plagiarism detector that helps with improving writing in english.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.grammarly.com/terms"
+    },
+    "url": "https://download-windows.grammarly.com/versions/1.0.36.694/GrammarlyInstaller.exe",
+    "hash": "21b3581d79b602a5bd02d2b657022c884a609d22b53ffa180e4cc5e4011c1930",
+    "pre_install": [
+        "Start-Process \"$dir\\GrammarlyInstaller.exe\" -Args '/S'",
+        "while (!(Test-Path \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\")) {",
+        "   Start-Sleep -Milliseconds 6500",
+        "}",
+        "Start-Sleep -Milliseconds 6500",
+        "try {",
+        "   Remove-Item \"$dir\\GrammarlyInstaller.exe\" -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove '$dir\\GrammarlyInstaller.exe'\" -Foreground Red",
+        "}",
+        "Stop-Process -Name 'Grammarly.Desktop' -ErrorAction 'SilentlyContinue' -Force"
+    ],
+    "pre_uninstall": [
+        "Stop-Process -Name 'Grammarly.Desktop' -ErrorAction 'SilentlyContinue' -Force",
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\" -Args '/S'",
+        "while ((Test-Path \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\")) {",
+        "   Start-Sleep -Milliseconds 6500",
+        "}",
+        "Start-Sleep -Milliseconds 6500",
+        "try {",
+        "    Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
+        "    Remove-Item 'HKCU:\\SOFTWARE\\Grammarly', 'REGISTRY::HKEY_CLASSES_ROOT\\grammarly.windows-extension' -ErrorAction 'SilentlyContinue' -Recurse -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove registry entries\" -Foreground Red",
+        "}",
+        "try {",
+        "    Remove-Item \"$env:LOCALAPPDATA\\Grammarly\" -Recurse -Force",
+        "} catch {",
+        "    Write-Host \"Failed to remove '$env:LOCALAPPDATA\\Grammarly'\" -Foreground Red",
+        "}"
+    ],
+    "checkver": {
+        "script": [
+            "$userAgent = [Microsoft.PowerShell.Commands.PSUserAgent].GetMembers('Static, NonPublic').Where{$_.Name -eq 'UserAgent'}.GetValue($null,$null)",
+            "<## Credits to @vedantmgoyal2009 for the PowerShell script. Link to their GitHub profile: https://github.com/vedantmgoyal2009 ##>",
+            "(Invoke-RestMethod 'https://update-windows.grammarly.com/update' -Method 'Post' -Body '{\"currentVersion\": \"0.0.0.0\"}' -UserAgent $userAgent).version"
+        ],
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download-windows.grammarly.com/versions/$version/GrammarlyInstaller.exe"
+    }
+}

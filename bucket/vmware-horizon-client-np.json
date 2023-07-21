@@ -1,0 +1,45 @@
+{
+    "version": "2209-8.7.0-20649873",
+    "description": "VMware Horizon Client for Windows allows you to connect to your VMware Horizon virtual desktop.",
+    "homepage": "https://www.vmware.com/products/horizon.html",
+    "license": "Proprietary",
+    "depends": "dark",
+    "architecture": {
+        "64bit": {
+            "url": "https://download3.vmware.com/software/CART23FQ3_WIN_2209/VMware-Horizon-Client-2209-8.7.0-20649873.exe#/VMware-Horizon-Client-Setup.exe",
+            "hash": "1d09650730f21ecf3169b52d559f4c03fedf37bd31447aa25c8916356aa9583f"
+        }
+    },
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir\\$fname\" \"$dir\\tmp\" -Removal",
+            "$extract = if ($architecture -eq '64bit') { 'VMware Horizon View Client (x64).msi' } else { 'VMware Horizon View Client (x86).msi' }",
+            "Expand-MsiArchive \"$dir\\tmp\\AttachedContainer\\$extract\" \"$dir\" -ExtractDir \"VMware\\VMware Horizon View Client\" -Removal",
+            "Remove-Item \"$dir\\tmp\" -Recurse"
+        ]
+    },
+    "bin": "vmware-view.exe",
+    "shortcuts": [
+        [
+            "vmware-view.exe",
+            "VMware Horizon Client"
+        ]
+    ],
+    "checkver": {
+        "url": "https://my.vmware.com/channel/public/api/v1.0/dlg/details?downloadGroup=CART23FQ3_WIN_2209&productId=1027",
+        "jsonpath": "$..downloadFiles..thirdPartyDownloadUrl",
+        "regex": "(?<downloadgroup>CART\\d+FQ\\d)_WIN_(?<majorversion>[\\d]+)/VMware-Horizon-Client-(?<version>[\\d.-]+).exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download3.vmware.com/software/$matchDownloadgroup_WIN_$matchMajorversion/VMware-Horizon-Client-$version.exe#/VMware-Horizon-Client-Setup.exe",
+                "hash": {
+                    "mode": "json",
+                    "jsonpath": "$.downloadFiles..sha256checksum",
+                    "url": "https://my.vmware.com/channel/public/api/v1.0/dlg/details?downloadGroup=$matchDownloadgroup_WIN_$majorVersion&productId=1027"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "description": "OpenJFX is an open source, next generation client application platform for desktop, mobile and embedded systems built on Java.",
+    "homepage": "https://openjfx.io/",
+    "version": "18.0.1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "suggest": {
+        "JFX": "scoop-cn/gluon-openjfx-sdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download2.gluonhq.com/openjfx/18.0.1/openjfx-18.0.1_windows-x64_bin-jmods.zip",
+            "hash": "4b09cc85e2f9bc2343bc59b1b81e37b6db419321defd75cbbdae66bd0d1b328c"
+        },
+        "32bit": {
+            "url": "https://download2.gluonhq.com/openjfx/18.0.1/openjfx-18.0.1_windows-x86_bin-jmods.zip",
+            "hash": "2d93c91400855e53cb527b43561048893f795215c9584cca53485b15dc1e6498"
+        }
+    },
+    "extract_dir": "javafx-jmods-18.0.1",
+    "env_set": {
+        "PATH_TO_FX_MODS": "$dir"
+    },
+    "checkver": {
+        "url": "https://gluonhq.com/wp-content/uploads/custom-css-js/119502.js",
+        "regex": "\"([\\d.]+).*?\"#latest\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download2.gluonhq.com/openjfx/$version/openjfx-$version_windows-x64_bin-jmods.zip"
+            },
+            "32bit": {
+                "url": "https://download2.gluonhq.com/openjfx/$version/openjfx-$version_windows-x86_bin-jmods.zip"
+            }
+        },
+        "extract_dir": "javafx-jmods-$version",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

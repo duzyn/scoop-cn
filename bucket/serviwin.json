@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/serviwin.html",
+    "checkver": "ServiWin v(\\d+\\.\\d\\d)",
+    "version": "1.72",
+    "license": "freeware",
+    "description": "ServiWin utility displays the list of installed drivers and services on your system. For some of them, additional useful information is displayed: file description, version, product name, company that created the driver file, and more. In addition, ServiWin allows you to easily stop, start, restart, pause, and continue service or driver, change the startup type of service or driver (automatic, manual, disabled, boot or system), save the list of services and drivers to file, or view HTML report of installed services/drivers in your default browser.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/serviwin-x64.zip",
+            "hash": "c0bd7a8667086f00f484a0ac6982b5cf23ac5f0bb8538a1bb6dbfce86c2cbbae"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/serviwin.zip",
+            "hash": "d55893fed88422734bf44e0c2b4e38d7d5a03cea9cd3c16a991370d51188c57f"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/serviwin-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/serviwin.zip"
+            }
+        }
+    },
+    "bin": "serviwin.exe",
+    "shortcuts": [
+        [
+            "serviwin.exe",
+            "NirSoft\\ServiWin - Lists the installed drivers and services"
+        ]
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "version": "1.6.0",
+    "description": "A feature rich FOSS PlayStation 2 emulator",
+    "homepage": "https://pcsx2.net/",
+    "license": {
+        "identifier": "GPL-3.0",
+        "url": "https://github.com/PCSX2/pcsx2/blob/master/COPYING.GPLv3"
+    },
+    "notes": [
+        "ATTENTION: PCSX2 requires a dump of the PS2 BIOS to function.",
+        "Place the BIOS file in $persist_dir\\bios",
+        "Learn more at https://wiki.pcsx2.net/Setting_up_Windows_version#BIOS"
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "url": "https://ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v1.6.0/pcsx2-1.6.0-binaries.7z",
+    "hash": "f3401d6f74a4306797d9aab298d58c3b3898eb563495c463993f378c9f4801cb",
+    "extract_dir": "PCSX2 1.6.0",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:USERPROFILE\\Documents\\PCSX2\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": "pcsx2.exe",
+    "shortcuts": [
+        [
+            "pcsx2.exe",
+            "PCSX2"
+        ]
+    ],
+    "persist": [
+        "bios",
+        "cheats_ws",
+        "cheats",
+        "inis",
+        "logs",
+        "memcards",
+        "portable.ini",
+        "shaders\\GSdx_FX_Settings.ini",
+        "snaps",
+        "sstates"
+    ],
+    "checkver": {
+        "github": "https://github.com/PCSX2/pcsx2/"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v$version/pcsx2-$version-binaries.7z",
+        "extract_dir": "PCSX2 $version"
+    }
+}

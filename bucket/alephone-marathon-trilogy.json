@@ -1,0 +1,60 @@
+{
+    "version": "20230529",
+    "description": "Free, enhanced port of the classic FPS Marathon trilogy by Bungie Software",
+    "homepage": "https://alephone.lhowon.org/",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/Aleph-One-Marathon/alephone/blob/master/COPYING"
+    },
+    "url": [
+        "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20230529/Marathon-20230529-Win.zip",
+        "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20230529/Marathon2-20230529-Win.zip",
+        "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20230529/MarathonInfinity-20230529-Win.zip"
+    ],
+    "hash": [
+        "ce6e72351f60f73de9f57ecba31c12763cd3551a27d57229b9a57867567e5bb9",
+        "ea5e5d435d7bab1e9845ddae995197d3f723024ca1b4f56dab0c51c28573462c",
+        "3d87fb94d01a4bd28e7003fc1e4e9651115a563f7009be48d6f2cdb76f37582b"
+    ],
+    "extract_dir": [
+        "Marathon-20230529",
+        "Marathon2-20230529",
+        "MarathonInfinity-20230529"
+    ],
+    "extract_to": [
+        "Marathon 1",
+        "Marathon 2",
+        "Marathon Infinity"
+    ],
+    "shortcuts": [
+        [
+            "Marathon 1/Marathon.exe",
+            "Aleph One (Marathon 1)"
+        ],
+        [
+            "Marathon 2/Marathon 2.exe",
+            "Aleph One (Marathon 2)"
+        ],
+        [
+            "Marathon Infinity/Marathon Infinity.exe",
+            "Aleph One (Marathon Infinity)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://alephone.lhowon.org/",
+        "regex": "(\\d\\d\\d\\d)-(\\d\\d)-(\\d\\d)",
+        "replace": "$1$2$3"
+    },
+    "autoupdate": {
+        "url": [
+            "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$version/Marathon-$version-Win.zip",
+            "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$version/Marathon2-$version-Win.zip",
+            "https://ghproxy.com/https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$version/MarathonInfinity-$version-Win.zip"
+        ],
+        "extract_dir": [
+            "Marathon-$version",
+            "Marathon2-$version",
+            "MarathonInfinity-$version"
+        ]
+    }
+}

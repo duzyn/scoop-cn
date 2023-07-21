@@ -1,0 +1,112 @@
+{
+    "version": "1.5.9",
+    "description": "Quake II source port based on v3.21 with Vulkan support",
+    "homepage": "https://github.com/kondrak/vkQuake2",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "",
+        "vkQuake2 comes with the demo.",
+        "",
+        "To play the full game and any of the Quake II expansion packs, copy the data from the folders with the same name into:",
+        "",
+        "",
+        "    $persist_dir\\baseq2\\ - for Quake II",
+        "",
+        "    $persist_dir\\rogue\\ - for Quake II Mission Pack: Ground Zero",
+        "",
+        "    $persist_dir\\xatrix\\ - for Quake II Mission Pack: The Reckoning",
+        "",
+        "    $persist_dir\\zaero\\ - for Quake II Mission Pack: Zaero",
+        "",
+        "",
+        "The last of which was never released as an official expansion, but later showed up as a free download on the web - you should be able to find it easily by searching for it.",
+        "",
+        "",
+        "",
+        "Music",
+        "-----",
+        "",
+        "This project uses Miniaudio for music playback if the original game CD is not available.",
+        "",
+        "For the base game, copy all the tracks into the baseq2/music directory following the trackXX.[ogg,flac,mp3,wav] naming scheme (so track02.ogg, track03.ogg... for OGG files etc.).",
+        "",
+        "For Ground Zero, The Reckoning and Zaero, copy the tracks to rogue/music, xatrix/music, and zaero/music directories respectively.",
+        "",
+        "Tip: Create a soft symbolic link to the music directory if you want to save space.",
+        "",
+        "",
+        ""
+    ],
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2019"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/kondrak/vkQuake2/releases/download/1.5.9/vkquake2-1.5.9_win32.zip",
+            "hash": "b3b187331d7d0ecb0bebd37c6bd45912198a7fbee04c57afac3e8bdbaff22a91",
+            "extract_dir": "vkquake2-1.5.9_win32"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/kondrak/vkQuake2/releases/download/1.5.9/vkquake2-1.5.9_win64.zip",
+            "hash": "901b924bf0bd24d0fd63acd938ff6c58c30d6c165bc6747a1a50140a5bdfdc7c",
+            "extract_dir": "vkquake2-1.5.9_win64"
+        }
+    },
+    "installer": {
+        "script": [
+            "$persistFolders = @(",
+            "   \"baseq2\"",
+            "   \"ctf\"",
+            "   \"rogue\"",
+            "   \"xatrix\"",
+            "   \"zaero\"",
+            ")",
+            "$persistFolders | ForEach-Object {",
+            "   if (Test-Path \"$persist_dir\\$_\") {",
+            "      Copy-Item -Force -Recurse \"$dir\\$_\\*.dll\" \"$persist_dir\\$_\"",
+            "   }",
+            "}"
+        ]
+    },
+    "shortcuts": [
+        [
+            "Quake2.exe",
+            "vkQuake2"
+        ],
+        [
+            "Quake2.exe",
+            "vkQuake2 (Ground Zero)",
+            "+set game rogue"
+        ],
+        [
+            "Quake2.exe",
+            "vkQuake2 (The Reckoning)",
+            "+set game xatrix"
+        ],
+        [
+            "Quake2.exe",
+            "vkQuake2 (Zaero)",
+            "+set game zaero"
+        ]
+    ],
+    "persist": [
+        "baseq2",
+        "ctf",
+        "rogue",
+        "xatrix",
+        "zaero"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/kondrak/vkQuake2/releases/download/$version/vkquake2-$version_win32.zip",
+                "extract_dir": "vkquake2-$version_win32"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/kondrak/vkQuake2/releases/download/$version/vkquake2-$version_win64.zip",
+                "extract_dir": "vkquake2-$version_win64"
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+{
+    "version": "2.0.15",
+    "description": "Regular expression search and replace tool for Windows.",
+    "homepage": "https://tools.stefankueng.com/grepWin.html",
+    "license": "GPL-3.0-only",
+    "notes": "Run '$dir\\install-context.reg' to add grepWin to right-click context menu.",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-x64-2.0.15_portable.zip",
+            "hash": "0b94eeb7946ac596ce2bc04872b4a721480714218492baee33fc451258bb09cd",
+            "pre_install": "Rename-Item \"$dir\\grepWin-x64-${version}_portable.exe\" 'grepWin.exe'"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-2.0.15_portable.zip",
+            "hash": "ee65676acc4dbb9fd657c0819cf4b16197dcefe45aee274566f79a8e798f07eb",
+            "pre_install": "Rename-Item \"$dir\\grepWin-${version}_portable.exe\" 'grepWin.exe'"
+        }
+    },
+    "post_install": [
+        "$app_path = \"$dir\\grepWin.exe\".Replace('\\', '\\\\')",
+        "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\grepwin\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\grepwin\\$_\"",
+        "        $content = $content.Replace('$app_path', $app_path)",
+        "        if ($global) {",
+        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        }",
+        "    }",
+        "    $content | Set-Content -Path \"$dir\\$_\" -Encoding ascii",
+        "}",
+        "if (-not (Test-Path \"$persist_dir\\grepwin.ini\")) {",
+        "    Set-Content \"$dir\\grepwin.ini\" (@('[global]', '[Software\\grepWin\\History]') -join \"`r`n\") -Encoding ASCII",
+        "}"
+    ],
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+    "bin": "grepWin.exe",
+    "persist": "grepwin.ini",
+    "shortcuts": [
+        [
+            "grepWin.exe",
+            "grepWin",
+            "/portable"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/stefankueng/grepWin"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+    "##": [
+        "This app is non-portable due to:",
+        "(1) It requires installing drivers to work.",
+        "(2) The installer cannot be properly extracted."
+    ],
+    "version": "2.7.3.1381",
+    "description": "File sync and sharing software powered by P2P technology for fast and secure transfers.",
+    "homepage": "https://www.resilio.com/",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.resilio.com/legal/eula-subscription/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe#/setup.exe",
+            "hash": "dc9c72e709cc7a2ea74999ce3756e6f4879cd6eae50a888a1f8ca011a1d6efa3"
+        },
+        "32bit": {
+            "url": "https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe#/setup.exe",
+            "hash": "f68ce817832191f8b8c5fe5bfcaa47dcba548db995571eb220473ff92ad14d23"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "$cec = @{1 = 'Run Resilio Sync to set up sync routines'}",
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -ContinueExitCodes $cec -RunAs | Out-Null",
+            "Stop-Process -Name 'Resilio Sync'",
+            "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Resilio Sync.lnk\"",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "$cec = @{1 = 'You may need to restart your PC for the app to be completely removed'}",
+            "Invoke-ExternalCommand \"$Env:AppData\\Resilio Sync\\Resilio Sync.exe\" -ArgumentList @('/UNINSTALL', '/S') -RunAs -ContinueExitCodes $cec | Out-Null"
+        ]
+    },
+    "checkver": {
+        "url": "https://help.resilio.com/hc/en-us/articles/206216855-Resilio-Sync-change-log",
+        "regex": "<meta property=\"og\\:description\" content=\"([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe#/setup.exe"
+            }
+        }
+    }
+}

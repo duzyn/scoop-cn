@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/outlook_statistics.html",
+    "checkver": "OutlookStatView v(\\d+\\.\\d\\d)",
+    "version": "2.28",
+    "license": "freeware",
+    "description": "OutlookStatView scans your Outlook mailbox, and display a general statistics about the users that you communicate via emails. For each user/email, the following information is displayed: The number of outgoing messages that you sent to the user (separated by to/cc/bcc), the number of incoming message that the user sent to you, the total size of messages sent by the user, the email client software used by this user, and the time range that you send/received emails with the specified user.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/outlookstatview-x64.zip",
+            "hash": "6be48f96af708dd8633cf4571a569873ef1fc8a7743bb2fe6b4cc76a6ee94a04"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/outlookstatview.zip",
+            "hash": "59cd4e719690c88f08aa4afd775c17165736abf0a9a436e77ed9e5d3caa666df"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/outlookstatview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/outlookstatview.zip"
+            }
+        }
+    },
+    "bin": "OutlookStatView.exe",
+    "shortcuts": [
+        [
+            "OutlookStatView.exe",
+            "NirSoft\\OutlookStatView - display a general statistics of your Outlook"
+        ]
+    ]
+}

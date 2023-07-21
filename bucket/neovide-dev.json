@@ -1,0 +1,33 @@
+{
+    "version": "0.7.0",
+    "description": "A simple GUI for Neovim (prerelease version)",
+    "homepage": "https://github.com/Kethku/neovide",
+    "license": "MIT",
+    "suggest": {
+        "neovim": "neovim"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Kethku/neovide/releases/download/0.7.0/neovide.exe",
+            "hash": "8fb6c9edacb66a0f82e97289386f287d38332daaf9ffc7adbdfe6f67f157cafe"
+        }
+    },
+    "bin": "neovide.exe",
+    "shortcuts": [
+        [
+            "neovide.exe",
+            "Neovide"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/Kethku/neovide/releases",
+        "jsonpath": "$[0].tag_name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Kethku/neovide/releases/download/$version/neovide.exe"
+            }
+        }
+    }
+}

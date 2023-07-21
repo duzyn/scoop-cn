@@ -1,0 +1,18 @@
+{
+    "version": "0.13.16",
+    "description": "A build tool for Scala, Java, and more (version 0.13)",
+    "homepage": "https://www.scala-sbt.org/",
+    "license": "Apache-2.0",
+    "url": "https://cocl.us/sbt01316zip#/dl.zip",
+    "hash": "e94d95ff2d64247b754782ea85e99187ea890dc4c918a7ba7dcb6091fdb5968c",
+    "extract_dir": "sbt",
+    "bin": "bin\\sbt.bat",
+    "checkver": {
+        "url": "https://www.scala-sbt.org/0.13/docs/index.html",
+        "regex": "applies to sbt ([\\d.]+)\\."
+    },
+    "autoupdate": {
+        "url": "https://cocl.us/sbt$cleanVersionzip#/dl.zip",
+        "extract_dir": "sbt"
+    }
+}

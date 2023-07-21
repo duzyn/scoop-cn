@@ -1,0 +1,40 @@
+{
+    "version": "114",
+    "description": "Compiler infrastructure and toolchain library for WebAssembly",
+    "homepage": "https://github.com/WebAssembly/binaryen",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/WebAssembly/binaryen/releases/download/version_114/binaryen-version_114-x86_64-windows.tar.gz",
+            "hash": "80fe0c8ac2ffbffcb4a9d6ce7713ec84de530d9be958e4e23cda772fe7f00286"
+        }
+    },
+    "extract_dir": "binaryen-version_114",
+    "bin": [
+        "bin\\wasm2js.exe",
+        "bin\\wasm-as.exe",
+        "bin\\wasm-ctor-eval.exe",
+        "bin\\wasm-dis.exe",
+        "bin\\wasm-emscripten-finalize.exe",
+        "bin\\wasm-metadce.exe",
+        "bin\\wasm-opt.exe",
+        "bin\\wasm-reduce.exe",
+        "bin\\wasm-shell.exe",
+        "bin\\wasm-split.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/WebAssembly/binaryen",
+        "regex": "tag/version_(\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        },
+        "extract_dir": "binaryen-version_$version"
+    }
+}

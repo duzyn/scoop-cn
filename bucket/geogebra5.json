@@ -1,0 +1,33 @@
+{
+    "version": "5.0.791.0",
+    "description": "A dynamic mathematics software for education that brings together geometry, algebra, spreadsheets, graphing, statistics and calculus.",
+    "homepage": "https://www.geogebra.org/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.geogebra.org/license"
+    },
+    "url": "https://download.geogebra.org/installers/5.0/GeoGebra-Windows-Portable-5-0-791-0.zip",
+    "hash": "f2331c86e2afe1109ca3104606dc2813929cc187d5afb557493b25b67e01a3ec",
+    "extract_dir": "GeoGebra 5.0.791.0",
+    "bin": [
+        [
+            "GeoGebra.exe",
+            "geogebra5"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "GeoGebra.exe",
+            "GeoGebra 5"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.geogebra.org/installers/5.0/version.txt",
+        "regex": "(\\d+)-(\\d+)-(\\d+)-(\\d+)",
+        "replace": "${1}.${2}.${3}.${4}"
+    },
+    "autoupdate": {
+        "url": "https://download.geogebra.org/installers/5.0/GeoGebra-Windows-Portable-$dashVersion.zip",
+        "extract_dir": "GeoGebra $version"
+    }
+}

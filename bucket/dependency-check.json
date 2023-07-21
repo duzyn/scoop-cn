@@ -1,0 +1,20 @@
+{
+    "version": "8.3.1",
+    "description": "Software composition analysis utility that identifies project dependencies and checks if there are any known, publicly disclosed, vulnerabilities.",
+    "homepage": "https://owasp.org/www-project-dependency-check/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": "https://ghproxy.com/https://github.com/jeremylong/DependencyCheck/releases/download/v8.3.1/dependency-check-8.3.1-release.zip",
+    "hash": "9f2e272d270f2b23d3c29870f372acedcce9befb1c884407edab9576d1423eb1",
+    "extract_dir": "dependency-check",
+    "bin": "bin\\dependency-check.bat",
+    "checkver": {
+        "url": "https://jeremylong.github.io/DependencyCheck/current.txt",
+        "regex": "(.+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/jeremylong/DependencyCheck/releases/download/v$version/dependency-check-$version-release.zip"
+    }
+}

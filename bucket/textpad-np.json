@@ -1,0 +1,29 @@
+{
+    "version": "9.2.3",
+    "description": "A powerful, general purpose editor for plain text files.",
+    "homepage": "https://www.textpad.com/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.textpad.com/file?path=v9/setupv9.exe",
+            "hash": "fe9c43332bccebf97150eba8997e5ff710d42aaba821ef085d1a056d552174a8"
+        }
+    },
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\setupv9.exe\" -ArgumentList @('/S', '/v/qn') -Verb RunAs | Out-Null"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait 'msiexec' -ArgumentList @('/x', '{0BCB93E1-6EB3-430A-8F78-5D0069309DB3}', '/qn') -Verb RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://www.textpad.com/download",
+        "regex": ">TextPad (9[\\d.]+)\\s*"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.textpad.com/file?path=v$majorVersion/setupv$majorVersion.exe"
+            }
+        }
+    }
+}

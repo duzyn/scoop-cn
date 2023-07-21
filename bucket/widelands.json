@@ -1,0 +1,37 @@
+{
+    "version": "1.1",
+    "description": "Build an ever growing settlement. Real-time strategy, single and multiplayer",
+    "homepage": "https://www.widelands.org/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/widelands/widelands/releases/download/v1.1/Widelands-1.1-x86.exe",
+            "hash": "md5:fcef2ca9b918db984232c3262f82cb8f"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/widelands/widelands/releases/download/v1.1/Widelands-1.1-x64.exe",
+            "hash": "md5:ba40f4059915a0c6ee9f601655c649ee"
+        }
+    },
+    "innosetup": true,
+    "bin": "widelands.exe",
+    "shortcuts": [
+        [
+            "widelands.exe",
+            "Widelands"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/widelands/widelands"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/widelands/widelands/releases/download/v$version/Widelands-$version-x86.exe"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/widelands/widelands/releases/download/v$version/Widelands-$version-x64.exe"
+            }
+        }
+    }
+}

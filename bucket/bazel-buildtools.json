@@ -1,0 +1,40 @@
+{
+    "version": "6.1.2",
+    "description": "Developer tools for working with Google's bazel buildtool.",
+    "homepage": "https://github.com/bazelbuild/buildtools",
+    "license": "Apache-2.0",
+    "suggest": {
+        "bazel": "bazel"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/buildifier-windows-amd64.exe#/buildifier.exe",
+                "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/buildozer-windows-amd64.exe#/buildozer.exe",
+                "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v6.1.2/unused_deps-windows-amd64.exe#/unused_deps.exe"
+            ],
+            "hash": [
+                "92bdd284fbc6766fc3e300b434ff9e68ac4d76a06cb29d1bdefe79a102a8d135",
+                "07664d5d08ee099f069cd654070cabf2708efaae9f52dc83921fa400c67a868b",
+                "929dbcd155b05b34f8a088c88358e78aaf3dab3e753a32fdf233a80fda085101"
+            ]
+        }
+    },
+    "bin": [
+        "buildifier.exe",
+        "buildozer.exe",
+        "unused_deps.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v$version/buildifier-windows-amd64.exe#/buildifier.exe",
+                    "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v$version/buildozer-windows-amd64.exe#/buildozer.exe",
+                    "https://ghproxy.com/https://github.com/bazelbuild/buildtools/releases/download/v$version/unused_deps-windows-amd64.exe#/unused_deps.exe"
+                ]
+            }
+        }
+    }
+}

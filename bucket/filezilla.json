@@ -1,0 +1,60 @@
+{
+    "##": "This package should be updated manually. See #9179 for details",
+    "version": "3.65.0",
+    "description": "Fast and reliable cross-platform FTP, FTPS and SFTP client with lots of useful features and an intuitive graphical user interface.",
+    "homepage": "https://filezilla-project.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://packages.chocolatey.org/filezilla.3.65.0.nupkg",
+    "hash": "3dbe1d0408ac96abc69b30d9fe8491d6f31570cedb5584473898837fa1edc993",
+    "extract_dir": "tools",
+    "pre_install": [
+        "$arch = 'x86'",
+        "if (\"$architecture\" -Match '64bit' -or \"$architecture\" -Match 'arm64') { $arch = 'x64' }",
+        "Expand-7zipArchive \"$dir\\FileZilla_*_$arch.exe\" \"$dir\" -Removal",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\uninstall.exe.nsis\", \"$dir\\*.ps1\", \"$dir\\FileZilla_*.exe\" -Recurse -Force",
+        "@'",
+        "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>",
+        "<FileZilla3>",
+        "  <Settings>",
+        "    <Setting name=\"Config Location\">config</Setting>",
+        "    <Setting name=\"Disable update check\">1</Setting>",
+        "  </Settings>",
+        "</FileZilla3>",
+        "'@ | Out-File \"$dir\\fzdefaults.xml\" -Encoding Ascii",
+        "",
+        "$oldfzdefault = \"$persist_dir\\fzdefaults.xml\"",
+        "if (Test-Path \"$oldfzdefault\") {",
+        "    Write-Host 'Adopting new persist configuration...' -f Yellow",
+        "    $oldConfigDir = \"$((Get-Item \"$persist_dir\").PSDrive.Root)filezilla\"",
+        "    $newConfigDir = \"$persist_dir\\config\"",
+        "    if (Test-Path \"$oldConfigDir\") {",
+        "        Write-Host \"Moving existing configuration from '$oldConfigDir' to '$newConfigDir'\" -f Yellow",
+        "        if (Test-Path \"$newConfigDir\") {",
+        "            Move-Item \"$oldConfigDir\\*\" \"$newConfigDir\"",
+        "        } else { ",
+        "            Move-Item \"$oldConfigDir\" \"$newConfigDir\"",
+        "        }",
+        "    }",
+        "    Rename-Item \"$oldfzdefault\" \"fzdefaults.xml.bak\"",
+        "}"
+    ],
+    "bin": "filezilla.exe",
+    "shortcuts": [
+        [
+            "filezilla.exe",
+            "FileZilla"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://community.chocolatey.org/packages/filezilla",
+        "regex": "<meta property=\"og:title\" content=\"FileZilla ([\\d.]+)\">"
+    },
+    "autoupdate": {
+        "url": "https://packages.chocolatey.org/filezilla.$version.nupkg",
+        "hash": {
+            "url": "https://community.chocolatey.org/packages/filezilla/$version",
+            "regex": "$sha256.*?$basename"
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "version": "3.24.246.0",
+    "description": "Windows clipboard extension.",
+    "homepage": "http://ditto-cp.sourceforge.net/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/3.24.246.0/DittoSetup_64bit_3_24_246_0.exe#/setup.exe",
+            "hash": "sha1:c4830977e33055021e02aea4a26a3decd12c0f28"
+        },
+        "32bit": {
+            "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/3.24.246.0/DittoSetup_3_24_246_0.exe#/setup.exe",
+            "hash": "sha1:05efb206c0741754b600403fcf87b469f8124167"
+        }
+    },
+    "installer": {
+        "args": [
+            "/VERYSILENT",
+            "/DIR=$dir",
+            "/NORESTART"
+        ]
+    },
+    "post_install": "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Ditto\"",
+    "uninstaller": {
+        "file": "unins000.exe",
+        "args": [
+            "/VERYSILENT",
+            "/NORESTART"
+        ]
+    },
+    "bin": "Ditto.exe",
+    "shortcuts": [
+        [
+            "Ditto.exe",
+            "Ditto"
+        ]
+    ],
+    "checkver": "var versionDots=\"([\\d.]+)\"",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/$version/DittoSetup_64bit_$underscoreVersion.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/$version/DittoSetup_$underscoreVersion.exe#/setup.exe"
+            }
+        }
+    }
+}

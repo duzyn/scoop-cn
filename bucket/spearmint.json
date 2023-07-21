@@ -1,0 +1,135 @@
+{
+    "version": "1.0.3",
+    "description": "Heavily modified version of the Quake III Arena engine, directly based on ioquake3 (November 2018)",
+    "homepage": "https://clover.moe/spearmint/",
+    "license": "https://github.com/zturtleman/spearmint/blob/master/COPYING.txt",
+    "notes": [
+        "Place game data files (such as pak0.pk3-pak8.pk3) in:",
+        "",
+        "- Quake 3 Arena:",
+        "    $persist_dir\\baseq3\\",
+        "",
+        "- Quake 3 - Team Arena:",
+        "    $persist_dir\\missionpack\\",
+        "",
+        "- OpenArena:",
+        "-- baseoa",
+        "    $persist_dir\\baseoa\\",
+        "-- missionpack",
+        "    $persist_dir\\missionpackoa\\",
+        "",
+        "If you're missing some of the Quake 3 or Team Arena patch pk3s (pak1 or higher),",
+        "they are available at http://ioquake3.org/extras/patch-data/",
+        ""
+    ],
+    "suggest": {
+        "Quake 3 engines": "openarena"
+    },
+    "url": "https://ghproxy.com/https://github.com/zturtleman/spearmint/releases/download/release-1.0.3/spearmint-1.0.3-windows.zip",
+    "hash": "d179d9a9d2213cc013e442df876090cc1f428dd9a98057a3065a8806c823872c",
+    "architecture": {
+        "32bit": {
+            "bin": [
+                [
+                    "spearmint_x86.exe",
+                    "spearmint"
+                ],
+                [
+                    "spearmint-server_x86.exe",
+                    "spearmint-server"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "spearmint_x86.exe",
+                    "Spearmint Quake 3",
+                    "+set fs_game baseq3"
+                ],
+                [
+                    "spearmint_x86.exe",
+                    "Spearmint Quake 3 - Team Arena",
+                    "+set fs_game missionpack"
+                ],
+                [
+                    "spearmint_x86.exe",
+                    "Spearmint OpenArena",
+                    "+set fs_game baseoa"
+                ],
+                [
+                    "spearmint_x86.exe",
+                    "Spearmint OpenArena - The Mission Pack",
+                    "+set fs_game missionpackoa"
+                ]
+            ]
+        },
+        "64bit": {
+            "bin": [
+                [
+                    "spearmint_x86_64.exe",
+                    "spearmint"
+                ],
+                [
+                    "spearmint-server_x86_64.exe",
+                    "spearmint-server"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "spearmint_x86_64.exe",
+                    "Spearmint Quake 3",
+                    "+set fs_game baseq3"
+                ],
+                [
+                    "spearmint_x86_64.exe",
+                    "Spearmint Quake 3 - Team Arena",
+                    "+set fs_game missionpack"
+                ],
+                [
+                    "spearmint_x86_64.exe",
+                    "Spearmint OpenArena",
+                    "+set fs_game baseoa"
+                ],
+                [
+                    "spearmint_x86_64.exe",
+                    "Spearmint OpenArena - The Mission Pack",
+                    "+set fs_game missionpackoa"
+                ]
+            ]
+        }
+    },
+    "extract_dir": "spearmint-1.0.3-windows",
+    "installer": {
+        "script": [
+            "$persistFolders = @(",
+            "   \"baseoa\"",
+            "   \"baseq3\"",
+            "   \"demoq3\"",
+            "   \"missionpack\"",
+            "   \"missionpackoa\"",
+            "   \"tademo\"",
+            ")",
+            "$persistFolders | ForEach-Object {",
+            "   if (Test-Path \"$persist_dir\\$_\") {",
+            "      Copy-Item -Force -Recurse \"$dir\\$_\\*\" \"$persist_dir\\$_\"",
+            "   }",
+            "}"
+        ]
+    },
+    "persist": [
+        "baseoa",
+        "baseq3",
+        "demoq3",
+        "missionpack",
+        "missionpackoa",
+        "settings",
+        "tademo"
+    ],
+    "checkver": {
+        "url": "https://github.com/zturtleman/spearmint/releases/latest",
+        "regex": "<title>Release Spearmint ([\\d.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/zturtleman/spearmint/releases/download/release-$version/spearmint-$version-windows.zip",
+        "extract_dir": "spearmint-$version-windows"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/",
+    "version": "8.0.29",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.0.29-Win32-vs16-x64.zip",
+            "hash": "7fbecc489e7fd67ea66cbeccba3b983249f861778bda4117b31491976ff83a63"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.0.29-Win32-vs16-x86.zip",
+            "hash": "55da5ee31bbb3454dd65bb23011f3c0e0209e0e832f592f9cbca1f73acb66adf"
+        }
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "checkver": {
+        "url": "https://windows.php.net/download/",
+        "re": "<h3 id=\"php-8.0\".*?>.*?\\(([\\d.-]+)\\)</h3>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x64.zip"
+            },
+            "32bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2019"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/file_activity_watch.html",
+    "checkver": "FileActivityWatch v(\\d+\\.\\d\\d)",
+    "version": "1.66",
+    "license": "freeware",
+    "description": "FileActivityWatch is a tool for Windows that displays information about every read/write/delete operation of files occurs on your system. For every file, FileActivityWatch displays the number of read/write bytes, number of read/write/delete operations, first and last read/write timestamp, and the name/ID of the process responsible for the file operation.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/fileactivitywatch-x64.zip",
+            "hash": "8ca428106073bf2a92042cf6b0bc52a4ca8517b0dea2b54d57fad438c1849044"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/fileactivitywatch.zip",
+            "hash": "69fa65c80547b08da5872b494af9fa03def19e5f0567d317152d05437bf165a6"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/fileactivitywatch-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/fileactivitywatch.zip"
+            }
+        }
+    },
+    "bin": "FileActivityWatch.exe",
+    "shortcuts": [
+        [
+            "FileActivityWatch.exe",
+            "NirSoft\\FileActivityWatch - Displays read_write_delete operations"
+        ]
+    ]
+}

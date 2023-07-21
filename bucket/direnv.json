@@ -1,0 +1,30 @@
+{
+    "version": "2.32.3",
+    "description": "load or unload environment variables depending on the current directory",
+    "homepage": "https://direnv.net",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/direnv/direnv/releases/download/v2.32.3/direnv.windows-amd64.exe#/direnv.exe",
+            "hash": "ac2e3dde073b215be35b001943372c114dca76d28f43d837c0792981e3ed0555"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/direnv/direnv/releases/download/v2.32.3/direnv.windows-386.exe#/direnv.exe",
+            "hash": "e6fc3a64d785362d49aa8bbe7420aeeeb760242b00dad6576139a1c10220f75b"
+        }
+    },
+    "bin": "direnv.exe",
+    "checkver": {
+        "github": "https://github.com/direnv/direnv"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/direnv/direnv/releases/download/v$version/direnv.windows-amd64.exe#/direnv.exe"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/direnv/direnv/releases/download/v$version/direnv.windows-386.exe#/direnv.exe"
+            }
+        }
+    }
+}

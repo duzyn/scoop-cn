@@ -1,0 +1,55 @@
+{
+    "version": "2.0.4",
+    "description": "The ultimate automation scripting language for Windows.",
+    "homepage": "https://www.autohotkey.com/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://ghproxy.com/https://github.com/Lexikos/AutoHotkey_L/releases/download/v2.0.4/AutoHotkey_2.0.4_setup.exe#/setup.exe",
+    "hash": "38b5790e1fd1bea17231a3a55e701217ebde42428046e029f609b1d1734c7140",
+    "pre_install": "Write-Host 'Installing AutoHotKey with their installer and its own options ( create registry keys removed by uninstaller )' -ForegroundColor Magenta",
+    "architecture": {
+        "64bit": {
+            "installer": {
+                "script": [
+                    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/x64', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
+                ]
+            },
+            "bin": [
+                "autohotkeyu64.exe",
+                [
+                    "autohotkeyu64.exe",
+                    "autohotkey"
+                ],
+                "compiler\\ahk2exe.exe"
+            ]
+        },
+        "32bit": {
+            "installer": {
+                "script": [
+                    "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+                    "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/U32', '/uiAccess=0', '/IsHostApp=1', \"/D=`\"$dir`\"\") -Verb RunAs | Out-Null"
+                ]
+            },
+            "bin": [
+                "autohotkeyu32.exe",
+                [
+                    "autohotkeyu32.exe",
+                    "autohotkey"
+                ],
+                "compiler\\ahk2exe.exe"
+            ]
+        }
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList '/Uninstall' -Verb RunAs | Out-Null"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/lexikos/autohotkey_l"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Lexikos/AutoHotkey_L/releases/download/v$version/AutoHotkey_$version_setup.exe#/setup.exe"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "version": "2023.1",
+    "description": "Makes the Windows taskbar translucent/transparent.",
+    "homepage": "https://github.com/TranslucentTB/TranslucentTB",
+    "license": "GPL-3.0-only",
+    "url": "https://ghproxy.com/https://github.com/TranslucentTB/TranslucentTB/releases/download/2023.1/TranslucentTB.appinstaller",
+    "hash": "34eea0bafc665689d861f035ee2d9eb25b53922adf58e1ae2dcb174d7bb1c6d0",
+    "pre_install": [
+        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\TranslucentTB.appinstaller\"\" -AppInstaller\")",
+        "Remove-Item \"$dir\\TranslucentTB.appinstaller\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', 'Get-AppxPackage ''*.TranslucentTB'' | Remove-AppxPackage')",
+        "Remove-Item \"$env:ProgramFiles\\WindowsApps\\*.TranslucentTB_*\" -Force -Recurse -ErrorAction 'SilentlyContinue'",
+        "Start-Sleep -Seconds 2"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/TranslucentTB/TranslucentTB/releases/download/$version/TranslucentTB.appinstaller"
+    }
+}

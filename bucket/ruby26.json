@@ -1,0 +1,32 @@
+{
+    "version": "2.6.10-1",
+    "homepage": "https://rubyinstaller.org",
+    "description": "Ruby, a dynamic programming language with a focus on simplicity and productivity. (version 2.6)",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.6.10-1/rubyinstaller-2.6.10-1-x64.7z",
+            "hash": "f3f35f359523497fe6235d0f0b296d59debc420a955c5a53222815ae0d29d2d8",
+            "extract_dir": "rubyinstaller-2.6.10-1-x64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.6.10-1/rubyinstaller-2.6.10-1-x86.7z",
+            "hash": "c4799ec9abde780a837444adf2251c901c5ba30414413fde3d8550b3e04770ef",
+            "extract_dir": "rubyinstaller-2.6.10-1-x86"
+        }
+    },
+    "persist": "gems",
+    "env_add_path": [
+        "bin",
+        "gems\\bin"
+    ],
+    "env_set": {
+        "GEM_HOME": "$dir\\gems",
+        "GEM_PATH": "$dir\\gems"
+    },
+    "suggest": {
+        "MSYS2": "msys2"
+    },
+    "post_install": "gem install rake",
+    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!"
+}

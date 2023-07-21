@@ -1,0 +1,21 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "5.2.17",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": [
+        "conf.d"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-5.2.17-Win32-VC6-x86.zip",
+    "hash": "18951f4a6282b5a34afa11e07249d336169bc06a98dba88bd5cff72109105ca0"
+}

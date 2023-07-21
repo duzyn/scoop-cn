@@ -1,0 +1,23 @@
+{
+    "version": "build045",
+    "description": "Fast-paced paintball first-person shooter based on the Quake 2 engine",
+    "homepage": "http://digitalpaint.org/",
+    "license": "Custom",
+    "url": "https://downloads.sourceforge.net/project/paintball2/Paintball%202/Paintball%202.0%20Alpha%20build045/paintball2_build045_full.exe#/dl.7z",
+    "hash": "sha1:e29e8750110a1052012c813d380ab522cd0d1d7b",
+    "bin": "paintball2.exe",
+    "shortcuts": [
+        [
+            "paintball2.exe",
+            "Paintball 2"
+        ]
+    ],
+    "persist": "pball\\configs",
+    "checkver": {
+        "url": "http://digitalpaint.org/files/",
+        "regex": "paintball2_([\\da-z]+)_full\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/paintball2/Paintball%202/Paintball%202.0%20Alpha%20$version/paintball2_$version_full.exe#/dl.7z"
+    }
+}

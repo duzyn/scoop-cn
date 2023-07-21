@@ -1,0 +1,75 @@
+{
+    "version": "0.256",
+    "description": "Arcade machine emulator",
+    "homepage": "http://mamedev.org",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/mamedev/mame/blob/master/COPYING"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
+            "hash": "c5000bfb8d01c568cb4b7df64cb16f2361729e19d43dd7bee30d1db72ac1b2c5",
+            "pre_install": [
+                "Write-Host -ForegroundColor Yellow \"WARN: MAME no longer provides up to date 32bit binaries\"",
+                "Write-Host -ForegroundColor Yellow \"Continue installing latest 32bit release (0.217)? \"",
+                "$choice = (Read-Host -Prompt \"[Y / N]\").toLower()",
+                "switch ($choice) {",
+                "   y {scoop uninstall mame",
+                "       scoop install https://ghproxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
+                "       scoop hold mame",
+                "       exit 0",
+                "   }",
+                "   n {Write-Error -Message \"Install aborted.\" -Category NotInstalled",
+                "       scoop uninstall mame",
+                "       exit 1",
+                "   }",
+                "}"
+            ]
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mamedev/mame/releases/download/mame0256/mame0256b_64bit.exe#/dl.7z",
+            "hash": "33f8d28118152711911589aaf20e11175d661ef011daa8f064a163ecbc7a87e0",
+            "pre_install": [
+                "if(!(Test-Path \"$persist_dir\\mame.ini\")) {",
+                "   Start-Process \"$dir\\mame.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"-createconfig\"",
+                "   Start-Sleep -Seconds 5",
+                "}"
+            ],
+            "bin": [
+                [
+                    "mame.exe",
+                    "mame"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "mame.exe",
+                    "MAME"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "ctrlr",
+        "plugins",
+        "roms",
+        "mame.ini",
+        "ui.ini",
+        "plugin.ini"
+    ],
+    "checkver": {
+        "github": "https://github.com/mamedev/mame",
+        "regex": "MAME ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mamedev/mame/releases/download/mame$cleanVersion/mame$cleanVersionb_64bit.exe#/dl.7z"
+            }
+        }
+    }
+}

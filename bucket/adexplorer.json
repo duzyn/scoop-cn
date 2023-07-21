@@ -1,0 +1,60 @@
+{
+    "version": "1.52",
+    "description": "An advanced Active Directory (AD) viewer and editor.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/adexplorer",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/AdExplorer.zip",
+    "hash": "56536bff1e9da136a53f68c6f4f1cd51f79be919a27249a193a2bc8fc472e89a",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "AdExplorer64.exe",
+                    "ADExplorer"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ADExplorer64.exe",
+                    "scoop-cn/ADExplorer",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ADExplorer.exe",
+            "shortcuts": [
+                [
+                    "ADExplorer.exe",
+                    "scoop-cn/ADExplorer",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "AdExplorer64a.exe",
+                    "ADExplorer"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ADExplorer64a.exe",
+                    "scoop-cn/ADExplorer",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/adexplorer.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/AdExplorer.zip"
+    }
+}

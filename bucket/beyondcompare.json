@@ -1,0 +1,60 @@
+{
+    "version": "4.4.6.27483",
+    "description": "Directory and file compare functions in one package",
+    "homepage": "https://www.scootersoftware.com",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.scootersoftware.com/index.php?zz=kb_licensev4"
+    },
+    "notes": "Add Beyond Compare as a context menu option by running: '$dir\\install-context.reg'",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.scootersoftware.com/BCompare-4.4.6.27483_x64.msi",
+            "hash": "afb9a40136da34c8851e34ff422ff6bda269f0d0de52dd23c41363fb99353379"
+        },
+        "32bit": {
+            "url": "https://www.scootersoftware.com/BCompare-4.4.6.27483_x86.msi",
+            "hash": "31a1b42ad817f4b951e0f5ece0517605d3353c4ee5b5f2a03120e75350bcc689"
+        }
+    },
+    "extract_dir": "Beyond Compare 4",
+    "bin": "Bcomp.exe",
+    "shortcuts": [
+        [
+            "BCompare.exe",
+            "Beyond Compare 4"
+        ],
+        [
+            "BCClipboard.exe",
+            "Clipboard Compare"
+        ]
+    ],
+    "post_install": [
+        "$dir_escaped = \"$dir\".Replace('\\', '\\\\')",
+        "\"install-context-$architecture\", \"uninstall-context\" | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare\\$_.reg\"",
+        "    $content = $content.Replace('$install_dir', $dir_escaped)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $outfile_no_arch = $_.Replace(\"-$architecture\", \"\")",
+        "    $content | Set-Content -Path \"$dir\\$outfile_no_arch.reg\"",
+        "  }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://www.scootersoftware.com/download.php?zz=kb_dl4_winalternate",
+        "regex": "BCompare-([\\d.]+)_x64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.scootersoftware.com/BCompare-$version_x64.msi"
+            },
+            "32bit": {
+                "url": "https://www.scootersoftware.com/BCompare-$version_x86.msi"
+            }
+        }
+    }
+}

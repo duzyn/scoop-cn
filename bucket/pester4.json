@@ -1,0 +1,23 @@
+{
+    "version": "4.10.1",
+    "description": "Pester. A test and mock framework for PowerShell. (version 4)",
+    "homepage": "https://pester.dev",
+    "license": "Apache-2.0",
+    "notes": [
+        "'Pester' is currently installed as a PS module",
+        "For more information, visit: 'https://pester.dev/docs/quick-start'"
+    ],
+    "url": "https://globalcdn.nuget.org/packages/pester.4.10.1.nupkg",
+    "hash": "6c996dc4dc8bef068cefb1680292154f45577c66fb0600dd0fb50939bbf8a3a3",
+    "extract_dir": "tools",
+    "psmodule": {
+        "name": "Pester"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/pester/Pester/tags?per_page=100",
+        "regex": "tags/(4[\\d.]+)\""
+    },
+    "autoupdate": {
+        "url": "https://globalcdn.nuget.org/packages/pester.$version.nupkg"
+    }
+}

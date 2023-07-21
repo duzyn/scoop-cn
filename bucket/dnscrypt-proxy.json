@@ -1,0 +1,43 @@
+{
+    "version": "2.1.4",
+    "description": "A flexible DNS proxy, with support for encrypted DNS protocols",
+    "homepage": "https://dnscrypt.info",
+    "license": "ISC",
+    "notes": [
+        "1. \"fallback_resolvers\" was renamed to \"bootstrap_resolvers\" for clarity. Please update your configuration file accordingly.",
+        "2. Some of the configuration files are changed, for details: https://github.com/DNSCrypt/dnscrypt-proxy/releases/tag/2.0.45",
+        "3. For compatibility reasons, please move all configuration files exclude \"dnscrypt-proxy.toml\" into \"config\" folder and update your config."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.4/dnscrypt-proxy-win64-2.1.4.zip",
+            "hash": "895a73d51e0633f4c7ad16751b96cdec3300284f1cc51f38da405df453c79b03",
+            "extract_dir": "win64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/2.1.4/dnscrypt-proxy-win32-2.1.4.zip",
+            "hash": "d7f8ee32c4bcc0dc397d49d2851dd230a1fa16a364e3ce3d8cb00512c8e25fac",
+            "extract_dir": "win32"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\$dnscrypt-proxy.toml\")) { Copy-Item \"$dir\\example-dnscrypt-proxy.toml\" \"$dir\\dnscrypt-proxy.toml\" }",
+    "bin": "dnscrypt-proxy.exe",
+    "persist": [
+        "config",
+        "dnscrypt-proxy.toml",
+        "localhost.pem"
+    ],
+    "checkver": {
+        "github": "https://github.com/DNSCrypt/dnscrypt-proxy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/$version/dnscrypt-proxy-win32-$version.zip"
+            }
+        }
+    }
+}

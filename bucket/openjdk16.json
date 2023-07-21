@@ -1,0 +1,17 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 16",
+    "homepage": "https://jdk.java.net/16",
+    "version": "16.0.2-7",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk16.0.2/d4a915d82b4c4fbb9bde534da945d746/7/GPL/openjdk-16.0.2_windows-x64_bin.zip",
+            "hash": "9df98be05fe674066cc39144467c47b1503cfa3de059c09cc4ccc3da9c253b9a"
+        }
+    },
+    "extract_dir": "jdk-16.0.2",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "version": "17.04",
+    "description": "Find out what files, registry keys and other objects processes have open, which DLLs they have loaded, and more.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/process-explorer",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ProcessExplorer.zip",
+    "hash": "9a5bc19e03fcc785f8ae322593e5aae9b287e9a891dc999689708761fc70aa0b",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "procexp64.exe",
+                    "procexp"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "procexp64.exe",
+                    "scoop-cn/Process Explorer",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "procexp.exe",
+            "shortcuts": [
+                [
+                    "procexp.exe",
+                    "scoop-cn/Process Explorer",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "procexp64a.exe",
+                    "procexp"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "procexp64a.exe",
+                    "scoop-cn/Process Explorer",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/process-explorer.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ProcessExplorer.zip"
+    }
+}

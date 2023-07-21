@@ -1,0 +1,34 @@
+{
+    "version": "1.8.7",
+    "description": "cURL like utility for gRPC",
+    "homepage": "https://github.com/fullstorydev/grpcurl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/grpcurl_1.8.7_windows_x86_64.zip",
+            "hash": "911b339744c149cb135d8c20acf280247497c729992fd277bb9f1f11543d25bb"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/fullstorydev/grpcurl/releases/download/v1.8.7/grpcurl_1.8.7_windows_x86_32.zip",
+            "hash": "633fbb89ccfe275398acbff9ee6d9a1af971a29d71e4d3776f699c0873eee4f5"
+        }
+    },
+    "bin": "grpcurl.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/fullstorydev/grpcurl/releases",
+        "regex": "grpcurl_([\\d.]+)_windows_x"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/fullstorydev/grpcurl/releases/download/v$version/grpcurl_$version_windows_x86_32.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/grpcurl_$version_checksums.txt"
+        }
+    }
+}

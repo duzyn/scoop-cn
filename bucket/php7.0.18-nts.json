@@ -1,0 +1,21 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "7.0.18",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": [
+        "conf.d"
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-7.0.18-nts-Win32-VC14-x86.zip",
+    "hash": "15018d499b87f15988412d89af7df3e45ca53ef6a06344b5173634050ce3482b"
+}

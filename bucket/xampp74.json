@@ -1,0 +1,57 @@
+{
+    "version": "7.4.29-1",
+    "description": "Apache distribution containing MariaDB, PHP, and Perl",
+    "homepage": "https://www.apachefriends.org/index.html",
+    "license": "GPL-2.0-only",
+    "notes": "Follow the instructions on '$dir\\readme_en.txt' to set up XAMPP.",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.sourceforge.net/project/xampp/XAMPP%20Windows/7.4.29/xampp-windows-x64-7.4.29-1-VC15.7z",
+            "hash": "sha1:5adcfce3b2b6073686248e2d809ab749529cc071"
+        }
+    },
+    "extract_dir": "xampp",
+    "bin": [
+        "apache\\bin\\httpd.exe",
+        "mysql\\bin\\mysql.exe",
+        "mysql\\bin\\mysqld.exe",
+        "sendmail\\sendmail.exe",
+        "perl\\bin\\perl.exe",
+        "php\\php.exe",
+        "tomcat\\bin\\tomcat8.exe",
+        "xampp-control.exe",
+        "xampp_start.exe",
+        "xampp_stop.exe"
+    ],
+    "shortcuts": [
+        [
+            "xampp-control.exe",
+            "XAMPP Control Panel"
+        ]
+    ],
+    "persist": [
+        "apache\\conf",
+        "apache\\logs",
+        "htdocs",
+        "mysql\\data",
+        "php\\php.ini",
+        "sendmail\\sendmail.ini",
+        "tomcat\\conf",
+        "tomcat\\logs",
+        "xampp-control.ini"
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/7.4.29/",
+        "regex": "xampp-windows-x64-(\\d+\\.\\d+\\.\\d+-\\d+)-VC15.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.sourceforge.net/project/xampp/XAMPP%20Windows/$matchHead/xampp-windows-x64-$version-VC15.7z"
+            }
+        }
+    }
+}

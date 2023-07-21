@@ -1,0 +1,43 @@
+{
+    "homepage": "https://www.azul.com/downloads/icedtea-web-community/",
+    "version": "1.8.8-2",
+    "description": "IcedTea-Web is an open source implementation of JSR-56, better known as Java Web Start",
+    "license": "UPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/icedtea-web/zulu-icedtea-web-1.8.8-2.win_x64.bin.zip",
+            "hash": "2b603182b80ffdfdaa1102d970913e87833212ec1e477b4e6b370d00abb233d5"
+        },
+        "32bit": {
+            "url": "https://cdn.azul.com/icedtea-web/zulu-icedtea-web-1.8.8-2.win_i686.bin.zip",
+            "hash": "595c57f113d0ff0c0f625614bd9bc6285c2e237f174f6293b364fe67d8d69305"
+        }
+    },
+    "shortcuts": [
+        [
+            "bin\\itweb-settings.exe",
+            "Zulu IcedTea-Web Control Panel"
+        ],
+        [
+            "bin\\policyeditor.exe",
+            "Zulu IcedTea-Web Policy Editor"
+        ]
+    ],
+    "extract_dir": "icedtea-web-image",
+    "env_add_path": "bin",
+    "checkver": "zulu-icedtea-web-([\\d.-]+).win_x64.bin",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/icedtea-web/zulu-icedtea-web-$version.win_x64.bin.zip"
+            },
+            "32bit": {
+                "url": "https://cdn.azul.com/icedtea-web/zulu-icedtea-web-$version.win_i686.bin.zip"
+            }
+        },
+        "hash": {
+            "url": "https://www.azul.com/downloads/icedtea-web-community/",
+            "regex": "(?m)data-name=\"$sha256\".*?$basename"
+        }
+    }
+}

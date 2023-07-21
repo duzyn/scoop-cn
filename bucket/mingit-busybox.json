@@ -1,0 +1,50 @@
+{
+    "version": "2.41.0.3",
+    "description": "Minimal Git for Windows (MinGit) is a reduced sized package designed to support application integration (like integrated development environments, graph visualizers, etc.) where full console support (colorization, pagniation, etc.) is not needed.(BusyBox-backed MinGit, experimental, smaller version of MinGit)",
+    "homepage": "https://git-for-windows.github.io/",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "To get Git to recognise OpenSSH, you will need to run",
+        "",
+        "scoop install openssh",
+        "[environment]::setenvironmentvariable('GIT_SSH', (resolve-path (scoop which ssh)), 'USER')",
+        "",
+        "and then restart powershell."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/MinGit-2.41.0.3-busybox-64-bit.zip",
+            "hash": "5234d856484b5b945a47b28753ef8df3985df37d04d13acc6bb442187915993e"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/MinGit-2.41.0.3-busybox-32-bit.zip",
+            "hash": "959e972410bdfd11500d517a19e39b1c70c18402a20251cf197d9f06d63971fc"
+        }
+    },
+    "bin": [
+        "cmd\\git.exe",
+        "mingw64\\bin\\busybox.exe"
+    ],
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/git-for-windows/git/releases/latest",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/MinGit-([\\d.]+)-busybox-64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-busybox-64-bit.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/MinGit-$version-busybox-32-bit.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$matchTag",
+            "regex": "(?s)$basename.*?$sha256"
+        }
+    }
+}

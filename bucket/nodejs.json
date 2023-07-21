@@ -1,0 +1,58 @@
+{
+    "version": "20.5.0",
+    "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications.",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v20.5.0/node-v20.5.0-win-x64.7z",
+            "hash": "46d063e1442207924e38a650e52c151dded2a30626c4ac80978f9743523d79e8",
+            "extract_dir": "node-v20.5.0-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v20.5.0/node-v20.5.0-win-x86.7z",
+            "hash": "3ddee03edb8b8e829f9ba930f29a0d2db7e93a5b67bd9f5f7c96a0b6544a9374",
+            "extract_dir": "node-v20.5.0-win-x86"
+        },
+        "arm64": {
+            "url": "https://npmmirror.com/mirrors/node/v20.5.0/node-v20.5.0-win-arm64.7z",
+            "hash": "5a78475a2661c1ec113c9020d17c44197c20311e46fa9dee5d5a0102204b16ce",
+            "extract_dir": "node-v20.5.0-win-arm64"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://npmmirror.com/mirrors/node/latest/",
+        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            },
+            "arm64": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-arm64.7z",
+                "extract_dir": "node-v$version-win-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}

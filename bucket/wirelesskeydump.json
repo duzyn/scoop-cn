@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/wireless_key_dump.html",
+    "checkver": "WirelessKeyDump v(\\d+\\.\\d\\d)",
+    "version": "1.00",
+    "license": "freeware",
+    "description": "WirelessKeyDump is a console application (Command Prompt) that dumps the list of all wireless keys stored by the wireless networks module of Windows operating system.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/wirelesskeydump-x64.zip",
+            "hash": "886e8883927701dbd8b043092011608a0ec7f8e0055d1378ef1174548ef2050c"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/wirelesskeydump.zip",
+            "hash": "eec872091355150ccefc778560a84c6a3f9320201997aa5ac769d4677a8e17c1"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/wirelesskeydump-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/wirelesskeydump.zip"
+            }
+        }
+    },
+    "bin": "WirelessKeyDump.exe",
+    "shortcuts": [
+        [
+            "WirelessKeyDump.exe",
+            "NirSoft\\WirelessKeyDump - dumps the list of all wireless keys"
+        ]
+    ]
+}

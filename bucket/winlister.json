@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/winlister.html",
+    "checkver": "WinLister v(\\d+\\.\\d\\d)",
+    "version": "1.22",
+    "license": "freeware",
+    "description": "This utility displays the list of opened windows on your system. For each window, some useful information is displayed: the title, the handle of window, location, size, class name, process number, the name of the program that created the window, and more... In addition, you can easily hide, show or close the selected windows, or save the windows list to text or HTML file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/winlister-x64.zip",
+            "hash": "2a07bb34147dea6ca6fbf2be6004ece72cc9ce308f29f86fa2e2d5842b7e997c"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/winlister.zip",
+            "hash": "1285a20c47498f864bc33a7ab3cfd3c97168cbbbe9e14b1474b0bb5f02cd24a2"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/winlister-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/winlister.zip"
+            }
+        }
+    },
+    "bin": "winlister.exe",
+    "shortcuts": [
+        [
+            "winlister.exe",
+            "NirSoft\\WinLister - Displays the list of opened windows"
+        ]
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/advanced_run.html",
+    "checkver": "AdvancedRun v(\\d+\\.\\d\\d)",
+    "version": "1.51",
+    "license": "freeware",
+    "description": "AdvancedRun is a simple tool for Windows that allows you to run a program with different settings that you choose, including - low or high priority, start directory, main window state (Minimized/Maximized), run the program with different user or permissions, Operating system compatibility settings, and environment variables. You can also save the desired settings into a configuration file and then run the program automatically from command-line with the desired settings.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/advancedrun-x64.zip",
+            "hash": "a05825b22d78807ca5a6fdfcedaf326297d3102756fdaa58e9c0a52aab7091d2"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/advancedrun.zip",
+            "hash": "b2c65aa6e71b0f154c5f3a8b884582779d716ff2c03d6cdca9e157f0fe397c9c"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/advancedrun-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/advancedrun.zip"
+            }
+        }
+    },
+    "bin": "AdvancedRun.exe",
+    "shortcuts": [
+        [
+            "AdvancedRun.exe",
+            "NirSoft\\AdvancedRun - Run a program with different settings"
+        ]
+    ]
+}

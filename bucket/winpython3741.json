@@ -1,0 +1,120 @@
+{
+    "version": "3.7.4.1",
+    "description": "Free, open-source and portable Python distribution for Windows",
+    "homepage": "https://winpython.github.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.1/Winpython64-3.7.4.1.exe#/dl.7z",
+            "hash": "f385737eb6c60460a976adc7d1e9a169cf49425f9851f75789cf3ecabb5d7cd4",
+            "extract_dir": "WPy64-3741"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/winpython/WinPython_3.7/3.7.4.1/Winpython32-3.7.4.1.exe#/dl.7z",
+            "hash": "fc6c4d52c97cd99830d05ebc33a3e651b329100f36898576823ffa75eb989e2e",
+            "extract_dir": "WPy32-3741"
+        }
+    },
+    "bin": [
+        "scripts\\idle.bat",
+        "scripts\\idlex.bat",
+        "scripts\\qtconsole.bat",
+        "scripts\\winjupyter_lab.bat",
+        [
+            "scripts\\winjupyter_lab.bat",
+            "jupyter_lab"
+        ],
+        "scripts\\ipython_notebook.bat",
+        "scripts\\winpyzo.bat",
+        [
+            "scripts\\winpyzo.bat",
+            "pyzo"
+        ],
+        "scripts\\qtdesigner.bat",
+        "scripts\\qtlinguist.bat",
+        "scripts\\spyder.bat",
+        "scripts\\spyder_reset.bat",
+        "scripts\\winvscode.bat",
+        [
+            "scripts\\winvscode.bat",
+            "vscode"
+        ],
+        "scripts\\python.bat",
+        [
+            "scripts\\python.bat",
+            "python3"
+        ],
+        "scripts\\wpcp.bat",
+        "scripts\\winidle.bat",
+        "scripts\\winidlex.bat",
+        "scripts\\winpython.bat",
+        [
+            "scripts\\WinPython_PS_Prompt.ps1",
+            "winpython_prompt"
+        ]
+
+    ],
+    "shortcuts": [
+        [
+            "IDLE (Python GUI).exe",
+            "WinPython\\IDLE (Python GUI)"
+        ],
+        [
+            "IDLEX.exe",
+            "WinPython\\IDLEX"
+        ],
+        [
+            "IPython Qt Console.exe",
+            "WinPython\\IPython Qt Console"
+        ],
+        [
+            "Jupyter Lab.exe",
+            "WinPython\\Jupyter Lab"
+        ],
+        [
+            "Jupyter Notebook.exe",
+            "WinPython\\Jupyter Notebook"
+        ],
+        [
+            "Pyzo.exe",
+            "WinPython\\Pyzo"
+        ],
+        [
+            "Qt Designer.exe",
+            "WinPython\\Qt Designer"
+        ],
+        [
+            "Qt Linguist.exe",
+            "WinPython\\Qt Linguist"
+        ],
+        [
+            "Spyder.exe",
+            "WinPython\\Spyder"
+        ],
+        [
+            "Spyder reset.exe",
+            "WinPython\\Spyder reset"
+        ],
+        [
+            "VS Code.exe",
+            "WinPython\\VS Code"
+        ],
+        [
+            "WinPython Command Prompt.exe",
+            "WinPython\\WinPython Command Prompt"
+        ],
+        [
+            "WinPython Control Panel.exe",
+            "WinPython\\WinPython Control Panel"
+        ],
+        [
+            "WinPython Interpreter.exe",
+            "WinPython\\WinPython Interpreter"
+        ],
+        [
+            "WinPython Powershell Prompt.exe",
+            "WinPython\\WinPython Powershell Prompt"
+        ]
+    ],
+    "persist": "settings"
+}

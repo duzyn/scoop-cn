@@ -1,0 +1,33 @@
+{
+    "version": "3.1.0",
+    "description": "A lock-free deduplication cloud backup tool",
+    "homepage": "https://duplicacy.com/",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://github.com/gilbertchen/duplicacy/blob/master/LICENSE.md"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/gilbertchen/duplicacy/releases/download/v3.1.0/duplicacy_win_x64_3.1.0.exe#/duplicacy.exe",
+            "hash": "196aa7f2f3ef70a83ec659142c6fcce69301e1bdb415faf804a67183a638e828"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/gilbertchen/duplicacy/releases/download/v3.1.0/duplicacy_win_i386_3.1.0.exe#/duplicacy.exe",
+            "hash": "fcaf2c9f5dd32fbbeb449b877e01019dcec319963640ae31eab973654650c278"
+        }
+    },
+    "bin": "duplicacy.exe",
+    "checkver": {
+        "github": "https://github.com/gilbertchen/duplicacy"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/gilbertchen/duplicacy/releases/download/v$version/duplicacy_win_x64_$version.exe#/duplicacy.exe"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/gilbertchen/duplicacy/releases/download/v$version/duplicacy_win_i386_$version.exe#/duplicacy.exe"
+            }
+        }
+    }
+}

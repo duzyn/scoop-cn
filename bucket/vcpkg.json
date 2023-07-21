@@ -1,0 +1,31 @@
+{
+    "version": "2023.06.20",
+    "description": "C/C++ dependency manager from Microsoft For all platforms, buildsystems, and workflows",
+    "homepage": "https://vcpkg.io/",
+    "license": "MIT",
+    "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/2023.06.20.zip",
+    "hash": "e6ca7109dff6c58f6c94ff6a1f91e20570704358ef93cdc953b3333401bc8d93",
+    "extract_dir": "vcpkg-2023.06.20",
+    "installer": {
+        "file": "bootstrap-vcpkg.bat",
+        "keep": true
+    },
+    "bin": "vcpkg.exe",
+    "post_install": "vcpkg integrate install",
+    "uninstaller": {
+        "script": "vcpkg integrate remove"
+    },
+    "persist": [
+        "buildtrees",
+        "downloads",
+        "installed",
+        "packages"
+    ],
+    "checkver": {
+        "github": "https://github.com/microsoft/vcpkg/"
+    },
+    "autoupdate": {
+        "url": "https://github.com/microsoft/vcpkg/archive/refs/tags/$version.zip",
+        "extract_dir": "vcpkg-$version"
+    }
+}

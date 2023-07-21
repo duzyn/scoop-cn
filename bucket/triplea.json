@@ -1,0 +1,47 @@
+{
+    "version": "2.5.22294",
+    "description": "Turn-based free and open-source strategy game based on the Axis & Allies board game",
+    "homepage": "https://triplea-game.org/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/triplea-game/triplea/releases/download/2.5.22294/TripleA_2.5.22294_windows-32bit.exe",
+            "hash": "1b8c3d87f6c16b0c1b4bdbe415972b9be4846a44f0dc89d46fab005dfd02bedd"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/triplea-game/triplea/releases/download/2.5.22294/TripleA_2.5.22294_windows-64bit.exe",
+            "hash": "0eddc4e13bff3a1bfcad6a1d5f2429557552076d0c70f5fcd1aaf8f1cf889dea"
+        }
+    },
+    "installer": {
+        "args": [
+            "-q",
+            "-dir $dir"
+        ],
+        "keep": true
+    },
+    "bin": "TripleA.exe",
+    "shortcuts": [
+        [
+            "TripleA.exe",
+            "TripleA"
+        ]
+    ],
+    "persist": [
+        "savedGames",
+        "downloadedMaps"
+    ],
+    "checkver": {
+        "github": "https://github.com/triplea-game/triplea"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/triplea-game/triplea/releases/download/$version/TripleA_$version_windows-32bit.exe"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/triplea-game/triplea/releases/download/$version/TripleA_$version_windows-64bit.exe"
+            }
+        }
+    }
+}

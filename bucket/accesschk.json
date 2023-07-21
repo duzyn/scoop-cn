@@ -1,0 +1,39 @@
+{
+    "version": "6.15",
+    "description": "A command-line tool for viewing the effective permissions on files, registry keys, services, processes, kernel objects, and more.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/accesschk",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/AccessChk.zip",
+    "hash": "8ef5e3cf235bcf4ecdcf8b4da1c0016a75f104b8591a65cc083ae3a82d496e07",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "accesschk64.exe",
+                    "accesschk"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "accesschk.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "accesschk64a.exe",
+                    "accesschk"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/accesschk.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/AccessChk.zip"
+    }
+}

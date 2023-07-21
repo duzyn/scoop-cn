@@ -1,0 +1,28 @@
+{
+    "version": "0.0.26",
+    "description": "Free and open source strategy game of ancient warfare",
+    "homepage": "https://play0ad.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/0ad/0ad/blob/master/LICENSE.txt"
+    },
+    "url": "https://releases.wildfiregames.com/0ad-0.0.26-alpha-win32.exe#/setup.exe",
+    "hash": "sha1:7f036bb5afb84c5a2168d1689c7f8fdca960fb61",
+    "installer": {
+        "script": "Start-Process -FilePath \"$dir\\setup.exe\" -ArgumentList \"/S\", \"/D=$dir\" -Wait"
+    },
+    "bin": "binaries\\system\\pyrogenesis.exe",
+    "uninstaller": {
+        "script": "Start-Process -FilePath \"$dir\\Uninstall.exe\" -ArgumentList /S -Wait"
+    },
+    "checkver": {
+        "url": "https://play0ad.com/download/win/",
+        "regex": "0ad-([\\w.]+)-alpha-win32.exe"
+    },
+    "autoupdate": {
+        "url": "https://releases.wildfiregames.com/0ad-$version-alpha-win32.exe#/setup.exe",
+        "hash": {
+            "url": "$url.sha1sum"
+        }
+    }
+}

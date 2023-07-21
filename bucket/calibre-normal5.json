@@ -1,0 +1,59 @@
+{
+    "version": "5.44.0",
+    "description": "Powerful and easy to use e-book manager",
+    "homepage": "https://calibre-ebook.com",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.calibre-ebook.com/5.44.0/calibre-64bit-5.44.0.msi",
+            "hash": "708ba7db84ae9db684b643f81a4fb6b1c65f5e6dac0adc4721e6ed7d20677798",
+            "extract_dir": "PFiles\\Calibre2"
+        },
+        "32bit": {
+            "url": "https://download.calibre-ebook.com/5.44.0/calibre-5.44.0.msi",
+            "hash": "21903563b5bb5817ee33f3a3ea6b0f3b71c3eac1793069f89674d70a99f0f080",
+            "extract_dir": "PFiles\\Calibre"
+        }
+    },
+    "notes": "Calibre drops support for 32-bit CPUs after v6.0.0, if you are running a 64-bit system, please install `calibre-normal` from Scoop Extras bucket.",
+    "bin": [
+        "calibre.exe",
+        "calibre-complete.exe",
+        "calibre-customize.exe",
+        "calibredb.exe",
+        "calibre-debug.exe",
+        "calibre-parallel.exe",
+        "calibre-server.exe",
+        "calibre-smtp.exe",
+        "ebook-convert.exe",
+        "ebook-device.exe",
+        "ebook-edit.exe",
+        "ebook-meta.exe",
+        "ebook-polish.exe",
+        "ebook-viewer.exe",
+        "fetch-ebook-metadata.exe",
+        "lrf2lrs.exe",
+        "lrs2lrf.exe",
+        "lrfviewer.exe",
+        "markdown-calibre.exe",
+        "web2disk.exe"
+    ],
+    "shortcuts": [
+        [
+            "calibre.exe",
+            "Calibre"
+        ],
+        [
+            "ebook-edit.exe",
+            "Calibre E-Book Editor"
+        ],
+        [
+            "ebook-viewer.exe",
+            "Calibre E-Book Viewer"
+        ],
+        [
+            "lrfviewer.exe",
+            "Calibre LRF Viewer"
+        ]
+    ]
+}

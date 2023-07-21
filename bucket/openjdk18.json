@@ -1,0 +1,32 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 18",
+    "homepage": "https://jdk.java.net/18",
+    "version": "18.0.2.1-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk18.0.2.1/db379da656dc47308e138f21b33976fa/1/GPL/openjdk-18.0.2.1_windows-x64_bin.zip",
+            "hash": "fc08052175eb2f66cedfcca368ab5d51c55f50d6f440b124e4512499825cb7b1"
+        }
+    },
+    "extract_dir": "jdk-18.0.2.1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
+        "replace": "${version}-${build}${ea}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.java.net/java/$matchType/$matchPath/$matchFile"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jdk-$matchVersion"
+    }
+}

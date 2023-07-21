@@ -1,0 +1,24 @@
+{
+    "version": "1.3.4",
+    "description": "A .vtf spray generator for TF2/CSS/L4D/L4D2",
+    "homepage": "https://code.google.com/archive/p/spraygen/",
+    "license": "GPL-3.0",
+    "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/spraygen/spraygen-1.3.4.zip",
+    "hash": "6547a3708df5649ce28c784307a6463b309af94e94dc2717fdd7b887918fa568",
+    "extract_dir": "spraygen",
+    "shortcuts": [
+        [
+            "spraygen.exe",
+            "Spraygen"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.googleapis.com/storage/v1/b/google-code-archive/o/v2%2Fcode.google.com%2Fspraygen%2Fdownloads-page-1.json?alt=media&stripTrailingSlashes=false",
+        "jsonpath": "$.downloads.[0].filename",
+        "regex": "spraygen-([\\d.]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/spraygen/spraygen-$version.zip",
+        "extract_dir": "spraygen"
+    }
+}

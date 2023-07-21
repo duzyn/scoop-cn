@@ -1,0 +1,55 @@
+{
+    "version": "114.0.5735.199-1.1",
+    "description": "Google Chromium, sans integration with Google.",
+    "homepage": "https://ungoogled-software.github.io/ungoogled-chromium-binaries/",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/114.0.5735.199-1.1/ungoogled-chromium_114.0.5735.199-1.1_windows_x64.zip",
+            "hash": "94f0628f60a7f31181c01603a9e34de0ce0a4e4c3dc985975e2cc38c988aea07"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/114.0.5735.199-1.1/ungoogled-chromium_114.0.5735.199-1.1_windows_x86.zip",
+            "hash": "95ced28ff746d3169785a931ae6981d4f9754e3569259cec10e270a54e58d9aa"
+        }
+    },
+    "extract_dir": "ungoogled-chromium_114.0.5735.199-1.1_windows",
+    "bin": [
+        [
+            "chrome.exe",
+            "chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "github": "https://github.com/ungoogled-software/ungoogled-chromium-windows",
+        "regex": "releases/tag/((?<main>[\\d.]+-\\d).(?<release>\\d))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/$version/ungoogled-chromium_$version_windows_x64.zip",
+                "hash": {
+                    "url": "https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/windows/64bit/$matchMain",
+                    "xpath": "//ul/li/a[contains(text(), \"$basename\")]/../ul/li[contains(text(), \"SHA256:\")]/code"
+                }
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ungoogled-software/ungoogled-chromium-windows/releases/download/$version/ungoogled-chromium_$version_windows_x86.zip",
+                "hash": {
+                    "url": "https://ungoogled-software.github.io/ungoogled-chromium-binaries/releases/windows/32bit/$matchMain",
+                    "xpath": "//ul/li/a[contains(text(), \"$basename\")]/../ul/li[contains(text(), \"SHA256:\")]/code"
+                }
+            }
+        },
+        "extract_dir": "ungoogled-chromium_$version_windows"
+    }
+}

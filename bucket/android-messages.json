@@ -1,0 +1,42 @@
+{
+    "version": "5.4.1",
+    "description": "Cross-platform Desktop App for android messages.",
+    "homepage": "https://github.com/OrangeDrangon/android-messages-desktop",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/OrangeDrangon/android-messages-desktop/releases/download/v5.4.1/Android-Messages-v5.4.1-win-x64.portable.exe#/dl.7z",
+            "hash": "sha512:9a74961c05a6016977bc19fffb3da26513db5756daca1a81c044a171b426ceac7d84fc4e2b39013ff93cb49b626e953c08ece45f9e8b3df685a1bf3d7948f611",
+            "extract_dir": "$PLUGINSDIR"
+        }
+    },
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\*\" -Exclude 'app-64.7z'",
+            "Expand-7zipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
+        ]
+    },
+    "bin": [
+        [
+            "Android Messages.exe",
+            "AndroidMessages"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Android Messages.exe",
+            "Android Messages"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/OrangeDrangon/android-messages-desktop/releases",
+        "regex": "/tree/v([\\w.-]+)\""
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/OrangeDrangon/android-messages-desktop/releases/download/v$version/Android-Messages-v$version-win-x64.portable.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s+$base64"
+        }
+    }
+}

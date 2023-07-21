@@ -1,0 +1,25 @@
+{
+    "homepage": "http://fmedia.firmdev.com/",
+    "description": "A fast media player/recorder/converter",
+    "license": "GPL-3.0-only",
+    "version": "1.6",
+    "architecture": {
+        "64bit": {
+            "url": "http://fmedia.firmdev.com/fmedia-1.6-win-x64.zip",
+            "hash": "ce7d7e74b091e3aa111615b473d85b1137301979a6cb4ec500942da3ac3e5dbb"
+        },
+        "32bit": {
+            "url": "http://fmedia.firmdev.com/fmedia-1.6-win-x86.zip",
+            "hash": "bf7f0d7c9a9c38c1ebf2c4a49c36656e80cb5b433de5b36d12692c985b62bf42"
+        }
+    },
+    "extract_dir": "fmedia",
+    "bin": "fmedia.exe",
+    "shortcuts": [
+        [
+            "fmedia-gui.exe",
+            "fmedia"
+        ]
+    ],
+    "persist": "fmedia.conf"
+}

@@ -1,0 +1,44 @@
+{
+    "version": "5.3",
+    "description": "Personal and small-business financial-accounting software",
+    "homepage": "https://www.gnucash.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://ghproxy.com/https://github.com/Gnucash/gnucash/releases/download/5.3/gnucash-5.3.setup.exe",
+    "hash": "4cd66cf6c261fe7f5fc071b8e01314f33fb97e3496fe832e07bad360c1cf685a",
+    "innosetup": true,
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\\*,2.*\" -Recurse | Rename-Item -NewName { $_.FullName -replace ',2\\.', '.' }",
+                "Get-ChildItem \"$dir\\*,1.*\" -Recurse | Remove-Item",
+                "if (!(Test-Path -Path \"$persist_dir\\etc\\gnucash\\environment.local\")) { New-Item -Path \"$dir\\etc\\gnucash\" -Name \"environment.local\" -Value \"[Variables]\" | Out-Null }"
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Get-ChildItem \"$dir\\*,1.*\" -Recurse | Rename-Item -NewName { $_.FullName -replace ',1\\.', '.' }",
+                "Get-ChildItem \"$dir\\*,2.*\" -Recurse | Remove-Item",
+                "if (!(Test-Path -Path \"$persist_dir\\etc\\gnucash\\environment.local\")) { New-Item -Path \"$dir\\etc\\gnucash\" -Name \"environment.local\" -Value \"[Variables]\" | Out-Null }"
+            ]
+        }
+    },
+    "bin": "bin\\gnucash-cli.exe",
+    "shortcuts": [
+        [
+            "bin\\gnucash.exe",
+            "GnuCash"
+        ]
+    ],
+    "persist": "etc\\gnucash\\environment.local",
+    "checkver": {
+        "github": "https://github.com/Gnucash/gnucash",
+        "regex": "/download/([\\d.]+)/gnucash-([\\w.-]+)\\.setup\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Gnucash/gnucash/releases/download/$version/gnucash-$match2.setup.exe",
+        "hash": {
+            "url": "https://github.com/Gnucash/gnucash/releases/tag/$version",
+            "regex": "$sha256.*?$basename"
+        }
+    }
+}

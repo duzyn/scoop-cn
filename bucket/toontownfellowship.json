@@ -1,0 +1,17 @@
+{
+    "version": "1.0.0",
+    "description": "Third-party private server for the massively multiplayer online game Toontown",
+    "homepage": "https://www.toontownfellowship.com",
+    "license": "Proprietary",
+    "notes": "This is only the launcher. A free account is required to play.",
+    "url": "https://www.toontownfellowship.com/download/windows/Launcher2.exe",
+    "hash": "3f0f705acbe3ec5313c0784ffe9888885abdcf8926f1b39fd7c58b7e14617730",
+    "pre_install": "Rename-Item -Path $dir/Launcher2.exe -NewName $dir/ToontownFellowship.exe",
+    "bin": "ToontownFellowship.exe",
+    "shortcuts": [
+        [
+            "ToontownFellowship.exe",
+            "Toontown Fellowship"
+        ]
+    ]
+}

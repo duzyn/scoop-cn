@@ -1,0 +1,39 @@
+{
+    "version": "2.1",
+    "description": "View the resolution of the system clock, which is also the maximum timer resolution.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/clockres",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ClockRes.zip",
+    "hash": "dd1f74ca53e7d47a7a0a45d594a625d55abc7e231ad1e4d535c2f5f815769983",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Clockres64.exe",
+                    "Clockres"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Clockres.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Clockres64a.exe",
+                    "Clockres"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/clockres.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ClockRes.zip"
+    }
+}

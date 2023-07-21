@@ -1,0 +1,48 @@
+{
+    "version": "1.4.9.0",
+    "description": "Lightweight text editor.",
+    "homepage": "https://www.notepadsapp.com/",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/0x7c13/Notepads/releases/download/v1.4.9.0/Notepads_1.4.9.0_x86_x64_arm64.msixbundle#/Notepads.msixbundle",
+    "hash": "468dc6e7695bc7ceb4d368791e334af5b05d313a1ab1b2dbaac4ecaeabb88388",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    error \"Administrator rights are required to install $app.\"",
+            "    break",
+            "}",
+            "",
+            "Add-AppxProvisionedPackage -Online -PackagePath \"$dir\\Notepads.msixbundle\" -SkipLicense | Out-Null"
+        ]
+    },
+    "post_install": [
+        "$package_name = (Get-AppxPackage -Name '*JackieLiu*Notepads*').PackageFamilyName",
+        "while (-not (Test-Path \"$env:LOCALAPPDATA\\Packages\\$package_name\\Settings\\settings.dat\")) { Start-Sleep -Milliseconds 250 }",
+        "Copy-Item -Recurse -Force \"$dir\\Settings\" -Destination \"$env:LOCALAPPDATA\\Packages\\$package_name\""
+    ],
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    error \"Administrator rights are required to uninstall $app.\"",
+            "    break",
+            "}",
+            "$ProgressPreference = \"SilentlyContinue\"",
+            "Stop-Process -ErrorAction Ignore -Name Notepads",
+            "Start-Sleep -Milliseconds 250",
+            "",
+            "$package = Get-AppxPackage -Name '*JackieLiu*Notepads*'",
+            "",
+            "Remove-Item -ErrorAction Ignore -Recurse -Force \"$persist_dir\\Settings\"",
+            "Copy-Item -Recurse -Force \"$env:LOCALAPPDATA\\Packages\\$($package.PackageFamilyName)\\Settings\" -Destination $persist_dir",
+            "",
+            "Remove-AppxPackage $package"
+        ]
+    },
+    "persist": "Settings",
+    "checkver": {
+        "github": "https://github.com/0x7c13/Notepads"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/0x7c13/Notepads/releases/download/v$version/Notepads_$version_x86_x64_arm64.msixbundle#/Notepads.msixbundle"
+    }
+}

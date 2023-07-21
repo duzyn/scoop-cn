@@ -1,0 +1,48 @@
+{
+    "version": "0.21-v1.16",
+    "description": "Gettext is an internationalization and localization (i18n) system commonly used for writing multilingual programs on Unix-like computer operating systems.",
+    "homepage": "https://mlocati.github.io/articles/gettext-iconv-windows.html",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip",
+            "hash": "b500cb5b3f3fdeb388d55cebce2f2b0302edb1bf3f7a7b5d1bf1526c73b031bb"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-32.zip",
+            "hash": "8db13475bd8a4fa64ace5de96954f4b19907c92379f7d1c718324d8786a221fa"
+        }
+    },
+    "bin": [
+        "bin\\iconv.exe",
+        "bin\\msgattrib.exe",
+        "bin\\msgcat.exe",
+        "bin\\msgcmp.exe",
+        "bin\\msgcomm.exe",
+        "bin\\msgconv.exe",
+        "bin\\msgen.exe",
+        "bin\\msgexec.exe",
+        "bin\\msgfilter.exe",
+        "bin\\msgfmt.exe",
+        "bin\\msggrep.exe",
+        "bin\\msginit.exe",
+        "bin\\msgmerge.exe",
+        "bin\\msgunfmt.exe",
+        "bin\\msguniq.exe",
+        "bin\\xgettext.exe"
+    ],
+    "checkver": {
+        "url": "https://github.com/mlocati/gettext-iconv-windows/releases",
+        "regex": "/releases/tag/v((?<gettext>[\\d.]+)-v(?<iconv>[\\d.]+))"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mlocati/gettext-iconv-windows/releases/download/v$version/gettext$matchGettext-iconv$matchIconv-shared-64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/mlocati/gettext-iconv-windows/releases/download/v$version/gettext$matchGettext-iconv$matchIconv-shared-32.zip"
+            }
+        }
+    }
+}

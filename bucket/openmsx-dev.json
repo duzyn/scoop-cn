@@ -1,0 +1,41 @@
+{
+    "version": "18.0-638-gc89208e52",
+    "description": "Cycle-accurate MSX emulator (Development builds)",
+    "homepage": "https://openmsx.fixato.net/",
+    "license": "GPL-2.0",
+    "notes": "User data are stored in C:\\Users\\[USERNAME]\\Documents\\openMSX",
+    "architecture": {
+        "64bit": {
+            "url": "https://openmsx.fixato.net/builds/windows/x64/openmsx-18.0-638-gc89208e52-windows-vc-x64-bin.zip",
+            "hash": "91b98ed706caf8843f2accfa94d70b7f1c2141969faba7231693179f7b4fcde7"
+        }
+    },
+    "bin": [
+        [
+            "openmsx.exe",
+            "openmex-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "openmsx.exe",
+            "openMSX\\openMSX (Development)"
+        ],
+        [
+            "Catapult\\bin\\Catapult.exe",
+            "openMSX\\Catapult (Development)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://openmsx.fixato.net/builds/windows/x64/",
+        "regex": "openmsx-(?<ver>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-f]{9})-windows-vc-x64-bin\\.zip",
+        "replace": "${ver}-${build}-g${commit}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://openmsx.fixato.net/builds/windows/x64/openmsx-$version-windows-vc-x64-bin.zip"
+            }
+        }
+    }
+}

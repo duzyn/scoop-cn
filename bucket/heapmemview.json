@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/heap_memory_view.html",
+    "checkver": "HeapMemView v(\\d+\\.\\d\\d)",
+    "version": "1.05",
+    "license": "freeware",
+    "description": "HeapMemView is a small utility that allows you to view the content of all memory blocks allocated in the heap of the process the you select. This tool can be useful for developers that need to trace memory leaks in their software.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/heapmemview-x64.zip",
+            "hash": "0c6e818a2291efaa168fae84956e4d1d25c37fd48d1aedf74eb85c66e36e5010"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/heapmemview.zip",
+            "hash": "10c70d8e33f1e9cbb842e8920171ec5472db53e652e21a640f5ad9d14964d233"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/heapmemview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/heapmemview.zip"
+            }
+        }
+    },
+    "bin": "HeapMemView.exe",
+    "shortcuts": [
+        [
+            "HeapMemView.exe",
+            "NirSoft\\HeapMemView - View the heap memory content"
+        ]
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "version": "3.3.3",
+    "description": "A roguelike with a mix of story, RPG, exploration, and strategic and flexible combat.",
+    "homepage": "https://www.adom.de/home",
+    "license": "Custom",
+    "url": "https://www.adom.de/home/download/current/adom_windows_3.3.3.zip",
+    "hash": "679182edf2df02cabbacf11a3b432ed087ccedda4323491e170be14a93114549",
+    "extract_dir": "adom",
+    "bin": "adom.exe",
+    "shortcuts": [
+        [
+            "adom.exe",
+            "Ancient Domains of Mystery (ASCII)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.adom.de/home/downloads.html",
+        "re": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.adom.de/home/download/current/adom_windows_$version.zip"
+    }
+}

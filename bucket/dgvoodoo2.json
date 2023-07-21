@@ -1,0 +1,31 @@
+{
+    "version": "2.8.2",
+    "description": "Glide/DirectX implementation on D3D11/12. Play your old Glide and DirectX games even on the latest, modern versions of Windows.",
+    "homepage": "https://github.com/dege-diosg/dgVoodoo2",
+    "license": "http://dege.freeweb.hu/dgVoodoo2/ReadmeGeneral/#redistributionrights",
+    "notes": [
+        "",
+        "A guide for using the software can be found here: https://www.pcgamingwiki.com/wiki/DgVoodoo_2",
+        "",
+        "Basically, you take the DLLs for whatever API you need to convert and copy them to the directory of the application you want to run.",
+        "",
+        "Then, if you want to customize any settings, copy dgVoodooCpl.exe and dgVoodoo.conf to the app directory as well.",
+        "",
+        "dgVoodooCpl.exe gives you a GUI to configure your settings, while dgVoodoo.conf must be edited with a text editor.",
+        "",
+        "Some advanced features are not available through the dgVoodooCpl app, but can be set manually in the dgVoodoo.conf file.",
+        ""
+    ],
+    "shortcuts": [
+        [
+            "dgVoodooCpl.exe",
+            "dgVoodoo"
+        ]
+    ],
+    "url": "https://ghproxy.com/https://github.com/dege-diosg/dgVoodoo2/releases/download/v2.8.2/dgVoodoo2_8_2.zip",
+    "hash": "d79aaa2d0805941a4529913f10a995d3b1e3e3244852d9bad03fc4eb16408b46",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/dege-diosg/dgVoodoo2/releases/download/v$version/dgVoodoo$underscoreVersion.zip"
+    }
+}

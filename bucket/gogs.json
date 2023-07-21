@@ -1,0 +1,53 @@
+{
+    "version": "0.13.0",
+    "description": "A painless self-hosted Git service",
+    "homepage": "https://gogs.io",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.gogs.io/0.13.0/gogs_0.13.0_windows_amd64_mws.zip",
+            "hash": "4323c6cba1aa522642772e051fb9e63df02566af93a7b85294a458a520bbc1eb"
+        }
+    },
+    "extract_dir": "gogs",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\custom\\conf\")) {",
+            "   New-Item \"$persist_dir\\custom\\conf\" -ItemType Directory -Force | Out-Null",
+            "}",
+            "if (!(Test-Path \"$persist_dir\\custom\\conf\\app.ini\")) {",
+            "   @(",
+            "       '[database]'",
+            "       'DB_TYPE = sqlite3'",
+            "       \"PATH = $persist_dir/data/gogs.db\"",
+            "       '[repository]'",
+            "       \"ROOT = $persist_dir/repositories\"",
+            "       '[log]'",
+            "       \"ROOT_PATH = $persist_dir/log\"",
+            "   ) -replace '\\\\', '/' | Set-Content \"$persist_dir\\custom\\conf\\app.ini\" -Encoding ASCII",
+            "}"
+        ]
+    },
+    "bin": "gogs.exe",
+    "persist": [
+        "custom",
+        "data",
+        "log",
+        "repositories"
+    ],
+    "checkver": {
+        "url": "https://dl.gogs.io",
+        "regex": "href=\"([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.gogs.io/$version/gogs_$version_windows_amd64_mws.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksum_sha256.txt"
+        }
+    }
+}

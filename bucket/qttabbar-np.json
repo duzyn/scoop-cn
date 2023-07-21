@@ -1,0 +1,61 @@
+{
+    "version": "2048-beta2",
+    "description": "Shell extension for the File Explorer that transforms it into a tabbed browser.",
+    "homepage": "http://qttabbar.wikidot.com/",
+    "license": "Freeware",
+    "url": "http://qttabbar.wdfiles.com/local--files/qttabbar1/QTTabBar%202048%20Beta2.zip",
+    "hash": "4a8aac9bf84d9b3c09ec099363c1d0a5afe8532d3540e16cf869a4319b7b7185",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires administrator rights to $cmd\"; break }",
+            "# Remove previous installations to avoid error",
+            "Get-ChildItem \"$env:TEMP\\QTTabBar_*.*\" | ForEach-Object { Remove-Item -ErrorAction Ignore -Recurse $_ }",
+            "",
+            "# Extract MSI from the installer EXE",
+            "& \"$dir\\QTTabBar.exe\"",
+            "while ($msi -eq $null) {",
+            "    Start-Sleep -Milliseconds 100",
+            "    $msi = Get-ChildItem \"$env:TEMP\\QTTabBar_*.*\\QTTabBar Setup.msi\"",
+            "}",
+            "Copy-Item $msi \"$dir\\setup.msi\"",
+            "Get-CimInstance Win32_Process -Filter \"name = 'msiexec.exe'\" | Where-Object { $_.CommandLine -match 'QTTabBar Setup\\.msi' } | ForEach-Object { Stop-Process -Id $_.ProcessId }",
+            "",
+            "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/l*v', 'test.log') -Wait -Verb RunAs | Out-Null",
+            "Stop-Process -Name explorer; Start-Sleep -Seconds 2",
+            "info 'Restarting explorer...'",
+            "if (!(Get-Process -Name 'explorer' -ErrorAction SilentlyContinue)) { explorer }",
+            "Remove-Item \"$dir\\QTTabBar.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires administrator rights to $cmd\"; break }",
+            "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi`\"\", '/qn') -Wait -Verb RunAs | Out-Null",
+            "info 'Restarting explorer...'",
+            "Stop-Process -Name explorer; Start-Sleep -Seconds 2",
+            "if (!(Get-Process -Name 'explorer' -ErrorAction SilentlyContinue)) { explorer }"
+        ]
+    },
+    "checkver": {
+        "script": [
+            "# Using script to solve download url issues ('%20', 'beta->Beta')",
+            "$url = 'http://qttabbar.wikidot.com/'",
+            "$cont = (Invoke-WebRequest $url).Content",
+            "$regex = '>QTTabBar ver (\\d+)( beta (\\d+))?'",
+            "",
+            "# match regex in reverse order",
+            "$regexp = New-Object System.Text.RegularExpressions.Regex($regex)",
+            "$match = $regexp.Matches($cont) | Select-Object -Last 1",
+            "if (!$match) { error \"Could not match '$regex' in '$url'\" ; break}",
+            "$main_ver = $match.Groups[1].Value",
+            "$beta_ver = $match.Groups[3].Value",
+            "if ($beta_ver) { $app_ver = \"$main_ver-beta$beta_ver\"; $filename = \"QTTabBar%20$main_ver%20Beta$beta_ver.zip\" }",
+            "else {  $app_ver = \"$main_ver\"; $filename = \"QTTabBar%20$main_ver.zip\"  }",
+            "Write-Output $app_ver $filename"
+        ],
+        "regex": "(\\d+-beta\\d+) (?<filename>.*)"
+    },
+    "autoupdate": {
+        "url": "http://qttabbar.wdfiles.com/local--files/qttabbar1/$matchFilename"
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "version": "1.62.3",
+    "description": "SNES (Super Nintendo Entertainment System) emulator",
+    "homepage": "http://www.snes9x.com/",
+    "license": {
+        "identifier": "Non-commercial",
+        "url": "https://github.com/snes9xgit/snes9x/blob/master/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/snes9xgit/snes9x/releases/download/1.62.3/snes9x-1.62.3-win32.zip",
+            "hash": "70e520d81e2f92ee77070e3b8c61ffec42e7dee7f49bea40c8ae5e83fa934e66",
+            "bin": "snes9x.exe",
+            "shortcuts": [
+                [
+                    "snes9x.exe",
+                    "Snes9X"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/snes9xgit/snes9x/releases/download/1.62.3/snes9x-1.62.3-win32-x64.zip",
+            "hash": "a681e000c2b215878bd55151c8633d24beb423d10b45bb7dcd9e522fbeb4ea2a",
+            "bin": [
+                [
+                    "snes9x-x64.exe",
+                    "snes9x"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "snes9x-x64.exe",
+                    "Snes9X"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\snes9x.conf\")) {",
+        "    New-Item \"$dir\\snes9x.conf\" -Type File | Out-Null",
+        "}"
+    ],
+    "persist": [
+        "BIOS",
+        "Cheats",
+        "Movies",
+        "Patches",
+        "Roms",
+        "SatData",
+        "Saves",
+        "Screenshots",
+        "SPCs",
+        "snes9x.conf"
+    ],
+    "checkver": {
+        "github": "https://github.com/snes9xgit/snes9x"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/snes9xgit/snes9x/releases/download/$version/snes9x-$version-win32.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/snes9xgit/snes9x/releases/download/$version/snes9x-$version-win32-x64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "version": "2.02",
+    "description": "Captures all hard disk activity or acts like a software disk activity light in your system tray.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/diskmon",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/DiskMon.zip",
+    "hash": "36c85a6dd3ae9b4a9723a9229f9bf55b5bcac607d5725e9ef100d0a67adba8d3",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Diskmon64.exe",
+                    "Diskmon"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Diskmon64.exe",
+                    "scoop-cn/DiskMon",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Diskmon.exe",
+            "shortcuts": [
+                [
+                    "Diskmon.exe",
+                    "scoop-cn/DiskMon",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/diskmon.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/DiskMon.zip"
+    }
+}

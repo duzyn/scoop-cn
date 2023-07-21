@@ -1,0 +1,37 @@
+{
+    "version": "13.1.0-16.0.5-11.0.0-r5",
+    "description": "GNU Compiler Collection with LLVM/Clang/LLD/LLDB (WinLibs build)",
+    "homepage": "https://winlibs.com",
+    "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.5-11.0.0-msvcrt-r5/winlibs-x86_64-posix-seh-gcc-13.1.0-llvm-16.0.5-mingw-w64msvcrt-11.0.0-r5.7z",
+            "hash": "sha512:dc61182a8936ac72d521c1c7198d8056bc9785dbffd349c66392052ab475364bb755d5c32487a088fa98f7a4df67fc32b189c97593c425130053d412a2186e93",
+            "extract_dir": "mingw64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.5-11.0.0-msvcrt-r5/winlibs-i686-posix-dwarf-gcc-13.1.0-llvm-16.0.5-mingw-w64msvcrt-11.0.0-r5.7z",
+            "hash": "sha512:131120768a362c06d5b9c60eaa0f14795317f08f8f2541c50e9885785ea97c8498e0285e33898d8a1f80eb571f74c603f25493aa8812d9ecc187fd5473939425",
+            "extract_dir": "mingw32"
+        }
+    },
+    "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+    "env_add_path": "bin",
+    "checkver": {
+        "regex": "GCC ([\\d.]+).*?LLVM.*?([\\d.]+).*?MinGW\\-w64 ([\\d.]+).*?MSVCRT.*?release ([\\d.]+).*?LATEST",
+        "replace": "${1}-${2}-${3}-r${4}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-msvcrt-r$match4/winlibs-x86_64-posix-seh-gcc-$match1-llvm-$match2-mingw-w64msvcrt-$match3-r$match4.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-msvcrt-r$match4/winlibs-i686-posix-dwarf-gcc-$match1-llvm-$match2-mingw-w64msvcrt-$match3-r$match4.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "description": "Unaltered builds from the OpenJDK mercurial JDK8u code stream, built by Red Hat",
+    "homepage": "https://adoptopenjdk.net/upstream.html",
+    "version": "8u342-b07",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u342-b07/OpenJDK8U-jdk_x64_windows_8u342b07.zip",
+            "hash": "d2a54d9da8e711e41737b3af8e1b576507cd1874536030c24c3dd96cd0dadef1"
+        }
+    },
+    "extract_dir": "openjdk-8u342-b07",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.adoptopenjdk.net/v3/assets/feature_releases/8/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jdk&project=jdk&vendor=openjdk&page_size=1&sort_order=DESC",
+        "jp": "$..binaries[0].package.link",
+        "re": "https://github.com/(?<url>.*?(?<tag>jdk(?<major>[\\d]+)(?<update>u[\\d]+)-(?<build>b[\\d]+)(?<patch>[\\d.]*)))/",
+        "replace": "${major}${update}-${build}${patch}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/AdoptOpenJDK/openjdk$matchMajor-upstream-binaries/releases/download/jdk$version/OpenJDK$matchMajorU-jdk_x64_windows_$matchMajor$matchUpdate$matchBuild.zip"
+            }
+        },
+        "extract_dir": "openjdk-$version"
+    }
+}

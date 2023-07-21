@@ -1,0 +1,17 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 10",
+    "homepage": "https://jdk.java.net/10",
+    "version": "10.0.2-13",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk10/10.0.2/19aef61b38124481863b1413dce1855f/13/openjdk-10.0.2_windows-x64_bin.tar.gz",
+            "hash": "d6fadd228b195f754d3bb74cb7dce7a7fdbce58963257ba2ab63a923301bc2dd"
+        }
+    },
+    "extract_dir": "jdk-10.0.2",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

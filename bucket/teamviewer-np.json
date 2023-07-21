@@ -1,0 +1,50 @@
+{
+    "version": "15.41.10",
+    "description": "Software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
+    "homepage": "https://www.teamviewer.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.teamviewer.com/en/eula/"
+    },
+    "url": "https://example.com/#/dummy.txt",
+    "hash": "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9",
+    "installer": {
+        "script": [
+            "# TeamViewer's installer adds additional info (changes hash) every time. This is a workaround.",
+            "$majorVersion = [version]::new($manifest.version).Major",
+            "if ($architecture -eq '64bit') { $url = \"https://download.teamviewer.com/download/version_${majorVersion}x/TeamViewer_Setup_x64.exe\" }",
+            "elseif ($architecture -eq '32bit') { $url = \"https://download.teamviewer.com/download/version_${majorVersion}x/TeamViewer_Setup.exe\" }",
+            "",
+            "$ProgressPreference = 'SilentlyContinue'",
+            "$retry_count = 0",
+            "warn 'Downloading TeamViewer installer...'",
+            "for (;;) {",
+            "    $retry_count += 1",
+            "    if ($retry_count > 5) { error 'Could not download the installer. The network might be unstable.'; break }",
+            "    $r = Invoke-WebRequest $url -OutFile \"$dir\\setup.exe\"",
+            "    warn 'Checking file integrity...'",
+            "    7z t \"$dir\\setup.exe\" | Out-Null",
+            "    if ($LASTEXITCODE -eq 0) { break }",
+            "    else { warn 'File check failed. Retrying' }",
+            "}",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/norestart') -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\", \"$dir\\dummy.txt\""
+        ]
+    },
+    "pre_uninstall": "Stop-Process -Name 'teamviewer' -ErrorAction SilentlyContinue",
+    "uninstaller": {
+        "script": [
+            "$uninstall = \"$env:ProgramFiles\\TeamViewer\\uninstall.exe\"",
+            "if (-not (Test-Path $uninstall)) { $uninstall = \"${env:ProgramFiles(x86)}\\TeamViewer\\uninstall.exe\" }",
+            "Start-Process -Wait \"$uninstall\" -ArgumentList @('/S', '/norestart') -Verb RunAs | Out-Null"
+        ]
+    },
+    "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36",
+        "url": "https://www.teamviewer.com/en-us/download/windows/",
+        "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>"
+    },
+    "autoupdate": {
+        "url": "https://example.com/#/dummy.txt"
+    }
+}

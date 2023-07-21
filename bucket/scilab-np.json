@@ -1,0 +1,29 @@
+{
+    "version": "6.1.1",
+    "homepage": "https://www.scilab.org/",
+    "description": "A free and open source software for numerical computation, created for scientists and engineers.",
+    "license": "GPL-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://oos.eu-west-2.outscale.com/scilab-releases/6.1.1/scilab-6.1.1.exe#/setup.exe",
+            "hash": "43336cda96251d3dde9106fc5f1302ae722ab83e8a6bf894dff3238ea02be779"
+        },
+        "64bit": {
+            "url": "https://oos.eu-west-2.outscale.com/scilab-releases/6.1.1/scilab-6.1.1_x64.exe#/setup.exe",
+            "hash": "349f40c2b2906003ce82c4a8a37fc4dee4cf85bb3eb783020cc7e8ae815a6a0d"
+        }
+    },
+    "post_install": "Start-Process \"$dir\\setup.exe\" -Wait -Args @('/SP-', \"/DIR=$dir\", '/VERYSILENT', '/CURRENTUSER', '/SUPPRESSMSGBOXES'); Remove-Item \"$dir\\setup.exe\"",
+    "pre_uninstall": "Start-Process \"$dir\\unins000.exe\" -Wait -Args @('/VERYSILENT', '/SUPPRESSMSGBOXES'); Start-Sleep -Seconds 2",
+    "checkver": "Scilab\\s([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://oos.eu-west-2.outscale.com/scilab-releases/$version/scilab-$version.exe#/setup.exe"
+            },
+            "64bit": {
+                "url": "https://oos.eu-west-2.outscale.com/scilab-releases/$version/scilab-$version_x64.exe#/setup.exe"
+            }
+        }
+    }
+}

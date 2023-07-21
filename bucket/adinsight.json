@@ -1,0 +1,60 @@
+{
+    "version": "1.2",
+    "description": "An LDAP (Light-weight Directory Access Protocol) real-time monitoring tool aimed at troubleshooting Active Directory client applications.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/adinsight",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/AdInsight.zip",
+    "hash": "c613a6fabd3410bf91bda38fa0d2f9db6c63f79dba86e4a6a28379a290928ca1",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "ADInsight64.exe",
+                    "ADInsight"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ADInsight64.exe",
+                    "scoop-cn/ADInsight",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ADInsight.exe",
+            "shortcuts": [
+                [
+                    "ADInsight.exe",
+                    "scoop-cn/ADInsight",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "ADInsight64a.exe",
+                    "ADInsight"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ADInsight64a.exe",
+                    "scoop-cn/ADInsight",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/adinsight.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/AdInsight.zip"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "version": "2.82",
+    "description": "Dump event log records.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psloglist",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/psloglist.zip",
+    "hash": "8d29dbd68aa03a9a6adf2e71c78d98999eec46ef13106309fd7cf3c9708e083c",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "psloglist64.exe",
+                    "psloglist"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "psloglist.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "psloglist64a.exe",
+                    "psloglist"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psloglist.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/psloglist.zip"
+    }
+}

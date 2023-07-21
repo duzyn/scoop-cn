@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/dpapi_data_decryptor.html",
+    "checkver": "DataProtectionDecryptor v(\\d+\\.\\d\\d)",
+    "version": "1.11",
+    "license": "freeware",
+    "description": "DataProtectionDecryptor is a powerful tool for Windows that allows you to decrypt passwords and other information encrypted by the DPAPI (Data Protection API) system of Windows operating system. You can use this tool to decrypt DPAPI data on your current running system and to decrypt DPAPI data stored on external hard drive.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/toolsdownload/dataprotectiondecryptor-x64.zip",
+            "hash": "e4b0c72c94021f102176d8a19fc27a90da1732548bc0d60306c85154036cb8a2"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/toolsdownload/dataprotectiondecryptor.zip",
+            "hash": "717d1e9ddb7b0e72ba04cbec5294a8a0f7956149d2061d6c57396b72c4cc0939"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/toolsdownload/dataprotectiondecryptor-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/toolsdownload/dataprotectiondecryptor.zip"
+            }
+        }
+    },
+    "bin": "DataProtectionDecryptor.exe",
+    "shortcuts": [
+        [
+            "DataProtectionDecryptor.exe",
+            "NirSoft\\DataProtectionDecryptor - Decrypt DPAPI-encrypted data of Windows"
+        ]
+    ]
+}

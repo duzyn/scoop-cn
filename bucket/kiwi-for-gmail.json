@@ -1,0 +1,39 @@
+{
+    "version": "4.0.1",
+    "description": "A desktop client for Gmail and Google Apps",
+    "homepage": "https://kiwiforgmail.com/",
+    "license": "Proprietary",
+    "url": "https://downloads.kiwiforgmail.com/kiwi/release/consumer/Kiwi+for+Gmail+Setup+4.0.1.exe#/dl.7z",
+    "hash": "sha512:70d2bb9381629b097f09faf88ddd44f7ee892270ab1e499febe04884eb6c7ffd232e5987330e184f888d450e168869ed0b3d1f8713543816207bc5cfcccac8db",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" | Out-Null",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\" | Out-Null",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "Kiwi for Gmail.exe",
+            "Kiwi for Gmail"
+        ]
+    ],
+    "checkver": {
+        "url": "https://downloads.kiwiforgmail.com/kiwi/release/consumer/latest.yml",
+        "regex": "Kiwi for Gmail Setup ([\\d.]+).exe"
+    },
+    "autoupdate": {
+        "url": "https://downloads.kiwiforgmail.com/kiwi/release/consumer/Kiwi+for+Gmail+Setup+$version.exe#/dl.7z",
+        "hash": {
+            "url": "https://downloads.kiwiforgmail.com/kiwi/release/consumer/latest.yml",
+            "regex": "$base64"
+        }
+    }
+}

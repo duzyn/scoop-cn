@@ -1,0 +1,34 @@
+{
+    "version": "9.0.2",
+    "description": "IDE for development with the Qt framework",
+    "homepage": "https://doc.qt.io/qtcreator/index.html",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/qt-creator/qt-creator/releases/download/v9.0.2/qtcreator-Windows-MSVC-4241715008.7z",
+            "hash": "4cf0ebe4b492b69bc89483cd02f187b9116cc90fc3340adb890343b724792608"
+        }
+    },
+    "bin": "bin\\qtcreator.exe",
+    "shortcuts": [
+        [
+            "bin\\qtcreator.exe",
+            "Qt Creator"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/9881671/releases/latest",
+        "jsonpath": "$.assets[0].browser_download_url",
+        "regex": "/releases/download/v([\\w.-]+)/qt-creator-\\w+-(?<nums>\\d+)\\.\\w+$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/qt-creator/qt-creator/releases/download/v$version/qtcreator-Windows-MSVC-$matchNums.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "version": "21.6.1",
+    "description": "Professional diagramming",
+    "homepage": "https://www.diagrams.net",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v21.6.1/draw.io-21.6.1-windows-installer.exe#/dl.7z",
+            "hash": "d3363ca169992fb256af1146687d6af633808e5c732171318f6bc31b162cf9ee",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+            ]
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v21.6.1/draw.io-ia32-21.6.1-windows-32bit-installer.exe#/dl.7z",
+            "hash": "4f795b9aa4ddd7a1f92f2cbfeb6ce6ecd127a7b6aa0afaddfcf693479149220d",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+            ]
+        }
+    },
+    "bin": "draw.io.exe",
+    "shortcuts": [
+        [
+            "draw.io.exe",
+            "draw.io"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jgraph/drawio-desktop"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-$version-windows-installer.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/Files-SHA256-Hashes.txt",
+            "regex": "$basename\\s*?$sha256"
+        }
+    }
+}

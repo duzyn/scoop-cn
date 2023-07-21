@@ -1,0 +1,32 @@
+{
+    "version": "5.9.1",
+    "description": "SQL powered operating system instrumentation, monitoring, and analytics",
+    "homepage": "https://osquery.io/",
+    "license": "Apache-2.0,GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/osquery/osquery/releases/download/5.9.1/osquery-5.9.1.msi",
+            "hash": "704d97d7fd72c717d2a3488c6c8f2380f8e2d89f347a4df5dfcb340758edb244"
+        }
+    },
+    "extract_dir": "osquery",
+    "bin": [
+        "osqueryi.exe",
+        "osqueryd\\osqueryd.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/osquery/osquery"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/osquery/osquery/releases/download/$version/osquery-$version.msi"
+            }
+        }
+    },
+    "notes": [
+        "To set permissions for and install the osqueryd as a service, use the",
+        "included osquery_utils.ps1 and manage-osqueryd.ps1 scripts. Check docs at",
+        "https://osquery.readthedocs.io/en/stable/installation/install-windows"
+    ]
+}

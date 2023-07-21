@@ -1,0 +1,51 @@
+{
+    "##": "Check chromium.woolyss.com for different versions of Chromium releases.",
+    "version": "115.0.5790.99-r1148114",
+    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
+    "homepage": "https://www.chromium.org",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v115.0.5790.99-r1148114/chrome.sync.7z",
+            "hash": "sha1:725aafd74c70ba36988d1525d8222b3d8840e9d9"
+        }
+    },
+    "extract_dir": "Chrome-bin",
+    "bin": [
+        [
+            "chrome.exe",
+            "chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://api.github.com/repos/Hibbiki/chromium-win64/tags",
+        "jsonpath": "$..name",
+        "regex": "v([\\d.\\-r]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.sync.7z",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win64/releases/tag/v$version",
+                    "regex": "$sha1 \\.\\./out/x64/chrome.sync.7z"
+                }
+            }
+        }
+    }
+}

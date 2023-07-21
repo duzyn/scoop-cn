@@ -1,0 +1,39 @@
+{
+    "version": "15.0",
+    "description": "Monitors and reports key system activity via the Windows event log.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/sysmon",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Sysmon.zip",
+    "hash": "9a13dca821162fb6d01058823645b610bed058d9cb8084f81cbc9a612d49fd9d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "sysmon64.exe",
+                    "sysmon"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "sysmon.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "sysmon64a.exe",
+                    "sysmon"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sysmon.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Sysmon.zip"
+    }
+}

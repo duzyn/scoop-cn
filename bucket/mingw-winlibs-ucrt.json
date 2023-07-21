@@ -1,0 +1,37 @@
+{
+    "version": "13.1.0-11.0.0-r5",
+    "description": "GNU Compiler Collection (UCRT, WinLibs build)",
+    "homepage": "https://winlibs.com",
+    "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.5-11.0.0-ucrt-r5/winlibs-x86_64-posix-seh-gcc-13.1.0-mingw-w64ucrt-11.0.0-r5.7z",
+            "hash": "sha512:abf88446c1416dd1915a92afac25e9c8e31caad87d5849f5012a65b4352e20e8360d9d2f575952b844db8b1ef32bea484383e26b17cabd9e629affdca389dea1",
+            "extract_dir": "mingw64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.1.0-16.0.5-11.0.0-ucrt-r5/winlibs-i686-posix-dwarf-gcc-13.1.0-mingw-w64ucrt-11.0.0-r5.7z",
+            "hash": "sha512:1870b6807730288380735eb4eaeeac839561819a53e4784ae5e5e3c57d5c0ccef5d974b93cf0933ce54d169c0d1ddc461c25688243c83a39bfb8873acc84427c",
+            "extract_dir": "mingw32"
+        }
+    },
+    "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+    "env_add_path": "bin",
+    "checkver": {
+        "regex": "GCC ([\\d.]+).*?LLVM.*?([\\d.]+).*?MinGW\\-w64 ([\\d.]+).*?UCRT.*?release ([\\d.]+).*?LATEST",
+        "replace": "${1}-${3}-r${4}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-ucrt-r$match4/winlibs-x86_64-posix-seh-gcc-$match1-mingw-w64ucrt-$match3-r$match4.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-ucrt-r$match4/winlibs-i686-posix-dwarf-gcc-$match1-mingw-w64ucrt-$match3-r$match4.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "##": "The installer is created by NSIS, but it cannot be extracted by 7-Zip. See Extras#1831 for details.",
+    "version": "4.4.1",
+    "description": "Photography workflow application and raw developer.",
+    "homepage": "https://www.darktable.org/",
+    "license": "GPL-3.0-only",
+    "url": "https://ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-4.4.1/darktable-4.4.1-win64.exe#/setup.exe",
+    "hash": "70dca4f5f3c4fec897a6561484fb14f81709aca3185373d9118b630d24ae2098",
+    "installer": {
+        "script": [
+            "$process = Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Verb RunAs -PassThru",
+            "do { Start-Sleep -Milliseconds 200 } until ($process.HasExited)",
+            "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\darktable\"",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process \"$dir\\Uninstall.exe\" -ArgumentList '/S' -Verb RunAs -PassThru | Out-Null",
+            "$activeProcess1 = Get-Process Uninstall -ErrorAction SilentlyContinue",
+            "$activeProcess2 = Get-Process Un_A -ErrorAction SilentlyContinue",
+            "do {",
+            "    Start-Sleep -Milliseconds 200",
+            "    $activeProcess1 = Get-Process Uninstall -ErrorAction SilentlyContinue",
+            "    $activeProcess2 = Get-Process Un_A -ErrorAction SilentlyContinue",
+            "} until (($activeProcess1 -eq $null) -And ($activeProcess2 -eq $null))"
+        ]
+    },
+    "bin": [
+        "bin\\darktable.exe",
+        "bin\\darktable-cli.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\darktable.exe",
+            "darktable"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/darktable-org/darktable",
+        "regex": "tag/release-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-$version/darktable-$version-win64.exe#/setup.exe",
+        "hash": {
+            "url": "https://github.com/darktable-org/darktable/releases/latest"
+        }
+    }
+}

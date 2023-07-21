@@ -1,0 +1,40 @@
+{
+    "version": "1.3.21",
+    "description": "Portable console emulator for Windows. (Full version)",
+    "homepage": "https://cmder.app",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/cmderdev/cmder/releases/download/v1.3.21/cmder.7z",
+    "hash": "50ae085198bfa454b4d188eac10c48120741e94c3d63fbfcda01eb4ba891425a",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\vendor\\conemu-maximus5\\ConEmu.xml\")) {",
+        "    Copy-Item \"$dir\\vendor\\ConEmu.xml.default\" \"$dir\\vendor\\conemu-maximus5\\ConEmu.xml\"",
+        "}"
+    ],
+    "bin": "Cmder.exe",
+    "shortcuts": [
+        [
+            "Cmder.exe",
+            "Cmder",
+            "/start \"%USERPROFILE%\""
+        ]
+    ],
+    "persist": [
+        "bin",
+        "config",
+        "vendor\\conemu-maximus5\\ConEmu.xml"
+    ],
+    "env_set": {
+        "CMDER_ROOT": "$dir",
+        "ConEmuDir": "$dir\\vendor\\conemu-maximus5"
+    },
+    "checkver": {
+        "github": "https://github.com/cmderdev/cmder"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/cmderdev/cmder/releases/download/v$version/cmder.7z",
+        "hash": {
+            "url": "$baseurl/hashes.txt",
+            "regex": "$basename\\s+$sha256"
+        }
+    }
+}

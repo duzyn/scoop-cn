@@ -1,0 +1,52 @@
+{
+    "version": "3.1.6-7.2",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (version 7.2)",
+    "homepage": "https://xdebug.org/",
+    "license": {
+        "identifier": "Xdebug-1.01",
+        "url": "https://xdebug.org/license.php"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://xdebug.org/files/php_xdebug-3.1.6-7.2-vc15-x86_64.dll#/php_xdebug.dll",
+            "hash": "4e8f9a2c650f6fbd477b6fd15a416f91cd9a4c0a033ed0f7ecb9d7612e7429ac"
+        },
+        "32bit": {
+            "url": "https://xdebug.org/files/php_xdebug-3.1.6-7.2-vc15.dll#/php_xdebug.dll",
+            "hash": "cc7982464c198242f11c4e57775cd2b70f86ba816d5c7f4039d9d9276bd58ee6"
+        }
+    },
+    "post_install": [
+        "$phpconfd = \"$persist_dir\\..\\php72\\cli\\conf.d\"",
+        "$ini = \"zend_extension=$dir\\php_xdebug.dll`n[xdebug]`nxdebug.remote_enable=on`nxdebug.remote_autostart=on`nxdebug.remote_connect_back=on\"",
+        "if(!(test-path $phpconfd\\xdebug.ini)) {",
+        "    Write-Output \"Enabling extension $(Convert-Path $phpconfd)\\xdebug.ini\"",
+        "    Add-Content -Value $ini -Path \"$phpconfd\\xdebug.ini\"",
+        "} else {",
+        "    Write-Host -f Yellow \"PHP 7.2 was not installed through scoop, you have to activate php_xdebug.dll manually! Add the following:`n\"",
+        "    Write-Host -f Cyan \"$ini`n`n\"",
+        "}"
+    ],
+    "notes": [
+        "Xdebug is already enabled if PHP 7.2 was installed through scoop!",
+        "Otherwise add '$dir\\php_xdebug.dll' to your php.ini"
+    ],
+    "checkver": {
+        "url": "https://xdebug.org/download/historical",
+        "regex": "php_xdebug-([\\d.]+-7.2)-vc15-x86_64.dll"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://xdebug.org/files/php_xdebug-$version-vc15-x86_64.dll#/php_xdebug.dll"
+            },
+            "32bit": {
+                "url": "https://xdebug.org/files/php_xdebug-$version-vc15.dll#/php_xdebug.dll"
+            }
+        },
+        "hash": {
+            "url": "https://xdebug.org/download/historical",
+            "regex": "([a-fA-F0-9]{64}).+?$basename"
+        }
+    }
+}

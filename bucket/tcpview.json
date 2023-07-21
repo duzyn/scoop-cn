@@ -1,0 +1,60 @@
+{
+    "version": "4.19",
+    "description": "Active socket command-line viewer.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/tcpview",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/TCPView.zip",
+    "hash": "4fc5ceba3e1b27ad95a24df35d094b454ec5f9478e12a8ca2b1b222705b9683b",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "tcpview64.exe",
+                    "tcpview"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "tcpview64.exe",
+                    "scoop-cn/TCPView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "tcpview.exe",
+            "shortcuts": [
+                [
+                    "tcpview.exe",
+                    "scoop-cn/TCPView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "tcpview64a.exe",
+                    "tcpview"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "tcpview64a.exe",
+                    "scoop-cn/TCPView",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/tcpview.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/TCPView.zip"
+    }
+}

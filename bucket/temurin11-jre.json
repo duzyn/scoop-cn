@@ -1,0 +1,47 @@
+{
+    "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
+    "homepage": "https://adoptium.net",
+    "version": "11.0.19-7",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.19+7/OpenJDK11U-jre_x64_windows_hotspot_11.0.19_7.zip",
+            "hash": "285fc36b709d24b5976ee89fdc4ffbeb9e258bc905e7737a42efccfd2d725b59"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.19+7/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.19_7.zip",
+            "hash": "e0ad2091780fb180009ce2ddf7a711980829623add7a8799a08746c41d625a2c"
+        }
+    },
+    "extract_dir": "jdk-11.0.19+7-jre",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.adoptium.net/v3/assets/feature_releases/11/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
+        "script": [
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-')",
+            "$link = (json_path $page $..release_link).replace('%2B', '+')",
+            "$name = json_path $page $..binaries[0].package.name",
+            "Write-Output \"$ver $link $name\""
+        ],
+        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+        "replace": "${ver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+            },
+            "32bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        },
+        "extract_dir": "$matchTag-jre"
+    }
+}

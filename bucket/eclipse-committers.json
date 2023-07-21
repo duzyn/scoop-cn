@@ -1,0 +1,34 @@
+{
+    "version": "2023-06",
+    "description": "Eclipse IDE for Eclipse Committers",
+    "homepage": "https://www.eclipse.org",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "http://download.eclipse.org/technology/epp/downloads/release/2023-06/R/eclipse-committers-2023-06-R-win32-x86_64.zip",
+            "hash": "sha512:867d9babc2e2e30a55bea9c053b13a30623e8b04abbc5162eb5b73acf0c88b3460bb3a97ccbc3db09b258980cc10ef18fe20a3958be71b5d711eee803f0854d6"
+        }
+    },
+    "extract_dir": "eclipse",
+    "shortcuts": [
+        [
+            "eclipse.exe",
+            "Eclipse IDE for Eclipse Committers"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.eclipse.org/technology/epp/downloads/release/release.xml",
+        "xpath": "/packages/present",
+        "regex": "([\\d-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://download.eclipse.org/technology/epp/downloads/release/$version/R/eclipse-committers-$version-R-win32-x86_64.zip",
+                "hash": {
+                    "url": "$url.sha512"
+                }
+            }
+        }
+    }
+}

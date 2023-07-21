@@ -1,0 +1,37 @@
+{
+    "version": "6.29",
+    "description": "An archiver which provides fast speed and convenient features (last version with no ads)",
+    "homepage": "https://www.bandisoft.com/bandizip/old/6/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://en.bandisoft.com/bandizip/eula/"
+    },
+    "url": "https://www.bandisoft.com/bandizip/dl.php?old-portable#/BANDIZIP6-PORTABLE.ZIP",
+    "hash": "fb3f9db5e0a93aeca35f975cb54893bbc46eecedecf4d9b1088dbb1c378569b1",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Rename-Item \"$dir\\Bandizip64.exe\" 'Bandizip.exe'",
+                "Remove-Item \"$dir\\Bandizip32.exe\"",
+                "if (!(Test-Path \"$persist_dir\\Bandizip.ini\")) { New-Item \"$dir\\Bandizip.ini\" -ItemType File | Out-Null }"
+
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Rename-Item \"$dir\\Bandizip32.exe\" 'Bandizip.exe'",
+                "Remove-Item \"$dir\\Bandizip64.exe\"",
+                "if (!(Test-Path \"$persist_dir\\Bandizip.ini\")) { New-Item \"$dir\\Bandizip.ini\" -ItemType File | Out-Null }"
+
+            ]
+        }
+    },
+    "bin": "Bandizip.exe",
+    "shortcuts": [
+        [
+            "Bandizip.exe",
+            "Bandizip"
+        ]
+    ],
+    "persist": "Bandizip.ini"
+}

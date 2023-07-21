@@ -1,0 +1,33 @@
+{
+    "version": "7.0.5",
+    "description": "C++ audio application framework",
+    "homepage": "https://juce.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://juce.com/juce-5-license"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/juce-framework/JUCE/releases/download/7.0.5/juce-7.0.5-windows.zip",
+            "hash": "19c602cdda228b2303f360979e7b87060ef2e9f2d658c6031da7502ef65b398e"
+        }
+    },
+    "extract_dir": "JUCE",
+    "bin": "Projucer.exe",
+    "shortcuts": [
+        [
+            "Projucer.exe",
+            "Projucer"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/juce-framework/JUCE"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/juce-framework/JUCE/releases/download/$version/juce-$version-windows.zip"
+            }
+        }
+    }
+}

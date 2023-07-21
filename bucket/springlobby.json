@@ -1,0 +1,22 @@
+{
+    "version": "0.274",
+    "description": "Lobby client for Spring RTS-based games",
+    "homepage": "https://springlobby.info/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://springlobby.springrts.com/dl/stable/springlobby-0.274-win32.zip",
+    "hash": "fd968c41603b35c643f4695ecceffc1f21f0b0ceccfdf737d40cb3a93b346088",
+    "bin": "springlobby.exe",
+    "shortcuts": [
+        [
+            "springlobby.exe",
+            "SpringLobby"
+        ]
+    ],
+    "checkver": {
+        "url": "https://springlobby.springrts.com/",
+        "re": "ZIP \\(([0-9].[0-9]+)\\)"
+    },
+    "autoupdate": {
+        "url": "https://springlobby.springrts.com/dl/stable/springlobby-$version-win32.zip"
+    }
+}

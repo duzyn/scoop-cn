@@ -1,0 +1,24 @@
+{
+    "version": "1.0.1",
+    "description": "Port of the puzzle game Fish Fillets from ALTAR interactive",
+    "homepage": "http://fillets.sourceforge.net/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://downloads.sourceforge.net/project/fillets/Fish%20Fillets%20-%20Next%20Generation/1.0.1/fillets-ng-all-win32-1.0.1.zip",
+    "hash": "65440c2d4148aebf2d6aed8ed7103e52ce9d82051bd362fc49adfe7694436930",
+    "extract_dir": "fillets-ng-all-win32-1.0.1",
+    "bin": "fillets.exe",
+    "shortcuts": [
+        [
+            "fillets.exe",
+            "Fish Fillets NG"
+        ]
+    ],
+    "checkver": {
+        "url": "http://fillets.sourceforge.net/index.php#news",
+        "regex": "Fish Fillets NG - ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/fillets/Fish%20Fillets%20-%20Next%20Generation/$version/fillets-ng-all-win32-$version.zip",
+        "extract_dir": "fillets-ng-all-win32-$version"
+    }
+}

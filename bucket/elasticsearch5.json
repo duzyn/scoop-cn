@@ -1,0 +1,50 @@
+{
+    "version": "5.6.16",
+    "description": "Distributed, RESTful Search Engine (version 5)",
+    "homepage": "https://www.elastic.co/products/elasticsearch",
+    "license": {
+        "identifier": "Freeware|Apache-2.0",
+        "url": "https://github.com/elastic/elasticsearch/blob/master/LICENSE.txt"
+    },
+    "suggest": {
+        "JDK": [
+            "scoop-cn/oraclejdk",
+            "scoop-cn/openjdk"
+        ]
+    },
+    "url": "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.16.zip",
+    "hash": "sha1:a58ed1ebbfbea434f7e54afe3832fd9972a54d4b",
+    "extract_dir": "elasticsearch-5.6.16",
+    "bin": [
+        [
+            "bin\\elasticsearch.bat",
+            "elasticsearch"
+        ],
+        [
+            "bin\\elasticsearch-keystore.bat",
+            "elasticsearch-keystore"
+        ],
+        [
+            "bin\\elasticsearch-plugin.bat",
+            "elasticsearch-plugin"
+        ],
+        [
+            "bin\\elasticsearch-service.bat",
+            "elasticsearch-service"
+        ],
+        [
+            "bin\\elasticsearch-translog.bat",
+            "elasticsearch-translog"
+        ]
+    ],
+    "persist": [
+        "config",
+        "plugins"
+    ],
+    "post_install": [
+        "# we have to overwrite SCRIPT_DIR because elasticsearch.in.bat doesn't care if SCRIPT_DIR or ES_HOME are already set ...",
+        "(gc \"$original_dir\\bin\\elasticsearch.in.bat\") | % { $_ -replace 'set SCRIPT_DIR=%~dp0', \"set SCRIPT_DIR=$original_dir\" } | Set-Content \"$original_dir\\bin\\elasticsearch.in.bat\"",
+        "# use persistent data/logs directory",
+        "(gc \"$dir\\config\\elasticsearch.yml\") | % { $_ -replace '#path.data: /path/to/data', \"path.data: $persist_dir\\data\" } | % { $_ -replace '#path.logs: /path/to/logs', \"path.logs: $persist_dir\\logs\" } | Set-Content \"$dir\\config\\elasticsearch.yml\""
+    ]
+}

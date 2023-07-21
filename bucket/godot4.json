@@ -1,0 +1,50 @@
+{
+    "version": "rc6",
+    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+    "homepage": "https://godotengine.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0/rc6/Godot_v4.0-rc6_win64.exe.zip",
+            "hash": "sha512:47e7cb110a153eb22153b42812d1ed1b257ddf4054ba6fb5dfe5d57e810546de3c6f50afbb3f898d5943f942b58dbc99e7e5a2c480bda92da000ca6d4217809a"
+        },
+        "32bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.0/rc6/Godot_v4.0-rc6_win32.exe.zip",
+            "hash": "sha512:a95fd13fc8d05989e609bcf2373f20aa03cb5cde4a3d0c0a6f4fa6d12e55f3636b2fae0d55832bdf86ad65bc840c3273e88e97638a0c71eb87be6b6cc8ca6904"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot.exe'"
+    ],
+    "bin": "godot.exe",
+    "shortcuts": [
+        [
+            "godot.exe",
+            "Godot Engine"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$WebResponse = Invoke-WebRequest('https://downloads.tuxfamily.org/godotengine/4.0/')",
+            "$links = $WebResponse.Links | Select-Object -Skip 1",
+            "$versions = $links.href.Where({ $_.EndsWith('/') }).ForEach({ $_.Replace('/', '') })",
+            "$sortedVersions = $versions | Sort-Object {$_ -NotMatch 'pre-'}, {$_ -Replace '\\d*',''}, {[int]($_ -Replace '\\D*','')}",
+            "Write-Output $sortedVersions[-1]"
+        ],
+        "regex": "(\\S+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/4.0/$version/Godot_v4.0-$version_win64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/4.0/$version/Godot_v4.0-$version_win32.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
+    }
+}

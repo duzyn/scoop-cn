@@ -1,0 +1,39 @@
+{
+    "version": "2.43",
+    "description": "Execute processes on remote systems.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psexec",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PsExec.zip",
+    "hash": "a357eb3b4eaa974f47321cc03b0da848a6d19b3e679f6347aeb4dfba65e87045",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsExec64.exe",
+                    "PsExec"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "PsExec.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "PsExec64a.exe",
+                    "PsExec"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psexec.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PsExec.zip"
+    }
+}

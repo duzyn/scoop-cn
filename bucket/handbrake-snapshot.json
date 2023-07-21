@@ -1,0 +1,53 @@
+{
+    "version": "20230715-397315791",
+    "description": "Snapshot releases of the tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
+    "homepage": "https://handbrake.fr",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        ".NET Desktop Runtime": "scoop-cn/windowsdesktop-runtime-lts"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-20230715-397315791-x86_64-Win_GUI.zip",
+            "hash": "f415f2d1e6d644ff8f2a61c299b3b7565c19b54130878c99d51c7e46a8af1368"
+        }
+    },
+    "extract_dir": "HandBrake",
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\portable.ini\")) {",
+            "    if (!(Test-Path \"$persist_dir\\storage\") -And (Test-Path \"$env:APPDATA\\HandBrake\")) {",
+            "        New-Item \"$persist_dir\" -ItemType Directory -ErrorAction SilentlyContinue | Out-Null",
+            "        Move-Item -Path \"$env:APPDATA\\HandBrake\" -Destination \"$persist_dir\\storage\" -Force",
+            "    }",
+            "    Copy-Item \"$dir\\portable.ini.template\" \"$dir\\portable.ini\" -Force",
+            "}"
+        ]
+    },
+    "persist": [
+        "portable.ini",
+        "storage",
+        "tmp"
+    ],
+    "shortcuts": [
+        [
+            "HandBrake.exe",
+            "HandBrake Snapshot"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+        "regex": "<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-$version-x86_64-Win_GUI.zip",
+                "hash": {
+                    "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+                    "regex": "<td>$sha256</td>\\s+<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>"
+                }
+            }
+        }
+    }
+}

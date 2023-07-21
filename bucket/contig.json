@@ -1,0 +1,39 @@
+{
+    "version": "1.83",
+    "description": "To optimize individual files, or to create new files that are contiguous.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/contig",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Contig.zip",
+    "hash": "721ce2c510c78ecd7855f08b3219344d15e7f72c9f342ac1f73145b71635d912",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Contig64.exe",
+                    "Contig"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Contig.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Contig64a.exe",
+                    "Contig"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/contig.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Contig.zip"
+    }
+}

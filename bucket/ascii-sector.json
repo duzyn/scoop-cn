@@ -1,0 +1,25 @@
+{
+    "version": "0.7.2",
+    "homepage": "http://www.asciisector.net",
+    "license": "Freeware",
+    "url": "https://s3.amazonaws.com/asciisector/asciisec0.7.2-win.zip",
+    "hash": "5325c2658021074b63781d14fb882dd71ebc9fa24659213c5c496e5c22c20d70",
+    "extract_dir": "asciisec",
+    "shortcuts": [
+        [
+            "asciisec.exe",
+            "Ascii Sector"
+        ],
+        [
+            "manual.pdf",
+            "Ascii Sector Manual"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.asciisector.net/",
+        "re": "Latest version: ([\\d\\.]+)"
+    },
+    "autoupdate": {
+        "url": "https://s3.amazonaws.com/asciisector/asciisec$version-win.zip"
+    }
+}

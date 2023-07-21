@@ -1,0 +1,39 @@
+{
+    "version": "1.46",
+    "description": "Translate SIDs to their display name and vice versa.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psgetsid",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PsGetSid.zip",
+    "hash": "17e2eba63e4ac5d4d3c8ac683988cede8924bbe43646ea03b1d61e7f49c07630",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsGetsid64.exe",
+                    "PsGetsid"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "PsGetsid.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "PsGetsid64a.exe",
+                    "PsGetsid"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psgetsid.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PsGetSid.zip"
+    }
+}

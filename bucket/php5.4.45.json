@@ -1,0 +1,22 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "5.4.45",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-5.4.45-Win32-VC9-x86.zip",
+    "hash": "38cde4bac05e916fb0c0b78a2e5bfeec9b02b4b6fc51c9a02a66e4fc1e1a1d08",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2008"
+    }
+}

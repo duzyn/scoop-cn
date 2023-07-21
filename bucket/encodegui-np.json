@@ -1,0 +1,32 @@
+{
+    "version": "1.1.7",
+    "homepage": "https://encodegui.com/",
+    "description": "A free and open source video transcoder GUI that utilizes AI tools for a fascinating encoding experience.",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://encodegui.com/dl/EncodeGUI_1.1.7_setup.zip",
+            "hash": "68234eb3ce587d3354d14d581bbeff8386cf1d0fdb958f93b74cba05c899dacd"
+        }
+    },
+    "post_install": [
+        "Get-ChildItem \"$dir\\EncodeGUI*setup.exe\" | Rename-Item -NewName 'setup.exe'; $arguments = @('/VERYSILENT', '/CURRENTUSER', \"/DIR=$dir\", '/SUPPRESSMSGBOXES')",
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList $arguments; Remove-Item \"$dir\\setup.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\unins000.exe\" -Wait -Verb 'RunAs' -ArgumentList @('/VERYSILENT', '/FORCECLOSEAPPLICATIONS', '/SUPPRESSMSGBOXES')",
+        "Start-Sleep -Seconds 2"
+    ],
+    "checkver": {
+        "github": "https://github.com/DaGooseYT/EncodeGUI"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://encodegui.com/dl/EncodeGUI_$version_setup.zip"
+            }
+        }
+    }
+}

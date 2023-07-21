@@ -1,0 +1,64 @@
+{
+    "version": "1.5.0.1352a",
+    "description": "Locate files and folders by name instantly.",
+    "homepage": "https://www.voidtools.com",
+    "license": "MIT",
+    "notes": "Run '$dir\\install-context.reg' to add Everything to right-click context menu.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.voidtools.com/Everything-1.5.0.1352a.x64.zip",
+            "hash": "bee8c6b8458e07f7577e571710466470765c9fd4006fde04175e34122bbb418f"
+        },
+        "32bit": {
+            "url": "https://www.voidtools.com/Everything-1.5.0.1352a.x86.zip",
+            "hash": "a382405d91758a0392ee30510a0d5f62de9def9a297ea941615ae56d012df354"
+        }
+    },
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "if (Test-Path \"$dir\\Everything64.exe\") { Rename-Item \"$dir\\Everything64.exe\" 'Everything.exe' }",
+        "if (!(Test-Path \"$persist_dir\\Everything*.ini\")) { Invoke-ExternalCommand \"$dir\\Everything.exe\" -Args @('-install-config', 'null') | Out-Null }",
+        "Get-ChildItem \"$persist_dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
+        "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\everything\\uninstall-context.reg\" \"$dir\\\""
+    ],
+    "post_install": [
+        "$app_path = \"$dir\\Everything.exe\".Replace('\\', '\\\\')",
+        "$reg_content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\everything\\install-context.reg\"",
+        "$reg_content = $reg_content.replace('$app_path', $app_path)",
+        "Set-Content \"$dir\\install-context.reg\" $reg_content -Encoding ASCII"
+    ],
+    "pre_uninstall": [
+        "Stop-Process -Name 'everything' -Force -ErrorAction SilentlyContinue",
+        "if ($(Get-Service -Name Everything -ErrorAction SilentlyContinue).Status -ne 'Stopped') {",
+        "    if (!(is_admin)) { error 'Admin rights are required to stop Everything service'; break }",
+        "    Stop-Service -Name 'Everything' -Force -ErrorAction SilentlyContinue | Out-Null",
+        "}",
+        "if ((Get-Service -Name Everything -ErrorAction SilentlyContinue) -and ($cmd -eq 'uninstall')) {",
+        "    if (!(is_admin)) { error 'Admin rights are required to remove Everything service'; break }",
+        "    sc.exe delete 'Everything'",
+        "}",
+        "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+        "Get-ChildItem \"$dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+    ],
+    "bin": "Everything.exe",
+    "shortcuts": [
+        [
+            "Everything.exe",
+            "Everything"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.voidtools.com/forum/viewtopic.php?f=12&t=9787",
+        "regex": "Everything-([\\d.]+a)\\.x86"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.voidtools.com/Everything-$version.x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.voidtools.com/Everything-$version.x86.zip"
+            }
+        }
+    }
+}

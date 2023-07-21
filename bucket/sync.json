@@ -1,0 +1,39 @@
+{
+    "version": "2.2",
+    "description": "Flush cached data to disk.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/sync",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Sync.zip",
+    "hash": "4d9025fb54e4ad07084d544b1e5457fa0827d37a77296e4160f5f4ddd244a3a5",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "sync64.exe",
+                    "sync"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "sync.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "sync64a.exe",
+                    "sync"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sync.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Sync.zip"
+    }
+}

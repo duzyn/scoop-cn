@@ -1,0 +1,40 @@
+{
+    "version": "1.1.463",
+    "homepage": "https://www.rstudio.com/",
+    "description": "An IDE for R, which includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
+    "license": "AGPL-3.0-only",
+    "url": "http://download1.rstudio.org/RStudio-1.1.463.zip",
+    "hash": "d0b1d8805b0db25d43435a2fcfefb4e6561add51f55be805e799b51d8bfa8114",
+    "depends": "r",
+    "bin": "bin\\rstudio.exe",
+    "shortcuts": [
+        [
+            "bin\\rstudio.exe",
+            "R Studio"
+        ]
+    ],
+    "architecture": {
+        "64bit": {
+            "post_install": [
+                "if (!(Test-Path \"$env:Appdata\\RStudio\")) {",
+                "    New-Item \"$env:Appdata\\RStudio\" -ItemType Directory -Force | Out-Null",
+                "    @(",
+                "        '[General]'",
+                "        \"RBinDir=`\"$(appdir r $global)\\current\\bin\\x64`\"\".Replace('\\', '/')",
+                "    ) | Add-Content -Path \"$env:Appdata\\RStudio\\desktop.ini\" -Encoding UTF8 -Force",
+                "}"
+            ]
+        },
+        "32bit": {
+            "post_install": [
+                "if (!(Test-Path \"$env:Appdata\\RStudio\")) {",
+                "    New-Item \"$env:Appdata\\RStudio\" -ItemType Directory -Force | Out-Null",
+                "    @(",
+                "        '[General]'",
+                "        \"RBinDir=`\"$(appdir r $global)\\current\\bin\\i386`\"\".Replace('\\', '/')",
+                "    ) | Add-Content -Path \"$env:Appdata\\RStudio\\desktop.ini\" -Encoding UTF8 -Force",
+                "}"
+            ]
+        }
+    }
+}

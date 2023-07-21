@@ -1,0 +1,31 @@
+{
+    "version": "2.0.6.8",
+    "description": "Audio mixer application endowed with virtual audio device (BANANA/advanced version)",
+    "homepage": "https://vb-audio.com/Voicemeeter/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://vb-audio.com/Services/licensing.htm"
+    },
+    "notes": "Free for non-professional use only.",
+    "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterProSetup.exe#/setup.exe",
+    "hash": "646977f4aea25c81440f93688b4b98ea4aa4a8fa4fe14d0b73d6f6cc8bfa4eeb",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-i', '-h') -Verb RunAs"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-u', '-h') -Verb RunAs"
+        ]
+    },
+    "checkver": {
+        "url": "https://vb-audio.com/Voicemeeter/banana.htm",
+        "regex": "Voicemeeter ([\\d.]+) \\(EXE file\\)"
+    },
+    "autoupdate": {
+        "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterProSetup.exe#/setup.exe"
+    }
+}

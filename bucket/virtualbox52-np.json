@@ -1,0 +1,51 @@
+{
+    "version": "5.2.44",
+    "description": "Powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.",
+    "homepage": "https://www.virtualbox.org/wiki/Download_Old_Builds_5_2",
+    "license": "GPL-2.0-only",
+    "url": "http://mirrors.nju.edu.cn/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe#/VBox52Setup.exe",
+    "hash": "2335e98f1c41f3aad5e16d2d5d18298e19d1cb04021fd752e3e2cd952996c7cd",
+    "installer": {
+        "script": [
+            "Start-Process -Wait -WindowStyle Hidden cmd \"/c call `\"$dir\\VBox52Setup.exe`\" --msiparams INSTALLDIR=`\"$dir`\" VBOX_START=0 REBOOT=ReallySuppress --silent && icacls `\"$dir`\" /grant Everyone:F /T\" -Verb RunAs",
+            "Remove-Item \"$dir\\VBox52Setup.exe\"",
+            "Remove-Item \"$env:PUBLIC\\Desktop\\Oracle VM VirtualBox.lnk\"",
+            "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Oracle VM VirtualBox\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$id = wmic product where \"\"\"name like 'Oracle VM VirtualBox%'\"\"\" get IdentifyingNumber | find /i \"\"\"-\"\"\"",
+            "Start-Process -Wait -WindowStyle Hidden cmd \"/c msiexec /x $id /qn && icacls `\"$dir`\" /grant Everyone:F /T\" -Verb RunAs"
+        ]
+    },
+    "bin": [
+        "VBoxBalloonCtrl.exe",
+        "VBoxBugReport.exe",
+        "VBoxDTrace.exe",
+        "VBoxExtPackHelperApp.exe",
+        "VBoxHeadless.exe",
+        "vbox-img.exe",
+        "VBoxManage.exe",
+        "VBoxNetDHCP.exe",
+        "VBoxNetNAT.exe",
+        "VBoxSDL.exe",
+        "VBoxSVC.exe",
+        "VBoxTestOGL.exe",
+        "VBoxWebSrv.exe",
+        "VirtualBox.exe"
+    ],
+    "shortcuts": [
+        [
+            "VirtualBox.exe",
+            "VirtualBox"
+        ]
+    ],
+    "checkver": "VirtualBox-(?<version>[\\d.]+)-(?<revision>\\d+)-Win.exe",
+    "autoupdate": {
+        "url": "http://mirrors.nju.edu.cn/virtualbox/$version/VirtualBox-$version-$matchRevision-Win.exe#/VBox52Setup.exe",
+        "hash": {
+            "url": "https://www.virtualbox.org/download/hashes/$version/SHA256SUMS"
+        }
+    }
+}

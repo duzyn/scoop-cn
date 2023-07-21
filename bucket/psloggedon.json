@@ -1,0 +1,31 @@
+{
+    "version": "1.35",
+    "description": "Show users logged on to a system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psloggedon",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PsLoggedon.zip",
+    "hash": "637e6de955807386a0e87e682eaa475f30e9aa89449337d18d07d9f49858c1da",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsLoggedon64.exe",
+                    "PsLoggedon"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "PsLoggedon.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psloggedon.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PsLoggedon.zip"
+    }
+}

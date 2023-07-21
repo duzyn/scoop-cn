@@ -1,0 +1,47 @@
+{
+    "version": "8.7.113.17",
+    "description": "A lightweight, versatile image viewer",
+    "homepage": "https://imageglass.org",
+    "license": "GPL-3.0-only",
+    "notes": "If this app doesn't work maybe you need to clean '$dir\\igconfig.xml'.",
+    "architecture": {
+        "64bit": {
+            "url": "https://imageglass.org/upload/moon/ImageGlass_Moon_8.7.113.17_x64.zip",
+            "hash": "fe7659b6bd89970f42296d01823f9ca538e56a238f66806e065013aa14b1b630",
+            "extract_dir": "ImageGlass_Moon_8.7.113.17_x64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\igconfig.xml\")) {",
+        "    Add-Content \"$dir\\igconfig.xml\" '<ImageGlass><Configuration><Info description=\"ImageGlass Configuration file\" version=\"7.5\" /><Info/><Content><Item key=\"AutoUpdate\" value=\"0\" /></Content></Configuration></ImageGlass>' -Encoding Ascii",
+        "}"
+    ],
+    "bin": [
+        "ImageGlass.exe",
+        "igcmd.exe",
+        "igcmdWin10.exe",
+        "igtasks.exe"
+    ],
+    "shortcuts": [
+        [
+            "ImageGlass.exe",
+            "ImageGlass Moon"
+        ]
+    ],
+    "persist": [
+        "Themes",
+        "igconfig.xml"
+    ],
+    "checkver": {
+        "url": "https://imageglass.org/moon",
+        "regex": "ImageGlass_Moon_([\\d.]+)_x64.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://imageglass.org/upload/moon/ImageGlass_Moon_$version_x64.zip",
+                "extract_dir": "ImageGlass_Moon_$version_x64"
+            }
+        }
+    }
+}

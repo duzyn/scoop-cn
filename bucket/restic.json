@@ -1,0 +1,34 @@
+{
+    "version": "0.15.2",
+    "description": "Fast, secure and simple backup program.",
+    "homepage": "https://restic.net/",
+    "license": "BSD-2-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/restic/restic/releases/download/v0.15.2/restic_0.15.2_windows_amd64.zip",
+            "hash": "37dbd859160bbb6d1b95e9f4a5c498c8df386db510950875c70328f688cb4e5d"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/restic/restic/releases/download/v0.15.2/restic_0.15.2_windows_386.zip",
+            "hash": "6f9d22dde53839cfc4a035c019f2e55fa6a7e7e1ac308060ec312b70e6272611"
+        }
+    },
+    "bin": "restic.exe",
+    "pre_install": "Move-Item -Path \"$dir\\restic*.exe\" -Destination \"$dir\\restic.exe\"",
+    "checkver": {
+        "github": "https://github.com/restic/restic"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/restic/restic/releases/download/v$version/restic_$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/restic/restic/releases/download/v$version/restic_$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}

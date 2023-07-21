@@ -1,0 +1,69 @@
+{
+    "version": "nightly",
+    "description": "Frontend for emulators, game engines and media players (nightly)",
+    "homepage": "https://www.retroarch.com/",
+    "license": {
+        "identifier": "GPL-3.0",
+        "url": "https://github.com/libretro/RetroArch/blob/master/COPYING"
+    },
+    "notes": [
+        "ATTENTION: Retroarch requires BIOS/firmware files for some emulation.",
+        "It is recommended to read the libretro docs for each core you plan to use.",
+        "See https://docs.libretro.com/library/bios/ for more information."
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z",
+            "extract_dir": "RetroArch-Win32"
+        },
+        "64bit": {
+            "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z",
+            "extract_dir": "RetroArch-Win64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\retroarch.cfg\")) {",
+        "    New-Item \"$persist_dir\\retroarch.cfg\" -Type File | Out-Null",
+        "}"
+    ],
+    "bin": [
+        [
+            "retroarch.exe",
+            "retroarch-nightly"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "retroarch.exe",
+            "RetroArch (nightly)"
+        ]
+    ],
+    "persist": [
+        "assets\\wallpapers",
+        "cores",
+        "cheats",
+        "overlays",
+        "playlists",
+        "records",
+        "recordings",
+        "saves",
+        "screenshots",
+        "shaders\\presets",
+        "states",
+        "system",
+        "thumbnails",
+        "content_favorites.lpl",
+        "content_history.lpl",
+        "retroarch.cfg"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://buildbot.libretro.com/nightly/windows/x86/RetroArch.7z"
+            },
+            "64bit": {
+                "url": "https://buildbot.libretro.com/nightly/windows/x86_64/RetroArch.7z"
+            }
+        }
+    }
+}

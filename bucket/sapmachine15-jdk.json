@@ -1,0 +1,17 @@
+{
+    "description": "SapMachine 15: An OpenJDK release maintained and supported by SAP",
+    "homepage": "https://sap.github.io/SapMachine/",
+    "version": "15.0.2",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/SAP/SapMachine/releases/download//sapmachine-15.0.2/sapmachine-jdk-15.0.2_windows-x64_bin.zip",
+            "hash": "9746e01bdd26d28480af21ddc0a571d64396fe0925b53c7f0e1c34830ac8b3ca"
+        }
+    },
+    "extract_dir": "sapmachine-jdk-15.0.2",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

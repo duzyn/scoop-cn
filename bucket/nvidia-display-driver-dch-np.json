@@ -1,0 +1,61 @@
+{
+    "version": "536.67",
+    "description": "NVIDIA display driver (Declarative Componentized Hardware version). DCH drivers are installed on most new desktop and mobile workstation systems.",
+    "homepage": "https://www.nvidia.com/Download/index.aspx",
+    "license": "Freeware",
+    "notes": [
+        "This is only an installer for the NVIDIA display driver. Running `scoop uninstall nvidia-display-driver-dch-np` will only unregister it from Scoop.",
+        "The NVIDIA display driver installer installs and enables the NVIDIA Display Container LS service, which is required for the NVIDIA Control Panel application but also contains telemetry components.",
+        "To disable this functionality and prevent it from being re-enabled on future updates, disable the service using the following commands:",
+        "$ Stop-Service NVDisplay.ContainerLocalSystem",
+        "$ Set-Service NVDisplay.ContainerLocalSystem -StartupType Disabled"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://us.download.nvidia.com/Windows/536.67/536.67-desktop-win10-win11-64bit-international-dch-whql.exe#/dl.7z_",
+            "hash": "83bcec1a275c768f18a2effc065fa42878fc0ab48a4ad97bd051e4752e7aedb6"
+        }
+    },
+    "installer": {
+        "script": [
+            "if(!(is_admin)) { error 'This package requires admin rights to install'; break }",
+            "if ([environment]::OSVersion.Version.Major -lt 10) { error 'This package requires Windows 10/11 to install'; break }",
+            "$service_disabled = (Get-CimInstance win32_service -Filter \"name='NVDisplay.ContainerLocalSystem'\").StartMode -eq 'Disabled'",
+            "",
+            "New-Item \"$dir\\extract\", \"$dir\\setup\" -ItemType Directory | Out-Null",
+            "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\\extract\" -Removal | Out-Null",
+            "# Move everything we want",
+            "Move-Item \"$dir\\extract\\Display.Driver\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\Display.Optimus\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\HDAudio\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\NVI2\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\PhysX\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\*.txt\" -Destination \"$dir\\setup\"",
+            "Move-Item \"$dir\\extract\\setup.*\" -Destination \"$dir\\setup\"",
+            "# The installer will not run without these legal files",
+            "New-Item \"$dir\\setup\\GFExperience\" -ItemType Directory | Out-Null",
+            "Move-Item \"$dir\\extract\\GFExperience\\PrivacyPolicy\" -Destination \"$dir\\setup\\GFExperience\"",
+            "Move-Item \"$dir\\extract\\GFExperience\\EULA.html\" -Destination \"$dir\\setup\\GFExperience\"",
+            "Move-Item \"$dir\\extract\\GFExperience\\FunctionalConsent*\" -Destination \"$dir\\setup\\GFExperience\"",
+            "",
+            "if ($service_disabled) {",
+            "    Start-Process -Wait -WindowStyle Hidden cmd \"/c call `\"$dir\\setup\\setup.exe`\" -s -noreboot && sc config NVDisplay.ContainerLocalSystem start= disabled && sc stop NVDisplay.ContainerLocalSystem\" -Verb RunAs",
+            "} else {",
+            "    Start-Process -Wait \"$dir\\setup\\setup.exe\" \"-s -noreboot\" -Verb RunAs",
+            "}",
+            "",
+            "Remove-Item \"$dir\\extract\", \"$dir\\setup\" -Force -Recurse"
+        ]
+    },
+    "checkver": {
+        "url": "https://gfwsl.geforce.com/services_toolkit/services/com/nvidia/services/AjaxDriverService.php?func=DriverManualLookup&psid=98&osID=57&languageCode=1033&beta=0&isWHQL=1&dltype=-1&dch=1&upCRD=0&sort1=0&numberOfResults=1",
+        "regex": "\"Version\"\\s?:\\s?\"(?<version>[\\d.]+)\".*\"DownloadURL\"\\s?:\\s?\"https://us.download.nvidia.com/(?<path>[^\"]*)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://us.download.nvidia.com/$matchPath#/dl.7z_"
+            }
+        }
+    }
+}

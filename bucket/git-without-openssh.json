@@ -1,0 +1,57 @@
+{
+    "version": "2.41.0.windows.3",
+    "description": "Distributed version control system",
+    "homepage": "https://gitforwindows.org",
+    "license": "GPL-2.0-only",
+    "notes": "Set Git Credential Manager Core by running: \"git config --global credential.helper manager-core\"",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/PortableGit-2.41.0.3-64-bit.7z.exe#/dl.7z",
+            "hash": "61c62a2590799bc37d88b51871abb13ff4057b2626b89d6bc11afd58888d11c6"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/PortableGit-2.41.0.3-32-bit.7z.exe#/dl.7z",
+            "hash": "49578dd063951c3c8848365461a1da473c7849ac720e681aa10e2ba499e8a64e"
+        }
+    },
+    "post_install": "'scp', 'sftp', 'ssh*' | ForEach-Object { Remove-Item $original_dir\\usr\\bin\\$_.exe }",
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "bin": [
+        "cmd\\git.exe",
+        "cmd\\gitk.exe",
+        "cmd\\git-gui.exe",
+        "usr\\bin\\tig.exe",
+        "git-bash.exe"
+    ],
+    "shortcuts": [
+        [
+            "git-bash.exe",
+            "Git Bash",
+            "--cd-to-home"
+        ],
+        [
+            "cmd\\git-gui.exe",
+            "Git GUI"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/git-for-windows/git",
+        "regex": "v([\\w.]+)/PortableGit-(?<full>[\\w.]+)-64-bit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-64-bit.7z.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$version/PortableGit-$matchFull-32-bit.7z.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$version",
+            "regex": "<td>$basename</td>\\s*<td>$sha256</td>"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "version": "1.61",
+    "description": "Scan file shares on your network and view their security settings to close security holes.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/shareenum",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ShareEnum.zip",
+    "hash": "7f88cabcf12a502e8242d5d1d899ee6d1ddec6642e56cbd6511a698827cbfcba",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "ShareEnum64.exe",
+                    "ShareEnum"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ShareEnum64.exe",
+                    "scoop-cn/ShareEnum",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ShareEnum.exe",
+            "shortcuts": [
+                [
+                    "ShareEnum.exe",
+                    "scoop-cn/ShareEnum",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/shareenum.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ShareEnum.zip"
+    }
+}

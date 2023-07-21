@@ -1,0 +1,26 @@
+{
+    "version": "0.7.5",
+    "description": "Roguelite dungeon crawl shooter similar to The Binding of Isaac",
+    "homepage": "https://github.com/Cirrus-Minor/witchblast",
+    "license": "GPL-3.0-or-later",
+    "url": "https://ghproxy.com/https://github.com/Cirrus-Minor/witchblast/releases/download/v0.7.5/Witch.Blast.v0.7.5.zip",
+    "hash": "2ed55f51f5a7a1a59d45175242bd62ae602361fc70d337ef7406d5b516398661",
+    "extract_dir": "Witch Blast v0.7.5",
+    "pre_install": [
+        "if (!(Test-Path \"$dir\\config.dat\")) { Set-Content -Value $null -Path \"$dir\\config.dat\" }",
+        "if (!(Test-Path \"$dir\\game.sav\")) { Set-Content -Value $null -Path \"$dir\\game.sav\" }"
+    ],
+    "shortcuts": [
+        [
+            "Witch Blast.exe",
+            "Witch Blast"
+        ]
+    ],
+    "persist": [
+        "config.dat",
+        "game.sav",
+        "data"
+    ],
+    "checkver": "github",
+    "##": "Note: No Autoupdate due to inconsistent releases, downloads etc. Also, a new release seems unlikely"
+}

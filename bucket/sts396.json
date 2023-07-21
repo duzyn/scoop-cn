@@ -1,0 +1,24 @@
+{
+    "version": "3.9.6",
+    "description": "Spring Tools for Eclipse (version 3.9.6)",
+    "homepage": "https://spring.io/tools/sts",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "http://download.springsource.com/release/STS/3.9.6.RELEASE/dist/e4.9/spring-tool-suite-3.9.6.RELEASE-e4.9.0-win32-x86_64.zip",
+            "hash": "sha1:59de36dcbd94c56ce544c7551c324b4be295e8a3"
+        },
+        "32bit": {
+            "url": "http://download.springsource.com/release/STS/3.9.6.RELEASE/dist/e4.9/spring-tool-suite-3.9.6.RELEASE-e4.9.0-win32.zip",
+            "hash": "sha1:1f136696cf2982cdd089e89bf997d1b2472e7297"
+        }
+    },
+    "extract_dir": "sts-bundle",
+    "pre_install": "mv \"$dir\\sts-$version.RELEASE\" \"$dir\\sts\"",
+    "shortcuts": [
+        [
+            "sts\\STS.exe",
+            "Spring Tool Suite 3 "
+        ]
+    ]
+}

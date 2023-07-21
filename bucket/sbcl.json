@@ -1,0 +1,32 @@
+{
+    "version": "2.3.2",
+    "description": "A high performance Common Lisp compiler.",
+    "homepage": "https://www.sbcl.org/",
+    "license": {
+        "identifier": "BSD-3-Clause,MIT,Public Domain",
+        "url": "https://sourceforge.net/p/sbcl/sbcl/ci/master/tree/COPYING"
+    },
+    "notes": "Please restart your command line for SBCL_HOME to take effect. Please consider installing http://www.quicklisp.org/",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/2.3.2/sbcl-2.3.2-x86-64-windows-binary.msi",
+            "hash": "sha1:5a217ad84b4a19a724ede3ade64438492defcee5"
+        }
+    },
+    "extract_dir": "PFiles\\Steel Bank Common Lisp",
+    "bin": "sbcl.exe",
+    "env_set": {
+        "SBCL_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "http://www.sbcl.org/platform-table.html",
+        "regex": "sbcl-([\\d.]+)-x86-64-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/sbcl/sbcl/$version/sbcl-$version-x86-64-windows-binary.msi"
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+{
+    "version": "14.21.3",
+    "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v14.21.3/node-v14.21.3-win-x64.7z",
+            "hash": "a00c71e662cb1752f180e54921ca2c79bdefc7200a51b8805888ac3723889579",
+            "extract_dir": "node-v14.21.3-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v14.21.3/node-v14.21.3-win-x86.7z",
+            "hash": "7a1f86386bb5f39c93bfd910a10966c69331c3f775457c0ea0c044ee6fbf000f",
+            "extract_dir": "node-v14.21.3-win-x86"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        ".",
+        "bin"
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://npmmirror.com/mirrors/node/latest-fermium/",
+        "regex": "node-v([\\d.]+)-x86\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}

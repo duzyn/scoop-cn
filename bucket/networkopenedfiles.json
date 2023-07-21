@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/network_opened_files.html",
+    "checkver": "NetworkOpenedFiles v(\\d+\\.\\d\\d)",
+    "version": "1.60",
+    "license": "freeware",
+    "description": "NetworkOpenedFiles is a simple tool for Windows that displays the list of all files that are currently opened by other computers on your network. For every opened filename, the following information is displayed: Filename, user name, computer name (On Windows 7/2008 or later), Permissions information (Read/Write/Create), locks count, file owner, file size, file attributes, and more...",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/networkopenedfiles-x64.zip",
+            "hash": "ddf95b458cffa94c9e67119a343539134cfb60c3e8c47340ae579990b3087b01"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/networkopenedfiles.zip",
+            "hash": "c7b919ba7b9c6eee75ff54a206165da8950e6f01530d4b4dab25bf1065cc1993"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/networkopenedfiles-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/networkopenedfiles.zip"
+            }
+        }
+    },
+    "bin": "NetworkOpenedFiles.exe",
+    "shortcuts": [
+        [
+            "NetworkOpenedFiles.exe",
+            "NirSoft\\NetworkOpenedFiles - Displays opened files on your network"
+        ]
+    ]
+}

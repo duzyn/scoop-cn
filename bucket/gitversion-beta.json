@@ -1,0 +1,21 @@
+{
+    "homepage": "https://github.com/GitTools/GitVersion",
+    "description": "Easy Semantic Versioning for projects using Git.",
+    "license": "MIT",
+    "version": "6.0.0-beta-3",
+    "url": "https://packages.chocolatey.org/GitVersion.Portable.6.0.0-beta-3.nupkg",
+    "hash": "9f08fe1da767b8fa9bdf6a7d988cbe28a1cb0f1e3c90fa5d138b67d52824cda1",
+    "extract_dir": "tools",
+    "bin": "GitVersion.exe",
+    "checkver": {
+        "url": "https://chocolatey.org/packages/GitVersion.Portable",
+        "regex": "GitVersion ([\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://packages.chocolatey.org/GitVersion.Portable.$version.nupkg",
+        "hash": {
+            "url": "https://chocolatey.org/packages/GitVersion.Portable/$version",
+            "regex": "$sha256/analysis/\">$basename"
+        }
+    }
+}

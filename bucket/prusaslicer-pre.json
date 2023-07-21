@@ -1,0 +1,32 @@
+{
+    "version": "2.6.0-beta3",
+    "description": "G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)",
+    "homepage": "https://www.prusa3d.com/prusaslicer/",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0-beta3/PrusaSlicer-2.6.0-beta3+win64-202305261352.zip",
+            "hash": "b683cbda33c6ffbb24a4d37251899598601dea65ce26d90670dbec8d173cc234",
+            "extract_dir": "PrusaSlicer-2.6.0-beta3+win64-202305261352"
+        }
+    },
+    "bin": "prusa-slicer-console.exe",
+    "shortcuts": [
+        [
+            "prusa-slicer.exe",
+            "PrusaSlicer"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/prusa3d/PrusaSlicer/releases",
+        "regex": "PrusaSlicer-([\\d.]+-\\w+)\\+win64-(?<timestamp64>\\d+)(?:_signed)?.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/prusa3d/PrusaSlicer/releases/download/version_$version/PrusaSlicer-$version+win64-$matchTimestamp64.zip",
+                "extract_dir": "PrusaSlicer-$version+win64-$matchTimestamp64"
+            }
+        }
+    }
+}

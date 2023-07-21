@@ -1,0 +1,49 @@
+{
+    "homepage": "https://nodejs.org",
+    "description": "A JavaScript runtime built on Chrome's V8 JavaScript engine.",
+    "version": "11.15.0",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v11.15.0/node-v11.15.0-win-x64.7z",
+            "hash": "9308998adc6a70a73647e426561ff5f05bda926675888cdf98bc71ab104c5989",
+            "extract_dir": "node-v11.15.0-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v11.15.0/node-v11.15.0-win-x86.7z",
+            "hash": "fef827207376d90712f3c805616519d6ef95bac42bc3625f0546d17fdf7e12f8",
+            "extract_dir": "node-v11.15.0-win-x86"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://npmmirror.com/mirrors/node/latest-v11.x/",
+        "regex": "node-v([\\d.]+)-x86.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}

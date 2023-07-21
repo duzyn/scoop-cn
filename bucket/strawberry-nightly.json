@@ -1,0 +1,28 @@
+{
+    "version": "3116133961",
+    "description": "A music player and music collection organizer",
+    "homepage": "https://www.strawbs.org/",
+    "license": "GPL-3.0-only",
+    "url": "https://nightly.link/strawberrymusicplayer/strawberry/workflows/ccpp/master/upload-windows.zip",
+    "hash": "469c17ff5e043aaa18bee5fc134acce1792eacc90da8267c173216ee3f666007",
+    "pre_install": [
+        "Remove-Item \"$dir\\*-Debug-*.exe\"",
+        "Expand-7zipArchive \"$dir\\StrawberrySetup-*-msvc-x$($architecture.Substring(0, 2)).exe\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
+        "'StrawberrySetup-*', 'Uninstall' | ForEach-Object { Remove-Item \"$dir\\$_.exe\" }"
+    ],
+    "bin": "strawberry.exe",
+    "shortcuts": [
+        [
+            "strawberry.exe",
+            "Strawberry Music Player"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repositories/28609243/actions/workflows/ccpp.yml/runs?branch=master&status=success",
+        "jsonpath": "$.workflow_runs[0].id"
+    },
+    "autoupdate": {
+        "url": "https://nightly.link/strawberrymusicplayer/strawberry/workflows/ccpp/master/upload-windows.zip"
+    }
+}

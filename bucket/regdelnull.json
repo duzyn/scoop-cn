@@ -1,0 +1,39 @@
+{
+    "version": "1.11",
+    "description": "Scan for and delete Registry keys that contain embedded null-characters that are otherwise undeleteable by standard Registry-editing tools.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/regdelnull",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Regdelnull.zip",
+    "hash": "c8eede7452ece5b41b5ebb2061e162854ac9a51dd7f5e7cfd84b943834433dae",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "RegDelNull64.exe",
+                    "RegDelNull"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "RegDelNull.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "RegDelNull64a.exe",
+                    "RegDelNull"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/regdelnull.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Regdelnull.zip"
+    }
+}

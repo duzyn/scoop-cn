@@ -1,0 +1,31 @@
+{
+    "version": "2.0.29",
+    "description": "Java tool for working with PDF documents.",
+    "homepage": "https://pdfbox.apache.org",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": [
+        "https://downloads.apache.org/pdfbox/2.0.29/pdfbox-app-2.0.29.jar#/pdfbox.jar",
+        "https://downloads.apache.org/pdfbox/2.0.29/preflight-2.0.29.jar#/preflight.jar"
+    ],
+    "hash": [
+        "sha512:967f68f6876a8df25e403c1459d0584f231c0a098e2cb2b2f57baac34741dc1a24085618692b094a14f7ea2b801ccea10f912f05131b7171cc177f8ec07a8b16",
+        "sha512:35c20d6e14f3ab27efad3841cd4e3338634e2591b1409b4fadac5ffe65210afb5a2475de3ee91b1c9d49b1680553f08a61cb82a4a19064cf0911a376dfe425e7"
+    ],
+    "bin": [
+        "pdfbox.jar",
+        "preflight.jar"
+    ],
+    "checkver": "Apache PDFBox ([\\d.]+) released",
+    "autoupdate": {
+        "url": [
+            "https://downloads.apache.org/pdfbox/$version/pdfbox-app-$version.jar#/pdfbox.jar",
+            "https://downloads.apache.org/pdfbox/$version/preflight-$version.jar#/preflight.jar"
+        ],
+        "hash": {
+            "url": "$url.sha512"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "version": "2022.1.1.15",
+    "description": "The official IDE for Android development, which includes everything you need to build Android apps.",
+    "homepage": "https://developer.android.com/studio/preview",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://developer.android.com/studio/terms.html"
+    },
+    "suggest": {
+        "Android SDK": "android-clt"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2022.1.1.15/android-studio-2022.1.1.15-windows.zip",
+            "hash": "be8d896163dbef0e4b8f14ccbbe04b45c2a809b083ba3868cd79a7f27021bacb",
+            "shortcuts": [
+                [
+                    "bin\\studio64.exe",
+                    "Android Studio Beta"
+                ]
+            ]
+        }
+    },
+    "extract_dir": "android-studio",
+    "checkver": {
+        "regex": "Android Studio [\\d.]+ Beta \\d+\\s+for\\s+Windows\\s+<\\/a>\\s+<p><em>android-studio-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/$version/android-studio-$version-windows.zip"
+            }
+        }
+    }
+}

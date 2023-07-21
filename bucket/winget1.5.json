@@ -1,0 +1,37 @@
+{
+    "version": "1.5.1881",
+    "description": "Windows Package Manager CLI (aka winget) (latest 1.5.x release)",
+    "homepage": "https://github.com/microsoft/winget-cli",
+    "license": "MIT",
+    "notes": [
+        "At least Windows 10 build 17763 is required to use winget.",
+        "For documentation on settings, see: https://aka.ms/winget-settings."
+    ],
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "url": "https://ghproxy.com/https://github.com/microsoft/winget-cli/releases/download/v1.5.1881/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
+    "hash": "4a6f7ffee0e5f2fd0cf0cee9099515b7b6930ce22bb1c7b070e776d3891bb990",
+    "architecture": {
+        "64bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
+        },
+        "32bit": {
+            "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x86.msix' | Remove-Item -Force -Recurse"
+        }
+    },
+    "installer": {
+        "script": "Get-ChildItem \"$dir\" '*.msix' | Select-Object -ExpandProperty Fullname | Expand-7zipArchive -DestinationPath \"$dir\" -Removal"
+    },
+    "bin": "winget.exe",
+    "checkver": {
+        "url": "https://github.com/microsoft/winget-cli/releases.atom",
+        "regex": "tag/v(1\\.5\\.[\\d.]+)(?<preview>(-preview)?)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/microsoft/winget-cli/releases/download/v$version$matchPreview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
+        "hash": {
+            "url": "https://ghproxy.com/https://github.com/microsoft/winget-cli/releases/download/v$version$matchPreview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.txt"
+        }
+    }
+}

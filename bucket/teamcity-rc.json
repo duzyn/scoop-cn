@@ -1,0 +1,37 @@
+{
+    "version": "2020.2.RC-85437",
+    "description": "Continuous Integration server by JetBrains. (Release Candidate)",
+    "homepage": "https://www.jetbrains.com/teamcity/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "notes": "TeamCity can be started from anywhere using 'teamcity' command.",
+    "url": "https://download.jetbrains.com/teamcity/eap/TeamCity-85437.exe#/dl.7z",
+    "hash": "6886990f544c77b98c1e95eca995e1543d35863872d4c0d4abc138b6f0924327",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\`$*\" -Recurse",
+            "$ver_path = \"$dir\\bin\"",
+            "$cont = @(",
+            "    \"Push-Location \"\"$ver_path\"\"\"",
+            "    '& .\\teamcity-server.bat @args'",
+            "    'Pop-Location'",
+            ")",
+            "Set-Content \"$dir\\teamcity.ps1\" $cont -Encoding Ascii"
+        ]
+    },
+    "bin": "teamcity.ps1",
+    "persist": "conf",
+    "checkver": {
+        "url": "https://confluence.jetbrains.com/display/TW/ChangeLog",
+        "regex": "([\\d.]+)\\s+RC(?<rc>\\d+)?\\s+\\(build\\s+(?<build>[\\d.]+)\\)\\s+Release\\s+Notes</a>",
+        "replace": "$1.RC${rc}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/teamcity/eap/TeamCity-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

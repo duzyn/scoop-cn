@@ -1,0 +1,25 @@
+{
+    "version": "1.0.0",
+    "description": "Toontown Offline is a sandbox version of Disneys Toontown Online. Hop in and explore the world of Toontown without the need of an internet connection- play on Windows, macOS and Linux. Enjoy Toontown Offline by yourself in Offline Mode, or connect to a Mini-Server and play with up to 15 other Toons! Play Toontown how it was when Disney left it, or check out the vast amount of new content we offer to that is exclusive to Toontown Offline. We have a bunch of new features that introduce sandbox mechanics, and others that expand upon the Toontown storyline- more of which is in active development.",
+    "homepage": "https://ttoffline.com",
+    "license": "Proprietary",
+    "url": "https://toontownoffline.net/launcher/ttoff-launcher-win32-setup.exe#/dl.7z",
+    "hash": "474b8fb5bb04908918bcc9719339189e7313e2839ee3f11f327d4e9e66ae45b8",
+    "pre_install": [
+        "Remove-Item $dir -Recurse -Force  -Include * -Exclude 'Toontown Offline.exe'",
+        "Rename-Item -Path $dir/'Toontown Offline.exe' -NewName $dir/ToontownOffline.exe"
+    ],
+    "bin": "ToontownOffline.exe",
+    "shortcuts": [
+        [
+            "ToontownOffline.exe",
+            "Toontown Offline"
+        ]
+    ],
+    "persist": [
+        "astron",
+        "resources",
+        "offline.exe",
+        "settings.json"
+    ]
+}

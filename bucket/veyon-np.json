@@ -1,0 +1,55 @@
+{
+    "version": "4.8.1.0",
+    "description": "Computer monitoring and classroom management software.",
+    "homepage": "https://veyon.io/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/veyon/veyon/releases/download/v4.8.1/veyon-4.8.1.0-win64-setup.exe#/installer.exe",
+            "hash": "364d9e8dc4c10f7a4a021e2096e528fa1b79f2a2c34f8569818b76e8f4b8627d"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/veyon/veyon/releases/download/v4.8.1/veyon-4.8.1.0-win32-setup.exe#/installer.exe",
+            "hash": "95b2d3ec05b61d6176fa99ae212173c71dc7d777d3a4e77d6eb8f7e9164db59b"
+        }
+    },
+    "installer": {
+        "script": [
+            "Invoke-ExternalCommand \"$dir\\installer.exe\" -ArgumentList @('/S', \"/D=$dir\") -RunAs | Out-Null",
+            "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Veyon\"",
+            "Remove-Item \"$dir\\installer.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\uninstall.exe\" -ArgumentList @('/S') -Verb RunAs -Wait | Out-Null"
+    },
+    "bin": [
+        "veyon-cli.exe",
+        "veyon-configurator.exe",
+        "veyon-master.exe"
+    ],
+    "shortcuts": [
+        [
+            "veyon-configurator.exe",
+            "Veyon Configurator"
+        ],
+        [
+            "veyon-master.exe",
+            "Veyon Master"
+        ]
+    ],
+    "checkver": {
+        "url": "https://veyon.io/download/",
+        "regex": "veyon-([\\d.]+)-win64-setup.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win64-setup.exe#/installer.exe"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win32-setup.exe#/installer.exe"
+            }
+        }
+    }
+}

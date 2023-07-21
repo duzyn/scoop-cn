@@ -1,0 +1,19 @@
+{
+    "version": "4.10.0",
+    "description": "A smart proxy server that allows Selenium tests to route commands to remote web browser instances",
+    "homepage": "https://selenium.dev",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": "https://ghproxy.com/https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.10.0/selenium-server-4.10.0.jar#/selenium.jar",
+    "hash": "f81325cc31fb9388f7efbed169a7f1ee4271bcf931661bea40cc751b5aa7424f",
+    "bin": "selenium.jar",
+    "checkver": {
+        "github": "https://github.com/SeleniumHQ/selenium",
+        "regex": "selenium-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/SeleniumHQ/selenium/releases/download/selenium-$version/selenium-server-$version.jar#/selenium.jar"
+    }
+}

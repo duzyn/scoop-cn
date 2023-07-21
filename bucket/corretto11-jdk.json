@@ -1,0 +1,45 @@
+{
+    "description": "Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java Development Kit (OpenJDK)",
+    "homepage": "https://aws.amazon.com/corretto/",
+    "version": "11.0.20.8.1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://corretto.aws/downloads/resources/11.0.20.8.1/amazon-corretto-11.0.20.8.1-windows-x64-jdk.zip",
+            "hash": "c682fca3e864ce15da4b7783d2cdf2dd31b88052b37fba0e56d50808c29283c0"
+        },
+        "32bit": {
+            "url": "https://corretto.aws/downloads/resources/11.0.20.8.1/amazon-corretto-11.0.20.8.1-windows-x86-jre.zip",
+            "hash": "37d1ce26bbfe75c49e34e9025a49e542c3e99757130f54f340ab78337665a0d3"
+        }
+    },
+    "extract_dir": "jdk11.0.20_8",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "jsonpath": "$.windows.x64.jdk.11.zip.resource",
+        "regex": "/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x64.jdk.11.zip.checksum_sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x86-jre.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x86.jdk.11.zip.checksum_sha256"
+                }
+            }
+        },
+        "extract_dir": "jdk$matchHead_$buildVersion"
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "version": "4.9.2",
+    "description": "A classic redefined DOOM source port",
+    "homepage": "https://www.doomretro.com/",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "",
+        "ATTENTION: DOOM Retro requires WAD files, e.g. from a commercial DOOM copy (DOOM 1, 2, Ultimate DOOM, etc).",
+        "",
+        "Place the WAD files in the _doom directory which is under your persist dir.",
+        "",
+        "If you want to bind controls in the config file, here are some examples:",
+        "",
+        "bind capslock +alwaysrun",
+        "bind 's' +back",
+        "bind mouse1 +fire",
+        "",
+        "Basically, it's: bind control +action, where singular letters and signs need to have apostrophes surrounding them in the config file.",
+        "",
+        "See the corresponding wiki section here for reference: https://github.com/bradharding/doomretro/wiki/CONSOLE-COMMANDS#ACTIONS",
+        ""
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/bradharding/doomretro/releases/download/v4.9.2/doomretro-4.9.2-win32.zip",
+            "hash": "02deb63b2713dc116743c2ea52823182c9604c9571d53e48244c689d1d3cc882"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/bradharding/doomretro/releases/download/v4.9.2/doomretro-4.9.2-win64.zip",
+            "hash": "d6b5b691798cce9ba9023b1554415b73715b377cf7d9df651bba27c025a19780"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\doomretro.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\doomretro.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$scoopdir\\persist\\_doom\")) {",
+        "   New-item \"$scoopdir\\persist\\_doom\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "bin": "doomretro.exe",
+    "shortcuts": [
+        [
+            "doomretro.exe",
+            "DOOM Retro"
+        ]
+    ],
+    "persist": [
+        "savegames",
+        "screenshots",
+        "doomretro.cfg"
+    ],
+    "checkver": {
+        "github": "https://github.com/bradharding/doomretro/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/bradharding/doomretro/releases/download/v$version/doomretro-$version-win32.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/bradharding/doomretro/releases/download/v$version/doomretro-$version-win64.zip"
+            }
+        }
+    }
+}

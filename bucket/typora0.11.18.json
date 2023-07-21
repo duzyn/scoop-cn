@@ -1,0 +1,27 @@
+{
+    "version": "0.11.18",
+    "description": "Typora. A truly minimal markdown editor.",
+    "homepage": "https://typora.io",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://support.typora.io/License-Agreement/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.typora.io/windows/typora-update-x64-1117.exe",
+            "hash": "51ddc37ddac94eeb0d92d0fef6fea02cf9339628472c9ddf7c3e13a7694be738"
+        },
+        "32bit": {
+            "url": "https://download.typora.io/windows/typora-update-ia32-1117.exe",
+            "hash": "4784a2fa4e4c1918647cf12f3945c70dc281aa2f587326af7e16fb4c5f981915"
+        }
+    },
+    "innosetup": true,
+    "bin": "Typora.exe",
+    "shortcuts": [
+        [
+            "Typora.exe",
+            "Typora"
+        ]
+    ]
+}

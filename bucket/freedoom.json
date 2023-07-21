@@ -1,0 +1,60 @@
+{
+    "version": "0.12.1",
+    "description": "Free content replacements for Doom and Doom II single-player game",
+    "homepage": "https://freedoom.github.io/",
+    "license": "BSD-3-Clause",
+    "notes": "GZDoom is a recommended Doom source port by the Freedoom project",
+    "suggest": {
+        "Doom source port": [
+            "gzdoom",
+            "crispy-doom",
+            "prboom-plus",
+            "zandronum",
+            "doomsday",
+            "odamex",
+            "qzdoom"
+        ]
+    },
+    "url": "https://ghproxy.com/https://github.com/freedoom/freedoom/releases/download/v0.12.1/freedoom-0.12.1.zip",
+    "hash": "f42c6810fc89b0282de1466c2c9c7c9818031a8d556256a6db1b69f6a77b5806",
+    "extract_dir": "freedoom-0.12.1",
+    "installer": {
+        "script": [
+            "$dlFile = 'dl.zip'",
+            "$archiveUrls = @(",
+            "   \"https://ghproxy.com/https://github.com/freedoom/freedoom/releases/download/v$version/freedm-$version.zip\"",
+            ")",
+            "$archiveUrls | ForEach-Object {",
+            "   dl_with_cache $app $version \"$_\" \"$dir\\$dlFile\"",
+            "   Expand-7zipArchive \"$dir\\$dlFile\" \"$dir\" -Removal",
+            "}"
+        ]
+    },
+    "post_install": [
+        "New-Item -Type Directory -Force -Path \"$persist_dir\\..\\_doom\"",
+        "Move-Item \"$dir\\freedoom1.wad\" \"$persist_dir\\..\\_doom\"",
+        "Move-Item \"$dir\\freedoom2.wad\" \"$persist_dir\\..\\_doom\"",
+        "Move-Item \"$dir\\freedm-$version\\freedm.wad\" \"$persist_dir\\..\\_doom\"",
+        "Remove-Item -Force -Recurse \"$dir\\freedm-$version\""
+    ],
+    "shortcuts": [
+        [
+            "freedoom-manual.pdf",
+            "Freedoom Manual"
+        ]
+    ],
+    "uninstaller": {
+        "script": [
+            "Remove-Item \"$persist_dir\\..\\_doom\\freedoom1.wad\"",
+            "Remove-Item \"$persist_dir\\..\\_doom\\freedoom2.wad\"",
+            "Remove-Item \"$persist_dir\\..\\_doom\\freedm.wad\""
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/freedoom/freedoom"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/freedoom/freedoom/releases/download/v$version/freedoom-$version.zip",
+        "extract_dir": "freedoom-$version"
+    }
+}

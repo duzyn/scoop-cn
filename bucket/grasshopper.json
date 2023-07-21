@@ -1,0 +1,36 @@
+{
+    "version": "1.2.0",
+    "description": "SSH client",
+    "homepage": "https://grasshopper.coding.kiwi",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://grasshopper.coding.kiwi/faq#free"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://grasshopper.coding.kiwi/download/1-2-0-grasshopper-Setup-1-2-0-exe#/dl.7z",
+            "hash": "c4096c074a94b9ad52a86985b571ab057085948952361d1e367cb95b82924faf",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "graSSHopper.exe",
+            "graSSHopper"
+        ]
+    ],
+    "checkver": {
+        "url": "https://grasshopper.coding.kiwi/client/latest.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://grasshopper.coding.kiwi/download/$dashVersion-grasshopper-Setup-$dashVersion-exe#/dl.7z"
+            }
+        }
+    }
+}

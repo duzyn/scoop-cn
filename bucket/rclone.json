@@ -1,0 +1,78 @@
+{
+    "version": "1.63.1",
+    "description": "Sync files and directories to and from multiple cloud / FTP / HTTP hosters.",
+    "homepage": "https://rclone.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v1.63.1/rclone-v1.63.1-windows-amd64.zip",
+            "hash": "66ca083757fb22198309b73879831ed2b42309892394bf193ff95c75dff69c73",
+            "extract_dir": "rclone-v1.63.1-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v1.63.1/rclone-v1.63.1-windows-386.zip",
+            "hash": "895d847eec516f9d8eb2cf8a08408c92523d1430d9dc2e91c5ed5268eb424479",
+            "extract_dir": "rclone-v1.63.1-windows-386"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v1.63.1/rclone-v1.63.1-windows-arm64.zip",
+            "hash": "bbb47c16882b6c5f2e8c1b04229378e28f68734c613321ef0ea2263760f74cd0",
+            "extract_dir": "rclone-v1.63.1-windows-arm64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\rclone.conf\") -or !(Get-Item \"$persist_dir\\rclone.conf\").Length) {",
+        "   New-Item \"$persist_dir\\rclone.conf\" -ItemType File -Force | Out-Null",
+        "",
+        "   $tilde = if ($env:HOME) {",
+        "       $env:HOME",
+        "   } elseif ($env:USERPROFILE) {",
+        "       $env:USERPROFILE",
+        "   } else {",
+        "       \"$env:HOMEDRIVE%\\$env:HOMEPATH\"",
+        "   }",
+        "",
+        "   $importConf = if (Test-Path \"$env:APPDATA\\rclone\\rclone.conf\") {",
+        "       \"$env:APPDATA\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$env:XDG_CONFIG_HOME\\rclone\\rclone.conf\") {",
+        "       \"$env:XDG_CONFIG_HOME\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$tilde\\.config\\rclone\\rclone.conf\") {",
+        "       \"$tilde\\.config\\rclone\\rclone.conf\"",
+        "   } elseif (Test-Path \"$tilde\\.rclone.conf\") {",
+        "       \"$tilde\\.rclone.conf\"",
+        "   }",
+        "",
+        "   if ($importConf -and (Test-Path $importConf)) {",
+        "       Copy-Item $importConf \"$persist_dir\\rclone.conf\"",
+        "       Write-Host \"Imported existing rclone.conf from $importConf.\" -ForegroundColor Yellow",
+        "   }",
+        "}"
+    ],
+    "uninstaller": {
+        "script": "if ((Test-Path \"$dir\\rclone.conf\") -and !(Get-Item \"$dir\\rclone.conf\").LinkType -and (Test-Path $persist_dir)) { Copy-Item \"$dir\\rclone.conf\" $persist_dir }"
+    },
+    "bin": "rclone.exe",
+    "persist": "rclone.conf",
+    "checkver": {
+        "github": "https://github.com/rclone/rclone"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-amd64.zip",
+                "extract_dir": "rclone-v$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-386.zip",
+                "extract_dir": "rclone-v$version-windows-386"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-arm64.zip",
+                "extract_dir": "rclone-v$version-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS"
+        }
+    }
+}

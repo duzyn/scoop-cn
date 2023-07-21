@@ -1,0 +1,38 @@
+{
+    "##": "Please make sure you have a HP laptop/desktop computer, otherwise it will not work.",
+    "version": "9.25.18.0.146001-146500.146042",
+    "homepage": "https://support.hp.com/us-en/help/hp-support-assistant",
+    "description": "A free self-help tool, available for your HP PC with Windows 10. Giving you built in troubleshooters and quick access to support resources for your registered HP devices.",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.hp.com/us-en/terms-of-use.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ftp.ext.hp.com/pub/softpaq/sp146001-146500/sp146042.exe#/installer.exe",
+            "hash": "c8c0022d6513f83a48701317714bf2405419c54958e56d385567f7c878c2c6b4"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\installer.exe\" -Wait -Verb 'RunAs' -ArgumentList '/s'; Remove-Item \"$dir\\installer.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "$HP_Uninstaller = (Get-ChildItem \"$env:SystemDrive\\SWSetup\" -Recurse -Filter 'Uninstall*').FullName",
+        "Start-Process $HP_Uninstaller -Wait -Verb 'RunAs' -ArgumentList @('-s', '-f'); Start-Sleep -Seconds 4"
+    ],
+    "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+        "url": "https://hpsa-redirectors.hpcloud.hp.com/common/hpsaredirector.js",
+        "regex": "\\s+return\\s+getProtocol\\(\\)\\s\\+\\s\"ftp\\.hp\\.com/pub/softpaq/sp(?<Part1>[\\w-]+)/sp(?<Part2>[\\w]+)\\.exe\";\\s//(?<Ver>[\\d.]+)",
+        "replace": "${Ver}.${Part1}.${Part2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.ext.hp.com/pub/softpaq/sp$matchPart1/sp$matchPart2.exe#/installer.exe"
+            }
+        }
+    }
+}

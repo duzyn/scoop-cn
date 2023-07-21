@@ -1,0 +1,38 @@
+{
+    "description": "Open Source Builds of Zulu With OpenJFX",
+    "homepage": "https://www.azul.com/products/zulu-community/zulufx/",
+    "version": "15.46.17",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu15.46.17-ca-fx-jdk15.0.10-win_x64.zip",
+            "hash": "e80b733b6da1bb49152c6a19ee4e1899bef7ac18dbcaf256db9f6788d85c2447",
+            "extract_dir": "zulu15.46.17-ca-fx-jdk15.0.10-win_x64"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-fx-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=15&bundle_type=jdk&features=fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
+                    "jp": "$.sha256_hash"
+                }
+            }
+        }
+    }
+}

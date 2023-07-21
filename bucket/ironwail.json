@@ -1,0 +1,95 @@
+{
+    "version": "0.7.0",
+    "description": "Fork of QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top",
+    "homepage": "https://github.com/andrei-drexler/ironwail",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "",
+        "Place game data files (such as pak0.pak and pak1.pak) in:",
+        "",
+        "- Quake:",
+        "    $persist_dir\\id1\\",
+        "",
+        "- Quake Mission Pack 1 - Scourge of Armagon:",
+        "    $persist_dir\\hipnotic\\",
+        "",
+        "- Quake Mission Pack 2 - Dissolution of Eternity:",
+        "    $persist_dir\\rogue\\",
+        "",
+        "- Quake Mission Pack 3 - Abyss of Pandemonium:",
+        "    $persist_dir\\abyss\\",
+        "",
+        "- Quake - Arcane Dimensions (https://www.moddb.com/mods/arcane-dimensions):",
+        "    $persist_dir\\ad\\",
+        "",
+        "Ironwail also detects the Steam release. If you have that installed, no additional setup is required. Just start the app and you will be presented with the option of running the Remastered or Original version.",
+        "",
+        "Any mods present as subdirectories in the corresponding directories of the Steam release are accessible in the source port's Mods menu once the game has started.",
+        ""
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/andrei-drexler/ironwail/releases/download/v0.7.0/ironwail-0.7.0-win32.zip",
+            "hash": "7bf0a1332e655ca9d950210a5753ba400d8df6b7fddb1e7daf4c9414045b81ef",
+            "extract_dir": "ironwail-0.7.0-win32"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/andrei-drexler/ironwail/releases/download/v0.7.0/ironwail-0.7.0-win64.zip",
+            "hash": "f6ace25088f7466fc568f8f77482ae93c2edaae66327e9d2e0df34b2802c651e",
+            "extract_dir": "ironwail-0.7.0-win64"
+        }
+    },
+    "bin": [
+        [
+            "ironwail.exe",
+            "Ironwail",
+            "-basedir $persist_dir"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "ironwail.exe",
+            "Ironwail"
+        ],
+        [
+            "ironwail.exe",
+            "Ironwail (Scourge of Armagon)",
+            "-game hipnotic"
+        ],
+        [
+            "ironwail.exe",
+            "Ironwail (Dissolution of Eternity)",
+            "-game rogue"
+        ],
+        [
+            "ironwail.exe",
+            "Ironwail (Abyss of Pandemonium)",
+            "-game abyss"
+        ],
+        [
+            "ironwail.exe",
+            "Ironwail (Arcane Dimensions)",
+            "-game ad"
+        ]
+    ],
+    "persist": [
+        "id1",
+        "hipnotic",
+        "rogue",
+        "abyss",
+        "ad"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/andrei-drexler/ironwail/releases/download/v$version/ironwail-$version-win32.zip",
+                "extract_dir": "ironwail-$version-win32"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/andrei-drexler/ironwail/releases/download/v$version/ironwail-$version-win64.zip",
+                "extract_dir": "ironwail-$version-win64"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "version": "0.77.1-1",
+    "description": "Codec pack with video players.",
+    "homepage": "https://www.videohelp.com/software/LAV-Filters-Megamix",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.videohelp.com/download/Megamix-LAVFilters-0.77.1-1-x64.exe",
+            "hash": "e7b5b7e888fa2bde5eac096ae2d73222723f4daf044398db72608665883e9bdb"
+        },
+        "32bit": {
+            "url": "https://www.videohelp.com/download/Megamix-LAVFilters-0.77.1-1-x86.exe",
+            "hash": "fd7b12764d63e01bfa48bd9955be06f23f027928047d2b75c3fef3cde9dbf111"
+        }
+    },
+    "installer": {
+        "args": [
+            "/VERYSILENT",
+            "/DIR=$dir"
+        ]
+    },
+    "uninstaller": {
+        "file": "unins000.exe",
+        "args": "/VERYSILENT"
+    },
+    "checkver": {
+        "url": "https://www.videohelp.com/software/LAV-Filters-Megamix",
+        "regex": "Latest version.*\\s+([\\d-.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.videohelp.com/download/Megamix-LAVFilters-$version-x64.exe"
+            },
+            "32bit": {
+                "url": "https://www.videohelp.com/download/Megamix-LAVFilters-$version-x86.exe"
+            }
+        }
+    }
+}

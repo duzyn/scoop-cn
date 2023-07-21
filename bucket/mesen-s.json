@@ -1,0 +1,38 @@
+{
+    "version": "0.4.0",
+    "description": "A high-accuracy SNES and Super GameBoy emulator",
+    "homepage": "https://www.mesen.ca",
+    "license": {
+        "identifier": "GPL-3.0",
+        "url": "https://github.com/SourMesen/Mesen-S/blob/master/LICENSE"
+    },
+    "notes": "Configuration files cannot be persisted, but will be retained during the update",
+    "url": "https://ghproxy.com/https://github.com/SourMesen/Mesen-S/releases/download/0.4.0/Mesen-S.0.4.0.zip",
+    "hash": "ce4ee543dd3aaa4a10e8597d5aa4735fbe9252c8d679e5772dbee827cfaa2d96",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\settings.xml\")) { New-Item -ItemType File \"$dir\\settings.xml\" | Out-Null }",
+    "bin": "Mesen-S.exe",
+    "shortcuts": [
+        [
+            "Mesen-S.exe",
+            "Mesen-S"
+        ]
+    ],
+    "persist": [
+        "settings.xml",
+        "Avi",
+        "Cheats",
+        "Firmware",
+        "Movies",
+        "RecentGames",
+        "Saves",
+        "SaveStates",
+        "Screenshots",
+        "Wave"
+    ],
+    "checkver": {
+        "github": "https://github.com/SourMesen/Mesen-S/"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/SourMesen/Mesen-S/releases/download/$version/Mesen-S.$version.zip"
+    }
+}

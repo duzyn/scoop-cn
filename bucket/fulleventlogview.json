@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/full_event_log_view.html",
+    "checkver": "FullEventLogView v(\\d+\\.\\d\\d)",
+    "version": "1.78",
+    "license": "freeware",
+    "description": "FullEventLogView is a simple tool for Windows 10/8/7/Vista that displays in a table the details of all events from the event logs of Windows, including the event description. It allows you to view the events of your local computer, events of a remote computer on your network, and events stored in .evtx files. It also allows you to export the events list to text/csv/tab-delimited/html/xml file from the GUI and from command-line.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/fulleventlogview-x64.zip",
+            "hash": "4a04355cbe240a35727c7a3f5f779217b1487c358673899d85d395360dc0790e"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/fulleventlogview.zip",
+            "hash": "3f53042d735df9a168050e4e0254d02638de14bb55131253eca3a0ccdf328159"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/fulleventlogview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/fulleventlogview.zip"
+            }
+        }
+    },
+    "bin": "FullEventLogView.exe",
+    "shortcuts": [
+        [
+            "FullEventLogView.exe",
+            "NirSoft\\FullEventLogView - Event log viewer for Windows 10_8_7_Vista"
+        ]
+    ]
+}

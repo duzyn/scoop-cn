@@ -1,0 +1,60 @@
+{
+    "version": "7.0",
+    "description": "Presentation utility for zooming and drawing on the screen.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/ZoomIt",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ZoomIt.zip",
+    "hash": "8d5674ef85573888724c032ebccb2f72722ad565f9fb7d74e542c860e3432864",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "ZoomIt64.exe",
+                    "ZoomIt"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ZoomIt64.exe",
+                    "scoop-cn/ZoomIt",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ZoomIt.exe",
+            "shortcuts": [
+                [
+                    "ZoomIt.exe",
+                    "scoop-cn/ZoomIt",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "ZoomIt64a.exe",
+                    "ZoomIt"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "ZoomIt64a.exe",
+                    "scoop-cn/ZoomIt",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/zoomit.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ZoomIt.zip"
+    }
+}

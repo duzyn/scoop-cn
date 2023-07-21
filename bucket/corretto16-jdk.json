@@ -1,0 +1,38 @@
+{
+    "description": "Amazon Corretto is a no-cost, multiplatform, production-ready distribution of the Open Java Development Kit (OpenJDK)",
+    "homepage": "https://aws.amazon.com/corretto/",
+    "version": "16.0.2.7.1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://corretto.aws/downloads/resources/16.0.2.7.1/amazon-corretto-16.0.2.7.1-windows-x64-jdk.zip",
+            "hash": "d3a1790dabe0a11f57a84db9bf28cab6fe658757ff43248cea14eb4ba32f314f"
+        }
+    },
+    "extract_dir": "jdk16.0.2_7",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "jsonpath": "$.windows.x64.jdk.16.zip.resource",
+        "regex": "/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.windows.x64.jdk.16.zip.checksum_sha256"
+                }
+            }
+        },
+        "extract_dir": "jdk$matchHead_$buildVersion"
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

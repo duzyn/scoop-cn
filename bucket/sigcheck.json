@@ -1,0 +1,39 @@
+{
+    "version": "2.90",
+    "description": "Dump file version information and verify that images on your system are digitally signed.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/sigcheck",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Sigcheck.zip",
+    "hash": "96efa256749fde2ef157baee9677e417047a0d77325ad97ca800fa10c4bf0dbf",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "sigcheck64.exe",
+                    "sigcheck"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "sigcheck.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "sigcheck64a.exe",
+                    "sigcheck"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sigcheck.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Sigcheck.zip"
+    }
+}

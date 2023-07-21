@@ -1,0 +1,40 @@
+{
+    "version": "6.2.2",
+    "description": "Installer for Windows programs.",
+    "homepage": "http://www.jrsoftware.org/isinfo.php",
+    "license": "http://www.jrsoftware.org/files/is/license.txt",
+    "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-6.2.2.exe",
+    "hash": "8117d10d00a2ad33a1390978ea3872861c330e087914410a6377b22c4c5b8563",
+    "installer": {
+        "script": [
+            "$args = @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/ALLUSERS', '/NORESTART', '/NOICONS', \"/DIR=`\"$dir`\"\")",
+            "Start-Process \"$dir\\$fname\" -ArgumentList $args -Wait -Verb RunAs",
+            "Remove-Item \"$dir\\$fname\""
+        ],
+        "#args": [
+            "/VERYSILENT",
+            "/SUPPRESSMSGBOXES",
+            "/ALLUSERS",
+            "/NORESTART",
+            "/NOICONS",
+            "/DIR=\"$dir\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\unins000.exe\" -ArgumentList '/VERYSILENT' -Wait -Verb RunAs"
+    },
+    "bin": "Compil32.exe",
+    "shortcuts": [
+        [
+            "Compil32.exe",
+            "Inno Setup Compiler"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.jrsoftware.org/isdl.php",
+        "regex": "innosetup-([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "http://www.jrsoftware.org/download.php/is.exe#innosetup-$version.exe"
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "description": "JDK Mission Control for Corretto",
+    "homepage": "https://github.com/corretto/corretto-jmc",
+    "version": "8.1.1.1",
+    "license": "UPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://corretto.aws/downloads/resources/jmc/8.1.1.1/amazon-corretto-jmc-8.1.1.1-windows-x64.zip",
+            "hash": "4ffc544b48a9a885d6d85b342ca18b26612ec4b9ee12f9f6db5c860156290608"
+        }
+    },
+    "shortcuts": [
+        [
+            "jmc.exe",
+            "JDK Mission Control for Corretto"
+        ]
+    ],
+    "persist": "configuration",
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "jsonpath": "$.jmc.windows.x64.zip.resource",
+        "regex": "/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://corretto.aws/downloads/resources/jmc/$version/amazon-corretto-jmc-$version-windows-x64.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "jsonpath": "$.jmc.windows.x64.zip.checksum_sha256"
+                }
+            }
+        }
+    }
+}

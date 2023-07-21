@@ -1,0 +1,31 @@
+{
+    "version": "v1.4.0",
+    "description": "Source port for Doom 3: BFG Edition",
+    "homepage": "https://github.com/RobertBeckebans/RBDOOM-3-BFG",
+    "license": "https://github.com/RobertBeckebans/RBDOOM-3-BFG/blob/master/COPYING.txt",
+    "notes": [
+        "Place game data in:",
+        "",
+        "    $persist_dir\\base",
+        "",
+        "In case of errors about a missing XAudio library, set up DirectX using the installer below:",
+        "",
+        "https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe"
+    ],
+    "url": "https://ghproxy.com/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/v1.4.0/RBDOOM-3-BFG-1.4.0.9-lite-win64-20220306-git-f81a8c1.7z",
+    "hash": "c116eba68c0c2abc6bed8ef6343d62e4f00f2328b98c0fc5a56523166e540c87",
+    "shortcuts": [
+        [
+            "RBDoom3BFG.exe",
+            "RBDOOM-3-BFG"
+        ]
+    ],
+    "persist": "base",
+    "checkver": {
+        "url": "https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/latest",
+        "regex": "/RobertBeckebans/RBDOOM-3-BFG/releases/download/([a-zA-Z\\d.\\-]+)/RBDOOM-3-BFG-(?<file>[a-zA-Z\\d.\\-]+)\\.7z"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/$version/RBDOOM-3-BFG-$matchFile.7z"
+    }
+}

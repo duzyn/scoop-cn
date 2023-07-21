@@ -1,0 +1,45 @@
+{
+    "version": "2.01",
+    "description": "Create up to four virtual desktops and easily switch between them.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/desktops",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Desktops.zip",
+    "hash": "fbba8b7267911c55bcd0252002b407603e9b0569f4e18eee0b7c664a195857f2",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Desktops64.exe",
+                    "Desktops"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Desktops64.exe",
+                    "scoop-cn/Desktops",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Desktops.exe",
+            "shortcuts": [
+                [
+                    "Desktops.exe",
+                    "scoop-cn/Desktops",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/desktops.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Desktops.zip"
+    }
+}

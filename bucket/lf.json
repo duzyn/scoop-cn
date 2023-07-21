@@ -1,0 +1,57 @@
+{
+    "version": "r30",
+    "description": "A terminal file manager written in Go",
+    "homepage": "https://godoc.org/github.com/gokcehan/lf",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://ghproxy.com/https://github.com/gokcehan/lf/releases/download/r30/lf-windows-amd64.zip",
+                "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/r30/etc/lfcd.cmd",
+                "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/r30/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "813de09af0d0ee00133de20ec23cad426911dee93ba4d0ddbc28ee25f9e1978b",
+                "894791f025c03fc2d0241b26bd23125800f1c2abb3dd7c899496ac0a84ea1890",
+                "e981fb0c6d82268b15ff27aa40925df40ee26feffdea36da75c311f733c79aef"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://ghproxy.com/https://github.com/gokcehan/lf/releases/download/r30/lf-windows-386.zip",
+                "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/r30/etc/lfcd.cmd",
+                "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/r30/etc/lfcd.ps1"
+            ],
+            "hash": [
+                "3942bc767496c32eda4f4765640d7961a249f3947a9ffdb750fd8754abae427a",
+                "894791f025c03fc2d0241b26bd23125800f1c2abb3dd7c899496ac0a84ea1890",
+                "e981fb0c6d82268b15ff27aa40925df40ee26feffdea36da75c311f733c79aef"
+            ]
+        }
+    },
+    "bin": "lf.exe",
+    "pre_install": "Move-Item $dir\\lfcd.cmd, $dir\\lfcd.ps1 $scoopdir\\shims\\",
+    "post_uninstall": "Remove-Item $scoopdir\\shims\\lfcd.cmd, $scoopdir\\shims\\lfcd.ps1",
+    "checkver": {
+        "github": "https://github.com/gokcehan/lf/",
+        "regex": "tag/(r[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://ghproxy.com/https://github.com/gokcehan/lf/releases/download/$version/lf-windows-amd64.zip",
+                    "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://ghproxy.com/https://github.com/gokcehan/lf/releases/download/$version/lf-windows-386.zip",
+                    "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.cmd",
+                    "https://ghproxy.com/https://raw.githubusercontent.com/gokcehan/lf/$version/etc/lfcd.ps1"
+                ]
+            }
+        }
+    }
+}

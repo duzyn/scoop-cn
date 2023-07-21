@@ -1,0 +1,42 @@
+{
+    "version": "2022.3-223.7571.953-EAP1",
+    "description": "Domain-Specific language creator by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/mps/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/mps/2022.3/MPS-2022.3-EAP1.exe#/dl.7z",
+    "hash": "793c89a8c2de072dcf4b8dc9590cffd8f34b000061379f64c049052423c06767",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "bin": "IDE\\bin\\mps.bat",
+    "shortcuts": [
+        [
+            "IDE\\bin\\mps.bat",
+            "JetBrains\\MPS (Early Access Program)",
+            "",
+            "IDE\\bin\\mps.ico"
+        ]
+    ],
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=MPS&latest=true&platform=zip&type=eap",
+        "regex": "EAP(?<eap>\\d+)\\.exe.*majorVersion\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}-EAP${eap}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/mps/$matchHead/MPS-$matchHead-EAP$matchEap.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

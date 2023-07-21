@@ -1,0 +1,30 @@
+{
+    "version": "1.2.6.28",
+    "homepage": "https://steamcommunity.com/sharedfiles/filedetails/?id=1847679158",
+    "description": "Pre-release builds of the mod manager for the RimWorld game",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/rimpy-custom/RimPy/releases/download/1.2.6.28/RimPy_Windows.zip",
+            "hash": "a739621895d749a440fa779dec03c6cb52d521c119ffd322d049f46400e7c285"
+        }
+    },
+    "bin": "RimPy.exe",
+    "shortcuts": [
+        [
+            "RimPy.exe",
+            "RimPy"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/rimpy-custom/RimPy/tags",
+        "regex": "([\\d.]+)</a></h2>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/rimpy-custom/RimPy/releases/download/$version/RimPy_Windows.zip"
+            }
+        }
+    }
+}

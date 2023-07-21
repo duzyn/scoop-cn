@@ -1,0 +1,49 @@
+{
+    "version": "19.19.0.0.0",
+    "description": "Connect to a local or remote Oracle Database for development and production deployment.",
+    "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.oracle.com/downloads/licenses/instant-client-lic.html"
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1919000/instantclient-basic-windows.x64-19.19.0.0.0dbru.zip",
+            "hash": "02b4698e9bda287539aeec54e90464e492e4acfb7eda9a33c7eb6db525c69b3c",
+            "env_set": {
+                "OCI_LIB64": "$dir",
+                "TNS_ADMIN": "$dir\\network\\admin"
+            }
+        },
+        "32bit": {
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1919000/instantclient-basic-nt-19.19.0.0.0dbru.zip",
+            "hash": "7d888048e8a337ccdd423798bf5fbfcd5b31c2c223cb59ffbd8b46e500f09741",
+            "env_set": {
+                "OCI_LIB32": "$dir",
+                "TNS_ADMIN": "$dir\\network\\admin"
+            }
+        }
+    },
+    "extract_dir": "instantclient_19_19",
+    "env_add_path": ".",
+    "persist": "network\\admin",
+    "checkver": {
+        "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+        "url": "https://www.oracle.com/database/technologies/instant-client/microsoft-windows-32-downloads.html",
+        "regex": "Version (19[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-windows.x64-$versiondbru.zip"
+            },
+            "32bit": {
+                "url": "https://download.oracle.com/otn_software/nt/instantclient/$cleanVersion/instantclient-basic-nt-$versiondbru.zip"
+            }
+        },
+        "extract_dir": "instantclient_$majorVersion_$minorVersion"
+    }
+}

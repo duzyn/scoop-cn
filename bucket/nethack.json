@@ -1,0 +1,31 @@
+{
+    "version": "3.6.7",
+    "description": "Single player rogue-like videogame",
+    "homepage": "https://www.nethack.org",
+    "license": "NGPL",
+    "url": "https://www.nethack.org/download/3.6.7/nethack-367-win-x86.zip",
+    "hash": "eed14e4a8f2cdc5bed6d220602b1649bcf9f89c3916330b298ef947d2539cb69",
+    "post_install": "nethack --showpaths",
+    "bin": "NetHack.exe",
+    "shortcuts": [
+        [
+            "NetHackW.exe",
+            "NetHack"
+        ],
+        [
+            "Guidebook.txt",
+            "NetHack Guidebook"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/NetHack/NetHack",
+        "regex": "Release build of NetHack ([\\d\\.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.nethack.org/download/$version/nethack-$cleanVersion-win-x86.zip",
+        "hash": {
+            "url": "$url.sha256sum",
+            "regex": "\\n$sha256"
+        }
+    }
+}

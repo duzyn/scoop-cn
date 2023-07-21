@@ -1,0 +1,28 @@
+{
+    "version": "1.4.170",
+    "description": "Offline build planner for Path of Exile",
+    "homepage": "https://github.com/Openarl/PathOfBuilding",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/Openarl/PathOfBuilding/releases/download/v1.4.170/PathOfBuilding-1.4.170.zip",
+    "hash": "95e5aef339b95b2a048d17763564b4cfda4f8e752a6798a0438427e76bdd712f",
+    "pre_install": [
+        "if(!(Test-Path \"$dir\\Settings.xml\")) {",
+        "    Set-Content \"$dir\\Settings.xml\" -Value '<?xml version=\"1.0\" encoding=\"UTF-8\"?><PathOfBuilding></PathOfBuilding>' -Encoding ascii",
+        "}"
+    ],
+    "bin": "Path of Building.exe",
+    "shortcuts": [
+        [
+            "Path of Building.exe",
+            "Path of Building"
+        ]
+    ],
+    "persist": [
+        "Builds",
+        "Settings.xml"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Openarl/PathOfBuilding/releases/download/v$version/PathOfBuilding-$version.zip"
+    }
+}

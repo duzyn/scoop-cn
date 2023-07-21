@@ -1,0 +1,22 @@
+{
+    "version": "2023.1",
+    "description": "Level editor for Quake-based games",
+    "homepage": "https://kristianduske.com/trenchbroom/",
+    "license": "GPL-3.0-or-later",
+    "depends": "scoop-cn/vcredist2015",
+    "url": "https://ghproxy.com/https://github.com/kduske/TrenchBroom/releases/download/v2023.1/TrenchBroom-Win32-v2023.1-Release.7z",
+    "hash": "ef092e85a32be7c38ad6be8f4a079c32ba74b11c88d0875f8a696531e1dacaff",
+    "bin": "TrenchBroom.exe",
+    "shortcuts": [
+        [
+            "TrenchBroom.exe",
+            "TrenchBroom"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/kduske/TrenchBroom"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/kduske/TrenchBroom/releases/download/v$version/TrenchBroom-Win32-v$version-Release.7z"
+    }
+}

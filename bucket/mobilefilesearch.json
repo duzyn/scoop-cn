@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/mobile_device_file_search.html",
+    "checkver": "MobileFileSearch v(\\d+\\.\\d\\d)",
+    "version": "1.46",
+    "license": "freeware",
+    "description": "MobileFileSearch is a tool for Windows that allows you to search files inside a mobile device (Smartphone or Tablet) plugged to the USB port on your computer, with Media Transfer Protocol (MTP). You can search files by their size, their created time, their modified time, or their name (using wildcard). After finding the files on your Smartphone / Tablet, you can optionally delete them, copy them to a folder on your computer, or export the files list to csv/tab-delimited/html/xml/JSON file. MobileFileSearch also allows you to activate the search from command-line and then export the result to a file, or copy the found files to the desired folder on your computer.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/mobilefilesearch-x64.zip",
+            "hash": "0062b1a5b3ee428025ab50548b4d22919d078416be43df2fe140bfdb71c7c740"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/mobilefilesearch.zip",
+            "hash": "d913e2cfa54f1e16fa1a30772675eaf5427b8a2c58b674490d3e37cf8429f824"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/mobilefilesearch-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/mobilefilesearch.zip"
+            }
+        }
+    },
+    "bin": "MobileFileSearch.exe",
+    "shortcuts": [
+        [
+            "MobileFileSearch.exe",
+            "NirSoft\\MobileFileSearch - Search files inside a mobile device"
+        ]
+    ]
+}

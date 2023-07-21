@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/event_log_channels_view.html",
+    "checkver": "EventLogChannelsView v(\\d+\\.\\d\\d)",
+    "version": "1.37",
+    "license": "freeware",
+    "description": "EventLogChannelsView is a simple tool for Windows 10/8/7/Vista that shows the list of all event log channels on your system, including the channel name, event log filename, enabled/disabled status, current number of events in the channel, and more... It also allows you to easily make some actions on multiple channels at once: enable/disable channels, set their maximum file size, and clear all events stored in the channels.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/eventlogchannelsview-x64.zip",
+            "hash": "ad4e6b75ff4bad66464a8c3a356a16f8299966550d9ff3bbb488d46f56040f8f"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/eventlogchannelsview.zip",
+            "hash": "7a4ed3f913a960f5b0808d1703f19428766f1863caa99cc87359c64a9db4c548"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/eventlogchannelsview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/eventlogchannelsview.zip"
+            }
+        }
+    },
+    "bin": "EventLogChannelsView.exe",
+    "shortcuts": [
+        [
+            "EventLogChannelsView.exe",
+            "NirSoft\\EventLogChannelsView - View,Disable,Enable Event Log Channels"
+        ]
+    ]
+}

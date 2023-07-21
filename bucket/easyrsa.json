@@ -1,0 +1,51 @@
+{
+    "version": "3.1.5",
+    "description": "A CLI utility to build and manage a PKI CA",
+    "homepage": "https://openvpn.net/easyrsa.html",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.5/EasyRSA-3.1.5-win64.zip",
+            "hash": "69795a968918d7f27036ffcbb39bae901b0f5f9a177b0e332ef635d969c7853d"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/OpenVPN/easy-rsa/releases/download/v3.1.5/EasyRSA-3.1.5-win32.zip",
+            "hash": "7c03074c58058ab0e9b51fa0bf5a8521f6ed55d7fd2bd8d09a8922e920854875"
+        }
+    },
+    "extract_dir": "EasyRSA-3.1.5",
+    "post_install": [
+        "@\"",
+        "setup_path=\"$($dir -replace '\\\\', '/')\"",
+        "export EASYRSA=\"`${setup_path}\"",
+        "export EASYRSA_PKI=\"`${setup_path}/keys/pki\"",
+        "export PATH=\"`${setup_path};`${setup_path}/bin;`${PATH}\"",
+        "export HOME=\"`${setup_path}\"",
+        "export ENV=\"/disable-env\"",
+        "`${setup_path}/easyrsa $*",
+        "\"@ | Out-File \"$dir\\easyrsa-wrapper.sh\" -Encoding Ascii",
+        "if (!(Test-Path \"$dir\\keys\\pki\")) { easyrsa init-pki }"
+    ],
+    "bin": [
+        [
+            "bin\\sh.exe",
+            "easyrsa",
+            "$dir\\easyrsa-wrapper.sh"
+        ]
+    ],
+    "persist": "keys",
+    "checkver": {
+        "github": "https://github.com/OpenVPN/easy-rsa"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/OpenVPN/easy-rsa/releases/download/v$version/EasyRSA-$version-win32.zip"
+            }
+        },
+        "extract_dir": "EasyRSA-$version"
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "version": "1.61",
+    "description": "An advanced physical memory usage analysis utility that presents usage information in different ways on its several different tabs.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/rammap",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/RAMMap.zip",
+    "hash": "691fa6a7e43babc26e37f9d65a74e7e1ea17eb3d4440141aa7eab6cd5b4c39a9",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "RAMMap64.exe",
+                    "RAMMap"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "RAMMap64.exe",
+                    "scoop-cn/RAMMap",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "RAMMap.exe",
+            "shortcuts": [
+                [
+                    "RAMMap.exe",
+                    "scoop-cn/RAMMap",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "RAMMap64a.exe",
+                    "RAMMap"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "RAMMap64a.exe",
+                    "scoop-cn/RAMMap",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/rammap.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/RAMMap.zip"
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "version": "1.3",
+    "description": "Parametric/graphic equalizer",
+    "homepage": "https://sourceforge.net/projects/equalizerapo/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.3/EqualizerAPO64-1.3.exe#/setup.exe",
+            "hash": "sha1:611c909d096ff7a70659abf93fcd1a138076fae6"
+        },
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.3/EqualizerAPO32-1.3.exe#/setup.exe",
+            "hash": "sha1:75c3f1cd2c8ac51cbbe62d146b2862412a29f4a2"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    error \"Administrator rights are required to install $app.\"",
+            "    break",
+            "}",
+            "",
+            "Start-Job {",
+            "    while ($configurator_process -eq $null) {",
+            "        Start-Sleep -Milliseconds 250",
+            "        $configurator_process = Get-Process | Where-Object { $_.name -eq 'Configurator' }",
+            "    }",
+            "",
+            "    $configurator_process | ForEach-Object { Stop-Process -Id $_.Id }",
+            "} | Out-Null",
+            "",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$Env:ProgramFiles\\EqualizerAPO\\Uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://sourceforge.net/projects/equalizerapo/files/",
+        "regex": "equalizerapo/files/([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO64-$version.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO32-$version.exe#/setup.exe"
+            }
+        }
+    }
+}

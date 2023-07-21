@@ -1,0 +1,59 @@
+{
+    "version": "97.0",
+    "description": "A free physics sandbox game, capable of simulating many interactions",
+    "homepage": "https://powdertoy.co.uk/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "32bit": {
+            "url": "https://powdertoy.co.uk/Download/powder-win32.zip",
+            "hash": "0f473f169fd291e47d625cd31ff55744f8be6f054d7c7137d94bd5357b771bed",
+            "bin": [
+                [
+                    "Powder32.exe",
+                    "Powder"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Powder32.exe",
+                    "The Powder Toy"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": "https://powdertoy.co.uk/Download/powder.zip",
+            "hash": "1a74d3b26d011e3bc1b59a242faf4907f95a1827689c54992af71c8923b1058c",
+            "bin": "Powder.exe",
+            "shortcuts": [
+                [
+                    "Powder.exe",
+                    "The Powder Toy"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$dir\\powder.pref\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "persist": [
+        "Saves",
+        "powder.pref"
+    ],
+    "checkver": {
+        "url": "https://powdertoy.co.uk/",
+        "regex": "(?<build>[\\d\\.]+) \\|",
+        "replace": "${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://powdertoy.co.uk/Download/powder-win32.zip"
+            },
+            "64bit": {
+                "url": "https://powdertoy.co.uk/Download/powder.zip"
+            }
+        }
+    }
+}

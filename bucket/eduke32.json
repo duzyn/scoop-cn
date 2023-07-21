@@ -1,0 +1,63 @@
+{
+    "version": "20230703-10322-77e6bb66f",
+    "description": "Modern source port for Duke Nukem 3D",
+    "homepage": "https://www.eduke32.com/",
+    "license": "http://www.eduke32.com/buildlic.txt",
+    "notes": [
+        "Place GRP and RTS files (game data) in:",
+        "",
+        "    $persist_dir\\data",
+        "",
+        "Place mods, music packs, and other files to auto-load in:",
+        "",
+        "    $persist_dir\\autoload"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://dukeworld.com/eduke32/synthesis/20230703-10322-77e6bb66f/eduke32_win32_20230703-10322-77e6bb66f.7z",
+            "hash": "51412e5a2986bd5587a4e7beea6b9ca496f76fd85974c4fe63db223658ef3fc0"
+        },
+        "64bit": {
+            "url": "https://dukeworld.com/eduke32/synthesis/20230703-10322-77e6bb66f/eduke32_win64_20230703-10322-77e6bb66f.7z",
+            "hash": "4eeef9ba00855562254c9ff67114ce983f4c1b5cb7e4277ef14a2cb325d00d93"
+        }
+    },
+    "pre_install": [
+        "New-Item -Path $dir -Name eduke32.cfg -ItemType File -ErrorAction Ignore | Out-Null",
+        "New-Item -Path $dir -Name settings.cfg -ItemType File -ErrorAction Ignore | Out-Null"
+    ],
+    "bin": [
+        [
+            "eduke32.exe",
+            "eduke32",
+            "-j $persist_dir\\data"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "eduke32.exe",
+            "EDuke32",
+            "-j data"
+        ]
+    ],
+    "persist": [
+        "autoload",
+        "data",
+        "eduke32.cfg",
+        "settings.cfg"
+    ],
+    "checkver": {
+        "url": "https://dukeworld.com/eduke32/synthesis/",
+        "regex": "<strong>(\\d{8}-\\d{4,}-[a-z0-9]{9})</strong>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win32_$version.7z"
+            },
+            "64bit": {
+                "url": "https://dukeworld.com/eduke32/synthesis/$version/eduke32_win64_$version.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "version": "1.2.2",
+    "description": "Terminal-based typing test.",
+    "homepage": "https://github.com/max-niederman/ttyper",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v1.2.2/ttyper-x86_64-pc-windows-msvc.zip",
+            "hash": "bdc9714aef937126002176eca573c71075ef2eecefa934f76c5fde91ee42a67a"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v1.2.2/ttyper-i686-pc-windows-msvc.zip",
+            "hash": "61e3ba25f52c5ccb40cab4d0ecc9dea7cc653b98f43365eb97c291c8cb856d67"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v1.2.2/ttyper-aarch64-pc-windows-msvc.zip",
+            "hash": "82540c51308a99a2f2fc4bdc3267a2a0b6f6b32d243e5d83b430e64ca522889d"
+        }
+    },
+    "bin": "ttyper.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/338940591/releases",
+        "jsonpath": "$.[0].tag_name",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v$version/ttyper-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v$version/ttyper-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/max-niederman/ttyper/releases/download/v$version/ttyper-aarch64-pc-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

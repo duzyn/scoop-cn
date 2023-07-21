@@ -1,0 +1,45 @@
+{
+    "version": "2.0",
+    "description": "Windows CPU Stress utility.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/cpustres",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/CPUSTRES.zip",
+    "hash": "f1a2470238904167a909850d9ba09bba62abcc82ef1af30be4a890f4d81110c7",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "CPUSTRES64.exe",
+                    "CPUSTRES"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "CPUSTRES64.exe",
+                    "scoop-cn/CPU Stress",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "CPUSTRES.exe",
+            "shortcuts": [
+                [
+                    "CPUSTRES.exe",
+                    "scoop-cn/CPU Stress",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/cpustres.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/CPUSTRES.zip"
+    }
+}

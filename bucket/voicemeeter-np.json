@@ -1,0 +1,31 @@
+{
+    "version": "1.0.8.8",
+    "description": "Audio mixer application endowed with virtual audio device (standard version)",
+    "homepage": "https://vb-audio.com/Voicemeeter/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://vb-audio.com/Services/licensing.htm"
+    },
+    "notes": "Free for non-professional use only.",
+    "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup.exe#/setup.exe",
+    "hash": "017599a9b7ddc4b7cb519c4ee39412693e0ea4bb489bae78894bf51850cfcbfe",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-i', '-h') -Verb RunAs"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-u', '-h') -Verb RunAs"
+        ]
+    },
+    "checkver": {
+        "url": "https://vb-audio.com/Voicemeeter/index.htm",
+        "regex": "Voicemeeter ([\\d.]+) \\(EXE file\\)"
+    },
+    "autoupdate": {
+        "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup.exe#/setup.exe"
+    }
+}

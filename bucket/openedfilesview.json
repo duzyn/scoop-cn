@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/opened_files_view.html",
+    "checkver": "OpenedFilesView v(\\d+\\.\\d\\d)",
+    "version": "1.87",
+    "license": "freeware",
+    "description": "OpenedFilesView displays the list of all opened files on your system. For each opened file, additional information is displayed: handle value, read/write/delete access, file postion, the process that opened the file, and more... Optionally, you can also close one or more opened files, or close the process that opened these files. This utility is especially useful if you try to delete/move/open a file and you get one of the following error messages: * Cannot delete [filename]: There has been a sharing violation. The source or destination file may be in use. * Cannot delete [filename]: It is being used by another person or program. Close any programs that might be using the file and try again. When you get one of these error messages, OpenedFilesView will show you which process lock your file. Closing the right process will solve this problem. optionally, you can also release the file by closing the handle from OpenedFilesView utility.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/ofview-x64.zip",
+            "hash": "1cd0a58bfeecb1cbcf5d0311cd3bb830619d443a48cab77801544a5f67af890c"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/ofview.zip",
+            "hash": "ded4d8b2718ed81e521881cfa213b343df7f465181f7b1e8de3cbe3bf4af0ef6"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/ofview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/ofview.zip"
+            }
+        }
+    },
+    "bin": "OpenedFilesView.exe",
+    "shortcuts": [
+        [
+            "OpenedFilesView.exe",
+            "NirSoft\\OpenedFilesView - Lists opened files on your system"
+        ]
+    ]
+}

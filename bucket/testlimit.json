@@ -1,0 +1,31 @@
+{
+    "version": "5.24",
+    "description": "Windows Stress test utility.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/testlimit",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Testlimit.zip",
+    "hash": "b29ed0ad273f2399418f14ec40ede0ef247f0b4e0b07f88e78c50317d8df457d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Testlimit64.exe",
+                    "Testlimit"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Testlimit.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/testlimit.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Testlimit.zip"
+    }
+}

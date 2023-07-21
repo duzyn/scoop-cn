@@ -1,0 +1,27 @@
+{
+    "version": "0.15.2",
+    "description": "CLIs for working with container registries",
+    "homepage": "https://github.com/google/go-containerregistry",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/google/go-containerregistry/releases/download/v0.15.2/go-containerregistry_Windows_x86_64.tar.gz",
+            "hash": "d72e363994e226dd82ee87fcc5ea9cc32da48857b29572dfebe06f352d98d776"
+        }
+    },
+    "bin": [
+        "crane.exe",
+        "gcrane.exe"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/google/go-containerregistry/releases/download/v$version/go-containerregistry_Windows_x86_64.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

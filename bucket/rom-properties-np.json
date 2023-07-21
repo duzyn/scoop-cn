@@ -1,0 +1,56 @@
+{
+    "version": "2.2",
+    "description": "This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.",
+    "homepage": "https://github.com/GerbilSoft/rom-properties",
+    "license": "GPL-2.0",
+    "url": "https://ghproxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v2.2/rom-properties_2.2-windows.zip",
+    "hash": "2e84bcedf4d9abe4748e6f807affbaddd7f3f8326475a385c68154e941b67e14",
+    "pre_install": "if (!(is_admin)) { error \"Administrator rights are required to install $app\"; break }",
+    "installer": {
+        "script": [
+            "if ($architecture -eq '64bit') {",
+            "    regsvr32 /s \"$dir\\amd64\\rom-properties.dll\"",
+            "}",
+            "regsvr32 /s \"$dir\\i386\\rom-properties.dll\"",
+            "taskkill /f /im explorer.exe | Out-Null",
+            "Start-Sleep -Seconds 1.5",
+            "explorer"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "rpcli.exe",
+                "amd64/rp-download.exe"
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "rpcli.exe",
+                "i386/rp-download.exe"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "rp-config.exe",
+            "ROM Properties Page Configuration"
+        ]
+    ],
+    "pre_uninstall": "if (!(is_admin)) { error \"Administrator rights are required to uninstall $app\"; break }",
+    "uninstaller": {
+        "script": [
+            "if ($architecture -eq '64bit') {",
+            "   regsvr32 /u /s \"$dir\\amd64\\rom-properties.dll\"",
+            "}",
+            "regsvr32 /u /s \"$dir\\i386\\rom-properties.dll\"",
+            "taskkill /f /im explorer.exe | Out-Null",
+            "Start-Sleep -Seconds 1.5",
+            "explorer"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v$version/rom-properties_$version-windows.zip"
+    }
+}

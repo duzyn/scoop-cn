@@ -1,0 +1,25 @@
+{
+    "version": "2.2.0.1",
+    "description": "Cross-platform 2D CAD program.",
+    "homepage": "https://librecad.org/",
+    "license": "GPL-2.0-only",
+    "url": "https://ghproxy.com/https://github.com/LibreCAD/LibreCAD/releases/download/2.2.0.1/LibreCAD-Installer-2.2.0.1.exe#/dl.7z",
+    "hash": "f1520db7a6ef13928780d42cb2dc6dd74c88f7f6c39a7774efc83b79d52abd5d",
+    "bin": "LibreCAD.exe",
+    "shortcuts": [
+        [
+            "LibreCAD.exe",
+            "LibreCAD"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/LibreCAD/LibreCAD/"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/LibreCAD/LibreCAD/releases/download/$version/LibreCAD-Installer-$version.exe#/dl.7z",
+        "hash": {
+            "url": "https://sourceforge.net/projects/librecad/files/Windows/$version",
+            "regex": "$basename\":.+?\"sha1\":\\s\"$sha1"
+        }
+    }
+}

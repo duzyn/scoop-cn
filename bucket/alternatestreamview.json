@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/alternate_data_streams.html",
+    "checkver": "AlternateStreamView v(\\d+\\.\\d\\d)",
+    "version": "1.58",
+    "license": "freeware",
+    "description": "AlternateStreamView is a small utility that allows you to scan your NTFS drive, and find all hidden alternate streams stored in the file system. After scanning and finding the alternate streams, you can extract these streams into the specified folder, delete unwanted streams, or save the streams list into text/html/csv/xml file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/alternatestreamview-x64.zip",
+            "hash": "ad1f0edb2202ec1a736d9266b18b241eac5542c350578a3a8cdb4dd8b14ff37d"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/alternatestreamview.zip",
+            "hash": "6a4600134b0b3f641b5b2694315c32db71f11b2d22aaeac027ae55101033d0b1"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/alternatestreamview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/alternatestreamview.zip"
+            }
+        }
+    },
+    "bin": "AlternateStreamView.exe",
+    "shortcuts": [
+        [
+            "AlternateStreamView.exe",
+            "NirSoft\\AlternateStreamView - Scan and find alternate data streams"
+        ]
+    ]
+}

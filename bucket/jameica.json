@@ -1,0 +1,61 @@
+{
+    "version": "2.10.4",
+    "description": "A free runtime environment for Java applications that can be implemented as plugins.",
+    "homepage": "https://www.willuhn.de/products/jameica/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-win64-2.10.4.zip",
+            "hash": "sha1:26bd054cec60eb6007dbf86f452cf6289d84f76d",
+            "bin": [
+                "jameica-win64.exe",
+                [
+                    "jameica-win64.exe",
+                    "jameica"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "jameica-win64.exe",
+                    "Jameica"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-win32-2.10.4.zip",
+            "hash": "sha1:3bd1778d13fbf9ae0b990b633be126b14e7c12cd",
+            "bin": [
+                "jameica-win32.exe",
+                [
+                    "jameica-win32.exe",
+                    "jameica"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "jameica-win32.exe",
+                    "Jameica"
+                ]
+            ]
+        }
+    },
+    "extract_dir": "jameica",
+    "persist": "plugins",
+    "checkver": {
+        "url": "https://www.willuhn.de/products/jameica/download.php",
+        "regex": "jameica-win64-([\\d.]+).zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-win64-$version.zip"
+            },
+            "32bit": {
+                "url": "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-win32-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.SHA"
+        }
+    }
+}

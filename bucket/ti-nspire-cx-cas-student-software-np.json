@@ -1,0 +1,29 @@
+{
+    "version": "6.0.3.374",
+    "description": "Powerful computer software with a Computer Algebra System.",
+    "homepage": "https://education.ti.com/en/software/details/en/36BE84F974E940C78502AA47492887AB/ti-nspirecxcas_pc_full",
+    "license": "Proprietary",
+    "url": "https://education.ti.com/download/en/ed-tech/36BE84F974E940C78502AA47492887AB/74CEA01C872240E4B944DEC82B26DCEE/TINspireCXCASStudentSoftware-6.0.3.374.msi#/setup.msi_",
+    "hash": "b2ed69c0704babfdb7c4e88e41417efa84c9575f307d0657b90beceac661bc04",
+    "installer": {
+        "script": [
+            "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /qn APPDIR=`\"$dir`\" SHORTCUTDIR=`\"$dir\\shortcuts`\" DesktopFolder=`\"$dir\\shortcuts`\"\" -Verb RunAs",
+            "Remove-Item -Recurse \"$dir\\shortcuts\"",
+            "Remove-Item \"$env:PUBLIC\\Desktop\\TI-Nspire CX CAS Student Software.lnk\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn\" -Verb RunAs"
+    },
+    "bin": "TI-Nspire CX CAS Student Software\\TI-Nspire CX CAS Student Software.exe",
+    "shortcuts": [
+        [
+            "TI-Nspire CX CAS Student Software\\TI-Nspire CX CAS Student Software.exe",
+            "TI-Nspire CX CAS Student Software"
+        ]
+    ],
+    "checkver": "ed-tech/(?<path>[\\w/]+)/TINspireCXCASStudentSoftware-(?<version>[\\w.]+)\\.msi",
+    "autoupdate": {
+        "url": "https://education.ti.com/download/en/ed-tech/$matchPath/TINspireCXCASStudentSoftware-$matchVersion.msi#/setup.msi_"
+    }
+}

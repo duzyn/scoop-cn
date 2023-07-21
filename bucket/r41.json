@@ -1,0 +1,78 @@
+{
+    "version": "4.1.3",
+    "description": "A free software environment for statistical computing and graphics.",
+    "homepage": "https://www.r-project.org",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "For source packages installation, please install 'rtools40'.",
+        "",
+        "You'll need to type 'r.exe' to run R, because in Powershell 'r' runs the last command. Alternatively 'rterm' can be used to start the interactive R terminal session.",
+        "",
+        "You can remove Powershell's 'r' command with:",
+        "    rm alias:\\r",
+        "",
+        "... but this only affects your current session: if you'd like to remove it for all future sessions you need to add the command above to your Powershell profile.",
+        "",
+        "Annoying, right?! You might want to check out Pshazz (scoop install pshazz)--this has a plugin to remove some crazy aliases from Powershell, as well as many other improvements."
+    ],
+    "url": "https://cloud.r-project.org/bin/windows/base/old/4.1.3/R-4.1.3-win.exe",
+    "hash": "79d1afdc3ca50fe3ca8510939b691aeb231e0cfebfbb8c26b1f0e1f09a7ab87c",
+    "innosetup": true,
+    "architecture": {
+        "64bit": {
+            "pre_install": "Rename-Item \"$dir\\bin\\R,2.exe\" 'R.exe'",
+            "bin": [
+                "bin\\x64\\R.exe",
+                "bin\\x64\\Rcmd.exe",
+                "bin\\x64\\Rgui.exe",
+                "bin\\x64\\Rscript.exe",
+                "bin\\x64\\Rterm.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bin\\x64\\Rgui.exe",
+                    "R 4.1.3"
+                ]
+            ]
+        },
+        "32bit": {
+            "pre_install": "Rename-Item \"$dir\\bin\\R,1.exe\" 'R.exe'",
+            "bin": [
+                "bin\\i386\\R.exe",
+                "bin\\i386\\Rcmd.exe",
+                "bin\\i386\\Rgui.exe",
+                "bin\\i386\\Rscript.exe",
+                "bin\\i386\\Rterm.exe"
+            ],
+            "shortcuts": [
+                [
+                    "bin\\i386\\Rgui.exe",
+                    "R 4.1.3"
+                ]
+            ]
+        }
+    },
+    "persist": "site-library",
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\bin\\R,*.exe\" -Force",
+            "Copy-Item \"$dir\\bin\\R.exe\" \"$dir\\bin\\Rscript.exe\"",
+            "if (Test-Path (appdir 'rtools40' $global)) {",
+            "   $renvloc = \"$dir\\etc\\Renviron.site\"",
+            "   $rtoolsloc = versiondir 'rtools40' (Select-CurrentVersion 'rtools40' $global) $global",
+            "   if (Test-Path $renvloc) {",
+            "       $renv = Get-Content $renvloc -Encoding ASCII",
+            "   } else {",
+            "       $renv = @()",
+            "   }",
+            "   $rtoolspath = \"$rtoolsloc\\usr\\bin\"",
+            "   if ($renv -cmatch 'PATH=') {",
+            "       $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+            "   } else {",
+            "       $renv += \"`r`nPATH=\", '\"', $rtoolspath, ';${PATH}\"' -join ''",
+            "   }",
+            "   $renv | Set-Content $renvloc -Encoding ASCII",
+            "}"
+        ]
+    }
+}

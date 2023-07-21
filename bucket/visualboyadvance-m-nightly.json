@@ -1,0 +1,54 @@
+{
+    "version": "nightly",
+    "description": "Community-maintained, improved version of the VisualBoyAdvance Game Boy emulator (nightly)",
+    "homepage": "https://vba-m.com",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://nightly.vba-m.com/visualboyadvance-m-Win-x86_32.zip"
+        },
+        "64bit": {
+            "url": "https://nightly.vba-m.com/visualboyadvance-m-Win-x86_64.zip"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\vbam.ini\")) {",
+        "   New-Item \"$dir\\vbam.ini\" -Type File | Out-Null",
+        "   Set-Content \"$dir\\vbam.ini\" '[General]'",
+        "   Add-Content \"$dir\\vbam.ini\" 'OnlineUpdates=never'",
+        "   'Battery', 'Recording', 'Screenshot', 'State' | ForEach-Object {",
+        "   Add-Content -Path \"$dir\\vbam.ini\" -Value $_`Dir`=$_ }",
+        "}"
+    ],
+    "bin": [
+        [
+            "visualboyadvance-m.exe",
+            "visualboyadvance-m-nightly"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "visualboyadvance-m.exe",
+            "VisualBoyAdvance-M (nightly)"
+        ]
+    ],
+    "persist": [
+        "Battery",
+        "Recording",
+        "Screenshot",
+        "State"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v$version/visualboyadvance-m-Win-32bit.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v$version/visualboyadvance-m-Win-64bit.zip"
+            }
+        }
+    }
+}

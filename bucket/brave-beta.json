@@ -1,0 +1,38 @@
+{
+    "homepage": "https://brave.com",
+    "version": "1.57.18",
+    "description": "Secure, Fast & Private Web Browser with Adblocker (beta release)",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v1.57.18/brave-v1.57.18-win32-x64.zip",
+            "hash": "ba241eb021dc7f145877cd2d827070005643c3ce85a89193ae38e0296a67cca5"
+        }
+    },
+    "bin": [
+        [
+            "brave.exe",
+            "brave-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave Beta"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/brave/brave-browser/releases",
+        "regex": "Beta v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "description": "The IBM Semeru Runtimes are free production-ready binaries built with the OpenJDK class libraries and the Eclipse OpenJ9 JVM",
+    "homepage": "https://developer.ibm.com/languages/java/semeru-runtimes/",
+    "version": "8u372-b07-0.38.0",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0,EPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u372-b07_openj9-0.38.0/ibm-semeru-open-jdk_x64_windows_8u372b07_openj9-0.38.0.zip",
+            "hash": "7f741e8545633ad7bf297d680258f04e4f25f592a8c328ecf5a1a5bf76d1cc77"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u372-b07_openj9-0.38.0/ibm-semeru-open-jdk_x86-32_windows_8u372b07_openj9-0.38.0.zip",
+            "hash": "0994a12da9de6603cc8ed68f3da5502895795d02131e7baeb3d46605272c5664"
+        }
+    },
+    "extract_dir": "jdk8u372-b07",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/ibmruntimes/semeru8-binaries",
+        "regex": "(?<tag>jdk(?<major>[\\d]+)(?<update>u[\\d]+)-(?<build>b[\\d]+)(?<patch>[\\d.]*)(?:(?:_openj9?)(?<jvmver>-[\\d.]+))?)",
+        "replace": "${major}${update}-${build}${patch}${jvmver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru8-binaries/releases/download/$matchTag/ibm-semeru-open-jdk_x64_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru8-binaries/releases/download/$matchTag/ibm-semeru-open-jdk_x86-32_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        },
+        "extract_dir": "jdk$matchMajor$matchUpdate-$matchBuild"
+    }
+}

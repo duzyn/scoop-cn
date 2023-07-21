@@ -1,0 +1,83 @@
+{
+    "version": "0.95.1",
+    "description": "Conservative Quake source port for singleplayer gameplay",
+    "homepage": "http://quakespasm.sourceforge.net/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place game data files (such as pak0.pak and pak1.pak) in:",
+        "",
+        "- Quake:",
+        "    $persist_dir\\id1\\",
+        "",
+        "- Quake Mission Pack 1 - Scourge of Armagon:",
+        "    $persist_dir\\hipnotic\\",
+        "",
+        "- Quake Mission Pack 2 - Dissolution of Eternity:",
+        "    $persist_dir\\rogue\\",
+        "",
+        "- Quake Mission Pack 3 - Abyss of Pandemonium:",
+        "    $persist_dir\\abyss\\"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://downloads.sourceforge.net/project/quakespasm/Windows/quakespasm-0.95.1_windows.zip",
+            "hash": "858044ca66711c90d9c79442138cc65e3f52af59311d29a9fbcd389ec53db528",
+            "extract_dir": "quakespasm-0.95.1_windows"
+        },
+        "64bit": {
+            "url": "https://downloads.sourceforge.net/project/quakespasm/Windows/quakespasm-0.95.1_win64.zip",
+            "hash": "a07fd03f2a6fc7f896a938c5026186973f52502194d054ee1dd3f3c271e06ead",
+            "extract_dir": "quakespasm-0.95.1_win64"
+        }
+    },
+    "bin": [
+        [
+            "quakespasm.exe",
+            "quakespasm",
+            "-basedir $persist_dir"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "quakespasm.exe",
+            "QuakeSpasm"
+        ],
+        [
+            "quakespasm.exe",
+            "QuakeSpasm (Scourge of Armagon)",
+            "-game hipnotic"
+        ],
+        [
+            "quakespasm.exe",
+            "QuakeSpasm (Dissolution of Eternity)",
+            "-game rogue"
+        ],
+        [
+            "quakespasm.exe",
+            "QuakeSpasm (Abyss of Pandemonium)",
+            "-game abyss"
+        ]
+    ],
+    "persist": [
+        "id1",
+        "hipnotic",
+        "rogue",
+        "abyss"
+    ],
+    "checkver": {
+        "url": "http://quakespasm.sourceforge.net/download.htm",
+        "regex": "/Windows/quakespasm-(\\d+\\.\\d+\\.\\d+)_windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://downloads.sourceforge.net/project/quakespasm/Windows/quakespasm-$version_windows.zip",
+                "extract_dir": "quakespasm-$version_windows"
+            },
+            "64bit": {
+                "url": "https://downloads.sourceforge.net/project/quakespasm/Windows/quakespasm-$version_win64.zip",
+                "extract_dir": "quakespasm-$version_win64"
+            }
+        }
+    }
+}

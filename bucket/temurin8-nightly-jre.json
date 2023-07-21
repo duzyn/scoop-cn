@@ -1,0 +1,52 @@
+{
+    "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
+    "homepage": "https://adoptium.net",
+    "version": "8.0.382-4.0.202307151215",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u-2023-07-16-12-57-beta/OpenJDK8U-jre_x64_windows_hotspot_2023-07-16-12-57.zip",
+            "hash": "ccef3f1b3ae9c8d6f807a3219613ecd0485b29044ef6a0d7f7668ab683573855"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/adoptium/temurin8-binaries/releases/download/jdk8u-2023-07-16-12-57-beta/OpenJDK8U-jre_x86-32_windows_hotspot_2023-07-16-12-57.zip",
+            "hash": "ee0c66c3a0674f4e0b466a58f22c40a4d1ed573fe4882b85c14e4a8b766203de"
+        }
+    },
+    "extract_to": "tmp",
+    "installer": {
+        "script": [
+            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+            "Remove-Item -Recurse \"$dir\\tmp\""
+        ]
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.adoptium.net/v3/assets/feature_releases/8/ea?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
+        "script": [
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('-beta','')",
+            "$link = (json_path $page $..release_link).replace('%2B', '+')",
+            "$name = json_path $page $..binaries[0].package.name",
+            "Write-Output \"$ver $link $name\""
+        ],
+        "regex": "(?<ver>.*?) https://github.com/(?<link>.*?)/tag/(?<tag>.*?) (?<name>(?<prefix>OpenJDK[\\dU]*-[dejkr]{3})_x64_(?<suffix>.*))",
+        "replace": "${ver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
+            },
+            "32bit": {
+                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        }
+    }
+}

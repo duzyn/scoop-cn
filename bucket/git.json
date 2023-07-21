@@ -1,0 +1,81 @@
+{
+    "version": "2.41.0.3",
+    "description": "Distributed version control system",
+    "homepage": "https://gitforwindows.org",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Set Git Credential Manager Core by running: \"git config --global credential.helper manager\"",
+        "",
+        "To add context menu entries, run '$dir\\install-context.reg'",
+        "",
+        "To create file-associations for .git* and .sh files, run '$dir\\install-file-associations.reg'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/PortableGit-2.41.0.3-64-bit.7z.exe#/dl.7z",
+            "hash": "61c62a2590799bc37d88b51871abb13ff4057b2626b89d6bc11afd58888d11c6"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v2.41.0.windows.3/PortableGit-2.41.0.3-32-bit.7z.exe#/dl.7z",
+            "hash": "49578dd063951c3c8848365461a1da473c7849ac720e681aa10e2ba499e8a64e"
+        }
+    },
+    "post_install": [
+        "'install-context', 'uninstall-context', 'install-file-associations', 'uninstall-file-associations' | ForEach-Object {",
+        "    $reg_file_in  = \"$bucketsdir\\scoop-cn\\scripts\\git\\$_.reg\"",
+        "    $reg_file_out = \"$dir\\$_.reg\"",
+        "    $git_root     = \"$dir\".Replace('\\', '\\\\')",
+        "    if (Test-Path $reg_file_in) {",
+        "        $content = Get-Content $reg_file_in",
+        "        $content = $content.Replace('$git_root', $git_root)",
+        "        if ($global) {",
+        "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "        }",
+        "        Set-Content -Path $reg_file_out -Value $content -Encoding Ascii",
+        "    }",
+        "}"
+    ],
+    "bin": [
+        "bin\\sh.exe",
+        "bin\\bash.exe",
+        "cmd\\git.exe",
+        "cmd\\gitk.exe",
+        "cmd\\git-gui.exe",
+        "cmd\\scalar.exe",
+        "usr\\bin\\tig.exe",
+        "git-bash.exe"
+    ],
+    "shortcuts": [
+        [
+            "git-bash.exe",
+            "Git Bash",
+            "--cd-to-home"
+        ],
+        [
+            "cmd\\git-gui.exe",
+            "Git GUI"
+        ]
+    ],
+    "env_set": {
+        "GIT_INSTALL_ROOT": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/git-for-windows/git/releases/latest",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/v(?<tag>[\\d.]+windows\\.\\d)/PortableGit-([\\d.]+)-64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/PortableGit-$version-64-bit.7z.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/git-for-windows/git/releases/download/v$matchTag/PortableGit-$version-32-bit.7z.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/git-for-windows/git/releases/tag/v$matchTag",
+            "regex": "(?s)$basename.*?$sha256"
+        }
+    }
+}

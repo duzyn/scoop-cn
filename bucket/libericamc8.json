@@ -1,0 +1,29 @@
+{
+    "version": "8.3.0",
+    "description": "Liberica Mission Control",
+    "homepage": "https://bell-sw.com/lmc/",
+    "license": "UPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.bell-sw.com/lmc/8.3.0/bellsoft-lmc8.3.0-windows-amd64.zip",
+            "hash": "e75484aec26f468155ed6e64055a79829c39e67eb2719a5052011110de4e5b75"
+        }
+    },
+    "extract_dir": "lmc8.3.0\\Liberica Mission Control",
+    "shortcuts": [
+        [
+            "jmc.exe",
+            "Liberica Mission Control"
+        ]
+    ],
+    "persist": "configuration",
+    "checkver": "bellsoft-lmc([\\d.]+)-windows-amd64.zip",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.bell-sw.com/lmc/$version/bellsoft-lmc$version-windows-amd64.zip"
+            }
+        },
+        "extract_dir": "lmc$version\\Liberica Mission Control"
+    }
+}

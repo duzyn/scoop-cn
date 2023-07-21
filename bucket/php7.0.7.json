@@ -1,0 +1,30 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "7.0.7",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-7.0.7-Win32-VC14-x64.zip",
+            "hash": "316d9db894e9c94180eb1dc981ed79009093aee8e6d0d6e2cca550529f7f63d1"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-7.0.7-Win32-VC14-x86.zip",
+            "hash": "9dc5ec8021ce0d67f757423030908f66b5472a002be8156c1374594fcfe95843"
+        }
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2019"
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "version": "132",
+    "description": "Multi-system emulator focused on accuracy and preservation",
+    "homepage": "https://ares-emu.net",
+    "license": "ISC",
+    "notes": "Configuration file cannot be persisted, but will be retained during the update",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v132/ares-windows-msvc-x64.zip",
+            "hash": "eb8a6eea23b5b20337083150e713830bc774fa1b4c948b6d89981e78a1e23a56"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v132/ares-windows-msvc-arm64.zip",
+            "hash": "6443527fd3f849ed83e6bda7e9df0c033a14352b8db669923ff7acfb586fb82a"
+        }
+    },
+    "extract_dir": "ares-v132",
+    "post_install": [
+        "if (!(Test-Path \"$persist_dir\\settings.bml.bak\")) {",
+        "   New-Item -ItemType File \"$dir\\settings.bml\" | Out-Null",
+        "   Set-Content \"$dir\\settings.bml\" 'Paths'",
+        "   Add-Content \"$dir\\settings.bml\" \"  Home`:` $persist_dir\\Systems\\\" ",
+        "   'Saves', 'Screenshots', 'Debugging' | ForEach-Object {",
+        "   Add-Content \"$dir\\settings.bml\" \"  $_`:` $persist_dir\\$_\\\" }",
+        "} else {",
+        "   Copy-Item \"$persist_dir\\settings.bml.bak\" \"$dir\\settings.bml\" -Force",
+        "}"
+    ],
+    "bin": "ares.exe",
+    "shortcuts": [
+        [
+            "ares.exe",
+            "ares"
+        ]
+    ],
+    "persist": [
+        "Systems",
+        "Saves",
+        "Screenshots",
+        "Debugging"
+    ],
+    "uninstaller": {
+        "script": [
+            "'settings.bml' | ForEach-Object {",
+            "    Copy-Item \"$dir\\$_\" \"$persist_dir\\$_.bak\" -Force",
+            "}"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/ares-emulator/ares/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-x64.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-arm64.zip"
+            }
+        },
+        "extract_dir": "ares-v$cleanVersion"
+    }
+}

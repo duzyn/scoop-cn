@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/app_compatibility_view.html",
+    "checkver": "AppCompatibilityView v(\\d+\\.\\d\\d)",
+    "version": "1.07",
+    "license": "freeware",
+    "description": "AppCompatibilityView is a simple tool that displays the list of all programs that run with different compatibility settings, stored in the Registry under HKEY_CURRENT_USER\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers and HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers keys. It also allows you to easily modify or delete the compatibility settings of multiple applications at once.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/appcompatibilityview-x64.zip",
+            "hash": "88a1f7112612333ae24705fcf0aad05247bc76ef02941b6ab78be3435edd9caa"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/appcompatibilityview.zip",
+            "hash": "e65a94c898de6dd0aa50886ed40cc18558a9f7d8805d78c6b2256ac9ddc7f054"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/appcompatibilityview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/appcompatibilityview.zip"
+            }
+        }
+    },
+    "bin": "AppCompatibilityView.exe",
+    "shortcuts": [
+        [
+            "AppCompatibilityView.exe",
+            "NirSoft\\AppCompatibilityView - Application Compatibility Viewer"
+        ]
+    ]
+}

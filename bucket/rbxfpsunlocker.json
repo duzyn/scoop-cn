@@ -1,0 +1,33 @@
+{
+    "version": "5.0",
+    "description": "Removes Roblox's default 60 FPS cap",
+    "homepage": "https://github.com/axstin/rbxfpsunlocker",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/axstin/rbxfpsunlocker/releases/download/v5.0/rbxfpsunlocker-x64-hotfix1.zip",
+            "hash": "8d272076d23767fc6d36be4af12ee3c87fe3b9602605f10685cc4d6df643dc25"
+        }
+    },
+    "pre_install": [
+        "# Create settings file if it does not exist",
+        "if (!(Test-Path \"$persist_dir\\settings\" -PathType Leaf)) {",
+        "    (New-Item -Type File \"$persist_dir\\settings\" -Force) | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "rbxfpsunlocker.exe",
+            "Roblox FPS Unlocker"
+        ]
+    ],
+    "persist": "settings",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/axstin/rbxfpsunlocker/releases/download/v$version/rbxfpsunlocker-x64-hotfix1.zip"
+            }
+        }
+    }
+}

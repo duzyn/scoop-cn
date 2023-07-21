@@ -1,0 +1,25 @@
+{
+    "version": "1.15.2",
+    "description": "Small self-contained pure-Go web server with Lua, Markdown, HTTP/2, QUIC, Redis and PostgreSQL support",
+    "homepage": "https://algernon.roboticoverlords.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/xyproto/algernon/releases/download/v1.15.2/algernon-1.15.2-windows_x86_64_static.zip",
+            "hash": "3892d1ec340c2e2a967c206bd49a55ecb5d561f97e46169316e0b2087a7ce4d7",
+            "extract_dir": "algernon-1.15.2-windows_x86_64_static"
+        }
+    },
+    "bin": "algernon.exe",
+    "checkver": {
+        "github": "https://github.com/xyproto/algernon"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/xyproto/algernon/releases/download/v$version/algernon-$version-windows_x86_64_static.zip",
+                "extract_dir": "algernon-$version-windows_x86_64_static"
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "version": "2.2",
+    "description": "A Vulkan-based translation layer for Direct3D 9/10/11",
+    "homepage": "https://github.com/doitsujin/dxvk",
+    "license": "Zlib",
+    "notes": [
+        "",
+        "For installation, copy the corresponding DLL file depending on the architecture (e.g. x32 or x64) and Direct3D version (e.g. D3D9, 10 or 11) that's used by the app, to the directory where the app loads them from.",
+        "",
+        "In most cases, this is the same folder as where the executable (.exe file) is stored, though some games (such as Source-based games) use a sub-folder instead.",
+        "",
+        "In the example given, the sub-folder named 'bin' is used.",
+        "",
+        "Finding other DLL files is usually a good indication of where to copy the DLL file from DXVK.",
+        ""
+    ],
+    "url": "https://ghproxy.com/https://github.com/doitsujin/dxvk/releases/download/v2.2/dxvk-2.2.tar.gz",
+    "hash": "fcbede6da370d138f275ca05bc887f5a562f27cd8bd00f436706a7142cb51630",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/doitsujin/dxvk/releases/download/v$version/dxvk-$version.tar.gz"
+    }
+}

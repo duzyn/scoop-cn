@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/network_latency_view.html",
+    "checkver": "NetworkLatencyView v(\\d+\\.\\d\\d)",
+    "version": "1.75",
+    "license": "freeware",
+    "description": "NetworkLatencyView is a simple tool for Windows that listens to the TCP connections on your system and calculates the network latency (in milliseconds) for every new TCP connection detected on your system. For every IP address, NetworkLatencyView displays up to 10 network latency values, and their average. The latency value calculated by NetworkLatencyView is very similar to the result you get from pinging to the same IP address. NetworkLatencyView also allows you to easily export the latency information to text/csv/tab-delimited/html/xml file, or copy the information to the clipboard and then paste it to Excel or other application.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/networklatencyview-x64.zip",
+            "hash": "17bb451f31e28c89f04b7e7b6d7c09efbb11d28d6ebd7215e89397eb82bf1773"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/networklatencyview.zip",
+            "hash": "bc5089f4035568e1999248e5d907e43bc4488e74b10f0bbc3b546bd8d7fc73b0"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/networklatencyview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/networklatencyview.zip"
+            }
+        }
+    },
+    "bin": "NetworkLatencyView.exe",
+    "shortcuts": [
+        [
+            "NetworkLatencyView.exe",
+            "NirSoft\\NetworkLatencyView - Calculates network latency"
+        ]
+    ]
+}

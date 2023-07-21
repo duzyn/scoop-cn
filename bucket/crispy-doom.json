@@ -1,0 +1,65 @@
+{
+    "version": "6.0",
+    "description": "Faithful enhanced-resolution source port for Doom",
+    "homepage": "https://www.chocolate-doom.org/wiki/index.php/Crispy_Doom",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place WAD files (game data) in:",
+        "",
+        "    $persist_dir\\..\\_doom"
+    ],
+    "url": "https://ghproxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-6.0/crispy-doom-6.0.0-win32.zip",
+    "hash": "e19d56502f8d1d1e105b43ff2463c76c23d65bc2b0698570e41397f0bc509a38",
+    "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
+    "env_set": {
+        "DOOMWADDIR": "$persist_dir\\..\\_doom"
+    },
+    "shortcuts": [
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (Doom 2)",
+            "-iwad doom2.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (The Ultimate Doom)",
+            "-iwad doom.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (The Plutonia Experiment)",
+            "-iwad plutonia.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (TNT Evilution)",
+            "-iwad tnt.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (Freedoom Phase 1)",
+            "-iwad freedoom1.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (Freedoom Phase 2)",
+            "-iwad freedoom2.wad"
+        ],
+        [
+            "crispy-doom.exe",
+            "Crispy Doom (FreeDM)",
+            "-iwad freedm.wad"
+        ],
+        [
+            "crispy-doom-setup.exe",
+            "Setup Crispy Doom"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/fabiangreffrath/crispy-doom",
+        "regex": "/releases/tag/crispy-doom-([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-$version/crispy-doom-$version.0-win32.zip"
+    }
+}

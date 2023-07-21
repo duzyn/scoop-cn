@@ -1,0 +1,39 @@
+{
+    "version": "1.1",
+    "description": "Reports the file index and any hard links (alternate file paths on the same volume) that exist for the specified file.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/findlinks",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/FindLinks.zip",
+    "hash": "90578bc865785e7bc49b1e59e89893816e7256441dfc80f99f58a1200578db3d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "FindLinks64.exe",
+                    "FindLinks"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "FindLinks.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "FindLinks64a.exe",
+                    "FindLinks"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/findlinks.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/FindLinks.zip"
+    }
+}

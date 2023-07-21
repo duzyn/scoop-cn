@@ -1,0 +1,38 @@
+{
+    "version": "0.2.48",
+    "description": "Local Github actions runner.",
+    "homepage": "https://github.com/nektos/act/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v0.2.48/act_Windows_x86_64.zip",
+            "hash": "78bda5bf1d043f2e5489b7b32ea01e93cf47e632743176ee2d15d79ff36e157f"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v0.2.48/act_Windows_i386.zip",
+            "hash": "bd2a625b8b3ea99ff56b24dd0ba7aa37b57d34a517adaf25f3b4e80fb5976b79"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v0.2.48/act_Windows_arm64.zip",
+            "hash": "fdecf6e10b99e945c017469c217cd9bc36c0d423557b6749c30fe9fb3cde6e94"
+        }
+    },
+    "bin": "act.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v$version/act_Windows_x86_64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v$version/act_Windows_i386.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/nektos/act/releases/download/v$version/act_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

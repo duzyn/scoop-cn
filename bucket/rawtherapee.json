@@ -1,0 +1,39 @@
+{
+    "version": "5.9",
+    "description": "Raw image processor",
+    "homepage": "https://rawtherapee.com",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://rawtherapee.com/shared/builds/windows/RawTherapee_5.9_win64.zip",
+            "hash": "dcc02ad33588a509da73e4a093508d795bda42dc5ece66cb6a564979bb204cc5"
+        }
+    },
+    "pre_install": [
+        "Get-ChildItem \"$dir\\RawTherapee*.exe\" | Rename-Item -NewName 'setup.exe'",
+        "Expand-InnoArchive -Path \"$dir\\setup.exe\" -Removal"
+    ],
+    "bin": [
+        "rawtherapee.exe",
+        "rawtherapee-cli.exe"
+    ],
+    "shortcuts": [
+        [
+            "rawtherapee.exe",
+            "RawTherapee"
+        ]
+    ],
+    "checkver": {
+        "github": "https://ghproxy.com/https://github.com/Beep6581/RawTherapee"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://rawtherapee.com/shared/builds/windows/RawTherapee_$version_win64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

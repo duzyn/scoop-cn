@@ -1,0 +1,51 @@
+{
+    "version": "0.5.3",
+    "description": "VPN client",
+    "homepage": "https://www.wireguard.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.wireguard.com/windows-client/wireguard-amd64-0.5.3.msi#/setup.msi_",
+            "hash": "76fcec042c5989c5b816cd32eaed1e5b1c3b998a4b1c9eca55f299e3314ef7e4"
+        },
+        "32bit": {
+            "url": "https://download.wireguard.com/windows-client/wireguard-x86-0.5.3.msi#/setup.msi_",
+            "hash": "ad1af1ae3474ef35de3809979aee98758430881b270e47e89e027b3490791d0d"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    error \"Administrator rights are required to install $app.\"",
+            "    break",
+            "}",
+            "",
+            "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', '/norestart') | Out-Null",
+            "",
+            "while ($wireguard_process -eq $null) {",
+            "    Start-Sleep -Milliseconds 250",
+            "    $wireguard_process = Get-Process | Where-Object { $_.name -eq 'wireguard' }",
+            "}",
+            "",
+            "$wireguard_process | ForEach-Object { Stop-Process -Id $_.Id -Force }"
+        ]
+    },
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn', '/norestart') -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://download.wireguard.com/windows-client/",
+        "regex": "wireguard-amd64-([\\d.]+)\\.msi",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.wireguard.com/windows-client/wireguard-amd64-$version.msi#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://download.wireguard.com/windows-client/wireguard-x86-$version.msi#/setup.msi_"
+            }
+        }
+    }
+}

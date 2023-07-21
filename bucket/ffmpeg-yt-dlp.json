@@ -1,0 +1,59 @@
+{
+    "version": "6.0-28-20230717",
+    "description": "FFMpeg builds of latest release branch with patches necessary for smooth integration with yt-dlp",
+    "homepage": "https://github.com/yt-dlp/FFmpeg-Builds",
+    "license": "MIT",
+    "suggest": {
+        "yt-dlp": "yt-dlp"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2023-07-17-14-12/ffmpeg-n6.0-28-gcedbf27a35-win64-gpl-6.0.zip",
+            "hash": "4fda483f473842cd12543ebe74fd1b3330a703e7555161e34180f1905b091181",
+            "extract_dir": "ffmpeg-n6.0-28-gcedbf27a35-win64-gpl-6.0"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2023-07-17-14-12/ffmpeg-n6.0-28-gcedbf27a35-win32-gpl-6.0.zip",
+            "hash": "f0bdbf021a1f659a19e585a787ccd8ffd545d23ea4cea754f2a8c7d1c301ad66",
+            "extract_dir": "ffmpeg-n6.0-28-gcedbf27a35-win32-gpl-6.0"
+        }
+    },
+    "bin": [
+        "bin\\ffmpeg.exe",
+        "bin\\ffplay.exe",
+        "bin\\ffprobe.exe"
+    ],
+    "checkver": {
+        "script": [
+            "# 32-bit file is either listed above or below the 64-bit one. Therefore we need a checkver script to match it.",
+            "$url = 'https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases'",
+            "$regex_64bit = 'autobuild-(?<buildtime>(?<builddate>\\d{4}-\\d{2}-\\d{2})-\\d{2}-\\d{2})/(?<filename>ffmpeg-n(?<ffmpegver>[\\d.-]+)-\\w+-win64-gpl-[\\d.]+)\\.zip'",
+            "$regex_32bit = $regex_64bit.replace('win64', 'win32')",
+            "$cont = $(Invoke-WebRequest($url)).Content | ConvertFrom-Json",
+            "$file_urls = @()",
+            "$cont[1].assets | ForEach-Object { $file_urls += $_.browser_download_url }",
+            "$file_urls | ForEach-Object {",
+            "    if ($_ -match $regex_64bit) {",
+            "        $ffmpegver = $matches.ffmpegver",
+            "        $buildtime = $matches.buildtime",
+            "        $builddate = $matches.builddate.Replace('-', '')",
+            "        $filename64bit = $matches.filename",
+            "    } elseif ($_ -match $regex_32bit) { $filename32bit = $matches.filename }",
+            "}",
+            "Write-Output $ffmpegver-$builddate $buildtime $filename64bit $filename32bit"
+        ],
+        "regex": "([\\w.-]+) (?<buildtime>[\\w.-]+) (?<filename64bit>[\\w.-]+) (?<filename32bit>[\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename64bit.zip",
+                "extract_dir": "$matchFilename64bit"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/$matchFilename32bit.zip",
+                "extract_dir": "$matchFilename32bit"
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "version": "nightly",
+    "description": "GUI frontend for MAME, the multi-purpose emulation framework",
+    "homepage": "http://www.mameui.info/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "http://www.mameui.info/MAMEUI.7z",
+            "extract_dir": "MAMEUI",
+            "bin": "mameui.exe",
+            "shortcuts": [
+                [
+                    "MAMEUI.exe",
+                    "MAMEUI"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "cfg",
+        "diff",
+        "ini",
+        "inp",
+        "memcard",
+        "nvram",
+        "snap",
+        "sta"
+    ],
+    "checkver": {
+        "regex": "MAMEUI v\\.([\\d]+) Download",
+        "replace": "0.${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://www.mameui.info/MAMEUI.7z"
+            }
+        }
+    }
+}

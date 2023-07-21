@@ -1,0 +1,34 @@
+{
+    "version": "2023-06",
+    "description": "Eclipse Modeling Tools",
+    "homepage": "https://www.eclipse.org",
+    "license": "EPL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "http://download.eclipse.org/technology/epp/downloads/release/2023-06/R/eclipse-modeling-2023-06-R-win32-x86_64.zip",
+            "hash": "sha512:ff0b162702bbbbe864397be1a837e80a9d450cd42e463d84a32dd5a15c6b5aeb8e573f79893b52099d1f6141899d1af7e61a7c6befa44d321372775fad7ed10f"
+        }
+    },
+    "extract_dir": "eclipse",
+    "shortcuts": [
+        [
+            "eclipse.exe",
+            "Eclipse Modeling Tools"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.eclipse.org/technology/epp/downloads/release/release.xml",
+        "xpath": "/packages/present",
+        "regex": "([\\d-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://download.eclipse.org/technology/epp/downloads/release/$version/R/eclipse-modeling-$version-R-win32-x86_64.zip",
+                "hash": {
+                    "url": "$url.sha512"
+                }
+            }
+        }
+    }
+}

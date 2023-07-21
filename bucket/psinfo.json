@@ -1,0 +1,39 @@
+{
+    "version": "1.79",
+    "description": "Obtain information about a system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psinfo",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PsInfo.zip",
+    "hash": "ae5b7395b423901cf3e34ac05d42da5556acad478976a5a0ebef3244c8a9b88c",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsInfo64.exe",
+                    "PsInfo"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "PsInfo.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "PsInfo64a.exe",
+                    "PsInfo"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psinfo.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PsInfo.zip"
+    }
+}

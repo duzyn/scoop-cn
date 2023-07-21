@@ -1,0 +1,34 @@
+{
+    "version": "2.4.0",
+    "description": "Tool for setting the artwork of your Steam library",
+    "homepage": "https://github.com/Tormak9970/Steam-Art-Manager",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/Tormak9970/Steam-Art-Manager/blob/main/LICENSE"
+    },
+    "url": "https://ghproxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v2.4.0/Steam.Art.Manager_2.4.0_x64_en-US.msi.zip",
+    "hash": "88fe6ef51c7376696b9e58f3a961dfab79aad446d050eaebd54bd7856856095d",
+    "pre_install": [
+        "Get-ChildItem \"$dir\\Steam Art Manager_*.msi\" | Select-Object -First 1 | ForEach-Object { Rename-Item $_ \"dl.msi\" }",
+        "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir \"PFiles\\Steam Art Manager\" -Removal | Out-Null"
+    ],
+    "shortcuts": [
+        [
+            "Steam Art Manager.exe",
+            "Steam Art Manager"
+        ]
+    ],
+    "persist": "settings.json",
+    "post_uninstall": [
+        "If ($cmd -eq 'uninstall') {",
+        "  Remove-Item ${env:APPDATA}\\dev.tormak.steam-art-manager\\* -Force -Recurse;",
+        "  Remove-Item ${env:LOCALAPPDATA}\\dev.tormak.steam-art-manager\\* -Force -Recurse",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/Tormak9970/Steam-Art-Manager"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v$version/Steam.Art.Manager_$version_x64_en-US.msi.zip"
+    }
+}

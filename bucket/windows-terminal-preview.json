@@ -1,0 +1,93 @@
+{
+    "version": "1.18.1462.0",
+    "description": "The new Windows Terminal, and the original Windows console host - all in the same place! (Preview version)",
+    "homepage": "https://github.com/microsoft/terminal",
+    "license": "MIT",
+    "notes": "Add Windows Terminal Preview as a context menu option by running `reg import \"$dir\\install-context.reg\"`",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v1.18.1462.0/Microsoft.WindowsTerminalPreview_1.18.1462.0_x64.zip",
+            "hash": "c63e631edbc8211e48ea299a33a5e0acf713f3115258e8594edcc402d2f7a093"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v1.18.1462.0/Microsoft.WindowsTerminalPreview_1.18.1462.0_x86.zip",
+            "hash": "b7d47efa7862800d5cac6cf75d7efe2014ed1d0faac6b381deb85f6f186de915"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v1.18.1462.0/Microsoft.WindowsTerminalPreview_1.18.1462.0_arm64.zip",
+            "hash": "62fd69046caf504c456beb3004cf4e83207d25fd7a03b75d8b2d2a8175630d1d"
+        }
+    },
+    "extract_dir": "terminal-1.18.1462.0",
+    "pre_install": [
+        "# Remove this hint in 2023-12-01",
+        "$settings_path = \"$env:LOCALAPPDATA\\Packages\\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\\LocalState\"",
+        "if (!(Test-Path \"$persist_dir\\settings\") -and (Test-Path $settings_path)) {",
+        "  $current_settings = $dir.Replace($version, 'current') + \"\\settings\"",
+        "  warn \"Portable mode is enabled from version 1.18.1421.0, please migrate the settings manually:\"",
+        "  warn \"Original settings dir: `'$settings_path`'\"",
+        "  warn \"Portable settings dir: `'$current_settings`'\"",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "$winVer = [Environment]::OSVersion.Version",
+            "if (($winver.Major -lt '10') -or ($winVer.Build -lt 19041)) { error 'At least Windows 10 20H1 (build 19041) is required.'; break }",
+            "if (!(Test-Path \"$persist_dir\\.portable\")) { Add-Content \"$dir\\.portable\" '' -Encoding Ascii }"
+        ]
+    },
+    "post_install": [
+        "'install-context', 'uninstall-context' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal-preview\\$_.reg\") {",
+        "        $wtPath = \"$dir\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal-preview\\$_.reg\").Replace('$wt', $wtPath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
+    "bin": [
+        [
+            "WindowsTerminal.exe",
+            "WindowsTerminalPreview"
+        ],
+        [
+            "wt.exe",
+            "wtp"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "WindowsTerminal.exe",
+            "Windows Terminal Preview"
+        ]
+    ],
+    "persist": [
+        ".portable",
+        "settings"
+    ],
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
+    "checkver": {
+        "url": "https://api.github.com/repos/microsoft/terminal/releases",
+        "jsonpath": "$[?(@.prerelease == true)].tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_x86.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/microsoft/terminal/releases/tag/v$version",
+            "regex": "(?s)$basename.*?$sha256"
+        },
+        "extract_dir": "terminal-$version"
+    }
+}

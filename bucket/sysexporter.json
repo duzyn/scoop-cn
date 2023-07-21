@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/sysexp.html",
+    "checkver": "SysExporter v(\\d+\\.\\d\\d)",
+    "version": "1.77",
+    "license": "freeware",
+    "description": "SysExporter utility allows you to grab the data stored in standard list-views, tree-views, list boxes, and combo boxes from almost any application running on your system, and export it to text, HTML or XML file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/sysexp-x64.zip",
+            "hash": "cd808bccb6388b38b9e5a7f1eec92ff8fe90cc23683d8fa98fe19e5132c62e54"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/sysexp.zip",
+            "hash": "7b1e5e8a3a4432d82064fac051ed2415d2a6f243a778142afb89f90bc408f77b"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/sysexp-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/sysexp.zip"
+            }
+        }
+    },
+    "bin": "sysexp.exe",
+    "shortcuts": [
+        [
+            "sysexp.exe",
+            "NirSoft\\SysExporter - Grab data stored in list-views_ list boxes"
+        ]
+    ]
+}

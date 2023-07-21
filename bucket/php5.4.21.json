@@ -1,0 +1,22 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "5.4.21",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-5.4.21-Win32-VC9-x86.zip",
+    "hash": "7a88ccb059098c3cb0c23075512cb9e9ace6e3c60d44ea2f872c0f373b811e7d",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2008"
+    }
+}

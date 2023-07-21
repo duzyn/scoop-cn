@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/network_usage_view.html",
+    "checkver": "NetworkUsageView v(\\d+\\.\\d\\d)",
+    "version": "1.30",
+    "license": "freeware",
+    "description": "NetworkUsageView extracts and displays the network usage information stored in the SRUDB.dat database of Windows 8 and Windows 10. The network usage data is collected every hour by Windows operating systems and includes the following information: The name and description of the service or application, the name and SID of the user, the network adapter, and the total number of bytes sent and received by the specified service/application.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/networkusageview-x64.zip",
+            "hash": "a675ed51675b01f627b0db5cf82d756222defd8148dcb708c5975ae3ee049ff4"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/networkusageview.zip",
+            "hash": "d71658e7472c1b2b0c48d28bc39d9a918f8f911995ea7923aafc687fbbbfa7a1"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/networkusageview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/networkusageview.zip"
+            }
+        }
+    },
+    "bin": "NetworkUsageView.exe",
+    "shortcuts": [
+        [
+            "NetworkUsageView.exe",
+            "NirSoft\\NetworkUsageView - Displays network usage information"
+        ]
+    ]
+}

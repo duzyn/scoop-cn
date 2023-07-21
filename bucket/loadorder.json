@@ -1,0 +1,71 @@
+{
+    "version": "1.02",
+    "description": "See the order in which devices are loaded on your WinNT/2K system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/loadorder",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/LoadOrder.zip",
+    "hash": "e696080f65ff8b9271aef9e80f1f5c87c9f250965ed4d1fd3060a97a759da61c",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "LoadOrd64.exe",
+                    "LoadOrd"
+                ],
+                [
+                    "LoadOrdC64.exe",
+                    "LoadOrdC"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "LoadOrd64.exe",
+                    "scoop-cn/LoadOrder",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "LoadOrd.exe",
+                "LoadOrdC.exe"
+            ],
+            "shortcuts": [
+                [
+                    "LoadOrd.exe",
+                    "scoop-cn/LoadOrder",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "LoadOrd64a.exe",
+                    "LoadOrd"
+                ],
+                [
+                    "LoadOrdC64a.exe",
+                    "LoadOrdC"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "LoadOrd64a.exe",
+                    "scoop-cn/LoadOrder",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/loadorder.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/LoadOrder.zip"
+    }
+}

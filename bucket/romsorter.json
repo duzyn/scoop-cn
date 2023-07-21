@@ -1,0 +1,36 @@
+{
+    "version": "release5",
+    "description": "Compress, or uncompress ROMs, detect duplicates, catalog, manage CHD and DAT data, sort for Everdrive, or create 1G1R sets - all with one app",
+    "homepage": "https://github.com/drakewill-CRL/ROMSorter",
+    "license": "MIT",
+    "notes": [
+        "",
+        "ROMSorter depends on having the .NET 6 runtime installed.",
+        "",
+        "The .NET 6 runtime, also known as Microsoft Windows Desktop Runtime, is available in the Extras bucket.",
+        "",
+        "Since the runtime gets installed globally, Sudo is needed, which is part of the Main bucket.",
+        "",
+        "For example, with Sudo installed, you could execute the following to get the dependencies: scoop install extras/windowsdesktop-runtime-lts",
+        ""
+    ],
+    "suggest": {
+        "Sudo": "scoop-cn/sudo",
+        ".NET6": "scoop-cn/windowsdesktop-runtime-lts"
+    },
+    "url": "https://ghproxy.com/https://github.com/drakewill-CRL/ROMSorter/releases/download/release5/ROMSorter.zip",
+    "hash": "1ba6738dc7c9bedb4736f5e00ed94516e1c1cb750a7bcdd0801ada2557ffac40",
+    "shortcuts": [
+        [
+            "ROMSorter.exe",
+            "ROMSorter"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/drakewill-CRL/ROMSorter",
+        "regex": "tag/(release\\d+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/drakewill-CRL/ROMSorter/releases/download/$version/ROMSorter.zip"
+    }
+}

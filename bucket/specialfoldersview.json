@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/special_folders_view.html",
+    "checkver": "SpecialFoldersView v(\\d+\\.\\d\\d)",
+    "version": "1.26",
+    "license": "freeware",
+    "description": "Windows operating system have dozens of special folders that are used for storing application settings and files, storing Internet files, saving temporary files, storing shortcuts to other files, and so on. This utility displays the list of all special folders in your system, and allows you to easily jump to the right folder simply by double-clicking the folder item. You can also save the list of all folder paths into text/html/xml file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/specialfoldersview-x64.zip",
+            "hash": "deb2a260bd6f9f284e3fe7d0b26e08265029404d2b7525e41455556bd383deed"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/specialfoldersview.zip",
+            "hash": "9a4b737f912ae3dda48bd4046afbab478bcc36e85411941218d69425574c3d8d"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/specialfoldersview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/specialfoldersview.zip"
+            }
+        }
+    },
+    "bin": "SpecialFoldersView.exe",
+    "shortcuts": [
+        [
+            "SpecialFoldersView.exe",
+            "NirSoft\\SpecialFoldersView - Easily jump to special folders in your system"
+        ]
+    ]
+}

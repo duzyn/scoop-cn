@@ -1,0 +1,98 @@
+{
+    "version": "8.20",
+    "description": "Conservative Quake 2 source port focused on singleplayer and cooperative gameplay",
+    "homepage": "https://www.yamagi.org/quake2/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place game data files (such as pak0.pak-pak2.pak) in:",
+        "",
+        "- Quake 2:",
+        "    $persist_dir\\baseq2\\",
+        "",
+        "- Quake 2 - Ground Zero:",
+        "    $persist_dir\\rogue\\",
+        "",
+        "- Quake 2 - The Reckoning:",
+        "    $persist_dir\\xatrix\\",
+        "",
+        "- Quake 2 - Zaero:",
+        "    $persist_dir\\zaero\\",
+        "",
+        "The last of which was never released as an official expansion, but later showed up as a free download on the web - you should be able to find it easily by searching for it.",
+        "",
+        "Music",
+        "-----",
+        "",
+        "For the base game, copy all the tracks into the baseq2/music directory following the trackXX.[ogg,flac,mp3,wav] naming scheme (so track02.ogg, track03.ogg... for OGG files etc.).",
+        "",
+        "For Ground Zero, The Reckoning and Zaero, copy the tracks to rogue/music, xatrix/music, and zaero/music directories respectively.",
+        "",
+        "Tip: Create a soft symbolic link to the music directory if you want to save space.",
+        ""
+    ],
+    "suggest": {
+        "Vulkan renderer": "yquake2-ref-vk"
+    },
+    "url": "https://deponie.yamagi.org/quake2/windows/quake2-8.20.zip",
+    "hash": "5b262155ad7e46d203baae614e349ba0d5eda47414dbdca7a396b6887f63e223",
+    "extract_dir": "quake2-8.20",
+    "installer": {
+        "script": [
+            "$persistFolders = @(",
+            "   \"baseq2\"",
+            "   \"ctf\"",
+            "   \"rogue\"",
+            "   \"xatrix\"",
+            "   \"zaero\"",
+            ")",
+            "$persistFolders | ForEach-Object {",
+            "   if (Test-Path \"$persist_dir\\$_\") {",
+            "      Copy-Item -Force -Recurse \"$dir\\$_\\*.dll\" \"$persist_dir\\$_\"",
+            "   }",
+            "}"
+        ]
+    },
+    "bin": [
+        "yquake2.exe",
+        "q2ded.exe"
+    ],
+    "shortcuts": [
+        [
+            "yquake2.exe",
+            "Yamagi Quake 2"
+        ],
+        [
+            "yquake2.exe",
+            "Yamagi Quake 2 (Ground Zero)",
+            "+set game rogue"
+        ],
+        [
+            "yquake2.exe",
+            "Yamagi Quake 2 (The Reckoning)",
+            "+set game xatrix"
+        ],
+        [
+            "yquake2.exe",
+            "Yamagi Quake 2 (Zaero)",
+            "+set game zaero"
+        ]
+    ],
+    "persist": [
+        "baseq2",
+        "ctf",
+        "music",
+        "rogue",
+        "xatrix",
+        "zaero"
+    ],
+    "checkver": {
+        "url": "https://deponie.yamagi.org/quake2/windows",
+        "regex": "(?'ver'\\d\\.\\d{2}[a-z]?)",
+        "replace": "${ver}",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://deponie.yamagi.org/quake2/windows/quake2-$matchVer.zip",
+        "extract_dir": "quake2-$matchVer"
+    }
+}

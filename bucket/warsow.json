@@ -1,0 +1,24 @@
+{
+    "version": "2.1.2",
+    "description": "Free fast-paced first-person shooter set in a cyberpunk universe",
+    "homepage": "https://warsow.net/",
+    "license": "GPL-2.0-or-later",
+    "url": "http://warsow.net/warsow-2.1.2.tar.gz",
+    "hash": "2c6f05b3ca365557a53013e20a7ecc424869b551c3b0e056d0e3e1c27354c21f",
+    "architecture": {
+        "32bit": {
+            "pre_install": "Set-Content -Path \"$dir\\warsow.bat\" -Value \"pushd $dir && warsow_x86.exe && popd\""
+        },
+        "64bit": {
+            "pre_install": "Set-Content -Path \"$dir\\warsow.bat\" -Value \"pushd $dir && warsow_x64.exe && popd\""
+        }
+    },
+    "extract_dir": "warsow-2.1.2",
+    "bin": "warsow.bat",
+    "shortcuts": [
+        [
+            "warsow.bat",
+            "Warsow"
+        ]
+    ]
+}

@@ -1,0 +1,39 @@
+{
+    "version": "2.04",
+    "description": "Securely overwrite your sensitive files and cleanse your free space of previously deleted files using this DoD-compliant secure delete program.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/sdelete",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/SDelete.zip",
+    "hash": "49cfc704a431d0f4557d06561310ade7ba78b84c389a99cbe0fac83410f6b255",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "sdelete64.exe",
+                    "sdelete"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "sdelete.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "sdelete64a.exe",
+                    "sdelete"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sdelete.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/SDelete.zip"
+    }
+}

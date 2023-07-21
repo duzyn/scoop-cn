@@ -1,0 +1,42 @@
+{
+    "version": "2022.3-223.8836.1185",
+    "description": "Domain-Specific language creator by JetBrains.",
+    "homepage": "https://www.jetbrains.com/mps/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/mps/2022.3/MPS-2022.3.exe#/dl.7z",
+    "hash": "55be05ba29c15a8cfb46cd3f4645f2441628a0056aa4b0de9cdd51f6f3891995",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "bin": "IDE\\bin\\mps.bat",
+    "shortcuts": [
+        [
+            "IDE\\bin\\mps.bat",
+            "JetBrains\\MPS",
+            "",
+            "IDE\\bin\\mps.ico"
+        ]
+    ],
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=MPS&latest=true&platform=zip&type=release",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/mps/$majorVersion.$minorVersion/MPS-$matchHead.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

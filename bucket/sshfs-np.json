@@ -1,0 +1,37 @@
+{
+    "version": "3.5.20357",
+    "description": "SSHFS For Windows",
+    "homepage": "http://www.github.com/billziss-gh/sshfs-win/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20357/sshfs-win-3.5.20357-x64.msi#/setup.msi_",
+            "hash": "1657e397f8dce1c2d2e3220007f9c9f882631882b9bec4608f7835e87dcd096c"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20357/sshfs-win-3.5.20357-x86.msi#/setup.msi_",
+            "hash": "9643daf27eb7e384dadc9e64a4299c8d92e6c91e07913e9425f5b19aad3b2ded"
+        }
+    },
+    "depends": "winfsp-np",
+    "installer": {
+        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
+    },
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://github.com/billziss-gh/sshfs-win/releases/latest",
+        "regex": "v(?<short>[\\d.]+)/sshfs-win-(?<version>[\\d.]+).*\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v$matchShort/sshfs-win-$matchVersion-x64.msi#/setup.msi_"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v$matchShort/sshfs-win-$matchVersion-x86.msi#/setup.msi_"
+            }
+        }
+    }
+}

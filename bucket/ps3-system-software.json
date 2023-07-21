@@ -1,0 +1,18 @@
+{
+    "version": "4.90",
+    "description": "Sony PlayStation 3 system software",
+    "homepage": "https://www.playstation.com/en-us/support/hardware/ps3/system-software/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://doc.dl.playstation.net/doc/ps3-eula/ps3_eula_en.html"
+    },
+    "url": "http://dus01.ps3.update.playstation.net/update/ps3/image/us/2023_0228_05fe32f5dc8c78acbcd84d36ee7fdc5b/PS3UPDAT.PUP",
+    "hash": "69070A95780F59FC9E0D82BCF53EB9B28FD4ED4A7D54D0A40045F80422FD98D6",
+    "checkver": {
+        "url": "https://www.playstation.com/en-us/support/hardware/ps3/system-software/",
+        "regex": "(?sm)PS3 System Software Update ((?:\\d+)?(?:\\.?\\d*)).*?ps3/image/us/(?<time>[\\w_]+)/PS3UPDAT.PUP"
+    },
+    "autoupdate": {
+        "url": "http://dus01.ps3.update.playstation.net/update/ps3/image/us/$matchTime/PS3UPDAT.PUP"
+    }
+}

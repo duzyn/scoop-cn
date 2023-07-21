@@ -1,0 +1,45 @@
+{
+    "version": "23.01",
+    "description": "Multi-format compression/decompression tool (beta version)",
+    "homepage": "https://www.7-zip.org/",
+    "license": "LGPL-2.1-or-later,BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.nju.edu.cn/7-zip/7z2301-x64.msi",
+            "hash": "0ba639b6dacdf573d847c911bd147c6384381a54dac082b1e8c77bc73d58958b"
+        },
+        "32bit": {
+            "url": "https://mirror.nju.edu.cn/7-zip/7z2301.msi",
+            "hash": "b32e47f88d03dc29b5cb02c6ed07a7e48015f655346b62a3b32033c49ed9bb06"
+        }
+    },
+    "extract_dir": "Files/7-Zip",
+    "bin": [
+        "7z.exe",
+        "7zG.exe"
+    ],
+    "shortcuts": [
+        [
+            "7zFM.exe",
+            "7-Zip Beta"
+        ]
+    ],
+    "persist": [
+        "Codecs",
+        "Formats"
+    ],
+    "checkver": {
+        "url": "https://www.7-zip.org/history.txt",
+        "regex": "\\n([\\d.]+)( beta)?"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.nju.edu.cn/7-zip/7z$cleanVersion-x64.msi"
+            },
+            "32bit": {
+                "url": "https://mirror.nju.edu.cn/7-zip/7z$cleanVersion.msi"
+            }
+        }
+    }
+}

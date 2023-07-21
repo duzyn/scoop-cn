@@ -1,0 +1,29 @@
+{
+    "version": "1.7.0-RC1",
+    "description": "Solution to synchronize video playback across multiple instances of mpv, VLC, MPC-HC, MPC-BE and mplayer2 over the Internet.",
+    "homepage": "https://syncplay.pl/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "url": "https://ghproxy.com/https://github.com/Syncplay/syncplay/releases/download/1.7.0-RC1/Syncplay_1.7.0_RC1_Portable.zip",
+    "hash": "e04314a2b89b08b2f1f1aa809c388eae33ae6aa7191be51e3b23e288c3460969",
+    "bin": "Syncplay.exe",
+    "shortcuts": [
+        [
+            "Syncplay.exe",
+            "Syncplay"
+        ]
+    ],
+    "persist": "syncplay.ini",
+    "checkver": {
+        "script": [
+            "$ver = ((Invoke-WebRequest 'https://api.github.com/repositories/4732425/releases').Content | ConvertFrom-Json)[0].tag_name",
+            "$ver, ($ver -replace '-', '_') -join ' '"
+        ],
+        "regex": "^(\\S+) (?<underscore>\\S+)$"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Syncplay/syncplay/releases/download/$version/Syncplay_$matchUnderscore_Portable.zip"
+    }
+}

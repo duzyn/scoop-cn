@@ -1,0 +1,32 @@
+{
+    "##": "Rename download file because 7-zip can't decompress it as zip file.",
+    "version": "4.0.5198",
+    "description": "Microsoft Azure Functions Core Tools",
+    "homepage": "https://github.com/Azure/azure-functions-core-tools",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Azure/azure-functions-core-tools/releases/download/4.0.5198/Azure.Functions.Cli.win-x64.4.0.5198.zip#/dl.7z",
+            "hash": "c539e41ca97215b1af8f470eb4f70c4f4e207b5936aaf6b8513ba5eba5bd2cad"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Azure/azure-functions-core-tools/releases/download/4.0.5198/Azure.Functions.Cli.win-x86.4.0.5198.zip#/dl.7z",
+            "hash": "d7cd3fe424870bd4f6225b9c2cd51d4407f03dc9b83030a39d565c6f4e9db722"
+        }
+    },
+    "bin": "func.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x64.$version.zip#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Azure/azure-functions-core-tools/releases/download/$version/Azure.Functions.Cli.win-x86.$version.zip#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha2"
+        }
+    }
+}

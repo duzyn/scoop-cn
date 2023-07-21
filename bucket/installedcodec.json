@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/installed_codec.html",
+    "checkver": "InstalledCodec v(\\d+\\.\\d\\d)",
+    "version": "1.30",
+    "license": "freeware",
+    "description": "InstalledCodec is a small utility displays the list of all Codec drivers and DirectShow filters currently installed on your system. For each component the following information is displayed: Display Name, Type, Disabled Status, Installed/Modified Time, Description, Company Name, Filename, and more... It allows you to easily disable or enable any Codec/DirectShow component or export the list into text/xml/html file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/installedcodec-x64.zip",
+            "hash": "08105602e668c073fccb58d1c4a93f2eb84c8b564eaf0fe716792f7f200f64ee"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/installedcodec.zip",
+            "hash": "c0381e687f67dc3196abcb326bc606150842014f4334e02fd6ae844bdae0710b"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/installedcodec-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/installedcodec.zip"
+            }
+        }
+    },
+    "bin": "InstalledCodec.exe",
+    "shortcuts": [
+        [
+            "InstalledCodec.exe",
+            "NirSoft\\InstalledCodec - Codec viewer_manager"
+        ]
+    ]
+}

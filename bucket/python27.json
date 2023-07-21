@@ -1,0 +1,68 @@
+{
+    "version": "2.7.18",
+    "homepage": "https://www.python.org/",
+    "license": "Python-2.0",
+    "description": "A programming language that lets you work quickly and integrate systems more effectively.",
+    "notes": "Python 2 is EOL. Upgrade to Python 3 by running: scoop install python",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/python/2.7.18/python-2.7.18.amd64.msi",
+            "hash": "md5:a425c758d38f8e28b56f4724b499239a"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/python/2.7.18/python-2.7.18.msi",
+            "hash": "md5:db6ad9195b3086c6b4cefb9493d738d2"
+        }
+    },
+    "bin": [
+        [
+            "python.exe",
+            "python2"
+        ],
+        "Lib\\idlelib\\idle.bat",
+        [
+            "Lib\\idlelib\\idle.bat",
+            "idle2"
+        ]
+    ],
+    "env_add_path": [
+        "Scripts",
+        "."
+    ],
+    "post_install": [
+        "python2 -m ensurepip",
+        "",
+        "$create_reg = {",
+        "    param($path, $value)",
+        "",
+        "    $reg_base = \"Registry::HKEY_CURRENT_USER\\Software\"",
+        "",
+        "    new-item -path \"$reg_base\\$path\" -force | out-null",
+        "    new-itemproperty -path \"$reg_base\\$path\" `",
+        "        -name \"(Default)\" -value \"$value\" -force | out-null",
+        "}",
+        "",
+        "$create_reg.Invoke(\"Python\\PythonCore\\2.7\\InstallPath\", `",
+        "    \"$dir\")",
+        "$create_reg.Invoke(\"Python\\PythonCore\\2.7\\PythonPath\", `",
+        "    \"$dir;$dir\\Lib\\;$dir\\DLLs\\\")"
+    ],
+    "checkver": {
+        "url": "https://www.python.org/downloads/windows/",
+        "regex": "Python (2\\.7\\.[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version.amd64.msi"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version.msi"
+            }
+        },
+        "hash": {
+            "url": "https://www.python.org/downloads/release/python-$cleanVersion/",
+            "find": "$basename[\\S\\s]+?([A-Fa-f0-9]{32})"
+        }
+    }
+}

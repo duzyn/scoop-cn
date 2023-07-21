@@ -1,0 +1,39 @@
+{
+    "version": "1.17",
+    "description": "Terminate local or remote processes.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/pskill",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/pskill.zip",
+    "hash": "c9793e9394a0f5b6d94d09a653691db93569a19c7a8f67d161e23ce8bc7bd11f",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "pskill64.exe",
+                    "pskill"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "pskill.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "pskill64a.exe",
+                    "pskill"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/pskill.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/pskill.zip"
+    }
+}

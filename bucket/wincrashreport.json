@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/application_crash_report.html",
+    "checkver": "WinCrashReport v(\\d+\\.\\d\\d)",
+    "version": "1.25",
+    "license": "freeware",
+    "description": "WinCrashReport provides an alternative to the built-in crash reporting program of Windows operating system. When application crashes in your system and Windows displays the internal crash window of the operating system, you can run WinCrashReport, and get extensive report about the crashed application. The crash report of WinCrashReport is displayed as simple text or in HTML, and includes the following information: Crash memory address, Exception code, Exception description, Strings found in the stack, call stack, processor registers, modules list, threads list, and more...",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/wincrashreport-x64.zip",
+            "hash": "54d9495cc620de5eb96166763d7c5ee9d6106a9fd244ab7f5b478135c38c1028"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/wincrashreport.zip",
+            "hash": "2d754c8d4041b01809638bf07e366a5fd018fee12d263b1323306f5166476e4e"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/wincrashreport-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/wincrashreport.zip"
+            }
+        }
+    },
+    "bin": "WinCrashReport.exe",
+    "shortcuts": [
+        [
+            "WinCrashReport.exe",
+            "NirSoft\\WinCrashReport - Displays a report about crashed application"
+        ]
+    ]
+}

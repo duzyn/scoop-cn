@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/windows_updates_history_viewer.html",
+    "checkver": "Windows Updates History Viewer v(\\d+\\.\\d\\d)",
+    "version": "1.17",
+    "license": "freeware",
+    "description": "WinUpdatesView is a simple tool that displays the history of Windows updates on your system. WinUpdatesView can load the Windows updates history from your local system, using API, and it can also read and parse the Windows updates database file (DataStore.edb) from external drive or from remote computer on your network. For every Windows update history record, WinUpdatesView displays the following fields: Title, Description, Install Date, Update Operation (Install, Uninstall, Not Started, In Progress), Operation Result (Succeeded, Succeeded With Errors, Failed, Aborted), Category, Information URL, Support URL, Uninstall Notes, Client Application ID, Service ID, Update ID, Revision Number, Unmapped Result Code, Server Selection, hResult",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/winupdatesview-x64.zip",
+            "hash": "8533dd679cc38e362ebdbd7b0bf5a908b36bcafb0ecf1a87487699540a91f52e"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/winupdatesview.zip",
+            "hash": "7d692f8ad089866a662ee1f1771b87faf85e5c2e01382b1740c623b8ca04dccf"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/winupdatesview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/winupdatesview.zip"
+            }
+        }
+    },
+    "bin": "WinUpdatesView.exe",
+    "shortcuts": [
+        [
+            "WinUpdatesView.exe",
+            "NirSoft\\Windows Updates History Viewer - Windows Updates History Viewer"
+        ]
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "version": "4.7.4",
+    "description": "Modern model editor for boxy models and pixel art textures.",
+    "homepage": "https://blockbench.net/",
+    "license": "GPL-3.0-or-later",
+    "url": "https://ghproxy.com/https://github.com/JannisX11/blockbench/releases/download/v4.7.4/Blockbench_4.7.4.exe#/dl.7z",
+    "hash": "sha512:a927c2620f0284bd4beecd620598c55adea8563c39a003ef69196b7143a520138a5846211953aebeb4ab093a21746a68dd31aea7a5550ae565faf27550abf2ad",
+    "architecture": {
+        "32bit": {
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+                ]
+            }
+        },
+        "64bit": {
+            "installer": {
+                "script": [
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                    "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+                ]
+            }
+        }
+    },
+    "shortcuts": [
+        [
+            "Blockbench.exe",
+            "Blockbench"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/JannisX11/blockbench/"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/JannisX11/blockbench/releases/download/v$version/Blockbench_$version.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "find": "sha512:\\s+(.*)"
+        }
+    }
+}

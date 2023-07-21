@@ -1,0 +1,27 @@
+{
+    "version": "1.30.0",
+    "description": "Conversion tool for Docker Compose to container orchestrators such as Kubernetes (or OpenShift).",
+    "homepage": "https://kompose.io/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/kubernetes/kompose/releases/download/v1.30.0/kompose-windows-amd64.exe#/kompose.exe",
+            "hash": "a31ea0484dae21a46049b2494d4d1aec1b486297ee989451b08a0f8c2c9946a4"
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/kubernetes/kompose"
+    },
+    "bin": "kompose.exe",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/kubernetes/kompose/releases/download/v$version/kompose-windows-amd64.exe#/kompose.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256_SUM",
+            "regex": "$sha256\\s+$basenameNoExt-windows-amd64"
+        }
+    }
+}

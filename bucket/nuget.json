@@ -1,0 +1,16 @@
+{
+    "version": "6.6.1",
+    "description": "The package manager for .NET.",
+    "homepage": "https://www.nuget.org/",
+    "license": "Apache-2.0",
+    "url": "https://dist.nuget.org/win-x86-commandline/v6.6.1/NuGet.exe",
+    "hash": "d9e2d4db12ff444b684a40cbeb2775a2adf3f65980e8a55f3c006faec2b89b7c",
+    "bin": "NuGet.exe",
+    "checkver": {
+        "url": "https://dist.nuget.org/index.json",
+        "jsonpath": "$..versions[?(@.displayName == 'nuget.exe - recommended latest')].version"
+    },
+    "autoupdate": {
+        "url": "https://dist.nuget.org/win-x86-commandline/v$version/NuGet.exe"
+    }
+}

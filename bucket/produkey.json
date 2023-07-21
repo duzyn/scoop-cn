@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/product_cd_key_viewer.html",
+    "checkver": "ProduKey v(\\d+\\.\\d\\d)",
+    "version": "1.97",
+    "license": "freeware",
+    "description": "ProduKey is a small utility that displays the ProductID and the CD-Key of MS-Office, Windows, and SQL Server installed on your computer. You can view this information for your current running operating system, or for another operating system/computer - by using command-line options. This utility can be useful if you lost the product key of your Windows/Office, and you want to reinstall it on your computer.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/produkey-x64.zip",
+            "hash": "e4604e0ee680370448c6a832856dff4a0255ca763672825a7a67a2a4662b9909"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/produkey.zip",
+            "hash": "1293aa22a718a8940fe6a0b0472a8806b1e00894d4d2a54485c1d9931f29cc8e"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/produkey-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/produkey.zip"
+            }
+        }
+    },
+    "bin": "ProduKey.exe",
+    "shortcuts": [
+        [
+            "ProduKey.exe",
+            "NirSoft\\ProduKey - Displays the CD-Keys of MS-Office_Windows"
+        ]
+    ]
+}

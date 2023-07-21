@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/offline_registry_view.html",
+    "checkver": "OfflineRegistryView v(\\d+\\.\\d\\d)",
+    "version": "1.03",
+    "license": "freeware",
+    "description": "OfflineRegistryView is a simple tool for Windows that allows you to read offline Registry files from external drive and view the desired Registry key in .reg file format.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/offlineregistryview-x64.zip",
+            "hash": "71697a8121ab8fbd44ca1a1bd2864e4a24b79f4a7bb1a47075ea7c3a1581063f"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/offlineregistryview.zip",
+            "hash": "9d7debcd3b8f1c2fe22e7c12fee6646855b44d07abb7b018b87f6c00ac615aec"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/offlineregistryview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/offlineregistryview.zip"
+            }
+        }
+    },
+    "bin": "OfflineRegistryView.exe",
+    "shortcuts": [
+        [
+            "OfflineRegistryView.exe",
+            "NirSoft\\OfflineRegistryView - View offline Registry files"
+        ]
+    ]
+}

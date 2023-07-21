@@ -1,0 +1,22 @@
+{
+    "version": "0.9.9.9.9.9.9.5.3",
+    "description": "TF2 Item Manager",
+    "homepage": "http://www.jengerer.com/item_manager/",
+    "license": "Proprietary",
+    "depends": "scoop-cn/vcredist2010",
+    "url": "http://www.jengerer.com/item_manager/downloads/item_manager.zip",
+    "hash": "019d698f251931a9c59fbaf5f2ce9771cb6364bea6cdb0260bb7f24fd1151d23",
+    "bin": "item_manager.exe",
+    "shortcuts": [
+        [
+            "item_manager.exe",
+            "Jengerer's Item Manager"
+        ]
+    ],
+    "checkver": {
+        "regex": "What's new in ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://www.jengerer.com/item_manager/downloads/item_manager.zip"
+    }
+}

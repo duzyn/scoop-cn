@@ -1,0 +1,26 @@
+{
+    "version": "0.12.12",
+    "description": "Utility to get from zero to KUBECONFIG with k3s on any local or remote VM",
+    "homepage": "https://k3sup.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/alexellis/k3sup/releases/download/0.12.12/k3sup.exe",
+            "hash": "79ce87914e039166662f3e31083e4ac7f172cbde437f84731edbd71de2f25b9a"
+        }
+    },
+    "bin": "k3sup.exe",
+    "checkver": {
+        "github": "https://github.com/alexellis/k3sup"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/alexellis/k3sup/releases/download/$version/k3sup.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "0.45.3",
+    "description": "YAML templating tool that works on YAML structure instead of text",
+    "homepage": "https://carvel.dev/ytt",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/carvel-dev/ytt/releases/download/v0.45.3/ytt-windows-amd64.exe#/ytt.exe",
+            "hash": "9c9ed87d65eb243ad9b65f13cebd1d47c70c46ea1e416772284c12c92707d8be"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/carvel-dev/ytt/releases/download/v0.45.3/ytt-windows-arm64.exe#/ytt.exe",
+            "hash": "aca1e44577bdf2f08acb56d035dc654ad6cdfac0d148a781f34637eefa852846"
+        }
+    },
+    "bin": "ytt.exe",
+    "checkver": {
+        "github": "https://github.com/carvel-dev/ytt"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/carvel-dev/ytt/releases/download/v$version/ytt-windows-amd64.exe#/ytt.exe"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/carvel-dev/ytt/releases/download/v$version/ytt-windows-arm64.exe#/ytt.exe"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

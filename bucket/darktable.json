@@ -1,0 +1,34 @@
+{
+    "version": "4.4.1",
+    "description": "Photography workflow application and raw developer. A virtual lighttable and darkroom for photographers.",
+    "homepage": "https://www.darktable.org",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-4.4.1/darktable-4.4.1-win64.exe#/dl.7z",
+            "hash": "70dca4f5f3c4fec897a6561484fb14f81709aca3185373d9118b630d24ae2098"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninst*\" -Force -Recurse",
+    "bin": "bin\\darktable.exe",
+    "shortcuts": [
+        [
+            "bin\\darktable.exe",
+            "darktable"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/darktable-org/darktable",
+        "regex": "/darktable-([\\d.]+)-win64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-$matchHead/darktable-$version-win64.exe#/dl.7z",
+                "hash": {
+                    "url": "https://github.com/darktable-org/darktable/releases/tag/release-$matchHead"
+                }
+            }
+        }
+    }
+}

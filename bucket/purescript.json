@@ -1,0 +1,28 @@
+{
+    "version": "0.15.10",
+    "description": "A strongly-typed language that compiles to Javascript",
+    "homepage": "https://www.purescript.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/purescript/purescript/releases/download/v0.15.10/win64.tar.gz",
+            "hash": "sha1:3977ec3c4d231b112eb5876831bc03b3e8f48f4c"
+        }
+    },
+    "extract_dir": "purescript",
+    "bin": "purs.exe",
+    "checkver": {
+        "github": "https://github.com/purescript/purescript"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/purescript/purescript/releases/download/v$version/win64.tar.gz",
+                "hash": {
+                    "url": "$baseurl/win64.sha",
+                    "regex": "SHA1\\(bundle/$basename\\)=\\s+([a-fA-F\\d]{40})"
+                }
+            }
+        }
+    }
+}

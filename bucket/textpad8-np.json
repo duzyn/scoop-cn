@@ -1,0 +1,36 @@
+{
+    "version": "8.16.2",
+    "description": "A powerful, general purpose editor for plain text files.",
+    "homepage": "https://www.textpad.com/",
+    "license": "Proprietary",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.textpad.com/file?path=v816/x64/txpeng8162-64.zip",
+            "hash": "70582dbee24fb77554776b67ca17250fab360ff85b3527415d116944875b959b"
+        },
+        "32bit": {
+            "url": "https://www.textpad.com/file?path=v816/win32/txpeng8162-32.zip",
+            "hash": "31690f6087347526d95a07bf8a3d3b785d45a330828a610594cdca5b3f41925e"
+        }
+    },
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/v/qn') -Verb RunAs | Out-Null"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait 'msiexec' -ArgumentList @('/x', '{31C6C263-89DE-4D24-B60E-9E35DCDE4B33}', '/qn') -Verb RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://www.textpad.com/download",
+        "regex": ">TextPad (8[\\d.]+)\\s*"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.textpad.com/file?path=v$majorVersion$minorVersion/x64/txpeng$cleanVersion-64.zip"
+            },
+            "32bit": {
+                "url": "https://www.textpad.com/file?path=v$majorVersion$minorVersion/win32/txpeng$cleanVersion-32.zip"
+            }
+        }
+    }
+}

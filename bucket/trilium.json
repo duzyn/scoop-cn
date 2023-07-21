@@ -1,0 +1,38 @@
+{
+    "version": "0.60.4",
+    "description": "Build your personal knowledge base with Trilium Notes",
+    "homepage": "https://github.com/zadam/trilium",
+    "license": "AGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/zadam/trilium/releases/download/v0.60.4/trilium-windows-x64-0.60.4.zip",
+            "hash": "df7e74f2f56fca8dbdd17bcfc2dd9519a79c22edd35d3e6eaab14e73acc62f0d",
+            "extract_dir": "trilium-windows-x64"
+        }
+    },
+    "shortcuts": [
+        [
+            "trilium.exe",
+            "Trilium"
+        ]
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\trilium-data\") -and (Test-Path \"$env:APPDATA\\trilium-data\")) {",
+        "    info \"Copying old '$env:APPDATA\\trilium-data' to '$persist_dir\\trilium-data'\"",
+        "    ensure \"$persist_dir\\trilium-data\" | Out-Null",
+        "    Copy-Item \"$env:APPDATA\\trilium-data\\*\" \"$persist_dir\\trilium-data\" -Recurse -Force",
+        "}"
+    ],
+    "env_set": {
+        "TRILIUM_DATA_DIR": "$persist_dir\\trilium-data"
+    },
+    "persist": "trilium-data",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/zadam/trilium/releases/download/v$version/trilium-windows-x64-$version.zip"
+            }
+        }
+    }
+}

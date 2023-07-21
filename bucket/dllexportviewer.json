@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/dll_export_viewer.html",
+    "checkver": "DLL Export Viewer v(\\d+\\.\\d\\d)",
+    "version": "1.66",
+    "license": "freeware",
+    "description": "This utility displays the list of all exported functions and their virtual memory addresses for the specified DLL files. You can easily copy the memory address of the desired function, paste it into your debugger, and set a breakpoint for this memory address. When this function is called, the debugger will stop in the beginning of this function. For example: If you want to break each time that a message box is going to be displayed, simply put breakpoints on the memory addresses of message-box functions: MessageBoxA, MessageBoxExA, and MessageBoxIndirectA (or MessageBoxW, MessageBoxExW, and MessageBoxIndirectW in unicode based applications) When one of the message-box functions is called, your debugger should break in the entry point of that function, and then you can look at call stack and go backward into the code that initiated this API call.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/dllexp-x64.zip",
+            "hash": "07d4ddd976679891eee2a252de585e1c101089bb4220a4cf3b221473db2bb3fd"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/dllexp.zip",
+            "hash": "5a1149dc83b22f2c47600ab0f1f60c922607aaaa36feaee9c984f00ab7d96ec5"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/dllexp-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/dllexp.zip"
+            }
+        }
+    },
+    "bin": "dllexp.exe",
+    "shortcuts": [
+        [
+            "dllexp.exe",
+            "NirSoft\\DLL Export Viewer - Lists DLL exported functions and addresses"
+        ]
+    ]
+}

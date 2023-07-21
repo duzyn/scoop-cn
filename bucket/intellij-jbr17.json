@@ -1,0 +1,34 @@
+{
+    "version": "17.0.7-b829.16",
+    "homepage": "https://github.com/JetBrains/JetBrainsRuntime",
+    "description": "A fork of OpenJDK that includes a number enhancements in font rendering, HiDPI support, ligatures, performance improvements, and bugfixes. These are mainly for running IntelliJ Platform-based products",
+    "license": "GPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-17.0.7-windows-x64-b829.16.tar.gz",
+            "hash": "sha512:eefa1c6b907c7d81b828b6dd3cfeb6b0fa2e0eacff98c324fedab909b63fa3622a41ff1f9d0251c37c287d18f659c144a28db4bd7b6a83bb8a5c8bc02573a2c7",
+            "extract_dir": "jbr-17.0.7-windows-x64-b829.16"
+        }
+    },
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://github.com/JetBrains/JetBrainsRuntime/releases",
+        "regex": "\\s(?<Version>[\\d.]+)-(?<Build>[\\w]+)\\.(?<Patch>[\\d]+)</h2>",
+        "replace": "${Version}-${Build}.${Patch}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$matchVersion-windows-x64-$matchBuild.$matchPatch.tar.gz",
+                "hash": {
+                    "url": "$url.checksum",
+                    "regex": "$sha512\\s"
+                },
+                "extract_dir": "jbr-$matchVersion-windows-x64-$matchBuild.$matchPatch"
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/registered_dll_view.html",
+    "checkver": "RegDllView v(\\d+\\.\\d\\d)",
+    "version": "1.60",
+    "license": "freeware",
+    "description": "RegDllView is a small utility that displays the list of all registered dll/ocx/exe files (COM registration). For each registered file, you can view the last date/time that it was registered, and the list of all registration entries (CLSID/ProgID).",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/regdllview-x64.zip",
+            "hash": "1fbc281eb30a7af5886adfd480d96bcd0a46489709f60d0092bd26d7908b5cea"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/regdllview.zip",
+            "hash": "06941f3ef54fc7aee2216a590f4a3c5d3868ea2b42a78fc7790182548399419f"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/regdllview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/regdllview.zip"
+            }
+        }
+    },
+    "bin": "RegDllView.exe",
+    "shortcuts": [
+        [
+            "RegDllView.exe",
+            "NirSoft\\RegDllView - Displays the list of all registered files"
+        ]
+    ]
+}

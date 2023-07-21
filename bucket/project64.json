@@ -1,0 +1,50 @@
+{
+    "version": "3.0.1-5664-2df3434",
+    "description": "Nintendo 64 emulator",
+    "homepage": "https://www.pj64-emu.com/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/project64/project64/blob/develop/license.md"
+    },
+    "url": "https://www.pj64-emu.com/file/project64-3-0-0-5632-f83bee9#/dl.zip",
+    "hash": "6e2d123a0d665576649c16dc0cb902d70f9a1072a5fbcd23a5ab4cf3854dd07f",
+    "shortcuts": [
+        [
+            "Project64.exe",
+            "Project64"
+        ]
+    ],
+    "persist": [
+        "Config",
+        "Logs",
+        "Save",
+        "Screenshots",
+        "Textures",
+        "Games",
+        "ROMs"
+    ],
+    "checkver": {
+        "url": "https://www.pj64-emu.com/public-releases",
+        "regex": "(.+?) (?<url>.*)",
+        "script": [
+            "$ProgressPreference = 'SilentlyContinue'",
+            "$aregex = New-Object System.Text.RegularExpressions.Regex(\"<a href=`\"/`(?<url>[^`\"]*`)`\">Project64`\\s+`(?<version>v?[`\\d.]+`)`\\s+Zip</a>\")",
+            "$amatch = $aregex.Matches($page) | Select-Object -First 1",
+            "$burl = $json.homepage + $amatch.Groups['url'].Value",
+            "$bpage = (Invoke-WebRequest $burl).Content",
+            "$bregex = New-Object System.Text.RegularExpressions.Regex(\"/`(?<url>file/project64-[\\d-]+-[0-9a-f]+`)\")",
+            "$bmatch = $bregex.Matches($bpage) | Select-Object -First 1",
+            "$rurl = $bmatch.Groups['url'].Value",
+            "$curl = $json.homepage + $bmatch.Groups['url'].Value",
+            "$cpage = (Invoke-WebRequest -Method Head $curl).RawContent",
+            "$cregex = New-Object System.Text.RegularExpressions.Regex(\"filename=`\"Project64-(?<version>[\\d.]+-[\\d]+-[0-9a-f]+`)\")",
+            "$cmatch = $cregex.Matches($cpage) | Select-Object -First 1",
+            "$rversion = $cmatch.Groups['version'].Value",
+            "Write-Output $rversion $rurl",
+            "$ProgressPreference = 'Continue'"
+        ]
+    },
+    "autoupdate": {
+        "url": "https://www.pj64-emu.com/$matchUrl#/dl.zip"
+    }
+}

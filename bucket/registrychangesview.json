@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/registry_changes_view.html",
+    "checkver": "RegistryChangesView v(\\d+\\.\\d\\d)",
+    "version": "1.29",
+    "license": "freeware",
+    "description": "RegistryChangesView is a tool for Windows that allows you to take a snapshot of Windows Registry and later compare it with another Registry snapshots, with the current Registry or with Registry files stored in a shadow copy created by Windows. When comparing 2 Registry snapshots, you can see the exact changes made in the Registry between the 2 snapshots, and optionally export the Registry changes into a standard .reg file of RegEdit.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/registrychangesview-x64.zip",
+            "hash": "49aa32eef63ac95cce10343e8c66def346c7da4d13d665cd1c93e26c66829860"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/registrychangesview.zip",
+            "hash": "f7df8629f9eaf878e58f7a94cde681a32e986d2432afad49967da3b423063eab"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/registrychangesview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/registrychangesview.zip"
+            }
+        }
+    },
+    "bin": "RegistryChangesView.exe",
+    "shortcuts": [
+        [
+            "RegistryChangesView.exe",
+            "NirSoft\\RegistryChangesView - Compares 2 snapshots of Windows Registry"
+        ]
+    ]
+}

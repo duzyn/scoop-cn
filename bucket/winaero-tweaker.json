@@ -1,0 +1,36 @@
+{
+    "##": "The installer is made with InnoSetup, but encrypted with a password.",
+    "version": "1.55.0.0",
+    "description": "Tweaks and hidden settings for power-users for Windows 7/8/8.1/10/11",
+    "homepage": "https://winaerotweaker.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://winaero.com/comment.php?comment.news.1836"
+    },
+    "url": "https://winaerotweaker.com/download/winaerotweaker.zip",
+    "hash": "370095778b69f763af03e553f5a83b192c7183d098cb0d87350f66fb525573b8",
+    "pre_install": [
+        "Remove-Item \"$dir\\SilentSetup.cmd\" -ErrorAction 'SilentlyContinue'",
+        "Get-ChildItem \"$dir\" '*setup.exe' | Rename-Item -NewName 'setup.exe'"
+    ],
+    "installer": {
+        "script": [
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/SP-', '/VERYSILENT', '/PORTABLE', \"/DIR=`\"$dir`\"\")",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "bin": "WinaeroTweaker.exe",
+    "shortcuts": [
+        [
+            "WinaeroTweaker.exe",
+            "Winaero Tweaker"
+        ]
+    ],
+    "checkver": {
+        "url": "https://winaero.com/updates/tweaker.txt",
+        "regex": "^([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://winaerotweaker.com/download/winaerotweaker.zip"
+    }
+}

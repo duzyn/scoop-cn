@@ -1,0 +1,39 @@
+{
+    "version": "1.6",
+    "description": "Reveal NTFS alternate streams.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/streams",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Streams.zip",
+    "hash": "9eb0dc6e03bd139a850bdd48c0915276801c0d0ceba21ec1831799351e2268fc",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "streams64.exe",
+                    "streams"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "streams.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "streams64a.exe",
+                    "streams"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/streams.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Streams.zip"
+    }
+}

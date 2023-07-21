@@ -1,0 +1,66 @@
+{
+    "version": "1.15.4",
+    "description": "Sony PlayStation Portable (PSP) emulator",
+    "homepage": "https://www.ppsspp.org",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ppsspp.org/files/1_15_4/ppsspp_win.zip",
+            "hash": "913b2659b7e939d84518c9172dde72fc90173e122d3ed690d66d635f541942ec",
+            "shortcuts": [
+                [
+                    "PPSSPPWindows64.exe",
+                    "PPSSPP"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://ppsspp.org/files/1_15_4/ppsspp_win.zip",
+            "hash": "913b2659b7e939d84518c9172dde72fc90173e122d3ed690d66d635f541942ec",
+            "shortcuts": [
+                [
+                    "PPSSPPWindows.exe",
+                    "PPSSPP"
+                ]
+            ]
+        },
+        "arm64": {
+            "url": "https://ppsspp.org/files/1_15_4/PPSSPPWindowsARM64.zip",
+            "hash": "82fbae2b4d1ece5efd90485d15a76eb6b4a8adddabbfe034f4cda6a78e0726a7",
+            "shortcuts": [
+                [
+                    "PPSSPPWindowsARM64.exe",
+                    "PPSSPP"
+                ]
+            ]
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\memstick\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "persist": [
+        "assets",
+        "demos",
+        "memstick"
+    ],
+    "checkver": {
+        "github": "https://github.com/hrydgard/ppsspp",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ppsspp.org/files/$underscoreVersion/ppsspp_win.zip"
+            },
+            "32bit": {
+                "url": "https://ppsspp.org/files/$underscoreVersion/ppsspp_win.zip"
+            },
+            "arm64": {
+                "url": "https://ppsspp.org/files/$underscoreVersion/PPSSPPWindowsARM64.zip"
+            }
+        }
+    }
+}

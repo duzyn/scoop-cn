@@ -1,0 +1,40 @@
+{
+    "version": "1.2.3",
+    "homepage": "https://file-converter.org/",
+    "description": "A Windows File Explorer shell extension that allows for converting and compressing one or several file(s) using the context menu.",
+    "license": "GPL-3.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Tichau/FileConverter/releases/download/v1.2.3/FileConverter-1.2.3-x86-setup.msi#/setup.msi_",
+            "hash": "00BC76929BC173491F2107B97836C7CB18E0BD52917442CDC743A9C4FD00BF3F"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Tichau/FileConverter/releases/download/v1.2.3/FileConverter-1.2.3-x64-setup.msi#/setup.msi_",
+            "hash": "2410944075ED4F0BFD4740E9EE2FD17EAE4922980937D738C42BED07AC130C32"
+        }
+    },
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn')",
+        "Stop-Process -Name 'FileConverter' -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 2"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "if (Get-Process -Name 'FileConverter' -ErrorAction 'SilentlyContinue') { Stop-Process -Name 'FileConverter' -ErrorAction 'SilentlyContinue' -Force }",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn')",
+        "Stop-Process -Name 'explorer' -Force; Start-Sleep -Seconds 2"
+    ],
+    "checkver": {
+        "github": "https://github.com/Tichau/FileConverter"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Tichau/FileConverter/releases/download/v$version/FileConverter-$version-x86-setup.msi#/setup.msi_"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Tichau/FileConverter/releases/download/v$version/FileConverter-$version-x64-setup.msi#/setup.msi_"
+            }
+        }
+    }
+}

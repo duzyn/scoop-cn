@@ -1,0 +1,90 @@
+{
+    "version": "1.30.1",
+    "description": "Quake 1 port using Vulkan instead of OpenGL for rendering, based on QuakeSpasm",
+    "homepage": "https://github.com/Novum/vkQuake",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "",
+        "Place game data files (such as pak0.pak and pak1.pak) in:",
+        "",
+        "- Quake:",
+        "    $persist_dir\\id1\\",
+        "",
+        "- Quake Mission Pack 1 - Scourge of Armagon:",
+        "    $persist_dir\\hipnotic\\",
+        "",
+        "- Quake Mission Pack 2 - Dissolution of Eternity:",
+        "    $persist_dir\\rogue\\",
+        "",
+        "- Quake Mission Pack 3 - Abyss of Pandemonium:",
+        "    $persist_dir\\abyss\\",
+        "",
+        "- Quake - Arcane Dimensions (https://www.moddb.com/mods/arcane-dimensions):",
+        "    $persist_dir\\ad\\",
+        ""
+    ],
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2019"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Novum/vkQuake/releases/download/1.30.1/vkquake-1.30.1_win32.zip",
+            "hash": "5c53590dc87b24b058b962a7792bf107a24a423de8f6f4c9838f10db58748e86"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Novum/vkQuake/releases/download/1.30.1/vkquake-1.30.1_win64.zip",
+            "hash": "e6420a9181716d147177827af0925b820ff19456c7d926cc9d294f1d7affc1d4"
+        }
+    },
+    "bin": [
+        [
+            "vkQuake.exe",
+            "vkQuake",
+            "-basedir $persist_dir"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "vkQuake.exe",
+            "vkQuake"
+        ],
+        [
+            "vkQuake.exe",
+            "vkQuake (Scourge of Armagon)",
+            "-game hipnotic"
+        ],
+        [
+            "vkQuake.exe",
+            "vkQuake (Dissolution of Eternity)",
+            "-game rogue"
+        ],
+        [
+            "vkQuake.exe",
+            "vkQuake (Abyss of Pandemonium)",
+            "-game abyss"
+        ],
+        [
+            "vkQuake.exe",
+            "vkQuake (Arcane Dimensions)",
+            "-game ad"
+        ]
+    ],
+    "persist": [
+        "id1",
+        "hipnotic",
+        "rogue",
+        "abyss",
+        "ad"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Novum/vkQuake/releases/download/$version/vkquake-$version_win32.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Novum/vkQuake/releases/download/$version/vkquake-$version_win64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "version": "1.16.0",
+    "description": "Quick file searcher and app launcher with community-made plugins",
+    "homepage": "https://www.flowlauncher.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Flow-Launcher/Flow.Launcher/releases/download/v1.16.0/Flow-Launcher-Portable.zip",
+            "hash": "ea1686a996d8b9deaafc206b6c712348b9e51e7e495bd6d54b8b38cc1e0fab1f"
+        }
+    },
+    "extract_dir": "FlowLauncher",
+    "shortcuts": [
+        [
+            "Flow.Launcher.exe",
+            "Flow Launcher"
+        ]
+    ],
+    "persist": [
+        [
+            "app-1.16.0\\UserData",
+            "UserData"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Flow-Launcher/Flow.Launcher"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Flow-Launcher/Flow.Launcher/releases/download/v$version/Flow-Launcher-Portable.zip",
+        "persist": [
+            [
+                "app-$version\\UserData",
+                "UserData"
+            ]
+        ]
+    }
+}

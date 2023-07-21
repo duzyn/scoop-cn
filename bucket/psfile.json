@@ -1,0 +1,39 @@
+{
+    "version": "1.04",
+    "description": "See what files are opened remotely.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psfile",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/psfile.zip",
+    "hash": "1434a1c45bd0fe304fe27668e1abae0856bfad0a413e379257dcc88838bf2264",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "psfile64.exe",
+                    "psfile"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "psfile.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "psfile64a.exe",
+                    "psfile"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psfile.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/psfile.zip"
+    }
+}

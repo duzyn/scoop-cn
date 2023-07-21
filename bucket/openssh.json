@@ -1,0 +1,49 @@
+{
+    "version": "9.2.2.0p1",
+    "description": "The premier connectivity tool for remote login with the SSH protocol. (Microsoft build)",
+    "homepage": "https://www.openssh.com",
+    "license": "SSH-OpenSSH",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.2.2.0p1-Beta/OpenSSH-Win64.zip",
+            "hash": "ec8144a107014740ec3ce16ec51710398fc390fca5344931c1506e7cc2e181f3",
+            "extract_dir": "OpenSSH-Win64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/PowerShell/Win32-OpenSSH/releases/download/v9.2.2.0p1-Beta/OpenSSH-Win32.zip",
+            "hash": "7b132aad088eae3ac67d85751e88d884e80631607cab9b1da52c838655bb5ae6",
+            "extract_dir": "OpenSSH-Win32"
+        }
+    },
+    "bin": [
+        "scp.exe",
+        "sftp.exe",
+        "sftp-server.exe",
+        "ssh.exe",
+        "ssh-add.exe",
+        "ssh-agent.exe",
+        "ssh-keygen.exe",
+        "ssh-keyscan.exe",
+        "ssh-shellhost.exe",
+        "sshd.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/PowerShell/Win32-OpenSSH",
+        "regex": "tag/v([\\d.]+p\\d)-Beta"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Beta/OpenSSH-Win64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/PowerShell/Win32-OpenSSH/releases/download/v$version-Beta/OpenSSH-Win32.zip"
+            }
+        }
+    },
+    "notes": [
+        "Windows 10 or higher includes this build of OpenSSH in the system itself, hence it is recommended to use the system OpenSSH there.",
+        "Run 'sudo $dir\\install-sshd.ps1' to install sshd and ssh-agent as a service.",
+        "Run 'sudo $dir\\uninstall-sshd.ps1' to uninstall the services."
+    ]
+}

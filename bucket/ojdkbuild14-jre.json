@@ -1,0 +1,36 @@
+{
+    "description": "OpenJDK 14 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "14.0.2.12-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-14-openjdk-14.0.2.12-1/java-14-openjdk-jre-14.0.2.12-1.windows.ojdkbuild.x86_64.zip",
+            "hash": "b484416ca87dc722766faec4583a7a5936d3e4583ef71d9c7c483ff08fcaa822",
+            "extract_dir": "java-14-openjdk-jre-14.0.2.12-1.windows.ojdkbuild.x86_64"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "regex": "download/java-14-openjdk-([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-jre-$version.windows.ojdkbuild.x86_64.zip",
+                "extract_dir": "java-$majorVersion-openjdk-jre-$version.windows.ojdkbuild.x86_64"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

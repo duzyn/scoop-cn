@@ -1,0 +1,37 @@
+{
+    "version": "1.0.0.2",
+    "description": "Emulator for arcade games and select consoles",
+    "homepage": "https://github.com/finalburnneo/FBNeo",
+    "license": "https://github.com/finalburnneo/FBNeo/blob/master/src/license.txt",
+    "notes": [
+        "",
+        "Some users will get an error message when they start the emulator because the default renderer is using Direct3D 7.",
+        "",
+        "To change the renderer, go to Video > Select blitter.",
+        ""
+    ],
+    "url": "https://ghproxy.com/https://github.com/finalburnneo/FBNeo/releases/download/v1.0.0.2/fbneo.zip",
+    "hash": "9d09d210b007745c91143df61da46190d60a344b192ad79e3b6bc1f1140e0ec1",
+    "extract_dir": "fbneo",
+    "bin": "fbneo.exe",
+    "shortcuts": [
+        [
+            "fbneo.exe",
+            "FinalBurn Neo"
+        ]
+    ],
+    "persist": [
+        "avi",
+        "config",
+        "neocdiso",
+        "recordings",
+        "roms",
+        "savestates",
+        "screenshots",
+        "support"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/finalburnneo/FBNeo/releases/download/v$version/fbneo.zip"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "version": "1.7.3",
+    "description": "Dual-pane file manager.",
+    "homepage": "https://fman.io",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://fman.io/legal"
+    },
+    "url": "https://download.fman.io/1.7.3/fmanSetup.exe#/setup.exe",
+    "hash": "bef3c861f84c668af77780133477fc44df09e899e7399a55eb6c1147845d1cbc",
+    "installer": {
+        "script": [
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' | Out-Null",
+            "",
+            "while ($true) {",
+            "    if (Get-Process -Name fman -ErrorAction SilentlyContinue) { Stop-Process -Name fman -Force }",
+            "    if (!(Get-Process -Name setup -ErrorAction SilentlyContinue)) { break }",
+            "    Start-Sleep -Seconds 1",
+            "}",
+            "",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process \"$env:LOCALAPPDATA\\fman\\uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
+            "shortcut_folder $global | Split-Path | Get-ChildItem -Filter 'fman.lnk' | Remove-Item"
+        ]
+    },
+    "checkver": {
+        "url": "https://fman.io/changelog",
+        "regex": "Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.fman.io/$version/fmanSetup.exe#/setup.exe"
+    }
+}

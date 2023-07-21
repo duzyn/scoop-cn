@@ -1,0 +1,51 @@
+{
+    "description": "Zulu 10 is certified build of OpenJDK 10",
+    "homepage": "https://www.azul.com/products/zulu-community/",
+    "version": "10.3.5",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu10.3.5-ca-jdk10.0.2-win_x64.zip",
+            "hash": "622cf9db19fd505442541baacb1c59a08e6868007387eccfeabeb8a0b21d8621",
+            "extract_dir": "zulu10.3.5-ca-jdk10.0.2-win_x64"
+        },
+        "32bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu10.3.5-ca-jdk10.0.2-win_i686.zip",
+            "hash": "e4a9fe347798ea4b41db77073e5cfa2628d011862005380d4a5111a1425f740e",
+            "extract_dir": "zulu10.3.5-ca-jdk10.0.2-win_i686"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=10&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)(?:[.+]{1})(?<build>[\\d]+)(?:-ca)?-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}.${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=10&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=64",
+                    "jp": "$.sha256_hash"
+                }
+            },
+            "32bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
+                "extract_dir": "$matchName_i686",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=10&bundle_type=jdk&features=&javafx=false&ext=zip&os=windows&arch=x86&hw_bitness=32",
+                    "jp": "$.sha256_hash"
+                }
+            }
+        }
+    }
+}

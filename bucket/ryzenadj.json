@@ -1,0 +1,22 @@
+{
+    "version": "0.13.0",
+    "description": "Adjust power management settings for Mobile Raven Ridge Ryzen Processors",
+    "homepage": "https://github.com/FlyGoat/RyzenAdj",
+    "license": "LGPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/FlyGoat/RyzenAdj/releases/download/v0.13.0/ryzenadj-win64.zip",
+            "hash": "2e47419fd94e6537945c3d3cc8deedb2e26c4f22cfa0f0ca45973e204f962bab"
+        }
+    },
+    "bin": "ryzenadj.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/FlyGoat/RyzenAdj/releases/download/v$version/ryzenadj-win64.zip"
+            }
+        }
+    },
+    "notes": "Advanced options: https://github.com/FlyGoat/RyzenAdj#windows-installation"
+}

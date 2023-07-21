@@ -1,0 +1,60 @@
+{
+    "version": "3.32",
+    "description": "A process virtual and physical memory analysis utility.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/vmmap",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/VMMap.zip",
+    "hash": "c985c951bd0e78602c64feb831248bedc03e46acea9927ef8d611d81b83f615a",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "vmmap64.exe",
+                    "vmmap"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "vmmap64.exe",
+                    "scoop-cn/VMMap",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "vmmap.exe",
+            "shortcuts": [
+                [
+                    "vmmap.exe",
+                    "scoop-cn/VMMap",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "vmmap64a.exe",
+                    "vmmap"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "vmmap64a.exe",
+                    "scoop-cn/VMMap",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/vmmap.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/VMMap.zip"
+    }
+}

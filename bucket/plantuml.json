@@ -1,0 +1,29 @@
+{
+    "version": "1.2023.7",
+    "description": "A tool to draw UML diagrams, using a simple and human readable text description.",
+    "homepage": "http://plantuml.com/",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "JDK": [
+            "scoop-cn/oraclejdk",
+            "scoop-cn/openjdk"
+        ]
+    },
+    "url": "https://downloads.sourceforge.net/project/plantuml/1.2023.7/plantuml.1.2023.7.jar#/plantuml.jar",
+    "hash": "sha1:93fe1101c59381e0b3af86262b844871ca0eb987",
+    "pre_install": "Set-Content \"$dir\\plantuml.bat\" \"@javaw.exe -jar \"\"%~dp0plantuml.jar\"\"\" -Encoding Ascii",
+    "bin": "plantuml.jar",
+    "shortcuts": [
+        [
+            "plantuml.bat",
+            "PlantUML"
+        ]
+    ],
+    "checkver": {
+        "url": "http://plantuml.com/download",
+        "regex": "PlantUML compiled Jar \\(Version ([\\d.]+)\\)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/plantuml/$version/plantuml.$version.jar#/plantuml.jar"
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "version": "2023.2-EAP9-232.8660.64",
+    "description": "Cross-Platform IDE for .NET by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/rider/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/rider/JetBrains.Rider-2023.2-EAP9-232.8660.64.Checked.win.zip",
+            "hash": "b623be7a6f8a4d0d76a9b066ded7195f985b0d5589e9ad7c8d1f5ba8c883ce2b",
+            "bin": [
+                [
+                    "IDE\\bin\\rider64.exe",
+                    "rider"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\rider64.exe",
+                    "JetBrains\\Rider"
+                ]
+            ]
+        }
+    },
+    "extract_to": "IDE",
+    "installer": {
+        "script": "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir"
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=RD&latest=true&platform=zip&type=eap",
+        "regex": "version\":\"(?<ver>[\\w.-]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/rider/JetBrains.Rider-$version.Checked.win.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                }
+            }
+        }
+    }
+}

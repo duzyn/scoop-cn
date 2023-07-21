@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/outlook_attachment.html",
+    "checkver": "OutlookAttachView v(\\d+\\.\\d\\d)",
+    "version": "3.50",
+    "license": "freeware",
+    "description": "OutlookAttachView scans all messages stored in your Outlook, and displays the list of all attached files that it finds. You can easily select one or more attachments and save all of them into the desired folder, as well as you can delete unwanted large attachments that take too much disk space in your mailbox. You can also save the list of attachments into xml/html/text/csv file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/outlookattachview-x64.zip",
+            "hash": "1f901b57052c547d73af782422c5c0c2586211e9a34a98b3b4aafc5138a87315"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/outlookattachview.zip",
+            "hash": "ee3a3083340b50ce2356fb0c4ad58c7869ac997c6a79a4ecbff6ddf60e5ba514"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/outlookattachview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/outlookattachview.zip"
+            }
+        }
+    },
+    "bin": "OutlookAttachView.exe",
+    "shortcuts": [
+        [
+            "OutlookAttachView.exe",
+            "NirSoft\\OutlookAttachView - Extract multiple attachments from Outlook"
+        ]
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "version": "1.55.0",
+    "description": "The IBM Cloud provider is used to manage provisioning and orchestration of IBM Cloud resources with the Terraform provisioning engine",
+    "homepage": "https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform/",
+    "license": "MPL-2.0",
+    "depends": "scoop-cn/terraform011",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v1.55.0/terraform-provider-ibm_1.55.0_windows_amd64.zip",
+            "hash": "dfc2148633e996964eeaa648d89eab246d98719897d00f3429825e86c3daa8ac",
+            "installer": {
+                "script": "Copy-Item -Force \"$dir\\terraform-provider-ibm_v$version.exe\" \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\""
+            },
+            "uninstaller": {
+                "script": "Remove-Item \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\\terraform-provider-ibm_v$version.exe\" -Force"
+            }
+        }
+    },
+    "checkver": {
+        "url": "https://api.github.com/repos/IBM-Cloud/terraform-provider-ibm/releases",
+        "regex": "releases/download/v([\\d.]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/terraform-provider-ibm_$version_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/terraform-provider-ibm_$version_SHA256SUMS"
+        }
+    }
+}

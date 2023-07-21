@@ -1,0 +1,40 @@
+{
+    "version": "10.3.0",
+    "description": "GCC compiler, Windows-friendly",
+    "homepage": "https://jmeubank.github.io/tdm-gcc/",
+    "license": "CC0-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/jmeubank/tdm-gcc/releases/download/v10.3.0-tdm64-2/tdm64-gcc-10.3.0-2.exe#dl.7z",
+            "hash": "819c7a1f74d45ad04e10662e1a2c3124d13d9a2bca508847692251242cd455c3"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/jmeubank/tdm-gcc/releases/download/v10.3.0-tdm-1/tdm-gcc-10.3.0.exe#dl.7z",
+            "hash": "f6ed81c0e1cc4199ecf0488446f2396e20a56d731a0c80899afcd41ffb2c0e1c"
+        }
+    },
+    "pre_install": [
+        "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\*.xz\" \"$dir\"",
+        "Expand-7ZipArchive \"$dir\\`$PLUGINSDIR\\*.lzma\" \"$dir\"",
+        "Expand-7ZipArchive \"$dir\\*.tar\" \"$dir\"",
+        "Get-ChildItem \"$dir\\`$_19_\\*.bat\" | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
+        "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+        "Get-ChildItem \"$dir\\*.tar\" | Remove-Item -Recurse -Force",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse -Force",
+        "Remove-Item \"$dir\\`$_19_\" -Recurse -Force"
+    ],
+    "env_add_path": "bin",
+    "checkver": {
+        "regex": "MinGW-w64 based.+\\s.+download\\/(?<win64>v(?<version>[\\d.]+).+\\/tdm64-gcc-[\\d.-]+.exe)\".+\\s.+\\s.+download\\/(?<win32>v.+\\/tdm-gcc-[\\d.-]+.exe)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/jmeubank/tdm-gcc/releases/download/$matchWin64#dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/jmeubank/tdm-gcc/releases/download/$matchWin32#dl.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "version": "2.0.12-dev.71-2023-07-20",
+    "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
+    "homepage": "https://micro-editor.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.71-win64.zip",
+            "hash": "73e14bbafa8495456624af1c3d800ebc75dedc95c71d8142321f626ddc7a5260"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.12-dev.71-win64.zip",
+            "hash": "73e14bbafa8495456624af1c3d800ebc75dedc95c71d8142321f626ddc7a5260"
+        }
+    },
+    "extract_dir": "micro-2.0.12-dev.71",
+    "bin": "micro.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/zyedidia/micro/releases/tags/nightly",
+        "regex": "updated_at.+\"([\\d\\-]+)T.*micro-(?<micro>.+)-win",
+        "replace": "${2}-${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
+            }
+        },
+        "extract_dir": "micro-$matchMicro"
+    }
+}

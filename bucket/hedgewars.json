@@ -1,0 +1,26 @@
+{
+    "version": "1.0.0",
+    "description": "2D turn-based artillery game featuring fighting hedgehogs",
+    "homepage": "https://www.hedgewars.org/",
+    "license": "GPL-2.0-only",
+    "url": "https://www.hedgewars.org/download/releases/Hedgewars-1.0.0.exe#/dl.7z",
+    "hash": "cbbdbfcc560313234d08c8d445a8e81137e958dc7b4a67802671aa6407b5ba83",
+    "bin": [
+        "hedgewars.exe",
+        "hedgewars-server.exe",
+        "hwengine.exe"
+    ],
+    "shortcuts": [
+        [
+            "hedgewars.exe",
+            "Hedgewars"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.hedgewars.org/download.html",
+        "regex": "releases\\/Hedgewars-([\\d.-]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://www.hedgewars.org/download/releases/Hedgewars-$version.exe#/dl.7z"
+    }
+}

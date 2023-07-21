@@ -1,0 +1,66 @@
+{
+    "version": "1.29.0",
+    "description": "Multi-system emulator",
+    "homepage": "https://mednafen.github.io/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "notes": [
+        "ATTENTION: Mednafen requires BIOS/firmware files for Playstation 1, PC Engine, and PC FX emulation.",
+        "It is recommended to place these in $persist_dir\\firmware.",
+        "See https://mednafen.github.io/documentation/#Section_firmware_bios for more information."
+    ],
+    "suggest": {
+        "Mednaffe": "mednaffe"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://mednafen.github.io/releases/files/mednafen-1.29.0-win32.zip",
+            "hash": "f1c78dd0190129efaeeaa8e96553fb4d83d0120041caaaa6d4e7f440a573d811"
+        },
+        "64bit": {
+            "url": "https://mednafen.github.io/releases/files/mednafen-1.29.0-win64.zip",
+            "hash": "26c6676354d44e7d2c31b002f0abb097940e0846e449ed080fb79e6b64db0be2"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\mednafen.cfg\")) {",
+            "   New-Item \"$dir\\mednafen.cfg\" | Out-Null",
+            "}"
+        ]
+    },
+    "bin": "mednafen.exe",
+    "shortcuts": [
+        [
+            "mednafen.exe",
+            "mednafen"
+        ]
+    ],
+    "persist": [
+        "cheats",
+        "firmware",
+        "mcm",
+        "mcs",
+        "palettes",
+        "pgconfig",
+        "sav",
+        "snaps",
+        "mednafen.cfg"
+    ],
+    "checkver": {
+        "regex": "mednafen-(?<version>[\\d.]+).tar.xz",
+        "replace": "${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://mednafen.github.io/releases/files/mednafen-$matchVersion-win32.zip"
+            },
+            "64bit": {
+                "url": "https://mednafen.github.io/releases/files/mednafen-$matchVersion-win64.zip"
+            }
+        }
+    }
+}

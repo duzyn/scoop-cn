@@ -1,0 +1,30 @@
+{
+    "version": "2.3.0",
+    "homepage": "https://github.com/pizzaboxer/bloxstrap",
+    "description": "Open-source, feature-packed alternative bootstrapper for Roblox",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/pizzaboxer/bloxstrap/releases/download/v2.3.0/Bloxstrap-v2.3.0-x64.exe#/setup.exe",
+            "hash": "385f9ac853fcc9d165c8e9d6af751f2b9897da992e239d2f5be0177bafc0dcf8"
+        }
+    },
+    "pre_install": [
+        "if ($cmd -eq 'update') { Start-Process \"$dir\\setup.exe\" -Wait -Args @('-quiet', '-nolaunch', '-upgrade'); Remove-Item \"$dir\\setup.exe\" }",
+        "else { Start-Process \"$dir\\setup.exe\" -Wait -Args @('-quiet', '-nolaunch'); Remove-Item \"$dir\\setup.exe\" }"
+    ],
+    "pre_uninstall": [
+        "if ($cmd -eq 'uninstall') {",
+        "   Start-Process \"$env:LOCALAPPDATA\\Bloxstrap\\Bloxstrap.exe\" -Wait -Args @('-quiet','-uninstall')",
+        "   Remove-Item 'HKCU:\\SOFTWARE\\Classes\\roblox\\', 'HKCU:\\SOFTWARE\\Classes\\roblox-player\\', \"$env:LOCALAPPDATA\\Bloxstrap\" -Recurse -Force",
+        "}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/pizzaboxer/bloxstrap/releases/download/v$version/Bloxstrap-v$version-x64.exe#/setup.exe"
+            }
+        }
+    }
+}

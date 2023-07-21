@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/wifi_channel_monitor.html",
+    "checkver": "WifiChannelMonitor v(\\d+\\.\\d\\d)",
+    "version": "1.70",
+    "license": "freeware",
+    "description": "WifiChannelMonitor captures wifi traffic on the channel you choose, using Microsoft Network Monitor capture driver in monitor mode, and displays extensive information about access points and the wifi clients connected to them. WifiChannelMonitor also allows you to view the information about wifi clients that are not connected to any access points, including the list of SSIDs (network names) that they are trying to connect. For every access point, the following information is displayed: SSID, MAC Address, Device Manufacturer , PHY Type, Channel, RSSI, Security, Beacons Count, Probe Responses Count, Data Bytes, Retransmitted Data Bytes, and more... For every client, the following information is displayed: MAC Address, Device Manufacturer, SSID list that the client tries to connect, Sent Data Bytes, Received Data Bytes, Probe Requests Count, and more...",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/wifichannelmonitor-x64.zip",
+            "hash": "76ee98c28823b02c2edb28c8b04b2692b98d5df4c1f460a4cf35a049117ca31f"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/wifichannelmonitor.zip",
+            "hash": "7d2447562a4d9872f8bbd9470769532a3449d269db22c67d7102551f11f45844"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/wifichannelmonitor-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/wifichannelmonitor.zip"
+            }
+        }
+    },
+    "bin": "WifiChannelMonitor.exe",
+    "shortcuts": [
+        [
+            "WifiChannelMonitor.exe",
+            "NirSoft\\WifiChannelMonitor - Captures wifi traffic in monitor mode"
+        ]
+    ]
+}

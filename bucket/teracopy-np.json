@@ -1,0 +1,25 @@
+{
+    "version": "3.10",
+    "description": "Utility for copying files.",
+    "homepage": "https://www.codesector.com/teracopy",
+    "license": "Freeware",
+    "url": "http://www.codesector.com/files/teracopy.exe",
+    "hash": "eef51827a158c2770febb0ff189965f2f170ac9ee0a36cebcfe3cd3c7713eafc",
+    "installer": {
+        "file": "teracopy.exe",
+        "args": [
+            "/qn",
+            "/passive"
+        ]
+    },
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', '{C38F85E6-6E93-4963-A29E-B871C8A28D13}', '/qn', '/norestart') -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://www.codesector.com/downloads",
+        "regex": "(?s)TeraCopy ([\\d.]+)</td>\\s+<td>Windows"
+    },
+    "autoupdate": {
+        "url": "http://www.codesector.com/files/teracopy.exe"
+    }
+}

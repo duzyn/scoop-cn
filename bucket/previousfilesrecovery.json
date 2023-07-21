@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/previous_files_recovery.html",
+    "checkver": "PreviousFilesRecovery v(\\d+\\.\\d\\d)",
+    "version": "1.10",
+    "license": "freeware",
+    "description": "PreviousFilesRecovery is a simple tool for Windows 10/8/7/Vista that allows you to scan the shadow copies of your local hard drive and find deleted files as well as older versions of existing files. If the file you need is found in the shadow copies of Windows, you can easily recover it by copying it into existing folder on your drive.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/previousfilesrecovery-x64.zip",
+            "hash": "5eaff225d06abafc8528bde9ed6b6576b9bcd4229471df9bcc2daf986caa276f"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/previousfilesrecovery.zip",
+            "hash": "62992bada592bbd7e3b5152b28d6f63d4cb0290efcc7f324143db4356747429b"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/previousfilesrecovery-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/previousfilesrecovery.zip"
+            }
+        }
+    },
+    "bin": "PreviousFilesRecovery.exe",
+    "shortcuts": [
+        [
+            "PreviousFilesRecovery.exe",
+            "NirSoft\\PreviousFilesRecovery - find and recovery files from shadow copies"
+        ]
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "version": "1.7-20230719-4c3a41",
+    "description": "Modified spotify client. Blocks ads and updates, and more.",
+    "homepage": "https://github.com/amd64fox/SpotX",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://raw.githubusercontent.com/amd64fox/SpotX/main/Install.ps1",
+    "hash": "80fa649b308538f43a192a1b626317943100cafe2c4d5f543af4de481f3ada98",
+    "installer": {
+        "script": [
+            "# older versions of Powershell 5 requires BOM to recognize UTF8 scripts",
+            "$cont = Get-Content \"$dir\\Install.ps1\" -Encoding utf8",
+            "Set-Content \"$dir\\Install.ps1\" $cont -Encoding utf8",
+            "& \"$dir\\Install.ps1\" -confirm_uninstall_ms_spoti -confirm_spoti_recomended_over -podcasts_off -cache_off -block_update_on -new_theme"
+        ]
+    },
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand \"$Env:Appdata\\Spotify\\Spotify.exe\" -ArgumentList @('/uninstall', '/silent') | Out-Null"
+    },
+    "checkver": {
+        "script": [
+            "try {",
+            "    $auth = Get-GitHubToken",
+            "    $head = @{}",
+            "    if($auth) { $head = @{'Authorization' = \"token $auth\"} }",
+            "    $url1 = 'https://api.github.com/repos/amd64fox/SpotX/releases/latest'",
+            "    $cont = $(Invoke-WebRequest -Headers $head $url1).Content | ConvertFrom-Json",
+            "    if(!($cont.tag_name)) { error \"Tag name not found in '$url1'\"; throw }",
+            "    $app_ver = $cont.tag_name",
+            "    $url2 = 'https://api.github.com/repos/amd64fox/SpotX/commits?path=Install.ps1&per_page=1'",
+            "    $cont2 = $(Invoke-WebRequest -Headers $head $url2).Content | ConvertFrom-Json",
+            "    if(!($cont2.commit.committer.date)) { error \"Commit date not found in '$url2'\"; throw }",
+            "    # Using script to get version number from date, e.g. 6 Mar, 2019 -> 20190306",
+            "    $update_date = $(Get-Date $cont2.commit.committer.date).ToString('yyyyMMdd')",
+            "    if(!($cont2.sha)) { error \"Commit hash not found in '$url2'\"; throw }",
+            "    $commit_sha = $($cont2.sha).Substring(0, 6)",
+            "    Write-Output \"$app_ver-$update_date-$commit_sha\"",
+            "}",
+            "catch { error $_.Exception.Message; throw }"
+        ],
+        "regex": "([\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/amd64fox/SpotX/main/Install.ps1"
+    }
+}

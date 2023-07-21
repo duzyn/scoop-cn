@@ -1,0 +1,50 @@
+{
+    "version": "2023.2-232.8660.49",
+    "description": "Cross-Platform IDE for C and C++ by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/cpp/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/cpp/CLion-232.8660.49.win.zip",
+            "hash": "12c48633b28d5f941c21408f0b49af3a9078ceb862502a196ba687b98f9eb901",
+            "bin": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "clion"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "JetBrains\\CLion (Early Access Program)"
+                ]
+            ]
+        }
+    },
+    "extract_to": "IDE",
+    "installer": {
+        "script": "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir"
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=CL&latest=true&platform=zip&type=eap",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/cpp/CLion-$preReleaseVersion.win.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

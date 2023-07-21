@@ -1,0 +1,41 @@
+{
+    "description": "OpenJFX is an open source, next generation client application platform for desktop, mobile and embedded systems built on Java.",
+    "homepage": "https://openjfx.io/",
+    "version": "18",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download2.gluonhq.com/openjfx/18/openjfx-18_monocle-windows-x64_bin-sdk.zip",
+            "hash": "b1d28be51757841314deb42602e248766e6edff4a8db06987d9fe5bf853f752d"
+        },
+        "32bit": {
+            "url": "https://download2.gluonhq.com/openjfx/18/openjfx-18_monocle-windows-x86_bin-sdk.zip",
+            "hash": "7eea60f89864eda116a9d25e9a3710925cfef2d475bcabb2955281a4bb83374d"
+        }
+    },
+    "extract_dir": "javafx-sdk-18",
+    "env_set": {
+        "PATH_TO_FX": "$dir\\lib"
+    },
+    "checkver": {
+        "url": "https://gluonhq.com/wp-content/uploads/custom-css-js/119502.js",
+        "regex": "\"([\\d.]+).*?\"#latest\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download2.gluonhq.com/openjfx/$version/openjfx-$version_monocle-windows-x64_bin-sdk.zip"
+            },
+            "32bit": {
+                "url": "https://download2.gluonhq.com/openjfx/$version/openjfx-$version_monocle-windows-x86_bin-sdk.zip"
+            }
+        },
+        "extract_dir": "javafx-sdk-$version",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

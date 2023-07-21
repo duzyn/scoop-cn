@@ -1,0 +1,44 @@
+{
+    "version": "5.32.1.1",
+    "description": "A programming language suitable for writing simple scripts as well as complex applications.",
+    "homepage": "https://strawberryperl.com",
+    "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
+    "architecture": {
+        "64bit": {
+            "url": "https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit-portable.zip",
+            "hash": "sha1:fac226b31461f2392702822052a3a5628917f857"
+        },
+        "32bit": {
+            "url": "https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit-portable.zip",
+            "hash": "sha1:28bca91cadd6651c2b2463db8587c170bf17f2fa"
+        }
+    },
+    "post_install": [
+        "# enable standard idiomatic access to user's home directory",
+        "## remove HomeDir section from portable.perl (disables Portable.pm override of File::HomeDir)",
+        "## NOTE: conversion to byte[] avoids adding an extra trailing newline to the output file",
+        "[System.IO.File]::WriteAllBytes(\"$dir\\portable.perl\", ([byte[]][char[]]((Get-Content -Raw \"$dir\\portable.perl\") -replace \"(?ms)^HomeDir:.*?^(?=\\S)\",\"\")))"
+    ],
+    "env_add_path": [
+        "perl\\site\\bin",
+        "perl\\bin"
+    ],
+    "checkver": {
+        "url": "https://strawberryperl.com/releases.html",
+        "regex": "strawberry-perl-([\\d.]+)-32bit-portable\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://strawberryperl.com/download/$version/strawberry-perl-$version-64bit-portable.zip"
+            },
+            "32bit": {
+                "url": "https://strawberryperl.com/download/$version/strawberry-perl-$version-32bit-portable.zip"
+            }
+        },
+        "hash": {
+            "url": "https://strawberryperl.com/releases.html",
+            "regex": "(?sm)$basename\" onclick.*?Portable edition.*?$sha1"
+        }
+    }
+}

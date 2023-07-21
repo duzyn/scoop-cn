@@ -1,0 +1,45 @@
+{
+    "version": "1.02",
+    "description": "A program that allows you to control the Cache Manager's working set size using functions provided by NT.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/cacheset",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/CacheSet.zip",
+    "hash": "3f8613a536b2dc55cf710ef94c5c5cd50d1e891b2bc49fc90fabb541de005b6a",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Cacheset64.exe",
+                    "Cacheset"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Cacheset64.exe",
+                    "scoop-cn/CacheSet",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Cacheset.exe",
+            "shortcuts": [
+                [
+                    "Cacheset.exe",
+                    "scoop-cn/CacheSet",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/cacheset.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/CacheSet.zip"
+    }
+}

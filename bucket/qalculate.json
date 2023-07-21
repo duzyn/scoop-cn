@@ -1,0 +1,46 @@
+{
+    "version": "4.7.0",
+    "description": "Multi-purpose calculator",
+    "homepage": "https://qalculate.github.io/",
+    "license": "GPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Qalculate/libqalculate/releases/download/v4.7.0/qalculate-4.7.0-x64.zip",
+            "hash": "f1e6dd99f9122ad2ae4ce49aca8fee309926c9603241dcfff887f58f1bdf70dd"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Qalculate/libqalculate/releases/download/v4.7.0/qalculate-4.7.0-i386.zip",
+            "hash": "7a0f8516ba953837be602fdd8f1aee08e16a5d7aaa6b0bfb247af30b8150b1d5"
+        }
+    },
+    "extract_dir": "qalculate",
+    "bin": [
+        "qalc.exe",
+        "qalculate-gtk.exe",
+        "qalculate-qt.exe"
+    ],
+    "shortcuts": [
+        [
+            "qalculate-gtk.exe",
+            "Qalculate! (GTK)"
+        ],
+        [
+            "qalculate-qt.exe",
+            "Qalculate! (Qt)"
+        ]
+    ],
+    "persist": "user",
+    "checkver": {
+        "github": "https://github.com/Qalculate/libqalculate"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Qalculate/libqalculate/releases/download/v$version/qalculate-$version-x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Qalculate/libqalculate/releases/download/v$version/qalculate-$version-i386.zip"
+            }
+        }
+    }
+}

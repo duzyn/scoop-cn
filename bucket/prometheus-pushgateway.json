@@ -1,0 +1,35 @@
+{
+    "version": "1.6.0",
+    "description": "Prometheus push acceptor for ephemeral and batch jobs.",
+    "homepage": "https://github.com/prometheus/pushgateway",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/prometheus/pushgateway/releases/download/v1.6.0/pushgateway-1.6.0.windows-amd64.tar.gz",
+            "hash": "0de6b1ee3567f38a918bbc7fb36b980d77eb8a7adb7b4894ff30d28502895ddb",
+            "extract_dir": "pushgateway-1.6.0.windows-amd64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/prometheus/pushgateway/releases/download/v1.6.0/pushgateway-1.6.0.windows-386.tar.gz",
+            "hash": "11c847d0237505e329d61863e304d852466fb0a5d792d895d2c0bd034d3f87a8",
+            "extract_dir": "pushgateway-1.6.0.windows-386"
+        }
+    },
+    "bin": "pushgateway.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/prometheus/pushgateway/releases/download/v$version/pushgateway-$version.windows-amd64.tar.gz",
+                "extract_dir": "pushgateway-$version.windows-amd64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/prometheus/pushgateway/releases/download/v$version/pushgateway-$version.windows-386.tar.gz",
+                "extract_dir": "pushgateway-$version.windows-386"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums.txt"
+        }
+    }
+}

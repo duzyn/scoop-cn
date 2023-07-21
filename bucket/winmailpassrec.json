@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/windows_mail_password_recovery.html",
+    "checkver": "WinMailPassRec v(\\d+\\.\\d\\d)",
+    "version": "1.00",
+    "license": "freeware",
+    "description": "WinMailPassRec is a password recovery tool for Windows 10 and Windows 11 that displays the details of all POP3/IMAP/SMTP/Exchange accounts stored in the mail application of Windows operating system. For every account, the following information is displayed: Account Name, Email, Mailbox Type, Mail Server, User, Password, Outgoing Server, Outgoing Server Password, Account Creation Time, Last Used Time, Last Sync Attempt Time, Last Sync Success Time.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/winmailpassrec-x64.zip",
+            "hash": "c99b0dbcbcdc6c18934e7e6130b1cfb100b0c7306749d0d38af527f46e56fbef"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/winmailpassrec.zip",
+            "hash": "ed5db0cfea1b32497fea9cad35a5629a372f7f87f407096690b2733099c1841f"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/winmailpassrec-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/winmailpassrec.zip"
+            }
+        }
+    },
+    "bin": "WinMailPassRec.exe",
+    "shortcuts": [
+        [
+            "WinMailPassRec.exe",
+            "NirSoft\\WinMailPassRec - Windows Mail App Password Recovery"
+        ]
+    ]
+}

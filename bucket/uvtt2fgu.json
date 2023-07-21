@@ -1,0 +1,26 @@
+{
+    "version": "1.5.1",
+    "description": "Utility to extract Fantasy Grounds Unity Line-of-sight and lighting files from a Univeral VTT file exported from Dungeondraft",
+    "homepage": "https://github.com/Imagix/uvtt2fgu",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Imagix/uvtt2fgu/releases/download/v1.5.1/uvtt2fgu.exe",
+            "hash": "252f46d53d1f455c17e07177ddca617a15bdafb55db0c7daf42bb9c1d3decbf4",
+            "bin": [
+                [
+                    "uvtt2fgu.exe",
+                    "uvtt2fgu"
+                ]
+            ]
+        }
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Imagix/uvtt2fgu/releases/download/v$version/uvtt2fgu.exe"
+            }
+        }
+    }
+}

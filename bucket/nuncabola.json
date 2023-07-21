@@ -1,0 +1,25 @@
+{
+    "version": "0.200",
+    "description": "3D roll-the-ball puzzle game (reimplementation of Neverball in Java)",
+    "homepage": "http://uppgarn.com/nuncabola/",
+    "license": "GPL-2.0-or-later",
+    "suggest": {
+        "Java Runtime Environment": "scoop-cn/temurin-jre"
+    },
+    "url": "http://uppgarn.com/nuncabola/nuncabola-0.200.zip",
+    "hash": "f0f2293b59939b618c07133ca3a7b70bb77a03a3ce7ccdf611c0d8f34594a598",
+    "extract_dir": "Nuncabola",
+    "shortcuts": [
+        [
+            "nuncabola.bat",
+            "Nuncabola"
+        ]
+    ],
+    "checkver": {
+        "url": "http://uppgarn.com/nuncabola/",
+        "re": "Version ([0-9]\\.[0-9]+)"
+    },
+    "autoupdate": {
+        "url": "http://uppgarn.com/nuncabola/nuncabola-$version.zip"
+    }
+}

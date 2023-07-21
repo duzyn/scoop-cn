@@ -1,0 +1,58 @@
+{
+    "version": "2023.1.4-231.9225.5",
+    "description": "Cross-Platform IDE for Python by JetBrains. (Community Edition, Release Candidate)",
+    "homepage": "https://www.jetbrains.com/pycharm/",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://sales.jetbrains.com/hc/en-gb/articles/115001015290-Where-can-I-find-the-EULA-End-User-License-Agreement-"
+    },
+    "url": "https://download.jetbrains.com/python/pycharm-community-231.9225.5.exe#/dl.7z",
+    "hash": "4252246e2e81449db9a04513f6299cdbba49c7ad20c0994340d46caf3595a666",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "pycharm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "JetBrains\\PyCharm (Release Candidate)"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "IDE\\bin\\pycharm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm.exe",
+                    "JetBrains\\PyCharm (Release Candidate)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=PCC&latest=true&platform=zip&type=rc",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/python/pycharm-community-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

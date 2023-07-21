@@ -1,0 +1,46 @@
+{
+    "version": "8.2.4-0",
+    "description": "Apache distribution containing MariaDB, PHP, and Perl",
+    "homepage": "https://www.apachefriends.org/index.html",
+    "license": "GPL-2.0-only",
+    "notes": "Run XAMPP Control Panel with admin rights to avoid access errors.",
+    "suggest": {
+        "Visual C++ 2022 Redistributable": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.sourceforge.net/project/xampp/XAMPP%20Windows/8.2.4/xampp-windows-x64-8.2.4-0-VS16-installer.exe#/setup.exe",
+            "hash": "sha1:31222f65cc003be122e980d3cdaa67bd80f9f8c2"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    error \"Administrator rights are required to install $app.\"",
+            "    break",
+            "}",
+            "",
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('--mode', 'unattended', '--launchapps', '0') | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\"",
+            "if (Test-Path $persist_dir) { Copy-Item -Path \"$persist_dir\\*\" -Destination \"$env:HOMEDRIVE\\xampp\" -Force -Recurse }"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$persist_files = @('apache\\conf', 'apache\\logs', 'htdocs', 'mysql\\data', 'php\\php.ini', 'sendmail\\sendmail.ini', 'tomcat\\conf', 'tomcat\\logs', 'xampp-control.ini')",
+            "$persist_files | ForEach-Object {",
+            "    ensure \"$persist_dir\\$_\\..\" | Out-Null",
+            "    Copy-Item -Path \"$env:HOMEDRIVE\\xampp\\$_\" -Destination \"$persist_dir\\$_\" -Force -Recurse",
+            "}",
+            "Invoke-ExternalCommand \"$env:HOMEDRIVE\\xampp\\uninstall.exe\" -ArgumentList @('--mode', 'unattended') -RunAs | Out-Null"
+        ]
+    },
+    "checkver": "xampp-windows-x64-([\\d.-]+)-VS(?<vs>\\d+)-installer\\.exe",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.sourceforge.net/project/xampp/XAMPP%20Windows/$matchHead/xampp-windows-x64-$version-VS$matchVs-installer.exe#/setup.exe"
+            }
+        }
+    }
+}

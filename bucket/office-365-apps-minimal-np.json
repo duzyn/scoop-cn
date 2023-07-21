@@ -1,0 +1,52 @@
+{
+    "version": "16.0.16529.20182",
+    "description": "Family of client software, server software and services developed by Microsoft. This package only includes Excel, PowerPoint and Word.",
+    "homepage": "https://www.office.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.microsoft.com/licensing/terms/productoffering/OfficeDesktopApplicationsWindows/MCA"
+    },
+    "depends": "7zip19.00-helper",
+    "url": "https://download.microsoft.com/download/2/7/A/27AF1BE6-DD20-4CB4-B154-EBAB8A7D4A7E/officedeploymenttool_16529-20182.exe#/dl.7z_",
+    "hash": "b91d7f154a9fc1157e34178569c26594037523b76bf7e68132d92e174d10510d",
+    "pre_install": [
+        "$scriptdir = \"$bucketsdir\\scoop-cn\\scripts\"",
+        "if ($architecture -eq '64bit') {",
+        "     Copy-Item \"$scriptdir\\install-office-365-apps-minimal.xml\" \"$dir\\\"",
+        "}",
+        "elseif ($architecture -eq '32bit') {",
+        "    (Get-Content \"$scriptdir\\install-office-365-apps-minimal.xml\").Replace('64', '32') | Set-Content -Path \"$dir\\install-office-365-apps-minimal.xml\"",
+        "}",
+        "Copy-Item \"$scriptdir\\uninstall-office-365-apps.xml\" \"$dir\\\""
+    ],
+    "installer": {
+        "script": [
+            "Start-Process -Wait 7z1900-helper -ArgumentList @('x', '-bso0', \"`\"$dir\\dl.7z_`\"\", \"`\"-o$dir`\"\")",
+            "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/configure', \"`\"$dir\\install-office-365-apps-minimal.xml`\"\")"
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/configure', \"`\"$dir\\uninstall-office-365-apps.xml`\"\")"
+    },
+    "checkver": {
+        "script": [
+            "$ProgressPreference = 'SilentlyContinue'",
+            "$url1 = 'https://docs.microsoft.com/en-us/officeupdates/odt-release-history'",
+            "$regex1 = '<p>Version ([\\d.]+)'",
+            "$url2 = 'https://www.microsoft.com/en-au/download/confirmation.aspx?id=49117'",
+            "$regex2 = 'download/([\\w/-]+)(officedeploymenttool_[\\d-]+\\.exe)'",
+            "",
+            "$cont = $(Invoke-WebRequest $url1).Content",
+            "if (!($cont -match $regex1)) { Write-Host \"Could not match '$regex1' in '$url1'\"; return }",
+            "$app_ver = $matches[1]",
+            "$cont = $(Invoke-WebRequest $url2).Content",
+            "if (!($cont -match $regex2)) { Write-Host \"Could not match '$regex2' in '$url2'\"; return }",
+            "$path = $matches[1]; $filename = $matches[2]",
+            "Write-Output $app_ver $path $filename"
+        ],
+        "regex": "([\\d.]+) (?<path>[\\w-/]+) (?<filename>[\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.microsoft.com/download/$matchPath$matchFilename#/dl.7z_"
+    }
+}

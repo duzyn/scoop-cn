@@ -1,0 +1,43 @@
+{
+    "version": "6.2.0.0",
+    "description": "Replacement for the normal PSO2 launcher, used to update, patch, and launch the Japanese and Global versions of the game",
+    "homepage": "https://arks-layer.com/",
+    "license": {
+        "identifier": "Unknown"
+    },
+    "url": "https://ghproxy.com/https://github.com/Aida-Enna/PSO2TweakerReleases/raw/master/6.2.0.0/PSO2%20Tweaker.exe",
+    "hash": "cfa55b9e1f0f28db81220301b475c0dc814a75c5aaceaf735cf63bfa79db5a8e",
+    "checkver": {
+        "url": "https://arks-layer.com/vanila/changelog.html",
+        "regex": "<h3>(?<version>\\d\\.\\d\\.\\d\\.\\d)\\s*\\(\\d+-\\d+-\\d{4,}\\)</h3>",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Aida-Enna/PSO2TweakerReleases/raw/master/$matchVersion/PSO2%20Tweaker.exe"
+    },
+    "bin": "PSO2 Tweaker.exe",
+    "shortcuts": [
+        [
+            "PSO2 Tweaker.exe",
+            "PSO2 Tweaker"
+        ]
+    ],
+    "persist": [
+        [
+            "PHANTASYSTARONLINE2_JP",
+            "game_jp"
+        ],
+        [
+            "PHANTASYSTARONLINE2_NA",
+            "game_na"
+        ],
+        [
+            "PHANTASYSTARONLINE2_NA_STEAM",
+            "game_na_steam"
+        ],
+        [
+            "PHANTASYSTARONLINE2_NA_EPICGAMES",
+            "game_na_epic"
+        ]
+    ]
+}

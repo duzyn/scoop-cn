@@ -1,0 +1,25 @@
+{
+    "version": "4.0.2",
+    "description": "The OWASP Amass Project performs network mapping of attack surfaces and external asset discovery using open source information gathering and active reconnaissance techniques.",
+    "homepage": "https://github.com/OWASP/Amass",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/OWASP/Amass/releases/download/v4.0.2/amass_windows_amd64.zip",
+            "hash": "dc48cbd7466cffbd9ec80dd26109b9e633b9bb02e73d8db992e2e5c83ff81bdb",
+            "extract_dir": "amass_windows_amd64"
+        }
+    },
+    "bin": "amass.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/OWASP/Amass/releases/download/v$version/amass_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://ghproxy.com/https://github.com/OWASP/Amass/releases/download/v$version/amass_checksums.txt"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "version": "nightly",
+    "description": "Emulator for arcade games and select consoles",
+    "homepage": "https://github.com/finalburnneo/FBNeo",
+    "license": "https://github.com/finalburnneo/FBNeo/blob/master/src/license.txt",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x32.zip",
+            "bin": [
+                [
+                    "fbneo.exe",
+                    "fbneo-nightly"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "fbneo.exe",
+                    "FinalBurn Neo (nightly)"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/finalburnneo/FBNeo/releases/download/latest/Windows.x64.zip",
+            "bin": [
+                [
+                    "fbneo64.exe",
+                    "fbneo-nightly"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "fbneo64.exe",
+                    "FinalBurn Neo (nightly)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "avi",
+        "config",
+        "neocdiso",
+        "recordings",
+        "roms",
+        "savestates",
+        "screenshots",
+        "support"
+    ]
+}

@@ -1,0 +1,35 @@
+{
+    "version": "2023.7",
+    "homepage": "https://portswigger.net/burp",
+    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://portswigger.net/legal"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2023.7&type=WindowsX64#/setup.exe",
+            "hash": "83ff3c977fe1a7c8241581f0c0b23cd253e4ea97dbac54c573f86e15393d8af7"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList @('-q', '-dir', \"$dir\"); Remove-Item \"$dir\\setup.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\uninstall.exe\" -Wait -Verb 'RunAs' -ArgumentList '-q'; Start-Sleep -Seconds 4"
+    ],
+    "checkver": {
+        "url": "https://portswigger.net/burp/releases/data",
+        "jsonpath": "$.ResultSet.Results..version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=WindowsX64#/setup.exe"
+            }
+        }
+    }
+}

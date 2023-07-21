@@ -1,0 +1,58 @@
+{
+    "version": "2023.2-232.8660.49",
+    "description": "Cross-Platform IDE for Python by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/pycharm/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/python/pycharm-professional-232.8660.49.exe#/dl.7z",
+    "hash": "2e115b5d0ffbb1a6d3c67c2eaeafbeb75636f4c90fb975870b6c1017c5ac2f97",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "pycharm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "JetBrains\\PyCharm Professional (Early Access Program)"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "IDE\\bin\\pycharm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm.exe",
+                    "JetBrains\\PyCharm Professional (Early Access Program)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=PCP&latest=true&platform=zip&type=eap",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/python/pycharm-professional-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

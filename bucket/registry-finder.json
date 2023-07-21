@@ -1,0 +1,56 @@
+{
+    "version": "2.57.0.0",
+    "description": "Registry Finder is an improved replacement for the built-in Windows registry editor",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://registry-finder.com/License.txt"
+    },
+    "homepage": "https://registry-finder.com/",
+    "architecture": {
+        "64bit": {
+            "url": "https://registry-finder.com/bin/2.57.0.0/RegistryFinder64.zip",
+            "hash": "9aec406a7561bb98c15f4078bff9dda3d1e7ff256b7f700dddbd0ae734a8f406"
+        },
+        "32bit": {
+            "url": "https://registry-finder.com/bin/2.57.0.0/RegistryFinder.zip",
+            "hash": "6ed3f1dc6e697a551521cb9ead167254daa5b627e8f64d6f4245bd0d2d7d09b4"
+        }
+    },
+    "post_install": [
+        "'favorites.txt', 'RegistryFinder.config', 'UndoHistory', 'VisitationHistory' | ForEach-Object {",
+        "Copy-Item \"$persist_dir\\$_\" \"$dir\" -Recurse -ErrorAction SilentlyContinue }"
+    ],
+    "bin": "registryfinder.exe",
+    "shortcuts": [
+        [
+            "RegistryFinder.exe",
+            "Registry Finder"
+        ]
+    ],
+    "persist": "res",
+    "checkver": {
+        "regex": "bin/([\\d.]+)/"
+    },
+    "pre_uninstall": [
+        "'favorites.txt', 'RegistryFinder.config', 'UndoHistory', 'VisitationHistory' | ForEach-Object {",
+        "Copy-Item \"$dir\\$_\" \"$persist_dir\" -Recurse -ErrorAction SilentlyContinue }"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://registry-finder.com/bin/$version/RegistryFinder64.zip",
+                "hash": {
+                    "url": "https://registry-finder.com/",
+                    "regex": "Archive 64-bit</a> SHA-256: $sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://registry-finder.com/bin/$version/RegistryFinder.zip",
+                "hash": {
+                    "url": "https://registry-finder.com/",
+                    "regex": "Archive 32-bit</a> SHA-256: $sha256"
+                }
+            }
+        }
+    }
+}

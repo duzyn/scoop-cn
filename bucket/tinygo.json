@@ -1,0 +1,27 @@
+{
+    "version": "0.28.1",
+    "description": "A Go compiler for small places",
+    "homepage": "https://tinygo.org",
+    "license": "BSD-3-Clause",
+    "suggest": {
+        "Go": "go"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/tinygo-org/tinygo/releases/download/v0.28.1/tinygo0.28.1.windows-amd64.zip",
+            "hash": "e2695ca8710b74ea6e127a16de9b519012d99d3686c998ed4e1760ee230fd17c"
+        }
+    },
+    "extract_dir": "tinygo",
+    "bin": "bin\\tinygo.exe",
+    "checkver": {
+        "github": "https://github.com/tinygo-org/tinygo"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/tinygo-org/tinygo/releases/download/v$version/tinygo$version.windows-amd64.zip"
+            }
+        }
+    }
+}

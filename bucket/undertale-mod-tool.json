@@ -1,0 +1,26 @@
+{
+    "version": "0.5.1.0",
+    "description": "The most complete tool for modding, decompiling and unpacking Undertale (and other Game Maker: Studio games!)",
+    "homepage": "https://github.com/krzys-h/UndertaleModTool",
+    "license": "GPL-3.0-only",
+    "url": "https://ghproxy.com/https://github.com/krzys-h/UndertaleModTool/releases/download/0.5.1.0/UndertaleModTool_v0.5.1.0.zip",
+    "hash": "ce64de1da642ad6d7b803bebf89e46ec35bd38edba4374e96f3a75ed7349c18b",
+    "extract_dir": "UndertaleModTool_v0.5.1.0",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\UndertaleModTool.exe.config\")) { New-Item \"$dir\\UndertaleModTool.exe.config\" | Out-Null }",
+    "bin": "UndertaleModTool.exe",
+    "shortcuts": [
+        [
+            "UndertaleModTool.exe",
+            "Undertale Mod Tool"
+        ]
+    ],
+    "persist": "UndertaleModTool.exe.config",
+    "checkver": {
+        "url": "https://api.github.com/repos/krzys-h/UndertaleModTool/tags",
+        "regex": "tags/([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/krzys-h/UndertaleModTool/releases/download/$version/UndertaleModTool_v$version.zip",
+        "extract_dir": "UndertaleModTool_v$version"
+    }
+}

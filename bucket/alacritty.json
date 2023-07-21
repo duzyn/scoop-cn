@@ -1,0 +1,51 @@
+{
+    "version": "0.12.2",
+    "description": "GPU-accelerated terminal emulator",
+    "homepage": "https://github.com/alacritty/alacritty",
+    "license": "Apache-2.0",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "url": [
+        "https://ghproxy.com/https://github.com/alacritty/alacritty/releases/download/v0.12.2/Alacritty-v0.12.2-portable.exe#/alacritty.exe",
+        "https://ghproxy.com/https://github.com/alacritty/alacritty/releases/download/v0.12.2/alacritty.yml"
+    ],
+    "hash": [
+        "5287e5a87918cce5068cacd41f9655f618f07d77c06a4e8fe95f07956f031eb3",
+        "3110fbf1d8cbeaaa388670dc6a86493a052903610bbdaa4d17150da833029e2b"
+    ],
+    "bin": [
+        "alacritty.exe",
+        [
+            "alacritty.exe",
+            "alacritty-config",
+            "--config-file \"$persist_dir\\alacritty.yml\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "alacritty.exe",
+            "Alacritty",
+            "--working-directory \"%USERPROFILE%\""
+        ],
+        [
+            "alacritty.exe",
+            "Alacritty with Configuration",
+            "--config-file \"$persist_dir\\alacritty.yml\""
+        ]
+    ],
+    "persist": [
+        [
+            "alacritty.yml",
+            "alacritty.yml.example"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": [
+            "https://ghproxy.com/https://github.com/alacritty/alacritty/releases/download/v$version/Alacritty-v$version-portable.exe#/alacritty.exe",
+            "https://ghproxy.com/https://github.com/alacritty/alacritty/releases/download/v$version/alacritty.yml"
+        ]
+    },
+    "notes": "An example config has been placed in $persist_dir as alacritty.yml.example. Change this to alacritty.yml to use it with alacritty-config and the appropriate shortcut."
+}

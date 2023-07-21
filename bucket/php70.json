@@ -1,0 +1,47 @@
+{
+    "version": "7.0.33",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (version 7.0)",
+    "homepage": "https://windows.php.net/",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-7.0.33-Win32-VC14-x64.zip",
+            "hash": "8a22c93732b576507888e011b147df80beee7b7e24f527cb6e1282b5228350c2"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/archives/php-7.0.33-Win32-VC14-x86.zip",
+            "hash": "5c5b7e3c4b80a6e8984dca6bb1a1e1909c5dfb2b83b0242978020f78a473ab9c"
+        }
+    },
+    "pre_install": [
+        "# Create directory for custom PHP configuration",
+        "if (!(Test-Path \"$dir\\cli\\conf.d\")) {",
+        "    (New-Item -Type directory \"$dir\\cli\\conf.d\") | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "# Enable extensions to be found in installation-relative folder (the default is to search C:/php)",
+        "(Get-Content \"$dir\\cli\\php.ini\") | % { $_ -replace ';\\s?(extension_dir = \"ext\")', '$1' } | Set-Content \"$dir\\cli\\php.ini\""
+    ],
+    "bin": [
+        "php.exe",
+        "php-cgi.exe",
+        "phpdbg.exe"
+    ],
+    "persist": [
+        "cli",
+        [
+            "php.ini-production",
+            "cli\\php.ini"
+        ]
+    ],
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
+    }
+}

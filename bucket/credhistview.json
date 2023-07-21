@@ -1,0 +1,19 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/credhist_view.html",
+    "checkver": "CredHistView v(\\d+\\.\\d\\d)",
+    "version": "1.00",
+    "license": "freeware",
+    "description": "Every time that you change the login password on your system, Windows stores the hashes of the previous password in the CREDHist file (Located in %appdata%\\Microsoft\\Protect\\CREDHIST ) This tool allows you to decrypt the CREDHist file and view the SHA1 and NTLM hashes of all previous passwords you used on your system. In order to decrypt the file, you have to provide your latest login password. You can this tool to decrypt the CREDHIST file on your currently running system, as well as to decrypt the CREDHIST stored on external hard drive.",
+    "url": "https://www.nirsoft.net/utils/credhistview.zip",
+    "hash": "b878a4ac4c252a6aca3f25368f35d0707b30bfcb5347f8e9e543e59e4e01139f",
+    "autoupdate": {
+        "url": "https://www.nirsoft.net/utils/credhistview.zip"
+    },
+    "bin": "CredHistView.exe",
+    "shortcuts": [
+        [
+            "CredHistView.exe",
+            "NirSoft\\CredHistView - Decrypt the CREDHIST file of Windows"
+        ]
+    ]
+}

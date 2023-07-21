@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/file_types_manager.html",
+    "checkver": "FileTypesMan v(\\d+\\.\\d\\d)",
+    "version": "1.97",
+    "license": "freeware",
+    "description": "FileTypesMan is an alternative to the 'File Types' tab in the 'Folder Options' of Windows. It displays the list of all file extensions and types registered on your computer. For each file type, the following information is displayed: Type Name, Description, MIME Type, Perceived Type, Flags, Browser Flags, and more. FileTypesMan also allows you to easily edit the properties and flags of each file type, as well as it allows you to add, edit, and remove actions in a file type.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/filetypesman-x64.zip",
+            "hash": "4ecf354e78796ad36c96a02b9b3ab4df0e71872a99cf5b7428de6ac2ae29a31d"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/filetypesman.zip",
+            "hash": "d685f7b64ffdc6a487f8f0b204b556b11c5cfe0f3e3a93404c07dc52da5f72ac"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/filetypesman-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/filetypesman.zip"
+            }
+        }
+    },
+    "bin": "FileTypesMan.exe",
+    "shortcuts": [
+        [
+            "FileTypesMan.exe",
+            "NirSoft\\FileTypesMan - Alternative to Windows 'File Types' manager"
+        ]
+    ]
+}

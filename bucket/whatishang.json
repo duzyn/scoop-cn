@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/what_is_hang.html",
+    "checkver": "WhatIsHang v(\\d+\\.\\d\\d)",
+    "version": "1.27",
+    "license": "freeware",
+    "description": "Sometimes, Windows or a running application hangs, the user interface abruptly stops responding, and you cannot determine what has caused the problem or how to troubleshoot the issue. This utility tries to detect the software or process that is currently hung, and displays some information that may allow you to sort out and understand what exactly is at the root of such unexpected behavior. Most of the information displayed in WhatIsHang's report, like Call Stack, Stack Data, Processor Registers, and Memory Data is designed for users with Windows programming knowledge. However, WhatIsHang also presents a list of strings and dll files related to the hang issue that can help users without programming skills understand and overcome the causes of the problem and restore normal operation.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/whatishang-x64.zip",
+            "hash": "89465ed9b56222479208c743a255d0eee97f3547ebf740618b44d8305a7e7ab4"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/whatishang.zip",
+            "hash": "69e72f8329e80aa7a52fa8aabfd4b1862da3d9bc51e9e2e67109a156761f69e8"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/whatishang-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/whatishang.zip"
+            }
+        }
+    },
+    "bin": "WhatIsHang.exe",
+    "shortcuts": [
+        [
+            "WhatIsHang.exe",
+            "NirSoft\\WhatIsHang - Get info about Windows software that hangs"
+        ]
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "version": "4.10.0",
+    "description": "Modern source port for Doom, Heretic, Hexen and more",
+    "homepage": "https://zdoom.org/",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "Place WAD files (game data) in:",
+        "",
+        "    $persist_dir\\..\\_doom"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/coelckers/gzdoom/releases/download/g4.10.0/gzdoom-4-10-0-Windows-64bit.zip",
+            "hash": "f523c8057548552161b17908e7fa09289d9849f26621e616608b8907038e8251"
+        }
+    },
+    "pre_install": [
+        "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
+        "New-Item -Path $dir -Name gzdoom_portable.ini -ItemType File -ErrorAction Ignore | Out-Null"
+    ],
+    "env_set": {
+        "DOOMWADDIR": "$persist_dir\\..\\_doom"
+    },
+    "bin": "gzdoom.exe",
+    "shortcuts": [
+        [
+            "gzdoom.exe",
+            "GZDoom"
+        ]
+    ],
+    "persist": [
+        "gzdoom_portable.ini",
+        "Save",
+        "Screenshots"
+    ],
+    "checkver": {
+        "github": "https://github.com/coelckers/gzdoom",
+        "regex": "/releases/tag/(?:g)?([\\w.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/coelckers/gzdoom/releases/download/g$version/gzdoom-$dashVersion-Windows-64bit.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "description": "OpenJDK 10 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "10.0.2-1.b13",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86_64.msi",
+            "hash": "93b177832cb3dac8e1abbdf1736e1d19af0db98e4bf9bfd3a9cf8ae9d56c2786"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86.msi",
+            "hash": "73d51aabf911552b188232e63f52bde99ae14fb52693e0e7fedc06abb23c49a2"
+        }
+    },
+    "pre_install": "scoop config MSIEXTRACT_USE_LESSMSI True",
+    "extract_dir": "ojdkbuild\\java-1.10.0-openjdk-1.10.0.2-1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "regex": "download/(?<short>[\\d.-]+)/java-10-openjdk-([\\d.-]+(?<build>b\\d+))\\."
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86_64.msi"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86.msi"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "ojdkbuild\\java-1.$majorVersion.$minorVersion-openjdk-1.$matchShort"
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

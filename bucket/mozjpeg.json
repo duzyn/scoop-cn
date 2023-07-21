@@ -1,0 +1,48 @@
+{
+    "version": "4.1.1",
+    "description": "Improved JPEG encoder",
+    "homepage": "https://github.com/mozilla/mozjpeg",
+    "license": {
+        "identifier": "BSD-3-Clause,IJG,Zlib",
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/mozilla/mozjpeg/master/LICENSE.md"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/garyzyg/mozjpeg-windows/releases/download/4.1.1/mozjpeg-x64.zip",
+            "hash": "7575b5a4564d0974dd3739195580559666ee4427e0358195a324d4bae9f02184"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/garyzyg/mozjpeg-windows/releases/download/4.1.1/mozjpeg-x86.zip",
+            "hash": "46e669e3d105778c267bd2d2701936c470fc916521643b3eec2288e504242fb4"
+        }
+    },
+    "bin": [
+        [
+            "cjpeg-static.exe",
+            "cjpeg"
+        ],
+        [
+            "cjpeg-static.exe",
+            "mozjpeg"
+        ],
+        [
+            "djpeg-static.exe",
+            "djpeg"
+        ],
+        [
+            "jpegtran-static.exe",
+            "jpegtran"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/garyzyg/mozjpeg-windows/releases/download/$version/mozjpeg-x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/garyzyg/mozjpeg-windows/releases/download/$version/mozjpeg-x86.zip"
+            }
+        }
+    }
+}

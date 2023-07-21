@@ -1,0 +1,52 @@
+{
+    "version": "3.0.6-1",
+    "description": "Ruby, a dynamic programming language with a focus on simplicity and productivity. (version 3.0)",
+    "homepage": "https://rubyinstaller.org",
+    "license": "BSD-3-Clause",
+    "notes": "Install MSYS2 via 'scoop install msys2' and then run 'ridk install' to install the toolchain!",
+    "suggest": {
+        "MSYS2": "msys2"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.6-1/rubyinstaller-3.0.6-1-x64.7z",
+            "hash": "b60d5a6596e099d86b7844be3254355e12d7b9190c28a580c5352e0574930b28",
+            "extract_dir": "rubyinstaller-3.0.6-1-x64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.0.6-1/rubyinstaller-3.0.6-1-x86.7z",
+            "hash": "a8c49eeb82fe056bb7bd0db42a064b69ec2983bdcba75cc1f4abde6a328c98c7",
+            "extract_dir": "rubyinstaller-3.0.6-1-x86"
+        }
+    },
+    "post_install": "gem install rake",
+    "env_add_path": [
+        "bin",
+        "gems\\bin"
+    ],
+    "env_set": {
+        "GEM_HOME": "$dir\\gems",
+        "GEM_PATH": "$dir\\gems"
+    },
+    "persist": "gems",
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+        "regex": "Ruby (3\\.0[\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x64.7z",
+                "extract_dir": "rubyinstaller-$version-x64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x86.7z",
+                "extract_dir": "rubyinstaller-$version-x86"
+            }
+        },
+        "hash": {
+            "url": "https://ghproxy.com/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+            "regex": "(?sm)$basename[^.].*?$sha256"
+        }
+    }
+}

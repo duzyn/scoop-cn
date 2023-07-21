@@ -1,0 +1,35 @@
+{
+    "version": "0.29.0",
+    "description": "A desktop client for IPFS.",
+    "homepage": "https://github.com/ipfs/ipfs-desktop",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ipfs/ipfs-desktop/releases/download/v0.29.0/ipfs-desktop-setup-0.29.0.exe#/dl.7z",
+            "hash": "sha512:44030b0fbc3b306f46ec57f94f31d4daa4e0780fe87d4edd8b10366f47736107326def6d7f46311527b6e9e1cfcbe8dd85f38cb16e633bfeb63aae729dd06d40",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse"
+            ]
+        }
+    },
+    "bin": "resources\\app.asar.unpacked\\node_modules\\go-ipfs\\go-ipfs\\ipfs.exe",
+    "shortcuts": [
+        [
+            "IPFS Desktop.exe",
+            "IPFS Desktop"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ipfs/ipfs-desktop/releases/download/v$version/ipfs-desktop-setup-$version.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512:\\s+$base64"
+        }
+    }
+}

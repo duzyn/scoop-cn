@@ -1,0 +1,42 @@
+{
+    "version": "10.8.9",
+    "description": "Software Media System",
+    "homepage": "https://jellyfin.org",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "ffmpeg": "ffmpeg",
+        "nssm": "nssm"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/10.8.9/jellyfin_10.8.9.zip",
+            "hash": "a67d476fab4474885c4556aa1c573f3b5b492bd88bcef598f60591b47b3c270b"
+        }
+    },
+    "extract_dir": "jellyfin_10.8.9",
+    "extract_to": "system",
+    "bin": [
+        [
+            "system\\jellyfin.exe",
+            "jellyfin",
+            "-d \"$dir\\data\""
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/",
+        "regex": "\"([\\d.]+)/",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://repo.jellyfin.org/releases/server/windows/versions/stable/combined/$version/jellyfin_$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256sum"
+        },
+        "extract_dir": "jellyfin_$version"
+    }
+}

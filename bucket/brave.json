@@ -1,0 +1,61 @@
+{
+    "version": "1.56.9",
+    "description": "Secure, Fast & Private Web Browser with Adblocker",
+    "homepage": "https://brave.com",
+    "license": {
+        "identifier": "Freeware,BSD-3-Clause,GPL-3.0-only,...",
+        "url": "https://github.com/brave/brave-browser/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v1.56.9/brave-v1.56.9-win32-x64.zip",
+            "hash": "b6ebfcd2a45f3206a10d114ac4ef7c4efbf4d6ffefbcd011a2f3fc301ff7ddfe"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v1.56.9/brave-v1.56.9-win32-ia32.zip",
+            "hash": "c916450e9fa4da0f939f310db3e1264a0012265a506baf8b5567f3d8de540e63"
+        }
+    },
+    "bin": [
+        [
+            "brave.exe",
+            "brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "brave.exe",
+            "Brave",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$persist_dir\\data\")) {",
+        "    info '[Portable Mode]: Copying user data from portapps data directory . . .'",
+        "    Copy-Item \"$persist_dir\\data\\*\" \"$dir\\User Data\" -Recurse",
+        "}",
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data from local application data directory . . .'",
+        "    Copy-Item \"$env:LocalAppData\\BraveSoftware\\Brave-Browser\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://brave-browser-downloads.s3.brave.com/latest/release.version",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/brave/brave-browser/releases/download/v$version/brave-v$version-win32-ia32.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "version": "2556-20230720",
+    "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
+    "homepage": "https://citra-emu.org/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/citra-emu/citra-canary/blob/master/license.txt"
+    },
+    "url": "https://ghproxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-2556/citra-windows-mingw-20230720-de746b5.7z",
+    "hash": "b8dd454e2a7ef617bea363cfc70a3cd9b53fb52a6f4085bc86b0420521e29c89",
+    "extract_dir": "canary-mingw",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\user\")) {",
+        "   New-Item -Path \"$persist_dir\" -Name \"user\" -ItemType \"directory\" | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\Citra\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\Citra\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\Citra\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        [
+            "citra.exe",
+            "citra-canary"
+        ],
+        [
+            "citra-qt.exe",
+            "citra-qt-canary"
+        ],
+        [
+            "citra-room.exe",
+            "citra-room-canary"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "citra-qt.exe",
+            "Citra (Canary)"
+        ]
+    ],
+    "persist": "user",
+    "checkver": {
+        "github": "https://github.com/citra-emu/citra-canary",
+        "regex": "download/canary-(?<build>[\\d]+)/citra-windows-(?<env>[\\w]+)-(?<date>[\\d]{8})-(?<commit>[\\da-f]{7})\\.(?<zip>7z|zip)",
+        "replace": "${build}-${date}"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+    }
+}

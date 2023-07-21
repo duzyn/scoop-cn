@@ -1,0 +1,60 @@
+{
+    "version": "4.32",
+    "description": "Automatically generates desktop backgrounds that include important information about the system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/bginfo",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/BGInfo.zip",
+    "hash": "c15b4c6cb8bd33f941a727316776aa068fc0c3d95159b6989ec6c520ae259fcc",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Bginfo64.exe",
+                    "Bginfo"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Bginfo64.exe",
+                    "scoop-cn/BGInfo",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Bginfo.exe",
+            "shortcuts": [
+                [
+                    "Bginfo.exe",
+                    "scoop-cn/BGInfo",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Bginfo64a.exe",
+                    "Bginfo"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Bginfo64a.exe",
+                    "scoop-cn/BGInfo",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/bginfo.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/BGInfo.zip"
+    }
+}

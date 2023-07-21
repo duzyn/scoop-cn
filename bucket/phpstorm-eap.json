@@ -1,0 +1,58 @@
+{
+    "version": "2023.2-232.8660.60",
+    "description": "Cross-Platform IDE for PHP by JetBrains. (Early Access Program)",
+    "homepage": "https://www.jetbrains.com/phpstorm/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/webide/PhpStorm-232.8660.60.exe#/dl.7z",
+    "hash": "ecff8cb70599838129c399a5d888386f4d73886d8590626581b63b04df73aa22",
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "phpstorm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "JetBrains\\PhpStorm (Early Access Program)"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "IDE\\bin\\phpstorm.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm.exe",
+                    "JetBrains\\PhpStorm (Early Access Program)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "checkver": {
+        "url": "https://data.services.jetbrains.com/products/releases?code=PS&latest=true&platform=zip&type=eap",
+        "regex": "version\":\"(?<ver>[\\d.]+)\".*\"build\":\"(?<build>[\\d.]+)\"",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/webide/PhpStorm-$preReleaseVersion.exe#/dl.7z",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

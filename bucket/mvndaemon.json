@@ -1,0 +1,38 @@
+{
+    "version": "1.0-m6",
+    "description": "The Maven (mvn) Daemon is based on GraalVM and allows for faster Maven builds.",
+    "homepage": "https://github.com/mvndaemon/mvnd",
+    "license": "Apache-2.0",
+    "notes": [
+        "Maven requires a properly configured JAVA_HOME environment variable.",
+        "If you see a message that VCRUNTIME140.dll was not found, you need to install vcredist2022",
+        "See https://github.com/oracle/graal/issues/1762 for more information."
+    ],
+    "suggest": {
+        "JDK": "scoop-cn/openjdk",
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/1.0-m6/maven-mvnd-1.0-m6-m39-windows-amd64.zip",
+            "hash": "62f274adb16e150ef51bc9d516bd1383f408993b3fcfb4914fde8a5a0327d833",
+            "extract_dir": "maven-mvnd-1.0-m6-m39-windows-amd64"
+        }
+    },
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/",
+        "regex": ">([\\d.\\-m]+)/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dist.apache.org/repos/dist/release/maven/mvnd/$version/maven-mvnd-$version-m39-windows-amd64.zip",
+                "hash": {
+                    "url": "$url.sha256"
+                },
+                "extract_dir": "maven-mvnd-$version-m39-windows-amd64"
+            }
+        }
+    }
+}

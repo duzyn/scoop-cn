@@ -1,0 +1,22 @@
+{
+    "version": "2020_12_21",
+    "description": "First-person shooter featuring a real-time cooperative map editor",
+    "homepage": "http://sauerbraten.org/",
+    "license": "http://sauerbraten.org/README.html#license",
+    "url": "https://sourceforge.net/projects/sauerbraten/files/sauerbraten/2020_11_29/sauerbraten_2020_12_21_windows.exe#/dl.7z",
+    "hash": "89842b3fe5cf591b761b84948e97e3a68e2fa451f5a0afb102a9347efca0a41e",
+    "shortcuts": [
+        [
+            "sauerbraten.bat",
+            "Sauerbraten",
+            "",
+            "docs/favicon.ico"
+        ]
+    ],
+    "checkver": {
+        "regex": "sauerbraten_([a-zA-Z\\d.\\-_]+)_windows.exe"
+    },
+    "autoupdate": {
+        "url": "https://sourceforge.net/projects/sauerbraten/files/sauerbraten/$version/sauerbraten_$version_windows.exe#/dl.7z"
+    }
+}

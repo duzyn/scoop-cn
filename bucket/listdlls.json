@@ -1,0 +1,31 @@
+{
+    "version": "3.2",
+    "description": "List all the DLLs that are currently loaded, including where they are loaded and their version numbers.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/listdlls",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ListDlls.zip",
+    "hash": "b9772e115cf9112790c172d3c7041a429ae95a6d1ac6f5f773c1ce3040581ab5",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Listdlls64.exe",
+                    "Listdlls"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Listdlls.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/listdlls.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ListDlls.zip"
+    }
+}

@@ -1,0 +1,54 @@
+{
+    "version": "2.2.282.0",
+    "description": "Virtual HID Mini-user-mode-driver for Sony DualShock 3 Controllers",
+    "homepage": "https://vigem.org/projects/DsHidMini/",
+    "license": "BSD-3-Clause",
+    "url": "https://ghproxy.com/https://github.com/ViGEm/DsHidMini/releases/download/v2.2.282.0/dshidmini_v2.2.282.0.zip",
+    "hash": "27fcdc6c92d661a101cebcbe5e673e620f7723ddee4092d894d275af91a8a06a",
+    "pre_install": [
+        "if (-not $global) {",
+        "    Write-Host -Foreground Red \"$app should be installed globally.\"",
+        "    break",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "$driver_dir = (\"$dir\\x64\\dshidmini\",\"$dir\\x86\\dshidmini\")[$architecture -eq '32bit']",
+            "",
+            "# Add cert first before installing driver",
+            "$cert = (Get-AuthenticodeSignature \"$driver_dir\\dshidmini.cat\").SignerCertificate",
+            "$checkCert = Get-ChildItem Cert:\\CurrentUser\\TrustedPublisher -Recurse | Where-Object { $_.Thumbprint -eq $cert.Thumbprint }",
+            "if (!($checkCert)) {",
+            "    Write-Host \"Cert not found, adding to trusted store...\"",
+            "    [System.IO.File]::WriteAllBytes(\"$driver_dir\\Nefarius.cer\", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))",
+            "    certutil -addstore -f \"TrustedPublisher\" \"$driver_dir\\Nefarius.cer\"",
+            "    Remove-Item \"$driver_dir\\Nefarius.cer\"",
+            "}",
+            "",
+            "Write-Host \"Installing driver...\"",
+            "pnputil /add-driver \"$driver_dir\\dshidmini.inf\" /install | Out-Null",
+            "pnputil /add-driver \"$driver_dir\\igfilter.inf\" /install | Out-Null"
+        ]
+    },
+    "shortcuts": [
+        [
+            "DSHMC.exe",
+            "DsHidMini Control Utility"
+        ]
+    ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -ne 'uninstall') { return }",
+            "$driver_dir = (\"$dir\\x64\\dshidmini\",\"$dir\\x86\\dshidmini\")[$architecture -eq '32bit']",
+            "",
+            "pnputil /delete-driver \"$driver_dir\\dshidmini.inf\" /uninstall /force | Out-Null",
+            "pnputil /delete-driver \"$driver_dir\\igfilter.inf\" /uninstall /force | Out-Null"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/ViGEm/DsHidMini"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/ViGEm/DsHidMini/releases/download/v$version/dshidmini_v$version.zip"
+    }
+}

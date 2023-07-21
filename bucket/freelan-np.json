@@ -1,0 +1,51 @@
+{
+    "version": "2.2.0",
+    "homepage": "https://www.freelan.org/",
+    "description": "A free, open-source, multi-platform, peer-to-peer VPN software that abstracts a LAN over the Internet.",
+    "license": "GPL-3.0",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist"
+    },
+    "notes": "'freelan-np' won't be able to start because its configuration is incomplete. For help with the configuration see, https://www.freelan.org/get_help.html",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/freelan-developers/freelan/releases/download/2.2/freelan-2.2.0-x86-install.exe#/setup.exe",
+            "hash": "71b9a26bdae70871fc695ef71a9a47503c9d82421d58f5bbbc193762e4693683"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/freelan-developers/freelan/releases/download/2.2/freelan-2.2.0-amd64-install.exe#/setup.exe",
+            "hash": "6e39a1c3b5e64fe3fe0af331f7e2f4cf2ef7719d1af25979ba5b70a40f43212b"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Write-Host \"If you are running this for the first time, you will get a prompt asking you to install the 'FreeLAN Driver'. When prompted, please click the 'Yes' option.\"",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -Args @('/SP-', \"/DIR=$dir\", '/VERYSILENT', '/ALLUSERS', '/SUPPRESSMSGBOXES'); Remove-Item \"$dir\\setup.exe\"",
+        "Stop-Service -Name 'FreeLAN Service' -ErrorAction 'SilentlyContinue' -Force"
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Stop-Service -Name 'FreeLAN Service' -ErrorAction 'SilentlyContinue' -Force",
+        "Start-Process \"$dir\\unins000.exe\" -Wait -Verb 'RunAs' -Args @('/VERYSILENT', '/FORCECLOSEAPPLICATIONS', '/SUPPRESSMSGBOXES'); Start-Sleep -Seconds 2"
+    ],
+    "env_add_path": "bin",
+    "checkver": {
+        "url": "https://api.github.com/repos/freelan-developers/freelan/releases/latest",
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "/(?<Half>[\\d.]+)/freelan-([\\d.]+)-(?:x86|amd64)-install\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/freelan-developers/freelan/releases/download/$matchHalf/freelan-$version-x86-install.exe#/setup.exe"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/freelan-developers/freelan/releases/download/$matchHalf/freelan-$version-amd64-install.exe#/setup.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256",
+            "regex": "$sha256//s+$fname"
+        }
+    }
+}

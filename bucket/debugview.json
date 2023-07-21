@@ -1,0 +1,60 @@
+{
+    "version": "4.90",
+    "description": "Intercepts calls made to DbgPrint by device drivers and OutputDebugString made by Win32 programs.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/debugview",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/DebugView.zip",
+    "hash": "05cfa3dde3d98eb333d0582556f4f520e6207fe8d335bd1e910d90692798f913",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "dbgview64.exe",
+                    "dbgview"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "dbgview64.exe",
+                    "scoop-cn/DebugView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Dbgview.exe",
+            "shortcuts": [
+                [
+                    "Dbgview.exe",
+                    "scoop-cn/DebugView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Dbgview64a.exe",
+                    "Dbgview"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Dbgview64a.exe",
+                    "scoop-cn/DebugView",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/debugview.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/DebugView.zip"
+    }
+}

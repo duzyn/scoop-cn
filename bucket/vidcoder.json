@@ -1,0 +1,30 @@
+{
+    "version": "8.25",
+    "description": "DVD/Blu-ray ripping and video transcoding tool that uses HandBrake as its encoding engine.",
+    "homepage": "https://vidcoder.net",
+    "license": "GPL-2.0-only",
+    "notes": "VidCoder Settings are stored in \"%APPDATA%\\VidCoder\\VidCoder.sqlite\"",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/RandomEngy/VidCoder/releases/download/v8.25/VidCoder-8.25-Portable.exe#/dl.7z",
+            "hash": "0df4d25dea5a092ddff4a63e89d7a7e2f64594e782dc7ae5875d07e6de9f3b00"
+        }
+    },
+    "bin": "VidCoderCLI.exe",
+    "shortcuts": [
+        [
+            "VidCoder.exe",
+            "VidCoder"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/RandomEngy/VidCoder"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/RandomEngy/VidCoder/releases/download/v$version/VidCoder-$version-Portable.exe#/dl.7z"
+            }
+        }
+    }
+}

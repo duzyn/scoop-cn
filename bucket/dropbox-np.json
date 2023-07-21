@@ -1,0 +1,19 @@
+{
+    "version": "nightly",
+    "description": "Client for Dropbox, a file hosting service.",
+    "homepage": "https://www.dropbox.com/",
+    "license": "Freeware",
+    "url": "https://www.dropbox.com/download?os=win",
+    "installer": {
+        "args": "/S"
+    },
+    "post_install": "Remove-Item -ErrorAction Ignore \"$([Environment]::GetFolderPath('Desktop'))\\Dropbox.lnk\"",
+    "uninstaller": {
+        "script": [
+            "$uninstall_string = $(Get-ItemProperty -ErrorAction Ignore -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Dropbox' -Name UninstallString).UninstallString",
+            "if (-not $uninstall_string) { $uninstall_string = $(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Dropbox' -Name UninstallString).UninstallString }",
+            "$arguments_index = $uninstall_string.IndexOf('.exe') + 5",
+            "Start-Process -Wait \"$($uninstall_string.Substring(0, $arguments_index))\" \"$($uninstall_string.Substring($arguments_index)) /S\" -Verb RunAs"
+        ]
+    }
+}

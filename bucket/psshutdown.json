@@ -1,0 +1,31 @@
+{
+    "version": "2.6",
+    "description": "Shuts down and optionally reboots a computer.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psshutdown",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/psshutdown.zip",
+    "hash": "cfb9c65a3706797924a60017431cbddebf8e9591a529c986d4293c0f369e0346",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "psshutdown64.exe",
+                    "psshutdown"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "psshutdown.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psshutdown.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/psshutdown.zip"
+    }
+}

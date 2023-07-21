@@ -1,0 +1,20 @@
+{
+    "version": "1.16",
+    "description": "Utility for blocking keyboard chatter",
+    "homepage": "https://github.com/mcmonkeyprojects/KeyboardChatterBlocker",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/mcmonkeyprojects/KeyboardChatterBlocker/releases/download/1.16/KeyboardChatterBlocker.exe",
+    "hash": "a42c25101d62c2e6e175de9e3202c7eb03db4d7b227cfb328f46c929dbebb124",
+    "pre_install": "if (!(Test-Path \"$persist_dir\\config.txt\")) { New-Item \"$dir\\config.txt\" | Out-Null }",
+    "shortcuts": [
+        [
+            "KeyboardChatterBlocker.exe",
+            "Keyboard Chatter Blocker"
+        ]
+    ],
+    "persist": "config.txt",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/mcmonkeyprojects/KeyboardChatterBlocker/releases/download/$version/KeyboardChatterBlocker.exe"
+    }
+}

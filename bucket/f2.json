@@ -1,0 +1,31 @@
+{
+    "version": "1.9.0",
+    "description": "Batch renaming files and directories quickly and safely.",
+    "homepage": "https://github.com/ayoisaiah/f2",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ayoisaiah/f2/releases/download/v1.9.0/f2_1.9.0_windows_amd64.tar.gz",
+            "hash": "c0b3610f08ac1360c4af9d9d38d88e7d0b7001c082a15afe1c292fa4120c4ef7"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ayoisaiah/f2/releases/download/v1.9.0/f2_1.9.0_windows_i386.tar.gz",
+            "hash": "fcd3af6d99a670427ef7c04a1b43809beded3f027adc09bcf19dd1d95efe0971"
+        }
+    },
+    "bin": "f2.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ayoisaiah/f2/releases/download/v$version/f2_$version_windows_amd64.tar.gz"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ayoisaiah/f2/releases/download/v$version/f2_$version_windows_i386.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

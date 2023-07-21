@@ -1,0 +1,26 @@
+{
+    "version": "1.35",
+    "description": "Shows you who has what access to directories, files and Registry keys on your systems.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/accessenum",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/AccessEnum.zip",
+    "hash": "fd7d370447e83f17c7c33668401e619bef4e7d1eff4818aed6d8a6b17e1df208",
+    "bin": "AccessEnum.exe",
+    "shortcuts": [
+        [
+            "AccessEnum.exe",
+            "scoop-cn/AccessEnum",
+            "/accepteula"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/accessenum.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/AccessEnum.zip"
+    }
+}

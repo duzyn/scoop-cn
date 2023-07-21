@@ -1,0 +1,35 @@
+{
+    "version": "3.09",
+    "description": "A professional open source system to create Windows installers.",
+    "homepage": "https://nsis.sourceforge.io/Main_Page",
+    "license": "Zlib",
+    "url": "https://downloads.sourceforge.net/project/nsis/NSIS%203/3.09/nsis-3.09.zip",
+    "hash": "sha1:586855a743a6e0ade203d8758af303a48ee0716b",
+    "extract_dir": "nsis-3.09",
+    "bin": [
+        "bin\\makensis.exe",
+        "makensisw.exe"
+    ],
+    "shortcuts": [
+        [
+            "makensisw.exe",
+            "NSIS Compiler Interface"
+        ],
+        [
+            "bin\\zip2exe.exe",
+            "NSIS Zip2Exe"
+        ]
+    ],
+    "env_set": {
+        "NSISDIR": "$dir"
+    },
+    "persist": "nsisconf.nsh",
+    "checkver": {
+        "url": "https://nsis.sourceforge.io/Download",
+        "regex": "\\/rn\\/v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/nsis/NSIS%20$majorVersion/$version/nsis-$version.zip",
+        "extract_dir": "nsis-$version"
+    }
+}

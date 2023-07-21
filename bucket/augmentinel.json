@@ -1,0 +1,22 @@
+{
+    "version": "1.5",
+    "description": "A re-skinned version of the Geoff Crammond classic: The Sentinel.",
+    "homepage": "https://simonowen.com/spectrum/augmentinel/",
+    "license": "Freeware",
+    "notes": "If you get an error about missing XAudio DLLs, try installing the DirectX End-User Runtime: https://www.microsoft.com/en-us/download/confirmation.aspx?id=8109",
+    "url": "https://simonowen.com/spectrum/augmentinel/Augmentinel-15.zip",
+    "hash": "5ff6173f7c1813dbd8618b824eb4120a115ce447622126445cec94cd8dd2dd2f",
+    "shortcuts": [
+        [
+            "Augmentinel.exe",
+            "Augmentinel"
+        ]
+    ],
+    "checkver": {
+        "url": "https://simonowen.com/spectrum/augmentinel/",
+        "regex": "<p>Version ([\\d.-]+)\\,"
+    },
+    "autoupdate": {
+        "url": "https://simonowen.com/spectrum/augmentinel/Augmentinel-$cleanVersion.zip"
+    }
+}

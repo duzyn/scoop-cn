@@ -1,0 +1,22 @@
+{
+    "version": "6.3.6",
+    "description": "Custom launcher for Final Fantasy XIV (FF14)",
+    "homepage": "https://goatcorp.github.io/",
+    "license": "GPL-3.0-or-later",
+    "url": "https://ghproxy.com/https://github.com/goatcorp/FFXIVQuickLauncher/releases/download/6.3.6/XIVLauncher-6.3.6-full.nupkg",
+    "hash": "76516a13d648a05400cb9b6112cc92cf562e4826738fbef0bade0c56ec9968cc",
+    "bin": "XIVLauncher.exe",
+    "extract_dir": "lib\\net45",
+    "shortcuts": [
+        [
+            "XIVLauncher.exe",
+            "XIVLauncher"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/goatcorp/FFXIVQuickLauncher"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/goatcorp/FFXIVQuickLauncher/releases/download/$version/XIVLauncher-$version-full.nupkg"
+    }
+}

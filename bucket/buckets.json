@@ -1,0 +1,38 @@
+{
+    "version": "0.70.5",
+    "description": "Private Family Budgeting App",
+    "homepage": "https://www.budgetwithbuckets.com",
+    "license": "Proprietary",
+    "url": "https://ghproxy.com/https://github.com/buckets/application/releases/download/v0.70.5/Buckets-Setup-0.70.5.exe#/dl.7z",
+    "hash": "sha512:c4bc0ee5a58118375fc78441940341bb267d17027d0546f99934eb88cf4454e71bb3862f6872a57a3efc7a7ee310514374932ef9fe43a76266ee426b4ce6a302",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "Buckets.exe",
+            "Buckets"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/buckets/application"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/buckets/application/releases/download/v$version/Buckets-Setup-$version.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "sha512: $base64"
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "version": "2.7",
+    "description": "Semi-realistic 3D rally racing game featuring a track editor",
+    "homepage": "https://stuntrally.tuxfamily.org/",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "In case of errors about missing Direct3D RenderSystem, set up DirectX using the installer below:",
+        "",
+        "https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe"
+    ],
+    "url": "https://ghproxy.com/https://github.com/stuntrally/stuntrally/releases/download/2.7/StuntRally-2.7-installer.exe#/dl.7z",
+    "hash": "ba579c4f691c240286ca21f95f0c93b2a787bec3e379d20d04b59fe47d379fea",
+    "bin": [
+        "StuntRally.exe",
+        "SR-Editor.exe"
+    ],
+    "shortcuts": [
+        [
+            "StuntRally.exe",
+            "Stunt Rally"
+        ],
+        [
+            "SR-Editor.exe",
+            "Stunt Rally Track Editor"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/stuntrally/stuntrally"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/stuntrally/stuntrally/releases/download/$version/StuntRally-$version-installer.exe#/dl.7z"
+    }
+}

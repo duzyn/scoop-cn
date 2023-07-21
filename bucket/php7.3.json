@@ -1,0 +1,47 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/",
+    "version": "7.3.33",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/php-7.3.33-Win32-VC15-x64.zip",
+            "hash": "eabf265d817ea534eeeeb51995693a8fd215bc6cfc42d5fcd5e5cd56a1d5da53"
+        },
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/php-7.3.33-Win32-VC15-x86.zip",
+            "hash": "a73ab9dede3d0aa70a6625431d85a96b4637f06e113b711212a3ba52d6435f48"
+        }
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "checkver": {
+        "url": "https://windows.php.net/download/",
+        "re": "<h3 id=\"php-7.3\".*?>.*?\\(([\\d.-]+)\\)</h3>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-VC15-x64.zip"
+            },
+            "32bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-VC15-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        }
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2019"
+    }
+}

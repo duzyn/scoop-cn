@@ -1,0 +1,61 @@
+{
+    "##": "Check chromium.woolyss.com for different versions of Chromium releases.",
+    "version": "115.0.5790.99-r1148114",
+    "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
+    "homepage": "https://www.chromium.org",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v115.0.5790.99-r1148114/chrome.nosync.7z",
+            "hash": "sha1:179bcd63b1fe2eaf8ed7c2e06c70f2ba132b6bcc"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win32/releases/download/v115.0.5790.99-r1148114/chrome.nosync.7z",
+            "hash": "sha1:6a75a09124733ebc9bf9bb50c9d480c15ddb3967"
+        }
+    },
+    "extract_dir": "Chrome-bin",
+    "bin": [
+        [
+            "chrome.exe",
+            "chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chrome.exe",
+            "Chromium",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\User Data\\*\") -and (Test-Path \"$env:LocalAppData\\Chromium\\User Data\")) {",
+        "    info '[Portable Mode]: Copying user data...'",
+        "    Copy-Item \"$env:LocalAppData\\Chromium\\User Data\\*\" \"$dir\\User Data\" -Recurse",
+        "}"
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
+        "regex": ">v([\\d.\\-r]+)</h1>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v$version/chrome.nosync.7z",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
+                    "regex": "$sha1 \\.\\./out/x64/chrome.nosync.7z"
+                }
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Hibbiki/chromium-win32/releases/download/v$version/chrome.nosync.7z",
+                "hash": {
+                    "url": "https://github.com/Hibbiki/chromium-win32/releases/latest",
+                    "regex": "$sha1 \\.\\./out/x86/chrome.nosync.7z"
+                }
+            }
+        }
+    }
+}

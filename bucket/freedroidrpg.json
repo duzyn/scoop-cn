@@ -1,0 +1,21 @@
+{
+    "version": "1.0",
+    "description": "Isometric RPG influenced by Paradroid",
+    "homepage": "http://www.freedroid.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://ftp.osuosl.org/pub/freedroid/freedroidRPG-1.0/freedroidRPG-1.0-win32-x86-64.exe#dl.zip",
+    "hash": "61309cd399f4d7a6c671a2dea5d1e5d13b2ac8bea8d5e0e2f0d76ba9fb1bf449",
+    "bin": "freedroidRPG.exe",
+    "shortcuts": [
+        [
+            "freedroidRPG.exe",
+            "FreedroidRPG"
+        ]
+    ],
+    "checkver": {
+        "regex": ">freedroidRPG-(.*?)(<)"
+    },
+    "autoupdate": {
+        "url": "https://ftp.osuosl.org/pub/freedroid/freedroidRPG-$matchHead/freedroidRPG-$version-win32-x86-64.exe#dl.zip"
+    }
+}

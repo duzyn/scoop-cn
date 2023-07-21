@@ -1,0 +1,26 @@
+{
+    "version": "0.2.9.1.0",
+    "description": "3D multiplayer game with Tron-style lightcycles",
+    "homepage": "http://www.armagetronad.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://launchpad.net/armagetronad/0.2.9/0.2.9.1.0/+download/armagetronad-0.2.9.1.0.win32.exe#/dl.7z",
+    "hash": "md5:77de62dd811112fbd223ddeaa13e234a",
+    "bin": "armagetronad.exe",
+    "shortcuts": [
+        [
+            "armagetronad.exe",
+            "Armagetron Advanced"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.armagetronad.org/downloads.php",
+        "regex": "armagetronad-([\\d.-]+)\\.win32\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://launchpad.net/armagetronad/$majorVersion.$minorVersion.$patchVersion/$version/+download/armagetronad-$version.win32.exe#/dl.7z",
+        "hash": {
+            "url": "$url/+md5"
+        }
+    },
+    "notes": "User data are stored in C:\\Users\\[USERNAME]\\AppData\\Roaming\\Armagetron"
+}

@@ -1,0 +1,23 @@
+{
+    "version": "1.4.0",
+    "description": "Test automation tool that combines API test-automation, mocks, performance-testing and UI automation into a single framework.",
+    "homepage": "https://karatelabs.github.io/karate/",
+    "license": "MIT",
+    "suggest": {
+        "Java": "scoop-cn/openjdk"
+    },
+    "url": "https://ghproxy.com/https://github.com/karatelabs/karate/releases/download/v1.4.0/karate-1.4.0.jar#/karate.jar",
+    "hash": "2d31b14b976ca7e52b0f323e7a82494a875285edf82961d65b5420aa78496b03",
+    "pre_install": [
+        "$cont = \"@echo off`r`n\" + 'cd /d \"%~dp0\"' + \"`r`njava -cp karate.jar;. com.intuit.karate.Main %*\"",
+        "Set-Content \"$dir\\karate.bat\" $cont -Encoding ascii"
+    ],
+    "bin": "karate.bat",
+    "persist": "target",
+    "checkver": {
+        "github": "https://github.com/karatelabs/karate"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/karatelabs/karate/releases/download/v$version/karate-$version.jar#/karate.jar"
+    }
+}

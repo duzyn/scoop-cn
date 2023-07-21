@@ -1,0 +1,51 @@
+{
+    "version": "18.15.0",
+    "description": "JavaScript runtime environment.",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "notes": "npm global prefix set to: $env:APPDATA\\npm",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v18.15.0/node-v18.15.0-win-x64.7z",
+            "hash": "cad3cc0910dc216e8b6dcfc3c5b3be0a619c2d4a4b29f2e674820b70e4f374dd",
+            "extract_dir": "node-v18.15.0-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v18.15.0/node-v18.15.0-win-x86.7z",
+            "hash": "370dbe4ac8fa516a33540821d409153035c50a449ca12f74f78bcf0b634d1957",
+            "extract_dir": "node-v18.15.0-win-x86"
+        }
+    },
+    "installer": {
+        "script": [
+            "add_first_in_path \"$env:APPDATA\\npm\" $global",
+            "& \"$dir\\npm.cmd\" config set prefix \"$env:APPDATA\\npm\""
+        ]
+    },
+    "uninstaller": {
+        "script": "remove_from_path \"$env:APPDATA\\npm\" $global"
+    },
+    "bin": [
+        "node.exe",
+        "npm.cmd"
+    ],
+    "checkver": {
+        "url": "https://nodejs.org/en/download/",
+        "regex": "LTS Version: <strong>([\\d.]+)</strong>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}

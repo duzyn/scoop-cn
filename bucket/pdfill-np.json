@@ -1,0 +1,16 @@
+{
+    "version": "nightly",
+    "description": "PDF editor.",
+    "homepage": "http://www.pdfill.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "http://www.pdfill.com/license.html"
+    },
+    "url": "http://www.plotsoft.com/download/PDFill_FREE_PDF_Editor_Basic.msi#/setup.msi_",
+    "installer": {
+        "script": "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /qn\" -Verb RunAs"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn\" -Verb RunAs"
+    }
+}

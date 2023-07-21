@@ -1,0 +1,35 @@
+{
+    "version": "nightly",
+    "description": "Quake 2 source port focused on multiplayer gameplay",
+    "homepage": "http://www.skuller.net/q2pro/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place game data files (such as pak0.pak-pak2.pak) in:",
+        "",
+        "    $persist_dir\\baseq2\\"
+    ],
+    "url": "https://skuller.net/q2pro/nightly/q2pro-client_win32_x86.zip",
+    "installer": {
+        "script": [
+            "$persistFolders = @(",
+            "   \"baseq2\"",
+            ")",
+            "$persistFolders | ForEach-Object {",
+            "   if (Test-Path \"$persist_dir\\$_\") {",
+            "      Copy-Item -Force -Recurse \"$dir\\$_\\*.dll\" \"$persist_dir\\$_\"",
+            "   }",
+            "}"
+        ]
+    },
+    "bin": "q2pro64.exe",
+    "shortcuts": [
+        [
+            "q2pro.exe",
+            "Q2PRO Client"
+        ]
+    ],
+    "persist": "baseq2",
+    "autoupdate": {
+        "url": "https://skuller.net/q2pro/nightly/q2pro-client_win32_x86.zip"
+    }
+}

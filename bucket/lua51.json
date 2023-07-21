@@ -1,0 +1,50 @@
+{
+    "version": "5.1.5",
+    "description": "A powerful, efficient, lightweight, embeddable scripting language (version 5.1)",
+    "homepage": "http://www.lua.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.1.5/Tools%20Executables/lua-5.1.5_Win64_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.1.5/Windows%20Libraries/Dynamic/lua-5.1.5_Win64_dllw6_lib.zip"
+            ],
+            "hash": [
+                "5f34cf7d40a20a587ea351482a4207d93b92ef6f1983e910a13338253819fe93",
+                "353564351aee748dca5d2ef98376cb93305679a3e94170b12936d7526afe8a6c"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.1.5/Tools%20Executables/lua-5.1.5_Win32_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.1.5/Windows%20Libraries/Dynamic/lua-5.1.5_Win32_dllw6_lib.zip"
+            ],
+            "hash": [
+                "c831a26d9c2280adf594a33690324de5de3cf6fb75f26b3753bae00812bcf162",
+                "c889c2dc06a7cba2b7a254dfe2f7bfb44c472ce7dbb366ea4598d9ee62a391c2"
+            ]
+        }
+    },
+    "bin": [
+        [
+            "lua5.1.exe",
+            "lua51"
+        ],
+        [
+            "lua5.1.exe",
+            "lua"
+        ],
+        [
+            "luac5.1.exe",
+            "luac51"
+        ],
+        [
+            "luac5.1.exe",
+            "luac"
+        ]
+    ],
+    "env_set": {
+        "LUA_PATH": "$dir",
+        "LUA_CPATH": "$dir"
+    }
+}

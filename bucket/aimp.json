@@ -1,0 +1,44 @@
+{
+    "version": "5.11.2432",
+    "description": "Audio player",
+    "homepage": "http://www.aimp.ru",
+    "license": {
+        "identifier": "Freeware",
+        "url": "http://www.aimp.ru/files/windows/EULA_lang-en.txt"
+    },
+    "url": "http://www.aimp.ru/?do=download.file&id=8#/dl.zip",
+    "hash": "3cf238d477fb966dcbc2a30d7f5c924e4f38148b847c5738b0f482e3b2e76740",
+    "extract_dir": "AIMP",
+    "bin": [
+        "AIMP.exe",
+        "AIMPac.exe",
+        "AIMPate.exe"
+    ],
+    "shortcuts": [
+        [
+            "AIMP.exe",
+            "AIMP"
+        ],
+        [
+            "AIMPac.exe",
+            "AIMP Audio Converter"
+        ],
+        [
+            "AIMPate.exe",
+            "AIMP Advanced Tag Editor"
+        ]
+    ],
+    "persist": [
+        "Profile",
+        "Plugins",
+        "Skins",
+        "Icons"
+    ],
+    "checkver": {
+        "url": "http://aimp.su/update.php?id=1234&b=2169&p=aimp&lng=english&u=1",
+        "regex": "aimp_([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "http://www.aimp.ru/?do=download.file&id=8#/dl.zip"
+    }
+}

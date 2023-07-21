@@ -1,0 +1,20 @@
+{
+    "version": "nightly",
+    "description": "Web browser developed by Microsoft.",
+    "homepage": "https://www.microsoftedgeinsider.com/",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&platform=Default&version=Edge&source=EdgeInsiderPage&Channel=Canary&language=en#/setup.msi_"
+        },
+        "32bit": {
+            "url": "https://c2rsetup.officeapps.live.com/c2r/downloadEdge.aspx?ProductreleaseID=Edge&version=Edge&source=EdgeInsiderPage&Channel=Canary&language=en&platform=x86#/setup.msi_"
+        }
+    },
+    "installer": {
+        "script": "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /q\" -Verb RunAs"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /q\" -Verb RunAs"
+    }
+}

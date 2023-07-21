@@ -1,0 +1,28 @@
+{
+    "version": "2.6",
+    "description": "OpenSSL based Authenticode signing for PE/MSI/Java CAB files",
+    "homepage": "https://github.com/mtrojnar/osslsigncode",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mtrojnar/osslsigncode/releases/download/2.6/osslsigncode-2.6-windows-x64-vs.zip",
+            "hash": "99c83403fe0f93abb2a878a63faaab417b8732373e949f7a3d0cb54d2e0a685b"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/mtrojnar/osslsigncode/releases/download/2.6/osslsigncode-2.6-windows-x86-vs.zip",
+            "hash": "ef51ceb5adef577166528e73de3e79d8325c679d39cda1674d9f7f866f5cd413"
+        }
+    },
+    "bin": "bin\\osslsigncode.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mtrojnar/osslsigncode/releases/download/$version/osslsigncode-$version-windows-x64-vs.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/mtrojnar/osslsigncode/releases/download/$version/osslsigncode-$version-windows-x86-vs.zip"
+            }
+        }
+    }
+}

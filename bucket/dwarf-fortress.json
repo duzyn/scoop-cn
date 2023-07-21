@@ -1,0 +1,22 @@
+{
+    "version": "0.50.04b",
+    "description": "Indie construction and management game",
+    "homepage": "http://www.bay12games.com/dwarves",
+    "license": "Custom",
+    "url": "http://www.bay12games.com/dwarves/df_50_04b_win.zip",
+    "hash": "8cf49533d40ee48108188da05adbaefdc1733927d4c4533c169f6316683200ae",
+    "shortcuts": [
+        [
+            "Dwarf Fortress.exe",
+            "Dwarf Fortress"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "http://www.bay12games.com/dwarves",
+        "re": "DWARF FORTRESS CLASSIC ([\\d\\.]+)"
+    },
+    "autoupdate": {
+        "url": "http://www.bay12games.com/dwarves/df_$minorVersion_$patchVersion_win.zip"
+    }
+}

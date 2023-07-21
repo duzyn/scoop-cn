@@ -1,0 +1,78 @@
+{
+    "version": "0.10.2",
+    "description": "A fast, accurate, and portable GBA emulator",
+    "homepage": "https://mgba.io/",
+    "license": {
+        "identifier": "MPL-2.0",
+        "url": "https://github.com/mgba-emu/mgba/blob/master/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/mgba-emu/mgba/releases/download/0.10.2/mGBA-0.10.2-win32.7z",
+            "hash": "befa7cc1b7044094d80bcce840986c6bae8685c5e2dcacf140dd7208505e9e07",
+            "extract_dir": "mGBA-0.10.2-win32"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mgba-emu/mgba/releases/download/0.10.2/mGBA-0.10.2-win64.7z",
+            "hash": "63843af6f9e01fc2e9b606b45b548ce5427237eb8b8843837c74657548a45393",
+            "extract_dir": "mGBA-0.10.2-win64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\qt.ini\")) {",
+        "   New-Item \"$dir\\qt.ini\" -Type File | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\config.ini\")) {",
+        "   New-Item \"$dir\\config.ini\" -Type File | Out-Null",
+        "   Set-Content \"$dir\\config.ini\" '[ports.qt]'",
+        "   Add-Content \"$dir\\config.ini\" 'savestatePath=savestate'",
+        "   Add-Content \"$dir\\config.ini\" 'patchPath=patch'",
+        "   Add-Content \"$dir\\config.ini\" 'screenshotPath=screenshot'",
+        "   Add-Content \"$dir\\config.ini\" 'cheatsPath=cheats'",
+        "   Add-Content \"$dir\\config.ini\" 'savegamePath=savegame'",
+        "   Add-Content \"$dir\\config.ini\" 'gba.bios=bios/gba_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'gb.bios=bios/gb_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'gbc.bios=bios/gbc_bios.bin'",
+        "   Add-Content \"$dir\\config.ini\" 'sgb.bios=bios/sgb_bios.bin'",
+        "}"
+    ],
+    "bin": [
+        [
+            "mGBA.exe",
+            "mgba-sdl.exe"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "mGBA.exe",
+            "mGBA"
+        ]
+    ],
+    "persist": [
+        "bios",
+        "cheats",
+        "patch",
+        "savegame",
+        "savestate",
+        "screenshot",
+        "shaders",
+        "qt.ini",
+        "config.ini",
+        "portable.ini"
+    ],
+    "checkver": {
+        "github": "https://github.com/mgba-emu/mgba"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/mgba-emu/mgba/releases/download/$version/mGBA-$version-win32.7z",
+                "extract_dir": "mGBA-$version-win32"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mgba-emu/mgba/releases/download/$version/mGBA-$version-win64.7z",
+                "extract_dir": "mGBA-$version-win64"
+            }
+        }
+    }
+}

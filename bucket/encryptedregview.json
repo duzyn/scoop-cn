@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/encrypted_registry_view.html",
+    "checkver": "EncryptedRegView v(\\d+\\.\\d\\d)",
+    "version": "1.05",
+    "license": "freeware",
+    "description": "EncryptedRegView is a tool for Windows that scans the Registry of your current running system or the Registry of external hard drive you choose and searches for data encrypted with DPAPI (Data Protection API). When it finds encrypted data in the Registry, it tries to decrypt it and displays the decrypted data in the main window of EncryptedRegView. With this tool, you may find passwords and other secret data stored in the Registry by Microsoft products as well as by 3-party products.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/toolsdownload/encryptedregview-x64.zip",
+            "hash": "5c284c3c3f16d283b8bcd86a1c7ade48b94fd36e4f4ab02ed0616f47d3882149"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/toolsdownload/encryptedregview.zip",
+            "hash": "e40464f85c3a429432165129478cdb9b8ea3c171f12eb055b761b5de7c963a4d"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/toolsdownload/encryptedregview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/toolsdownload/encryptedregview.zip"
+            }
+        }
+    },
+    "bin": "EncryptedRegView.exe",
+    "shortcuts": [
+        [
+            "EncryptedRegView.exe",
+            "NirSoft\\EncryptedRegView - Finds encrypted data in the Regsitry"
+        ]
+    ]
+}

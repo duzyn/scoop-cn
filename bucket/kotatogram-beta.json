@@ -1,0 +1,62 @@
+{
+    "version": "1.4.9",
+    "description": "Experimental Telegram Desktop fork. Kotatogram Desktop, being based on Telegram Desktop, has all its features, but it also has some more useful and cosmetic features(Beta Edition).",
+    "homepage": "https://kotatogram.github.io",
+    "license": {
+        "identifier": "GPL-3.0-with-OpenSSL-exception",
+        "url": "https://github.com/kotatogram/kotatogram-desktop/blob/dev/LICENSE"
+    },
+    "notes": [
+        "To register the 'URL:Telegram Link' protocol, run:",
+        "protocol-handler.ps1 register",
+        "To unregister the 'URL:Telegram Link' protocol, run:",
+        "protocol-handler.ps1 unregister"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.4.9/1.4.9-win64-portable.zip",
+            "hash": "4d50fbca6b1129c4b52e3933b7931ac878c271f77e0472f8d0a40c6ff76d20fa"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/kotatogram/kotatogram-desktop/releases/download/k1.4.9/1.4.9-win32-portable.zip",
+            "hash": "45ffdf047e5d1847242b4059dde8d439288bb9af08119b2eac7363f807b3d44a"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\Updater.exe\"",
+        "$currentDir = $dir.Replace($version, 'current')",
+        "$content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\telegram\\protocol-handler.ps1\"",
+        "$content = $content.Replace('REPLACE_HERE', $currentDir)",
+        "$content = $content.Replace('Telegram.exe', 'Kotatogram.exe')",
+        "Set-Content \"$dir\\protocol-handler.ps1\" $content -Force"
+    ],
+    "bin": [
+        "Kotatogram.exe",
+        "protocol-handler.ps1"
+    ],
+    "shortcuts": [
+        [
+            "Kotatogram.exe",
+            "Kotatogram"
+        ]
+    ],
+    "persist": "tdata",
+    "pre_uninstall": [
+        "Write-Host 'Unregistering ''URL:Telegram Link'' protocol handler...'",
+        "Remove-Item 'HKCU:\\SOFTWARE\\Classes\\tg', 'HKCU:\\SOFTWARE\\Classes\\TelegramDesktop' -Force -Recurse -ErrorAction 'SilentlyContinue'; Write-Host 'Done!'"
+    ],
+    "checkver": {
+        "url": "https://github.com/kotatogram/kotatogram-desktop/releases",
+        "regex": "Version ([\\d.]+)( beta)?"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/kotatogram/kotatogram-desktop/releases/download/k$version/$version-win64-portable.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/kotatogram/kotatogram-desktop/releases/download/k$version/$version-win32-portable.zip"
+            }
+        }
+    }
+}

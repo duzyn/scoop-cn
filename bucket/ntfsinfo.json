@@ -1,0 +1,31 @@
+{
+    "version": "1.2",
+    "description": "See detailed information about NTFS volumes.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/ntfsinfo",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/NTFSInfo.zip",
+    "hash": "c71445a4d8df9ccb21923beb575e315529e264ad672de445110aabdc01bc5a9d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "ntfsinfo64.exe",
+                    "ntfsinfo"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ntfsinfo.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/ntfsinfo.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/NTFSInfo.zip"
+    }
+}

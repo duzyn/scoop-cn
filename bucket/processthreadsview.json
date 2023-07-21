@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/process_threads_view.html",
+    "checkver": "ProcessThreadsView v(\\d+\\.\\d\\d)",
+    "version": "1.29",
+    "license": "freeware",
+    "description": "ProcessThreadsView is a small utility that displays extensive information about all threads of the process that you choose. The threads information includes the ThreadID, Context Switches Count, Priority, Created Time, User/Kernel Time, Number of Windows, Window Title, Start Address, and more. When selecting a thread in the upper pane, the lower pane displays the following information: Strings found in the stack, stack modules addresses, call stack, and processor registers. ProcessThreadsView also allows you to suspend and resume one or more threads.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/processthreadsview-x64.zip",
+            "hash": "95a18efb40b06d3ba3dfcd78066aed517e042e598413cc7e660332920fdb6fa5"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/processthreadsview.zip",
+            "hash": "abd53b11590e7918ae96bad50c3e3a49a005aaea76ea0a489f3c06f86960f2bd"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/processthreadsview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/processthreadsview.zip"
+            }
+        }
+    },
+    "bin": "ProcessThreadsView.exe",
+    "shortcuts": [
+        [
+            "ProcessThreadsView.exe",
+            "NirSoft\\ProcessThreadsView - process threads information viewer"
+        ]
+    ]
+}

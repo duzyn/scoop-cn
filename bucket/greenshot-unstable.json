@@ -1,0 +1,25 @@
+{
+    "version": "1.3.270",
+    "description": "Light-weight screenshot software.",
+    "homepage": "https://getgreenshot.org",
+    "license": "GPL-3.0-only",
+    "url": "https://ghproxy.com/https://github.com/greenshot/greenshot/releases/download/v1.3.270/Greenshot-INSTALLER-1.3.270-UNSTABLE.exe",
+    "hash": "51a2eadde551927a8d86bbd6100d9304e7f505f70f8b8499b2b7059f757ebbe4",
+    "innosetup": true,
+    "pre_install": "if (!(Test-Path \"$persist_dir\\greenshot.ini\")) { New-Item -ItemType File \"$dir\\greenshot.ini\" | Out-Null }",
+    "bin": "Greenshot.exe",
+    "shortcuts": [
+        [
+            "Greenshot.exe",
+            "Greenshot"
+        ]
+    ],
+    "persist": "greenshot.ini",
+    "checkver": {
+        "url": "https://github.com/greenshot/greenshot/releases",
+        "regex": "Greenshot-INSTALLER-([\\d.]+)-UNSTABLE"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/greenshot/greenshot/releases/download/v$version/Greenshot-INSTALLER-$version-UNSTABLE.exe"
+    }
+}

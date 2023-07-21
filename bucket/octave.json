@@ -1,0 +1,66 @@
+{
+    "version": "8.2.0",
+    "description": "A high-level language primarily intended for numerical computations.",
+    "homepage": "https://www.gnu.org/software/octave/",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "* Known issue:",
+        "  - Spaces or non-ASCII characters in the path are discouraged and may cause program errors.",
+        "------",
+        "Please run 'octave-post-install' now to reduce plot delays due to the Windows font cache and make the pre-installed packages visible to the system."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-8.2.0-w64.zip",
+            "hash": "9c9d2fed25ef40ca21baa20f2597ebd6f1dcc72b90c891a7bc80926b4f5049c6",
+            "extract_dir": "octave-8.2.0-w64",
+            "bin": [
+                [
+                    "post-install.bat",
+                    "octave-post-install"
+                ],
+                "mingw64\\bin\\octave.bat",
+                "mingw64\\bin\\octave-gui.exe",
+                "mingw64\\bin\\octave-cli.exe",
+                "mingw64\\bin\\octave-config.exe"
+            ]
+        },
+        "32bit": {
+            "url": "https://ftp.gnu.org/gnu/octave/windows/octave-8.2.0-w32.zip",
+            "hash": "28858e975bfb3ffb937760028ffd99a10907dc59127fee0ec1a747096261854d",
+            "extract_dir": "octave-8.2.0-w32",
+            "bin": [
+                [
+                    "post-install.bat",
+                    "octave-post-install"
+                ],
+                "mingw32\\bin\\octave.bat",
+                "mingw32\\bin\\octave-gui.exe",
+                "mingw32\\bin\\octave-cli.exe",
+                "mingw32\\bin\\octave-config.exe"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "octave-launch.exe",
+            "Octave"
+        ]
+    ],
+    "checkver": {
+        "url": "https://wiki.octave.org/GNU_Octave_Wiki",
+        "regex": "GNU Octave ([\\d.]+).*is the current stable release"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ftp.gnu.org/gnu/octave/windows/octave-$version-w64.zip",
+                "extract_dir": "octave-$version-w64"
+            },
+            "32bit": {
+                "url": "https://ftp.gnu.org/gnu/octave/windows/octave-$version-w32.zip",
+                "extract_dir": "octave-$version-w32"
+            }
+        }
+    }
+}

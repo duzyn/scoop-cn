@@ -1,0 +1,57 @@
+{
+    "version": "1.2.2_2022-12-09_732a01da63",
+    "description": "Professional vector graphics editor",
+    "homepage": "https://inkscape.org",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.nju.edu.cn/inkscape/inkscape-1.2.2_2022-12-09_732a01da63-x64.7z",
+            "hash": "2b12cb72061cdfca5ac9570ca102fb871ef582880c1dad09bae88b5f9f02ed6f",
+            "extract_dir": "inkscape-1.2.2_2022-12-09_732a01da63-x64"
+        },
+        "32bit": {
+            "url": "https://mirrors.nju.edu.cn/inkscape/inkscape-1.2.2_2022-12-09_732a01da63-x86.7z",
+            "hash": "94050240c71796e1472a803b5b5727cb1903ae981bae9fc8d77245393cf68e30",
+            "extract_dir": "inkscape-1.2.2_2022-12-09_732a01da63-x86"
+        }
+    },
+    "bin": [
+        "bin\\inkscape.com",
+        "bin\\inkview.com"
+    ],
+    "shortcuts": [
+        [
+            "bin\\inkscape.exe",
+            "Inkscape"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$redirUrl = [System.Net.HttpWebRequest]::Create('https://inkscape.org/release/').GetResponse().ResponseUri.AbsoluteUri",
+            "$test_dl = Invoke-WebRequest ($redirUrl + 'windows/64-bit/compressed-7z/dl/') -UseBasicParsing",
+            "$filename = ($test_dl.Links | Where-Object href -match '.7z$' | Select-Object -First 1 -ExpandProperty href) -split '/' | Select-Object -Last 1",
+            "$clean_filename = $filename -replace '-x64.7z'",
+            "$ink_version = $clean_filename -replace 'inkscape-'",
+            "Write-Output $ink_version $clean_filename"
+        ],
+        "regex": "(?<version>.+)\\s(?<cleanfilename>.+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.nju.edu.cn/inkscape/$matchCleanfilename-x64.7z",
+                "extract_dir": "$matchCleanfilename-x64",
+                "hash": {
+                    "url": "https://media.inkscape.org/media/resources/sigs/$matchCleanfilename-x64.7z.sha256"
+                }
+            },
+            "32bit": {
+                "url": "https://mirrors.nju.edu.cn/inkscape/$matchCleanfilename-x86.7z",
+                "extract_dir": "$matchCleanfilename-x86",
+                "hash": {
+                    "url": "https://media.inkscape.org/media/resources/sigs/$matchCleanfilename-x86.7z.sha256"
+                }
+            }
+        }
+    }
+}

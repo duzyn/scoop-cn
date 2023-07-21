@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/driverview.html",
+    "checkver": "DriverView v(\\d+\\.\\d\\d)",
+    "version": "1.50",
+    "license": "freeware",
+    "description": "DriverView utility displays the list of all device drivers currently loaded on your system. For each driver in the list, additional useful information is displayed: load address of the driver, description, version, product name, company that created the driver, and more.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/driverview-x64.zip",
+            "hash": "717a6dbb32dbab1fa3dc576e4213c97a8e5e973497e01b1976afaf00cc403f98"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/driverview.zip",
+            "hash": "0a38cb5b73d08321de1da21fc5b79c999e97bcbbf412d4e7d967bfb071a50d3e"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/driverview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/driverview.zip"
+            }
+        }
+    },
+    "bin": "DriverView.exe",
+    "shortcuts": [
+        [
+            "DriverView.exe",
+            "NirSoft\\DriverView - Lists all loaded device drivers"
+        ]
+    ]
+}

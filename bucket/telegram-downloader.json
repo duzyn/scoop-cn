@@ -1,0 +1,39 @@
+{
+    "version": "0.9.3",
+    "homepage": "https://github.com/iyear/tdl",
+    "description": "A cli utility for downloading files from Telegram, backing up your Telegram data, uploading files to Telegram, and recovering your Telegram data.",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v0.9.3/tdl_Windows_32bit.zip",
+            "hash": "d1f3bc8387379fe002122a08d5038d7e14b5e2dcb73bbc8c9bddc0761ef6b939"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v0.9.3/tdl_Windows_64bit.zip",
+            "hash": "89a6a8223a9353cb579f7bfc3a22ee09a64db891783c3d1dbad202168eb43ca7"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v0.9.3/tdl_Windows_arm64.zip",
+            "hash": "bb70e33fc020a060bb9be59e1bdbd029007fe9844f7f10b2976e94eba834bbda"
+        }
+    },
+    "bin": "tdl.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v$version/tdl_Windows_32bit.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v$version/tdl_Windows_64bit.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/iyear/tdl/releases/download/v$version/tdl_Windows_arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/tdl_checksums.txt",
+            "regex": "$sha256\\s+$fname"
+        }
+    }
+}

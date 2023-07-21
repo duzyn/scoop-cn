@@ -1,0 +1,23 @@
+{
+    "version": "2.0a",
+    "description": "Little Fighter 2. A Fighting game.",
+    "homepage": "http://www.lf2.net/",
+    "license": "Freeware",
+    "suggest": {
+        "Visual C++ 2005 Redistributable": "scoop-cn/vcredist2005"
+    },
+    "url": "http://201708.mediafire.com/file/j2ddn2qqc27u5x1/LittleFighter_2.0a_azo.exe/file#/dl.7z",
+    "hash": "254c79d8fb0af8df72eef042aa2f0c3d9409a0da391f6ab40964450fb0ade034",
+    "extract_dir": "LittleFighter",
+    "pre_install": [
+        "Set-Content \"$dir\\lf2.ps1\" -Value 'Start-Process \"$PSScriptRoot\\lf2.exe\" -WorkingDirectory $PSScriptRoot' -Encoding Ascii",
+        "Remove-Item \"$dir\\*.url\""
+    ],
+    "bin": "lf2.ps1",
+    "shortcuts": [
+        [
+            "lf2.exe",
+            "Little Fighter 2"
+        ]
+    ]
+}

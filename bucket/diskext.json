@@ -1,0 +1,39 @@
+{
+    "version": "1.2",
+    "description": "Display volume disk-mappings.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/diskext",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/DiskExt.zip",
+    "hash": "b201c8424aecb60d7aab6079e86acad550d9d21e7833861995b0c1faca9ada39",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "diskext64.exe",
+                    "diskext"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "diskext.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "diskext64a.exe",
+                    "diskext"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/diskext.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/DiskExt.zip"
+    }
+}

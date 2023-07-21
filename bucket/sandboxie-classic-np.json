@@ -1,0 +1,48 @@
+{
+    "##": "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
+    "version": "5.64.8",
+    "description": "Sandbox isolation software (classic variant)",
+    "homepage": "https://sandboxie-plus.com/",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "You are installing Sandboxie Classic, which is designed to be compatible with the original Sandboxie.",
+        "For more new features, install 'sandboxie-plus-np'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.9.8/Sandboxie-Classic-x64-v5.64.8.exe#/setup.exe",
+            "hash": "3f30c9ec278679c0c0b243f8dc20288998ba20e8a2e6d7f3baa6d89a98ced4af"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.9.8/Sandboxie-Classic-x86-v5.64.8.exe#/setup.exe",
+            "hash": "99bfe80603ce6a6e554ab776a2a9edc74cb84f9fa7699ab99f5d00662a3108f3"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
+            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -RunAs | Out-Null"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/sandboxie-plus/Sandboxie",
+        "regex": "Release v(?<plusver>[\\d.]+) / (?<classicver>[\\d.]+)",
+        "replace": "${classicver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x64-v$version.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x86-v$version.exe#/setup.exe"
+            }
+        }
+    }
+}

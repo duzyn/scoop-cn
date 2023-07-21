@@ -1,0 +1,34 @@
+{
+    "version": "7.0.25",
+    "homepage": "https://github.com/gibbed/SteamAchievementManager",
+    "description": "Achievement manager for Steam",
+    "license": "Zlib",
+    "url": "https://ghproxy.com/https://github.com/gibbed/SteamAchievementManager/releases/download/7.0.25/SteamAchievementManager-7.0.25.zip",
+    "hash": "c09e8128d00a6c0ca5e5595ba443393362a8b4596ffa5f008229b104532dd9a8",
+    "bin": [
+        "SAM.Game.exe",
+        [
+            "SAM.Game.exe",
+            "steam-achievement-manager"
+        ],
+        "SAM.Picker.exe",
+        [
+            "SAM.Picker.exe",
+            "steam-achievement-manager-picker"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "SAM.Game.exe",
+            "Steam Achievement Manager"
+        ],
+        [
+            "SAM.Picker.exe",
+            "Steam Achievement Manager Picker"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/gibbed/SteamAchievementManager/releases/download/$version/SteamAchievementManager-$version.zip"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "version": "0.0.42",
+    "description": "Multiple Jenkins servers manager",
+    "homepage": "https://jenkins-zh.github.io/jcli-docs/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/jenkins-zh/jenkins-cli/releases/download/v0.0.42/jcli-windows-amd64.zip",
+            "hash": "a9e35768190b62cb87df1837df24bd413e744f13fc84504cbfcbd063f5e7411e"
+        }
+    },
+    "bin": "jcli.exe",
+    "checkver": {
+        "github": "https://github.com/jenkins-zh/jenkins-cli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/jenkins-zh/jenkins-cli/releases/download/v$version/jcli-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

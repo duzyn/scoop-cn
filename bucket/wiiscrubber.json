@@ -1,0 +1,32 @@
+{
+    "version": "1.4",
+    "description": "Tool to 'scrub' away the garbage data of Wii ISOs",
+    "homepage": "https://gamebanana.com/tools/6467",
+    "license": "Freeware",
+    "url": "https://gamebanana.com/dl/385923#/dl.rar",
+    "hash": "f1af4a22ead44af0870378bc11915c4b90d4ae986a3bd3a821edb9f9c28aa5f4",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\Wiiscrubber140.rar\" \"$dir\"",
+            "Expand-7zipArchive \"$dir\\MakeKeyBin1.1.rar\" \"$dir\"",
+            "Expand-7zipArchive \"$dir\\WiiPartitionBinChanger.rar\" \"$dir\\WiiPartitionBinChanger\"",
+            "Expand-7zipArchive \"$dir\\Multiboot.rar\" \"$dir\\Multiboot\"",
+            "Expand-7zipArchive \"$dir\\partitionbuilder.rar\" \"$dir\"",
+            "Remove-Item \"$dir\\`*.rar\", \"$dir\\*.rar\" -Force -Recurse"
+        ]
+    },
+    "bin": [
+        "WiiScrubber.exe",
+        "MakeKeyBin.exe"
+    ],
+    "shortcuts": [
+        [
+            "WiiScrubber.exe",
+            "Wii Scrubber"
+        ],
+        [
+            "MakeKeyBin.exe",
+            "Wii Scrubber - Make Common Key"
+        ]
+    ]
+}

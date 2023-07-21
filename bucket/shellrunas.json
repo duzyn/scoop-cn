@@ -1,0 +1,26 @@
+{
+    "version": "1.02",
+    "description": "Launch programs as a different user via a convenient shell context-menu entry.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/shellrunas",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ShellRunas.zip",
+    "hash": "27170866b14e7f5e3814328fc72433bb77c9cf5f90cae94ec5ba104ce0bbae57",
+    "bin": "ShellRunas.exe",
+    "shortcuts": [
+        [
+            "ShellRunas.exe",
+            "scoop-cn/ShellRunas",
+            "/accepteula"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/shellrunas.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ShellRunas.zip"
+    }
+}

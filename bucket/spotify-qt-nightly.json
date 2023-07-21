@@ -1,0 +1,38 @@
+{
+    "version": "3.10-230708",
+    "description": "Nightly builds for spotify-qt",
+    "homepage": "https://github.com/kraxarn/spotify-qt-nightly",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.10-230708-win64.zip",
+            "hash": "723905ee5c46c29e78710e227da5d88598f145fa31e3ce48c752e93480bdc5d7"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v3.10-230708-win32.zip",
+            "hash": "18d9ffe0ba429c8f484c7842d57a04b5b1209ca0b7022d105feb1216c50133e6"
+        }
+    },
+    "shortcuts": [
+        [
+            "spotify-qt.exe",
+            "spotify-qt"
+        ]
+    ],
+    "bin": "spotify-qt.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/458937795/releases/latest",
+        "jsonpath": "$.assets[0].name",
+        "regex": "spotify-qt-v([\\d.-]+)-win(?:64|32)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v$version-win32.zip"
+            }
+        }
+    }
+}

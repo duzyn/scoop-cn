@@ -1,0 +1,42 @@
+{
+    "version": "1.4.1",
+    "description": "Source port for Wolfenstein 3D",
+    "homepage": "https://maniacsvault.net/ecwolf/",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place WL6/SOD/SD1/SD2/SD3 files (game data) in:",
+        "",
+        "    %APPDATA%\\ECWolf"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.1_x86.zip",
+            "hash": "99ccc7208bf17f63ed9124e07bf38d75beabb01c39bd6a1b34b32d9ee76710a8"
+        },
+        "64bit": {
+            "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.4.1_x64.zip",
+            "hash": "a8af90c595fed06aa9e4a39c773a86c98543d47985f0863183871c4cdc9e5f7e"
+        }
+    },
+    "bin": "ecwolf.exe",
+    "shortcuts": [
+        [
+            "ecwolf.exe",
+            "ECWolf"
+        ]
+    ],
+    "checkver": {
+        "url": "https://maniacsvault.net/ecwolf/download.php",
+        "regex": "\\/ecwolf-([\\d.-]+)_x[\\d]{2}\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$version_x86.zip"
+            },
+            "64bit": {
+                "url": "http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$version_x64.zip"
+            }
+        }
+    }
+}

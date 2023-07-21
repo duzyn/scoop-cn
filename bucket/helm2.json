@@ -1,0 +1,21 @@
+{
+    "homepage": "https://helm.sh",
+    "description": "The package manager for Kubernetes",
+    "license": "Apache-2.0",
+    "notes": "Helm 2 reached End of Life on November 13, 2020. To migrate to v3, read the guide here: https://helm.sh/docs/topics/v2_v3_migration/",
+    "version": "2.17.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://get.helm.sh/helm-v2.17.0-windows-amd64.zip",
+            "hash": "048147ef523f88753ba34170f2f6acd01ac6ec688c6f5973b0e5ffb0b113a232"
+        }
+    },
+    "extract_dir": "windows-amd64",
+    "bin": [
+        "helm.exe",
+        [
+            "helm.exe",
+            "helm2"
+        ]
+    ]
+}

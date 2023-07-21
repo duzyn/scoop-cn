@@ -1,0 +1,51 @@
+{
+    "description": "Open Source Builds of Zulu With OpenJFX",
+    "homepage": "https://www.azul.com/products/zulu-community/zulufx/",
+    "version": "11.66.15",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu11.66.15-ca-fx-jre11.0.20-win_x64.zip",
+            "hash": "d2d6b1c28d876aab2b4b90f634a60beb134a02ea592c0dcf00e23a061c354493",
+            "extract_dir": "zulu11.66.15-ca-fx-jre11.0.20-win_x64"
+        },
+        "32bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu11.66.15-ca-fx-jre11.0.20-win_i686.zip",
+            "hash": "9312c9f6a2d0534e8d809292b8525916af7d62aa6bd8a495973f4b17a80e0518",
+            "extract_dir": "zulu11.66.15-ca-fx-jre11.0.20-win_i686"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=11&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
+        "jsonpath": "$.name",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-fx-jre(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=11&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
+                    "jp": "$.sha256_hash"
+                }
+            },
+            "32bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
+                "extract_dir": "$matchName_i686",
+                "hash": {
+                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=11&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=32",
+                    "jp": "$.sha256_hash"
+                }
+            }
+        }
+    }
+}

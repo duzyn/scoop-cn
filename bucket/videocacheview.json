@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/video_cache_view.html",
+    "checkver": "VideoCacheView v(\\d+\\.\\d\\d)",
+    "version": "3.09",
+    "license": "freeware",
+    "description": "After watching a video in a Web site, you may want to save the video file into your local disk for playing it offline in the future. If the video file is stored in your browser's cache, this utility can help you to extract the video file from the cache and save it for watching it in the future. It automatically scans the entire cache of Internet Explorer and Mozilla-based Web browsers (Including Firefox) and finds all video files that are currently stored in it. It allows you to easily copy the cached video files into another folder for playing/watching them in the future. If you have a movie player that is configured to play flv files, it also allows you to play the video directly from your browser's cache.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/videocacheview-x64.zip",
+            "hash": "287ec9b56baee231d1451ec4b5758c7ab17ab5de214b63ac8d77a5f148f081e9"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/videocacheview.zip",
+            "hash": "b615b4af1b40dea7b8304d52d17bbef208d1a056677b430beee7fb0db0371d65"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/videocacheview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/videocacheview.zip"
+            }
+        }
+    },
+    "bin": "VideoCacheView.exe",
+    "shortcuts": [
+        [
+            "VideoCacheView.exe",
+            "NirSoft\\VideoCacheView - Extract Web site video files from the cache"
+        ]
+    ]
+}

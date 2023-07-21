@@ -1,0 +1,32 @@
+{
+    "version": "6.5.14",
+    "description": "A parallel computing platform and programming model invented by NVIDIA",
+    "homepage": "https://developer.nvidia.com/cuda-toolkit",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://docs.nvidia.com/cuda/eula/index.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "http://developer.download.nvidia.com/compute/cuda/6_5/rel/installers/cuda_6.5.14_windows_general_64.exe#/dl.7z",
+            "hash": "f3e2c3c13ce0ecc67a5f7d7367f18d5ee0abfd50a7b6cdd10e0feb7b823fde6d"
+        }
+    },
+    "installer": {
+        "script": [
+            "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "foreach ($name in $names) {",
+            "    Copy-Item \"$dir\\*\\$name\" \"$dir\\\" -Recurse -Force",
+            "}",
+            "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Force -Recurse"
+        ]
+    },
+    "env_add_path": [
+        "bin",
+        "libnvvp"
+    ],
+    "env_set": {
+        "CUDA_PATH": "$dir",
+        "CUDA_PATH_V6_5": "$dir"
+    }
+}

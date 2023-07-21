@@ -1,0 +1,39 @@
+{
+    "version": "1.2",
+    "description": "Undelete Server 2003 Active Directory objects.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/adrestore",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ADRestore.zip",
+    "hash": "9fd6461d6e5a3affed9d4415573c7c8f4eae0aab48b7410ed973a84d59e908c9",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "adrestore64.exe",
+                    "adrestore"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "adrestore.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "adrestore64a.exe",
+                    "adrestore"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/adrestore.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ADRestore.zip"
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "version": "0.6.14",
+    "description": "Launcher for Minecraft that allows for multiple, cleanly separated instances of Minecraft.",
+    "homepage": "https://multimc.org/",
+    "license": "Apache-2.0",
+    "url": "https://files.multimc.org/downloads/mmc-stable-win32.zip",
+    "hash": "269f476d58067204171d185238c931c1659926e9a5348e3f64b47110aa6be9b6",
+    "extract_dir": "MultiMC",
+    "pre_install": [
+        "if (-not (Test-Path \"$dir\\accounts.json\")) { New-Item \"$dir\\accounts.json\" -ItemType File | Out-Null }",
+        "if (-not (Test-Path \"$dir\\multimc.cfg\")) { New-Item \"$dir\\multimc.cfg\" -ItemType File -Value \"Analytics=false`r`nAutoUpdate=false`r`nIconTheme=pe_colored`r`nLaunchMaximized=true\" | Out-Null }",
+        "if (-not (Test-Path \"$dir\\notifications.json\")) { New-Item \"$dir\\notifications.json\" -ItemType File | Out-Null }"
+    ],
+    "bin": "MultiMC.exe",
+    "shortcuts": [
+        [
+            "MultiMC.exe",
+            "MultiMC"
+        ]
+    ],
+    "persist": [
+        "accounts",
+        "assets",
+        "instances",
+        "libraries",
+        "meta",
+        "themes",
+        "translations",
+        "accounts.json",
+        "multimc.cfg",
+        "notifications.json"
+    ],
+    "checkver": {
+        "github": "https://github.com/MultiMC/MultiMC5"
+    },
+    "autoupdate": {
+        "url": "https://files.multimc.org/downloads/mmc-stable-win32.zip"
+    }
+}

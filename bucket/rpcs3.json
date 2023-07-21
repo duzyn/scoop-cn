@@ -1,0 +1,64 @@
+{
+    "version": "0.0.28-15369",
+    "description": "Open-source Sony PlayStation 3 emulator",
+    "homepage": "https://rpcs3.net/",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/RPCS3/rpcs3/blob/master/LICENSE"
+    },
+    "notes": [
+        "ATTENTION: RPCS3 requires a copy of the official PS3 firmware to function.",
+        "Install the ps3-system-software package.  You must still manually load PS3UPDAT.PUP",
+        "See the official quickstart guide for further instructions: https://rpcs3.net/quickstart"
+    ],
+    "depends": "ps3-system-software",
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "url": "https://ghproxy.com/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-568e7481d87f7bb2cac68eb24be967b1da75619f/rpcs3-v0.0.28-15369-568e7481_win64.7z",
+    "hash": "fbd7e32dcfe0b56f6749c508b5932e502fd54a0171d2fd17b387044d36f9696c",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-Item \"$persist_dir\\config.yml\" -ItemType File | Out-Null",
+        "   New-Item \"$persist_dir\\games.yml\" -ItemType File | Out-Null",
+        "   '[Meta]', 'checkUpdateStart=false' | Set-Content \"$dir\\GuiConfigs\\CurrentSettings.ini\"",
+        "}"
+    ],
+    "bin": "rpcs3.exe",
+    "shortcuts": [
+        [
+            "rpcs3.exe",
+            "RPCS3"
+        ]
+    ],
+    "persist": [
+        "dev_flash",
+        "dev_flash2",
+        "dev_flash3",
+        "dev_hdd0",
+        "dev_hdd1",
+        "dev_usb000",
+        "cache",
+        "captures",
+        "config.yml",
+        "config",
+        "firmware",
+        "games.yml",
+        "GuiConfigs",
+        "Icons",
+        "patches"
+    ],
+    "checkver": {
+        "url": "https://rpcs3.net/compatibility?b",
+        "regex": "/rpcs3-binaries-win/releases/download/build-(?<fullhash>[0-9a-f]+)/rpcs3-v(?<build>[0-9]+\\.[0-9]+\\.[0-9]+\\-[0-9]+)-(?<shorthash>[0-9a-f]{8})",
+        "replace": "${build}"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z",
+        "hash": {
+            "url": "https://rpcs3.net/compatibility?b",
+            "regex": "Windows SHA-256: ($sha256)"
+        }
+    }
+}

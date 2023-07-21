@@ -1,0 +1,77 @@
+on:
+  push:
+    branches:
+      - "master"
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  excavate:
+    name: Excavate
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/Main"
+          fetch-depth: 1
+          path: "Main"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/Extras"
+          fetch-depth: 1
+          path: "Extras"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/Versions"
+          fetch-depth: 1
+          path: "Versions"
+      - uses: actions/checkout@v3
+        with:
+          repository: "kodybrown/scoop-nirsoft"
+          fetch-depth: 1
+          path: "scoop-nirsoft"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/PHP"
+          fetch-depth: 1
+          path: "PHP"
+      - uses: actions/checkout@v3
+        with:
+          repository: "matthewjberger/scoop-nerd-fonts"
+          fetch-depth: 1
+          path: "scoop-nerd-fonts"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/Nonportable"
+          fetch-depth: 1
+          path: "Nonportable"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ScoopInstaller/Java"
+          fetch-depth: 1
+          path: "Java"
+      - uses: actions/checkout@v3
+        with:
+          repository: "Calinou/scoop-games"
+          fetch-depth: 1
+          path: "scoop-games"
+      - uses: actions/checkout@v3
+        with:
+          repository: "niheaven/scoop-sysinternals"
+          fetch-depth: 1
+          path: "scoop-sysinternals"
+      - name: Update buckets
+        shell: pwsh
+        run: |
+          .\update.ps1
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout --orphan latest_branch
+          git add --all
+          git commit -am "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")"
+          git branch -D master
+          git branch -m master
+          git push -f origin master

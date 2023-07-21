@@ -1,0 +1,31 @@
+{
+    "version": "2.3.0",
+    "description": "A simple server for sending and receiving messages in real-time per WebSocket, with a sleek web UI",
+    "homepage": "https://gotify.net/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/gotify/server/releases/download/v2.3.0/gotify-windows-amd64.exe.zip",
+            "hash": "565836eb9e184ec34a3f1121226b9484f83965b3c7530043efbf2839ecfd14d0"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/gotify/server/releases/download/v2.3.0/gotify-windows-386.exe.zip",
+            "hash": "351e497c7484a6812f36084534eadfa448ef02d687814257c0b77a6a609c3ccb"
+        }
+    },
+    "pre_install": "Get-ChildItem \"$dir\\gotify-windows-*\" | Rename-Item -NewName gotify.exe",
+    "bin": "gotify.exe",
+    "checkver": {
+        "github": "https://github.com/gotify/server/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/gotify/server/releases/download/v$version/gotify-windows-amd64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/gotify/server/releases/download/v$version/gotify-windows-386.exe.zip"
+            }
+        }
+    }
+}

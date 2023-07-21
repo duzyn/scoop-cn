@@ -1,0 +1,45 @@
+{
+    "version": "3.0.6806",
+    "description": "A powerful, multi-purpose tool that helps you monitor system resources, debug software and detect malware.",
+    "homepage": "https://systeminformer.sourceforge.io",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/winsiderss/si-builds/releases/download/3.0.6806/systeminformer-3.0.6806-bin.zip",
+    "hash": "95c30164745d136e4f2fc82e3110f1da10e77e050763fb1c7395f9be867d5342",
+    "architecture": {
+        "32bit": {
+            "extract_dir": "i386"
+        },
+        "64bit": {
+            "extract_dir": "amd64"
+        },
+        "arm64": {
+            "extract_dir": "arm64"
+        }
+    },
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object { Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -ErrorAction 'SilentlyContinue' }"
+    ],
+    "shortcuts": [
+        [
+            "SystemInformer.exe",
+            "System Informer"
+        ]
+    ],
+    "post_install": [
+        "# Clear icon GUIDs",
+        "$settings = Get-ChildItem \"$dir\\SystemInformer.exe.settings.xml\"",
+        "$settingsXml = [xml](Get-Content $settings)",
+        "if ($settingsXml.settings -eq $null) { return }",
+        "($settingsXml.settings.ChildNodes | Where-Object { $_.name.Contains(\"IconGuids\") }) | ForEach-Object { [void]$_.ParentNode.RemoveChild($_) }",
+        "$settingsXml.Save($settings)"
+    ],
+    "pre_uninstall": "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object { Copy-Item \"$dir\\$_\" \"$persist_dir\\$_\" -ErrorAction 'SilentlyContinue' }",
+    "checkver": {
+        "url": "https://github.com/winsiderss/si-builds/releases",
+        "regex": "/tag/([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-$version-bin.zip"
+    }
+}

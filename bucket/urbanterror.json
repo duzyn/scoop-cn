@@ -1,0 +1,23 @@
+{
+    "version": "4.3.4",
+    "description": "Multiplayer semi-realistic first-person shooter running on ioquake3",
+    "homepage": "https://www.urbanterror.info/",
+    "license": "https://www.urbanterror.info/support/202-quake-3-sdk/",
+    "url": "http://cdn.urbanterror.info/urt/43/releases/zips/UrbanTerror434_full.zip",
+    "hash": "716669cc6c525663b791852e51ff9c94d96f382be39279dab6084dddacb5a4e7",
+    "extract_dir": "UrbanTerror43",
+    "shortcuts": [
+        [
+            "Quake3-UrT.exe",
+            "Urban Terror"
+        ]
+    ],
+    "persist": "q3ut4",
+    "checkver": {
+        "url": "https://www.urbanterror.info/downloads/",
+        "re": "Current version \\(([\\d.]+)\\)"
+    },
+    "autoupdate": {
+        "url": "http://cdn.urbanterror.info/urt/$majorVersion$minorVersion/releases/zips/UrbanTerror$cleanVersion_full.zip"
+    }
+}

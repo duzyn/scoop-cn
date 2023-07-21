@@ -1,0 +1,52 @@
+{
+    "version": "1.14.15",
+    "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
+    "homepage": "https://golang.org",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "Your GOROOT has been set to: $dir",
+        "You can run 'go env GOROOT' to view this at any time.",
+        "\"$env:USERPROFILE\\go\\bin\" has been added to your PATH."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.aliyun.com/golang/go1.14.15.windows-amd64.zip",
+            "hash": "189bc564d537d86f80c70757ee4c29fb1c2c6e8d05bb6de1242a03a96ac850cb"
+        },
+        "32bit": {
+            "url": "https://mirrors.aliyun.com/golang/go1.14.15.windows-386.zip",
+            "hash": "6d990df3f60fc120d7e2ce7ffcaad102c1d595fb631ad2bd097217458004cd30"
+        }
+    },
+    "extract_dir": "go",
+    "installer": {
+        "script": "add_first_in_path \"$env:USERPROFILE\\go\\bin\" $global"
+    },
+    "uninstaller": {
+        "script": "remove_from_path \"$env:USERPROFILE\\go\\bin\" $global"
+    },
+    "bin": [
+        "bin\\go.exe",
+        "bin\\gofmt.exe"
+    ],
+    "env_set": {
+        "GOROOT": "$dir"
+    },
+    "checkver": {
+        "url": "https://golang.org/dl/",
+        "regex": "go(1\\.14\\.[\\d.]+)\\."
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.aliyun.com/golang/go$version.windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://mirrors.aliyun.com/golang/go$version.windows-386.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

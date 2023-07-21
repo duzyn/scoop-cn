@@ -1,0 +1,39 @@
+{
+    "version": "11.0",
+    "description": "Capturing process dumps of otherwise difficult to isolate and reproduce CPU spikes.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/procdump",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Procdump.zip",
+    "hash": "d58e81b96d53ded74570ad028d605fcfa1bfcc2e7cb2f5ab24bd64901b0c8783",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "procdump64.exe",
+                    "procdump"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "procdump.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "procdump64a.exe",
+                    "procdump"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/procdump.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Procdump.zip"
+    }
+}

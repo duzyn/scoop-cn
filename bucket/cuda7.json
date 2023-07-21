@@ -1,0 +1,33 @@
+{
+    "version": "7.5.18",
+    "description": "A parallel computing platform and programming model invented by NVIDIA",
+    "homepage": "https://developer.nvidia.com/cuda-toolkit",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://docs.nvidia.com/cuda/eula/index.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_win10.exe#/dl.7z",
+            "hash": "04d0d1c98692b16d16f776328b30c74a42ec45f08edd8ce175a872ab5e2653a2"
+        }
+    },
+    "installer": {
+        "script": [
+            "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "foreach ($name in $names) {",
+            "    Copy-Item \"$dir\\*\\$name\" \"$dir\\\" -Recurse -Force",
+            "}",
+            "Copy-Item \"$dir\\GDK\\gdk_win7_amd64_release\\nvml\\*\" \"$dir\\\" -Force -Recurse",
+            "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Force -Recurse"
+        ]
+    },
+    "env_add_path": [
+        "bin",
+        "libnvvp"
+    ],
+    "env_set": {
+        "CUDA_PATH": "$dir",
+        "CUDA_PATH_V7_5": "$dir"
+    }
+}

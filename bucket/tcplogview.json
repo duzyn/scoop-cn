@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/tcp_log_view.html",
+    "checkver": "TcpLogView v(\\d+\\.\\d\\d)",
+    "version": "1.38",
+    "license": "freeware",
+    "description": "TcpLogView is a simple utility that monitors the opened TCP connections on your system, and adds a new log line every time that a TCP connection is opened or closed. For every log line, the following information is displayed: Even Time, Event Type (Open, Close, Listen), Local Address, Remote Address, Remote Host Name, Local Port, Remote Port, Process ID, Process Name, and the country information of the Remote IP (Requires to download IP to country file separately.)",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/tcplogview-x64.zip",
+            "hash": "bb29ee1c37094e9e0fdcbec42aea1a73445d3de694c731c2c38462c23d172af3"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/tcplogview.zip",
+            "hash": "c56fce6bdc84162f93e34a003ca328a765bcd3b71ea1918662a5e177a647ab07"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/tcplogview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/tcplogview.zip"
+            }
+        }
+    },
+    "bin": "TcpLogView.exe",
+    "shortcuts": [
+        [
+            "TcpLogView.exe",
+            "NirSoft\\TcpLogView - Monitors TCP connections on your system"
+        ]
+    ]
+}

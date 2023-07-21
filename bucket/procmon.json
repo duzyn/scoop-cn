@@ -1,0 +1,60 @@
+{
+    "version": "3.95",
+    "description": "Monitor file system, Registry, process, thread and DLL activity in real-time.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/procmon",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/ProcessMonitor.zip",
+    "hash": "1e666af1fd3e092973170b5cb6b6f514f51eb874458534fab32e9b7132dfd054",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Procmon64.exe",
+                    "Procmon"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Procmon64.exe",
+                    "scoop-cn/Process Monitor",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Procmon.exe",
+            "shortcuts": [
+                [
+                    "Procmon.exe",
+                    "scoop-cn/Process Monitor",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Procmon64a.exe",
+                    "Procmon"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Procmon64a.exe",
+                    "scoop-cn/Process Monitor",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/procmon.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/ProcessMonitor.zip"
+    }
+}

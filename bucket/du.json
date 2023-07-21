@@ -1,0 +1,39 @@
+{
+    "version": "1.62",
+    "description": "View disk usage by directory.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/du",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/DU.zip",
+    "hash": "5aa85919ce064a93fdbbcba405ae9cbdfc923d0ff8b521bb9007f7693559921c",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "du64.exe",
+                    "du"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "du.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "du64a.exe",
+                    "du"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/du.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/DU.zip"
+    }
+}

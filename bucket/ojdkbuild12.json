@@ -1,0 +1,36 @@
+{
+    "description": "OpenJDK 12 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "12.0.2.9-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-12-openjdk-12.0.2.9-1/java-12-openjdk-12.0.2.9-1.windows.ojdkbuild.x86_64.zip",
+            "hash": "513e5b8f70cbc43e478aaaa1a1334b5148195521163f9bc4a30a6a4005f65705",
+            "extract_dir": "java-12-openjdk-12.0.2.9-1.windows.ojdkbuild.x86_64"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "regex": "download/java-12-openjdk-([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.zip",
+                "extract_dir": "java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

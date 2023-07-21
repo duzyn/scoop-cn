@@ -1,0 +1,48 @@
+{
+    "version": "8.2.8",
+    "description": "Distributed Workflow Engine for Microservices Orchestration",
+    "homepage": "https://camunda.com/products/cloud/workflow-engine/",
+    "license": {
+        "identifier": "Zeebe Community License v1.0",
+        "url": "https://camunda.com/legal/terms/cloud-terms-and-conditions/zeebe-community-license-v1-0/"
+    },
+    "notes": [
+        "If you are upgrading from version 1.x, you can follow the instructions on this page to migrate the settings:",
+        "https://docs.camunda.io/docs/guides/update-guide/130-to-800/"
+    ],
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/camunda/camunda-platform/releases/download/8.2.8/camunda-zeebe-8.2.8.zip",
+            "hash": "sha1:c5d3945a9543151c1dd20b5139842c3dc5465576"
+        }
+    },
+    "extract_dir": "camunda-zeebe-8.2.8",
+    "bin": [
+        [
+            "bin\\broker.bat",
+            "zeebe-broker"
+        ],
+        [
+            "bin\\gateway.bat",
+            "zeebe-gateway"
+        ],
+        "bin\\zbctl.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/camunda/camunda-platform"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/camunda/camunda-platform/releases/download/$version/camunda-zeebe-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha1sum"
+        },
+        "extract_dir": "camunda-zeebe-$version"
+    }
+}

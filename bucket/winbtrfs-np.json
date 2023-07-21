@@ -1,0 +1,47 @@
+{
+    "version": "1.8.2",
+    "description": "Btrfs filesystem driver.",
+    "homepage": "https://github.com/maharmstone/btrfs",
+    "license": "LGPL-3.0-or-later",
+    "notes": [
+        "If you using Windows 10 and have Secure Boot enabled, you may have to make a registry change in order for the driver to be loaded.",
+        "See https://github.com/maharmstone/btrfs#secureboot."
+    ],
+    "url": "https://ghproxy.com/https://github.com/maharmstone/btrfs/releases/download/v1.8.2/btrfs-1.8.2.zip",
+    "hash": "5672da6ba0df205fc8b7732f5caf6594065ad6fad7726f8c029d7a6609f47771",
+    "pre_install": [
+        "if (-not $global) {",
+        "    Write-Host -Foreground Red \"$app should be installed globally.\"",
+        "    break",
+        "}"
+    ],
+    "installer": {
+        "script": [
+            "# Add cert first before installing driver",
+            "$cert = (Get-AuthenticodeSignature \"$dir\\btrfs.cat\").SignerCertificate",
+            "$checkCert = Get-ChildItem Cert:\\CurrentUser\\TrustedPublisher -Recurse | Where-Object { $_.Thumbprint -eq $cert.Thumbprint }",
+            "if (!($checkCert)) {",
+            "    Write-Host \"Cert not found, adding to trusted store...\"",
+            "    [System.IO.File]::WriteAllBytes(\"$dir\\MarkHarmstone.cer\", $cert.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert))",
+            "    certutil -addstore -f \"TrustedPublisher\" \"$dir\\MarkHarmstone.cer\"",
+            "    Remove-Item \"$dir\\MarkHarmstone.cer\"",
+            "}",
+            "",
+            "Write-Host \"Installing driver...\"",
+            "Invoke-ExternalCommand pnputil -ArgumentList @('/add-driver', \"$dir\\btrfs.inf\", '/install') -RunAs -ContinueExitCodes @{ 3010 = 'A system reboot is required to finalize the installation.' } | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if ($cmd -ne 'uninstall') { return }",
+            "Invoke-ExternalCommand pnputil -ArgumentList @('/remove-device', 'ROOT\\btrfs\\0000') -RunAs -ContinueExitCodes @{ 3010 = 'A system reboot is required to finalize the uninstallation.' } | Out-Null",
+            "pnputil /delete-driver \"$dir\\btrfs.inf\" /uninstall | Out-Null",
+            "pnputil /delete-driver \"$dir\\btrfs-vol.inf\" /uninstall | Out-Null",
+            "sc delete btrfs | Out-Null"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/maharmstone/btrfs/releases/download/v$version/btrfs-$version.zip"
+    }
+}

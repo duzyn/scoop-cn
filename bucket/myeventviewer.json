@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/my_event_viewer.html",
+    "checkver": "MyEventViewer v(\\d+\\.\\d\\d)",
+    "version": "2.25",
+    "license": "freeware",
+    "description": "MyEventViewer is a simple alternative to the standard event viewer of Windows. As oppose to Windows event viewer, MyEventViewer allows you to watch multiple event logs in one list, as well as the event description and data are displayed in the main window, instead of opening a new one. Also, with MyEventViewer you can easily select multiple event items and then save them to HTML/Text/XML file, or copy them to the clipboard (Ctrl+C) and then paste them into Excel.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/myeventviewer-x64.zip",
+            "hash": "d1e94d89f2831c76d46bb0b80e4248df82244b021950769bffab9cba0054ecfc"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/myeventviewer.zip",
+            "hash": "f3f9c2021185e6d4f5e89cf9b241eac67eb6e467db52cfe00370e40f07049313"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/myeventviewer-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/myeventviewer.zip"
+            }
+        }
+    },
+    "bin": "MyEventViewer.exe",
+    "shortcuts": [
+        [
+            "MyEventViewer.exe",
+            "NirSoft\\MyEventViewer - Alternative to the event viewer of Windows"
+        ]
+    ]
+}

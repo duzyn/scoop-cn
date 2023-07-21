@@ -1,0 +1,50 @@
+{
+    "version": "2.38.1",
+    "description": "Screen, webcam and sketchboard recorder with an integrated editor.",
+    "homepage": "https://www.screentogif.com/",
+    "license": "MS-PL",
+    "suggest": {
+        "ffmpeg": "ffmpeg"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/NickeManarin/ScreenToGif/releases/download/2.38.1/ScreenToGif.2.38.1.Portable.x64.zip",
+            "hash": "400fab6e5709250af464ae8b8d0696eb4b60a8d22f7b9454496e0fd263ed144f"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/NickeManarin/ScreenToGif/releases/download/2.38.1/ScreenToGif.2.38.1.Portable.x86.zip",
+            "hash": "855032b53ae6beafbd63ddfeb47c53634062e7e31a97fa9041b24e368318d6a7"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\Settings.xaml\")) {",
+        "    if (Test-Path \"$env:AppData\\ScreenToGif\\Settings.xaml\") {",
+        "        info \"[Portable Mode]: Copying existing settings file %AppData%\\ScreenToGif\\Settings.xaml...\"",
+        "        Copy-Item \"$env:AppData\\ScreenToGif\\Settings.xaml\" \"$dir\"",
+        "    } else {",
+        "        Set-Content \"$dir\\Settings.xaml\" '<ResourceDictionary></ResourceDictionary>' -Encoding ascii | Out-Null",
+        "    }",
+        "}"
+    ],
+    "bin": "ScreenToGif.exe",
+    "shortcuts": [
+        [
+            "ScreenToGif.exe",
+            "ScreenToGif"
+        ]
+    ],
+    "persist": "Settings.xaml",
+    "checkver": {
+        "github": "https://github.com/NickeManarin/ScreenToGif"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/NickeManarin/ScreenToGif/releases/download/$version/ScreenToGif.$version.Portable.x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/NickeManarin/ScreenToGif/releases/download/$version/ScreenToGif.$version.Portable.x86.zip"
+            }
+        }
+    }
+}

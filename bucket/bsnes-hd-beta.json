@@ -1,0 +1,35 @@
+{
+    "version": "10.6",
+    "description": "bsnes-hd is a fork of bsnes that adds video features like rendering Mode 7 in a higher resolution, widescreen, and true color",
+    "homepage": "https://github.com/DerKoun/bsnes-hd",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/DerKoun/bsnes-hd/blob/master/LICENSE"
+    },
+    "url": "https://ghproxy.com/https://github.com/DerKoun/bsnes-hd/releases/download/beta_10_6/bsnes_hd_beta_10_6_windows.zip",
+    "hash": "31c4d27e74ff8d87e9e7da7ca9c64960d5f69e6b6d6c805120145e955067e445",
+    "bin": [
+        [
+            "bsnes_hd.exe",
+            "bsnes-hd-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bsnes_hd.exe",
+            "bsnes-hd (beta)"
+        ]
+    ],
+    "persist": [
+        "Firmware",
+        "settings.bml"
+    ],
+    "checkver": {
+        "github": "https://github.com/DerKoun/bsnes-hd",
+        "regex": "tag/beta_(\\d+)_(\\d+)",
+        "replace": "${1}.${2}"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/DerKoun/bsnes-hd/releases/download/beta_$underscoreVersion/bsnes_hd_beta_$underscoreVersion_windows.zip"
+    }
+}

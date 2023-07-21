@@ -1,0 +1,32 @@
+{
+    "version": "1.30.1",
+    "description": "Hex editor",
+    "homepage": "https://github.com/WerWolv/ImHex",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/WerWolv/ImHex/releases/download/v1.30.1/imhex-1.30.1-Windows-Portable-x86_64.zip",
+            "hash": "73fc68839c6f4db0ebe8b07aec51c54c9affbd1785e6c03405221f7c13f327bc"
+        }
+    },
+    "shortcuts": [
+        [
+            "ImHex.exe",
+            "ImHex"
+        ]
+    ],
+    "persist": [
+        "config",
+        "recent",
+        "logs"
+    ],
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg delete 'HKCU\\SOFTWARE\\Classes\\*\\shell\\ImHex' /f }",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/WerWolv/ImHex/releases/download/v$version/imhex-$version-Windows-Portable-x86_64.zip"
+            }
+        }
+    }
+}

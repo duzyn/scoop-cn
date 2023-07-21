@@ -1,0 +1,40 @@
+{
+    "version": "1.11.0-git-20220401",
+    "description": "Command line client for Mega.nz",
+    "homepage": "https://megatools.megous.com/",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://megatools.megous.com/builds/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20220401-win64.zip",
+            "hash": "eb9686a21c7edce425883bd9597d236e5527d177f465dbe19927b4ccc1117dd3",
+            "extract_dir": "megatools-1.11.0-git-20220401-win64"
+        },
+        "32bit": {
+            "url": "https://megatools.megous.com/builds/experimental/megatools-1.11.0-git-20220401-win32.zip",
+            "hash": "fec5e0d1b22b251f62bbbed31751027348cf21c75d0b4b4cec7cc5f9591a9c03",
+            "extract_dir": "megatools-1.11.0-git-20220401-win32"
+        }
+    },
+    "persist": "mega.ini",
+    "bin": "megatools.exe",
+    "checkver": {
+        "url": "https://megatools.megous.com/builds/experimental/",
+        "regex": "\"megatools-?(\\S+)-win64.zip\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://megatools.megous.com/builds/experimental/megatools-$version-win64.zip",
+                "extract_dir": "megatools-$version-win64"
+            },
+            "32bit": {
+                "url": "https://megatools.megous.com/builds/experimental/megatools-$version-win32.zip",
+                "extract_dir": "megatools-$version-win32"
+            }
+        }
+    }
+}

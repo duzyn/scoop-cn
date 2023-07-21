@@ -1,0 +1,45 @@
+{
+    "version": "1.12.1",
+    "description": "Clozure Common Lisp",
+    "homepage": "https://ccl.clozure.com/",
+    "license": "Apache-2.0",
+    "url": "https://ghproxy.com/https://github.com/Clozure/ccl/releases/download/v1.12.1/ccl-1.12.1-windowsx86.zip",
+    "hash": "05c2bd142b5b573898adb4839f6f44e726980596b9146bb256952c3728c0ed57",
+    "extract_dir": "ccl",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                "wx86cl.exe",
+                "wx86cl64.exe",
+                [
+                    "wx86cl.exe",
+                    "ccl32"
+                ],
+                [
+                    "wx86cl64.exe",
+                    "ccl"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "wx86cl.exe",
+                "wx86cl64.exe",
+                [
+                    "wx86cl.exe",
+                    "ccl"
+                ],
+                [
+                    "wx86cl64.exe",
+                    "ccl64"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "github": "https://github.com/Clozure/ccl"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Clozure/ccl/releases/download/v$version/ccl-$version-windowsx86.zip"
+    }
+}

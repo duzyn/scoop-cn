@@ -1,0 +1,40 @@
+{
+    "version": "3.2.490",
+    "description": "Firewall & network monitoring software to detect and block threats",
+    "homepage": "https://www.glasswire.com/",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.glasswire.com/license"
+    },
+    "url": "https://download.glasswire.com/GlassWireSetup.exe#/setup.exe",
+    "hash": "9c7732d6c38b9e7756a49168ce41b1471711a7a14ffeeb201b61eaf6b791987c",
+    "installer": {
+        "script": [
+            "if(!(is_admin)) { error \"$app requires admin rights to install\"; break }",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\"",
+            "Remove-Item \"$env:Public\\Desktop\\Glasswire.lnk\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if(!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
+            "if ($architecture -eq '64bit') { $uninstall_exe = \"${Env:ProgramFiles(x86)}\\GlassWire\\uninstall.exe\" }",
+            "else { $uninstall_exe = \"$Env:ProgramFiles\\GlassWire\\uninstall.exe\" }",
+            "Start-Process \"$uninstall_exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
+            "# wait for uninstall.exe to finish",
+            "while (Get-Process 'uninstall' -ErrorAction SilentlyContinue) { Start-Sleep -Second 5 }"
+        ]
+    },
+    "checkver": {
+        "url": "https://www.glasswire.com/changes/",
+        "regex": "<b>Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.glasswire.com/GlassWireSetup.exe#/setup.exe",
+        "hash": {
+            "url": "https://www.glasswire.com/changes/",
+            "regex": "Hash Full # ($sha256)"
+        }
+    }
+}

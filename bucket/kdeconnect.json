@@ -1,0 +1,40 @@
+{
+    "version": "23.04.0-1322",
+    "description": "Communications and data transfer between devices over local networks",
+    "homepage": "https://kdeconnect.kde.org/",
+    "license": "GPL-3.0-or-later",
+    "notes": "If you want to get the latest development branch-based installer, please install `kdeconnect-nightly` from Versions bucket.",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.ustc.edu.cn/kde/stable/release-service/23.04.0/windows/kdeconnect-kde-23.04.0-1322-windows-cl-msvc2019-x86_64.exe#/dl.7z",
+            "hash": "b32a83ac7f89f284c2330b5dd01f430294d1adb201ab5c0f11aae19f29866eae"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\*\" -Exclude kdeconnect-*.7z -Recurse",
+        "Expand-7ZipArchive \"$dir\\kdeconnect-*.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\kdeconnect-*.7z\""
+    ],
+    "bin": "bin\\kdeconnect-cli.exe",
+    "shortcuts": [
+        [
+            "bin\\kdeconnect-app.exe",
+            "KDEConnect"
+        ]
+    ],
+    "checkver": {
+        "url": "https://kdeconnect.kde.org/download.html",
+        "regex": "release-service/(?<release>[\\d.]+)/windows/kdeconnect-kde-(?<version>.*)-windows-(?<lib>.*)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.ustc.edu.cn/kde/stable/release-service/$matchRelease/windows/kdeconnect-kde-$version-windows-$matchLib.exe#/dl.7z",
+                "hash": {
+                    "url": "https://apps.kde.org/kdeconnect",
+                    "regex": "sha256:</strong> $sha256</div>"
+                }
+            }
+        }
+    }
+}

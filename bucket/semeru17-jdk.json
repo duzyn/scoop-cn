@@ -1,0 +1,34 @@
+{
+    "description": "The IBM Semeru Runtimes are free production-ready binaries built with the OpenJDK class libraries and the Eclipse OpenJ9 JVM",
+    "homepage": "https://developer.ibm.com/languages/java/semeru-runtimes/",
+    "version": "17.0.7-7-0.38.0",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0,EPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru17-binaries/releases/download/jdk-17.0.7%2B7_openj9-0.38.0/ibm-semeru-open-jdk_x64_windows_17.0.7_7_openj9-0.38.0.zip",
+            "hash": "a0f864237b127c2790ce5e7c93e923290df9cb0b961350579632b3e1fac8a8ea"
+        }
+    },
+    "extract_dir": "jdk-17.0.7+7",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/ibmruntimes/semeru17-binaries",
+        "regex": "(?<tag>jdk-(?<major>(?<jdk>[\\d]+)[\\d.]+)(?:\\%2B|\\+)(?<build>[\\d]+)(?<patch>[\\d.]*)(?:(?<oj>_openj9?)(?<jvmver>-[\\d.]+(?:-m[\\d]+)?))?)",
+        "replace": "${major}-${build}${patch}${jvmver}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ibmruntimes/semeru17-binaries/releases/download/$matchTag/ibm-semeru-open-jdk_x64_windows_$matchMajor_$matchBuild$matchPatch_openj9$matchJvmver.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "find": "^([a-fA-F0-9]+)\\s"
+        },
+        "extract_dir": "jdk-$matchMajor+$matchBuild"
+    }
+}

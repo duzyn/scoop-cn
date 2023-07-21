@@ -1,0 +1,26 @@
+{
+    "version": "1.2.5",
+    "description": "Toontown: Corporate Clash is a completely free to play massively multiplayer online game designed to be the new experience of a game many of us loved. This is a game designed for players of all ages. ANYONE can have fun joining in the battle against the evil robot cogs. So, grab a seltzer and a few pies and dive right into the never ending battle to save Toontown from the cogs! What are you waiting for?",
+    "homepage": "https://corporateclash.net",
+    "license": "Proprietary",
+    "notes": "This is only the launcher, an account is required to play.",
+    "url": "https://ghproxy.com/https://github.com/CorporateClash/pyside2-releases/releases/download/v1.2.5/installer.exe#/dl.7z",
+    "hash": "819e62c1ceba3c496b040d80a66ca5d3bef0422deb5d5178a9099b34158c4e58",
+    "pre_install": [
+        "Remove-Item $dir -Recurse -Force  -Include * -Exclude new_launcher.exe",
+        "Rename-Item -Path $dir/new_launcher.exe -NewName $dir/CorporateClash.exe"
+    ],
+    "bin": "CorporateClash.exe",
+    "shortcuts": [
+        [
+            "CorporateClash.exe",
+            "Corproate Clash"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/CorporateClash/pyside2-releases"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/CorporateClash/pyside2-releases/releases/download/v$version/installer.exe#/dl.7z"
+    }
+}

@@ -1,0 +1,37 @@
+{
+    "description": "OpenJDK 11 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "11.0.15.9-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.15.9-1/java-11-openjdk-11.0.15.9-1.windows.ojdkbuild.x86_64.msi",
+            "hash": "344e55f22fc25d42b6c4a090fa3fba4710202e3062e6737792c277833d844d02"
+        }
+    },
+    "pre_install": "scoop config MSIEXTRACT_USE_LESSMSI True",
+    "extract_dir": "ojdkbuild\\java-11-openjdk-11.0.15-1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "regex": "download/java-11-openjdk-([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.msi"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "ojdkbuild\\java-$majorVersion-openjdk-$matchHead-$preReleaseVersion"
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

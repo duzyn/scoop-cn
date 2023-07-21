@@ -1,0 +1,23 @@
+{
+    "version": "1.6.0.0",
+    "description": "Windows registry viewer",
+    "homepage": "https://ericzimmerman.github.io",
+    "license": "MIT",
+    "url": "https://f001.backblazeb2.com/file/EricZimmermanTools/RegistryExplorer.zip",
+    "hash": "29997575d278108a670519833806fcc0a01bacce4ed742b004ec8719eb6ef890",
+    "extract_dir": "RegistryExplorer",
+    "shortcuts": [
+        [
+            "RegistryExplorer.exe",
+            "Registry Explorer"
+        ]
+    ],
+    "persist": "Settings",
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/EricZimmerman/ericzimmerman.github.io/master/index.md",
+        "regex": "Registry Explorer \\| \\[([\\d.]+)\\]"
+    },
+    "autoupdate": {
+        "url": "https://f001.backblazeb2.com/file/EricZimmermanTools/RegistryExplorer.zip"
+    }
+}

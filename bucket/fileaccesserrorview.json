@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/file_access_error_view.html",
+    "checkver": "FileAccessErrorView v(\\d+\\.\\d\\d)",
+    "version": "1.32",
+    "license": "freeware",
+    "description": "FileAccessErrorView is a diagnostic tool for Windows that displays information about errors occur while programs running on your system try to open/read/write/delete a file. FileAccessErrorView displays the filename that the application tried to open/read/write/delete, the process id/name of the application, the error code (NTSTATUS code), the description of the error code, the number of times that this error occurred, and the timestamp of this error.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/fileaccesserrorview-x64.zip",
+            "hash": "5ee75cd0bd02fbcd85d7e52b1029d713f0418cdc8d558bf233133f5e04a261ca"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/fileaccesserrorview.zip",
+            "hash": "d54b4d72957417c255e69fbd8ca202a4b5abede672bce4ef5b8062fae6fff6c4"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/fileaccesserrorview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/fileaccesserrorview.zip"
+            }
+        }
+    },
+    "bin": "FileAccessErrorView.exe",
+    "shortcuts": [
+        [
+            "FileAccessErrorView.exe",
+            "NirSoft\\FileAccessErrorView - Displays file access error information"
+        ]
+    ]
+}

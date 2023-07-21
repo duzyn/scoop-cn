@@ -1,0 +1,20 @@
+{
+    "version": "1.8.20",
+    "description": "Documentation Engine for Kotlin.",
+    "homepage": "https://github.com/Kotlin/dokka/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/1.8.20/dokka-cli-1.8.20.jar#/dokka.jar",
+    "hash": "7a1f960bb7365987d4bf4b9a2e430fb75cbf8689849d911f782f3781b835d874",
+    "bin": "dokka.jar",
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/$version/dokka-cli-$version.jar#/dokka.jar",
+        "hash": {
+            "url": "https://repo1.maven.org/maven2/org/jetbrains/dokka/dokka-cli/$version/dokka-cli-$version.jar.sha256",
+            "regex": "$sha256"
+        }
+    }
+}

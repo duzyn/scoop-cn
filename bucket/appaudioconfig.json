@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/app_audio_config.html",
+    "checkver": "AppAudioConfig v(\\d+\\.\\d\\d)",
+    "version": "1.16",
+    "license": "freeware",
+    "description": "Starting from Windows Vista, you are allowed to change the sound volume of every application separately, and after you exit from the application, the last settings are saved in the Registry under HKEY_CURRENT_USER\\Software\\Microsoft\\Internet Explorer\\LowRegistry\\Audio\\PolicyConfig\\PropertyStore so in the next time you run the application, your last settings are used. This tool displays your current audio settings of every application on your system, and allows you to easily change the setting of multiple applications at once. You can change the mute/unmute status, the sound volume level, and the right/left audio balance of the application.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/appaudioconfig-x64.zip",
+            "hash": "8d0408cdcfc324b8c3bb5443d7690f083b16e2f478b75bac2e73a508dbad7c14"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/appaudioconfig.zip",
+            "hash": "fce712fc3c4b5ae614330030b0c0501fb61d85e284477e2c9bae7cd48264b2f4"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/appaudioconfig-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/appaudioconfig.zip"
+            }
+        }
+    },
+    "bin": "AppAudioConfig.exe",
+    "shortcuts": [
+        [
+            "AppAudioConfig.exe",
+            "NirSoft\\AppAudioConfig - View_change audio settings of applications"
+        ]
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "version": "6.0.53",
+    "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 6)",
+    "homepage": "https://tomcat.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53-windows-x64.zip",
+            "hash": "sha1:d1e46e3760ea02eca20a89d86a37ef382ee060eb"
+        },
+        "32bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53-windows-x86.zip",
+            "hash": "sha1:74feb07d4bc275a0dac551b1f7bb7c2252e5505a"
+        }
+    },
+    "extract_dir": "apache-tomcat-6.0.53",
+    "env_set": {
+        "CATALINA_BASE": "$dir",
+        "CATALINA_HOME": "$dir"
+    },
+    "bin": "bin\\catalina.bat",
+    "persist": [
+        "conf",
+        "webapps"
+    ]
+}

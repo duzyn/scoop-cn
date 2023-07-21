@@ -1,0 +1,43 @@
+{
+    "version": "0.7.99",
+    "description": "Original Xbox Emulator",
+    "homepage": "https://xemu.app",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/mborgerson/xemu/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mborgerson/xemu/releases/download/v0.7.99/xemu-win-release.zip",
+            "hash": "c5efbb3b4e1375e0d2d6c5df9d7ef6ae6f296b7a74212b6c6e8bd2ad33bf36fc"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\bios\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\data\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "bin": "xemu.exe",
+    "shortcuts": [
+        [
+            "xemu.exe",
+            "Xemu"
+        ]
+    ],
+    "persist": [
+        "bios",
+        "data"
+    ],
+    "checkver": {
+        "github": "https://github.com/mborgerson/xemu"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mborgerson/xemu/releases/download/v$version/xemu-win-release.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/outlook_address_book_view.html",
+    "checkver": "OutlookAddressBookView v(\\d+\\.\\d\\d)",
+    "version": "2.43",
+    "license": "freeware",
+    "description": "OutlookAddressBookView is a simple utility that displays the details of all recipients stored in the address books of Microsoft Outlook. For every recipient entry, the following information is displayed: Email Address, Display Name, Address Type (MS-Exchange or SMTP), Street Address, Phone Number, Created Time, Modified Time (Works only with address books of Exchange server), and more... You can easily select one or more recipients from the list and export them into tab-delimited/comma-delimited/xml/html file, or copy them to the clipboard and then paste the list into Excel.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/outlookaddressbookview-x64.zip",
+            "hash": "924cf2398a76095ec556e154ee43b6287c3c331b1b8e9fc52a2ff8f172f0a2db"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/outlookaddressbookview.zip",
+            "hash": "4e9cf7a523681ca1cb89e249787cdf1c5bbefa87fa7a36574961df1dabc19bbe"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/outlookaddressbookview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/outlookaddressbookview.zip"
+            }
+        }
+    },
+    "bin": "OutlookAddressBookView.exe",
+    "shortcuts": [
+        [
+            "OutlookAddressBookView.exe",
+            "NirSoft\\OutlookAddressBookView - Displays the address books of Outlook"
+        ]
+    ]
+}

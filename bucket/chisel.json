@@ -1,0 +1,31 @@
+{
+    "version": "1.8.1",
+    "description": "A fast TCP tunnel over HTTP",
+    "homepage": "https://github.com/jpillora/chisel",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_windows_amd64.gz",
+            "hash": "68cfcef00c7be228c8c10ec35874bbbf3e3a6eec33ce3c2697af0aa8bcf844d3"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/jpillora/chisel/releases/download/v1.8.1/chisel_1.8.1_windows_386.gz",
+            "hash": "e237f1a9a8fc58940811f2ea1eb987242718290c588fb36c29741176700980bb"
+        }
+    },
+    "bin": "chisel.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_amd64.gz"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/jpillora/chisel/releases/download/v$version/chisel_$version_windows_386.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/chisel_$version_checksums.txt"
+        }
+    }
+}

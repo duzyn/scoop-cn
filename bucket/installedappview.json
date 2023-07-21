@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/installed_app_view.html",
+    "checkver": "InstalledAppView v(\\d+\\.\\d\\d)",
+    "version": "1.07",
+    "license": "freeware",
+    "description": "InstalledAppView is a tool for Windows 10 that displays the details of Windows 10 apps installed on your system. For every Windows app, the following information is displayed: App Name, App Version, Registry Name, Registry Modified Time, Install Folder, Install Folder Owner, Uninstall Command, and more... InstalledAppView allows you to load the Windows 10 apps list from your local system, remote computer on your network, and from external disk plugged to your computer. InstalledAppView also allows you to view the XML files of the Windows app (AppxManifest.xml and AppxBlockMap.xml), uninstall apps, quietly uninstall apps, open the install folder of the app, and more...",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/installedappview-x64.zip",
+            "hash": "495abfeb7a1247c39f3af8f8b6e2b47094a67db71690abfa0267fc1a78e2f501"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/installedappview.zip",
+            "hash": "5f66b6de4cd90fb2169b70aeb4a34db53f76c8654c44707075738a8571cd8632"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/installedappview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/installedappview.zip"
+            }
+        }
+    },
+    "bin": "InstalledAppView.exe",
+    "shortcuts": [
+        [
+            "InstalledAppView.exe",
+            "NirSoft\\InstalledAppView - View installed Windows 10 apps"
+        ]
+    ]
+}

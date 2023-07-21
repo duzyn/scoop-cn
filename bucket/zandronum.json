@@ -1,0 +1,67 @@
+{
+    "version": "3.1",
+    "homepage": "https://zandronum.com/",
+    "description": "Modern multiplayer-oriented source port for Doom",
+    "license": "BSD-3-Clause|Sleepycat",
+    "notes": [
+        "Place WAD files (game data) in:",
+        "",
+        "    $persist_dir\\..\\_doom"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://zandronum.com/downloads/zandronum3.1-win32-base.zip",
+            "hash": "104875bce0c57b30b78c2500bbb532418877495ac0236ec23b8ba5f1da80125e"
+        },
+        "64bit": {
+            "url": "https://zandronum.com/downloads/zandronum3.1-win64-base.zip",
+            "hash": "d96a2b5ea2efad65aa96de7677e3dc451a1d2a852e6660034f676c632f058251"
+        }
+    },
+    "pre_install": [
+        "New-Item \"$persist_dir\\..\\_doom\" -ItemType 'Directory' -Force | Out-Null",
+        "$value = (@(\"[IWADSearch.Directories]`nPath=.`nPath=$DOOMWADDIR`nPath=$HOME`n`n[FileSearch.Directories]`nPath=$PROGDIR`nPath=$DOOMWADDIR/zandronum`n`n\") +  \"[GlobalSettings]`nscreenshot_dir=screenshots`nscreenshot_type=png`nsave_dir=SAVE`ncrashlog_dir=crashes`ncrashlogs=1`ndatabasefile=data/database.sqlite`nsv_adminlistfile=data/adminlist.txt`nsv_banexemptionfile=data/whitelist.txt`nsv_banfile=data/banlist.txt`nstatfile=data/zdoomstats.txt`ngus_patchdir=data/gus`nmidi_config=data/timidity.cfg`n\") -join ''",
+        "$value | New-Item -ItemType File -Path \"$dir/zandronum_portable.ini\" -ErrorAction Ignore | Out-Null",
+        "Copy-Item \"$persist_dir\\zandronum-$($env:USERNAME).ini\" \"$dir\\zandronum-$($env:USERNAME).ini\" -ErrorAction 'SilentlyContinue'"
+    ],
+    "env_set": {
+        "DOOMWADDIR": "$persist_dir\\..\\_doom"
+    },
+    "bin": "zandronum.exe",
+    "shortcuts": [
+        [
+            "zandronum.exe",
+            "Zandronum"
+        ]
+    ],
+    "post_install": "New-Item -Path $dir\\zandronum-$($env:USERNAME).ini -Value $persist_dir\\zandronum_portable.ini -ItemType SymbolicLink -ErrorAction Ignore | Out-Null",
+    "persist": [
+        "addons",
+        "announcer",
+        "autoload",
+        "cfg",
+        "data",
+        "crashes",
+        "demos",
+        "logs",
+        "SAVE",
+        "screenshots",
+        "skins"
+    ],
+    "pre_uninstall": "Copy-Item \"$dir\\zandronum-$($env:USERNAME).ini\" \"$persist_dir\\zandronum-$($env:USERNAME).ini\" -ErrorAction 'SilentlyContinue'",
+    "checkver": {
+        "url": "https://zandronum.com/downloads/",
+        "regex": "zandronum([\\d.]+)-win*",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://zandronum.com/downloads/zandronum$version-win32-base.zip"
+            },
+            "64bit": {
+                "url": "https://zandronum.com/downloads/zandronum$version-win64-base.zip"
+            }
+        }
+    }
+}

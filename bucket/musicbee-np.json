@@ -1,0 +1,28 @@
+{
+    "version": "3.5.8447",
+    "description": "The Ultimate Music Manager and Player.",
+    "homepage": "https://www.getmusicbee.com/",
+    "license": "Freeware",
+    "notes": "Uninstaller will popup",
+    "url": "https://files1.majorgeeks.com/10afebdbffcd4742c81a3cb0f6ce4092156b4375/multimedia/MusicBeePortable_3_5.zip",
+    "hash": "706a8bb4c1b453af0619a28705bc461011f77828aaaecbb67e1f48552addbed9",
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\MusicBeeSetup_3_4_Update2.exe\" -ArgumentList @('/S') -Verb RunAs | Out-Null"
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait \"$([Environment]::GetFolderPath('ProgramFilesX86'))\\MusicBee\\uninstall.exe\" -ArgumentList @('/S') -Verb RunAs | Out-Null"
+    },
+    "checkver": {
+        "script": [
+            "(Invoke-WebRequest 'https://www.majorgeeks.com/files/details/musicbee_portable.html') -match 'MusicBee Portable (?<version>[\\d.]+)' | Out-Null",
+            "$resp = $Matches['version']",
+            "(Invoke-WebRequest 'https://www.majorgeeks.com/mg/getmirror/musicbee_portable,1.html') -match '(?<url>https:.*.zip)' | Out-Null",
+            "$resp += \",\" + $Matches['url']",
+            "Write-Output $resp"
+        ],
+        "regex": "(?<version>[\\d.]+),https:(?<dlurl>.*\\.zip)"
+    },
+    "autoupdate": {
+        "url": "https:$matchDlurl"
+    }
+}

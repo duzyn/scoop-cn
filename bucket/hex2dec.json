@@ -1,0 +1,39 @@
+{
+    "version": "1.1",
+    "description": "Convert hex numbers to decimal and vice versa.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/hex2dec",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Hex2Dec.zip",
+    "hash": "88b4d4dc34855c0171a53b12a626f349e3f72fb4f07edb4fea906ad02d42dab8",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "hex2dec64.exe",
+                    "hex2dec"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "hex2dec.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "hex2dec64a.exe",
+                    "hex2dec"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/hex2dec.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Hex2Dec.zip"
+    }
+}

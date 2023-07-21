@@ -1,0 +1,26 @@
+{
+    "version": "0.7.1",
+    "description": "A simple application deployment framework for Kubernetes.",
+    "homepage": "https://acorn.io",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/acorn-io/acorn/releases/download/v0.7.1/acorn-v0.7.1-windows-amd64.zip",
+            "hash": "ca58dc0769eee5515fcd1964f4bb0e60d2ee0b7ca447ac15e7f4cf3aadf74c87"
+        }
+    },
+    "bin": "acorn.exe",
+    "checkver": {
+        "github": "https://github.com/acorn-io/acorn"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/acorn-io/acorn/releases/download/v$version/acorn-v$version-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/checksums.txt"
+        }
+    }
+}

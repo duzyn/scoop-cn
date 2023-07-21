@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/run_as_date.html",
+    "checkver": "RunAsDate v(\\d+\\.\\d\\d)",
+    "version": "1.41",
+    "license": "freeware",
+    "description": "RunAsDate is a small utility that allows you to run a program in the date and time that you specify. This utility doesn't change the current system date and time of your computer, but it only injects the date/time that you specify into the desired application. You can run multiple applications simultaneously, each application works with different date and time, while the real date/time of your system continues to run normally.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/runasdate-x64.zip",
+            "hash": "647ea1883269a8478a4c84cd33f4b8a6f1dab0aa2bf3703e7f344827fc8a3d9e"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/runasdate.zip",
+            "hash": "ceec79526b06703c1806771b5af45b282b8511ba071b1ed5e702a7e8b46027b8"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/runasdate-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/runasdate.zip"
+            }
+        }
+    },
+    "bin": "RunAsDate.exe",
+    "shortcuts": [
+        [
+            "RunAsDate.exe",
+            "NirSoft\\RunAsDate - Run a program with the specified date"
+        ]
+    ]
+}

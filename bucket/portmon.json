@@ -1,0 +1,39 @@
+{
+    "version": "3.03",
+    "description": "Monitor serial and parallel port activity with this advanced monitoring tool.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/portmon",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PortMon.zip",
+    "hash": "ba9795f89315b84c21345b1a05b305ed2880de1fb04c58c7cfc9ebe24eedcdbb",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "portmon64.exe",
+                    "portmon"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "portmon.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "portmon64a.exe",
+                    "portmon"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/portmon.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PortMon.zip"
+    }
+}

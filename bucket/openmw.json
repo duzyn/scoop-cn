@@ -1,0 +1,44 @@
+{
+    "version": "0.47.0",
+    "description": "An open-source open-world RPG game engine that supports playing Morrowind.",
+    "homepage": "http://openmw.org/",
+    "license": "GPL-3.0-or-later",
+    "notes": "Please run the OpenMW Launcher in the start menu to configure the game data path. Otherwise, OpenMW won't start correctly.",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/OpenMW/openmw/releases/download/openmw-0.47.0/OpenMW-0.47.0-win64.exe#/dl.7z",
+            "hash": "02702977ae32d73aa20e5710a20bc5452d7131dab63bc43d194e339cadaf1e61"
+        }
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse",
+    "bin": [
+        "openmw.exe",
+        "openmw-cs.exe",
+        "openmw-launcher.exe"
+    ],
+    "shortcuts": [
+        [
+            "openmw.exe",
+            "OpenMW"
+        ],
+        [
+            "openmw-cs.exe",
+            "OpenMW Construction Set"
+        ],
+        [
+            "openmw-launcher.exe",
+            "OpenMW Launcher"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/OpenMW/openmw/releases/latest",
+        "regex": "/releases/tag/openmw-(?:v|V)?([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/OpenMW/openmw/releases/download/openmw-$version/OpenMW-$version-win64.exe#/dl.7z"
+            }
+        }
+    }
+}

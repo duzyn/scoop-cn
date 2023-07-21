@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/shman.html",
+    "checkver": "ShortcutsMan v(\\d+\\.\\d\\d)",
+    "version": "1.10",
+    "license": "freeware",
+    "description": "ShortcutsMan displays the details about all shortcuts that you have on your desktop and under your start menu. Broken shortcuts (shortcuts that point to file that doesn't exist) are automatically painted with pink color. You select one or more shortcuts, and then delete them, resolve them or save the shortcut's details to HTML/Text/XML file.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/shman-x64.zip",
+            "hash": "66708b64b360b9bb8e14ce0088c4203436988286ab7f16de3046efd7883e967d"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/shman.zip",
+            "hash": "b998c8dbaf29a07ba69c88793bea71f267ca145c9017b95b75e48c42332a87eb"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/shman-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/shman.zip"
+            }
+        }
+    },
+    "bin": "shman.exe",
+    "shortcuts": [
+        [
+            "shman.exe",
+            "NirSoft\\ShortcutsMan - Lists shortcuts on your system"
+        ]
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "version": "10.3.0.90",
+    "description": "Automatically switches between the dark and light theme of Windows 10 at scheduled times.",
+    "homepage": "https://github.com/Armin2208/Windows-Auto-Night-Mode",
+    "license": "GPL-3.0-only",
+    "url": "https://ghproxy.com/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/10.3.0.90/AutoDarkModeX_10.3.0.90.exe#/setup.exe",
+    "hash": "fd164bb994ffb23682b19354994ef5069bf9d5261c4347b6267ba91289bcd9b3",
+    "notes": "Settings need to be reapplied after updating.",
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "if ([Environment]::OSVersion.Version.Major -lt 10) { error \"$app only supports Windows 10\"; break }",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/SP-', '/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART', \"/DIR=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Invoke-ExternalCommand \"$dir\\unins000.exe\" -ArgumentList @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART') -RunAs | Out-Null"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/$version/AutoDarkModeX_$version.exe#/setup.exe",
+        "hash": {
+            "url": "$baseurl/AutoDarkModeX_$version.sha256"
+        }
+    }
+}

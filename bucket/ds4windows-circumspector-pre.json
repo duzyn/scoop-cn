@@ -1,0 +1,79 @@
+{
+    "version": "3.1.908",
+    "description": "The battle-tested industry-standard gamepad remapping tool for Windows.",
+    "homepage": "https://docs.ds4windows.app/",
+    "license": "MIT",
+    "notes": "ViGEmBus is required for DS4Windows to work. See https://docs.ds4windows.app/guides/install-setup/.",
+    "suggest": {
+        ".NET Desktop Runtime": "scoop-cn/windowsdesktop-runtime"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/CircumSpector/DS4Windows/releases/download/v3.1.908/DS4Windows.v3.1.908.x64.7z",
+            "hash": "292c59eecca5c570eb486b0d3cab224f1b173a48ccc4d9aa157178de2025508b",
+            "extract_dir": "DS4Windows-x64-v3.1.908"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/CircumSpector/DS4Windows/releases/download/v3.1.908/DS4Windows.v3.1.908.x86.-.for.legacy.systems.7z",
+            "hash": "6cf26cfa2b07d243b02b2b88684a8e6a165d002f288e250c129d692110bdc538",
+            "extract_dir": "DS4Windows-x86-v3.1.908"
+        }
+    },
+    "pre_install": [
+        "$conf = @(",
+        "    @{'Actions.xml' = @'",
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>",
+        "<Actions>",
+        "    <Action Name=\"Disconnect Controller\">",
+        "        <Trigger>PS/Options</Trigger>",
+        "        <Type>DisconnectBT</Type>",
+        "        <Details>0</Details>",
+        "    </Action>",
+        "</Actions>",
+        "'@ }",
+        "    @{'Auto Profiles.xml' = '<?xml version=\"1.0\" encoding=\"utf-8\"?><Programs />' }",
+        "    @{'ControllerConfigs.xml' = '<?xml version=\"1.0\" encoding=\"utf-8\"?><Controllers />' }",
+        "    @{'LinkedProfiles.xml' = '<?xml version=\"1.0\" encoding=\"utf-8\"?><LinkedControllers />' }",
+        "    @{'OutputSlots.xml' = '<?xml version=\"1.0\" encoding=\"utf-8\"?><OutputSlots />' }",
+        "    @{'Profiles.xml' = '<?xml version=\"1.0\" encoding=\"utf-8\"?><Profile><CheckWhen>0</CheckWhen></Profile>' }",
+        ")",
+        "",
+        "# Create default files",
+        "foreach ($k in $conf.Keys) {",
+        "    if (!(Test-Path \"$persist_dir\\$k\")) { ",
+        "        Set-Content \"$dir\\$k\" $conf.$k -Encoding Ascii",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "DS4Windows.exe",
+            "DS4Windows"
+        ]
+    ],
+    "persist": [
+        "Profiles",
+        "Actions.xml",
+        "Auto Profiles.xml",
+        "ControllerConfigs.xml",
+        "LinkedProfiles.xml",
+        "OutputSlots.xml",
+        "Profiles.xml"
+    ],
+    "checkver": {
+        "url": "https://github.com/CircumSpector/DS4Windows/releases",
+        "regex": "/tag/v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/CircumSpector/DS4Windows/releases/download/v$version/DS4Windows.v$version.x64.7z",
+                "extract_dir": "DS4Windows-x64-v$version"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/CircumSpector/DS4Windows/releases/download/v$version/DS4Windows.v$version.x86.-.for.legacy.systems.7z",
+                "extract_dir": "DS4Windows-x86-v$version"
+            }
+        }
+    }
+}

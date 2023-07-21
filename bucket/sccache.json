@@ -1,0 +1,26 @@
+{
+    "version": "0.5.4",
+    "description": "Shared compilation cache used as a compiler wrapper to avoid compilation when possible, storing a cache in a remote storage.",
+    "homepage": "https://github.com/mozilla/sccache",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/mozilla/sccache/releases/download/v0.5.4/sccache-v0.5.4-x86_64-pc-windows-msvc.tar.gz",
+            "hash": "0bdb1a4ebc2ffde765479b5689569b8e56f30452acbdcca0f0ef5d8c859ac93a",
+            "extract_dir": "sccache-v0.5.4-x86_64-pc-windows-msvc"
+        }
+    },
+    "bin": "sccache.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/mozilla/sccache/releases/download/v$version/sccache-v$version-x86_64-pc-windows-msvc.tar.gz",
+                "extract_dir": "sccache-v$version-x86_64-pc-windows-msvc"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

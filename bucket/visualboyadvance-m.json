@@ -1,0 +1,54 @@
+{
+    "version": "2.1.6",
+    "description": "Community-maintained, improved version of the VisualBoyAdvance Game Boy emulator",
+    "homepage": "https://vba-m.com",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v2.1.6/visualboyadvance-m-Win-x86_32.zip",
+            "hash": "8230aa772a1adb53b2da7c78514a037a5baf423a0f828325883ceb1686658bb2"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v2.1.6/visualboyadvance-m-Win-x86_64.zip",
+            "hash": "a3d5d9c623c8e994701ce0127bc92b2fc093c2457831c77b2e5e9b6d00296de4"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\vbam.ini\")) {",
+        "   New-Item \"$dir\\vbam.ini\" -Type File | Out-Null",
+        "   Set-Content \"$dir\\vbam.ini\" '[General]'",
+        "   Add-Content \"$dir\\vbam.ini\" 'OnlineUpdates=never'",
+        "   'Battery', 'Recording', 'Screenshot', 'State' | ForEach-Object {",
+        "   Add-Content -Path \"$dir\\vbam.ini\" -Value $_`Dir`=$_ }",
+        "}"
+    ],
+    "bin": "visualboyadvance-m.exe",
+    "shortcuts": [
+        [
+            "visualboyadvance-m.exe",
+            "VisualBoyAdvance-M"
+        ]
+    ],
+    "persist": [
+        "Battery",
+        "Recording",
+        "Screenshot",
+        "State"
+    ],
+    "checkver": {
+        "github": "https://github.com/visualboyadvance-m/visualboyadvance-m"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v$version/visualboyadvance-m-Win-x86_32.zip"
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/visualboyadvance-m/visualboyadvance-m/releases/download/v$version/visualboyadvance-m-Win-x86_64.zip"
+            }
+        }
+    }
+}

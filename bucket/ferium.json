@@ -1,0 +1,24 @@
+{
+    "version": "4.4.0",
+    "description": "Fast and multi-source CLI program for managing Minecraft mods and modpacks from Modrinth, CurseForge, and Github Releases",
+    "homepage": "https://github.com/gorilla-devs/ferium",
+    "license": "MPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/gorilla-devs/ferium/releases/download/v4.4.0/ferium-windows-msvc.zip",
+            "hash": "dcb7bcd9b8027a3ecc4ad07e6b771931e1aec3a548b74c0d5c365b203d8dac8e"
+        }
+    },
+    "bin": "ferium.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/gorilla-devs/ferium/releases/download/v$version/ferium-windows-msvc.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

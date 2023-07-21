@@ -1,0 +1,49 @@
+{
+    "version": "9.04.49",
+    "description": "Tool for the customization of functions on Logitech peripherals and components.",
+    "homepage": "https://support.logi.com/hc/en-us/articles/360025298053-Logitech-Gaming-Software",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.logitech.com/en-us/tos/software-license-agreement.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download01.logi.com/web/ftp/pub/techsupport/gaming/LGS_9.04.49_x64_Logitech.exe#/setup.exe",
+            "hash": "6db9f6442d46fbde0953f8bfbc36bd714e5e31a62f927563594cafd60724d3e0"
+        },
+        "32bit": {
+            "url": "https://download01.logi.com/web/ftp/pub/techsupport/gaming/LGS_9.04.49_x86_Logitech.exe#/setup.exe",
+            "hash": "1815dd7012e0fb04f076e14e0660f39019e0dae603db2fd317877b6797c4b0e6"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$dir\\setup.exe\" -Verb RunAs -ArgumentList '/S'"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$uninstall_string = $(Get-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Logitech Gaming Software' -Name UninstallString).UninstallString",
+            "$uninstall_string = $uninstall_string.replace('/silentmode=off', '/silentmode=on')",
+            "$arguments_index = $uninstall_string.IndexOf('.exe') + 5",
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Start-Process -Wait \"$($uninstall_string.Substring(0, $arguments_index))\" \"$($uninstall_string.Substring($arguments_index))\" -Verb RunAs"
+        ]
+    },
+    "checkver": {
+        "url": "https://support.logi.com/api/v2/help_center/en-us/articles.json?label_names=webcontent=productdownload,websoftware=edcb513d-8e0b-11e9-a62b-0d759f921175&per_page=100",
+        "jsonpath": "$.articles..body",
+        "regex": "</b>([\\d.]+)</li>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download01.logi.com/web/ftp/pub/techsupport/gaming/LGS_$version_x64_Logitech.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://download01.logi.com/web/ftp/pub/techsupport/gaming/LGS_$version_x86_Logitech.exe#/setup.exe"
+            }
+        }
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "version": "2.8.0",
+    "description": "A tool for reverse engineering Android apk files",
+    "homepage": "https://ibotpeaches.github.io/Apktool/",
+    "license": "Apache-2.0",
+    "url": "https://ghproxy.com/https://github.com/iBotPeaches/Apktool/releases/download/v2.8.0/apktool_2.8.0.jar#/apktool.jar",
+    "hash": "b331323ebf325d63e13375a6147915f9dac048f0f1f86783806f925941748dbc",
+    "checkver": {
+        "github": "https://github.com/iBotPeaches/Apktool"
+    },
+    "bin": "apktool.jar",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/iBotPeaches/Apktool/releases/download/v$version/apktool_$version.jar#/apktool.jar",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

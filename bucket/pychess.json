@@ -1,0 +1,26 @@
+{
+    "version": "1.0.4",
+    "description": "A chess client for Linux and Windows",
+    "homepage": "https://pychess.github.io/",
+    "license": "GPL-3.0",
+    "notes": [
+        "Auto saves are stored in C:\\Users\\[USERNAME]",
+        "Config is stored in C:\\Users\\[USERNAME]\\.config\\pychess",
+        "Data is stored C:\\Users\\[USERNAME]\\.local\\share\\pychess"
+    ],
+    "url": "https://ghproxy.com/https://github.com/pychess/pychess/releases/download/1.0.4/pychess-1.0.4-mingw_x86_64.msi",
+    "hash": "db9656f1eda62b6ec08b47670902f583d32ff15ff3f984456c1899b8121585e9",
+    "bin": "pychess.exe",
+    "shortcuts": [
+        [
+            "pychess.exe",
+            "PyChess"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/pychess/pychess"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/pychess/pychess/releases/download/$version/pychess-$version-mingw_x86_64.msi"
+    }
+}

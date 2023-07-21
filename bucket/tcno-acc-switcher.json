@@ -1,0 +1,23 @@
+{
+    "version": "5.0-2023-06-27_01",
+    "description": "A super fast account switcher for Steam",
+    "homepage": "https://github.com/TcNobo/TcNo-Acc-Switcher",
+    "license": "GPL-3.0-only,LGPL-2.1-only,...",
+    "notes": ".NET Framework 4.8 is required.",
+    "url": "https://ghproxy.com/https://github.com/TcNobo/TcNo-Acc-Switcher/releases/download/2023-06-27_01/TcNo-Acc-Switcher_2023-06-27_01.7z",
+    "hash": "1c9c999c995e70e925aa6c47fdd64e479452d6406a41d45fe31f5997cbd8f9ac",
+    "shortcuts": [
+        [
+            "TcNo-Acc-Switcher.exe",
+            "TcNo Account Switcher"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/TcNobo/TcNo-Acc-Switcher",
+        "regex": "TcNo Account Switcher - v([\\d.]+) - (\\d{4}-\\d{2}-\\d{2}_\\d{2})",
+        "replace": "${1}-${2}"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/TcNobo/TcNo-Acc-Switcher/releases/download/$match2/TcNo-Acc-Switcher_$match2.7z"
+    }
+}

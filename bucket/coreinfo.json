@@ -1,0 +1,39 @@
+{
+    "version": "3.6",
+    "description": "A command-line utility that shows you the mapping between logical processors and the physical processor.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/coreinfo",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/Coreinfo.zip",
+    "hash": "969a77fd34f20d41ba6af8dac450bca7ea39d47c2bbf431dbf4e14e77ddab09c",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Coreinfo64.exe",
+                    "Coreinfo"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Coreinfo.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Coreinfo64a.exe",
+                    "Coreinfo"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/coreinfo.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/Coreinfo.zip"
+    }
+}

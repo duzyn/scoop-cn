@@ -1,0 +1,32 @@
+{
+    "version": "2.13.alpha",
+    "description": "3D point cloud and mesh processing software",
+    "homepage": "https://cloudcompare.org/",
+    "license": "GPL-2.0-or-later,LGPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://cloudcompare.org/release/CloudCompare_v2.13.alpha_bin_x64.7z",
+            "hash": "ad892a4c7957ac99af8ff58382dee6730c05a35d491a0017150118a17732bee6"
+        }
+    },
+    "extract_dir": "CloudCompare_v2.13.alpha_bin_x64",
+    "shortcuts": [
+        [
+            "CloudCompare.exe",
+            "CloudCompare"
+        ]
+    ],
+    "##": "Latest <span class=\"highlight\">beta</span> release: 2.13.alpha (01/09/2023)",
+    "checkver": {
+        "url": "https://cloudcompare.org/release/",
+        "regex": "Latest\\s+.*(?<ignore>alpha|beta).*\\s*release:\\s*([\\d.]+[a-z]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cloudcompare.org/release/CloudCompare_v$version_bin_x64.7z",
+                "extract_dir": "CloudCompare_v$version_bin_x64"
+            }
+        }
+    }
+}

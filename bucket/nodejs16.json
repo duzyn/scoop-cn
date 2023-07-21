@@ -1,0 +1,49 @@
+{
+    "version": "16.20.1",
+    "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications.",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v16.20.1/node-v16.20.1-win-x64.7z",
+            "hash": "d4b931a0ebea8ad7b88a2c9afccb1265223b4e520ddbc45f250d78fcb10942fb",
+            "extract_dir": "node-v16.20.1-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v16.20.1/node-v16.20.1-win-x86.7z",
+            "hash": "6e4ba1168a38eaa81d5c976ccd520a9c2ead70d38333319b9458c5c9e2693213",
+            "extract_dir": "node-v16.20.1-win-x86"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        ".",
+        "bin"
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://npmmirror.com/mirrors/node/latest-v16.x/",
+        "regex": "node-v([\\d.]+)-x64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt"
+        }
+    }
+}

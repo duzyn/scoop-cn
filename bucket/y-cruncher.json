@@ -1,0 +1,18 @@
+{
+    "version": "0.8.1.9317",
+    "description": "Scalable multi-threaded benchmark calculating multiple mathematical constants to trillions of digits.",
+    "homepage": "http://www.numberworld.org/y-cruncher/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "http://www.numberworld.org/y-cruncher/license.html"
+    },
+    "url": "http://www.numberworld.org/y-cruncher/y-cruncher%20v0.8.1.9317.zip",
+    "hash": "de3db4d02f499fc47a4d7e95b8a16dddec22d259665b260e7b28265af852c8f0",
+    "extract_dir": "y-cruncher v0.8.1.9317",
+    "bin": "y-cruncher.exe",
+    "checkver": "y-cruncher v([\\d.]+)\\.zip",
+    "autoupdate": {
+        "url": "http://www.numberworld.org/y-cruncher/y-cruncher%20v$version.zip",
+        "extract_dir": "y-cruncher v$version"
+    }
+}

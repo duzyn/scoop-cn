@@ -1,0 +1,49 @@
+{
+    "version": "18.17.0",
+    "description": "As an asynchronous event driven JavaScript runtime, Node is designed to build scalable network applications. (Long Term Support)",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://npmmirror.com/mirrors/node/v18.17.0/node-v18.17.0-win-x64.7z",
+            "hash": "daf06430be6380cd7416f0e9060b99bea821ceb72dacd55242ad84a5440cf45b",
+            "extract_dir": "node-v18.17.0-win-x64"
+        },
+        "32bit": {
+            "url": "https://npmmirror.com/mirrors/node/v18.17.0/node-v18.17.0-win-x86.7z",
+            "hash": "d02327ddb3a6895a79b641fa4a456590bd7c8f0070a1915f2f76a70fd4ea7cc9",
+            "extract_dir": "node-v18.17.0-win-x86"
+        }
+    },
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "checkver": {
+        "url": "https://npmmirror.com/mirrors/node/latest-hydrogen/",
+        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "32bit": {
+                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x86.7z",
+                "extract_dir": "node-v$version-win-x86"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}

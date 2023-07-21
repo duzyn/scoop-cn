@@ -1,0 +1,35 @@
+{
+    "homepage": "https://slack.com",
+    "description": "A collaboration hub for work.",
+    "version": "4.5.0",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.slack-edge.com/releases_beta_x64/slack-4.5.0-full.nupkg",
+            "hash": "sha1:46b3c98b011d3ae83af138406c5f2719c36fe191"
+        }
+    },
+    "extract_dir": "lib\\net45",
+    "bin": "slack.exe",
+    "shortcuts": [
+        [
+            "slack.exe",
+            "Slack"
+        ]
+    ],
+    "checkver": {
+        "url": "https://downloads.slack-edge.com/releases_beta_x64/RELEASES",
+        "regex": "slack-([0-9.]+(-beta[0-9a-f]+)?)-full.nupkg",
+        "reverse": true
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.slack-edge.com/releases_beta_x64/slack-$version-full.nupkg"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/RELEASES"
+        }
+    }
+}

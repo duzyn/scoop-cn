@@ -1,0 +1,38 @@
+{
+    "version": "3.4.4",
+    "description": "A vendor and technology agnostic open source automation software for your home",
+    "homepage": "https://www.openhab.org",
+    "license": "EPL-1.0",
+    "suggest": {
+        "javajdk": [
+            "scoop-cn/openjdk11",
+            "scoop-cn/zulu11"
+        ]
+    },
+    "url": "https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/3.4.4/openhab-3.4.4.zip",
+    "hash": "0b52f189fdad894dde2fbae63bf1143da2169e8d0d77ddd966f1cc199963d504",
+    "bin": [
+        [
+            "runtime\\bin\\karaf.bat",
+            "openhab"
+        ],
+        [
+            "runtime\\bin\\client.bat",
+            "openhab-client"
+        ]
+    ],
+    "persist": [
+        "conf",
+        "userdata"
+    ],
+    "checkver": {
+        "url": "https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/maven-metadata.xml",
+        "xpath": "/metadata/versioning/latest"
+    },
+    "autoupdate": {
+        "url": "https://openhab.jfrog.io/artifactory/libs-release-local/org/openhab/distro/openhab/$version/openhab-$version.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

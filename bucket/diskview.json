@@ -1,0 +1,60 @@
+{
+    "version": "2.41",
+    "description": "Graphical disk sector utility.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/diskview",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/DiskView.zip",
+    "hash": "0ceac1623419ce74cfd079823130a76e23d1932ba6cc396157a299e9f23ebe2d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "DiskView64.exe",
+                    "DiskView"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "DiskView64.exe",
+                    "scoop-cn/DiskView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "DiskView.exe",
+            "shortcuts": [
+                [
+                    "DiskView.exe",
+                    "scoop-cn/DiskView",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "DiskView64a.exe",
+                    "DiskView"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "DiskView64a.exe",
+                    "scoop-cn/DiskView",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/diskview.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/DiskView.zip"
+    }
+}

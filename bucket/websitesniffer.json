@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/web_site_sniffer.html",
+    "checkver": "WebSiteSniffer v(\\d+\\.\\d\\d)",
+    "version": "1.51",
+    "license": "freeware",
+    "description": "WebSiteSniffer is a packet sniffer tool that captures all Web site files downloaded by your Web browser while browsing the Internet, and stores them on your hard drive under the base folder that you choose. WebSiteSniffer allows you to choose which type of Web site files will be captured: HTML Files, Text Files, XML Files, CSS Files, Video/Audio Files, Images, Scripts, and Flash (.swf) files. While capturing the Web site files, the main window of WebSiteSniffer displays general statistics about the downloaded files for every Web site / host name, including the total size of all files (compressed and uncompressed) and total number of files for every file type (HTML, Text, Images, and so on)",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/websitesniffer-x64.zip",
+            "hash": "da76a2e30e3f1167c6effc51b76eae7b8795068479c379d00994d2554b6aae86"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/websitesniffer.zip",
+            "hash": "f9c841fae243e1584ce9127ebafb7a7c8ce314336759e5ee149b21d18a267f5e"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/websitesniffer-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/websitesniffer.zip"
+            }
+        }
+    },
+    "bin": "WebSiteSniffer.exe",
+    "shortcuts": [
+        [
+            "WebSiteSniffer.exe",
+            "NirSoft\\WebSiteSniffer - Capture Web site files"
+        ]
+    ]
+}

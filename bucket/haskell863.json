@@ -1,0 +1,46 @@
+{
+    "homepage": "https://www.haskell.org",
+    "version": "8.6.3",
+    "license": "BSD-3-Clause",
+    "description": "An advanced, purely functional programming language.",
+    "architecture": {
+        "64bit": {
+            "url": "https://haskell.org/platform/download/8.6.3/HaskellPlatform-8.6.3-core-x86_64-setup.exe",
+            "hash": "105b9b511b695f80520397c6b257dbb52711b2da80f98075db159a2b0e0755da"
+        },
+        "32bit": {
+            "url": "https://haskell.org/platform/download/8.6.3/HaskellPlatform-8.6.3-core-i386-setup.exe",
+            "hash": "105b9b511b695f80520397c6b257dbb52711b2da80f98075db159a2b0e0755da"
+        }
+    },
+    "extract_dir": "$_14_",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive -Path \"$dir\\HaskellPlatform-$version-core-x86_64-setup.exe\" -ExtractDir '$_15_' -Removal",
+            "Get-ChildItem -Path \"$dir\" -Exclude 'stack*' | Convert-Path | ForEach-Object { Expand-7zipArchive -Path $_ -Removal }",
+            "Remove-Item -Path \"$dir\\`$PLUGINSDIR\", \"$dir\\*uninstall*\", \"$dir\\stack*\" -Recurse -Force"
+        ]
+    },
+    "bin": [
+        "bin\\ghc.exe",
+        "bin\\ghci.exe",
+        "bin\\ghc-pkg.exe",
+        "bin\\haddock.exe",
+        "bin\\hp2ps.exe",
+        "bin\\hpc.exe",
+        "bin\\hsc2hs.exe",
+        "bin\\runghc.exe",
+        "bin\\runhaskell.exe"
+    ],
+    "shortcuts": [
+        [
+            "winghci\\winghci.exe",
+            "WinGHCi"
+        ]
+    ],
+    "env_add_path": "lib\\extralibs\\bin",
+    "suggest": {
+        "Stack": "stack"
+    },
+    "notes": "For Haskell Stack, please install 'stack'."
+}

@@ -1,0 +1,39 @@
+{
+    "version": "1.41",
+    "description": "Show information about processes and threads.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/pslist",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/pslist.zip",
+    "hash": "0f5ed107004c0c42ad528bb62aed69be1d8b773f716818c477ef22da1124c822",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "pslist64.exe",
+                    "pslist"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "pslist.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "pslist64a.exe",
+                    "pslist"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/pslist.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/pslist.zip"
+    }
+}

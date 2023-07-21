@@ -1,0 +1,61 @@
+{
+    "version": "1.20.6",
+    "description": "An open source programming language that makes it easy to build simple, reliable, and efficient software.",
+    "homepage": "https://golang.org",
+    "license": "BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.aliyun.com/golang/go1.20.6.windows-amd64.zip",
+            "hash": "b67dd7f2b4589701e53c98e348e1b4d9a7c3536dc316941172b2f0b60ae4ce5f"
+        },
+        "32bit": {
+            "url": "https://mirrors.aliyun.com/golang/go1.20.6.windows-386.zip",
+            "hash": "315c49723f93295bfaff0c15179e2d6936fb1ffc6f92837321d0d608fe1b6b51"
+        },
+        "arm64": {
+            "url": "https://mirrors.aliyun.com/golang/go1.20.6.windows-arm64.zip",
+            "hash": "9027e52be386e779ef1a0c938994ee2361689496ac832100407238f5ed0fd82a"
+        }
+    },
+    "extract_dir": "go",
+    "installer": {
+        "script": [
+            "$envgopath = \"$env:USERPROFILE\\go\"",
+            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
+            "info \"Adding '$envgopath\\bin' to PATH...\"",
+            "add_first_in_path \"$envgopath\\bin\" $global"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$envgopath = \"$env:USERPROFILE\\go\"",
+            "if ($env:GOPATH) { $envgopath = $env:GOPATH }",
+            "info \"Removing '$envgopath\\bin' from PATH...\"",
+            "remove_from_path \"$envgopath\\bin\" $global"
+        ]
+    },
+    "bin": [
+        "bin\\go.exe",
+        "bin\\gofmt.exe"
+    ],
+    "checkver": {
+        "url": "https://golang.org/dl/",
+        "regex": "go([\\d.]+)\\.windows-"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.aliyun.com/golang/go$version.windows-amd64.zip"
+            },
+            "32bit": {
+                "url": "https://mirrors.aliyun.com/golang/go$version.windows-386.zip"
+            },
+            "arm64": {
+                "url": "https://mirrors.aliyun.com/golang/go$version.windows-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

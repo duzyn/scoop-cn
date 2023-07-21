@@ -1,0 +1,40 @@
+{
+    "version": "3.90",
+    "description": "GUI hash tool",
+    "homepage": "https://compressme.net",
+    "license": "Freeware",
+    "notes": "Language packs for Czech, French, German, Italian, and Simplified Chinese are available at http://compressme.net",
+    "architecture": {
+        "64bit": {
+            "url": "http://compressme.net/chk390.zip",
+            "hash": "f08019a6a4ddf6df84c9e963b68ebe947454acb2f90a9b52ed7268f5ca3442b6"
+        }
+    },
+    "pre_install": [
+        "Set-Content \"$dir\\chk.ps1\" -Value 'Start-Process \"$PSScriptRoot\\chk.exe\" -WorkingDirectory $PSScriptRoot' -Encoding 'Ascii'",
+        "if (!(Test-Path \"$persist_dir\\chk.cfg\")) { New-Item \"$dir\\chk.cfg\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\lang.txt\")) { New-Item \"$dir\\lang.txt\" | Out-Null }"
+    ],
+    "uninstaller": {
+        "script": "if ((Get-Item \"$dir\\lang.txt\").LinkType -ne 'HardLink') { Move-Item \"$dir\\lang.txt\" \"$persist_dir\" -Force | Out-Null }"
+    },
+    "bin": "chk.ps1",
+    "shortcuts": [
+        [
+            "chk.exe",
+            "CHK"
+        ]
+    ],
+    "persist": [
+        "chk.cfg",
+        "lang.txt"
+    ],
+    "checkver": "CHK\\s+v([\\d.]+)\\s+Win",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://compressme.net/chk$cleanVersion.zip"
+            }
+        }
+    }
+}

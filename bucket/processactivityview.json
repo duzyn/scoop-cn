@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/process_activity_view.html",
+    "checkver": "ProcessActivityView v(\\d+\\.\\d\\d)",
+    "version": "1.16",
+    "license": "freeware",
+    "description": "ProcessActivityView creates a summary of all files and folders that the selected process tries to access. For each file that the process access, the following information is displayed: Number of times that the file was opened and closed, number of read/write calls, total number of read/write bytes, the dll that made the last open-file call, and more.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/processactivityview-x64.zip",
+            "hash": "8106a45c132361f03aed73c75b6ff42a0f2918cf78db5c5f339d2780681064e7"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/processactivityview.zip",
+            "hash": "7d5197e6c722fb57a7a980bb9c5d1b3e41a2ab67ecac970a5ad0918ae22f28d2"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/processactivityview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/processactivityview.zip"
+            }
+        }
+    },
+    "bin": "ProcessActivityView.exe",
+    "shortcuts": [
+        [
+            "ProcessActivityView.exe",
+            "NirSoft\\ProcessActivityView - Show the file activity for selected process"
+        ]
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "version": "8.1.1",
+    "description": "Popular open source visual novel engine that uses Python for scripting",
+    "homepage": "https://www.renpy.org/",
+    "license": "MIT",
+    "url": "https://www.renpy.org/dl/8.1.1/renpy-8.1.1-sdk.7z.exe#/dl.7z",
+    "hash": "7bcb931e85a71aa3982af00f0b93d6d14f79e8b69804fc3f8734b81b323020a4",
+    "extract_dir": "renpy-8.1.1-sdk",
+    "bin": "renpy.exe",
+    "shortcuts": [
+        [
+            "renpy.exe",
+            "RenPy"
+        ]
+    ],
+    "checkver": {
+        "url": "https://www.renpy.org/release_list.html",
+        "regex": "Ren'Py ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.renpy.org/dl/$version/renpy-$version-sdk.7z.exe#/dl.7z",
+        "hash": {
+            "url": "$baseurl/checksums.txt",
+            "regex": "$sha256\\s+$basename"
+        },
+        "extract_dir": "renpy-$version-sdk"
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "version": "11.0.0",
+    "description": "Qt Creator CDB Debugger Support",
+    "homepage": "https://doc.qt.io/qtcreator/index.html",
+    "license": "GPL-3.0-only",
+    "depends": "scoop-cn/qt-creator",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.qt.io/official_releases/qtcreator/11.0/11.0.0/installer_source/windows_x64/qtcreatorcdbext.7z",
+            "hash": "md5:8fa39ebee0382d30f583c71a2f8ddb0c"
+        },
+        "32bit": {
+            "url": "https://download.qt.io/official_releases/qtcreator/11.0/11.0.0/installer_source/windows_x86/qtcreatorcdbext.7z",
+            "hash": "6f115e38effbb4c7a48a771dbdb8e335fd2443fe3a9292e186493162755961fe"
+        }
+    },
+    "post_install": [
+        "Remove-Item \"$(appdir qt-creator $global)\\current\\lib\\qtcreatorcdbext*\" -Force -Recurse",
+        "New-Item \"$(appdir qt-creator $global)\\current\\lib\\$((Get-Item $dir\\lib\\qtcreatorcdbext*).Name)\" -ItemType Junction -Target \"$dir\\lib\\$((Get-Item $dir\\lib\\qtcreatorcdbext*).Name)\" -Force | Out-Null"
+    ],
+    "checkver": {
+        "url": "https://www.qt.io/offline-installers",
+        "regex": "Qt Creator\\s+([\\d.]+)\\s+for Windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.qt.io/official_releases/qtcreator/$majorVersion.$minorVersion/$version/installer_source/windows_x64/qtcreatorcdbext.7z"
+            },
+            "32bit": {
+                "url": "https://download.qt.io/official_releases/qtcreator/$majorVersion.$minorVersion/$version/installer_source/windows_x86/qtcreatorcdbext.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/md5sums.txt"
+        }
+    }
+}

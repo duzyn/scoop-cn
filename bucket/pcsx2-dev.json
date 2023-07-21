@@ -1,0 +1,75 @@
+{
+    "version": "1.7.4763",
+    "description": "A feature rich FOSS PlayStation 2 emulator (development version)",
+    "homepage": "https://pcsx2.net/",
+    "license": {
+        "identifier": "GPL-3.0",
+        "url": "https://github.com/PCSX2/pcsx2/blob/master/COPYING.GPLv3"
+    },
+    "notes": [
+        "ATTENTION: PCSX2 requires a dump of the PS2 BIOS to function.",
+        "Place the BIOS file in $persist_dir\\bios",
+        "Learn more at https://wiki.pcsx2.net/Setting_up_Windows_version#BIOS"
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v1.7.4763/pcsx2-v1.7.4763-windows-x64-Qt.7z",
+            "hash": "80bf3873e55d76433b519926813e671cad95dba8bd2bdeca2ae98f00a9d4443a"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:USERPROFILE\\Documents\\PCSX2\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\PCSX2\" -Recurse",
+        "   }",
+        "   if (!(Test-Path \"$persist_dir\\inis\\PCSX2.ini\")) {",
+        "       New-item \"$persist_dir\\inis\" -ItemType Directory | Out-Null",
+        "       '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$persist_dir\\inis\\PCSX2.ini\"",
+        "   }",
+        "}"
+    ],
+    "bin": [
+        [
+            "pcsx2-qt.exe",
+            "pcsx2-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "pcsx2-qt.exe",
+            "PCSX2 (dev)"
+        ]
+    ],
+    "persist": [
+        "bios",
+        "cheats_ws",
+        "cheats",
+        "covers",
+        "gamesettings",
+        "inis",
+        "logs",
+        "memcards",
+        "portable.ini",
+        "snaps",
+        "sstates",
+        "textures"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/PCSX2/pcsx2/releases?per_page=1",
+        "jsonpath": "$[?(@.prerelease == true)].tag_name",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v$version/pcsx2-v$version-windows-x64-Qt.7z"
+            }
+        }
+    }
+}

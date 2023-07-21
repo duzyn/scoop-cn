@@ -1,0 +1,29 @@
+{
+    "version": "nightly",
+    "description": "BlueStacks. An Android emulator. (version 4)",
+    "homepage": "https://www.bluestacks.com/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.bluestacks.com/tw/terms-and-privacy.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cloud.bluestacks.com/get_offline_download?os_arch=x64#/setup.7z"
+        },
+        "32bit": {
+            "url": "https://cloud.bluestacks.com/get_offline_download?os_arch=x86#/setup.7z"
+        }
+    },
+    "installer": {
+        "script": "Start-Process -Wait \"$dir\\BlueStacksInstaller.exe\" \"-s\" -Verb RunAs"
+    },
+    "uninstaller": {
+        "script": [
+            "$uninstaller = (Get-ItemProperty -ErrorAction Ignore \"HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\BlueStacks\" -Name UninstallString).UninstallString",
+            "if (-not $uninstaller) { $uninstaller = (Get-ItemProperty -ErrorAction Ignore \"HKLM:\\SOFTWARE\\Wow6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\BlueStacks\" -Name UninstallString).UninstallString }",
+            "# Remove -tmp at the end",
+            "$uninstaller = $uninstaller.Substring(0, $uninstaller.Length - 5)",
+            "Start-Process -Wait \"$uninstaller\" \"-s\" -Verb RunAs"
+        ]
+    }
+}

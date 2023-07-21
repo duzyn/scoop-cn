@@ -1,0 +1,71 @@
+{
+    "version": "1.31.0",
+    "description": "Multi-system emulator (development version)",
+    "homepage": "https://mednafen.github.io/",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "http://www.gnu.org/licenses/gpl-2.0.html"
+    },
+    "notes": [
+        "ATTENTION: Mednafen requires BIOS/firmware files for Playstation 1, PC Engine, and PC FX emulation.",
+        "It is recommended to place these in $persist_dir\\firmware.",
+        "See https://mednafen.github.io/documentation/#Section_firmware_bios for more information."
+    ],
+    "suggest": {
+        "Mednaffe": "mednaffe"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://mednafen.github.io/releases/files/mednafen-1.31.0-UNSTABLE-win32.zip",
+            "hash": "0f4c21472bf7631133784c5b23999b11fc5ca6b196a6074ef071d9ebbb4a6636"
+        },
+        "64bit": {
+            "url": "https://mednafen.github.io/releases/files/mednafen-1.31.0-UNSTABLE-win64.zip",
+            "hash": "787ff503eb282dcd1bcdfc5b17da2f5bd24ac607b6c7ba6e36df1df335a607e5"
+        }
+    },
+    "installer": {
+        "script": [
+            "if (!(Test-Path \"$persist_dir\\mednafen.cfg\")) {",
+            "   New-Item \"$dir\\mednafen.cfg\" | Out-Null",
+            "}"
+        ]
+    },
+    "bin": [
+        [
+            "mednafen.exe",
+            "mednafen-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "mednafen.exe",
+            "mednafen (dev)"
+        ]
+    ],
+    "persist": [
+        "cheats",
+        "firmware",
+        "mcm",
+        "mcs",
+        "palettes",
+        "pgconfig",
+        "sav",
+        "snaps",
+        "mednafen.cfg"
+    ],
+    "checkver": {
+        "regex": "mednafen-(?<version>[\\d.]+)(?<dev>-UNSTABLE)?.tar.xz",
+        "replace": "${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://mednafen.github.io/releases/files/mednafen-$matchVersion$matchDev-win32.zip"
+            },
+            "64bit": {
+                "url": "https://mednafen.github.io/releases/files/mednafen-$matchVersion$matchDev-win64.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/blue_screen_view.html",
+    "checkver": "BlueScreenView v(\\d+\\.\\d\\d)",
+    "version": "1.55",
+    "license": "freeware",
+    "description": "BlueScreenView scans all your minidump files created during 'blue screen of death' crashes, and displays the information about all crashes in one table. For each crash, BlueScreenView displays the minidump filename, the date/time of the crash, the basic crash information displayed in the blue screen (Bug Check Code and 4 parameters), and the details of the driver or module that possibly caused the crash (filename, product name, file description, and file version). For each crash displayed in the upper pane, you can view the details of the device drivers loaded during the crash in the lower pane. BlueScreenView also mark the drivers that their addresses found in the crash stack, so you can easily locate the suspected drivers that possibly caused the crash.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/bluescreenview-x64.zip",
+            "hash": "df57d4c9418dd2771035f2f7b70952caeb20d2269af683a0ab0665125c821479"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/bluescreenview.zip",
+            "hash": "15ba3b0ca0a1ff21e89715da52ecc5918177b97ce40903d299fd591909e7b3ab"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/bluescreenview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/bluescreenview.zip"
+            }
+        }
+    },
+    "bin": "BlueScreenView.exe",
+    "shortcuts": [
+        [
+            "BlueScreenView.exe",
+            "NirSoft\\BlueScreenView - Show blue screen information"
+        ]
+    ]
+}

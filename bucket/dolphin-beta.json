@@ -1,0 +1,45 @@
+{
+    "version": "5.0-19368",
+    "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
+    "homepage": "https://dolphin-emu.org/",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/dolphin-emu/dolphin/blob/master/COPYING"
+    },
+    "url": "https://dl.dolphin-emu.org/builds/91/ba/dolphin-master-5.0-19368-x64.7z",
+    "hash": "44d56b707d9bc5978deae4104df9801ef6d6ffb7854a256ca4495501359001a3",
+    "extract_dir": "Dolphin-x64",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\User\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\\*\" -Destination \"$persist_dir\\User\" -Recurse",
+        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
+    "bin": [
+        [
+            "Dolphin.exe",
+            "dolphin-beta"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Dolphin.exe",
+            "Dolphin (Beta)"
+        ]
+    ],
+    "persist": "User",
+    "checkver": {
+        "url": "https://dolphin-emu.org/download/",
+        "regex": "\\/(?<rand1>.{2})\\/(?<rand2>.{2})\\/dolphin-master-(?<major>[\\d\\.]+)-(?<build>[\\d]+)",
+        "replace": "${major}-${build}"
+    },
+    "autoupdate": {
+        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z"
+    }
+}

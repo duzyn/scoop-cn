@@ -1,0 +1,29 @@
+{
+    "version": "7.0.109",
+    "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 7)",
+    "homepage": "https://tomcat.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109-windows-x64.zip",
+            "hash": "sha512:444b384fd6eff3210842e74b1470e31674dd43723903ebf65a037c9bcd2d6d0bc94d5fad97e840dea892b991ff37b12a35342593bbddc92f0aa36c9b1bbd2025"
+        },
+        "32bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.109/bin/apache-tomcat-7.0.109-windows-x86.zip",
+            "hash": "sha512:e3ad4fb5c736092f4783a1285b8589eb610c21077883445a0e769b110a1f4e6da653ba671c3d55f25e4033beff683b4858dfa9f1e319819ebe6f0cb6aef2395a"
+        }
+    },
+    "extract_dir": "apache-tomcat-7.0.109",
+    "env_set": {
+        "CATALINA_BASE": "$dir",
+        "CATALINA_HOME": "$dir"
+    },
+    "bin": "bin\\catalina.bat",
+    "persist": [
+        "conf",
+        "webapps"
+    ]
+}

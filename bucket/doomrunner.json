@@ -1,0 +1,40 @@
+{
+    "version": "1.7.3",
+    "description": "Modern preset-oriented graphical launcher of ZDoom and derivatives",
+    "homepage": "https://github.com/Youda008/DoomRunner",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Youda008/DoomRunner/releases/download/v1.7.3/DoomRunner-1.7.3-Windows-64bit-static.zip",
+            "hash": "ac9eed04c4eaa9415e79e94cde230634fa59102e6e465bdfd7aa1e125e5c0740"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Youda008/DoomRunner/releases/download/v1.7.3/DoomRunner-1.7.3-Windows-32bit-static.zip",
+            "hash": "e4982550b5f07092d4ac237b23894b82c3a7126f5a279bcc4315f53db1b904cd"
+        }
+    },
+    "pre_install": [
+        "# Create options.json if it does not exist",
+        "if (!(Test-Path \"$persist_dir\\options.json\")) {",
+        "    Set-Content -Path \"$dir\\options.json\" -Value \"{}\"",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "DoomRunner.exe",
+            "Doom Runner"
+        ]
+    ],
+    "persist": "options.json",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-64bit-static.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-32bit-static.zip"
+            }
+        }
+    }
+}

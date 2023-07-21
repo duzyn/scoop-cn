@@ -1,0 +1,59 @@
+{
+    "homepage": "http://www.speed-dreams.org/",
+    "description": "3D simulation racing game",
+    "version": "2.3.0-r8786",
+    "license": "GPL-2.0-or-later",
+    "url": "https://sourceforge.net/projects/speed-dreams/files/2.3.0/speed-dreams-base-2.3.0-r8786-win32-setup.exe#/dl.7z",
+    "hash": "3416d8847751f9c7a2cb60d162009fd63ad1d9f30bf38cb0b4b92b869bd38473",
+    "installer": {
+        "script": [
+            "[void]($version -match '[\\d.]+')",
+            "$head = $matches[0]",
+            "$dlFile = 'dl.7z'",
+            "$archiveUrls = @(",
+            "   \"https://sourceforge.net/projects/speed-dreams/files/$head/speed-dreams-hq-cars-and-tracks-$version-win32-setup.exe\"",
+            "   \"https://sourceforge.net/projects/speed-dreams/files/$head/speed-dreams-more-hq-cars-and-tracks-$version-win32-setup.exe\"",
+            "   \"https://sourceforge.net/projects/speed-dreams/files/$head/speed-dreams-wip-cars-and-tracks-$version-win32-setup.exe\"",
+            ")",
+            "$archiveUrls | ForEach-Object {",
+            "   dl_with_cache $app $version \"$_\" \"$dir\\$dlFile\"",
+            "   Expand-7zipArchive \"$dir\\$dlFile\" \"$dir\" -Removal",
+            "}"
+        ]
+    },
+    "bin": [
+        [
+            "bin\\speed-dreams-2.exe",
+            "speed-dreams",
+            "-lc \"$persist_dir\\settings\""
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\speed-dreams-2.exe",
+            "Speed Dreams",
+            "-lc \"$persist_dir\\settings\""
+        ],
+        [
+            "doc\\how_to_drive.html",
+            "Speed Dreams User Manual"
+        ],
+        [
+            "doc\\faq.html",
+            "Speed Dreams FAQ"
+        ],
+        [
+            "readme.txt",
+            "Speed Dreams Read Me"
+        ]
+    ],
+    "persist": "settings",
+    "checkver": {
+        "url": "https://sourceforge.net/projects/speed-dreams/files/",
+        "regex": "speed-dreams-([\\d\\-.a-z]+)-win32-setup.exe"
+    },
+    "autoupdate": {
+        "url": "https://sourceforge.net/projects/speed-dreams/files/$matchHead/speed-dreams-base-$version-win32-setup.exe#/dl.7z"
+    },
+    "notes": "To save the data in persist folder, run from the Start menu or CLI"
+}

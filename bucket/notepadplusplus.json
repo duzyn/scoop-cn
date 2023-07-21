@@ -1,0 +1,83 @@
+{
+    "version": "8.5.4",
+    "description": "A free source code editor and Notepad replacement that supports several languages.",
+    "homepage": "https://notepad-plus-plus.org",
+    "license": "GPL-3.0-or-later",
+    "notes": "Add Notepad++ as a context menu option by running: reg import \"$dir\\install-context.reg\"",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.portable.x64.zip",
+            "hash": "bf826e8e32cd8a3052bcac253a6b5ad8da4db79e94196f5fd9417cf1bff461fe"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.portable.zip",
+            "hash": "c674f0872ea7f25311edde026bd80e92f60ede1ff240caa1c5541bdf3ee71f47"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.4/npp.8.5.4.portable.arm64.zip",
+            "hash": "9e5084bfb15efef21407c4c20e5a7b68a4acd53a092c97838cfa11434cc75fb9"
+        }
+    },
+    "pre_install": [
+        "'session.xml', 'userDefineLang.xml', 'nativeLang.xml' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" -ItemType File | Out-Null }",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\stylers.xml\")) { Copy-Item \"$dir\\stylers.model.xml\" \"$dir\\stylers.xml\" }"
+    ],
+    "post_install": [
+        "'install-context', 'uninstall-context' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\notepadplusplus\\$_.reg\") {",
+        "        $nppPath = \"$dir\\notepad++.exe\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\notepadplusplus\\$_.reg\").Replace('$npp', $nppPath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    reg import \"$dir\\uninstall-context.reg\"",
+            "}"
+        ]
+    },
+    "bin": "notepad++.exe",
+    "shortcuts": [
+        [
+            "notepad++.exe",
+            "Notepad++"
+        ]
+    ],
+    "persist": [
+        "backup",
+        "cloud",
+        "plugins",
+        "themes",
+        "userDefineLangs",
+        "config.xml",
+        "nativeLang.xml",
+        "session.xml",
+        "shortcuts.xml",
+        "stylers.xml",
+        "userDefineLang.xml"
+    ],
+    "checkver": {
+        "github": "https://github.com/notepad-plus-plus/notepad-plus-plus"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v$version/npp.$version.portable.x64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v$version/npp.$version.portable.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v$version/npp.$version.portable.arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/npp.$version.checksums.sha256"
+        }
+    }
+}

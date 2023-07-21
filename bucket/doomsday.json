@@ -1,0 +1,47 @@
+{
+    "version": "2.3.1",
+    "description": "Modern source port for Doom, Heretic, Hexen and more",
+    "homepage": "http://dengine.net/",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "Place WAD files (game data) in:",
+        "",
+        "    $persist_dir\\data"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://files.dengine.net/archive/doomsday_2.3.1_x86.zip",
+            "hash": "0921e44b898cea7457dc3f16f82b794b86d500301c2460c8e8f91ec917da429b",
+            "extract_dir": "doomsday_2.3.1_x86"
+        },
+        "64bit": {
+            "url": "https://files.dengine.net/archive/doomsday_2.3.1_x64.zip",
+            "hash": "5b033905086ab4cb570d140a6122d48f5e1525339cd475ed0e8d392b1842e8eb",
+            "extract_dir": "doomsday_2.3.1_x64"
+        }
+    },
+    "bin": "bin\\Doomsday.exe",
+    "shortcuts": [
+        [
+            "bin\\Doomsday.exe",
+            "Doomsday Engine"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://dengine.net/windows",
+        "regex": "doomsday_([\\d.-]+)_x[\\d]{2}\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://files.dengine.net/archive/doomsday_$version_x86.zip",
+                "extract_dir": "doomsday_$version_x86"
+            },
+            "64bit": {
+                "url": "https://files.dengine.net/archive/doomsday_$version_x64.zip",
+                "extract_dir": "doomsday_$version_x64"
+            }
+        }
+    }
+}

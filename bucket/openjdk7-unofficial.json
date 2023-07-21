@@ -1,0 +1,22 @@
+{
+    "description": "OpenJDK 7 Unofficial build",
+    "homepage": "https://bitbucket.org/alexkasko/openjdk-unofficial-builds",
+    "version": "7u80-b32",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u80-unofficial-windows-i586-image.zip",
+            "hash": "f3b715bc049b3c88bc47695278433c7dc4b2648e2b156f5e24346aecba343035",
+            "extract_dir": "openjdk-1.7.0-u80-unofficial-windows-i586-image"
+        },
+        "64bit": {
+            "url": "https://bitbucket.org/alexkasko/openjdk-unofficial-builds/downloads/openjdk-1.7.0-u80-unofficial-windows-amd64-image.zip",
+            "hash": "1b835601f4ae689b9271040713b01d6bdd186c6a57bb4a7c47e1f7244d5ac928",
+            "extract_dir": "openjdk-1.7.0-u80-unofficial-windows-amd64-image"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

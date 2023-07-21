@@ -1,0 +1,31 @@
+{
+    "version": "0.13.1",
+    "description": "A tool to bring your existing Azure resources under the management of Terraform.",
+    "homepage": "https://github.com/Azure/aztfexport",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Azure/aztfexport/releases/download/v0.13.1/aztfexport_v0.13.1_windows_amd64.zip",
+            "hash": "ef13e368633d8b3b3f02ab51d9a217aaa491a90a8843859c173bf7a8de0be087"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Azure/aztfexport/releases/download/v0.13.1/aztfexport_v0.13.1_windows_386.zip",
+            "hash": "e604e1e98135bc33f705f17346ab412bd30a42064f2e61060c77d01f9ad4da40"
+        }
+    },
+    "bin": "aztfexport.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Azure/aztfexport/releases/download/v$version/aztfexport_v$version_windows_amd64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Azure/aztfexport/releases/download/v$version/aztfexport_v$version_windows_386.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/aztfexport_SHA256SUMS"
+        }
+    }
+}

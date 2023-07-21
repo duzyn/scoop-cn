@@ -1,0 +1,53 @@
+{
+    "version": "1.5.2.0",
+    "architecture": {
+        "32bit": {
+            "url": "https://cdn.toontownrewritten.com/launcher/windows/TTRInstaller-v1.5.2.exe#/dl.7z",
+            "hash": "6f5055874ad2d00086d7bc85a14229fbbf2bdec229fe9bd66e5a1ebf886d72d7"
+        },
+        "64bit": {
+            "url": "https://cdn.toontownrewritten.com/launcher/windows/TTRInstaller-v1.5.2.exe#/dl.7z",
+            "hash": "6f5055874ad2d00086d7bc85a14229fbbf2bdec229fe9bd66e5a1ebf886d72d7"
+        }
+    },
+    "description": "Toontown Rewritten is a massively multiplayer online game built for kids, teens, and adults of all ages. Create your own Toon and join the never-ending battle against the Cogs who want to turn Toontown into their latest business venture.",
+    "homepage": "https://www.toontownrewritten.com/",
+    "license": "Proprietary",
+    "notes": "This is only the launcher, an account is required to play. Register at ToontownRewritten.com to play for free today!",
+    "pre_install": [
+        "Remove-Item $dir -Recurse -Force  -Include * -Exclude Launcher.exe",
+        "(\".users\", \"OpenAL32.dll\", \"OpenAL64.dll\", \"phase_3.mf\", \"phase_3.5.mf\", \"phase_4.mf\", \"phase_5.mf\", \"phase_5.5.mf\", \"phase_6.mf\", \"phase_7.mf\", \"phase_8.mf\", \"phase_9.mf\", \"phase_10.mf\", \"phase_11.mf\", \"phase_12.mf\", \"phase_13.mf\", \"phase_14.mf\", \"TTREngine.exe\", \"TTREngine64.exe\", \"TTRGame.vlt\", \"winter_decorations.mf\", \"winter_music.mf\", \"winter_snow.mf\", \"settings.json\") | foreach {New-Item -Path \"$dir\" -Name \"$_\"}"
+    ],
+    "bin": "Launcher.exe",
+    "shortcuts": [
+        [
+            "Launcher.exe", "Toontown Rewritten"
+        ]
+    ],
+    "persist": [
+        ".users",
+        "OpenAL32.dll",
+        "OpenAL64.dll",
+        "phase_3.5.mf",
+        "phase_3.mf",
+        "phase_4.mf",
+        "phase_5.mf",
+        "phase_5.5.mf",
+        "phase_6.mf",
+        "phase_7.mf",
+        "phase_8.mf",
+        "phase_9.mf",
+        "phase_10.mf",
+        "phase_11.mf",
+        "phase_12.mf",
+        "phase_13.mf",
+        "phase_14.mf",
+        "settings.json",
+        "TTREngine.exe",
+        "TTREngine64.exe",
+        "TTRGame.vlt",
+        "winter_decorations.mf",
+        "winter_music.mf",
+        "winter_snow.mf"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "homepage": "https://windows.php.net/downloads/releases/archives",
+    "version": "5.3.9",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://secure.php.net/license/"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "url": "https://windows.php.net/downloads/releases/archives/php-5.3.9-nts-Win32-VC9-x86.zip",
+    "hash": "f4ad82432f97daedd55dd7982b0aa9aea1d73f3dbee9e3918755f3394d38b91c",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2008"
+    }
+}

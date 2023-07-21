@@ -1,0 +1,25 @@
+{
+    "version": "nightly",
+    "description": "RGB lighting control that does not depend on manufacturer software.",
+    "homepage": "https://openrgb.org",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab.com/Calcprogrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Windows+64#/dl.zip",
+            "extract_dir": "OpenRGB Windows 64-bit"
+        },
+        "32bit": {
+            "url": "https://gitlab.com/Calcprogrammer1/OpenRGB/-/jobs/artifacts/master/download?job=Windows+32#/dl.zip",
+            "extract_dir": "OpenRGB Windows 32-bit"
+        }
+    },
+    "shortcuts": [
+        [
+            "OpenRGB.exe",
+            "OpenRGB"
+        ]
+    ]
+}

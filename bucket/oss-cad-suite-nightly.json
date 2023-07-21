@@ -1,0 +1,31 @@
+{
+    "version": "2023-07-20",
+    "description": "Open source digital design and verification tools. Includes tools for RTL synthesis, formal hardware verification, place & route, FPGA programming, and testing with support for HDLs like Verilog, Migen and Amaranth.",
+    "homepage": "https://github.com/YosysHQ/oss-cad-suite-build",
+    "license": "ISC",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-07-20/oss-cad-suite-windows-x64-20230720.exe#/dl.7z",
+            "hash": "756a8addd6ce64f1caba74dfa7ac3c46414132eeb5398ad9b15b828f94b600c3"
+        }
+    },
+    "extract_dir": "oss-cad-suite",
+    "pre_install": "Set-Content -Path \"$dir\\start.bat\" -Value \"@cmd /k $dir\\environment.bat\"",
+    "bin": [
+        [
+            "start.bat",
+            "oss-cad"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/YosysHQ/oss-cad-suite-build/releases",
+        "regex": "tree\\/([\\d-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/YosysHQ/oss-cad-suite-build/releases/download/$version/oss-cad-suite-windows-x64-$cleanVersion.exe#/dl.7z"
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "version": "2.26",
+    "description": "View and control services.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psservice",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PsService.zip",
+    "hash": "3532148e01c0fb94f71a402909ee3989defc6b6dee5dcc608e188ceceb58730d",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsService.exe",
+                    "PsService"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "PsService.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "PsService64a.exe",
+                    "PsService"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psservice.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PsService.zip"
+    }
+}

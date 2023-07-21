@@ -1,0 +1,55 @@
+{
+    "##": "The MacType installer is created with AdvancedInstaller.",
+    "version": "2021.1-rc1",
+    "description": "Provides better font rendering for Windows.",
+    "homepage": "https://mactype.net",
+    "license": "GPL-3.0-or-later",
+    "notes": [
+        "Launch MacType Wizard (macwiz.exe) to configure MacType.",
+        "",
+        "Antivirus software may conflict with MacType because it detects MacType trying to modify running software.",
+        "Workarounds:",
+        "- Run in Service Mode (recommended)",
+        "- Add `HookChildProcesses=0` to profile; see: https://github.com/snowie2000/mactype/wiki/HookChildProcesses"
+    ],
+    "url": "https://ghproxy.com/https://github.com/snowie2000/mactype/releases/download/2021.1-rc1/MacTypeInstaller_2021.1-rc1.exe",
+    "hash": "3a73d19d4940b6308d07f1eb19a9b6db007423f3d2ebba1216f2df224a8b01f5",
+    "innosetup": true,
+    "uninstaller": {
+        "script": [
+            "$text = @(",
+            "    'If you encounter \"file in use\" error during uninstallation, try the following steps:'",
+            "    '    1. Launch MacType Wizard (macwiz.exe) and select \"Manual\" mode.'",
+            "    '    2. Reboot.'",
+            "    '    3. Run `scoop uninstall mactype-np`.'",
+            ")",
+            "warn $($text -join \"`r`n\")"
+        ]
+    },
+    "bin": [
+        "MacTray.exe",
+        "MacWiz.exe"
+    ],
+    "shortcuts": [
+        [
+            "MacTray.exe",
+            "MacType Tray"
+        ],
+        [
+            "MacWiz.exe",
+            "MacType Wizard"
+        ]
+    ],
+    "persist": [
+        "ini",
+        "MacType.ini"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/snowie2000/mactype/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "([\\w.-]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/snowie2000/mactype/releases/download/$version/MacTypeInstaller_$version.exe"
+    }
+}

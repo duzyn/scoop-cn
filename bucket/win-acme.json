@@ -1,0 +1,30 @@
+{
+    "version": "2.2.5.1541",
+    "description": "A Simple ACME Client",
+    "homepage": "https://www.win-acme.com",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/win-acme/win-acme/releases/download/v2.2.5.1541/win-acme.v2.2.5.1541.x64.trimmed.zip",
+            "hash": "0e57aec8e68e7ec5484093889c4fa2f6fb656872e5552bb49e40eafa50c6a966"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/win-acme/win-acme/releases/download/v2.2.5.1541/win-acme.v2.2.5.1541.x86.trimmed.zip",
+            "hash": "5e9a9c1a5eaee29ce3a95214909a645e03eaa5cbbbd12fb7ef92e115da9d7857"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\settings.json\")) { Copy-Item \"$dir\\settings_default.json\" \"$dir\\settings.json\" }",
+    "bin": "wacs.exe",
+    "persist": "settings.json",
+    "checkver": "/releases/download/v([\\d.]+)/win-acme.v(?<build>[\\d.]+).x64",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.x64.trimmed.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/win-acme/win-acme/releases/download/v$version/win-acme.v$matchBuild.x86.trimmed.zip"
+            }
+        }
+    }
+}

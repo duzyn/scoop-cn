@@ -1,0 +1,45 @@
+{
+    "version": "4.8.3",
+    "description": "A cross-platform, Python-agnostic binary package manager (for Python 2 only)",
+    "homepage": "https://conda.io/miniconda.html",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "Currently conda envs activate and deactivate doesn't work on PowerShell,",
+        "for more information, see: https://github.com/conda/conda/issues/626",
+        "or just execute: 'conda install -n root -c pscondaenvs pscondaenvs'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.anaconda.com/miniconda/Miniconda2-py27_4.8.3-Windows-x86_64.exe#/setup.exe",
+            "hash": "6973025404832944e074bf02bda8c4594980eeed4707bb51baa8fbdba4bf326c"
+        },
+        "32bit": {
+            "url": "https://repo.anaconda.com/miniconda/Miniconda2-py27_4.8.3-Windows-x86.exe#/setup.exe",
+            "hash": "c8049d26f8b6b954b57bcd4e99ad72d1ffa13f4a6b218e64e641504437b2617b"
+        }
+    },
+    "installer": {
+        "script": [
+            "# Using Start-Process as a workaround because the installer will not work properly when args are quoted",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', '/InstallationType=JustMe', '/AddToPath=0', \"/D=$dir\") -Wait | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process \"$dir\\Uninstall-Miniconda2.exe\" -ArgumentList '/S' -Wait | Out-Null",
+            "# Create a 'dummy' to avoid error because the uninstaller removes the symlink. The does not affect persist.",
+            "if (!(Test-Path \"$dir\\envs\")) { New-Item \"$dir\\envs\" -ItemType Directory | Out-Null }"
+        ]
+    },
+    "bin": [
+        "python.exe",
+        "pythonw.exe",
+        [
+            "python.exe",
+            "python2"
+        ]
+    ],
+    "persist": "envs",
+    "env_add_path": "Scripts"
+}

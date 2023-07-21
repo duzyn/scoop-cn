@@ -1,0 +1,44 @@
+{
+    "description": "Oracle Java Platform, Standard Edition Runtime Environment (JRE)",
+    "homepage": "https://www.java.com/",
+    "version": "8u381",
+    "license": "https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html",
+    "architecture": {
+        "64bit": {
+            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248775_8c876547113c4e4aab3c868e9e0ec572#/dl.tar.gz",
+            "hash": "09737832ce72298716d7d08425e4414517aea09302aba09a356506db1c78a2bc"
+        },
+        "32bit": {
+            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=248773_8c876547113c4e4aab3c868e9e0ec572#/dl.tar.gz",
+            "hash": "3ae7e9b709b6c7aa79a96055e09c6cb314d31e5568700fe089040deba500cf0d"
+        }
+    },
+    "extract_dir": "jre1.8.0_381",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://orasites-prodapp.cec.ocp.oraclecloud.com/content/published/api/v1.1/items/COREFA37E773006D4BE183DB8D7F504C5718?channelToken=1f7d2611846d4457b213dfc9048724dc",
+        "script": [
+            "$ver = json_path $page $.fields.json.latest8Version",
+            "$secid = json_path $page $.fields.json.secID",
+            "$win32 = [int](json_path $page $.fields.json.win_offline_bundle) + 1",
+            "$win64 = [int](json_path $page $.fields.json.win_x64_bundle) + 1",
+            "Write-Output \"$ver $win32 $win64 $secid\""
+        ],
+        "regex": "(?<long>(?<ver>[\\d.]+)_(?<build>[\\d]+)) (?<win32b>[\\d]+) (?<win64b>[\\d]+) (?<secid>[\\da-f]{32})",
+        "replace": "8u${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=$matchWin64b_$matchSecid#/dl.tar.gz"
+            },
+            "32bit": {
+                "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=$matchWin32b_$matchSecid#/dl.tar.gz"
+            }
+        },
+        "extract_dir": "jre$matchLong"
+    }
+}

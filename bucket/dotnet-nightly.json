@@ -1,0 +1,25 @@
+{
+    "version":  "nightly",
+    "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
+    "homepage":  "http://dotnet.github.io/",
+    "license":  "MIT",
+    "architecture":  {
+        "64bit":  {
+            "url":  "https://dotnetcli.blob.core.windows.net/dotnet/dev/Installers/Latest/dotnet-win-x64.latest.msi"
+        }
+    },
+    "extract_dir":  "dotnet",
+    "bin":  [
+        "bin\\dotnet.exe"
+    ],
+    "env_set": {
+        "DOTNET_HOME":  "$dir"
+    },
+    "notes": [
+        "dotnet cli has the following prerequisites:",
+        "- Visual C++ Redistributable for Visual Studio 2015 (All Systems)",
+        "  https://www.microsoft.com/en-us/download/confirmation.aspx?id=48145",
+        "- Visual C++ Redistributable for Visual Studio 2012 Update 4 (Windows 7 or Windows Server 2008 only)",
+        "  https://www.microsoft.com/en-us/download/confirmation.aspx?id=30679"
+    ]
+}

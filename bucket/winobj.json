@@ -1,0 +1,60 @@
+{
+    "version": "3.14",
+    "description": "The ultimate Object Manager namespace viewer is here.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/winobj",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/WinObj.zip",
+    "hash": "585c75e0c2fb82fc43d8b986deac305fa3711db8d5f369dd874b66e721e6f5b3",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "Winobj64.exe",
+                    "Winobj"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "winobj64.exe",
+                    "scoop-cn/WinObj",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "Winobj.exe",
+            "shortcuts": [
+                [
+                    "Winobj.exe",
+                    "scoop-cn/WinObj",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "Winobj64a.exe",
+                    "Winobj"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Winobj64a.exe",
+                    "scoop-cn/WinObj",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/winobj.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/WinObj.zip"
+    }
+}

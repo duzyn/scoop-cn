@@ -1,0 +1,83 @@
+{
+    "version": "7.1",
+    "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
+    "homepage": "https://prismlauncher.org/",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this: \"$dir\\install-associations.reg\"",
+        "",
+        "This package is now using the portable version of Prism Launcher, and data should have been migrated automatically.",
+        "If you are using a global install on a system with more than one user, you will need to copy a user's data from %appdata% to the new Scoop PrismLauncher persist directory"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/7.1/PrismLauncher-Windows-MSVC-Portable-7.1.zip",
+            "hash": "222c720f7bdcef97426a22924908bc60dd8a76f0205ee3f1a98a5a1b6b1afd38"
+        }
+    },
+    "suggest": {
+        "Microsoft Visual C++ Redistributables": "scoop-cn/vcredist2022"
+    },
+    "pre_install": [
+        "$migration = $true",
+        "$visibleUserAccounts = Get-LocalUser | Where-Object { $_.Enabled -eq $true }",
+        "if ($global -and $visibleUserAccounts.Count -gt 1) { $migration = $false }",
+        "",
+        "$appdataPath = \"$HOME\\AppData\\Roaming\\PrismLauncher\"",
+        "if ((Test-Path -Path $appdataPath\\*) -and (!(Test-Path -Path $persist_dir\\*)) -and $migration) {",
+        "    Write-Warning \"Migrating data from $appdataPath to $persist_dir (this may take a while)\"",
+        "    New-Item -Type Directory -Path $persist_dir | Out-Null",
+        "    Copy-Item -Recurse -Force $appdataPath\\* $persist_dir\\",
+        "} elseif (!($migration)) {",
+        "    Write-Warning \"A global Scoop installation was detected with multiple user accounts. Please see the notes at the end of the install process.\"",
+        "}",
+        "",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (!(Test-Path -Path $persist_dir\\$_)) {",
+        "        New-Item -Type File $dir/$_ | Out-Null",
+        "    }",
+        "}"
+    ],
+    "post_install": [
+        "'install-associations', 'uninstall-associations' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\") {",
+        "        $exePath = \"$dir\\prismlauncher.exe\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\").Replace('$EXEPATH', $exePath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
+    "bin": "prismlauncher.exe",
+    "shortcuts": [
+        [
+            "prismlauncher.exe",
+            "Prism Launcher"
+        ]
+    ],
+    "persist": [
+        "assets",
+        "cache",
+        "icons",
+        "instances",
+        "libraries",
+        "logs",
+        "meta",
+        "mods",
+        "themes",
+        "translations",
+        "accounts.json",
+        "metacache",
+        "prismlauncher.cfg"
+    ],
+    "checkver": {
+        "github": "https://github.com/PrismLauncher/PrismLauncher"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-Windows-MSVC-Portable-$version.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "version": "1.39.8",
+    "description": "A .NET development platform based on roslyn workspaces. (.Net 6 based, HTTP server)",
+    "homepage": "http://www.omnisharp.net",
+    "license": "MIT",
+    "suggest": {
+        "SDK": [
+            "scoop-cn/dotnet-sdk",
+            "scoop-cn/dotnet6-sdk"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp.http-win-x64-net6.0.zip",
+            "hash": "de73a9c310f9cc9aabac38873879d73df725e4a36fed385010cff4ed3c2fef65"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.8/omnisharp.http-win-x86-net6.0.zip",
+            "hash": "d133d297d4407c8579b0809d32a58b34ce344f110f6fd56b012dfffb7cee28dd"
+        }
+    },
+    "bin": [
+        "omnisharp.exe",
+        [
+            "omnisharp.exe",
+            "omnisharp-http"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/OmniSharp/omnisharp-roslyn"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$version/omnisharp.http-win-x64-net6.0.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v$version/omnisharp.http-win-x86-net6.0.zip"
+            }
+        }
+    }
+}

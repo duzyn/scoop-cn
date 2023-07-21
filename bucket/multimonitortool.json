@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/multi_monitor_tool.html",
+    "checkver": "MultiMonitorTool v(\\d+\\.\\d\\d)",
+    "version": "2.10",
+    "license": "freeware",
+    "description": "MultiMonitorTool is a small tool that allows you to do some actions related to working with multiple monitors. With MultiMonitorTool, you can disable/enable monitors, set the primary monitor, save and load the configuration of all monitors, and move windows from one monitor to another. You can do these actions from the user interface or from command-line, without displaying user interface. MultiMonitorTool also provides a preview window, which allows you to watch a preview of every monitor on your system.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/multimonitortool-x64.zip",
+            "hash": "a3d6e77f1af065b5c5446a3b302d9cf6bb37490c88e358867f6b7aa759b66398"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/multimonitortool.zip",
+            "hash": "a4c9876e96f0b92665ff514410a2aa06c5cf6e47af2e4dd00bbfb51f2324cf99"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/multimonitortool-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/multimonitortool.zip"
+            }
+        }
+    },
+    "bin": "MultiMonitorTool.exe",
+    "shortcuts": [
+        [
+            "MultiMonitorTool.exe",
+            "NirSoft\\MultiMonitorTool - Multi-Monitor Tool"
+        ]
+    ]
+}

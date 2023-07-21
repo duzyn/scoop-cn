@@ -1,0 +1,47 @@
+{
+    "version": "0.1.1",
+    "description": "An open-source platform for playing tabletop games in a physics-based 3D environment",
+    "homepage": "https://github.com/drwhut/tabletop-club",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/drwhut/tabletop-club/blob/master/LICENSE"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v0.1.1/TabletopClub_v0.1.1_Windows_32.zip",
+            "hash": "sha512:af3658025ef9959778fff05048d97153d43add8f165e1a0a92b8141e4889659e6a190cba9606b0c8a7ad0f9ee5dcbab12ac08c1dcae23e70b3208dc627ede060"
+        },
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v0.1.1/TabletopClub_v0.1.1_Windows_64.zip",
+            "hash": "sha512:023f04f1dbd016f02a1ac36da6b5d985b3c59af93ff11a88ea191251c675fb234b522d8745fcd75b117aeef248e80e7b32ad7965238482119bab018d90e8fab9"
+        }
+    },
+    "bin": "TabletopClub.exe",
+    "shortcuts": [
+        [
+            "TabletopClub.exe",
+            "Tabletop Club"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/drwhut/tabletop-club"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v$version/TabletopClub_v$version_Windows_32.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v$version/TabletopClub_v$version_SHA512.txt",
+                    "find": "sha2: $sha512"
+                }
+            },
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v$version/TabletopClub_v$version_Windows_64.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/drwhut/tabletop-club/releases/download/v$version/TabletopClub_v$version_SHA512.txt",
+                    "find": "sha2: $sha512"
+                }
+            }
+        }
+    }
+}

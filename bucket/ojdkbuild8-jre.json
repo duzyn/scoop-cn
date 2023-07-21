@@ -1,0 +1,45 @@
+{
+    "description": "OpenJDK 8 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "1.8.0.332-1.b09",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09/java-1.8.0-openjdk-jre-1.8.0.332-1.b09.ojdkbuild.windows.x86_64.zip",
+            "hash": "d23f45fe6c56a604bd9c9ef552c8cc5fa9e03d7c6b84dc00e84b5fb17c6f58cf",
+            "extract_dir": "java-1.8.0-openjdk-jre-1.8.0.332-1.b09.ojdkbuild.windows.x86_64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09-x86/java-1.8.0-openjdk-jre-1.8.0.332-1.b09.ojdkbuild.windows.x86.zip",
+            "hash": "1d9eeeb2ca77b031f501d898c78651660a1c1b07458dbb6f4fe432ccec5691cd",
+            "extract_dir": "java-1.8.0-openjdk-jre-1.8.0.332-1.b09.ojdkbuild.windows.x86"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "regex": "download/java-1.8.0-openjdk-([\\db.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version/java-$matchHead-openjdk-jre-$version.ojdkbuild.windows.x86_64.zip",
+                "extract_dir": "java-$matchHead-openjdk-jre-$version.ojdkbuild.windows.x86_64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version-x86/java-$matchHead-openjdk-jre-$version.ojdkbuild.windows.x86.zip",
+                "extract_dir": "java-$matchHead-openjdk-jre-$version.ojdkbuild.windows.x86"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

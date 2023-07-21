@@ -1,0 +1,17 @@
+{
+    "version": "114.0.5735.90",
+    "description": "An open source tool for automated testing of webapps across many browsers",
+    "homepage": "https://chromedriver.chromium.org/",
+    "license": "BSD-3-Clause",
+    "url": "https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_win32.zip",
+    "hash": "md5:7d455bed57ef682d41108e13d45545ca",
+    "bin": "chromedriver.exe",
+    "checkver": "stable.*?([\\d.]+)<",
+    "autoupdate": {
+        "url": "https://chromedriver.storage.googleapis.com/$version/chromedriver_win32.zip",
+        "hash": {
+            "url": "https://chromedriver.storage.googleapis.com/?prefix=$version/",
+            "regex": "$version/$basename.*?\"$md5\""
+        }
+    }
+}

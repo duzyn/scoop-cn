@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/web_browser_addons_view.html",
+    "checkver": "BrowserAddonsView v(\\d+\\.\\d\\d)",
+    "version": "1.28",
+    "license": "freeware",
+    "description": "BrowserAddonsView is a simple tool that displays the details of all Web browser addons/plugins installed in your system. BrowserAddonsView can scan and detect the addons of most popular Web browsers: Chrome, Firefox, and Internet Explorer. For Chrome and Firefox, BrowserAddonsView detects and scans all Web browser profiles if there are multiple profiles.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/browseraddonsview-x64.zip",
+            "hash": "4ba0ce604d807d59c2ab855dcd9b278f174f53614cd1094130df20d1c7f0cc34"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/browseraddonsview.zip",
+            "hash": "241ba62208754c76c0b76623b8799597cf11b2d3a6154de976d4f5078ddaee89"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/browseraddonsview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/browseraddonsview.zip"
+            }
+        }
+    },
+    "bin": "BrowserAddonsView.exe",
+    "shortcuts": [
+        [
+            "BrowserAddonsView.exe",
+            "NirSoft\\BrowserAddonsView - Web browser addons viewer"
+        ]
+    ]
+}

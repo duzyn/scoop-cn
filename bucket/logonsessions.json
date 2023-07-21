@@ -1,0 +1,39 @@
+{
+    "version": "1.41",
+    "description": "List the active logon sessions on a system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/logonsessions",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/logonSessions.zip",
+    "hash": "19585b9d74a403cd0d5f7dbfe6e226b264816eb0cbd9a90bc030cfdd5d6abbec",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "logonsessions64.exe",
+                    "logonsessions"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "logonsessions.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "logonsessions64a.exe",
+                    "logonsessions"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/logonsessions.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/logonSessions.zip"
+    }
+}

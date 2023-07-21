@@ -1,0 +1,55 @@
+{
+    "version": "2.4.11",
+    "description": "A flexible virtual private network (VPN) solution to secure data communications (Compatible with older Windows versions).",
+    "homepage": "https://openvpn.net",
+    "license": "GPL-2.0-only",
+    "suggest": {
+        "openssl": "openssl"
+    },
+    "url": "https://swupdate.openvpn.org/community/releases/openvpn-install-2.4.11-I602-Win7.exe",
+    "hash": "d419938e490bc124689eae6693d9fd6f22bd256b6adff9402a620f0e7d4a827d",
+    "pre_install": [
+        "if ([System.Environment]::OSVersion.Version.Major -ge 10) { error 'This version is NOT compatible with Windows 10 and higher'; break }",
+        "if (-not (is_admin)) { error 'Administrator privileges are needed for installation'; break }"
+    ],
+    "installer": {
+        "args": [
+            "/S",
+            "/SELECT_OPENVPN=1",
+            "/SELECT_SHORTCUTS=0",
+            "/SELECT_SERVICE=1",
+            "/SELECT_TAP=1",
+            "/SELECT_OPENVPNGUI=1",
+            "/SELECT_ASSOCIATIONS=1",
+            "/SELECT_OPENSSL_UTILITIES=0",
+            "/SELECT_EASYRSA=1",
+            "/SELECT_PATH=0",
+            "/SELECT_OPENSSLDLLS=1",
+            "/SELECT_LZODLLS=1",
+            "/SELECT_PKCS11DLLS=1",
+            "/SELECT_LAUNCH=0",
+            "/D=$dir"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (-not (is_admin)) { error 'Admin privileges are needed.'; break }",
+            "Invoke-ExternalCommand -FilePath \"$dir\\Uninstall.exe\" -ArgumentList '/S' | Out-Null"
+        ]
+    },
+    "bin": "bin\\openvpn.exe",
+    "shortcuts": [
+        [
+            "bin\\openvpn-gui.exe",
+            "OpenVPN GUI"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://openvpn.net/index.php/open-source/downloads.html",
+        "regex": "openvpn-install-([\\d.]+)-I602-Win7.exe"
+    },
+    "autoupdate": {
+        "url": "https://swupdate.openvpn.org/community/releases/openvpn-install-$version-I602-Win7.exe"
+    }
+}

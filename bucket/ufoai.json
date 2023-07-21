@@ -1,0 +1,26 @@
+{
+    "version": "2.5",
+    "description": "Squad-based tactical strategy game inspired by XCOM",
+    "homepage": "https://ufoai.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://downloads.sourceforge.net/project/ufoai/UFO_AI%202.x/2.5/ufoai-2.5-win32.exe#/dl.7z",
+    "hash": "89aab99f6ef664b853f6eeddf7959240751870cbfa2ab4d3745bd09b568222d8",
+    "bin": [
+        "ufo.exe",
+        "ufoded.exe",
+        "ufo2map.exe"
+    ],
+    "shortcuts": [
+        [
+            "ufo.exe",
+            "UFO - Alien Invasion"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ufoai.org/wiki/Download",
+        "regex": "The latest stable release is version ([\\d.r]+)\\."
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/ufoai/UFO_AI%202.x/$version/ufoai-$version-win32.exe#/dl.7z"
+    }
+}

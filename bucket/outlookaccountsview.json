@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/outlook_accounts_view.html",
+    "checkver": "OutlookAccountsView v(\\d+\\.\\d\\d)",
+    "version": "1.01",
+    "license": "freeware",
+    "description": "OutlookAccountsView is a password recovery tool for Windows that displays the details of all POP3/IMAP/SMTP accounts stored in your Outlook profiles. For every account, the following information is displayed: Account Name, Display Name, Email, User Name, Password, Profile Name, Server Address, Server Type, Server Port, Registry Key, Windows User, and PST files used for this account. You can extract the Outlook accounts information of the current user, from external disk plugged to your computer, and from remote computer on your network.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/outlookaccountsview-x64.zip",
+            "hash": "2521c1e69d4f0565dc50870012b8ec74bdbdb3eab6128a322c2bf2b4f17c5894"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/outlookaccountsview.zip",
+            "hash": "40c342c9f996e98b74bd3fb3b7de538bc6085fe0ea30b2b5690913b0473f147d"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/outlookaccountsview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/outlookaccountsview.zip"
+            }
+        }
+    },
+    "bin": "OutlookAccountsView.exe",
+    "shortcuts": [
+        [
+            "OutlookAccountsView.exe",
+            "NirSoft\\OutlookAccountsView - Microsoft Outlook Password Recovery Tool"
+        ]
+    ]
+}

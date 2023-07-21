@@ -1,0 +1,158 @@
+{
+    "version": "2.51",
+    "description": "Command-line utilities for listing the processes running on local or remote computers, running processes, rebooting computers, and more.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/pstools",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/PSTools.zip",
+    "hash": "a9ca77dfe03ce15004157727bb43ba66f00ceb215362c9b3d199f000edaa8d61",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "PsExec64.exe",
+                    "PsExec"
+                ],
+                [
+                    "psfile64.exe",
+                    "psfile"
+                ],
+                [
+                    "PsGetsid64.exe",
+                    "PsGetsid"
+                ],
+                [
+                    "PsInfo64.exe",
+                    "PsInfo"
+                ],
+                [
+                    "pskill64.exe",
+                    "pskill"
+                ],
+                [
+                    "pslist64.exe",
+                    "pslist"
+                ],
+                [
+                    "PsLoggedon64.exe",
+                    "PsLoggedon"
+                ],
+                [
+                    "psloglist64.exe",
+                    "psloglist"
+                ],
+                [
+                    "pspasswd64.exe",
+                    "pspasswd"
+                ],
+                [
+                    "psping64.exe",
+                    "psping"
+                ],
+                [
+                    "PsService64.exe",
+                    "PsService"
+                ],
+                [
+                    "psshutdown64.exe",
+                    "psshutdown"
+                ],
+                [
+                    "pssuspend64.exe",
+                    "pssuspend"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "PsExec.exe",
+                "psfile.exe",
+                "PsGetsid.exe",
+                "PsInfo.exe",
+                "pskill.exe",
+                "pslist.exe",
+                "PsLoggedon.exe",
+                "psloglist.exe",
+                "pspasswd.exe",
+                "psping.exe",
+                "PsService.exe",
+                "psshutdown.exe",
+                "pssuspend.exe"
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "PsExec64a.exe",
+                    "PsExec"
+                ],
+                [
+                    "psfile64a.exe",
+                    "psfile"
+                ],
+                [
+                    "PsGetsid64a.exe",
+                    "PsGetsid"
+                ],
+                [
+                    "PsInfo64a.exe",
+                    "PsInfo"
+                ],
+                [
+                    "pskill64a.exe",
+                    "pskill"
+                ],
+                [
+                    "pslist64a.exe",
+                    "pslist"
+                ],
+                [
+                    "psloglist64a.exe",
+                    "psloglist"
+                ],
+                [
+                    "pspasswd64a.exe",
+                    "pspasswd"
+                ],
+                [
+                    "psping64a.exe",
+                    "psping"
+                ],
+                [
+                    "PsService64a.exe",
+                    "PsService"
+                ],
+                [
+                    "pssuspend64a.exe",
+                    "pssuspend"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/index.md",
+        "regex": "(?s)PsTools.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/PSTools.zip"
+    },
+    "notes": [
+        "The tools included in the PsTools suite, which are downloadable as a package, are:",
+        "",
+        "- PsExec: execute processes remotely",
+        "- PsFile: shows files opened remotely",
+        "- PsGetSid: display the SID of a computer or a user",
+        "- PsInfo: list information about a system",
+        "- PsPing: measure network performance",
+        "- PsKill: kill processes by name or process ID",
+        "- PsList: list detailed information about processes",
+        "- PsLoggedOn: see who's logged on locally and via resource sharing (full source is included)",
+        "- PsLogList: dump event log records",
+        "- PsPasswd: changes account passwords",
+        "- PsService: view and control services",
+        "- PsShutdown: shuts down and optionally reboots a computer",
+        "- PsSuspend: suspends processes"
+    ]
+}

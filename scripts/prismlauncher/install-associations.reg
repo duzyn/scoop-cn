@@ -1,0 +1,46 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\prismlauncher.exe]
+@="Minecraft Mod-Pack"
+
+[HKEY_CURRENT_USER\Software\Classes\prismlauncher.exe\DefaultIcon]
+@="$EXEPATH,0"
+
+[HKEY_CURRENT_USER\Software\Classes\prismlauncher.exe\shell]
+@="open"
+
+[HKEY_CURRENT_USER\Software\Classes\prismlauncher.exe\shell\open]
+@="Import into Prism Launcher"
+
+[HKEY_CURRENT_USER\Software\Classes\prismlauncher.exe\shell\open\command]
+@="$EXEPATH"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\prismlauncher.exe\shell\open\command]
+@="$EXEPATH -I \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\prismlauncher.exe]
+"FriendlyAppName"= "Prism Launcher"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\prismlauncher.exe\Capabilities]
+"ApplicationDescription"="Minecraft Mod-Pack"
+
+[HKEY_CURRENT_USER\Software\RegisteredApplications]
+"Prism Launcher"="Software\Classes\Applications\prismlauncher.exe\Capabilities"
+
+[HKEY_CURRENT_USER\Software\Classes\.zip\OpenWithList]
+"prismlauncher.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.zip\OpenWithProgids]
+"prismlauncher.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.mrpack\OpenWithList]
+"prismlauncher.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.mrpack\OpenWithProgids]
+"prismlauncher.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\prismlauncher.exe\Capabilities\FileAssociations]
+".mrpack"="prismlauncher.exe"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\prismlauncher.exe\Capabilities\FileAssociations]
+".zip"="prismlauncher.exe"

@@ -1,0 +1,80 @@
+{
+    "version": "0.95.5e",
+    "description": "RAINE is an emulator for arcade games",
+    "homepage": "https://raine.1emulation.com/",
+    "license": "Artistic-2.0",
+    "architecture": {
+        "32bit": {
+            "url": [
+                "https://raine.1emulation.com/archive/raine32-0.95.5e.7z",
+                "https://raine.1emulation.com/archive/dlls32-0.95.7z"
+            ],
+            "hash": [
+                "361c0edcb063b4590df4e0fe7f79c553ef686f723a37b2dc09de5c48e49fac21",
+                "6623542ffc992d7a481c9f44dcb9a39a265712ba6407b0a3680ff85caceb1f0b"
+            ],
+            "extract_dir": "raine32",
+            "bin": [
+                [
+                    "raine32.exe",
+                    "RAINE"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "raine32.exe",
+                    "RAINE"
+                ]
+            ]
+        },
+        "64bit": {
+            "url": [
+                "https://raine.1emulation.com/archive/raine64-0.95.5e.7z",
+                "https://raine.1emulation.com/archive/dlls64-0.95.7z"
+            ],
+            "hash": [
+                "e886a9233a65aa01f615ab5e63fba265b65b2337baf63186e624666cd10d3eb2",
+                "c5078df325870e325993c8d8d16dd16e1c2b94ef6f9467e0e41c9b7b367b4828"
+            ],
+            "extract_dir": "raine64",
+            "bin": [
+                [
+                    "raine.exe",
+                    "RAINE"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "raine.exe",
+                    "RAINE"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "artwork",
+        "blend",
+        "config",
+        "debug",
+        "demos",
+        "emudx",
+        "roms",
+        "savedata",
+        "savegame",
+        "screens"
+    ],
+    "checkver": {
+        "url": "https://raine.1emulation.com/download/latest.html",
+        "regex": "/archive/raine32-([\\d.]+[a-zA-Z]?)\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://raine.1emulation.com/archive/raine32-$version.7z"
+            },
+            "64bit": {
+                "url": "https://raine.1emulation.com/archive/raine64-$version.7z"
+            }
+        }
+    }
+}

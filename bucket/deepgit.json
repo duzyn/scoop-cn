@@ -1,0 +1,44 @@
+{
+    "version": "4.3.1",
+    "description": "Git Archaeology Tool.",
+    "homepage": "https://www.syntevo.com/deepgit/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.syntevo.com/documents/deepgit-license.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://www.syntevo.com/downloads/deepgit/deepgit-portable-4_3_1.7z",
+            "hash": "sha1:2c587076ae13e2164efc682c6d8a968b9b0d7ac6",
+            "extract_dir": "DeepGit",
+            "bin": [
+                [
+                    "bin\\deepgitc.exe",
+                    "deepgit"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "bin\\deepgit.exe",
+                    "DeepGit"
+                ]
+            ]
+        }
+    },
+    "persist": ".settings",
+    "checkver": {
+        "url": "https://www.syntevo.com/deepgit/changelog.txt",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.syntevo.com/downloads/deepgit/deepgit-portable-$underscoreVersion.7z",
+                "hash": {
+                    "url": "https://www.syntevo.com/deepgit/download/",
+                    "regex": "$basename[\\S\\s]+?$sha1"
+                }
+            }
+        }
+    }
+}

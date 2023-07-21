@@ -1,0 +1,37 @@
+{
+    "version": "3.7.0",
+    "homepage": "https://linuxecke.volkoh.de/vokoscreen/vokoscreen.html",
+    "description": "A free and open source screencast creator for recording the user's screen.",
+    "license": "GPL-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://linuxecke.volkoh.de/vokoscreen/download/windows/vokoscreenNG-3.7.0-win64.exe#/setup.exe",
+            "hash": "90cd62458965f1dd30897e77f8a07031724d5ee21b17834969a83e905773f7d6"
+        }
+    },
+    "post_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('in', '-c', '--am', '--al', '-t', \"$dir\")",
+        "Remove-Item \"$dir\\setup.exe\", \"$dir\\vcredist_2010_x64.exe\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Start-Process \"$dir\\Uninstall.exe\" -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('pr', '-c', '--am', '--al')",
+        "Start-Sleep -Seconds 2"
+    ],
+    "checkver": {
+        "url": "https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html",
+        "regex": "vokoscreenNG-([\\d.]+)-win64.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://linuxecke.volkoh.de/vokoscreen/download/windows/vokoscreenNG-$version-win64.exe#/setup.exe",
+                "hash": {
+                    "url": "https://linuxecke.volkoh.de/vokoscreen/vokoscreen-download.html",
+                    "find": "$sha256</a>"
+                }
+            }
+        }
+    }
+}

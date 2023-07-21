@@ -1,0 +1,32 @@
+{
+    "version": "0.13.0",
+    "description": "Hex viewer, which uses colored output to distinguish different categories of bytes.",
+    "homepage": "https://github.com/sharkdp/hexyl",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/sharkdp/hexyl/releases/download/v0.13.0/hexyl-v0.13.0-x86_64-pc-windows-msvc.zip",
+            "hash": "feef91710f9c400a767ac7e62077057a42eec7c81deac36398517bfb10437d5c",
+            "extract_dir": "hexyl-v0.13.0-x86_64-pc-windows-msvc"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/sharkdp/hexyl/releases/download/v0.13.0/hexyl-v0.13.0-i686-pc-windows-msvc.zip",
+            "hash": "fbe019ba80acdc6e68817f6c55f1f1d429bf3b573849f3960cd1052b571b7109",
+            "extract_dir": "hexyl-v0.13.0-i686-pc-windows-msvc"
+        }
+    },
+    "bin": "hexyl.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/sharkdp/hexyl/releases/download/v$version/hexyl-v$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "hexyl-v$version-x86_64-pc-windows-msvc"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/sharkdp/hexyl/releases/download/v$version/hexyl-v$version-i686-pc-windows-msvc.zip",
+                "extract_dir": "hexyl-v$version-i686-pc-windows-msvc"
+            }
+        }
+    }
+}

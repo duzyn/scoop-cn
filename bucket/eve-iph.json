@@ -1,0 +1,28 @@
+{
+    "version": "5.0.8570.23676",
+    "description": "Third-party industry program for EVE Online",
+    "homepage": "http://eveiph.github.io/",
+    "license": {
+        "identifier": "Unknown",
+        "url": "https://ghproxy.com/https://github.com/EVEIPH/EVE-IPH-Update-Program/raw/master/Licence.txt"
+    },
+    "hash": "300999bea77588fb3b6d57ce33fb75b582f7670085639b41fd04440758fcd8dd",
+    "url": "https://ghproxy.com/https://github.com/EVEIPH/LatestFiles/raw/master/EVEIPH%20Binaries.zip",
+    "bin": "EVE Isk per Hour.exe",
+    "shortcuts": [
+        [
+            "EVE Isk per Hour.exe",
+            "EVE Isk per Hour"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/EVEIPH/LatestFiles/master/Patch%20Notes.txt",
+        "regex": "Build ([0-9]+(.[0-9]+)+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/EVEIPH/LatestFiles/raw/master/EVEIPH%20Binaries.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

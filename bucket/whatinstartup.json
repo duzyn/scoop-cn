@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/what_run_in_startup.html",
+    "checkver": "WhatInStartup v(\\d+\\.\\d\\d)",
+    "version": "1.35",
+    "license": "freeware",
+    "description": "This utility displays the list of all applications that are loaded automatically when Windows starts up. For each application, the following information is displayed: Startup Type (Registry/Startup Folder), Command-Line String, Product Name, File Version, Company Name, Location in the Registry or file system, and more. It allows you to easily disable or delete unwanted programs that runs in your Windows startup. You can use it on your currently running instance of Windows, as well as you can use it on external instance of Windows in another drive. WhatInStartup also supports a special \"Permanent Disabling\" feature - If a program that you previously disabled added itself again to the startup list of Windows, WhatInStartup will automatically detect the change and disable it again.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/whatinstartup-x64.zip",
+            "hash": "9a50776456f79c08d9de06862beb3531d8e4f90062ae54f2b2d700aa4338a330"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/whatinstartup.zip",
+            "hash": "71241fb3d34661002d94cd0076216245182799894fbe0d43266a039f70115641"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/whatinstartup-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/whatinstartup.zip"
+            }
+        }
+    },
+    "bin": "WhatInStartup.exe",
+    "shortcuts": [
+        [
+            "WhatInStartup.exe",
+            "NirSoft\\WhatInStartup - disable_delete programs at Windows startup"
+        ]
+    ]
+}

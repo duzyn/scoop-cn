@@ -1,0 +1,22 @@
+{
+    "description": "OpenJDK 14 binaries built using source code from the CentOS project",
+    "homepage": "https://github.com/ojdkbuild/ojdkbuild",
+    "version": "15.0.2.7-1",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-15-openjdk-15.0.2.7-1/java-15-openjdk-15.0.2.7-1.windows.ojdkbuild.x86_64.msi",
+            "hash": "b3eca673986f87dfb4c2ff7cf095810a16cc0d3da67f702b70ca73b1b49c952b"
+        }
+    },
+    "pre_install": "scoop config MSIEXTRACT_USE_LESSMSI True",
+    "extract_dir": "ojdkbuild\\java-15-openjdk-15.0.2-1",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "notes": [
+        "WARNING: This older version of the JDK are provided to help developers debug issues.",
+        "It is not updated with the latest security patches and are not recommended for use in production."
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "version": "5.4.4",
+    "description": "An offline document manager with tagging support",
+    "homepage": "https://www.tagspaces.org",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/tagspaces/tagspaces/releases/download/v5.4.4/tagspaces-win-x64-5.4.4.zip",
+            "hash": "598ac022c8a169bcefcb95cbd9086d3f9249c1c5dcee0ad9aa3f555d9ba15b8f"
+        }
+    },
+    "bin": [
+        [
+            "TagSpaces.exe",
+            "tagspaces",
+            "--portable"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "TagSpaces.exe",
+            "TagSpaces",
+            "--portable"
+        ]
+    ],
+    "persist": "tsprofile",
+    "checkver": {
+        "github": "https://github.com/tagspaces/tagspaces"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/tagspaces/tagspaces/releases/download/v$version/tagspaces-win-x64-$version.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS.txt"
+        }
+    }
+}

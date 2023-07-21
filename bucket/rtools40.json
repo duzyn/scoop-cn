@@ -1,0 +1,73 @@
+{
+    "version": "4.0",
+    "description": "Tools for building packages for R under Microsoft Windows, or for building R itself. (R 4.0.0 - R 4.1.3)",
+    "homepage": "https://cloud.r-project.org/bin/windows/Rtools/rtools40.html",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "For R 3.3.x to 3.6.x, please use 'versions/rtools35'.",
+        "For R 4.2.x, please use 'versions/rtools42'.",
+        "For R 4.3.0 and up, please use 'rtools'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools40-x86_64.exe",
+            "hash": "6f6b363ee7c7e58aaa51e58f37f910226e60f0dfd47417106250b5ce4d1c2727"
+        },
+        "32bit": {
+            "url": "https://cloud.r-project.org/bin/windows/Rtools/rtools40-i686.exe",
+            "hash": "70d95372a818ae81e1e41c57751068d8bac322cf117b970bb00e76d5ec618898"
+        }
+    },
+    "innosetup": true,
+    "installer": {
+        "script": [
+            "'r', 'mro' | ForEach-Object {",
+            "   if ((Select-CurrentVersion $_ $global) -match '^4.[01]') {",
+            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
+            "       if (Test-Path $renvloc) {",
+            "           $renv = Get-Content $renvloc -Encoding ASCII",
+            "       } else {",
+            "           $renv = @()",
+            "       }",
+            "       $rtoolspath = \"$dir\\usr\\bin\"",
+            "       if ($renv -cmatch 'PATH=') {",
+            "           $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
+            "       } else {",
+            "           $renv += \"`r`nPATH=\", '\"', $rtoolspath, ';${PATH}\"' -join ''",
+            "       }",
+            "       $renv | Set-Content $renvloc -Encoding ASCII",
+            "   }",
+            "}",
+            "if (Test-Path 'C:\\rtools40') {",
+            "   if ($null -eq (Get-Item 'C:\\rtools40').LinkType) {",
+            "       Rename-Item -Path 'C:\\rtools40' -NewName 'rtools40.old' -Force",
+            "   } else {",
+            "       Remove-Item -Path 'C:\\rtools40' -Force",
+            "   }",
+            "}",
+            "New-Item -Path 'C:\\rtools40' -Target \"$dir\" -ItemType Junction | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "'r', 'mro' | ForEach-Object {",
+            "   if ((Select-CurrentVersion $_ $global) -match '^4.[01]') {",
+            "       $renvloc = (versiondir $_ (Select-CurrentVersion $_ $global) $global) + '\\etc\\Renviron.site'",
+            "       if (Test-Path $renvloc) {",
+            "           $renv = Get-Content $renvloc -Encoding ASCII",
+            "       } else {",
+            "           $renv = @()",
+            "       }",
+            "       $renv = $renv -replace '[^;\"]*rtools.*?;', ''",
+            "       $renv | Set-Content $renvloc -Encoding ASCII",
+            "   }",
+            "}",
+            "if ((Test-Path 'C:\\rtools40') -and ($null -ne (Get-Item 'C:\\rtools40').LinkType)) {",
+            "   Remove-Item -Path 'C:\\rtools40' -Force",
+            "}",
+            "if (Test-Path 'C:\\rtools40.old') {",
+            "   Rename-Item -Path 'C:\\rtools40.old' -NewName 'rtools40' -Force",
+            "}"
+        ]
+    }
+}

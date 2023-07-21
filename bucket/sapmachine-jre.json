@@ -1,0 +1,35 @@
+{
+    "description": "SapMachine: An OpenJDK release maintained and supported by SAP",
+    "homepage": "https://sap.github.io/SapMachine/",
+    "version": "17.0.8",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/SAP/SapMachine/releases/download//sapmachine-17.0.8/sapmachine-jre-17.0.8_windows-x64_bin.zip",
+            "hash": "8bbd140307a566b86c24eb6c3d66523269385440ef3879f4afe7e348fd273285"
+        }
+    },
+    "extract_dir": "sapmachine-jre-17.0.8",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://sap.github.io/SapMachine/assets/data/sapmachine_releases.json",
+        "jsonpath": "$.assets.17.releases[0].jre.windows-x64",
+        "re": "(?<sap>/sapmachine-(?:[\\d.]+)(?:\\%2B|\\+)?(?:[\\d]*)/sapmachine-jre-(?<version>[\\d.]+)(?:(?<dash>-)(?<ea>ea)\\.(?<build>[\\d]+))?_windows-x64_bin).zip",
+        "replace": "${version}${dash}${build}${dash}${ea}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
+            }
+        },
+        "hash": {
+            "url": "https://ghproxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt",
+            "find": "^($sha256)\\s"
+        },
+        "extract_dir": "sapmachine-jre-$matchVersion"
+    }
+}

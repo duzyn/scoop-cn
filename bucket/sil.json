@@ -1,0 +1,46 @@
+{
+    "version": "1.3.0",
+    "description": "A roguelike in the first age of Middle-earth, variant of Angband",
+    "homepage": "http://www.amirrorclear.net/flowers/game/sil/",
+    "license": "GPL-2.0-only",
+    "notes": "Configuration files cannot be persisted, but will be retained during the update",
+    "url": "http://www.amirrorclear.net/flowers/game/sil/Sil-130-Win.zip",
+    "hash": "613a9bbd6dc9869fe6fd352f6e3af21060421ab5c56cf27db3f1c2ce49b5a908",
+    "extract_dir": "sil",
+    "post_install": [
+        "'sil.INI' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_.bak\") {",
+        "        Copy-Item \"$persist_dir\\$_.bak\" \"$dir\\$_\" -Force",
+        "    }",
+        "}"
+    ],
+    "bin": "sil.exe",
+    "shortcuts": [
+        [
+            "sil.exe",
+            "Sil"
+        ],
+        [
+            "Sil 1.3 Manual.pdf",
+            "Sil Manual"
+        ]
+    ],
+    "persist": [
+        "lib\\save",
+        "lib\\user"
+    ],
+    "uninstaller": {
+        "script": [
+            "'sil.INI' | ForEach-Object {",
+            "    Copy-Item \"$dir\\$_\" \"$persist_dir\\$_.bak\" -Force",
+            "}"
+        ]
+    },
+    "checkver": {
+        "regex": "Sil-(?<major>[\\d])(?<minor>[\\d])(?<patch>[\\d])-Win.zip",
+        "replace": "${major}.${minor}.${patch}"
+    },
+    "autoupdate": {
+        "url": "http://www.amirrorclear.net/flowers/game/sil/Sil-$cleanVersion-Win.zip"
+    }
+}

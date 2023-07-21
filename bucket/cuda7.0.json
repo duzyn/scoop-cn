@@ -1,0 +1,39 @@
+{
+    "version": "7.0.28",
+    "description": "A parallel computing platform and programming model invented by NVIDIA",
+    "homepage": "https://developer.nvidia.com/cuda-toolkit",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://docs.nvidia.com/cuda/eula/index.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "http://developer.download.nvidia.com/compute/cuda/7_0/Prod/local_installers/cuda_7.0.28_windows.exe#/dl.7z",
+                "http://developer.download.nvidia.com/compute/cuda/7_0/Prod/cufft_update/cufft_patch_windows.zip"
+            ],
+            "hash": [
+                "0e19f279da851674601ad94bfe197dcac0290ccafacc546c4498ba665e2012e0",
+                "ca5c94dd9d87046b6f9f2c1b5ba3a34ee74efe579e01f597ff9f89abd2912516"
+            ]
+        }
+    },
+    "installer": {
+        "script": [
+            "$names = @('bin', 'extras', 'include', 'jre', 'lib', 'libnvvp', 'nvml', 'nvvm')",
+            "foreach ($name in $names) {",
+            "    Copy-Item \"$dir\\*\\$name\" \"$dir\\\" -Force -Recurse",
+            "}",
+            "Copy-Item \"$dir\\GDK\\gdk_win7_amd64_release\\nvml\\*\" \"$dir\\\" -Force -Recurse",
+            "Get-ChildItem \"$dir\" -Exclude $names | Remove-Item -Force -Recurse"
+        ]
+    },
+    "env_add_path": [
+        "bin",
+        "libnvvp"
+    ],
+    "env_set": {
+        "CUDA_PATH": "$dir",
+        "CUDA_PATH_V7_0": "$dir"
+    }
+}

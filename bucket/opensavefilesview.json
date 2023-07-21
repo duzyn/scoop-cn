@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/open_save_files_view.html",
+    "checkver": "OpenSaveFilesView v(\\d+\\.\\d\\d)",
+    "version": "1.16",
+    "license": "freeware",
+    "description": "OpenSaveFilesView is a simple tool that displays the list of files that you previously opened with the standard open/save dialog-box of Windows. For every file in the list, the following information is displayed: Filename, Extension, Order (The order that the files were opened for every file extension), Open Time (Available only for the last opened file of every file type), File Modified/Created Time, File Size, and File Attributes.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/opensavefilesview-x64.zip",
+            "hash": "8060ca16dddac85f204699cfa9656488943a16553200679e67cd3428d09f06bf"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/opensavefilesview.zip",
+            "hash": "7aa6322cd9538ff6471424396b9f9f866d8970985a960b876849a0d34452aacb"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/opensavefilesview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/opensavefilesview.zip"
+            }
+        }
+    },
+    "bin": "OpenSaveFilesView.exe",
+    "shortcuts": [
+        [
+            "OpenSaveFilesView.exe",
+            "NirSoft\\OpenSaveFilesView - Displays files that you previously opened"
+        ]
+    ]
+}

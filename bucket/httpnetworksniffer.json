@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/http_network_sniffer.html",
+    "checkver": "HTTPNetworkSniffer v(\\d+\\.\\d\\d)",
+    "version": "1.63",
+    "license": "freeware",
+    "description": "HTTPNetworkSniffer is a packet sniffer tool that captures all HTTP requests/responses sent between the Web browser and the Web server and displays them in a simple table. For every HTTP request, the following information is displayed: Host Name, HTTP method (GET, POST, HEAD), URL Path, User Agent, Response Code, Response String, Content Type, Referer, Content Encoding, Transfer Encoding, Server Name, Content Length, Cookie String, and more... You can easily select one or more HTTP information lines, and then export them to text/html/xml/csv file or copy them to the clipboard and then paste them into Excel.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/httpnetworksniffer-x64.zip",
+            "hash": "aeb5ccbe089ecc1b136c0ef12ae325f91d4aefd240a48eecfbd76bee7a670f08"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/httpnetworksniffer.zip",
+            "hash": "c257e4d052fd48de0fd32f818a051d4e6c2d0a68dcc0f96bdb026c364ceb8182"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/httpnetworksniffer-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/httpnetworksniffer.zip"
+            }
+        }
+    },
+    "bin": "HTTPNetworkSniffer.exe",
+    "shortcuts": [
+        [
+            "HTTPNetworkSniffer.exe",
+            "NirSoft\\HTTPNetworkSniffer - Captures and displays HTTP requests_responses"
+        ]
+    ]
+}

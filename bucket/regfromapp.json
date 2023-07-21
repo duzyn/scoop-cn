@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/reg_file_from_application.html",
+    "checkver": "RegFromApp v(\\d+\\.\\d\\d)",
+    "version": "1.33",
+    "license": "freeware",
+    "description": "RegFromApp monitors the Registry changes made by the application that you selected, and creates a standard RegEdit registration file (.reg) that contains all the Registry changes made by the application. You can use the generated .reg file to import these changes with RegEdit when it's needed.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/regfromapp-x64.zip",
+            "hash": "558ea21f9f63ef12d712228856cafd22f7b83640912cce4701406073ab53c7de"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/regfromapp.zip",
+            "hash": "54977dc7f645e8b2ede1c40521cd04e3521c454800310cc8589020cec133a18d"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/regfromapp-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/regfromapp.zip"
+            }
+        }
+    },
+    "bin": "RegFromApp.exe",
+    "shortcuts": [
+        [
+            "RegFromApp.exe",
+            "NirSoft\\RegFromApp - Creates .reg file from application"
+        ]
+    ]
+}

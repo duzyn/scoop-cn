@@ -1,0 +1,31 @@
+{
+    "version": "5.63",
+    "description": "Use Microsoft kernel debuggers to examine a live system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/livekd",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/LiveKD.zip",
+    "hash": "334823d4113f2cb41326a934721138c6b595ad6b429a00708aedea68e24773f8",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "livekd64.exe",
+                    "livekd"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "livekd.exe"
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/livekd.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/LiveKD.zip"
+    }
+}

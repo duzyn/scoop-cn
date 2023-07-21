@@ -1,0 +1,53 @@
+{
+    "version": "4.4.170",
+    "homepage": "https://github.com/Open-Shell/Open-Shell-Menu",
+    "description": "A fork of Classic Shell with additional fixes and more features.",
+    "license": "MIT",
+    "url": "https://ghproxy.com/https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v4.4.170/OpenShellSetup_4_4_170.exe#/setup.exe",
+    "hash": "0417041CFFED3478F13A840E45EE304CCF8D1F9CA38E4126BC315161AC9F1669",
+    "architecture": {
+        "64bit": {
+            "pre_install": [
+                "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+                "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract64' -WorkingDirectory \"$dir\""
+            ]
+        },
+        "32bit": {
+            "pre_install": [
+                "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+                "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList 'extract32' -WorkingDirectory \"$dir\""
+            ]
+        }
+    },
+    "installer": {
+        "script": [
+            "Remove-Item \"$dir\\setup.exe\"; Get-ChildItem \"$dir\\*.msi\" | Rename-Item -NewName 'setup.msi'",
+            "Write-Host \"Replacing Start Menu with Open Shell, please wait and don't cancel the script...\" -F 'Yellow'",
+            "Start-Process 'msiexec' -Wait -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList @('/i', \"$dir\\setup.msi\", '/qn')",
+            "Stop-Process -Name 'explorer'; Start-Sleep -Seconds 2; Write-Host \"Done!\" -F 'Yellow'"
+        ]
+    },
+    "pre_uninstall": [
+        "if ($cmd -eq 'uninstall') {",
+        "    if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "    Write-Host \"Restoring previous Start Menu, please wait and don't cancel the script...\" -F 'Yellow'",
+        "    Stop-Process -Name 'StartMenu' -Force -ErrorAction 'SilentlyContinue'",
+        "    Start-Sleep -Milliseconds 1000",
+        "    Start-Process 'msiexec' -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn')",
+        "    for ($i = 0; $i -lt 60; $i++) {",
+        "        if ((-Not (Test-Path \"$env:ProgramFiles\\Open-Shell\")) -or (-Not (Test-Path \"${env:ProgramFiles(x86)}\\Open-Shell\"))) {",
+        "            break",
+        "        }",
+        "        Start-Sleep -Milliseconds 1000",
+        "    }",
+        "    Start-Process 'taskkill' -Verb 'RunAs' -WindowStyle 'Hidden' -ArgumentList ('/F', '/IM', 'explorer.exe')",
+        "    Start-Sleep -Milliseconds 5000",
+        "    Start-Process 'explorer.exe' -Verb 'RunAs' -WindowStyle 'Hidden'",
+        "    Write-Host 'Previous Start Menu Restored!' -F 'Yellow'",
+        "}"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Open-Shell/Open-Shell-Menu/releases/download/v$version/OpenShellSetup_$underscoreVersion.exe#/setup.exe"
+    }
+}

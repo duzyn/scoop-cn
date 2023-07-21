@@ -1,0 +1,35 @@
+{
+    "description": "The IcedTea-Web project provides a Free Software web browser plugin running applets written in the Java programming language and an implementation of Java Web Start, originally based on the NetX project",
+    "homepage": "https://github.com/AdoptOpenJDK/IcedTea-Web",
+    "version": "1.8.8",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-1.8.8/icedtea-web-1.8.8.win.bin.zip",
+            "hash": "058df8ed0f7dd782625912685148f0a75b3d2eccb0d7a90ecab6b917555ea580"
+        }
+    },
+    "extract_dir": "icedtea-web-image",
+    "shortcuts": [
+        [
+            "bin\\itweb-settings.exe",
+            "IcedTea-Web Control Panel"
+        ],
+        [
+            "bin\\policyeditor.exe",
+            "IcedTea-Web Policy Editor"
+        ]
+    ],
+    "env_add_path": "bin",
+    "checkver": "icedtea-web-([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-$version/icedtea-web-$version.win.bin.zip",
+                "hash": {
+                    "url": "https://ghproxy.com/https://github.com/AdoptOpenJDK/IcedTea-Web/releases/download/icedtea-web-$version/icedtea-web-$version.win.bin.zip.sha256.txt"
+                }
+            }
+        }
+    }
+}

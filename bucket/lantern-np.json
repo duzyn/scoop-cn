@@ -1,0 +1,42 @@
+{
+    "##": "This package is nonportable because the installer cannot be properly extracted after version 5.5.6.",
+    "version": "7.4.0",
+    "description": "HTTP/HTTPS proxy.",
+    "homepage": "https://getlantern.org/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe",
+            "hash": "f0edcadf7c52d45e80bf972ac7c8b75c9698c5aab5a7d9c85abfad880537a7cf"
+        },
+        "32bit": {
+            "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe",
+            "hash": "e065e899c1e82dcb205e0e42be8ec94860fc7141339d67d8e714d0c247187ad2"
+        }
+    },
+    "installer": {
+        "script": [
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\"",
+            "Remove-Item \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\Lantern\\Uninstall Lantern.lnk\"",
+            "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Lantern.lnk\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$Env:AppData\\Lantern\\uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://github.com/getlantern/lantern-binaries",
+        "regex": "(?sm)lantern-installer-64-bit\\.exe.*?Lantern binaries for version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer-64-bit.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://media.githubusercontent.com/media/getlantern/lantern-binaries/main/lantern-installer.exe#/setup.exe"
+            }
+        }
+    }
+}

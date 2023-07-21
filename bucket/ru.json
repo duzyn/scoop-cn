@@ -1,0 +1,39 @@
+{
+    "version": "1.2",
+    "description": "View the registry space usage for the specified registry key.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/ru",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/RU.zip",
+    "hash": "14ff3824edd2a4b7ca827a8f52142b0f08b7136e061917734dd7465e56dac666",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "ru64.exe",
+                    "ru"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "ru.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "ru64a.exe",
+                    "ru"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/ru.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/RU.zip"
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "version": "4.3.1",
+    "description": "High-level, cross-platform, multi-paradigm programming language and compiler",
+    "homepage": "https://haxe.org",
+    "license": {
+        "identifier": "MIT,Zlib,BSD-3-Clause,...",
+        "url": "https://github.com/HaxeFoundation/neko/blob/master/LICENSE"
+    },
+    "depends": "neko",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/HaxeFoundation/haxe/releases/download/4.3.1/haxe-4.3.1-win64.zip",
+            "hash": "8f77bf1dc3fae88b3174e311c60e69ab25c02093a0801bd3e49b28609f465e1e"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/HaxeFoundation/haxe/releases/download/4.3.1/haxe-4.3.1-win.zip",
+            "hash": "260d0afd6e5a5ded14761ec8b23ecab7deaea552d7b6230bfc19411fdf248780"
+        }
+    },
+    "pre_install": [
+        "Move-Item \"$dir\\haxe_*\\*\" \"$dir\"",
+        "Remove-Item \"$dir\\haxe_*\""
+    ],
+    "bin": [
+        "haxe.exe",
+        "haxelib.exe"
+    ],
+    "env_set": {
+        "HAXEPATH": "$dir"
+    },
+    "env_add_path": ".",
+    "persist": "lib",
+    "checkver": {
+        "github": "https://github.com/HaxeFoundation/haxe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/HaxeFoundation/haxe/releases/download/$version/haxe-$version-win64.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/HaxeFoundation/haxe/releases/download/$version/haxe-$version-win.zip"
+            }
+        }
+    }
+}

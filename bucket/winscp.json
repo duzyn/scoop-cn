@@ -1,0 +1,41 @@
+{
+    "version": "6.1.1",
+    "description": "Copy files between a local computer and remote servers using FTP, FTPS, SCP, SFTP, WebDAV or S3 file transfer protocols.",
+    "homepage": "https://winscp.net",
+    "license": "GPL-3.0-or-later",
+    "url": "https://downloads.sourceforge.net/project/winscp/WinSCP/6.1.1/WinSCP-6.1.1-Portable.zip",
+    "hash": "422ea208df18d288767d68ce7ebc7ac01c850eeee66c285f3e17505bb8c36229",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\winscp.ini\")) {",
+        "    @(",
+        "        '[Configuration\\Interface]'",
+        "        'RandomSeedFile=.\\winscp.rnd'",
+        "    ) | Add-Content -Path \"$dir\\winscp.ini\" -Encoding ASCII -Force",
+        "}"
+    ],
+    "bin": [
+        "WinSCP.exe",
+        [
+            "WinSCP.com",
+            "WinSCP-cli"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "WinSCP.exe",
+            "WinSCP"
+        ]
+    ],
+    "persist": "winscp.ini",
+    "checkver": {
+        "url": "https://winscp.net/eng/downloads.php",
+        "regex": "WinSCP-([\\d.]+)-Portable\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/winscp/WinSCP/$version/WinSCP-$version-Portable.zip",
+        "hash": {
+            "url": "https://winscp.net/download/WinSCP-$version-ReadMe.txt",
+            "regex": "(?sm)$basename.*?SHA-256: $sha256"
+        }
+    }
+}

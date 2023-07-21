@@ -1,0 +1,38 @@
+{
+    "version": "1.2.1",
+    "description": "Advanced drum machine",
+    "homepage": "http://hydrogen-music.org",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/hydrogen-music/hydrogen/releases/download/1.2.1/Hydrogen-1.2.1-win64.exe#/dl.7z",
+            "hash": "f0cb3efeb8ed20bdb7494b52f5d71689abf2ec9fb3868339b1ee8c7cd811d69f"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/hydrogen-music/hydrogen/releases/download/1.2.1/Hydrogen-1.2.1-win32.exe#/dl.7z",
+            "hash": "99c086ddfa96cfd4fb6b00b2d381ebb32a5c6a04949fbe32558790b20958cb0f"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall.exe\" -Recurse",
+    "bin": "hydrogen.exe",
+    "shortcuts": [
+        [
+            "hydrogen.exe",
+            "Hydrogen"
+        ]
+    ],
+    "checkver": {
+        "url": "http://hydrogen-music.org/downloads/",
+        "regex": "([\\w.-]+)\\s+64-Bit"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/hydrogen-music/hydrogen/releases/download/$version/Hydrogen-$version-win64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/hydrogen-music/hydrogen/releases/download/$version/Hydrogen-$version-win32.exe#/dl.7z"
+            }
+        }
+    }
+}

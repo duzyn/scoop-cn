@@ -1,0 +1,45 @@
+{
+    "version": "534",
+    "description": "A personal booru-style media tagger",
+    "homepage": "https://hydrusnetwork.github.io/hydrus/",
+    "license": "WTFPL",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/hydrusnetwork/hydrus/releases/download/v534/Hydrus.Network.534.-.Windows.-.Extract.only.zip",
+            "hash": "7abf01cb9c36184a7262400ddaefbff1d91e5c69fbc75ea3369f16d9f3c40620"
+        }
+    },
+    "extract_dir": "Hydrus Network",
+    "post_install": "if (Test-Path \"$dir\\db.original\\sqlite3.exe\") { Copy-Item \"$dir\\db.original\\sqlite3.exe\" \"$dir\\db\" -Force }",
+    "bin": [
+        [
+            "hydrus_client.exe",
+            "hydrusclient"
+        ],
+        [
+            "hydrus_server.exe",
+            "hydrusserver"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "hydrus_client.exe",
+            "Hydrus Client"
+        ],
+        [
+            "hydrus_server.exe",
+            "Hydrus Server"
+        ]
+    ],
+    "persist": "db",
+    "checkver": {
+        "github": "https://github.com/hydrusnetwork/hydrus"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/hydrusnetwork/hydrus/releases/download/v$version/Hydrus.Network.$version.-.Windows.-.Extract.only.zip"
+            }
+        }
+    }
+}

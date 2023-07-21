@@ -1,0 +1,36 @@
+{
+    "version": "25.6.2",
+    "description": "Desktop app for itch.io, an indie game online store",
+    "homepage": "https://itch.io/app",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://broth.itch.ovh/itch/windows-386/25.6.2/archive/default#/dl.zip",
+            "hash": "fb79a8fb9329b663d68aff7901916fd6bf5532eb9d3070154f3afcbf049a7e60"
+        },
+        "64bit": {
+            "url": "https://broth.itch.ovh/itch/windows-amd64/25.6.2/archive/default#/dl.zip",
+            "hash": "86c05d4d05f90b18fef3a302c8fcabd5e5a42cb699c1747c89080c44db7485bc"
+        }
+    },
+    "shortcuts": [
+        [
+            "itch.exe",
+            "itch"
+        ]
+    ],
+    "checkver": {
+        "url": "https://broth.itch.ovh/itch/windows-amd64",
+        "regex": "windows-amd64/([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://broth.itch.ovh/itch/windows-386/$version/archive/default#/dl.zip"
+            },
+            "64bit": {
+                "url": "https://broth.itch.ovh/itch/windows-amd64/$version/archive/default#/dl.zip"
+            }
+        }
+    }
+}

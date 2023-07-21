@@ -1,0 +1,20 @@
+{
+    "version": "1.20",
+    "homepage": "https://github.com/Slazanger/SMT",
+    "license": "MIT",
+    "description": "Slazanger's Eve Map Tool",
+    "url": "https://ghproxy.com/https://github.com/Slazanger/SMT/releases/download/SMT_120/SMT_1.20.zip",
+    "hash": "0ec4fab5240f229d3303fa11a7f4206acfcc12cd94647377326de4d45c40909d",
+    "bin": "SMT.exe",
+    "shortcuts": [["SMT.exe", "SMT"]],
+    "checkver": {
+        "url": "https://github.com/Slazanger/SMT/releases.atom",
+        "regex": "SMT ([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/Slazanger/SMT/releases/download/SMT_$cleanVersion/SMT_$version.zip",
+        "hash": {
+            "mode": "download"
+        }
+    }
+}

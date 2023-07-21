@@ -1,0 +1,34 @@
+{
+    "version": "3.0.8",
+    "description": "Empire-building strategy game",
+    "homepage": "http://www.freeciv.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "http://prdownloads.sourceforge.net/freeciv/Freeciv-3.0.8-msys2-win64-gtk3.22-setup.exe?download#/setup.7z",
+    "hash": "ef6d58e0245d8c4b785dd1ffd85360d843e357a12e3a13a7c1a4e788c7483729",
+    "bin": [
+        "freeciv-gtk3.22.exe",
+        "freeciv-mp-gtk3.exe",
+        "freeciv-server.exe"
+    ],
+    "shortcuts": [
+        [
+            "freeciv-gtk3.22.exe",
+            "Freeciv"
+        ],
+        [
+            "freeciv-mp-gtk3.exe",
+            "Freeciv Modpack Installer"
+        ],
+        [
+            "freeciv-server.exe",
+            "Freeciv Server"
+        ]
+    ],
+    "checkver": {
+        "url": "http://www.freeciv.org/download.html",
+        "regex": "stable release, (\\d{1,2}\\.\\d{1,2}\\.\\d{1,2})"
+    },
+    "autoupdate": {
+        "url": "http://prdownloads.sourceforge.net/freeciv/Freeciv-$version-msys2-win64-gtk3.22-setup.exe?download#/setup.7z"
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/volumouse.html",
+    "checkver": "Volumouse v(\\d+\\.\\d\\d)",
+    "version": "2.10",
+    "license": "freeware",
+    "description": "Volumouse provides you a quick and easy way to control the sound volume on your system - simply by rolling the wheel of your wheel mouse. It allows you to define a set of rules for determining when the wheel will be used for changing the sound volume. For example: You can configure Volumouse to use your mouse wheel for volume control when the Alt key is hold down, when the left mouse button is down, when the mouse cursor is over the taskbar, and so on... When the conditions that you define are not satisfied, your mouse wheel will be used for the regular scrolling tasks, exactly as before.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/volumouse-x64.zip",
+            "hash": "e9dce5eff147c14de2b27018500ae5a34852d34d102e6fa65d2fdb7e61c554f3"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/volumouse.zip",
+            "hash": "61123b37d2a264fc29ac78ad5929ce32fdd255cd8c66acb1d8f43096d82dcbb4"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/volumouse-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/volumouse.zip"
+            }
+        }
+    },
+    "bin": "volumouse.exe",
+    "shortcuts": [
+        [
+            "volumouse.exe",
+            "NirSoft\\Volumouse - Control the sound volume with a wheel mouse"
+        ]
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "version": "1.53.3",
+    "description": "Go language linters aggregator",
+    "homepage": "https://golangci-lint.run/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v1.53.3/golangci-lint-1.53.3-windows-amd64.zip",
+            "hash": "bd23cc509f00990eecebeb2f1a12ba1b07f395c53313a27da969fad99b686ceb",
+            "extract_dir": "golangci-lint-1.53.3-windows-amd64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v1.53.3/golangci-lint-1.53.3-windows-386.zip",
+            "hash": "33e70b307af34701938d6ff2cd8485d0829c71eb0a744a76e308d9d498f7c57a",
+            "extract_dir": "golangci-lint-1.53.3-windows-386"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v1.53.3/golangci-lint-1.53.3-windows-arm64.zip",
+            "hash": "d92ad8a0daba87bd31ceec8155e0397d82d33b02deea61b499402643f6eba7cf",
+            "extract_dir": "golangci-lint-1.53.3-windows-arm64"
+        }
+    },
+    "bin": "golangci-lint.exe",
+    "checkver": {
+        "github": "https://github.com/golangci/golangci-lint"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-amd64.zip",
+                "extract_dir": "golangci-lint-$version-windows-amd64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-386.zip",
+                "extract_dir": "golangci-lint-$version-windows-386"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/golangci/golangci-lint/releases/download/v$version/golangci-lint-$version-windows-arm64.zip",
+                "extract_dir": "golangci-lint-$version-windows-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/golangci-lint-$version-checksums.txt"
+        }
+    }
+}

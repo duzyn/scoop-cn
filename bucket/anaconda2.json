@@ -1,0 +1,46 @@
+{
+    "version": "2019.10",
+    "description": "The most popular Python distribution for data science. (for Python 2 only)",
+    "homepage": "https://www.anaconda.com/",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "Currently conda envs activate and deactivate doesn't work on PowerShell,",
+        "for more information, see: https://github.com/conda/conda/issues/626",
+        "or just execute: 'conda install -n root -c pscondaenvs pscondaenvs'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86_64.exe#/setup.exe",
+            "hash": "3e09c8e95e10f077be1e1d26f26df8d6a13356449e06d7d47ddc066fbaf435f5"
+        },
+        "32bit": {
+            "url": "https://repo.anaconda.com/archive/Anaconda2-2019.10-Windows-x86.exe#/setup.exe",
+            "hash": "b4731acd02f96923922d995bb16984d71b4a934b7af6737984dd9eb5d8cc6389"
+        }
+    },
+    "installer": {
+        "script": [
+            "Write-Host 'Installing Anaconda 2. This can take up to 30 minutes on an HDD.' -ForegroundColor Magenta",
+            "# Using Start-Process as a workaround because the installer will not work properly when args are quoted",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', '/InstallationType=JustMe', '/AddToPath=0', \"/D=$dir\") -Wait | Out-Null",
+            "Remove-Item \"$dir\\setup.exe\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "Start-Process \"$dir\\Uninstall-Anaconda2.exe\" -ArgumentList '/S' -Wait | Out-Null",
+            "# Create a 'dummy' to avoid error because the uninstaller removes the symlink. The does not affect persist.",
+            "if (!(Test-Path \"$dir\\envs\")) { New-Item \"$dir\\envs\" -ItemType Directory | Out-Null }"
+        ]
+    },
+    "bin": [
+        "python.exe",
+        "pythonw.exe",
+        [
+            "python.exe",
+            "python2"
+        ]
+    ],
+    "persist": "envs",
+    "env_add_path": "Scripts"
+}

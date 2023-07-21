@@ -1,0 +1,39 @@
+{
+    "version": "2.12",
+    "description": "Measure network performance.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/psping",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/psping.zip",
+    "hash": "c68f60f5381a042a255b4aafe7e5fb7d7aa7349d38f5ff2d81957ef0fd6f8e67",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "psping64.exe",
+                    "psping"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "psping.exe"
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "psping64a.exe",
+                    "psping"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/psping.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/psping.zip"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "version": "0.11.0",
+    "description": "A tool for exploring each layer in a docker image.",
+    "homepage": "https://github.com/wagoodman/dive/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/wagoodman/dive/releases/download/v0.11.0/dive_0.11.0_windows_amd64.zip",
+            "hash": "6f8680c8d906cbd7ef4df3ec7cea90eece95bec45083b8ba6ea1d8a50d645667"
+        }
+    },
+    "bin": "dive.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/wagoodman/dive/releases/download/v$version/dive_$version_windows_amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/dive_$version_checksums.txt"
+        }
+    }
+}

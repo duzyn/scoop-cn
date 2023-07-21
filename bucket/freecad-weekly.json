@@ -1,0 +1,36 @@
+{
+    "version": "29085",
+    "description": "A free and open-source multi-platform parametric 3D modeler.",
+    "homepage": "https://www.freecadweb.org",
+    "license": "LGPL-2.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-29085-Win-Conda-x86_64.7z",
+            "hash": "c05924e52b1349afeb3fd3ce46a9629ace189ba20326f59d44078caf64a18a1b"
+        }
+    },
+    "extract_dir": "FreeCAD_weekly-builds-29085-Win-Conda-x86_64",
+    "bin": "bin\\FreeCADCmd.exe",
+    "shortcuts": [
+        [
+            "bin\\FreeCAD.exe",
+            "FreeCAD"
+        ]
+    ],
+    "checkver": {
+        "url": "https://github.com/FreeCAD/FreeCAD-Bundle/releases/tag/weekly-builds",
+        "regex": "FreeCAD_weekly-builds-([\\d]+)-Win-Conda"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-$version-Win-Conda-x86_64.7z"
+            }
+        },
+        "hash": {
+            "url": "$url-SHA256.txt",
+            "regex": "(?sm):\\s+([a-fA-F\\d\\s]+)CertUtil"
+        },
+        "extract_dir": "FreeCAD_weekly-builds-$version-Win-Conda-x86_64"
+    }
+}

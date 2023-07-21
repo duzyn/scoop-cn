@@ -1,0 +1,21 @@
+{
+    "version": "6.1.15",
+    "description": "TagScanner is a powerful tool for organizing and managing your music collection.",
+    "homepage": "https://www.xdlab.ru/en/",
+    "license": "Unknown",
+    "url": "https://www.xdlab.ru/files/tagscan-6.1.15.zip",
+    "hash": "b75b14c40955e225983b309330ac9a58b4d7976c696a0fd01377932b196bb763",
+    "bin": "Tagscan.exe",
+    "shortcuts": [
+        [
+            "Tagscan.exe",
+            "Tagscanner"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\Tagscan.ini\")) { New-Item \"$dir\\Tagscan.ini\" -ItemType File | Out-Null }",
+    "persist": "Tagscan.ini",
+    "checkver": "TagScanner ([\\d.]+)",
+    "autoupdate": {
+        "url": "https://www.xdlab.ru/files/tagscan-$version.zip"
+    }
+}

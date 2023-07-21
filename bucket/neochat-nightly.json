@@ -1,0 +1,38 @@
+{
+    "version": "692",
+    "description": "A client for Matrix, the decentralized communication protocol",
+    "homepage": "https://apps.kde.org/neochat/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://binary-factory.kde.org/job/NeoChat_Nightly_win64/lastSuccessfulBuild/artifact/neochat-master-692-windows-msvc2019_64-cl.7z",
+            "hash": "022968934065732c125af70a527c415d6d24a9061dc6612d43e0f0bc280eccd7"
+        }
+    },
+    "bin": [
+        [
+            "bin\\neochat.exe",
+            "neochat"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\neochat.exe",
+            "NeoChat Nightly"
+        ]
+    ],
+    "checkver": {
+        "url": "https://binary-factory.kde.org/job/NeoChat_Nightly_win64/",
+        "regex": "neochat-master-(\\d+)-windows"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://binary-factory.kde.org/job/NeoChat_Nightly_win64/lastSuccessfulBuild/artifact/neochat-master-$version-windows-msvc2019_64-cl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

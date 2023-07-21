@@ -1,0 +1,71 @@
+{
+    "version": "4.21",
+    "description": "A tool that you can use to crash, hang, and cause kernel memory leaks on your Windows system.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/notmyfault",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/NotMyFault.zip",
+    "hash": "e26db5a12a6e1f83085cc40446a0b8fb6e322b989c46f4cb649a955682c15de4",
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "notmyfault64.exe",
+                    "notmyfault"
+                ],
+                [
+                    "notmyfaultc64.exe",
+                    "notmyfaultc"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "notmyfault64.exe",
+                    "scoop-cn/NotMyFault",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": [
+                "notmyfault.exe",
+                "notmyfaultc.exe"
+            ],
+            "shortcuts": [
+                [
+                    "notmyfault.exe",
+                    "scoop-cn/NotMyFault",
+                    "/accepteula"
+                ]
+            ]
+        },
+        "arm64": {
+            "bin": [
+                [
+                    "notmyfault64a.exe",
+                    "notmyfault"
+                ],
+                [
+                    "notmyfaultc64a.exe",
+                    "notmyfaultc"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "notmyfault64a.exe",
+                    "scoop-cn/NotMyFault",
+                    "/accepteula"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/notmyfault.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/NotMyFault.zip"
+    }
+}

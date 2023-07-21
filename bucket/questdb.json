@@ -1,0 +1,33 @@
+{
+    "version": "7.2.1",
+    "description": "An open source SQL database designed to process time series data, faster.",
+    "homepage": "https://questdb.io",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/questdb/questdb/releases/download/7.2.1/questdb-7.2.1-no-jre-bin.tar.gz",
+            "hash": "3ed558d5c665ff6450dd86840555e902866b31141bbfb77504315d4f05c8f949",
+            "extract_dir": "questdb-7.2.1-no-jre-bin"
+        }
+    },
+    "bin": "questdb.exe",
+    "persist": [
+        "conf",
+        "db",
+        "log"
+    ],
+    "checkver": {
+        "github": "https://github.com/questdb/questdb"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/questdb/questdb/releases/download/$version/questdb-$version-no-jre-bin.tar.gz",
+                "extract_dir": "questdb-$version-no-jre-bin"
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "version": "2.92",
+    "description": "Remote Desktop Connection Manager",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/rdcman",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/RDCMan.zip",
+    "hash": "df183e730ece0ca8946f04be5456fd63a9088b1bb9a463bf155926a4908956b3",
+    "bin": "RDCMan.exe",
+    "shortcuts": [
+        [
+            "RDCMan.exe",
+            "scoop-cn/RDCMan",
+            "/accepteula"
+        ]
+    ],
+    "checkver": {
+        "url": "https://ghproxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/rdcman.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/RDCMan.zip"
+    }
+}

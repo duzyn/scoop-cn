@@ -1,0 +1,43 @@
+{
+    "version": "0.7.0-r1306",
+    "description": "A manga reader compatible with Tachiyomi extensions and backups",
+    "homepage": "https://github.com/Suwayomi/Tachidesk-Server",
+    "license": {
+        "identifier": "MPL-2.0",
+        "url": "https://github.com/Suwayomi/Tachidesk-Server/blob/master/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1306/Tachidesk-Server-v0.7.0-r1306-windows-x64.zip",
+            "hash": "42514682c653121d4b0facf8ca4de1acd39ec6fab74f00c42f1abffa0f0a7a68",
+            "extract_dir": "Tachidesk-Server-v0.7.0-r1306-windows-x64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1306/Tachidesk-Server-v0.7.0-r1306-windows-x86.zip",
+            "hash": "553796b86b231581035c5c2e6b5d141060a8196d80563f328cae1b98ddbb4985",
+            "extract_dir": "Tachidesk-Server-v0.7.0-r1306-windows-x86"
+        }
+    },
+    "pre_install": "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\tachidesk-server-preview\\tachidesk*.ps1\" -Destination \"$dir\"",
+    "bin": [
+        "tachidesk.ps1",
+        "tachidesk-electron.ps1",
+        "tachidesk-debug.ps1"
+    ],
+    "checkver": {
+        "github": "https://github.com/Suwayomi/Tachidesk-Server-preview",
+        "regex": "v([\\d.]+-r[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x64.zip",
+                "extract_dir": "Tachidesk-Server-v$version-windows-x64"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x86.zip",
+                "extract_dir": "Tachidesk-Server-v$version-windows-x86"
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "version": "9.0.78",
+    "description": "Tomcat, an open source implementation of the Java Servlet, JavaServer Pages, Java Expression Language and Java WebSocket technologies. (version 9)",
+    "homepage": "https://tomcat.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78-windows-x64.zip",
+            "hash": "sha512:2ac30b0f4444839221629a601c3606af0a81421f2788f403b0e4a2a3f43dee180192fe5f677c52fb28b0ae4a798a45b5221ffd4370ec94c3bbd602daf831c724"
+        },
+        "32bit": {
+            "url": "https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.78/bin/apache-tomcat-9.0.78-windows-x86.zip",
+            "hash": "sha512:8abebf426b71feb9eabb458dfc17a05d6688b9bcab62c40662776736855989c3a1d104b01e0067b3c1531f5b747d8f0421a42786bc8071495204864fcaffed55"
+        }
+    },
+    "extract_dir": "apache-tomcat-9.0.78",
+    "env_set": {
+        "CATALINA_BASE": "$dir",
+        "CATALINA_HOME": "$dir"
+    },
+    "bin": "bin\\catalina.bat",
+    "persist": [
+        "conf",
+        "webapps"
+    ],
+    "checkver": {
+        "url": "https://archive.apache.org/dist/tomcat/tomcat-9/?C=M;O=D",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://archive.apache.org/dist/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x64.zip"
+            },
+            "32bit": {
+                "url": "https://archive.apache.org/dist/tomcat/tomcat-$majorVersion/v$version/bin/apache-tomcat-$version-windows-x86.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-tomcat-$version"
+    }
+}

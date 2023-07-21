@@ -1,0 +1,17 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 11",
+    "homepage": "https://jdk.java.net/11",
+    "version": "11.0.2-9",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk11/9/GPL/openjdk-11.0.2_windows-x64_bin.zip",
+            "hash": "cf39490fe042dba1b61d6e9a395095279a69e70086c8c8d5466d9926d80976d8"
+        }
+    },
+    "extract_dir": "jdk-11.0.2",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "version": "4.1-beta3",
+    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+    "homepage": "https://godotengine.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.1/beta3/Godot_v4.1-beta3_win64.exe.zip",
+            "hash": "sha512:1e9b9797632e712ed91649a7f13e2f761d86b0ba5d8387457c02661a0c5a3d4f1551ed382b958347f0acda6f570a08299f9865df124e14502407042ba1978850"
+        },
+        "32bit": {
+            "url": "https://downloads.tuxfamily.org/godotengine/4.1/beta3/Godot_v4.1-beta3_win32.exe.zip",
+            "hash": "sha512:346d09099914d2c38d869bf82b42eafe2c1407e030a541a7bec36bd3c3dcff32b56a8e398ae290a53378c876764793057a53f47c3702b93fa9ddbcfeecec3de8"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot.exe'"
+    ],
+    "bin": "godot.exe",
+    "shortcuts": [
+        [
+            "godot.exe",
+            "Godot Engine"
+        ]
+    ],
+    "checkver": {
+        "url": "https://godotengine.org/blog/pre-release/",
+        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
+        "replace": "${1}-beta${2}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win64.exe.zip"
+            },
+            "32bit": {
+                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/beta$matchBeta/Godot_v$version_win32.exe.zip"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
+    }
+}

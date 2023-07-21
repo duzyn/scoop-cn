@@ -1,0 +1,26 @@
+{
+    "version": "3.64",
+    "description": "SEGA Genesis / Mega Drive emulator",
+    "homepage": "https://www.carpeludum.com/kega-fusion/",
+    "license": "Freeware",
+    "url": "https://www.carpeludum.com/download/Fusion364.zip",
+    "hash": "6365101eb417c5c2a5e6609573f354b7b7ea86632cbfd968676a1eec070e0ca3",
+    "extract_dir": "Fusion364",
+    "pre_install": "If(!(Test-Path(\"$persist_dir\\Fusion.ini\"))){New-Item -ItemType File \"$dir\\Fusion.ini\" | Out-Null }",
+    "bin": "Fusion.exe",
+    "shortcuts": [
+        [
+            "Fusion.exe",
+            "Kega Fusion"
+        ]
+    ],
+    "persist": "Fusion.ini",
+    "checkver": {
+        "url": "https://www.carpeludum.com/kega-fusion/",
+        "regex": "Kega Fusion ([\\d]+[\\.][\\d]+) Windows<\\/a>"
+    },
+    "autoupdate": {
+        "url": "https://www.carpeludum.com/download/Fusion$cleanVersion.zip",
+        "extract_dir": "Fusion$cleanVersion"
+    }
+}

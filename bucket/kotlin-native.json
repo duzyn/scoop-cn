@@ -1,0 +1,49 @@
+{
+    "version": "1.9.0",
+    "description": "An LLVM backend for the Kotlin compiler, runtime implementation, and native code generation facility using the LLVM toolchain for native binaries runnable without a virtual machine.",
+    "homepage": "https://kotlinlang.org",
+    "license": "Apache-2.0",
+    "notes": "Please keep in mind that this is still marked as an experimental feature!",
+    "suggest": {
+        "Kotlin": "kotlin"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/JetBrains/kotlin/releases/download/v1.9.0/kotlin-native-windows-x86_64-1.9.0.zip#/dl.zip_",
+            "hash": "989cb5cb28da87ad0ae2a9469dbbce227165014217ec472eeb78468045dcb766"
+        }
+    },
+    "pre_install": [
+        "# Manually extract because archive name and directory name sometimes does not match.",
+        "# e.g. archive is named 'kotlin-native-windows-x86_64-1.6.21-349.1', but contains folder 'kotlin-native-windows-x86_64-1.6.21-349'",
+        "Expand-7zipArchive \"$dir\\dl.zip_\" \"$dir\" -Removal | Out-Null",
+        "$folder = Get-ChildItem \"$dir\\kotlin-native-windows-x86_64-*\" | Select -First 1 -ExpandProperty FullName",
+        "Move-Item \"$folder\\*\" \"$dir\\\"",
+        "Remove-Item \"$folder\" -Force -Recurse"
+    ],
+    "bin": [
+        "bin\\cinterop.bat",
+        "bin\\jsinterop.bat",
+        "bin\\klib.bat",
+        "bin\\konanc.bat",
+        "bin\\generate-platform.bat",
+        "bin\\kotlinc-native.bat",
+        "bin\\run_konan.bat"
+    ],
+    "env_add_path": "bin",
+    "checkver": {
+        "github": "https://github.com/JetBrains/kotlin",
+        "regex": "windows-x86_64-([\\d.\\-]+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/JetBrains/kotlin/releases/download/v$matchHead/kotlin-native-windows-x86_64-$version.zip#/dl.zip_"
+            }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/JetBrains/kotlin/releases/latest",
+            "regex": "(?sm)kotlin-native-windows-x86_64[\\w.-]+\\s+\\|\\s+$sha256"
+        }
+    }
+}

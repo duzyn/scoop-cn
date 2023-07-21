@@ -1,0 +1,61 @@
+{
+    "version": "2.3.0",
+    "description": "A Sudo for Windows",
+    "homepage": "https://gerardog.github.io/gsudo",
+    "license": "MIT",
+    "notes": [
+        "gsudo has a PowerShell module that adds `gsudo !!` to elevate the last command.",
+        "Use the module by running: 'Import-Module gsudoModule'.",
+        "Add it to your $PROFILE to make it permanent."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v2.3.0/gsudo.setup.x64.msi",
+            "hash": "26a59d9876821aecbe18905c3ffd6777d5497eee2637aca99f7e12d61598b6e4",
+            "extract_dir": "PFiles64\\gsudo\\2.3.0"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v2.3.0/gsudo.setup.x86.msi",
+            "hash": "c7ec9db04552770ad2826aa51371b23734c8f36ae21f73b9b31e9ce1de2d3111",
+            "extract_dir": "PFiles\\gsudo\\2.3.0"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v2.3.0/gsudo.setup.arm64.msi",
+            "hash": "add2417dfbcb261ec314f00fb7bc2bfa9d3420f14974043c676cce4bab3da273",
+            "extract_dir": "PFiles64\\gsudo\\2.3.0"
+        }
+    },
+    "bin": [
+        [
+            "gsudo.exe",
+            "sudo"
+        ]
+    ],
+    "psmodule": {
+        "name": "gsudoModule"
+    },
+    "post_install": "try { & \"$dir\\gsudo.exe\" -k 2>&1 | Out-Null } catch { info $_.Exception.Message }",
+    "env_add_path": ".",
+    "checkver": {
+        "github": "https://github.com/gerardog/gsudo"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.x64.msi",
+                "extract_dir": "PFiles64\\gsudo\\$version"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.x86.msi",
+                "extract_dir": "PFiles\\gsudo\\$version"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/gerardog/gsudo/releases/download/v$version/gsudo.setup.arm64.msi",
+                "extract_dir": "PFiles64\\gsudo\\$version"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

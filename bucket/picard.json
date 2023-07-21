@@ -1,0 +1,37 @@
+{
+    "version": "2.8.5",
+    "description": "Music tagger",
+    "homepage": "https://picard.musicbrainz.org",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "http://ftp.musicbrainz.org/pub/musicbrainz/picard/picard-setup-2.8.5.exe#/dl.7z",
+            "hash": "md5:13c3e93bfa6dfcd91827450638373969"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$*\" -Recurse",
+    "bin": [
+        "picard.exe",
+        "fpcalc.exe"
+    ],
+    "shortcuts": [
+        [
+            "picard.exe",
+            "MusicBrainz Picard"
+        ]
+    ],
+    "checkver": {
+        "url": "https://picard.musicbrainz.org/downloads/",
+        "regex": "picard-setup-([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "http://ftp.musicbrainz.org/pub/musicbrainz/picard/picard-setup-$version.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.md5"
+        }
+    }
+}

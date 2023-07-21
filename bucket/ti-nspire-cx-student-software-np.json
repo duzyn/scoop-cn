@@ -1,0 +1,29 @@
+{
+    "version": "6.0.3.374",
+    "description": "Powerful computer software for mathematics.",
+    "homepage": "https://education.ti.com/en/software/details/en/AFCFF2853BC34DEFB4C0B8B156F92404/ti-nspirecx_pc_full",
+    "license": "Proprietary",
+    "url": "https://education.ti.com/download/en/ed-tech/AFCFF2853BC34DEFB4C0B8B156F92404/4D365094765A4233B202C9D9114F96BE/TINspireCXStudentSoftware-6.0.3.374.msi#/setup.msi_",
+    "hash": "08caf18b78e50d9c2b9b923f9624ec3ad73bf0461fade3d5dfa6b2102043e9fe",
+    "installer": {
+        "script": [
+            "Start-Process -Wait msiexec \"/i `\"$dir\\setup.msi_`\" /qn APPDIR=`\"$dir`\" SHORTCUTDIR=`\"$dir\\shortcuts`\" DesktopFolder=`\"$dir\\shortcuts`\"\" -Verb RunAs",
+            "Remove-Item -Recurse \"$dir\\shortcuts\"",
+            "Remove-Item \"$env:PUBLIC\\Desktop\\TI-Nspire CX Student Software.lnk\""
+        ]
+    },
+    "uninstaller": {
+        "script": "Start-Process -Wait msiexec \"/x `\"$dir\\setup.msi_`\" /qn\" -Verb RunAs"
+    },
+    "bin": "TI-Nspire CX Student Software\\TI-Nspire CX Student Software.exe",
+    "shortcuts": [
+        [
+            "TI-Nspire CX Student Software\\TI-Nspire CX Student Software.exe",
+            "TI-Nspire CX Student Software"
+        ]
+    ],
+    "checkver": "ed-tech/(?<path>[\\w/]+)/TINspireCXStudentSoftware-(?<version>[\\w.]+)\\.msi",
+    "autoupdate": {
+        "url": "https://education.ti.com/download/en/ed-tech/$matchPath/TINspireCXStudentSoftware-$matchVersion.msi#/setup.msi_"
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "version": "221106",
+    "description": "PlayStation emulator focused on accuracy",
+    "homepage": "http://drhell.web.fc2.com/ps1/",
+    "license": "Freeware",
+    "notes": [
+        "Warning: XEBRA.INI is not persisted across updates because of version incompatibilities.",
+        "If you use BIOS with XEBRA, rename BIOS as \"OSROM\" and overwrite $dir\\OSROM",
+        "If you use Video plugin with XEBRA, rename plugin as \"VIDEO.DLL\" and overwrite $dir\\VIDEO.DLL,",
+        "and check \"View\">\"Video Output\">\"Use VIDEO.DLL\"",
+        "Learn more at: http://drhell.web.fc2.com/ps1/xebra/index2.html"
+    ],
+    "url": "https://drhell.web.fc2.com/ps1/xebra221106.zip",
+    "hash": "5f522e51a0cad7395bdcb070e7c6955327f4bd3449a9c04dc7ed35c6693c1bd2",
+    "pre_install": [
+        "'BU00', 'BU10', 'OSROM', 'VIDEO.DLL' | ForEach-Object {",
+        "    if (!(Test-Path \"$persist_dir\\$_\")) {",
+        "        New-Item -ItemType File \"$dir\\$_\" | Out-Null",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "XEBRA.EXE",
+            "XEBRA"
+        ]
+    ],
+    "persist": [
+        "BU00",
+        "BU10",
+        "OSROM",
+        "VIDEO.DLL"
+    ],
+    "checkver": {
+        "regex": "xebra([\\da-z]+)\\.zip"
+    },
+    "autoupdate": {
+        "url": "https://drhell.web.fc2.com/ps1/xebra$version.zip"
+    }
+}

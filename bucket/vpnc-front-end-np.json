@@ -1,0 +1,36 @@
+{
+    "version": "0.9.10",
+    "description": "Front end for VPNC, a command-line VPN client for Cisco VPN hardware.",
+    "homepage": "https://sourceforge.net/projects/vpncfe/",
+    "license": "Freeware",
+    "url": "https://downloads.sourceforge.net/project/vpncfe/vpncfe/0.9.10/vpncfe-0.9.10-setup.exe",
+    "hash": "sha1:3f1f9271fdef190ffa0c2e76aceabcb2cc805d5b",
+    "installer": {
+        "args": [
+            "/S",
+            "/D=$dir"
+        ]
+    },
+    "post_install": "Remove-Item \"$([Environment]::GetFolderPath('startmenu'))\\Programs\\VPNC Front End.lnk\"",
+    "uninstaller": {
+        "file": "uninst-vpncfe.exe",
+        "args": "/S"
+    },
+    "bin": [
+        "bin\\vpnc.exe",
+        "bin\\cisco-decrypt.exe"
+    ],
+    "shortcuts": [
+        [
+            "bin\\vpnc.exe",
+            "VPNC Front End"
+        ]
+    ],
+    "checkver": {
+        "url": "https://sourceforge.net/projects/vpncfe/files/vpncfe/",
+        "regex": "files/vpncfe/([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://downloads.sourceforge.net/project/vpncfe/vpncfe/$version/vpncfe-$version-setup.exe"
+    }
+}

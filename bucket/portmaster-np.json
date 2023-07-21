@@ -1,0 +1,42 @@
+{
+    "version": "1.0.13",
+    "homepage": "https://safing.io/",
+    "description": "An open-source application firewall that allows for monitoring of network activity, blocking system-wide trackers and ads, aswell as enforcing system-wide DNS-over-HTTPS and DNS-over-TLS.",
+    "license": "AGPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://updates.safing.io/latest/windows_amd64/packages/portmaster-installer.exe",
+            "hash": "f43a3e6eef805925d8c3d5bdbe6aa1848bb5b4d8fca55c1e7e291e20c6a10c92"
+        }
+    },
+    "pre_install": [
+        "ensure \"$persist_dir\" | Out-Null",
+        "if (!(is_admin)) { throw 'Administrator privileges are required' }",
+        "Write-Host \"Please wait for Portmaster to $cmd. Do not cancel this script!\" -F 'Yellow'",
+        "Start-Process \"$dir\\portmaster-installer.exe\" -Verb RunAs -ArgumentList '/S' -Wait; Remove-Item \"$dir\\portmaster-installer.exe\"; Start-Sleep -Seconds 4",
+        "Copy-item \"$persist_dir\\*\" \"$env:ProgramData\\Safing\\Portmaster\" -Recurse -Force -ErrorAction 'SilentlyContinue'",
+        "if ($cmd -eq 'update') { Stop-Process -Name @('portmaster-start', 'portmaster-core_v*', 'portmaster-notifier_v*') -Force -ErrorAction 'SilentlyContinue'}"
+    ],
+    "post_install": "if ($cmd -eq 'install') { Write-Host 'Please restart your computer for Portmaster to install properly' -F 'Red' }",
+    "pre_uninstall": [
+        "if (!(is_admin)) { throw 'Administrator privileges are required' }",
+        "Write-Host \"Please wait for Portmaster to $cmd. Do not cancel this script!\" -F 'Yellow'",
+        "Copy-item \"$env:ProgramData\\Safing\\Portmaster\\*\" \"$persist_dir\" -Include @('config.json', 'databases', 'logs') -Recurse -Force -ErrorAction 'SilentlyContinue'; Start-Sleep -Seconds 4",
+        "if ($cmd -eq 'uninstall') { Start-Process \"$env:ProgramData\\Safing\\Portmaster\\portmaster-uninstaller.exe\" -Verb RunAs -ArgumentList '/S' -Wait; Start-Sleep -Seconds 5 }"
+    ],
+    "post_uninstall": "if ($cmd -eq 'uninstall') { Write-Host 'Please restart your computer to uninstall Portmaster properly' -F 'Red' }",
+    "checkver": {
+        "github": "https://github.com/safing/portmaster-packaging"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://updates.safing.io/latest/windows_amd64/packages/portmaster-installer.exe",
+                "hash": {
+                    "url": "https://ghproxy.com/https://raw.githubusercontent.com/safing/checksums/master/sha256_latest.txt",
+                    "regex": "$sha256\\s./latest/windows_amd64/packages/portmaster-installer.exe"
+                }
+            }
+        }
+    }
+}

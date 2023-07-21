@@ -1,0 +1,25 @@
+{
+    "version": "1.1.0.1",
+    "description": "Tooniversal Studios is a free-to-play private server of Disney's Toontown Online. Create your own Toon and join the battle to save Toontown from the evil Cogs.",
+    "homepage": "https://tooniversal.com",
+    "license": "Proprietary",
+    "notes": "This is only the launcher, an account is required to play.",
+    "url": "https://cdn.tooniversal.com/release/tooniversal_setup.exe#/dl.7z",
+    "hash": "EC2D254CB5557630E513748BA02A3EF8E87E1D90CF032A4606AC471118F986C0",
+    "pre_install": "Remove-Item $dir -Recurse -Force  -Include * -Exclude Tooniversal-Launcher.exe",
+    "bin": "Tooniversal-Launcher.exe",
+    "shortcuts": [
+        [
+            "Tooniversal-Launcher.exe",
+            "Tooniversal Studios"
+        ]
+    ],
+    "persist": [
+        "resources",
+        "user",
+        "cg.dll",
+        "cgGL.dll",
+        "tooniversal.bin",
+        "tooniversal.exe"
+    ]
+}

@@ -1,0 +1,47 @@
+{
+    "version": "v7.1",
+    "description": "A remapping program for Nintendo Switch controllers",
+    "homepage": "https://github.com/Davidobot/BetterJoy",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/Davidobot/BetterJoy/blob/master/LICENSE"
+    },
+    "notes": [
+        "BetterJoy needs vigembus installed to function.",
+        "Run the ViGEm_Bus_Setup at $dir\\Drivers if you have never installed ViGEm before."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/Davidobot/BetterJoy/releases/download/v7.1/BetterJoy_v7.1.zip",
+            "hash": "a9ffe5bb14b05e775f34f9eeff41fca89a350d49252eedae1e330e88952e7f36"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item -Path \"$dir\" -Name \"settings\" -ItemType \"File\" | Out-Null",
+        "}"
+    ],
+    "bin": "BetterJoyForCemu.exe",
+    "shortcuts": [
+        [
+            "BetterJoyForCemu.exe",
+            "BetterJoy"
+        ]
+    ],
+    "persist": [
+        "BetterJoyForCemu.exe.config",
+        "settings"
+    ],
+    "checkver": {
+        "github": "https://github.com/Davidobot/BetterJoy",
+        "regex": "download/(?<build>v[\\d\\.]+[a-z]?)",
+        "replace": "${1}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/Davidobot/BetterJoy/releases/download/$matchBuild/BetterJoy_$matchBuild.zip"
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "version": "2.2.2",
+    "description": "Aliyundrive WebDav Service",
+    "homepage": "https://github.com/messense/aliyundrive-webdav",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v2.2.2/aliyundrive-webdav-v2.2.2.x86_64-pc-windows-msvc.zip",
+            "hash": "83109825c07b47e1c4fb743b410f33ec2ab07ec863f8dbda8b8d7e1a2684e67d"
+        },
+        "32bit": {
+            "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v2.2.2/aliyundrive-webdav-v2.2.2.i686-pc-windows-msvc.zip",
+            "hash": "549703a0f53d9689c34f75b9d6e9a636c8bd49983f1bd800218ef264ad6758b9"
+        },
+        "arm64": {
+            "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v2.2.2/aliyundrive-webdav-v2.2.2.x86_64-pc-windows-msvc.zip",
+            "hash": "83109825c07b47e1c4fb743b410f33ec2ab07ec863f8dbda8b8d7e1a2684e67d"
+        }
+    },
+    "bin": "aliyundrive-webdav.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v$version/aliyundrive-webdav-v$version.x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v$version/aliyundrive-webdav-v$version.i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.com/https://github.com/messense/aliyundrive-webdav/releases/download/v$version/aliyundrive-webdav-v$version.x86_64-pc-windows-msvc.zip"
+            }
+        }
+    }
+}

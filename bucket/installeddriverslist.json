@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/installed_drivers_list.html",
+    "checkver": "InstalledDriversList v(\\d+\\.\\d\\d)",
+    "version": "1.05",
+    "license": "freeware",
+    "description": "InstalledDriversList is a simple tool for Windows that lists all device drivers that are currently installed on your system. For every device driver, the following information is displayed: Driver Name, Display Name, Description, Startup Type, Driver type, Driver Group, Filename, File Size, Modified/Created Time of the driver file, and version information of the driver file. If the driver is currently running on Windows kernel, the following information is also displayed: Base Memory Address, End Address, Memory Size, and Load Count.",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/installeddriverslist-x64.zip",
+            "hash": "132499d347038f202def2774c9c15c9b025d5c47f3cfc64ebb1f2f033dfd8b81"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/installeddriverslist.zip",
+            "hash": "8129da3386a3a84d244b4d2248bd3e5f1ee992a02ae8a6dde537aee5f3567279"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/installeddriverslist-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/installeddriverslist.zip"
+            }
+        }
+    },
+    "bin": "InstalledDriversList.exe",
+    "shortcuts": [
+        [
+            "InstalledDriversList.exe",
+            "NirSoft\\InstalledDriversList - Lists installed device drivers"
+        ]
+    ]
+}
