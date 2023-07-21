@@ -69,9 +69,6 @@ jobs:
           .\update.ps1
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git checkout --orphan latest_branch
           git add --all
-          git commit -am "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")"
-          git branch -D master
-          git branch -m master
+          git commit -m "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")"
           git push -f origin master
