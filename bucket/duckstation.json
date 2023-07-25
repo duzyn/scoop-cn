@@ -1,5 +1,5 @@
 {
-    "version": "20230128-gc6a5727",
+    "version": "20230724-g2e8b637",
     "description": "A fast PlayStation 1 emulator for PC and Android",
     "homepage": "https://github.com/stenzek/duckstation/",
     "license": {
@@ -12,7 +12,7 @@
         "Learn more at: https://www.duckstation.org/wiki/BIOS"
     ],
     "url": "https://ghproxy.com/https://github.com/stenzek/duckstation/releases/download/latest/duckstation-windows-x64-release.zip",
-    "hash": "be682525515184c7cd829836014ea06569ea215930c4d796a25fd0b33cf06de9",
+    "hash": "f040b4036efa194ea5b02982b5e14d3db7f4b375210cd9bf81ab476600ee4275",
     "installer": {
         "script": [
             "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
@@ -22,9 +22,7 @@
         ]
     },
     "uninstaller": {
-        "script": [
-            "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
-        ]
+        "script": "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
     },
     "shortcuts": [
         [

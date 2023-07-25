@@ -1,20 +1,20 @@
 {
-    "version": "132",
+    "version": "133",
     "description": "Multi-system emulator focused on accuracy and preservation",
     "homepage": "https://ares-emu.net",
     "license": "ISC",
     "notes": "Configuration file cannot be persisted, but will be retained during the update",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v132/ares-windows-msvc-x64.zip",
-            "hash": "eb8a6eea23b5b20337083150e713830bc774fa1b4c948b6d89981e78a1e23a56"
+            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v133/ares-windows.zip",
+            "hash": "9d48b9c8f408287705dcdd1cf6904e7425f867e3664b2de94ddfc086878ad4a3"
         },
         "arm64": {
-            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v132/ares-windows-msvc-arm64.zip",
-            "hash": "6443527fd3f849ed83e6bda7e9df0c033a14352b8db669923ff7acfb586fb82a"
+            "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v133/ares-windows-msvc-arm64.zip",
+            "hash": "6ccee77f918ab3e5f00fd70efef38431dcb707ee1fd31ad72ff618aea53c25c6"
         }
     },
-    "extract_dir": "ares-v132",
+    "extract_dir": "ares-v133",
     "post_install": [
         "if (!(Test-Path \"$persist_dir\\settings.bml.bak\")) {",
         "   New-Item -ItemType File \"$dir\\settings.bml\" | Out-Null",
@@ -52,7 +52,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-x64.zip"
+                "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows.zip"
             },
             "arm64": {
                 "url": "https://ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-arm64.zip"
