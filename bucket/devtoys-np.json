@@ -1,10 +1,10 @@
 {
-    "version": "1.0.12.0",
+    "version": "1.0.13.0",
     "homepage": "https://devtoys.app/",
     "description": "A Swiss Army knife for developers.",
     "license": "MIT",
-    "url": "https://ghproxy.com/https://github.com/veler/DevToys/releases/download/v1.0.12.0/64360VelerSoftware.DevToys_1.0.12.0_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle",
-    "hash": "7d20dc954815e7ddc995a6b74f96e412599d23081fe9610b1c52d8628041ae49",
+    "url": "https://ghproxy.com/https://github.com/veler/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle",
+    "hash": "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3",
     "pre_install": [
         "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-Command', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\"); Start-Sleep -Seconds 2",
         "Remove-Item \"$dir\\setup.msixbundle\""
