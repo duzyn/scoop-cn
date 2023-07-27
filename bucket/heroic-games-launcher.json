@@ -1,18 +1,13 @@
 {
-    "version": "2.8.0",
+    "version": "2.9.1",
     "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
     "homepage": "https://heroicgameslauncher.com/",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.8.0/Heroic-2.8.0-Setup-x64.exe#/dl.7z",
-            "hash": "sha512:7a1ced5827e9de42aeed216d2b1db782336014f0d7caa819da3125b0ff200acd0a2374ce2c036961150ebe46364a0eef6493e6c67256d5060a8f6e8393c28b2a",
+            "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.9.1/Heroic-2.9.1-Setup-x64.exe#/dl.7z",
+            "hash": "sha512:35cb35c89fc934aebfa4d10a0ee34d4c82c5e5a9e52a7022f521a5aa391d797398035fb14e671c35ebe5c1c4f607e2479376b20b99fb7952390ffa869621dda5",
             "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
-        },
-        "arm64": {
-            "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.8.0/Heroic-2.8.0-Setup-arm64.exe#/dl.7z",
-            "hash": "sha512:e386676e58701943ab7b8ae71fc7383deba8e447a4be98856c9d6ef0ad22d38a6a2856579f82846b7154580057cbdc0a7a9fc8331433e768c7018a8721006081",
-            "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-arm64.7z\" \"$dir\" -Removal"
         }
     },
     "extract_dir": "$PLUGINSDIR",
@@ -29,9 +24,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-x64.exe#/dl.7z"
-            },
-            "arm64": {
-                "url": "https://ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-arm64.exe#/dl.7z"
             }
         },
         "hash": {
