@@ -10,7 +10,7 @@ if ($PSVersionTable.PSVersion.Major -lt 5) {
 }
 else {
     # 安装 Scoop
-    (Invoke-RestMethod https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1).Replace('"https://github.com', '"https://ghproxy.com/https://github.com') | Invoke-Expression
+    (Invoke-RestMethod https://ghproxy.com/https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1).Replace('"https://github.com', '"https://ghproxy.com/https://github.com') | Invoke-Expression
 }
 
 # 将 Scoop 的仓库源替换为代理的
