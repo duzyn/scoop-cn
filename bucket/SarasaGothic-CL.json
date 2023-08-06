@@ -1,10 +1,10 @@
 {
     "##": "Renaming .7z to .7z_ so that the archive will not be automatically extracted by Scoop.",
-    "version": "0.41.4",
+    "version": "0.41.5",
     "homepage": "https://github.com/be5invis/Sarasa-Gothic",
     "license": "OFL-1.1",
-    "url": "https://ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.41.4/sarasa-gothic-ttf-0.41.4.7z#/dl.7z_",
-    "hash": "9b91c01d2a2866e6251aa9ee3970c4b0850e2befda845fbcb03657f2d83956f1",
+    "url": "https://ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.41.5/sarasa-gothic-ttf-0.41.5.7z#/dl.7z_",
+    "hash": "4d2a87c5dcfd493628e3e46d6492df3486ceea15f2f7657d973b8fcbe8ab4b74",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Switches '*-cl-*.ttf' | Out-Null",
         "Remove-Item \"$dir\\dl.7z_\""
