@@ -1,13 +1,13 @@
 {
-    "version": "36.0",
+    "version": "37.0",
     "description": "Gadgets for Windows.",
     "homepage": "https://8gadgetpack.net/",
     "license": {
         "identifier": "Freeware",
         "url": "https://8gadgetpack.net/#FAQ"
     },
-    "url": "https://8gadgetpack.net/dl_360/8GadgetPackSetup.msi#/setup.msi_",
-    "hash": "62095954f3b534268f80d28bd6b0fe8f5a413eae6504ee558517acd9c479c273",
+    "url": "https://8gadgetpack.net/dl_370/8GadgetPackSetup.msi#/setup.msi_",
+    "hash": "821e33cf757bd01bec6703796c01726e6674b8de3bc1e7ea834318039e46909e",
     "installer": {
         "script": "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn') -Wait -Verb RunAs | Out-Null"
     },
