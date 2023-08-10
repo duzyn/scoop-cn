@@ -1,5 +1,5 @@
 {
-    "version": "19.19.0.0.0",
+    "version": "19.20.0.0.0",
     "description": "Additional header files and an example makefile for developing Oracle applications with Instant Client.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -9,15 +9,15 @@
     "depends": "oracle-instant-client19",
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/1919000/instantclient-sdk-windows.x64-19.19.0.0.0dbru.zip",
-            "hash": "7774b48ea5ff1f2b2b319098240fedb06942093b09da3c38873db4aa93506244"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1920000/instantclient-sdk-windows.x64-19.20.0.0.0dbru.zip",
+            "hash": "36cb0975f6dc5e0ed9bb6c3c25e67f0071361c70a95b206f009251cdee3e0caa"
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/1919000/instantclient-sdk-nt-19.19.0.0.0dbru.zip",
-            "hash": "fdb9975f10d5d1599e3b77209fbdff784f50530afe689b33715e8d20a4e43395"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1920000/instantclient-sdk-nt-19.20.0.0.0dbru.zip",
+            "hash": "6529d8301744dbfcf2ac950a23a35737e2ebda9df18792f76822cb217ac42c1e"
         }
     },
-    "extract_dir": "instantclient_19_19",
+    "extract_dir": "instantclient_19_20",
     "pre_install": [
         "$instantclient = currentdir 'oracle-instant-client19'",
         "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
