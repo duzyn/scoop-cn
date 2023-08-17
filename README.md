@@ -61,7 +61,7 @@ irm https://ghproxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/
 搜索应用：
 
 ```powershell
-scoop search scoop-cn/APPNAME
+scoop search APPNAME
 ```
 
 安装应用：
