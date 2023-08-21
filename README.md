@@ -31,6 +31,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 1. 本应用库包含 Scoop 的安装脚本，用于国内用户初次下载安装 Scoop。
 2. 本应用库同时包含了 Scoop 官方的十个应用库：main、extras、versions、nirsoft、sysinternals、php、nerd-fonts、nonportable、java、games（可使用命令 `scoop bucket known` 查看），用一个库包含了各家的库，用户不用在多个地方搜索应用。
 3. 本应用库把应用的下载地址替换成了国内可加速访问的地址，真正做到能更快更方便地下载和安装应用。
+4. 本应用库每天自动更新一次
 
 ## 前提条件
 
