@@ -18,14 +18,14 @@
     ],
     "persist": "portable_config",
     "checkver": {
-        "url": "https://api.github.com/repositories/101537172/releases",
-        "jsonpath": "$.[0].assets[0].name",
-        "regex": "mpv.net-(?<stable>v)?([\\d.-]+)(?<beta>-beta)?.zip"
+        "url": "https://api.github.com/repos/mpvnet-player/mpv.net/releases",
+        "jsonpath": "$..browser_download_url",
+        "regex": "download/v(?<tag>[\\d.]+(?<channel>-beta)?)/mpv.net-([\\d.]+)-beta.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/mpvnet-player/mpv.net/releases/download/v$version$matchBeta/mpv.net-$matchStable$version$matchBeta.zip"
+                "url": "https://ghproxy.com/https://github.com/mpvnet-player/mpv.net/releases/download/v$matchTag/mpv.net-$version-beta.zip"
             }
         }
     }

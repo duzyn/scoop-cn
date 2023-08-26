@@ -6,32 +6,32 @@
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "sha512:ad132d5777058e34ca50200779232f75cefc8b2924eb17f1b0b9b71cc4dd2675112048bc62dc43f693b2da7b9e2497bb8f732640701b35a1a8091bbe5469fdee",
+            "hash": "437401d7ebda2cd56cb25c13023730ebbebd011850768f3519191da669265a27",
             "extract_dir": "mingw64"
         },
         "32bit": {
             "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "sha512:9334b017c973876bbd1502652b16cbc9ca58cebf0f615c08d8fa4d76967300ddebcbd3162684bdfb4edfbb2f1c67864b8e06878d0c60c4a5766bf21513dbacf1",
+            "hash": "61f859c4a64f6f4c57ef5b83d6f9fdf08480cd6e0dbc0cc61575e3496621cb31",
             "extract_dir": "mingw32"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "regex": "GCC ([\\d.]+).*?LLVM.*?([\\d.]+).*?MinGW\\-w64 ([\\d.]+).*?UCRT.*?release ([\\d.]+).*?LATEST",
-        "replace": "${1}-${2}-${3}-r${4}"
+        "regex": "(?<gcc>[\\d.]+)-(?<llvm>[\\d.]+)-(?<mingw>[\\d.]+)-ucrt-r(?<release>\\d+)",
+        "replace": "${gcc}-${llvm}-${mingw}-r${release}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-ucrt-r$match4/winlibs-x86_64-posix-seh-gcc-$match1-llvm-$match2-mingw-w64ucrt-$match3-r$match4.7z"
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             },
             "32bit": {
-                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$match1-$match2-$match3-ucrt-r$match4/winlibs-i686-posix-dwarf-gcc-$match1-llvm-$match2-mingw-w64ucrt-$match3-r$match4.7z"
+                "url": "https://ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             }
         },
         "hash": {
-            "url": "$url.sha512"
+            "url": "$url.sha256"
         }
     }
 }
