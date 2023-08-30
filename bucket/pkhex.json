@@ -1,0 +1,46 @@
+{
+    "version": "23.08.23",
+    "description": "Pokémon core series save editor",
+    "license": "GPL-3.0-only",
+    "homepage": "https://projectpokemon.org/pkhex/",
+    "url": "https://ghproxy.com/https://github.com/kwsch/PKHeX/raw/master/Directory.Build.props",
+    "hash": "b1b18d6adc822e764924e24485d21714eeca9a643deaf795339cd2916ea312ad",
+    "shortcuts": [
+        [
+            "PKHeX.exe",
+            "PKHeX"
+        ]
+    ],
+    "bin": "PKHeX.exe",
+    "persist": [
+        "bak",
+        "cfg.json"
+    ],
+    "pre_install": [
+        "$user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36 Edg/115.0.1901.203'",
+        "$resp = Invoke-WebRequest -UseBasicParsing -UserAgent $user_agent -Uri 'https://projectpokemon.org/forums/files/file/1-pkhex/' -SessionVariable session",
+        "$url = [System.Net.WebUtility]::HtmlDecode(($resp.Links | Where-Object outerHTML -CMatch \"Download\\s+this\\s+file\" | Select-Object -ExpandProperty href))",
+        "$file = \"$original_dir\\dl.7z\"",
+        "Invoke-WebRequest -UseBasicParsing -UserAgent $user_agent -Uri $url -WebSession $session -OutFile $file",
+        "if (!(Test-Path \"$persist_dir\\cfg.json\")) { '{}' | Out-File \"$dir\\cfg.json\" }",
+        "if (!(Test-Path \"$dir\\bak\")) { New-Item -Path \"$dir\\bak\" -ItemType Directory | Out-Null }"
+    ],
+    "installer": {
+        "script": [
+            "$file = \"$dir\\dl.7z\"",
+            "Expand-7ZipArchive $file \"$dir\"",
+            "Remove-Item -Path $file -Force"
+        ]
+    },
+    "checkver": {
+        "script": [
+            "$resp = Invoke-WebRequest -UseBasicParsing -Uri 'https://projectpokemon.org/forums/files/file/1-pkhex/'",
+            "$version = (($resp.Links | Where-Object outerHTML -Match '\\d+(\\.\\d+){1,4}')[0].title -split '\\s' -match '^\\d+(\\.\\d+)+')[0]",
+            "Write-Output $version"
+        ],
+        "regex": "(?<version>[\\d\\.]+)"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.com/https://github.com/kwsch/PKHeX/raw/master/Directory.Build.props"
+    }
+}
