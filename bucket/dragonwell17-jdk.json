@@ -1,12 +1,12 @@
 {
     "description": "Alibaba Dragonwell, a downstream version of OpenJDK, is the in-house OpenJDK implementation at Alibaba",
-    "version": "17.0.3.0.3-17.0.3",
+    "version": "17.0.8.0.8-17.0.8",
     "homepage": "https://dragonwell-jdk.io/",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.3.0.3%2B7_jdk-17.0.3-ga/Alibaba_Dragonwell_17.0.3.0.3+7_x64_windows.zip",
-            "hash": "e9ddd27b24040d63c0663a11c8f7f100c8d2cca7461d4a19c36e12129f0ae8de"
+            "url": "https://ghproxy.com/https://github.com/dragonwell-project/dragonwell17/releases/download/dragonwell-standard-17.0.8.0.8%2B7_jdk-17.0.8-ga/Alibaba_Dragonwell_Standard_17.0.8.0.8.7_x64_windows.zip",
+            "hash": "b2ac7e30ae4f2ce8c0a272ee37f886ffc5a5b6e3e50e8653a1adacf79c0769d8"
         }
     },
     "extract_to": "tmp",
@@ -21,14 +21,14 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "github": "https://github.com/alibaba/dragonwell17",
-        "regex": "(?<tag>dragonwell-(?<dragon>[\\d.]+)(?<build>(?:\\%2B|\\+)?[\\d]*)?_jdk-(?<jdk>[\\d.]+)(?:(?<b>-[\\d+])|-ga))/(?<filename>Alibaba_Dragonwell_(?:[\\d.+]+)_x64_windows)\\.zip",
+        "github": "https://github.com/dragonwell-project/dragonwell17",
+        "regex": "(?<tag>dragonwell-standard-(?<dragon>[\\d.]+)(?<build>(?:\\%2B|\\+)?[\\d]*)?_jdk-(?<jdk>[\\d.]+)(?:(?<b>-[\\d+])|-ga))/(?<filename>Alibaba_Dragonwell_Standard_(?:[\\d.+]+)_x64_windows)\\.zip",
         "replace": "${dragon}-${jdk}${b}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/alibaba/dragonwell17/releases/download/$matchTag/$matchFilename.zip"
+                "url": "https://ghproxy.com/https://github.com/dragonwell-project/dragonwell17/releases/download/$matchTag/$matchFilename.zip"
             }
         },
         "hash": {
