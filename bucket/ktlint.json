@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "description": "An anti-bikeshedding Kotlin linter with built-in formatter",
-    "homepage": "https://github.com/shyiko/ktlint",
+    "homepage": "https://github.com/pinterest/ktlint/",
     "license": "MIT",
     "suggest": {
         "JDK": [
@@ -9,14 +9,11 @@
             "scoop-cn/openjdk"
         ]
     },
-    "url": "https://ghproxy.com/https://github.com/shyiko/ktlint/releases/download/1.0.0/ktlint#/ktlint.jar",
+    "url": "https://ghproxy.com/https://github.com/pinterest/ktlint/releases/download/1.0.0/ktlint#/ktlint.jar",
     "hash": "5d19ef51d198eecf1280fb167192ed1e1374c70eb9311abceb89207ad06481dd",
     "bin": "ktlint.jar",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/shyiko/ktlint/releases/download/$version/ktlint#/ktlint.jar",
-        "hash": {
-            "url": "$url.md5"
-        }
+        "url": "https://ghproxy.com/https://github.com/pinterest/ktlint/releases/download/$version/ktlint#/ktlint.jar"
     }
 }
