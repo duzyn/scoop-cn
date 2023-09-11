@@ -98,7 +98,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.nju.edu.cn/virtualbox' | Set-Content -Path $_.FullName
 
     # Wireshark
-    (Get-Content $_.FullName) -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark' | Set-Content -Path $_.FullName
 
     # Lunacy
     (Get-Content $_.FullName) -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' | Set-Content -Path $_.FullName
