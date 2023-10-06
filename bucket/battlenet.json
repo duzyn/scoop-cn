@@ -1,0 +1,38 @@
+{
+    "version": "nightly",
+    "description": "Blizzard's official games client.",
+    "homepage": "https://battle.net/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.blizzard.com/en-us/legal/"
+    },
+    "url": "https://us.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe#/setup.exe",
+    "pre_install": "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+    "installer": {
+        "script": [
+            "Start-Process \"$dir\\setup.exe\" --installpath=\"$dir\"",
+            "$StartDate = Get-Date",
+            "DO {$SetupProcess = Get-Process -name \"Battle.net-Setup\" -ErrorAction 'SilentlyContinue'} Until ($null -ne $SetupProcess -or $StartDate.AddSeconds(10) -lt (Get-Date))",
+            "if ($null -ne $SetupProcess) {Wait-Process -id $SetupProcess.Id}",
+            "$BattlenetProcess = Get-Process -Name \"Battle.net\" -ErrorAction 'SilentlyContinue'",
+            "if ($null -ne $BattlenetProcess) {Stop-Process $BattlenetProcess -Force -ErrorAction 'SilentlyContinue'} else {error \"Unable to $cmd $app\" successfully; break}"
+        ]
+    },
+    "pre_uninstall": [
+        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
+        "$BattleNetProcesses = Get-Process -Name \"Agent\", \"Battle.net\" -ErrorAction 'SilentlyContinue'",
+        "if ($null -ne $BattleNetProcesses) {error \"Make sure Battle.net nor Agent.exe are running before uninstalling.\"; break}"
+    ],
+    "post_uninstall": [
+        "$BattleNetLocal = \"$home\\AppData\\Local\\Battle.net\"",
+        "If (Test-Path $BattleNetLocal) {Remove-Item -Path \"$BattleNetLocal\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
+        "$BattleNetRoaming = \"$home\\AppData\\Roaming\\Battle.net\"",
+        "If (Test-Path $BattleNetRoaming) {Remove-Item -Path \"$BattleNetRoaming\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
+        "$BattleNetProgramData = \"$env:ALLUSERSPROFILE\\Battle.net\"",
+        "If (Test-Path -Path $BattleNetProgramData) {Remove-Item -Path \"$BattleNetProgramData\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
+        "$BattleNetStartMenu = \"$env:ALLUSERSPROFILE\\Microsoft\\Windows\\Start Menu\\Programs\\Battle.net*\"",
+        "If (Test-Path -Path $BattleNetStartMenu) {Remove-Item -Path \"$BattleNetStartMenu\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
+        "Remove-Item Registry::HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Battle.net -ErrorAction 'SilentlyContinue'",
+        "Remove-Item Registry::HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Battle.net -ErrorAction 'SilentlyContinue'"
+    ]
+}
