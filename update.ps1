@@ -102,6 +102,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # Lunacy
     (Get-Content $_.FullName) -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' | Set-Content -Path $_.FullName
+
+    # Strawberry
+    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghproxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
     
     # Scripts
     (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
