@@ -6,18 +6,28 @@
         "identifier": "Proprietary",
         "url": "https://support.gog.com/hc/en-us/articles/212632089"
     },
-    "suggest": {
-        "Microsoft Visual C++ Runtime 2015": "scoop-cn/vcredist2015"
-    },
-    "url": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/2.0.72.94/setup_galaxy_2.0.72.94.exe",
+    "url": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/2.0.72.94/setup_galaxy_2.0.72.94.exe#/setup.exe",
     "hash": "md5:023915e26edb5a8e7af250e966779479",
-    "innosetup": true,
+    "installer": {
+        "args": [
+            "/VERYSILENT",
+            "/DIR=$dir"
+        ]
+    },
     "shortcuts": [
         [
             "GalaxyClient.exe",
             "GOG Galaxy"
         ]
     ],
+    "persist": [
+        "Dependencies",
+        "Dependencies-Temp",
+        "Games"
+    ],
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\unins000.exe\" -Wait -ArgumentList \"/VERYSILENT\""
+    },
     "checkver": {
         "url": "https://remote-config.gog.com/components/webinstaller?component_version=2.0.0",
         "jsonpath": "$.content.windows.version"
