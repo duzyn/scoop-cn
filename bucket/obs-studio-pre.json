@@ -1,12 +1,12 @@
 {
-    "version": "29.0.0-beta3",
+    "version": "30.0.0-rc1",
     "description": "Video recording and live streaming software",
     "homepage": "https://obsproject.com",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/29.0.0-beta3/OBS-Studio-29.0-beta3-Full-x64.zip",
-            "hash": "55db88c8387b1454a737e6e3422616c93698aeea72ecfa5d1d2d3c355d42ba96",
+            "url": "https://ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/30.0.0-rc1/OBS-Studio-30.0-rc1.zip",
+            "hash": "542b2efd2d7005b5577fe948331017c6335fb26e92e3e226331c48317688389e",
             "shortcuts": [
                 [
                     "bin\\64bit\\obs64.exe",
@@ -21,14 +21,14 @@
         "portable_mode.txt"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/obsproject/obs-studio/releases",
-        "regex": "obs-studio/releases/download/([\\d.]+-(?:beta|rc)\\d*)/OBS-Studio-([\\d.]+-(?:beta|rc)\\d*)-Full-x64.zip",
-        "jp": "$.[*].assets.[*].browser_download_url"
+        "url": "https://api.github.com/repositories/13233158/releases",
+        "jsonpath": "$.[0].assets.browser_download_url",
+        "regex": "/([^/]+)/OBS-Studio-(?<trunced>[\\d.]+(?:-(?:rc|beta)\\d+)?)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$match1/OBS-Studio-$match2-Full-x64.zip"
+                "url": "https://ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$version/OBS-Studio-$matchTrunced.zip"
             }
         }
     }
