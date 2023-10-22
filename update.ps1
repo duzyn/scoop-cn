@@ -42,9 +42,12 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # GitHub Releases
     (Get-Content $_.FullName) -replace '(github\.com/.+/releases/download)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
 
+    # GitHub Archive
+    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
+
     # GitHub Raw
     (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(github\.com/.+/raw)', 'ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
 
     # SourceForge
     # (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'nchc.dl.sourceforge.net' | Set-Content -Path $_.FullName
