@@ -1,22 +1,22 @@
 {
-    "version": "2.0.13-2023-10-26",
+    "version": "2.0.13-2023-10-27",
     "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
     "homepage": "https://micro-editor.github.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.13-win64.zip",
-            "hash": "97dd58b595c0123ea2fd742e2290157a46a095437c6f33c0c2341883f901ca5e"
+            "hash": "df99578a95e4bd97d2ee53499eeb8c2a982bf7bcd4181f730ee40147ce239d82"
         },
         "32bit": {
             "url": "https://ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-2.0.13-win64.zip",
-            "hash": "97dd58b595c0123ea2fd742e2290157a46a095437c6f33c0c2341883f901ca5e"
+            "hash": "df99578a95e4bd97d2ee53499eeb8c2a982bf7bcd4181f730ee40147ce239d82"
         }
     },
     "extract_dir": "micro-2.0.13",
     "bin": "micro.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/zyedidia/micro/releases/tags/nightly",
+        "url": "https://api.github.com/repositories/53632140/releases/tags/nightly",
         "regex": "updated_at.+\"([\\d\\-]+)T.*micro-(?<micro>.+)-win",
         "replace": "${2}-${1}"
     },

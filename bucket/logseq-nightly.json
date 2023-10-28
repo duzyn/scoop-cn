@@ -1,12 +1,12 @@
 {
-    "version": "0.8.12-20221201",
+    "version": "0.9.19-20231027",
     "description": "A privacy-first platform for knowledge sharing and management",
     "homepage": "https://logseq.com",
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.8.12+nightly.20221201.exe#/dl.7z",
-            "hash": "f8583fe37203c63953d52f5fa0bbf1d97cfbff5978670c2cbc0e09141d013edf"
+            "url": "https://ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.9.19-alpha+nightly.20231027.exe#/dl.7z",
+            "hash": "b1141000b6fc95cebbfcf5a94e452a2ad051e3fb55958715809da0fddb401234"
         }
     },
     "pre_install": [
@@ -20,17 +20,18 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly",
-        "regex": "Logseq-win-x64-(?<main>[\\d.]+)\\+nightly\\.(?<date>\\d{8})",
+        "url": "https://api.github.com/repositories/266231149/releases/tags/nightly",
+        "jsonpath": "$.assets..name",
+        "regex": "Logseq-win-x64-(?<main>[\\d.]+)-alpha\\+nightly\\.(?<date>\\d{8})",
         "replace": "${main}-${date}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchMain+nightly.$matchDate.exe#/dl.7z",
+                "url": "https://ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchMain-alpha+nightly.$matchDate.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/SHA256SUMS.txt",
-                    "regex": "$sha256\\s{2}Logseq-win-x64-$matchMain\\+nightly\\.$matchDate\\.exe"
+                    "regex": "$sha256\\s{2}Logseq-win-x64-$matchMain-alpha\\+nightly\\.$matchDate\\.exe"
                 }
             }
         }

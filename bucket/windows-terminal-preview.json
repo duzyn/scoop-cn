@@ -68,7 +68,7 @@
     ],
     "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
     "checkver": {
-        "url": "https://api.github.com/repos/microsoft/terminal/releases",
+        "url": "https://api.github.com/repositories/100060912/releases",
         "jsonpath": "$[?(@.prerelease == true)].tag_name",
         "regex": "v([\\d.]+)"
     },

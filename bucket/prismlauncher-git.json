@@ -1,13 +1,13 @@
 {
-    "version": "7.0-38d77b5",
+    "version": "7.0-3719ea2",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
     "notes": "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this: \"$dir\\install-associations.reg\"",
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-38d77b5-Debug.zip",
-            "hash": "ebcffe79254235e79fea4d4af213777b6f60784a0ff9e18c7320ca59ab6db4db"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-3719ea2-Debug.zip",
+            "hash": "58265b169917aa7f9d1a325463f9ba02806df90dea93132a28fc4ac39c05c945"
         }
     },
     "suggest": {
@@ -31,9 +31,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/PrismLauncher/PrismLauncher/commits",
-        "jsonpath": "$..sha",
-        "regex": "(?<sha>^[a-fA-F0-9]{0,7})",
+        "url": "https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success",
+        "jsonpath": "$.workflow_runs[0].head_sha",
+        "regex": "(?<sha>\\A[a-f\\d]{0,7})",
         "replace": "7.0-${sha}"
     },
     "autoupdate": {

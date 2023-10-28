@@ -1,10 +1,10 @@
 {
-    "version": "15.0.1.239",
+    "version": "15.0.1.242",
     "description": "Screen capture, file sharing and productivity tool. (Dev. Version)",
     "homepage": "https://getsharex.com",
     "license": "GPL-3.0-only",
-    "url": "https://ghproxy.com/https://github.com/ShareX/DevBuilds/releases/download/v15.0.1.239/ShareX-15.0.1.239-portable.zip",
-    "hash": "dffde813831f32fcdddec0704288d3e7b1ca4c5fa1a8650fd1c24f50a3860e5d",
+    "url": "https://ghproxy.com/https://github.com/ShareX/DevBuilds/releases/download/v15.0.1.242/ShareX-15.0.1.242-portable.zip",
+    "hash": "c31dfea2f22ea3d9365d664534cb32e7692b55cca9afa4abf0d0d08f1029f7e5",
     "pre_install": "if (!(Test-Path \"$persist_dir\\PersonalPath.cfg\")) { New-Item \"$dir\\PersonalPath.cfg\" | Out-Null }",
     "bin": "ShareX.exe",
     "shortcuts": [
@@ -18,7 +18,7 @@
         "ShareX"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/ShareX/DevBuilds/releases",
+        "url": "https://api.github.com/repositories/538422110/releases",
         "jsonpath": "$..tag_name",
         "regex": "v([\\d.]+)"
     },

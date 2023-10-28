@@ -59,18 +59,16 @@
             "# matching from Extras bucket to avoid mangling FossHub mode in the script",
             "$url1 = 'https://ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/smplayer.json'",
             "$regex1 = 'smplayer-portable-([\\d.]+)-win32-qt([\\d.]+)\\.7z'",
-            "$cont = (Invoke-WebRequest $url1).Content | ConvertFrom-Json",
-            "if (!($cont.architecture.'32bit'.url -match $regex1)) { error \"Could not match '$regex1' on '$url1'\"; continue }",
+            "if ((Invoke-RestMethod $url1).architecture.'32bit'.url -notmatch $regex1) { error \"Could not match '$regex1' on '$url1'\"; continue }",
             "$smplayer_ver = $matches[1]; $smplayer_qtver = $matches[2]",
             "",
-            "$url2 = 'https://api.github.com/repos/smplayer-dev/smtube/releases/latest'",
-            "$regex2 = 'smtube-([\\d.]+)-win32-qt([\\d.]+)\\.exe'",
-            "$cont = (Invoke-WebRequest $url2).Content",
-            "if (!($cont -match $regex2)) { error \"Could not match '$regex2' on '$url2'\"; continue }",
+            "$url2 = 'https://api.github.com/repositories/347901241/releases/latest'",
+            "$regex2 = '\\bsmtube-([\\d.]+)-win32-qt([\\d.]+)\\.exe\\b'",
+            "if ((Invoke-RestMethod $url2).assets.name -join \"`n\" -notmatch $regex2) { error \"Could not match '$regex2' on '$url2'\"; continue }",
             "$smtube_ver = $matches[1]; $smtube_qtver = $matches[2]",
             "Write-Output $smplayer_ver $smplayer_qtver $smtube_ver  $smtube_qtver"
         ],
-        "regex": "(?<smplayerver>[\\d.]+) (?<smplayerqtver>[\\d.]+) (?<smtubever>[\\d.]+) (?<smtubeqtver>[\\d.]+)",
+        "regex": "\\A(?<smplayerver>[\\d.]+) (?<smplayerqtver>[\\d.]+) (?<smtubever>[\\d.]+) (?<smtubeqtver>[\\d.]+)\\Z",
         "replace": "${smplayerver}-smtube${smtubever}"
     },
     "autoupdate": {

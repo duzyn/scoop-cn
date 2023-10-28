@@ -27,7 +27,7 @@
     "pre_install": "if(!(Test-Path \"$dir\\profile.ps1\")) { New-Item \"$dir\\profile.ps1\" -ItemType File }",
     "persist": "profile.ps1",
     "checkver": {
-        "url": "https://api.github.com/repos/PowerShell/PowerShell/releases",
+        "url": "https://api.github.com/repositories/49609581/releases",
         "jsonpath": "$[?(@.prerelease == true)].tag_name",
         "regex": "v([\\w.-]+)"
     },
