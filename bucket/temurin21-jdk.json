@@ -1,23 +1,23 @@
 {
     "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
     "homepage": "https://adoptium.net",
-    "version": "17.0.9-9.1",
+    "version": "21.0.1-12.1",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.9+9.1/OpenJDK17U-jdk_x64_windows_hotspot_17.0.9_9.zip",
-            "hash": "d1b2bb5a074ba33a0cf4e84aa558f7a563b827f999a71c8e47bdb0dd02af6b9c"
+            "url": "https://ghproxy.com/https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.1+12/OpenJDK21U-jdk_x64_windows_hotspot_21.0.1_12.zip",
+            "hash": "36555fd6a1a628abf8063b7781309895a94680c13a0e620013ff44bfdc18d8bd"
         }
     },
-    "extract_dir": "jdk-17.0.9+9",
+    "extract_dir": "jdk-21.0.1+12",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://api.adoptium.net/v3/assets/feature_releases/17/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jdk&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
+        "url": "https://api.adoptium.net/v3/assets/feature_releases/21/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jdk&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
         "script": [
-            "$ver = (json_path $page $..version_data.semver).replace('+', '-')",
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('.LTS', '')",
             "$link = (json_path $page $..release_link).replace('%2B', '+')",
             "$name = json_path $page $..binaries[0].package.name",
             "Write-Output \"$ver $link $name\""

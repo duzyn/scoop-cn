@@ -1,0 +1,39 @@
+{
+    "description": "Alibaba Dragonwell, a downstream version of OpenJDK, is the in-house OpenJDK implementation at Alibaba (with extensive custom features optimized for cloud computing environments)",
+    "version": "8.16.17-8.0.382",
+    "homepage": "https://dragonwell-jdk.io/",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.com/https://github.com/dragonwell-project/dragonwell8/releases/download/dragonwell-extended-8.16.17_jdk8u382-ga/Alibaba_Dragonwell_Extended_8.16.17_x64_windows.zip",
+            "hash": "42f92a5ea4affdfa797f1efabe087929cacb958c2b339c3c3aa44f17406cc054"
+        }
+    },
+    "extract_to": "tmp",
+    "installer": {
+        "script": [
+            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+            "Remove-Item -Recurse \"$dir\\tmp\""
+        ]
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/dragonwell-project/dragonwell8",
+        "regex": "(dragonwell-standard-(?<dragon>[\\d.]+)_jdk8u(?<jdk>[\\d]+)(?:(?<b>-[\\d+])|-ga))",
+        "replace": "${dragon}-8.0.${jdk}${b}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.com/https://github.com/dragonwell-project/dragonwell8/releases/download/dragonwell-extended-$matchDragon_jdk8u$matchJdk-ga/Alibaba_Dragonwell_Extended_$matchDragon_x64_windows.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "regex": "$sha256"
+        }
+    }
+}

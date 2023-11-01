@@ -20,17 +20,17 @@
     },
     "env_add_path": "bin",
     "checkver": {
-        "url": "https://github.com/JetBrains/JetBrainsRuntime/releases",
-        "regex": "\\s(?<Version>[\\d_]+)-(?<Build>[\\w]+)\\.(?<Patch>[\\d]+)</h2>",
-        "replace": "${Version}-${Build}.${Patch}"
+        "url": "https://ghproxy.com/https://github.com/JetBrains/JetBrainsRuntime/raw/main/.github/README.md",
+        "regex": "\\[11_(?<Version>[\\d_]+)-(?<Build>[\\w]+)\\.(?<Patch>[\\d]+)]",
+        "replace": "11_${Version}-${Build}.${Patch}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_nomod-$matchVersion-windows-x64-$matchBuild.$matchPatch.tar.gz"
+                "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk_nomod-11_$matchVersion-windows-x64-$matchBuild.$matchPatch.tar.gz"
             },
             "32bit": {
-                "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbr-$matchVersion-windows-x86-$matchBuild.$matchPatch.tar.gz"
+                "url": "https://cache-redirector.jetbrains.com/intellij-jbr/jbrsdk-11_$matchVersion-windows-x86-$matchBuild.$matchPatch.tar.gz"
             }
         },
         "hash": {
