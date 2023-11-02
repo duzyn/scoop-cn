@@ -1,12 +1,11 @@
 {
     "version": "nightly",
-    "description": "The ultimate entertainment platform.",
+    "description": "Gaming hardware and software store by Valve Corporation",
     "homepage": "https://store.steampowered.com/",
     "license": {
         "identifier": "Freeware",
         "url": "https://store.steampowered.com/legal/"
     },
-    "notes": "Changing Steam library folder is HIGHLY recommended.",
     "url": "https://steamcdn-a.akamaihd.net/client/installer/SteamSetup.exe#/dl.7z",
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
     "uninstaller": {
@@ -17,8 +16,7 @@
     "shortcuts": [
         [
             "Steam.exe",
-            "Steam",
-            "-dev"
+            "Steam"
         ]
     ],
     "persist": [
