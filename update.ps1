@@ -40,14 +40,14 @@ Remove-Item -Path .\scoop-sysinternals -Recurse -Force
 
 Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # GitHub Releases
-    (Get-Content $_.FullName) -replace '(github\.com/.+/releases/download)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/releases/download)', 'gh-proxy.com/https://$1' | Set-Content -Path $_.FullName
 
     # GitHub Archive
-    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'gh-proxy.com/https://$1' | Set-Content -Path $_.FullName
 
     # GitHub Raw
-    (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'ghproxy.com/https://$1' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'gh-proxy.com/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'gh-proxy.com/https://$1'          | Set-Content -Path $_.FullName
 
     # SourceForge
     # (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'nchc.dl.sourceforge.net' | Set-Content -Path $_.FullName
@@ -79,7 +79,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' | Set-Content -Path $_.FullName
 
     # DBeaver
-    (Get-Content $_.FullName) -replace 'download\.dbeaver\.com/community', 'ghproxy.com/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'download\.dbeaver\.com/community', 'gh-proxy.com/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
     # 备用
     # (Get-Content $_.FullName) -replace 'download\.dbeaver\.com/community', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' | Set-Content -Path $_.FullName
 
@@ -89,7 +89,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
 
     # OBS Studio 2.7
-    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
 
     # GIMP
     (Get-Content $_.FullName) -replace 'download\.gimp\.org/mirror/pub', 'mirrors.aliyun.com/gimp' | Set-Content -Path $_.FullName
@@ -107,7 +107,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' | Set-Content -Path $_.FullName
 
     # Strawberry
-    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghproxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'gh-proxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
 
     #SumatraPDF
     (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
@@ -147,8 +147,8 @@ $TOR_BROWSER_32_URL         = $JSON1.assets.browser_download_url | Select-String
 Invoke-RestMethod "$TOR_BROWSER_64_URL" -Outfile .\torbrowser-install-win64.exe
 Invoke-RestMethod "$TOR_BROWSER_32_URL" -Outfile .\torbrowser-install-win32.exe
 
-$TOR_BROWSER_64_URL = $TOR_BROWSER_64_URL -replace '(github\.com/.+/releases/download)', 'ghproxy.com/https://$1'
-$TOR_BROWSER_32_URL = $TOR_BROWSER_32_URL -replace '(github\.com/.+/releases/download)', 'ghproxy.com/https://$1'
+$TOR_BROWSER_64_URL = $TOR_BROWSER_64_URL -replace '(github\.com/.+/releases/download)', 'gh-proxy.com/https://$1'
+$TOR_BROWSER_32_URL = $TOR_BROWSER_32_URL -replace '(github\.com/.+/releases/download)', 'gh-proxy.com/https://$1'
 
 $JSON2                           = Get-Content .\bucket\tor-browser.json | ConvertFrom-Json
 $JSON2.version                   = $TOR_BROWSER_LATEST_VERSION
@@ -159,8 +159,8 @@ $JSON2.architecture."32bit".hash = (Get-FileHash .\torbrowser-install-win32.exe 
 
 $JSON2 | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\tor-browser.json
 
-(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-win64-', 'https://ghproxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win64-$version/torbrowser-install-win64-' | Set-Content -Path .\bucket\tor-browser.json
-(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-'      , 'https://ghproxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win32-$version/torbrowser-install-'       | Set-Content -Path .\bucket\tor-browser.json
+(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-win64-', 'https://gh-proxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win64-$version/torbrowser-install-win64-' | Set-Content -Path .\bucket\tor-browser.json
+(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-'      , 'https://gh-proxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win32-$version/torbrowser-install-'       | Set-Content -Path .\bucket\tor-browser.json
 
 Remove-Item -Path .\torbrowser-install-win64.exe
 Remove-Item -Path .\torbrowser-install-win32.exe
