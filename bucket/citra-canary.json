@@ -1,13 +1,13 @@
 {
-    "version": "2673-20231103",
+    "version": "2674-20231104",
     "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
     "homepage": "https://citra-emu.org/",
     "license": {
         "identifier": "GPL-2.0",
         "url": "https://github.com/citra-emu/citra-canary/blob/master/license.txt"
     },
-    "url": "https://ghproxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-2673/citra-windows-msvc-20231103-b23eb1e.7z",
-    "hash": "58eeedad748a75db86a8c09293ef0d5ecfb977f37da82a9d314409138dec315a",
+    "url": "https://gh-proxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-2674/citra-windows-msvc-20231104-7e4d2d4.7z",
+    "hash": "6c1232c5454030e12f4891f7cb57e818608f807bfdcd3a47f08fad4f46cd10e8",
     "extract_dir": "canary-mingw",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\user\")) {",
@@ -46,6 +46,6 @@
         "replace": "${build}-${date}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+        "url": "https://gh-proxy.com/https://github.com/citra-emu/citra-canary/releases/download/canary-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
     }
 }

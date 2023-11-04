@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe",
+            "url": "https://gh-proxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe",
             "hash": "91b85a0953c1580f525f129cef9dd098aa5b5d2ca6351b1be494cfabae8c4d8d"
         }
     },
@@ -13,7 +13,7 @@
     "checkver": {
         "script": [
             "$executable = \"selenium-manager.exe\"",
-            "Invoke-WebRequest -URI \"https://ghproxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/$executable\" -OutFile $executable",
+            "Invoke-WebRequest -URI \"https://gh-proxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/$executable\" -OutFile $executable",
             "[array] $cmdOutput = Invoke-Expression \".\\$executable --version\"",
             "Remove-Item $executable",
             "$cmdOutput"
@@ -23,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
+                "url": "https://gh-proxy.com/https://github.com/SeleniumHQ/selenium/raw/trunk/common/manager/windows/selenium-manager.exe"
             }
         }
     }

@@ -5,11 +5,11 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/zulip/zulip-desktop/releases/download/v5.10.3/zulip-5.10.3-x64.nsis.7z",
+            "url": "https://gh-proxy.com/https://github.com/zulip/zulip-desktop/releases/download/v5.10.3/zulip-5.10.3-x64.nsis.7z",
             "hash": "sha512:e85f658d553647079674721266bb1ac8e2303f82cf789e77662dc540b7989b5236cc764d247da0bde2b9a156310e4cd2fe5bc78d0d34bd5d0aae1f6395861f06"
         },
         "32bit": {
-            "url": "https://ghproxy.com/https://github.com/zulip/zulip-desktop/releases/download/v5.10.3/zulip-5.10.3-ia32.nsis.7z",
+            "url": "https://gh-proxy.com/https://github.com/zulip/zulip-desktop/releases/download/v5.10.3/zulip-5.10.3-ia32.nsis.7z",
             "hash": "sha512:a3078246f81a1eeccaa3c55961bc90b38e4444bff307d100a84d0fa029a1a2f2efe2bc29790be9fb0a510d70f80bf6d9fe8ea71f78fb9bdf68f2860b81498bc6"
         }
     },
@@ -26,14 +26,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/zulip/zulip-desktop/releases/download/v$version/zulip-$version-x64.nsis.7z",
+                "url": "https://gh-proxy.com/https://github.com/zulip/zulip-desktop/releases/download/v$version/zulip-$version-x64.nsis.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "(?sm)x64.*?$base64"
                 }
             },
             "32bit": {
-                "url": "https://ghproxy.com/https://github.com/zulip/zulip-desktop/releases/download/v$version/zulip-$version-ia32.nsis.7z",
+                "url": "https://gh-proxy.com/https://github.com/zulip/zulip-desktop/releases/download/v$version/zulip-$version-ia32.nsis.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "(?sm)ia32.*?$base64"

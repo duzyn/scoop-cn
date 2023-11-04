@@ -6,7 +6,7 @@
         "identifier": "GPL-3.0-openssl-exception",
         "url": "https://github.com/Forkgram/tdesktop/blob/dev/LICENSE"
     },
-    "url": "https://ghproxy.com/https://github.com/Forkgram/tdesktop/releases/download/v4.11.3/Telegram.zip",
+    "url": "https://gh-proxy.com/https://github.com/Forkgram/tdesktop/releases/download/v4.11.3/Telegram.zip",
     "hash": "0a870453cc812ebb83cb60013ce25e9f24a262813f1bc56f9632f3d04cd87656",
     "pre_install": "if (Test-Path \"$persist_dir\\log.txt\") { Copy-Item \"$persist_dir\\log.txt\" \"$dir\\\" }",
     "pre_uninstall": "if (Test-Path \"$dir\\log.txt\") { Copy-Item \"$dir\\log.txt\" \"$persist_dir\\\" }",
@@ -28,6 +28,6 @@
         "github": "https://github.com/Forkgram/tdesktop"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/Forkgram/tdesktop/releases/download/v$version/Telegram.zip"
+        "url": "https://gh-proxy.com/https://github.com/Forkgram/tdesktop/releases/download/v$version/Telegram.zip"
     }
 }

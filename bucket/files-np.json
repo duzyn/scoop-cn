@@ -3,7 +3,7 @@
     "homepage": "https://files.community/",
     "description": "A modern file explorer that pushes the boundaries of the Windows platform.",
     "license": "MIT",
-    "url": "https://ghproxy.com/https://github.com/files-community/Files/releases/download/v2.4.40/Files.Package_2.4.40.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle",
+    "url": "https://gh-proxy.com/https://github.com/files-community/Files/releases/download/v2.4.40/Files.Package_2.4.40.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle",
     "hash": "7c183203db0244d853525f4b6ea77630256e4ecbb53f0a395b4b3fc596169278",
     "pre_install": [
         "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-C', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\")",
@@ -19,6 +19,6 @@
         "github": "https://github.com/files-community/Files"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/files-community/Files/releases/download/v$version/Files.Package_$version.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle"
+        "url": "https://gh-proxy.com/https://github.com/files-community/Files/releases/download/v$version/Files.Package_$version.0_x64_arm64_Sideload.msixbundle#/setup.msixbundle"
     }
 }

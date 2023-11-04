@@ -3,7 +3,7 @@
     "description": "Detects anime videos on computer and synchronizes progress with online services.",
     "homepage": "https://taiga.moe/",
     "license": "GPL-3.0-only",
-    "url": "https://ghproxy.com/https://github.com/erengy/taiga/releases/download/v1.4.0/TaigaSetup_1.4.0.exe#/dl.7z",
+    "url": "https://gh-proxy.com/https://github.com/erengy/taiga/releases/download/v1.4.0/TaigaSetup_1.4.0.exe#/dl.7z",
     "hash": "22556aff39f20a88bde4f0b944d886dd729810477b6b97dab39a0c9a60ad43e0",
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
     "bin": "Taiga.exe",
@@ -20,6 +20,6 @@
         "regex": "v([\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/erengy/taiga/releases/download/v$version/TaigaSetup_$version.exe#/dl.7z"
+        "url": "https://gh-proxy.com/https://github.com/erengy/taiga/releases/download/v$version/TaigaSetup_$version.exe#/dl.7z"
     }
 }

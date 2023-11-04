@@ -1,13 +1,13 @@
 {
-    "version": "2022-20231101",
+    "version": "2024-20231103",
     "description": "Emulator for Nintendo 3DS, capable of playing many of your favorite games",
     "homepage": "https://citra-emu.org/",
     "license": {
         "identifier": "GPL-2.0",
         "url": "https://github.com/citra-emu/citra-nightly/blob/master/license.txt"
     },
-    "url": "https://ghproxy.com/https://github.com/citra-emu/citra-nightly/releases/download/nightly-2022/citra-windows-msvc-20231101-ac9d72a.7z",
-    "hash": "411e654f71fef96fd34a7279d8b9e47e2e9b3db02947349aabd63ca6fcacb4ae",
+    "url": "https://gh-proxy.com/https://github.com/citra-emu/citra-nightly/releases/download/nightly-2024/citra-windows-msvc-20231103-b10f3d9.7z",
+    "hash": "7b1139700de1a33e405c40731d4f1cbd7939dee017b79e7e58851c5ccaa5837e",
     "extract_dir": "nightly-mingw",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\user\")) {",
@@ -37,6 +37,6 @@
         "replace": "${build}-${date}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/citra-emu/citra-nightly/releases/download/nightly-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
+        "url": "https://gh-proxy.com/https://github.com/citra-emu/citra-nightly/releases/download/nightly-$matchBuild/citra-windows-$matchEnv-$matchDate-$matchCommit.$matchZip"
     }
 }

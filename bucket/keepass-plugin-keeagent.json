@@ -4,7 +4,7 @@
     "homepage": "https://lechnology.com/software/keeagent/",
     "license": "GPL-2.0-only",
     "depends": "scoop-cn/keepass",
-    "url": "https://ghproxy.com/https://github.com/dlech/KeeAgent/releases/download/v0.13.5/KeeAgent_v0.13.5.zip",
+    "url": "https://gh-proxy.com/https://github.com/dlech/KeeAgent/releases/download/v0.13.5/KeeAgent_v0.13.5.zip",
     "hash": "1a11a884c8070c49d32e2d9f32ed11bb99f895fc4787b42e0c17201cc252cf75",
     "installer": {
         "script": "Copy-Item \"$dir\\KeeAgent.plgx\" \"$(appdir keepass $global)\\current\\Plugins\""
@@ -16,6 +16,6 @@
         "github": "https://github.com/dlech/KeeAgent"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/dlech/KeeAgent/releases/download/v$version/KeeAgent_v$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/dlech/KeeAgent/releases/download/v$version/KeeAgent_v$version.zip"
     }
 }

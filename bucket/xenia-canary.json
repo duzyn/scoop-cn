@@ -6,7 +6,7 @@
         "identifier": "BSD-3-Clause",
         "url": "https://github.com/xenia-canary/xenia-canary/blob/canary_pr/LICENSE"
     },
-    "url": "https://ghproxy.com/https://github.com/xenia-canary/xenia-canary/releases/download/a34944e/xenia_canary.zip",
+    "url": "https://gh-proxy.com/https://github.com/xenia-canary/xenia-canary/releases/download/a34944e/xenia_canary.zip",
     "hash": "b539be18008bd9e0477d8b2010b7586c3df1b18a378969d6adc8387d010eb13f",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
@@ -46,6 +46,6 @@
         "replace": "${year}${month}${day}${hour}${minute}${second}-${commit}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/xenia-canary/xenia-canary/releases/download/$matchCommit/xenia_canary.zip"
+        "url": "https://gh-proxy.com/https://github.com/xenia-canary/xenia-canary/releases/download/$matchCommit/xenia_canary.zip"
     }
 }

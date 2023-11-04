@@ -5,7 +5,7 @@
     "homepage": "https://github.com/yuk7/AlpineWSL",
     "license": "MIT",
     "notes": "Even when you are logging in as 'root', some operations (like service command) require Windows administrator privileges",
-    "url": "https://ghproxy.com/https://github.com/yuk7/AlpineWSL/releases/download/3.18.4-0/Alpine.zip",
+    "url": "https://gh-proxy.com/https://github.com/yuk7/AlpineWSL/releases/download/3.18.4-0/Alpine.zip",
     "hash": "beb08b0a34f4e88b4b6aab6e38c186c21b849a01cf8ce9aed38f6f24bbd4da8d",
     "post_install": [
         "$installable = $true",
@@ -49,6 +49,6 @@
         "regex": "/releases/tag/(?:v|V)?([\\d.]+(-\\d+)?)"
     },
     "autoupdate": {
-        "url": "https://ghproxy.com/https://github.com/yuk7/AlpineWSL/releases/download/$version/Alpine.zip"
+        "url": "https://gh-proxy.com/https://github.com/yuk7/AlpineWSL/releases/download/$version/Alpine.zip"
     }
 }

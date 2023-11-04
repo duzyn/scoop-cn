@@ -5,11 +5,11 @@
     "license": "Zlib",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.com/https://github.com/raysan5/raylib/releases/download/4.5.0/raylib-4.5.0_win64_mingw-w64.zip",
+            "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/4.5.0/raylib-4.5.0_win64_mingw-w64.zip",
             "hash": "739b449d0b3e79e8c59fc7fd6fd0d17f3d453498ebeb2d06b8aa6848fdeec5b7"
         },
         "32bit": {
-            "url": "https://ghproxy.com/https://github.com/raysan5/raylib/releases/download/4.5.0/raylib-4.5.0_win32_mingw-w64.zip",
+            "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/4.5.0/raylib-4.5.0_win32_mingw-w64.zip",
             "hash": "9c30d9af553da764d7965c73ea2d0c4a9de157d3190a37eb95506a686e0c3304"
         }
     },
@@ -18,7 +18,7 @@
         "Move-Item \"$dir\\raylib-*\\*\" \"$dir\" && Remove-Item \"$dir\\raylib-*\"",
         "# Configure pkg-config file with the library data.",
         "# Download raylib pkg-config file",
-        "Invoke-WebRequest -Uri https://ghproxy.com/https://raw.githubusercontent.com/raysan5/raylib/$version/raylib.pc.in -OutFile $dir\\raylib.pc.in",
+        "Invoke-WebRequest -Uri https://gh-proxy.com/https://raw.githubusercontent.com/raysan5/raylib/$version/raylib.pc.in -OutFile $dir\\raylib.pc.in",
         "# Create helper variables:",
         "$pc_in = \"$dir\\raylib.pc.in\"",
         "$pc_out = \"$dir\\lib\\pkgconfig\\raylib.pc\"",
@@ -86,10 +86,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win64_mingw-w64.zip"
+                "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win64_mingw-w64.zip"
             },
             "32bit": {
-                "url": "https://ghproxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win32_mingw-w64.zip"
+                "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win32_mingw-w64.zip"
             }
         }
     }
