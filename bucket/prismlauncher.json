@@ -37,7 +37,8 @@
         "        New-Item -Type File $dir/$_ | Out-Null",
         "    }",
         "}",
-        "Add-Content $dir/metacache '{}'"
+        "Add-Content $dir/metacache '{}'",
+        "Remove-Item $original_dir/prismlauncher_updater.exe"
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
