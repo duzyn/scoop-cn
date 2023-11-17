@@ -16,7 +16,7 @@
             "hash": "9387858f3a7a3110b15231467d93321b15ff79d8869118e030fb3571dfc7bf6e"
         }
     },
-    "depends": "sudo",
+    "depends": "scoop-cn/sudo",
     "installer": {
         "script": [
             "sudo \"$env:COMSPEC\" /c \"regsvr32 /s `\"$dir\\LAVAudio.ax`\" & regsvr32 /s `\"$dir\\LAVSplitter.ax`\" & regsvr32 /s `\"$dir\\LAVVideo.ax`\"\"",
