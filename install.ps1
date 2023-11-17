@@ -31,12 +31,12 @@ Invoke-RestMethod -Uri https://gh-proxy.com/https://raw.githubusercontent.com/du
 Invoke-RestMethod -Uri https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/install-file-associations.reg -OutFile "$env:USERPROFILE\scoop\buckets\scoop-cn\scripts\git\install-file-associations.reg"
 Invoke-RestMethod -Uri https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/uninstall-file-associations.reg -OutFile "$env:USERPROFILE\scoop\buckets\scoop-cn\scripts\git\uninstall-file-associations.reg"
 
-Invoke-RestMethod -Uri https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/aria2.json -OutFile "$env:USERPROFILE\scoop\buckets\scoop-cn\bucket\aria2.json"
+# Invoke-RestMethod -Uri https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/aria2.json -OutFile "$env:USERPROFILE\scoop\buckets\scoop-cn\bucket\aria2.json"
 
 # 安装时注意顺序是 7-Zip, Git, Aria2
 scoop install scoop-cn/7zip
 scoop install scoop-cn/git
-scoop install scoop-cn/aria2
+# scoop install scoop-cn/aria2
 
 # 将 Scoop 的 main 仓库源替换为代理的
 if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\main") {
@@ -52,7 +52,7 @@ if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\scoop-cn") {
 Write-Host "Adding scoop-cn bucket..."
 scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn
 
-Set-Location "$env:USERPROFILE\scoop\buckets\scoop-cn"
-git config pull.rebase true
+# Set-Location "$env:USERPROFILE\scoop\buckets\scoop-cn"
+# git config pull.rebase true
 
 Write-Host "scoop and scoop-cn was installed successfully!"
