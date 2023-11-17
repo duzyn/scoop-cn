@@ -109,10 +109,22 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # Strawberry
     (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'gh-proxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
 
-    #SumatraPDF
+    # SumatraPDF
     (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
 
-    
+    # Tor Browser, Tor
+    # 备用镜像
+    # https://tor.ybti.net/dist/
+    # https://mirror.freedif.org/TorProject/dist
+    # https://mirror.oldsql.cc/tor/dist/
+    # https://tor.zilog.es/dist/
+    # https://torproject.ph3x.at/dist/
+    # https://www.eprci.com/tor/dist/
+    # https://tor.calyxinstitute.org/dist/
+    # https://torproject.mirror.metalgamer.eu/dist/
+    # https://cyberside.net.ee/sibul/dist/
+    (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.ybti.net/dist' | Set-Content -Path $_.FullName
+
     # Scripts
     (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
 
@@ -137,31 +149,3 @@ $JSON | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\freedownloadmanager
 Remove-Item -Path .\fdm_x64_setup.exe
 Remove-Item -Path .\fdm_x86_setup.exe
 # End: Free Download Manager
-
-# Start: Tor Browser
-$JSON1                      = Invoke-RestMethod https://api.github.com/repos/TheTorProject/gettorbrowser/releases
-$TOR_BROWSER_LATEST_VERSION = "$($JSON1.tag_name | Select-String -Pattern 'win64-.*')".Split("-")[1]
-$TOR_BROWSER_64_URL         = $JSON1.assets.browser_download_url | Select-String -Pattern 'https://.+win64-.+_ALL\.exe$'
-$TOR_BROWSER_32_URL         = $JSON1.assets.browser_download_url | Select-String -Pattern 'https://.+win32-.+_ALL\.exe$'
-
-Invoke-RestMethod "$TOR_BROWSER_64_URL" -Outfile .\torbrowser-install-win64.exe
-Invoke-RestMethod "$TOR_BROWSER_32_URL" -Outfile .\torbrowser-install-win32.exe
-
-$TOR_BROWSER_64_URL = $TOR_BROWSER_64_URL -replace '(github\.com/.+/releases/download)', 'gh-proxy.com/https://$1'
-$TOR_BROWSER_32_URL = $TOR_BROWSER_32_URL -replace '(github\.com/.+/releases/download)', 'gh-proxy.com/https://$1'
-
-$JSON2                           = Get-Content .\bucket\tor-browser.json | ConvertFrom-Json
-$JSON2.version                   = $TOR_BROWSER_LATEST_VERSION
-$JSON2.architecture."64bit".url  = "$TOR_BROWSER_64_URL#/dl.7z"
-$JSON2.architecture."32bit".url  = "$TOR_BROWSER_32_URL#/dl.7z"
-$JSON2.architecture."64bit".hash = (Get-FileHash .\torbrowser-install-win64.exe -Algorithm SHA256).Hash.ToLower()
-$JSON2.architecture."32bit".hash = (Get-FileHash .\torbrowser-install-win32.exe -Algorithm SHA256).Hash.ToLower()
-
-$JSON2 | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\tor-browser.json
-
-(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-win64-', 'https://gh-proxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win64-$version/torbrowser-install-win64-' | Set-Content -Path .\bucket\tor-browser.json
-(Get-Content .\bucket\tor-browser.json) -replace 'https://dist\.torproject\.org/torbrowser/\$version/torbrowser-install-'      , 'https://gh-proxy.com/https://github.com/TheTorProject/gettorbrowser/releases/download/win32-$version/torbrowser-install-'       | Set-Content -Path .\bucket\tor-browser.json
-
-Remove-Item -Path .\torbrowser-install-win64.exe
-Remove-Item -Path .\torbrowser-install-win32.exe
-# End: Tor Browser
