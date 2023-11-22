@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "notes": "Don't forget to install the 'KeePassXC-Browser' extension: https://keepassxc.org/docs/keepassxc-browser-migration/",
     "depends": "scoop-cn/extras/keepass",
-    "url": "https://gh-proxy.com/https://github.com/smorks/keepassnatmsg/releases/download/v2.0.16/KeePassNatMsg-v2.0.16-binaries.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/smorks/keepassnatmsg/releases/download/v2.0.16/KeePassNatMsg-v2.0.16-binaries.zip",
     "hash": "c33ec77d3420f093385450917882dbad8cf9fafd5c91bacc021b641df4a9f83c",
     "installer": {
         "script": "Copy-Item \"$dir\\KeePassNatMsg\" \"$(appdir keepass $global)\\current\\Plugins\" -Recurse -Force"
@@ -15,6 +15,6 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/smorks/keepassnatmsg/releases/download/v$version/KeePassNatMsg-v$version-binaries.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/smorks/keepassnatmsg/releases/download/v$version/KeePassNatMsg-v$version-binaries.zip"
     }
 }

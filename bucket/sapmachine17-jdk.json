@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/SAP/SapMachine/releases/download//sapmachine-17.0.9/sapmachine-jdk-17.0.9_windows-x64_bin.zip",
+            "url": "https://mirror.ghproxy.com/https://github.com/SAP/SapMachine/releases/download//sapmachine-17.0.9/sapmachine-jdk-17.0.9_windows-x64_bin.zip",
             "hash": "7066ed52936f65d6e99def2ca1d70cf97eaf39d125f9c7f1bc23a1ff2303d468"
         }
     },
@@ -23,11 +23,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.zip"
             }
         },
         "hash": {
-            "url": "https://gh-proxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt",
+            "url": "https://mirror.ghproxy.com/https://github.com/SAP/SapMachine/releases/download/$matchSap.sha256.txt",
             "find": "^($sha256)\\s"
         },
         "extract_dir": "sapmachine-jdk-$matchVersion"

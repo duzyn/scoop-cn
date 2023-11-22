@@ -3,7 +3,7 @@
     "description": "Video game library manager and launcher with support for 3rd party libraries like Steam, GOG, Origin, Battle.net, ...",
     "homepage": "https://playnite.link",
     "license": "MIT",
-    "url": "https://gh-proxy.com/https://github.com/JosefNemec/Playnite/releases/download/10.20/Playnite1020.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/JosefNemec/Playnite/releases/download/10.20/Playnite1020.zip",
     "hash": "f49ef76c549949d8457507f874111122e150ccdde250a3c10c0da7f28628e9b8",
     "pre_install": [
         "Copy-Item \"$persist_dir\\config.json\" \"$dir\" -ErrorAction 'SilentlyContinue'",
@@ -48,6 +48,6 @@
         "github": "https://github.com/JosefNemec/Playnite"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/JosefNemec/Playnite/releases/download/$version/Playnite$cleanVersion.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/JosefNemec/Playnite/releases/download/$version/Playnite$cleanVersion.zip"
     }
 }

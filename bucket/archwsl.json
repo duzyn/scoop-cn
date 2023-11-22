@@ -5,7 +5,7 @@
     "homepage": "https://github.com/yuk7/ArchWSL",
     "license": "MIT",
     "notes": "Even when you are logging in as 'root', some operations (like service command) require Windows administrator privileges",
-    "url": "https://gh-proxy.com/https://github.com/yuk7/ArchWSL/releases/download/22.10.16.0/Arch.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/yuk7/ArchWSL/releases/download/22.10.16.0/Arch.zip",
     "hash": "6c9a819d34505fc0039ee628334226197dd17dbcbf07809ef4ed781ac587f191",
     "post_install": [
         "$installable = $true",
@@ -46,6 +46,6 @@
     "persist": "data",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/yuk7/ArchWSL/releases/download/$version/Arch.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/yuk7/ArchWSL/releases/download/$version/Arch.zip"
     }
 }

@@ -3,7 +3,7 @@
     "description": "Tool for writing an Raspberry Pi OS images to SD cards.",
     "homepage": "https://www.raspberrypi.org/software",
     "license": "Apache-2.0",
-    "url": "https://gh-proxy.com/https://github.com/raspberrypi/rpi-imager/releases/download/v1.8.3/imager-1.8.3.exe#/dl.7z",
+    "url": "https://mirror.ghproxy.com/https://github.com/raspberrypi/rpi-imager/releases/download/v1.8.3/imager-1.8.3.exe#/dl.7z",
     "hash": "ab1638727335cf9373ad6faa30c40b39963ccc98e3e61556999ff2b0fd8f9909",
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\uninst*\" -Recurse",
     "bin": "rpi-imager.exe",
@@ -17,6 +17,6 @@
         "github": "https://github.com/raspberrypi/rpi-imager"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/raspberrypi/rpi-imager/releases/download/v$version/imager-$version.exe#/dl.7z"
+        "url": "https://mirror.ghproxy.com/https://github.com/raspberrypi/rpi-imager/releases/download/v$version/imager-$version.exe#/dl.7z"
     }
 }

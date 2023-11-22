@@ -3,7 +3,7 @@
     "version": "0.42.6",
     "homepage": "https://github.com/be5invis/Sarasa-Gothic",
     "license": "OFL-1.1",
-    "url": "https://gh-proxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.42.6/sarasa-gothic-ttf-0.42.6.7z#/dl.7z_",
+    "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v0.42.6/sarasa-gothic-ttf-0.42.6.7z#/dl.7z_",
     "hash": "fb1961079b0e1128c18fa21f2a6cd889b8902febaa4277304de7ff2db9366cdc",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\dl.7z_\" \"$dir\" -Switches '*-j-*.ttf' | Out-Null",
@@ -91,6 +91,6 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v$version/sarasa-gothic-ttf-$version.7z#/dl.7z_"
+        "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v$version/sarasa-gothic-ttf-$version.7z#/dl.7z_"
     }
 }

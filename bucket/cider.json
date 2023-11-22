@@ -5,7 +5,7 @@
     "homepage": "https://cider.sh",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/ciderapp/cider-releases/releases/download/v1.6.0/Cider-Setup-winget-1.6.0.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/ciderapp/cider-releases/releases/download/v1.6.0/Cider-Setup-winget-1.6.0.exe#/dl.7z",
             "hash": "sha512:2bfe2b0071e592d78a5914fc93859646d9e385f2c94a3b4fc805908394f9a836424fabb42199af6c356c8fdddd2fe0a6d521a329239aad5f9546c85ed495c3d9"
         }
     },
@@ -27,7 +27,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/ciderapp/cider-releases/releases/download/v$version/Cider-Setup-winget-$version.exe#/dl.7z",
+                "url": "https://mirror.ghproxy.com/https://github.com/ciderapp/cider-releases/releases/download/v$version/Cider-Setup-winget-$version.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "sha512:\\s+$base64"

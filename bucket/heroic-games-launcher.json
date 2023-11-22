@@ -5,7 +5,7 @@
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.10.0/Heroic-2.10.0-Setup-x64.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.10.0/Heroic-2.10.0-Setup-x64.exe#/dl.7z",
             "hash": "sha512:f5ee7bb28d695f193b9a8d252f7544e0258a69add6a0e22fe4192b7ab0fdd03dd7ff5f0aa702a00dedf9ff9f4a75b6eda2e26e1f16380707be6a5e5af04fbe8f",
             "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
         }
@@ -23,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-x64.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v$version/Heroic-$version-Setup-x64.exe#/dl.7z"
             }
         },
         "hash": {
