@@ -25,7 +25,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 
 ## 本应用库介绍
 
-本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://gh-proxy.com/) 和 [GitHub Actions](https://github.com/features/actions) 。
+本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://mirror.ghproxy.com/) 和 [GitHub Actions](https://github.com/features/actions) 。
 
 特性有：
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装 Scoop：
 
 ```powershell
-irm https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
+irm https://mirror.ghproxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
 或使用 jsDelivr 的地址：
@@ -71,7 +71,7 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 1. 添加本仓库，运行命令
 
     ```powershell
-    scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn
+    scoop bucket add scoop-cn https://mirror.ghproxy.com/https://github.com/duzyn/scoop-cn
     ```
 
 2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行 scoop list 来检查替换成功。如果要批量修改，可以借助 grepWin 来写个正则表达式搜索替换这个值。
