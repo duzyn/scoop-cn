@@ -1,16 +1,16 @@
 {
-    "version": "3.181.31",
+    "version": "3.181.32",
     "description": "A safe place for your notes, thoughts, and life's work.",
     "homepage": "https://standardnotes.org/",
     "license": "AGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.181.31/standard-notes-3.181.31-win-x64.exe#/dl.7z",
-            "hash": "sha512:955dbeb985735c110bae5213e2c9419c15fc1dfd797d086e6ce939cc3256d3724d0234a88dfa05734de44d3fb3f574c1b30f458feeeab4b244ce65fe52f58c1c"
+            "url": "https://mirror.ghproxy.com/https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.181.32/standard-notes-3.181.32-win-x64.exe#/dl.7z",
+            "hash": "sha512:c1ce68bbda2d4a9a10a30c2b0ae0414bf52d29a22a4287699001509ac599bb2b7c6c218cffec2ead7e7c2e95c6d66163a96d7f5d106f58ffacdc22dbff444c3d"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.181.31/standard-notes-3.181.31-win-ia32.exe#/dl.7z",
-            "hash": "sha512:b159b4520742185b4b5e397acca83d51a60ff5407373c2cdc9ff1991d6917f1a827f99a018e101527ec5dd688a26eaa8e2b4a9dd8143dca1e133deb4a5cd48b3"
+            "url": "https://mirror.ghproxy.com/https://github.com/standardnotes/app/releases/download/@standardnotes/desktop@3.181.32/standard-notes-3.181.32-win-ia32.exe#/dl.7z",
+            "hash": "sha512:d8d183c8f81f0b68329f290a123ba0c61f86cd3717903515827a8affcfecda5528edaa17a19897a7fba3b756ecbdd84833b0aea6f342dd5d54386a900383c1ba"
         }
     },
     "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-$($architecture.Substring(0,2)).7z\" \"$dir\"",
