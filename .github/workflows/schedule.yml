@@ -67,6 +67,7 @@ jobs:
         shell: pwsh
         run: |
           .\update.ps1
+          echo "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")" >log
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add --all
