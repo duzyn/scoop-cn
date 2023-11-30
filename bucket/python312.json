@@ -1,46 +1,40 @@
 {
-    "version": "3.10.0rc2",
+    "version": "3.12.0",
     "description": "A programming language that lets you work quickly and integrate systems more effectively.",
     "homepage": "https://www.python.org/",
     "license": "Python-2.0",
     "notes": "Allow applications and third-party installers to find python by running: \"$dir\\install-pep-514.reg\"",
     "architecture": {
         "64bit": {
-            "url": [
-                "https://npmmirror.com/mirrors/python/3.10.0/python-3.10.0rc2-amd64.exe#/setup.exe",
-                "https://mirror.ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
-                "https://mirror.ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
-            ],
-            "hash": [
-                "md5:b49614e82253d9ffe3f75f35aefff7eb",
-                "c2611c8010979a47cdeea1af17d5061d8df40c5356fd8c2f3ba9492d516a99d1",
-                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
-            ]
+            "url": "https://npmmirror.com/mirrors/python/3.12.0/python-3.12.0-amd64.exe#/setup.exe",
+            "hash": "md5:32ab6a1058dfbde76951b7aa7c2335a6"
         },
         "32bit": {
-            "url": [
-                "https://npmmirror.com/mirrors/python/3.10.0/python-3.10.0rc2.exe#/setup.exe",
-                "https://mirror.ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/install-pep-514.reg",
-                "https://mirror.ghproxy.com/https://raw.githubusercontent.com/ScoopInstaller/Main/master/scripts/python/uninstall-pep-514.reg"
-            ],
-            "hash": [
-                "md5:acbd60da86d3cc001e9ccbe7366b51f9",
-                "c2611c8010979a47cdeea1af17d5061d8df40c5356fd8c2f3ba9492d516a99d1",
-                "d9309423b693ed63aea6b1fbfc0c34f16842cdca22a1b3edef283b87567a53b9"
-            ]
+            "url": "https://npmmirror.com/mirrors/python/3.12.0/python-3.12.0.exe#/setup.exe",
+            "hash": "md5:de59862985bf7afa639f2e4f9e2a722c"
+        },
+        "arm64": {
+            "url": "https://npmmirror.com/mirrors/python/3.12.0/python-3.12.0-arm64.exe#/setup.exe",
+            "hash": "md5:230c703e3b8b3d92765d118afa7b2f78"
         }
     },
     "pre_install": [
         "$py_root = \"$dir\".Replace('\\', '\\\\')",
+        "$py_archLabel = '64-bit'",
         "$bit = '64'",
-        "if ($architecture -eq '32bit') { $bit = '32' }",
+        "if ($architecture -eq '32bit') {",
+        "    $py_archLabel = '32-bit'",
+        "    $bit = '32'",
+        "}",
+        "if ($architecture -eq 'arm64') { $py_archLabel = 'ARM64' }",
         "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
         "    $py_version = ($version -split '\\.')[0..1] -join '.'",
-        "    $content = Get-Content \"$dir\\$_\"",
+        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\python\\$_\"",
         "    $content = $content.Replace('$py_root', $py_root)",
         "    $content = $content.Replace('$py_version', $py_version)",
         "    $content = $content.Replace('$py_fullversion', $version)",
         "    $content = $content.Replace('$py_cleanVersion', $version -replace '\\.')",
+        "    $content = $content.Replace('$py_archLabel', $py_archLabel)",
         "    $content = $content.Replace('$py_arch', \"$bit\")",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
@@ -54,7 +48,11 @@
             "@('path.msi', 'pip.msi') | ForEach-Object {",
             "    Remove-Item \"$dir\\_tmp\\AttachedContainer\\$_\"",
             "}",
-            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object { Expand-MsiArchive $_ \"$dir\" }",
+            "(Get-ChildItem \"$dir\\_tmp\\AttachedContainer\\*.msi\").FullName | ForEach-Object {",
+            "    # appendpath.msi does not contain any file, which causes 'msiexec /a' to fail",
+            "    if($((Get-Item $_).Basename) -eq 'appendpath') { return }",
+            "    Expand-MsiArchive $_ \"$dir\" ",
+            "}",
             "Remove-Item \"$dir\\_tmp\", \"$dir\\setup.exe\" -Force -Recurse",
             "if ($global) {",
             "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
@@ -64,7 +62,34 @@
     },
     "post_install": [
         "python -E -s -m ensurepip -U --default-pip | Out-Null",
-        "Write-Output \"`e[0m\" # Reset ansi to prevent color leak from installer"
+        "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
+    ],
+    "env_add_path": [
+        "Scripts",
+        "."
+    ],
+    "bin": [
+        [
+            "python.exe",
+            "python3"
+        ],
+        [
+            "python.exe",
+            "python311"
+        ],
+        "Lib\\idlelib\\idle.bat",
+        [
+            "Lib\\idlelib\\idle.bat",
+            "idle3"
+        ],
+        [
+            "Lib\\idlelib\\idle.bat",
+            "idle311"
+        ]
+    ],
+    "persist": [
+        "Scripts",
+        "Lib\\site-packages"
     ],
     "uninstaller": {
         "script": [
@@ -74,44 +99,20 @@
             "}"
         ]
     },
-    "bin": [
-        [
-            "python.exe",
-            "python3"
-        ],
-        [
-            "python.exe",
-            "python39"
-        ],
-        "Lib\\idlelib\\idle.bat",
-        [
-            "Lib\\idlelib\\idle.bat",
-            "idle3"
-        ],
-        [
-            "Lib\\idlelib\\idle.bat",
-            "idle39"
-        ]
-    ],
-    "env_add_path": [
-        "Scripts",
-        "."
-    ],
-    "persist": [
-        "Scripts",
-        "Lib\\site-packages"
-    ],
     "checkver": {
         "url": "https://www.python.org/downloads/windows/",
-        "regex": "(?sm)Pre-releases.*?python-(3\\.10\\.\\d+(?:a|b|rc)[\\d]+)-"
+        "regex": "python-(3\\.12\\.[\\d.]+)-"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://npmmirror.com/mirrors/python/$matchHead/python-$version-amd64.exe#/setup.exe"
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version-amd64.exe#/setup.exe"
             },
             "32bit": {
-                "url": "https://npmmirror.com/mirrors/python/$matchHead/python-$version.exe#/setup.exe"
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version-arm64.exe#/setup.exe"
             }
         },
         "hash": {

@@ -12,6 +12,10 @@
         "32bit": {
             "url": "https://npmmirror.com/mirrors/python/3.11.6/python-3.11.6.exe#/setup.exe",
             "hash": "md5:041b1030be54ef78fd4c3a01ccb26267"
+        },
+        "arm64": {
+            "url": "https://npmmirror.com/mirrors/python/3.11.6/python-3.11.6-arm64.exe#/setup.exe",
+            "hash": "md5:34333bf5eb5fbd7a5eba5aa272b4e0ac"
         }
     },
     "pre_install": [
@@ -60,14 +64,10 @@
         "python -E -s -m ensurepip -U --default-pip | Out-Null",
         "Write-Output \"$([char]0x1b)[0m\" # Reset ansi to prevent color leak from installer"
     ],
-    "uninstaller": {
-        "script": [
-            "if ($global) {",
-            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
-            "    env 'PATHEXT' $true \"$pathext\"",
-            "}"
-        ]
-    },
+    "env_add_path": [
+        "Scripts",
+        "."
+    ],
     "bin": [
         [
             "python.exe",
@@ -87,14 +87,18 @@
             "idle311"
         ]
     ],
-    "env_add_path": [
-        "Scripts",
-        "."
-    ],
     "persist": [
         "Scripts",
         "Lib\\site-packages"
     ],
+    "uninstaller": {
+        "script": [
+            "if ($global) {",
+            "    $pathext = (env 'PATHEXT' $true) -replace ';.PYW?', ''",
+            "    env 'PATHEXT' $true \"$pathext\"",
+            "}"
+        ]
+    },
     "checkver": {
         "url": "https://www.python.org/downloads/windows/",
         "regex": "python-(3\\.11\\.[\\d.]+)-"
@@ -106,6 +110,9 @@
             },
             "32bit": {
                 "url": "https://npmmirror.com/mirrors/python/$version/python-$version.exe#/setup.exe"
+            },
+            "arm64": {
+                "url": "https://npmmirror.com/mirrors/python/$version/python-$version-arm64.exe#/setup.exe"
             }
         },
         "hash": {
