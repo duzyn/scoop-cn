@@ -112,6 +112,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # SumatraPDF
     (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
 
+    #WinSCP
+    (Get-Content $_.FullName) -replace 'https://downloads\.sourceforge\.net/.+/WinSCP-', 'https://winscp.net/download/WinSCP-' | Set-Content -Path $_.FullName
+
     # Tor Browser, Tor
     # 备用镜像
     # https://tor.ybti.net/dist/
