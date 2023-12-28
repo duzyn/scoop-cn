@@ -1,19 +1,15 @@
 {
-    "version": "9.3.0-canary01",
-    "description": "Complete API development environment.",
-    "homepage": "https://www.getpostman.com/",
+    "version": "10.19.15-canary231101-0730",
+    "description": "Complete API development environment (canary version)",
+    "homepage": "https://www.postman.com/",
     "license": {
         "identifier": "Freeware",
-        "url": "https://www.getpostman.com/licenses/postman_eula"
+        "url": "https://www.postman.com/legal/terms/"
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.pstmn.io/download/9.3.0-canary01/PostmanCanary-win64-9.3.0-canary01-full.nupkg#/dl.7z",
-            "hash": "sha1:e75eba44e07d47468eb5216ba9841145e40e67e1"
-        },
-        "32bit": {
-            "url": "https://dl.pstmn.io/download/9.3.0-canary01/PostmanCanary-win32-9.3.0-canary01-full.nupkg#/dl.7z",
-            "hash": "sha1:82c8b0398e5a881a95e597bfbda11f2241c1885c"
+            "url": "https://dl.pstmn.io/download/10.19.15-canary231101-0730/PostmanCanary-win64-10.19.15-canary231101-0730-full.nupkg",
+            "hash": "sha1:affff7b54cdd3f2c50135f34f530ecc56cc4aaa7"
         }
     },
     "extract_dir": "lib\\net45",
@@ -31,16 +27,9 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.pstmn.io/download/$version/PostmanCanary-win64-$version-full.nupkg#/dl.7z",
+                "url": "https://dl.pstmn.io/download/$version/PostmanCanary-win64-$version-full.nupkg",
                 "hash": {
-                    "url": "https://dl.pstmn.io/RELEASES?platform=win64&channel=canary",
-                    "jsonpath": "$.releases[*].files[?(@.name=='$basename')].hash"
-                }
-            },
-            "32bit": {
-                "url": "https://dl.pstmn.io/download/$version/PostmanCanary-win32-$version-full.nupkg#/dl.7z",
-                "hash": {
-                    "url": "https://dl.pstmn.io/RELEASES?platform=win32&channel=canary",
+                    "url": "https://dl.pstmn.io/RELEASES?platform=win64&channel=canary&from=$version",
                     "jsonpath": "$.releases[*].files[?(@.name=='$basename')].hash"
                 }
             }
