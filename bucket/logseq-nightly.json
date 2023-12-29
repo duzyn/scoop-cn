@@ -1,37 +1,33 @@
 {
-    "version": "0.10.2-20231223",
+    "version": "0.10.3-20231228",
     "description": "A privacy-first platform for knowledge sharing and management",
     "homepage": "https://logseq.com",
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.10.2-alpha+nightly.20231223.exe#/dl.7z",
-            "hash": "ef62127073ff3aecbfdc2fe58d98464a69e51214b89460d1640607950f757485"
+            "url": "https://mirror.ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-0.10.3-alpha+nightly.20231228.zip",
+            "hash": "969324e2f0bb6ba0b14e94afe02bcb3af54ada73eb86a2db1d4eaad098a8729e"
         }
     },
-    "pre_install": [
-        "Expand-7ZipArchive \"$dir\\Logseq-*-full.nupkg\" -ExtractDir 'lib\\net45' -Removal",
-        "Remove-Item \"$dir\\lib\", \"$dir\\Update*\", \"$dir\\*.gif\", \"$dir\\*.ico\", \"$dir\\RELEASES*\" -Recurse"
-    ],
     "shortcuts": [
         [
             "Logseq.exe",
-            "Logseq"
+            "Logseq (Nightly)"
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/266231149/releases/tags/nightly",
-        "jsonpath": "$.assets..name",
-        "regex": "Logseq-win-x64-(?<main>[\\d.]+)-alpha\\+nightly\\.(?<date>\\d{8})",
-        "replace": "${main}-${date}"
+        "url": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly",
+        "jsonpath": "$.assets..browser_download_url",
+        "regex": "Logseq-darwin-x64-(?<version>[\\d.]+)-alpha%2Bnightly.(?<date>\\d+).zip",
+        "replace": "${version}-${date}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchMain-alpha+nightly.$matchDate.exe#/dl.7z",
+                "url": "https://mirror.ghproxy.com/https://github.com/logseq/logseq/releases/download/nightly/Logseq-win-x64-$matchVersion-alpha+nightly.$matchDate.zip",
                 "hash": {
                     "url": "$baseurl/SHA256SUMS.txt",
-                    "regex": "$sha256\\s{2}Logseq-win-x64-$matchMain-alpha\\+nightly\\.$matchDate\\.exe"
+                    "regex": "$sha256\\s+Logseq-win-x64.*\\.zip"
                 }
             }
         }
