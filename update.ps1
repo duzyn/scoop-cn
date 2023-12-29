@@ -50,7 +50,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'mirror.ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
 
     # SourceForge
-    # (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'nchc.dl.sourceforge.net' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(downloads\.sourceforge\.net)', 'jaist.$1' | Set-Content -Path $_.FullName
+    # Or
+    (Get-Content $_.FullName) -replace '(downloads\.sourceforge\.net)', 'zenlayer.$1' | Set-Content -Path $_.FullName
 
     # KDE Apps
     (Get-Content $_.FullName) -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' | Set-Content -Path $_.FullName
