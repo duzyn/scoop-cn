@@ -6,7 +6,7 @@
     "suggest": {
         "Python": "python"
     },
-    "url": "https://jaist.zenlayer.downloads.sourceforge.net/project/scons/scons-local/4.6.0/scons-local-4.6.0.zip",
+    "url": "https://jaist.downloads.sourceforge.net/project/scons/scons-local/4.6.0/scons-local-4.6.0.zip",
     "hash": "sha1:00c0f8701469a761e37f0dcae301c011916c06ad",
     "pre_install": "echo \"python `\"$dir\\scons.py`\" @args\" | out-file \"$dir\\scons.ps1\"",
     "bin": "scons.ps1",
@@ -15,6 +15,6 @@
         "regex": "<strong>The current production release</strong> of SCons is <strong>([\\w.]+)</strong>"
     },
     "autoupdate": {
-        "url": "https://jaist.zenlayer.downloads.sourceforge.net/project/scons/scons-local/$version/scons-local-$version.zip"
+        "url": "https://jaist.downloads.sourceforge.net/project/scons/scons-local/$version/scons-local-$version.zip"
     }
 }
