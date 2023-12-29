@@ -52,7 +52,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # SourceForge
     (Get-Content $_.FullName) -replace '(downloads\.sourceforge\.net)', 'jaist.$1' | Set-Content -Path $_.FullName
     # Or
-    (Get-Content $_.FullName) -replace '(downloads\.sourceforge\.net)', 'zenlayer.$1' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace '(downloads\.sourceforge\.net)', 'zenlayer.$1' | Set-Content -Path $_.FullName
 
     # KDE Apps
     (Get-Content $_.FullName) -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' | Set-Content -Path $_.FullName
