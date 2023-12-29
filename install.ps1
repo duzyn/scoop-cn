@@ -4,14 +4,8 @@
 # 需先以管理员权限打开系统自带的 Powershell，设置脚本运行权限
 # Set-Executionpolicy -ExecutionPolicy RemoteSigned -Scope Currentuser
 
-if ($PSVersionTable.PSVersion.Major -lt 5) {
-    # Windows 7 上的 Powershell 版本低于 5，需要先额外安装 WMF 5.1
-    Write-Host "Powershell version should be greater than 5.1"
-}
-else {
-    # 安装 Scoop
-    (Invoke-RestMethod https://mirror.ghproxy.com/https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1).Replace('"https://github.com', '"https://mirror.ghproxy.com/https://github.com') | Invoke-Expression
-}
+# 安装 Scoop
+(Invoke-RestMethod https://mirror.ghproxy.com/https://raw.githubusercontent.com/scoopinstaller/install/master/install.ps1).Replace('"https://github.com', '"https://mirror.ghproxy.com/https://github.com') | Invoke-Expression
 
 # 将 Scoop 的仓库源替换为代理的
 scoop config scoop_repo https://mirror.ghproxy.com/https://github.com/ScoopInstaller/Scoop
@@ -38,19 +32,17 @@ scoop install scoop-cn/7zip
 scoop install scoop-cn/git
 # scoop install scoop-cn/aria2
 
-# 将 Scoop 的 main 仓库源替换为代理的
-if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\main") {
-    scoop bucket rm main
-}
-Write-Host "Adding main bucket..."
-scoop bucket add main https://mirror.ghproxy.com/https://github.com/ScoopInstaller/Main
-
 # scoop-cn 库还不是 Git 仓库，删掉后，重新添加 Git 仓库
 if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\scoop-cn") {
     scoop bucket rm scoop-cn
 }
 Write-Host "Adding scoop-cn bucket..."
 scoop bucket add scoop-cn https://mirror.ghproxy.com/https://github.com/duzyn/scoop-cn
+
+# 删除 Scoop 的 main 仓库
+if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\main") {
+    scoop bucket rm main
+}
 
 # Set-Location "$env:USERPROFILE\scoop\buckets\scoop-cn"
 # git config pull.rebase true
