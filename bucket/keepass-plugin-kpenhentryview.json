@@ -4,7 +4,7 @@
     "homepage": "https://sourceforge.net/projects/kpenhentryview/",
     "license": "GPL-3.0-only",
     "depends": "scoop-cn/extras/keepass",
-    "url": "https://jaist.downloads.sourceforge.net/project/kpenhentryview/v2.5.1/KPEnhancedEntryView-v2.5.1.zip",
+    "url": "https://jaist.dl.sourceforge.net/project/kpenhentryview/v2.5.1/KPEnhancedEntryView-v2.5.1.zip",
     "hash": "sha1:735ab0836e471159a953a979a01b5d0482e6ca70",
     "installer": {
         "script": "Copy-Item \"$dir\\KPEnhancedEntryView.plgx\" \"$(appdir keepass $global)\\current\\Plugins\""
@@ -17,6 +17,6 @@
         "regex": "KPEnhancedEntryView-v([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://jaist.downloads.sourceforge.net/project/kpenhentryview/v$version/KPEnhancedEntryView-v$version.zip"
+        "url": "https://jaist.dl.sourceforge.net/project/kpenhentryview/v$version/KPEnhancedEntryView-v$version.zip"
     }
 }

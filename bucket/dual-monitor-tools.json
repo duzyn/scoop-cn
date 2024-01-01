@@ -3,7 +3,7 @@
     "description": "Set of utilities for managing multiple monitor setups.",
     "homepage": "http://dualmonitortool.sourceforge.net/",
     "license": "GPL-3.0-only",
-    "url": "https://jaist.downloads.sourceforge.net/project/dualmonitortool/dualmonitortool/2.10/DualMonitorTools-2.10.zip",
+    "url": "https://jaist.dl.sourceforge.net/project/dualmonitortool/dualmonitortool/2.10/DualMonitorTools-2.10.zip",
     "hash": "sha1:4efdfa7ccad0602ad2190eac0cb1c28a9d1b0063",
     "pre_install": [
         "if (-not (Test-Path \"$persist_dir\\DmtMagicWords.xml\")) { New-Item \"$dir\\DmtMagicWords.xml\" -ItemType File | Out-Null }",
@@ -22,6 +22,6 @@
     ],
     "checkver": "Dual Monitor Tools is ([\\d.]+)",
     "autoupdate": {
-        "url": "https://jaist.downloads.sourceforge.net/project/dualmonitortool/dualmonitortool/$version/DualMonitorTools-$version.zip"
+        "url": "https://jaist.dl.sourceforge.net/project/dualmonitortool/dualmonitortool/$version/DualMonitorTools-$version.zip"
     }
 }

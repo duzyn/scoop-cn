@@ -3,7 +3,7 @@
     "description": "Commander-style console audio player.",
     "homepage": "https://mpxplay.sourceforge.net",
     "license": "Unknown",
-    "url": "https://jaist.downloads.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v1.67/mpxp167w.zip",
+    "url": "https://jaist.dl.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v1.67/mpxp167w.zip",
     "hash": "sha1:8a4dab261432807ffabeaf5451b52492842c794d",
     "pre_install": "if (!(Test-Path \"$persist_dir\\MPXPTABS.INI\")) { New-Item \"$dir\\MPXPTABS.INI\" | Out-Null }",
     "bin": "mpxplay.exe",
@@ -13,6 +13,6 @@
     ],
     "checkver": "Mpxplay v([\\d.]+) small",
     "autoupdate": {
-        "url": "https://jaist.downloads.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v$version/mpxp$cleanVersionw.zip"
+        "url": "https://jaist.dl.sourceforge.net/project/mpxplay/Mpxplay/Mpxplay%20v$version/mpxp$cleanVersionw.zip"
     }
 }
