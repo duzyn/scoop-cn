@@ -7,7 +7,7 @@
     "suggest": {
         "vimtutor": "vimtutor"
     },
-    "url": "https://mirrors.ustc.edu.cn/vim/pc//gvim90.exe#/dl.7z",
+    "url": "https://mirrors.ustc.edu.cn/vim/pc/gvim90.exe#/dl.7z",
     "hash": "57a5b0d3e42695eaeca962364cde3f257227e967436821b81c19434bf4e1042c",
     "extract_dir": "$0",
     "pre_install": [
@@ -96,11 +96,11 @@
         ]
     ],
     "checkver": {
-        "url": "https://mirrors.ustc.edu.cn/vim/pc/",
+        "url": "https://mirrors.ustc.edu.cn/vim/pc",
         "regex": "gvim(?<ver>[\\d-]+)\\.exe\\s+V([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://mirrors.ustc.edu.cn/vim/pc//gvim$matchVer.exe#/dl.7z",
+        "url": "https://mirrors.ustc.edu.cn/vim/pc/gvim$matchVer.exe#/dl.7z",
         "hash": {
             "url": "$baseurl/MD5SUMS"
         }
