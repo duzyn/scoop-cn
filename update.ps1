@@ -118,7 +118,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
 
     # Vim
-    (Get-Content $_.FullName) -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc/' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' | Set-Content -Path $_.FullName
 
     # Tor Browser, Tor
     # 备用镜像
