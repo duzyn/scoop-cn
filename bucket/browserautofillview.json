@@ -1,0 +1,34 @@
+{
+    "homepage": "https://www.nirsoft.net/utils/web_browser_autofill_view.html",
+    "checkver": "BrowserAutoFillView v(\\d+\\.\\d\\d)",
+    "version": "1.00",
+    "license": "freeware",
+    "description": "When you fill a form in your Web browser, the Web browser automatically stores the text you filled in a database, and allows you to automatically fill the same text again when it's needed (Also known as 'AutoFill' feature). BrowserAutoFillView is a simple tool for Windows that displays the text you previously filled in a form on Chrome and Firefox Web browsers. For every form text entry, the following information is displayed: Name, Value, Created Time, Last Used Time, Count, Web browser, Profile Path. You can also export the autofill list to csv/tab-delimited/html/xml file, or copy the autofill entries to the clipboard and then paste them to Excel or other spreadsheet application",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.nirsoft.net/utils/browserautofillview-x64.zip",
+            "hash": "a83f797048c638ec816d15057074aaf25e681bb4cb6cb6aa191e110fec6c4343"
+        },
+        "32bit": {
+            "url": "https://www.nirsoft.net/utils/browserautofillview.zip",
+            "hash": "33fef25512d0bf071653928e8062782937006995191b30aae1f7c5d8079dca8a"
+        }
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.nirsoft.net/utils/browserautofillview-x64.zip"
+            },
+            "32bit": {
+                "url": "https://www.nirsoft.net/utils/browserautofillview.zip"
+            }
+        }
+    },
+    "bin": "BrowserAutoFillView.exe",
+    "shortcuts": [
+        [
+            "BrowserAutoFillView.exe",
+            "NirSoft\\BrowserAutoFillView - View form autofill text stored by Web browser"
+        ]
+    ]
+}
