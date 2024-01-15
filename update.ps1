@@ -121,7 +121,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' | Set-Content -Path $_.FullName
 
     # Cygwin
-    (Get-Content $_.FullName) -replace 'https://.*/cygwin/', 'http://mirrors.aliyun.com/cygwin/' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '//.*/cygwin/', '//mirrors.aliyun.com/cygwin/' | Set-Content -Path $_.FullName
 
     # Tor Browser, Tor
     # 备用镜像
