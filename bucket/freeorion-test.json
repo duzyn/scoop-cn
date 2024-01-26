@@ -3,7 +3,7 @@
     "description": "Turn-based space empire and galactic conquest (4X) game (Test Build)",
     "homepage": "https://freeorion.org/",
     "license": "GPL-2.0",
-    "url": "https://sourceforge.net/projects/freeorion/files/FreeOrion/Test/FreeOrion_2024-01-22.373998f_Test_Win32_Setup.exe/download#/dl.zip",
+    "url": "https://jaist.dl.sourceforge.net/project/freeorion/FreeOrion/Test/FreeOrion_2024-01-22.373998f_Test_Win32_Setup.exe/download#/dl.zip",
     "hash": "639d15b22e0f08f3d03de8ea5bb0994d02f4a9dbe07cba30dc67d31d8371c01d",
     "shortcuts": [
         [
@@ -17,11 +17,11 @@
         ]
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/freeorion/files/FreeOrion/Test/",
+        "url": "https://jaist.dl.sourceforge.net/project/freeorion/FreeOrion/Test/",
         "regex": "FreeOrion_(?<year>[\\d]{4})-(?<month>[\\d]{2})-(?<day>[\\d]{2})\\.(?<commit>[a-z\\d]{7})_Test_Win32_Setup",
         "replace": "${year}-${month}-${day}.${commit}"
     },
     "autoupdate": {
-        "url": "https://sourceforge.net/projects/freeorion/files/FreeOrion/Test/FreeOrion_$version_Test_Win32_Setup.exe/download#/dl.zip"
+        "url": "https://jaist.dl.sourceforge.net/project/freeorion/FreeOrion/Test/FreeOrion_$version_Test_Win32_Setup.exe/download#/dl.zip"
     }
 }

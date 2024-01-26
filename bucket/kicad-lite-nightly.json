@@ -1,12 +1,12 @@
 {
-    "version": "r32877.9d452a6097.2023-05-20",
-    "description": "Electronics Design Automation Suite, nightly build without libraries",
+    "version": "8.0.0.rc2.133.g7f5433f0f2",
+    "description": "Nightly build of KiCAD, an electronics design automation (EDA) suite.",
     "homepage": "https://kicad.org",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r32877.9d452a6097-x86_64-lite.exe#/dl.7z",
-            "hash": "9c5cb3da0243360cbd5bf31b25bbaae571c42ba2624823c515e6381afc9b390e"
+            "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-8.0.0.rc2.133.g7f5433f0f2-x86_64-lite.exe#/dl.7z",
+            "hash": "bcb652f392468fe60e386e02b68e3bb3c337d59e9115dc948d67c13a5a54ae0c"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
@@ -24,10 +24,9 @@
     ],
     "notes": "You should configure environment paths KICAD6_3DMODEL_DIR, KICAD6_FOOTPRINT_DIR, KICAD6_SYMBOL_DIR, KICAD6_TEMPLATE_DIR, KICAD_USER_TEMPLATE_DIR, otherwise they'll default to $dir\\share\\kicad",
     "checkver": {
-        "url": "https://kicad-downloads.s3.cern.ch/?delimiter=/&prefix=windows/nightly/",
-        "regex": "<Key>windows/nightly/kicad-nightly-(r\\d+\\.[a-z0-9]+)-x86_64-lite\\.exe</Key><LastModified>([\\d\\-]+)",
-        "replace": "${1}.${2}",
-        "reverse": true
+        "url": "https://downloads.kicad.org/kicad/windows/explore/nightlies",
+        "regex": "kicad-nightly-(\\d+(\\.\\d+)*(\\.rc\\d+(\\.\\d+)*)*\\.g[a-f\\d]+)-x86_64-lite\\.exe",
+        "reverse": false
     },
     "autoupdate": {
         "architecture": {

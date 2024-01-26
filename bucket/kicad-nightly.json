@@ -1,12 +1,12 @@
 {
-    "version": "32877.9d452a6097",
+    "version": "8.0.0.rc2.133.g7f5433f0f2",
     "description": "Nightly build of KiCAD, an electronics design automation (EDA) suite.",
-    "homepage": "https://kicad-pcb.org",
+    "homepage": "https://kicad.org",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r32877.9d452a6097-x86_64.exe#/dl.7z",
-            "hash": "d292fd9c23a2795709a2ab074e04e18df5a6e584a3cdbeba585307caa2ce0c72"
+            "url": "https://downloads.kicad.org/kicad/windows/explore/nightlies/download/kicad-nightly-8.0.0.rc2.133.g7f5433f0f2-x86_64.exe#/dl.7z",
+            "hash": "ae24591f6c34abda8f2791c405511836e0522c4cb1f066fba87b8f6227adff41"
         }
     },
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Recurse",
@@ -29,20 +29,15 @@
             "Gerbview nightly"
         ]
     ],
-    "env_set": {
-        "KICAD_PTEMPLATES": "$dir\\share\\kicad\\template\\",
-        "KISYS3DMOD": "$dir\\share\\kicad\\modules\\packages3d\\",
-        "KISYSMOD": "$dir\\share\\kicad\\modules\\"
-    },
     "checkver": {
-        "url": "https://kicad-downloads.s3.cern.ch/?prefix=windows/nightly",
-        "regex": "kicad-.*r([\\d]+.[a-f0-9]+)-x86_64",
-        "reverse": true
+        "url": "https://downloads.kicad.org/kicad/windows/explore/nightlies",
+        "regex": "kicad-nightly-(\\d+(\\.\\d+)*(\\.rc\\d+(\\.\\d+)*)*\\.g[a-f\\d]+)-x86_64\\.exe",
+        "reverse": false
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://kicad-downloads.s3.cern.ch/windows/nightly/kicad-nightly-r$version-x86_64.exe#/dl.7z"
+                "url": "https://downloads.kicad.org/kicad/windows/explore/nightlies/download/kicad-nightly-$version-x86_64.exe#/dl.7z"
             }
         }
     }

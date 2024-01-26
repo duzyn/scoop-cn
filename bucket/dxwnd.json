@@ -20,7 +20,7 @@
     "env_add_path": "vcda",
     "checkver": {
         "script": [
-            "$url = 'https://sourceforge.net/projects/dxwnd/files/Latest%20build/'",
+            "$url = 'https://jaist.dl.sourceforge.net/project/dxwnd/Latest%20build/'",
             "$cont = $(Invoke-WebRequest($url)).Content",
             "if(!($cont -match 'V(\\d+)_(\\d+)_(\\d+)(_(fx\\d+))?_build\\.rar')) { continue }",
             "if ($matches[4] -eq $null) { $script_ver = \"{0}.{1}.{2}\" -f $matches[1], $matches[2], $matches[3] }",

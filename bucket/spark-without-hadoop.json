@@ -6,8 +6,8 @@
     "suggest": {
         "JDK": "scoop-cn/openjdk"
     },
-    "url": "https://www.apache.org/dist/spark/spark-3.5.0/spark-3.5.0-bin-without-hadoop.tgz",
-    "hash": "sha512:a19f908d814d8dd3467f54195642632a89c2ca29378811368537c81f7acb285f2c7b08bc5b7d1ee49381b1d50ff3cfe9b56f866dd706d1060e71631a7912f7db",
+    "url": "https://dlcdn.apache.org/spark/spark-3.5.0/spark-3.5.0-bin-without-hadoop.tgz",
+    "hash": "sha512:5b4bda4312af1a0308340d30a8ff5a262de10dccb6f55a823f36852c3f4f014cc84a1a87ec5cd1f9e0e8f081c40e77d884a3a31fb00fa45d36daf790ff5a6636",
     "extract_dir": "spark-3.5.0-bin-without-hadoop",
     "env_add_path": "bin",
     "env_set": {
@@ -19,7 +19,7 @@
         "regex": "version: ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://www.apache.org/dist/spark/spark-$version/spark-$version-bin-without-hadoop.tgz",
+        "url": "https://dlcdn.apache.org/spark/spark-$version/spark-$version-bin-without-hadoop.tgz",
         "hash": {
             "url": "$url.sha512",
             "regex": "$basename: ([A-F0-9\\s]+)$"
