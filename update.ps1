@@ -50,12 +50,13 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'mirror.ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
 
     # SourceForge
+    # Use jaist
     (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'jaist.dl.sourceforge.net' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'sourceforge\.net/projects/(.+)/files/', 'jaist.dl.sourceforge.net/project/$1/' | Set-Content -Path $_.FullName
     # Or use zenlayer
-    # (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'zenlayer.dl.sourceforge.net' | Set-Content -Path $_.FullName
 
     # TortoiseSVN
-    (Get-Content $_.FullName) -replace 'osdn\.mirror\.constant\.com//storage/g/t/to/tortoisesvn', 'jaist.dl.sourceforge.net/project/tortoisesvn' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace 'osdn\.mirror\.constant\.com//storage/g/t/to/tortoisesvn', 'jaist.dl.sourceforge.net/project/tortoisesvn' | Set-Content -Path $_.FullName
 
     # KDE Apps
     (Get-Content $_.FullName) -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' | Set-Content -Path $_.FullName
@@ -124,7 +125,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace '//.*/cygwin/', '//mirrors.aliyun.com/cygwin/' | Set-Content -Path $_.FullName
 
     # Tor Browser, Tor
-    # 备用镜像
+    # Or
     # https://tor.ybti.net/dist/
     # https://mirror.freedif.org/TorProject/dist
     # https://mirror.oldsql.cc/tor/dist/
