@@ -1,18 +1,19 @@
 {
-    "version": "3.7.1",
+    "version": "3.7.2",
     "description": "Opens required browser based on configuration",
     "homepage": "https://www.aloneguid.uk/projects/bt/",
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/aloneguid/bt/releases/download/3.7.1/bt-3.7.1.zip",
-            "hash": "8b0cf7840ffe10d6e3c3ba353e7234d04f92f200f6f91b5d338f714c032b7546"
+            "url": "https://mirror.ghproxy.com/https://github.com/aloneguid/bt/releases/download/3.7.2/bt-3.7.2.zip",
+            "hash": "3196a584c89dfcd2194dc489ae43f1fe3b0249c5f457eb59e52fb97fd2e0b6f4"
         }
     },
     "pre_install": [
         "# Portable",
         "New-Item \"$dir\\.portable\" -ItemType File | Out-Null",
-        "if (!(Test-Path \"$persist_dir\\config.ini\")) { New-Item \"$dir\\config.ini\" -ItemType File | Out-Null }"
+        "if (!(Test-Path \"$persist_dir\\config.ini\")) { New-Item \"$dir\\config.ini\" -ItemType File | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\hit_log.csv\")) { New-Item \"$dir\\hit_log.csv\" -ItemType File | Out-Null }"
     ],
     "bin": "bt.exe",
     "shortcuts": [
@@ -21,14 +22,20 @@
             "Browser Tamer"
         ]
     ],
-    "persist": "bt.ini",
+    "persist": [
+        "config.ini",
+        "hit_log.csv"
+    ],
     "checkver": {
         "github": "https://github.com/aloneguid/bt"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/aloneguid/bt/releases/download/$version/bt-$version.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/aloneguid/bt/releases/download/$version/bt-$version.zip",
+                "hash": {
+                    "url": "$url.sha256.txt"
+                }
             }
         }
     }
