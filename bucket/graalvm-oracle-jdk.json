@@ -1,0 +1,34 @@
+{
+    "description": "High-performance, embeddable, polyglot Virtual Machine for JVM-langs (Java, Scala, Kotlin), JavaScript/NodeJS, Python, Ruby, R, and LLVM-langs (C, C++, Rust)",
+    "version": "21.0.2",
+    "homepage": "https://www.graalvm.org/",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://www.oracle.com/downloads/licenses/graal-free-license.html"
+    },
+    "url": "https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21.0.2_windows-x64_bin.zip",
+    "hash": "bc5027e506775813131509247424d4af839ad23224a7787b7770ae82eeb3b32d",
+    "extract_to": "tmp",
+    "installer": {
+        "script": [
+            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+            "Remove-Item -Recurse \"$dir\\tmp\""
+        ]
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir",
+        "GRAALVM_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://www.oracle.com/java/technologies/downloads/",
+        "useragent": "Mozilla/5.0",
+        "regex": "GraalVM for JDK ((?<ver>[\\d]*)\\.[\\d.]+) downloads"
+    },
+    "autoupdate": {
+        "url": "https://download.oracle.com/graalvm/$matchVer/archive/graalvm-jdk-$version_windows-x64_bin.zip",
+        "hash": {
+            "url": "https://download.oracle.com/graalvm/$matchVer/archive/graalvm-jdk-$version_windows-x64_bin.zip.sha256"
+        }
+    }
+}
