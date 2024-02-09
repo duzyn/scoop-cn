@@ -1,5 +1,5 @@
 {
-    "version": "15.5",
+    "version": "15.6",
     "description": "Object-relational database management system based on POSTGRES. (version 15)",
     "homepage": "https://www.postgresql.org",
     "license": "PostgreSQL",
@@ -10,8 +10,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://get.enterprisedb.com/postgresql/postgresql-15.5-1-windows-x64-binaries.zip",
-            "hash": "69d0651f05cd0402981dce9b6be69c9e6045e72cc0d26ff2d0416b7fca769a62"
+            "url": "https://get.enterprisedb.com/postgresql/postgresql-15.6-1-windows-x64-binaries.zip",
+            "hash": "64e4cd8ba50aa75c4e6573665f97ce6c215e71d840d88896f82dd89bbc334b6d"
         }
     },
     "extract_dir": "pgsql",
@@ -20,7 +20,12 @@
         "   Invoke-ExternalCommand -FilePath \"$dir\\bin\\initdb.exe\" -ArgumentList @('--username=postgres', '--encoding=UTF8', '--locale=en', '--lc-collate=C') | Out-Null",
         "}"
     ],
-    "shortcuts": [["pgAdmin 4\\runtime\\pgAdmin4.exe", "pgAdmin 4"]],
+    "shortcuts": [
+        [
+            "pgAdmin 4\\runtime\\pgAdmin4.exe",
+            "pgAdmin 4"
+        ]
+    ],
     "env_add_path": "bin",
     "env_set": {
         "PGDATA": "$dir\\data"
