@@ -1,21 +1,21 @@
 {
-    "version": "6.0.26",
+    "version": "6.0.27",
     "description": "Microsoft .NET 6.0 Desktop Runtime",
     "homepage": "https://dotnet.microsoft.com/download/dotnet/6.0",
     "license": "MIT",
     "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-6.0'",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.26/windowsdesktop-runtime-6.0.26-win-x64.exe",
-            "hash": "sha512:7dd45e746fb0b82c13b91559ac25a39b66b9c94c22e5f9bd91b1dceaff96922b1da2fed152ec36e15f2c7a38e0180508f81807930928c5d0aea225f117a108c4"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.27/windowsdesktop-runtime-6.0.27-win-x64.exe",
+            "hash": "sha512:8927e3bcda1f439af84af0cb41fefc38c4386297eb463ddc7dd835d98502e63e0ba06a0732b02939a981644d8afad1d77036b6ac38d348c1cd29cf691cb80da7"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.26/windowsdesktop-runtime-6.0.26-win-x86.exe",
-            "hash": "sha512:bd0878b65750173e2d99479ae051daa9e71a0ee1949c600ed4a33856e4bdd2b658ebbd1439977d17c0d2fd8f3bb37c1592c4f46a4def9c534addac3a9f4a72a2"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.27/windowsdesktop-runtime-6.0.27-win-x86.exe",
+            "hash": "sha512:b51ebd7eb998a47e2f40016527bded5e2ca845e771ca1cd718b4ec58cea2bdded88a038cf3520594cee9844dbb8d2d246e9daec570964daab11d3b59c0bfbe12"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.26/windowsdesktop-runtime-6.0.26-win-arm64.exe",
-            "hash": "sha512:dec20be2d9a5b4a0ede6a9ae733f1eea7288343c4749565eda3b276ea6aebde55b096e4e69676001e131cde3ecd0086cc64bb9debe6c6b6f236933f956a2ad2a"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.27/windowsdesktop-runtime-6.0.27-win-arm64.exe",
+            "hash": "sha512:0b040a3b8e7055fbc981e959a4694c815451512e6f5e5055ec2b4207428f53120bce156fc6ca286cb2a88b610b788131c1b147cae52eb4ac30b9a6862b09a5f2"
         }
     },
     "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
