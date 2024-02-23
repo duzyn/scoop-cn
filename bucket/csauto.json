@@ -1,0 +1,29 @@
+{
+    "version": "2.0.9",
+    "description": "Counter-Strike 2 companion that automates in-game tasks, such as accepting match, buying items and more",
+    "homepage": "https://csauto.vercel.app",
+    "license": "BSD-3-Clause",
+    "shortcuts": [
+        [
+            "CSAuto.exe",
+            "CSAuto"
+        ]
+    ],
+    "persist": [
+        ".conf",
+        "DEBUG"
+    ],
+    "checkver": {
+        "github": "https://github.com/MurkyYT/CSAuto"
+    },
+    "url": "https://mirror.ghproxy.com/https://github.com/MurkyYT/CSAuto/releases/download/2.0.9/CSAuto_Portable.zip",
+    "hash": "8598279e5a59bab53fda64d362b7c7ce29da50ff4ee5b4bedfb3820d77b84b42",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\.conf\")) {",
+        "    New-Item -Path \"$dir\\.conf\" | Out-Null",
+        "}"
+    ],
+    "autoupdate": {
+        "url": "https://mirror.ghproxy.com/https://github.com/MurkyYT/CSAuto/releases/download/$version/CSAuto_Portable.zip"
+    }
+}
