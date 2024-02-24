@@ -9,13 +9,20 @@
     "architecture": {
         "32bit": {
             "url": "https://downloads.scummvm.org/frs/scummvm/2.8.0/scummvm-2.8.0-win32.zip",
-            "hash": "b40771b90567428366153a9ca2a615d92bcf5ce972c0a6633d9e85093974a7df"
+            "hash": "b40771b90567428366153a9ca2a615d92bcf5ce972c0a6633d9e85093974a7df",
+            "extract_dir": "scummvm-2.8.0-win32"
         },
         "64bit": {
             "url": "https://downloads.scummvm.org/frs/scummvm/2.8.0/scummvm-2.8.0-win32-x86_64.zip",
-            "hash": "37c977886c69bd06cfc440b3cd0719a55bc9f14aaf7fa1f9ec6aaa145487f667"
+            "hash": "37c977886c69bd06cfc440b3cd0719a55bc9f14aaf7fa1f9ec6aaa145487f667",
+            "extract_dir": "scummvm-2.8.0-win32-x86_64"
         }
     },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\scummvm.ini\")) {",
+        "   New-Item -Path \"$dir\" -Name \"scummvm.ini\" -ItemType \"File\" | Out-Null",
+        "}"
+    ],
     "shortcuts": [
         [
             "scummvm.exe",

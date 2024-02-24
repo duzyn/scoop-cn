@@ -1,25 +1,23 @@
 {
-    "version": "8.0.18",
+    "version": "8.0.29",
     "homepage": "https://xtremedownloadmanager.com/",
     "description": "Beta builds of Xtreme Download Manager.",
     "license": "GPL-2.0-only",
-    "url": "https://mirror.ghproxy.com/https://github.com/subhra74/xdm-experimental-binaries/releases/download/8.0.18-beta/xdmsetup-8.0.18-x86.msi",
-    "hash": "0a26dc871adc6f847d235fc87e18d18e7eff980ea649e4140eead2d2bd479aed",
+    "url": "https://mirror.ghproxy.com/https://github.com/subhra74/xdm/releases/download/8.0.29/xdmsetup-8.0.29.msi",
+    "hash": "aee7da204fcdb137275c9a2d13fc0f8dc961cbd7a2b42adf3d86145b604b5857",
     "extract_dir": "XDM",
     "bin": "xdm-app.exe",
     "shortcuts": [
         [
             "xdm-app.exe",
-            "XTREME DOWNLOAD MANAGER",
-            "",
-            "xdm-logo.ico"
+            "Xtreme Download Manager"
         ]
     ],
     "checkver": {
-        "url": "https://github.com/subhra74/xdm-experimental-binaries/tags",
-        "regex": "([\\d.]+)-beta"
+        "url": "https://api.github.com/repos/subhra74/xdm/releases",
+        "jsonpath": "$[0].tag_name"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/subhra74/xdm-experimental-binaries/releases/download/$version-beta/xdmsetup-$version-x86.msi"
+        "url": "https://mirror.ghproxy.com/https://github.com/subhra74/xdm/releases/download/$version/xdmsetup-$version.msi"
     }
 }
