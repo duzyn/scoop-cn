@@ -18,6 +18,12 @@
             "if ($null -ne $BattlenetProcess) {Stop-Process $BattlenetProcess -Force -ErrorAction 'SilentlyContinue'} else {error \"Unable to $cmd $app\" successfully; break}"
         ]
     },
+    "shortcuts": [
+        [
+            "Battle.net Launcher.exe",
+            "Battle.net"
+        ]
+    ],
     "pre_uninstall": [
         "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
         "$BattleNetProcesses = Get-Process -Name \"Agent\", \"Battle.net\" -ErrorAction 'SilentlyContinue'",
