@@ -1,0 +1,47 @@
+{
+    "version": "v7715077",
+    "description": "Continuation of the experimental emulator for the Nintendo Switch - yuzu",
+    "homepage": "https://github.com/sudachi-emu/sudachi",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/sudachi-emu/sudachi/releases/download/v7715077/v7715077-windows.7z",
+            "hash": "70D7E4B6B65F4AC9399239E76C5D8BEB3CDD5F28FD33147C441EE1208E909C35"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\sudachi\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\sudachi\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\sudachi\" -Recurse",
+        "   }"
+    ],
+    "bin": [
+        "sudachi.exe",
+        "sudachi-cmd.exe"
+    ],
+    "shortcuts": [
+        [
+            "sudachi.exe",
+            "Sudachi"
+        ]
+    ],
+    "persist": [
+        "user",
+        "plugins"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/sudachi-emu/sudachi/releases?per_page=1",
+        "jsonpath": "$[?(@.prerelease == false)].tag_name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/sudachi-emu/sudachi/releases/download/$version/$version-windows.7z"
+            }
+        }
+    }
+}
