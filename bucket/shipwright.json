@@ -1,0 +1,62 @@
+{
+    "version": "8.0.5",
+    "description": "A PC port of Legend of Zelda: Ocarina of Time",
+    "homepage": "https://www.shipofharkinian.com",
+    "license": "Unlicense",
+    "notes": [
+        "ATTENTION: Ship Of Harkinian requires specific n64 rom(s) of OoT to function.",
+        "Place the rom(s) in $persist_dir.",
+        "Learn more at http://ship.equipment and https://www.shipofharkinian.com/setup-guide"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/HarbourMasters/Shipwright/releases/download/8.0.5/SoH-MacReady-Foxtrot-Win64.zip",
+            "hash": "9bf557752527692cedaaff8555e521f66e2cd41f4f12c288470d4b5419d54035"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\shipofharkinian.json\")) {",
+        "    New-Item -ItemType File -ErrorAction SilentlyContinue \"$dir\\shipofharkinian.json\" | Out-Null",
+        "}"
+    ],
+    "post_install": [
+        "'shipofharkinian.json' | ForEach-Object {",
+        "   if (Test-Path \"$persist_dir\\$_.bak\") {",
+        "       Copy-Item -Force \"$persist_dir\\$_.bak\" \"$dir\\$_\"",
+        "   } else {",
+        "       New-Item -ErrorAction SilentlyContinue -ItemType File \"$dir\\$_\" | Out-Null",
+        "   }",
+        "}"
+    ],
+    "bin": "soh.exe",
+    "shortcuts": [
+        [
+            "soh.exe",
+            "Ship of Harkinian [win][oot]"
+        ]
+    ],
+    "persist": [
+        "mods",
+        "Save",
+        "shipofharkinian.json"
+    ],
+    "uninstaller": {
+        "script": [
+            "'shipofharkinian.json' | ForEach-Object {",
+            "   Copy-Item -Force \"$dir\\$_\" \"$persist_dir\\$_.bak\"",
+            "}"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/HarbourMasters/Shipwright/",
+        "regex": "(?<majorName>(\\w+))\\s(?<minorName>(\\w+))\\s(?<version>([\\d\\.]+))",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/HarbourMasters/Shipwright/releases/download/$version/SoH-$matchMajorname-$matchMinorname-Win64.zip"
+            }
+        }
+    }
+}
