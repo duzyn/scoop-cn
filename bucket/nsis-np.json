@@ -1,13 +1,13 @@
 {
-    "version": "3.09",
+    "version": "3.10",
     "description": "Script-driven installer authoring tool.",
     "homepage": "http://nsis.sourceforge.net/",
     "license": {
         "identifier": "Freeware",
         "url": "http://nsis.sourceforge.net/License"
     },
-    "url": "https://jaist.dl.sourceforge.net/project/nsis/NSIS%203/3.09/nsis-3.09-setup.exe#/setup.exe",
-    "hash": "sha1:0322ebc9ddef97ca66762319df79032b63fbf1f2",
+    "url": "https://jaist.dl.sourceforge.net/project/nsis/NSIS%203/3.10/nsis-3.10-setup.exe#/setup.exe",
+    "hash": "sha1:2db42e95c5a4b90aac36320ce68078bce724e6a9",
     "installer": {
         "script": [
             "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Verb RunAs | Out-Null",
