@@ -10,7 +10,7 @@
         "If an error occurs when updating or uninstalling, execute the following command then retry:",
         "`Stop-Process -Name 'explorer'`"
     ],
-    "url": "https://fastcopy.jp/archive/FastCopy5.7.5_installer.exe",
+    "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy5.7.5_installer.exe",
     "hash": "189395c4e3b5bf6b54cb74caecf202fdb20449b23c07a13a7924b60e8d45c622",
     "pre_install": [
         "Start-Process \"$dir\\$fname\" -Args @('/SILENT', \"/DIR=\"\"$dir\"\"\", '/NOPROG', '/NODESK') -Wait",
@@ -39,6 +39,6 @@
     ],
     "checkver": "Download v([\\d.]+)",
     "autoupdate": {
-        "url": "https://fastcopy.jp/archive/FastCopy$version_installer.exe"
+        "url": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy$version_installer.exe"
     }
 }
