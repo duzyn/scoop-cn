@@ -137,6 +137,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # https://cyberside.net.ee/sibul/dist/
     (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.ybti.net/dist' | Set-Content -Path $_.FullName
 
+    # FastCopy
+    (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'mirror.ghproxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
+
     # Scripts
     (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
 
