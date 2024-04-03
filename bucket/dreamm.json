@@ -1,0 +1,45 @@
+{
+    "version": "2.1.2",
+    "description": "A Windows-based emulator for classic LucasArts SCUMM adventure games, from Maniac Mansion through The Curse of Monkey Island and everything in-between.",
+    "homepage": "https://aarongiles.com/dreamm/",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://aarongiles.com/dreamm/releases/dreamm-2.1.2-win32-x64.zip",
+            "hash": "000b44c9c51a1dbc013af4f46c8847b5776b999def54a8918ba0d1ccfc15edbe"
+        },
+        "arm64": {
+            "url": "https://aarongiles.com/dreamm/releases/dreamm-2.1.2-win32-arm64.zip",
+            "hash": "5e3aba873ba943ae504fcc2409f560f5b1549a71882094cf3a1227f08500c211"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\")) {",
+        "   New-Item -Path \"$dir\" -Name \"config.json\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "dreamm.exe",
+            "DREAMM"
+        ]
+    ],
+    "persist": [
+        "config.json",
+        "install",
+        "gamefiles",
+        "sounddata",
+        "screenshots"
+    ],
+    "checkver": "Current Release: ([\\d.]+)",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://aarongiles.com/dreamm/releases/dreamm-$version-win32-x64.zip"
+            },
+            "arm64": {
+                "url": "https://aarongiles.com/dreamm/releases/dreamm-$version-win32-arm64.zip"
+            }
+        }
+    }
+}
