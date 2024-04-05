@@ -22,19 +22,10 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/RPGLogs/Uploaders-fflogs/"
+        "github": "https://github.com/RPGLogs/Uploaders-fflogs"
     },
     "autoupdate": {
         "url": "https://mirror.ghproxy.com/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v$version/fflogs-v$version.exe#/dl.7z",
-        "architecture": {
-            "64bit": {
-                "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
-            },
-            "32bit": {
-                "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
-            }
-        },
-        "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
         "hash": {
             "url": "$baseurl/latest.yml",
             "find": "sha512:\\s+(.*)"
