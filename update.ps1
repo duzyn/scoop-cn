@@ -51,12 +51,11 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # SourceForge
     # Use jaist
-    (Get-Content $_.FullName) -replace 'downloads\.sourceforge\.net', 'jaist.dl.sourceforge.net' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace 'sourceforge\.net/projects/(.+)/files/', 'jaist.dl.sourceforge.net/project/$1/' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(//downloads\.sourceforge\.net/project/.+)(\")', '$1?use_mirror=jaist$2' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(#/.+)(\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(//sourceforge\.net/projects/.+/files/.+)(\")', '$1/download?use_mirror=jaist$2' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(#/.+)(/download\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
     # Or use zenlayer
-
-    # TortoiseSVN
-    # (Get-Content $_.FullName) -replace 'osdn\.mirror\.constant\.com//storage/g/t/to/tortoisesvn', 'jaist.dl.sourceforge.net/project/tortoisesvn' | Set-Content -Path $_.FullName
 
     # KDE Apps
     (Get-Content $_.FullName) -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' | Set-Content -Path $_.FullName
@@ -69,7 +68,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # Node
     (Get-Content $_.FullName) -replace 'nodejs\.org/dist', 'npmmirror.com/mirrors/node' | Set-Content -Path $_.FullName
-    # 备用
+    # Or
     # (Get-Content $_.FullName) -replace 'nodejs\.org/dist', 'mirrors.aliyun.com/nodejs-release' | Set-Content -Path $_.FullName
 
     # Python
@@ -86,14 +85,14 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # DBeaver
     (Get-Content $_.FullName) -replace 'download\.dbeaver\.com/community', 'mirror.ghproxy.com/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
-    # 备用
+    # Or
     # (Get-Content $_.FullName) -replace 'download\.dbeaver\.com/community', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' | Set-Content -Path $_.FullName
 
     # OBS Studio
     (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)\.zip', 'mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1.zip' | Set-Content -Path $_.FullName
     # Or
     # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)\.zip', 'mirrors.nju.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1.zip' | Set-Content -Path $_.FullName
-    # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1s.zip' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1.zip' | Set-Content -Path $_.FullName
 
     # OBS Studio 2.7
     (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
