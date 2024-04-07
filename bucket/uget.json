@@ -3,7 +3,7 @@
     "description": "Open source download manager.",
     "homepage": "https://ugetdm.com/",
     "license": "LGPL-2.1-only",
-    "url": "https://jaist.dl.sourceforge.net/project/urlget/uget%20%28stable%29/2.2.3/uget-2.2.3-2-win32%2Bgtk3.7z",
+    "url": "https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/2.2.3/uget-2.2.3-2-win32%2Bgtk3.7z?use_mirror=jaist",
     "hash": "sha1:f8b77a669bf46b372c5595530802e20bc76ce2c2",
     "pre_install": "Move-Item \"$dir\\uget-portable-mode\" \"$dir\\bin\"",
     "post_install": [
@@ -27,6 +27,6 @@
         "regex": "/([\\d.]+)/uget-([\\d.-]+)-win32\\+gtk3\\.7z"
     },
     "autoupdate": {
-        "url": "https://jaist.dl.sourceforge.net/project/urlget/uget%20%28stable%29/$version/uget-$match2-win32%2Bgtk3.7z"
+        "url": "https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/$version/uget-$match2-win32%2Bgtk3.7z?use_mirror=jaist"
     }
 }

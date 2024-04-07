@@ -4,7 +4,7 @@
     "homepage": "https://cmusphinx.github.io/",
     "license": "BSD-2-Clause",
     "depends": "scoop-cn/sphinxbase",
-    "url": "https://jaist.dl.sourceforge.net/project/cmusphinx/pocketsphinx/5prealpha/pocketsphinx-5prealpha-win32.zip",
+    "url": "https://downloads.sourceforge.net/project/cmusphinx/pocketsphinx/5prealpha/pocketsphinx-5prealpha-win32.zip?use_mirror=jaist",
     "hash": "sha1:5d0e7bf205b843f936c5867c3ebc9772002c27bb",
     "architecture": {
         "64bit": {
@@ -20,10 +20,10 @@
         "pocketsphinx_mdef_convert.exe"
     ],
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/cmusphinx/pocketsphinx/",
+        "url": "https://sourceforge.net/projects/cmusphinx/files/pocketsphinx//download?use_mirror=jaist",
         "regex": "<span class=\"name\">([\\w]+)</span>"
     },
     "autoupdate": {
-        "url": "https://jaist.dl.sourceforge.net/project/cmusphinx/pocketsphinx/$version/pocketsphinx-$version-win32.zip"
+        "url": "https://downloads.sourceforge.net/project/cmusphinx/pocketsphinx/$version/pocketsphinx-$version-win32.zip?use_mirror=jaist"
     }
 }

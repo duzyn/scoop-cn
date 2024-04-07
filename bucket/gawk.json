@@ -4,7 +4,7 @@
     "homepage": "https://sourceforge.net/projects/ezwinports/",
     "license": "GPL-3.0-only",
     "url": [
-        "https://jaist.dl.sourceforge.net/project/ezwinports/gawk-5.3.0-2-w32-bin.zip",
+        "https://downloads.sourceforge.net/project/ezwinports/gawk-5.3.0-2-w32-bin.zip?use_mirror=jaist",
         "https://mirrors.gigenet.com/OSDN//mingw/72215/libgcc-9.2.0-3-mingw32-dll-1.tar.xz"
     ],
     "hash": [
@@ -16,12 +16,12 @@
         "bin\\gawk.exe"
     ],
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/ezwinports/",
+        "url": "https://sourceforge.net/projects/ezwinports/files/",
         "regex": "gawk-([\\d.-]+)-w32-bin.zip"
     },
     "autoupdate": {
         "url": [
-            "https://jaist.dl.sourceforge.net/project/ezwinports/gawk-$version-w32-bin.zip",
+            "https://downloads.sourceforge.net/project/ezwinports/gawk-$version-w32-bin.zip?use_mirror=jaist",
             "https://mirrors.gigenet.com/OSDN//mingw/72215/libgcc-9.2.0-3-mingw32-dll-1.tar.xz"
         ]
     }

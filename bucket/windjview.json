@@ -3,7 +3,7 @@
     "description": "A fast, compact, and powerful DjVu viewer",
     "homepage": "https://sourceforge.net/projects/windjview/",
     "license": "GPL-2.0",
-    "url": "https://jaist.dl.sourceforge.net/project/windjview/WinDjView/2.1/WinDjView-2.1-Setup.exe#/dl.7z",
+    "url": "https://downloads.sourceforge.net/project/windjview/WinDjView/2.1/WinDjView-2.1-Setup.exe?use_mirror=jaist#/dl.7z",
     "hash": "sha1:b595ef472e50bc70a6b2a2991516775bf0d36e26",
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
     "bin": "WinDjView.exe",
@@ -14,10 +14,10 @@
         ]
     ],
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/windjview/WinDjView/",
+        "url": "https://sourceforge.net/projects/windjview/files/WinDjView//download?use_mirror=jaist",
         "regex": "files/WinDjView/([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://jaist.dl.sourceforge.net/project/windjview/WinDjView/$version/WinDjView-$version-Setup.exe#/dl.7z"
+        "url": "https://downloads.sourceforge.net/project/windjview/WinDjView/$version/WinDjView-$version-Setup.exe?use_mirror=jaist#/dl.7z"
     }
 }

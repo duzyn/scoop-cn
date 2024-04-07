@@ -3,7 +3,7 @@
     "description": "Lossless file size reduction utility",
     "homepage": "https://nikkhokkho.sourceforge.io/static.php?page=FileOptimizer",
     "license": "AGPL-3.0-or-later",
-    "url": "https://jaist.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/16.60.2819/FileOptimizerFull.7z.exe#/dl.7z",
+    "url": "https://downloads.sourceforge.net/project/nikkhokkho/FileOptimizer/16.60.2819/FileOptimizerFull.7z.exe?use_mirror=jaist#/dl.7z",
     "hash": "sha1:a78150864eb9bc1a58a5926cff8ccd521cd3bb73",
     "pre_install": [
         "'32', '64' | ForEach-Object {",
@@ -47,10 +47,10 @@
         "FileOptimizer64.ini"
     ],
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/",
+        "url": "https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer//download?use_mirror=jaist",
         "regex": "FileOptimizer/([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://jaist.dl.sourceforge.net/project/nikkhokkho/FileOptimizer/$version/FileOptimizerFull.7z.exe#/dl.7z"
+        "url": "https://downloads.sourceforge.net/project/nikkhokkho/FileOptimizer/$version/FileOptimizerFull.7z.exe?use_mirror=jaist#/dl.7z"
     }
 }

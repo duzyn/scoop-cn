@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "http://jaist.dl.sourceforge.net/project/golly/golly/golly-4.2/golly-4.2-win-64bit.zip",
+            "url": "http://downloads.sourceforge.net/project/golly/golly/golly-4.2/golly-4.2-win-64bit.zip?use_mirror=jaist",
             "hash": "sha1:a82f62b087ce9e3e2209050cf0862396e202397f",
             "pre_install": [
                 "Move-Item -Path $dir/$app-$version-win-64bit/* -Destination $dir",
@@ -27,7 +27,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://jaist.dl.sourceforge.net/project/golly/golly/golly-$version/golly-$version-win-64bit.zip"
+                "url": "http://downloads.sourceforge.net/project/golly/golly/golly-$version/golly-$version-win-64bit.zip?use_mirror=jaist"
             }
         }
     }

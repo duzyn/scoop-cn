@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://jaist.dl.sourceforge.net/project/vidiot/Vidiot-0.3.39-win64.zip",
+            "url": "https://downloads.sourceforge.net/project/vidiot/Vidiot-0.3.39-win64.zip?use_mirror=jaist",
             "hash": "sha1:5d573a6f913d16a5e0671d956eb6728957f98d37",
             "extract_dir": "Vidiot-0.3.39-win64"
         }
@@ -18,13 +18,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/vidiot/",
+        "url": "https://sourceforge.net/projects/vidiot/files/",
         "regex": "Release\\s+([\\d.]+)\\s+\\(r"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://jaist.dl.sourceforge.net/project/vidiot/Vidiot-$version-win64.zip",
+                "url": "https://downloads.sourceforge.net/project/vidiot/Vidiot-$version-win64.zip?use_mirror=jaist",
                 "extract_dir": "Vidiot-$version-win64"
             }
         }

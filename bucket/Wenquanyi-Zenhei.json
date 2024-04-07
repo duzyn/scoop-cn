@@ -3,7 +3,7 @@
     "description": "CJK sans-serif font that focuses on on-screen readibility.",
     "homepage": "http://wenq.org/",
     "license": "GPL-2.0-or-later",
-    "url": "https://dl.jaist.dl.sourceforge.net/project/wqy/wqy-zenhei/0.9.45 (Fighting-state RC1)/wqy-zenhei-0.9.45.tar.gz",
+    "url": "https://dl.sourceforge.net/projects/wqy/files/wqy-zenhei/0.9.45 (Fighting-state RC1)/wqy-zenhei-0.9.45.tar.gz",
     "hash": "sha1:b86b65d3048ade868fcc89229cfac6baf80a3e54",
     "extract_dir": "wqy-zenhei",
     "installer": {
@@ -87,10 +87,10 @@
         ]
     },
     "checkver": {
-        "url": "https://jaist.dl.sourceforge.net/project/wqy/wqy-zenhei/",
+        "url": "https://sourceforge.net/projects/wqy/files/wqy-zenhei//download?use_mirror=jaist",
         "regex": "<tr title=\\\"([\\d.]+)(?<suffix>.*?)\\\""
     },
     "autoupdate": {
-        "url": "https://dl.jaist.dl.sourceforge.net/project/wqy/wqy-zenhei/$version$matchSuffix/wqy-zenhei-$version.tar.gz"
+        "url": "https://dl.sourceforge.net/projects/wqy/files/wqy-zenhei/$version$matchSuffix/wqy-zenhei-$version.tar.gz"
     }
 }
