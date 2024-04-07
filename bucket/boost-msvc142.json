@@ -1,0 +1,36 @@
+{
+    "version": "1.84.0",
+    "description": "Boost C++ Libraries",
+    "homepage": "https://www.boost.org/",
+    "license": "BSL-1.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://jaist.dl.sourceforge.net/project/boost/boost-binaries/1.84.0/boost_1_84_0-msvc-14.2-64.exe",
+            "hash": "sha1:6334b397e1d127a0bd25d8c1b0ec93fef2fc8c6a"
+        },
+        "32bit": {
+            "url": "https://jaist.dl.sourceforge.net/project/boost/boost-binaries/1.84.0/boost_1_84_0-msvc-14.2-32.exe",
+            "hash": "sha1:988e25c10022e1c59e0d36f001e705a6a3bfb246"
+        }
+    },
+    "innosetup": true,
+    "pre_install": "Get-ChildItem \"$dir/lib$($architecture.Substring(0, 2))-msvc-*.*\" | Rename-Item -NewName lib",
+    "env_set": {
+        "BOOST_ROOT": "$dir",
+        "Boost_INCLUDE_DIR": "$dir\\boost"
+    },
+    "checkver": {
+        "sourceforge": "boost/boost-binaries",
+        "regex": "([\\d.]+)+/boost_(?:[\\d_]+)-msvc-14.2-64\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://jaist.dl.sourceforge.net/project/boost/boost-binaries/$version/boost_$underscoreVersion-msvc-14.2-64.exe"
+            },
+            "32bit": {
+                "url": "https://jaist.dl.sourceforge.net/project/boost/boost-binaries/$version/boost_$underscoreVersion-msvc-14.2-32.exe"
+            }
+        }
+    }
+}

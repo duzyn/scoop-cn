@@ -1,19 +1,19 @@
 {
-    "version": "18.15.0",
+    "version": "20.12.1",
     "description": "JavaScript runtime environment.",
     "homepage": "https://nodejs.org",
     "license": "MIT",
     "notes": "npm global prefix set to: $env:APPDATA\\npm",
     "architecture": {
         "64bit": {
-            "url": "https://npmmirror.com/mirrors/node/v18.15.0/node-v18.15.0-win-x64.7z",
-            "hash": "cad3cc0910dc216e8b6dcfc3c5b3be0a619c2d4a4b29f2e674820b70e4f374dd",
-            "extract_dir": "node-v18.15.0-win-x64"
+            "url": "https://npmmirror.com/mirrors/node/v20.12.1/node-v20.12.1-win-x64.7z",
+            "hash": "2628e9698f3bdada3fd36096fba0433fbd8f85832350bd5d2537f8f0ac50320f",
+            "extract_dir": "node-v20.12.1-win-x64"
         },
         "32bit": {
-            "url": "https://npmmirror.com/mirrors/node/v18.15.0/node-v18.15.0-win-x86.7z",
-            "hash": "370dbe4ac8fa516a33540821d409153035c50a449ca12f74f78bcf0b634d1957",
-            "extract_dir": "node-v18.15.0-win-x86"
+            "url": "https://npmmirror.com/mirrors/node/v20.12.1/node-v20.12.1-win-x86.7z",
+            "hash": "552c6fec6a0b28e9c49ad8574e4e67c35d9cfa718a3f940552e594e948caa6d9",
+            "extract_dir": "node-v20.12.1-win-x86"
         }
     },
     "installer": {
@@ -30,8 +30,9 @@
         "npm.cmd"
     ],
     "checkver": {
-        "url": "https://nodejs.org/en/download/",
-        "regex": "LTS Version: <strong>([\\d.]+)</strong>"
+        "url": "https://npmmirror.com/mirrors/node/index.json",
+        "jsonpath": "$..[?(@.lts != false)].version",
+        "regex": "v([\\d\\.]+).*"
     },
     "autoupdate": {
         "architecture": {
