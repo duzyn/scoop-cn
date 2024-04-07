@@ -1,12 +1,12 @@
 {
-    "version": "1712",
+    "version": "3761",
     "description": "Communications and data transfer between devices over local networks",
     "homepage": "https://apps.kde.org/kdeconnect",
     "license": "LGPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/kdeconnect-kde_Nightly_win64/1712/artifact/kdeconnect-kde-master-1712-windows-cl-msvc2019-x86_64.7z",
-            "hash": "b0590d7042ad8016a80b31470c70fbf61fc683f966f1f8e7e871ec26aef8c4fa"
+            "url": "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/master/windows/kdeconnect-kde-master-3761-windows-cl-msvc2022-x86_64.7z",
+            "hash": "3e5fd24a518ffff95e7c407eaa9ca52c3cba889e4a83512c3cc2be7244e24d3d"
         }
     },
     "bin": [
@@ -22,13 +22,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/kdeconnect-kde_Nightly_win64/lastSuccessfulBuild/api/json/",
-        "jsonpath": "$.number"
+        "url": "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/master/windows/",
+        "regex": "kdeconnect-kde-master-(\\d+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/kdeconnect-kde_Nightly_win64/$version/artifact/kdeconnect-kde-master-$version-windows-cl-msvc2019-x86_64.7z"
+                "url": "https://cdn.kde.org/ci-builds/network/kdeconnect-kde/master/windows/kdeconnect-kde-master-$version-windows-cl-$matchLib-x86_64.7z"
             }
         },
         "hash": {

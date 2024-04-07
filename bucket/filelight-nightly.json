@@ -1,12 +1,12 @@
 {
-    "version": "1314",
+    "version": "1188",
     "description": "Disk usage visualizer",
     "homepage": "https://apps.kde.org/filelight",
     "license": "LGPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/Filelight_Nightly_win64/lastSuccessfulBuild/artifact/filelight-master-1314-windows-msvc2019_64-cl.7z",
-            "hash": "f68636f5b54d08e9ba9d370b6df91d27d46431140b415870a70460bfb90457af"
+            "url": "https://cdn.kde.org/ci-builds/utilities/filelight/master/windows/filelight-master-1188-windows-cl-msvc2022-x86_64.7z",
+            "hash": "660613aa0931a12cc0a0e61f62e175213f618d48ebed508679ad5e26b3654d84"
         }
     },
     "bin": [
@@ -22,13 +22,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/Filelight_Nightly_win64/",
-        "regex": "filelight-master-(\\d+)-windows"
+        "url": "https://cdn.kde.org/ci-builds/utilities/filelight/master/windows/",
+        "regex": "filelight-master-(\\d+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/Filelight_Nightly_win64/lastSuccessfulBuild/artifact/filelight-master-$version-windows-msvc2019_64-cl.7z"
+                "url": "https://cdn.kde.org/ci-builds/utilities/filelight/master/windows/filelight-master-$version-windows-cl-$matchLib-x86_64.7z"
             }
         },
         "hash": {

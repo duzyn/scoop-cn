@@ -1,12 +1,12 @@
 {
+    "version": "3893",
     "homepage": "https://apps.kde.org/dolphin/",
-    "version": "1163",
     "description": "A file manager developed by KDE that lets you navigate and browse the contents of your hard drives, USB sticks, SD cards, and more.",
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-1163-windows-cl-msvc2019-x86_64.7z",
-            "hash": "14b4c9b58a815262ae7bc4de924472a57ee0ddc892cb4418a35b9a7348d51ddb"
+            "url": "https://cdn.kde.org/ci-builds/system/dolphin/master/windows/dolphin-master-3893-windows-cl-msvc2022-x86_64.7z",
+            "hash": "01c633ca70281b3daac39c2addd6b5f77137f2eba21ff360bae9618890cd5c61"
         }
     },
     "bin": "bin\\dolphin.exe",
@@ -18,13 +18,13 @@
     ],
     "pre_install": "Stop-Process -Name 'dbus-daemon' -Force -ErrorAction 'SilentlyContinue'",
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/",
+        "url": "https://cdn.kde.org/ci-builds/system/dolphin/master/windows/",
         "regex": "dolphin-master-([\\d]+)-windows-cl-msvc(?<Year>[\\d]+)-x86_64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/Dolphin_Nightly_win64/lastSuccessfulBuild/artifact/dolphin-master-$version-windows-cl-msvc$matchYear-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/system/dolphin/master/windows/dolphin-master-$version-windows-cl-msvc$matchYear-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }

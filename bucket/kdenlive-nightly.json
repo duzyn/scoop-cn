@@ -1,12 +1,12 @@
 {
-    "version": "1308",
+    "version": "7843",
     "description": "Video editing software based on the MLT Framework, KDE and Qt",
     "homepage": "https://kdenlive.org",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/Kdenlive_Nightly_mingw64/lastSuccessfulBuild/artifact/kdenlive-master-1308-windows-mingw_64-gcc.7z",
-            "hash": "719c22cc28ccca880fccb6ada06d3911a533e2b3487c440ef860f9957c7d36ef"
+            "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/windows/kdenlive-master-7843-windows-gcc-x86_64.7z",
+            "hash": "07551064939e9c7a7531916d2f6f0b549b80ff0753546b28712a0113d9b995c9"
         }
     },
     "bin": "bin\\kdenlive.exe",
@@ -17,13 +17,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/Kdenlive_Nightly_mingw64/",
-        "regex": "kdenlive-master-(\\d+)-windows"
+        "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/windows/",
+        "regex": "kdenlive-master-(\\d+)-windows-gcc-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/Kdenlive_Nightly_mingw64/lastSuccessfulBuild/artifact/kdenlive-master-$version-windows-mingw_64-gcc.7z"
+                "url": "https://cdn.kde.org/ci-builds/multimedia/kdenlive/master/windows/kdenlive-master-$version-windows-gcc-x86_64.7z"
             }
         },
         "hash": {

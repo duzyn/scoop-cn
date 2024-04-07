@@ -1,12 +1,12 @@
 {
-    "version": "1771",
+    "version": "6390",
     "homepage": "https://labplot.kde.org/",
     "description": "A free, open source, and cross-platform Data Visualization and Analysis software accessible to everyone.",
     "license": "Apache-2.0,BSD-3-Clause,CC0-1.0,CC-BY-3.0,GPL-2.0-only,GPL-2.0-or-later,GPL-3.0-only,GPL-3.0-or-later,LGPL-3.0-or-later,MIT",
     "architecture": {
         "64bit": {
-            "url": "https://binary-factory.kde.org/job/Labplot_Nightly_win64/lastSuccessfulBuild/artifact/labplot-master-1771-windows-cl-msvc2019-x86_64.7z",
-            "hash": "088ac6b168565fd9f9224513f25909785814f9cc61ca548d343dcbdbc7764003"
+            "url": "https://cdn.kde.org/ci-builds/education/labplot/master/windows/labplot-master-6390-windows-cl-msvc2019-x86_64.7z",
+            "hash": "2b934adc2bf67ef03cac1b9c9d42f69da04d34be1f6261b8eadd6a4ecc8d7287"
         }
     },
     "shortcuts": [
@@ -16,13 +16,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://binary-factory.kde.org/job/Labplot_Nightly_win64/",
-        "regex": "labplot-master-([\\d]+)"
+        "url": "https://cdn.kde.org/ci-builds/education/labplot/master/windows/",
+        "regex": "labplot-master-(\\d+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://binary-factory.kde.org/job/Labplot_Nightly_win64/lastSuccessfulBuild/artifact/labplot-master-$version-windows-cl-msvc2019-x86_64.7z",
+                "url": "https://cdn.kde.org/ci-builds/education/labplot/master/windows/labplot-master-$version-windows-cl-$matchLib-x86_64.7z",
                 "hash": {
                     "url": "$url.sha256"
                 }
