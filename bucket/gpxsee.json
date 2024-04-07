@@ -5,7 +5,7 @@
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/gpxsee/Windows/GPXSee-13.17_x64.exe?use_mirror=jaist#/dl.7z",
+            "url": "https://downloads.sourceforge.net/project/gpxsee/Windows/GPXSee-13.17_x64.exe#/dl.7z",
             "hash": "sha1:8840f750c139c6313665a0b0b682aab915807f24"
         }
     },
@@ -16,13 +16,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/gpxsee/files/Windows//download?use_mirror=jaist",
+        "url": "https://sourceforge.net/projects/gpxsee/files/Windows/",
         "regex": "GPXSee-([0-9.]+)_x64\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/gpxsee/Windows/GPXSee-$version_x64.exe?use_mirror=jaist#/dl.7z"
+                "url": "https://downloads.sourceforge.net/project/gpxsee/Windows/GPXSee-$version_x64.exe#/dl.7z"
             }
         }
     }

@@ -3,7 +3,7 @@
     "description": "Light-weight and easy-to-use password manager",
     "homepage": "https://keepass.info",
     "license": "GPL-2.0-or-later",
-    "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.56/KeePass-2.56.zip?use_mirror=jaist",
+    "url": "https://downloads.sourceforge.net/project/keepass/KeePass%202.x/2.56/KeePass-2.56.zip",
     "hash": "sha1:03338b4eb5a4e69322543e9747c6225bcb06ecc4",
     "pre_install": "if (Test-Path \"$persist_dir\\KeePass.config.xml\") { Copy-Item \"$persist_dir\\KeePass.config.xml\" \"$dir\" }",
     "uninstaller": {
@@ -25,6 +25,6 @@
         "regex": "KeePass:([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/keepass/KeePass%20$majorVersion.x/$version/KeePass-$version.zip?use_mirror=jaist"
+        "url": "https://downloads.sourceforge.net/project/keepass/KeePass%20$majorVersion.x/$version/KeePass-$version.zip"
     }
 }

@@ -3,7 +3,7 @@
     "description": "Read SMART data from disks",
     "homepage": "https://www.smartmontools.org",
     "license": "GPL-2.0-only",
-    "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.4/smartmontools-7.4-1.win32-setup.exe?use_mirror=jaist#/dl.7z",
+    "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/7.4/smartmontools-7.4-1.win32-setup.exe#/dl.7z",
     "hash": "sha1:3cbd3ab54f04e19b2ffbbd593bf13f0fb2437710",
     "bin": [
         "bin\\runcmdu.exe",
@@ -15,10 +15,10 @@
         "bin\\wtssendmsg.exe"
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/smartmontools/files/smartmontools//download?use_mirror=jaist",
+        "url": "https://sourceforge.net/projects/smartmontools/files/smartmontools/",
         "regex": "smartmontools-([\\d.-]+)\\.win32"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/$matchHead/smartmontools-$version.win32-setup.exe?use_mirror=jaist#/dl.7z"
+        "url": "https://downloads.sourceforge.net/project/smartmontools/smartmontools/$matchHead/smartmontools-$version.win32-setup.exe#/dl.7z"
     }
 }

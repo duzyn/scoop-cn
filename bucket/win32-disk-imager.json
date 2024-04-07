@@ -3,7 +3,7 @@
     "description": "Tool for writing images to USB sticks or SD/CF cards.",
     "homepage": "https://sourceforge.net/projects/win32diskimager/",
     "license": "GPL-2.0-only",
-    "url": "https://downloads.sourceforge.net/project/win32diskimager/Archive/Win32DiskImager-1.0.0-binary.zip?use_mirror=jaist",
+    "url": "https://downloads.sourceforge.net/project/win32diskimager/Archive/Win32DiskImager-1.0.0-binary.zip",
     "hash": "sha1:0261a543567e296f37d658f131f72ce022cf0660",
     "bin": "Win32DiskImager.exe",
     "shortcuts": [
@@ -13,10 +13,10 @@
         ]
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/win32diskimager/files/Archive//download?use_mirror=jaist",
+        "url": "https://sourceforge.net/projects/win32diskimager/files/Archive/",
         "regex": "([\\d.]+)-binary\\.zip"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/win32diskimager/Archive/Win32DiskImager-$version-binary.zip?use_mirror=jaist"
+        "url": "https://downloads.sourceforge.net/project/win32diskimager/Archive/Win32DiskImager-$version-binary.zip"
     }
 }

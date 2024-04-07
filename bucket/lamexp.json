@@ -4,7 +4,7 @@
     "homepage": "http://lamexp.sourceforge.net",
     "license": "GPL-2.0-or-later",
     "depends": "scoop-cn/nero-aac",
-    "url": "https://downloads.sourceforge.net/project/lamexp/LameXP.2023-12-29.Release-Static.Build-2382.zip?use_mirror=jaist",
+    "url": "https://downloads.sourceforge.net/project/lamexp/LameXP.2023-12-29.Release-Static.Build-2382.zip",
     "hash": "sha1:0b014610c96ea270833de526568f0c116e122d0e",
     "pre_install": [
         "Rename-Item \"$dir\\LameXP.exe\" \"$dir\\LameXP-Portable.exe\"",
@@ -35,6 +35,6 @@
         "replace": "${1}.${2}"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/lamexp/LameXP.$matchRelease.Release-Static.Build-$patchVersion.zip?use_mirror=jaist"
+        "url": "https://downloads.sourceforge.net/project/lamexp/LameXP.$matchRelease.Release-Static.Build-$patchVersion.zip"
     }
 }

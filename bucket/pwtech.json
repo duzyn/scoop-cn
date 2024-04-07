@@ -5,11 +5,11 @@
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/3.5.4/PwTech-3.5.4-64bit.zip?use_mirror=jaist",
+            "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/3.5.4/PwTech-3.5.4-64bit.zip",
             "hash": "sha1:0fca0c2b047a6ab29ebff81923c6e1bcf1f7ed78"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/3.5.4/PwTech-3.5.4-32bit.zip?use_mirror=jaist",
+            "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/3.5.4/PwTech-3.5.4-32bit.zip",
             "hash": "sha1:e204cf1ff1b7f9d152e73fc56f6923d4c0fe85dc"
         }
     },
@@ -23,16 +23,16 @@
     ],
     "persist": "PwTech.ini",
     "checkver": {
-        "url": "https://sourceforge.net/projects/pwgen-win/files/Password%20Tech/download?use_mirror=jaist",
+        "url": "https://sourceforge.net/projects/pwgen-win/files/Password%20Tech",
         "regex": "/files/Password%20Tech/([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/$version/PwTech-$version-64bit.zip?use_mirror=jaist"
+                "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/$version/PwTech-$version-64bit.zip"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/$version/PwTech-$version-32bit.zip?use_mirror=jaist"
+                "url": "https://downloads.sourceforge.net/project/pwgen-win/Password%20Tech/$version/PwTech-$version-32bit.zip"
             }
         }
     }

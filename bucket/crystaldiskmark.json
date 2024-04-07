@@ -3,7 +3,7 @@
     "description": "A simple disk benchmark software",
     "homepage": "https://crystalmark.info/en/software/crystaldiskmark/",
     "license": "BSD-3-Clause",
-    "url": "https://sourceforge.net/projects/crystaldiskmark/files/8.0.5/CrystalDiskMark8_0_5.zip/download?use_mirror=jaist",
+    "url": "https://sourceforge.net/projects/crystaldiskmark/files/8.0.5/CrystalDiskMark8_0_5.zip",
     "hash": "sha1:ead60e00a6832a5e560702257ee68cea24c5b22b",
     "pre_install": [
         "'64', '32' | ForEach-Object {",
@@ -49,6 +49,6 @@
         "regex": "([\\d.a-zA-Z]+)/CrystalDiskMark.*.zip"
     },
     "autoupdate": {
-        "url": "https://sourceforge.net/projects/crystaldiskmark/files/$version/CrystalDiskMark$underscoreVersion.zip/download?use_mirror=jaist"
+        "url": "https://sourceforge.net/projects/crystaldiskmark/files/$version/CrystalDiskMark$underscoreVersion.zip"
     }
 }

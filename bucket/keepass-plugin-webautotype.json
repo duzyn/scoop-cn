@@ -4,7 +4,7 @@
     "homepage": "https://sourceforge.net/projects/webautotype/",
     "license": "GPL-3.0-only",
     "depends": "scoop-cn/keepass",
-    "url": "https://downloads.sourceforge.net/project/webautotype/v6.9.0/WebAutoType-v6.9.0.zip?use_mirror=jaist",
+    "url": "https://downloads.sourceforge.net/project/webautotype/v6.9.0/WebAutoType-v6.9.0.zip",
     "hash": "sha1:ec97815d6e52f05d3e3226630930ca2d32e633e7",
     "installer": {
         "script": "Copy-Item \"$dir\\WebAutoType.plgx\" \"$(appdir keepass $global)\\current\\Plugins\""
@@ -17,6 +17,6 @@
         "regex": "WebAutoType-v([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://downloads.sourceforge.net/project/webautotype/v$version/WebAutoType-v$version.zip?use_mirror=jaist"
+        "url": "https://downloads.sourceforge.net/project/webautotype/v$version/WebAutoType-v$version.zip"
     }
 }

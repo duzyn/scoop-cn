@@ -5,11 +5,11 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.43/GraphicsMagick-1.3.43-Q8-win64-dll.exe?use_mirror=jaist",
+            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.43/GraphicsMagick-1.3.43-Q8-win64-dll.exe",
             "hash": "sha1:888980ee1a3b3a9c4905d809573d60d45ac57ed0"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.43/GraphicsMagick-1.3.43-Q8-win32-dll.exe?use_mirror=jaist",
+            "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/1.3.43/GraphicsMagick-1.3.43-Q8-win32-dll.exe",
             "hash": "sha1:d123eac610eac0f0dfeffce9f410497a5b5a574d"
         }
     },
@@ -22,16 +22,16 @@
         ]
     ],
     "checkver": {
-        "url": "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries//download?use_mirror=jaist",
+        "url": "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick-binaries/",
         "regex": "graphicsmagick-binaries/([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q8-win64-dll.exe?use_mirror=jaist"
+                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q8-win64-dll.exe"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q8-win32-dll.exe?use_mirror=jaist"
+                "url": "https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick-binaries/$version/GraphicsMagick-$version-Q8-win32-dll.exe"
             }
         }
     }
