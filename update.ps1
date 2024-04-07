@@ -51,10 +51,10 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # SourceForge
     # Use jaist
-    (Get-Content $_.FullName) -replace '(//downloads\.sourceforge\.net/project/.+)(\")', '$1?use_mirror=jaist$2' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(#/.+)(\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(//sourceforge\.net/projects/.+/files/.+)(\")', '$1/download?use_mirror=jaist$2' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(#/.+)(/download\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace '(//downloads\.sourceforge\.net/project/.+)(\")', '$1?use_mirror=jaist$2' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace '(#/.+)(\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace '(//sourceforge\.net/projects/.+/files/.+)(\")', '$1/download?use_mirror=jaist$2' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace '(#/.+)(/download\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
     # Or use zenlayer
 
     # KDE Apps
