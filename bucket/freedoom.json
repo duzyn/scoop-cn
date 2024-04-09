@@ -25,7 +25,7 @@
             "   \"https://mirror.ghproxy.com/https://github.com/freedoom/freedoom/releases/download/v$version/freedm-$version.zip\"",
             ")",
             "$archiveUrls | ForEach-Object {",
-            "   dl_with_cache $app $version \"$_\" \"$dir\\$dlFile\"",
+            "   Invoke-CachedDownload $app $version \"$_\" \"$dir\\$dlFile\"",
             "   Expand-7zipArchive \"$dir\\$dlFile\" \"$dir\" -Removal",
             "}"
         ]
@@ -39,7 +39,7 @@
     ],
     "shortcuts": [
         [
-            "freedoom-manual.pdf",
+            "freedoom-manual-en.pdf",
             "Freedoom Manual"
         ]
     ],

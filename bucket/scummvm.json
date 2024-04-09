@@ -19,6 +19,7 @@
         }
     },
     "pre_install": [
+        "Rename-Item -Path \"$dir\\scummvm-$version.exe\" -NewName \"scummvm.exe\"",
         "if (!(Test-Path \"$persist_dir\\scummvm.ini\")) {",
         "   New-Item -Path \"$dir\" -Name \"scummvm.ini\" -ItemType \"File\" | Out-Null",
         "}"

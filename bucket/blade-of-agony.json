@@ -19,7 +19,7 @@
             "   \"https://www.moddb.com$fileUrl\"",
             ")",
             "$archiveUrls | ForEach-Object {",
-            "   dl_with_cache $app $version \"$_\" \"$dir\\$dlFile\"",
+            "   Invoke-CachedDownload $app $version \"$_\" \"$dir\\$dlFile\"",
             "   Expand-7zipArchive \"$dir\\$dlFile\" \"$dir\" -Removal",
             "}",
             "Remove-Item -Force \"$dir\\dl.html\""

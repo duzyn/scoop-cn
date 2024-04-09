@@ -16,7 +16,7 @@
             "   \"https://sourceforge.net/projects/speed-dreams/files/$head/speed-dreams-wip-cars-and-tracks-$version-win32-setup.exe\"",
             ")",
             "$archiveUrls | ForEach-Object {",
-            "   dl_with_cache $app $version \"$_\" \"$dir\\$dlFile\"",
+            "   Invoke-CachedDownload $app $version \"$_\" \"$dir\\$dlFile\"",
             "   Expand-7zipArchive \"$dir\\$dlFile\" \"$dir\" -Removal",
             "}"
         ]
