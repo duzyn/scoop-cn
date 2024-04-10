@@ -140,6 +140,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # FastCopy
     (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'mirror.ghproxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
 
+    # Kodi
+    (Get-Content $_.FullName) -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi' | Set-Content -Path $_.FullName
+
     # Scripts
     (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
 
