@@ -1,0 +1,29 @@
+{
+    "version": "3.3.4",
+    "description": "A unified analytics engine for large-scale data processing.",
+    "homepage": "https://spark.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": "https://archive.apache.org/dist/spark/spark-3.3.4/spark-3.3.4-bin-hadoop3.tgz",
+    "hash": "sha512:a3874e340a113e95898edfa145518648700f799ffe2d1ce5dde7743e88fdf5559d79d9bcb1698fdfa5296a63c1d0fc4c8e32a93529ed58cd5dcf0721502a1fc7",
+    "extract_dir": "spark-3.3.4-bin-hadoop3",
+    "env_add_path": "bin",
+    "env_set": {
+        "SPARK_HOME": "$dir"
+    },
+    "persist": "conf",
+    "checkver": {
+        "url": "https://archive.apache.org/dist/spark/",
+        "regex": "spark-(3.3.\\d)",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://archive.apache.org/dist/spark/spark-$version/spark-$version-bin-hadoop3.tgz",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "spark-$version-bin-hadoop3"
+    }
+}

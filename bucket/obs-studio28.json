@@ -1,5 +1,5 @@
 {
-    "version": "27.2.4",
+    "version": "28.1.2",
     "description": "Video recording and live streaming software",
     "homepage": "https://obsproject.com",
     "license": "GPL-2.0-only",
@@ -9,21 +9,11 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/27.2.4-Full-x64/OBS-Studio-27.2.4-Full-x64.zip",
-            "hash": "fae9840096c43a62b410d91985b4b5fdd5b0d6e8d54ef4afe7af47180da8ae21",
+            "url": "https://mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/28.1.2-Full-x64/OBS-Studio-28.1.2-Full-x64.zip",
+            "hash": "920079bed721e52c83f36b1745a6cc5fefafc192017bd430fd77f39141e6c9ca",
             "shortcuts": [
                 [
                     "bin\\64bit\\obs64.exe",
-                    "OBS Studio"
-                ]
-            ]
-        },
-        "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/27.2.4-Full-x86/OBS-Studio-27.2.4-Full-x86.zip",
-            "hash": "51bacea13391874f2902575d2d8ab6e6eb6bd7c90682c7461e7cde15dec99c22",
-            "shortcuts": [
-                [
-                    "bin\\32bit\\obs32.exe",
                     "OBS Studio"
                 ]
             ]
@@ -35,16 +25,13 @@
         "portable_mode.txt"
     ],
     "checkver": {
-        "url": "https://github.com/obsproject/obs-studio/tags?after=28.0.0-beta1",
-        "regex": "/obsproject/obs-studio/releases/tag/(27[\\d.]+)"
+        "url": "https://github.com/obsproject/obs-studio/tags?after=29.0.0-beta1",
+        "regex": "/obsproject/obs-studio/releases/tag/(28[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$version-Full-x64/OBS-Studio-$version-Full-x64.zip"
-            },
-            "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$version-Full-x86/OBS-Studio-$version-Full-x86.zip"
             }
         }
     }
