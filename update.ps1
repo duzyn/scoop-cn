@@ -124,6 +124,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # Cygwin
     (Get-Content $_.FullName) -replace '//.*/cygwin/', '//mirrors.aliyun.com/cygwin/' | Set-Content -Path $_.FullName
 
+    # git
+    (Get-Content $_.FullName) -replace '//.*/git-for-windows/git/releases/download/', '//mirrors.huaweicloud.com/git-for-windows/' | Set-Content -Path $_.FullName
+
     # Tor Browser, Tor
     # Or
     # https://tor.ybti.net/dist/
