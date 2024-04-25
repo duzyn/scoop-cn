@@ -3,7 +3,7 @@
     "description": "Free CJK serif font including over 80,000 Unicode characters.",
     "homepage": "https://osdn.net/projects/hanazono-font/",
     "license": "OFL-1.1",
-    "url": "https://osdn.dl.osdn.jp/hanazono-font/68253/hanazono-20170904.zip",
+    "url": "http://osdn.dl.osdn.jp/hanazono-font/68253/hanazono-20170904.zip",
     "hash": "571cd4a09ae7da0c642d640fc2442c050aa450ebb0587a95cdd097d41a9c9572",
     "installer": {
         "script": [
@@ -40,7 +40,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

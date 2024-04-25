@@ -2,8 +2,11 @@
     "version": "nightly",
     "description": "Humanist sans-serif typeface.",
     "homepage": "https://fonts.google.com/specimen/Open+Sans",
-    "license": "Apache-2.0",
-    "url": "https://fonts.google.com/download?family=Open+Sans#/fonts.zip",
+    "license": "OFL-1.1",
+    "url": [
+        "https://mirror.ghproxy.com/https://github.com/google/fonts/raw/main/ofl/opensans/OpenSans-Italic[wdth,wght].ttf",
+        "https://mirror.ghproxy.com/https://github.com/google/fonts/raw/main/ofl/opensans/OpenSans[wdth,wght].ttf"
+    ],
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -39,7 +42,7 @@
             "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
-            "    Copy-Item $_.FullName -Destination $fontInstallDir",
+            "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
             "}"
         ]
     },

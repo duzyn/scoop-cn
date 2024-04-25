@@ -32,17 +32,19 @@ scoop install scoop-cn/7zip
 scoop install scoop-cn/git
 # scoop install scoop-cn/aria2
 
+# 将 Scoop 的 main 仓库源替换为代理的
+if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\main") {
+    scoop bucket rm main
+}
+Write-Host "Adding main bucket..."
+scoop bucket add main https://mirror.ghproxy.com/https://github.com/ScoopInstaller/Main
+
 # scoop-cn 库还不是 Git 仓库，删掉后，重新添加 Git 仓库
 if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\scoop-cn") {
     scoop bucket rm scoop-cn
 }
 Write-Host "Adding scoop-cn bucket..."
 scoop bucket add scoop-cn https://mirror.ghproxy.com/https://github.com/duzyn/scoop-cn
-
-# 删除 Scoop 的 main 仓库
-if (Test-Path -Path "$env:USERPROFILE\scoop\buckets\main") {
-    scoop bucket rm main
-}
 
 # Set-Location "$env:USERPROFILE\scoop\buckets\scoop-cn"
 # git config pull.rebase true

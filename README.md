@@ -90,13 +90,6 @@ scoop search APPNAME
 scoop install scoop-cn/APPNAME
 ```
 
-如果不想每次输入都带 scoop-cn/，可以把已包含的十个库删掉，例如：
-
-```powershell
-scoop bucket rm main
-scoop bucket rm extras
-```
-
 ## 查看帮助
 
 要了解 Scoop 的更多用法，请查看 [Scoop 官网](https://scoop.sh/)。或运行命令查看简要的帮助：

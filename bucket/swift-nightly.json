@@ -1,5 +1,5 @@
 {
-    "version": "20240417.3",
+    "version": "20240422.2",
     "homepage": "https://www.swift.org/",
     "description": "A general-purpose programming language built using a modern approach to safety, performance, and software design patterns.",
     "license": "Apache-2.0",
@@ -13,20 +13,17 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/thebrowsercompany/swift-build/releases/download/20240417.3/installer-amd64.exe#/swiftsetup.exe",
-            "hash": "96d6dfd21f01ed672c3a94075d4c8ceacc415524ea663d416f5dd13df0f0cb41"
+            "url": "https://mirror.ghproxy.com/https://github.com/thebrowsercompany/swift-build/releases/download/20240422.2/installer-amd64.exe#/swiftsetup.exe",
+            "hash": "2afda26d7d51ef35d44569788b5128e08e5201174fad01c52497462198ab1e83"
         },
         "arm64": {
-            "url": "https://mirror.ghproxy.com/https://github.com/thebrowsercompany/swift-build/releases/download/20240417.3/installer-arm64.exe#/swiftsetup.exe",
-            "hash": "6913671a18df3057753e52499f99cb16dc0e4228e9e300c35717d83f6ba3a7aa"
+            "url": "https://mirror.ghproxy.com/https://github.com/thebrowsercompany/swift-build/releases/download/20240422.2/installer-arm64.exe#/swiftsetup.exe",
+            "hash": "53865b17c38ee54d30f697540ed67c6863590cc99b62e0b3a0af29cb71cd1816"
         }
     },
     "pre_install": [
         "Expand-DarkArchive \"$dir\\swiftsetup.exe\" \"$dir\\extract_folder\" -Removal",
         "$xml = [xml](Get-Content -Raw \"$dir\\extract_folder\\UX\\manifest.xml\" -Encoding utf8)",
-        "$xml.BurnManifest.Payload | ForEach-Object {",
-        "    Move-Item -Path \"$dir\\extract_folder\\AttachedContainer\\$($_.SourcePath)\" -Destination \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\"",
-        "}",
         "$xml.BurnManifest.Payload | Where-Object { $_.FilePath.EndsWith(\".msi\") } | ForEach-Object {",
         "    if ($($_.FilePath) -eq \"rtl.msi\") {",
         "        Expand-MsiArchive \"$dir\\extract_folder\\AttachedContainer\\$($_.FilePath)\" \"$dir\\extract_folder\\LocalApp\\Programs\\Swift\\Runtimes\\usr\\bin\"",
@@ -42,9 +39,8 @@
         "Remove-Item \"$dir\\Swift\\Platforms\\$ver\" | Out-Null",
         "Remove-Item \"$dir\\Swift\\Toolchains\\$ver+Asserts\" | Out-Null",
         "# Remove-Item \"$dir\\Swift\\Tools\\$ver\" | Out-Null",
-        "Remove-Item \"$dir\\extract_folder\" -Recurse | Out-Null",
         "Move-Item -Path \"$dir\\Swift\\*\" -Destination \"$dir\"",
-        "Remove-Item \"$dir\\Swift\" | Out-Null"
+        "Remove-Item \"$dir\\Swift\", \"$dir\\extract_folder\" -Recurse | Out-Null"
     ],
     "env_add_path": [
         "Runtimes\\usr\\bin",
