@@ -1,44 +1,41 @@
 {
-    "version": "nightly",
-    "description": "Blizzard's official games client.",
+    "version": "1.18.10.3141",
+    "description": "Blizzard's official games client",
     "homepage": "https://battle.net/",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.blizzard.com/en-us/legal/"
     },
-    "url": "https://us.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe#/setup.exe",
-    "pre_install": "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-    "installer": {
-        "script": [
-            "Start-Process \"$dir\\setup.exe\" --installpath=\"$dir\"",
-            "$StartDate = Get-Date",
-            "DO {$SetupProcess = Get-Process -name \"Battle.net-Setup\" -ErrorAction 'SilentlyContinue'} Until ($null -ne $SetupProcess -or $StartDate.AddSeconds(10) -lt (Get-Date))",
-            "if ($null -ne $SetupProcess) {Wait-Process -id $SetupProcess.Id}",
-            "$BattlenetProcess = Get-Process -Name \"Battle.net\" -ErrorAction 'SilentlyContinue'",
-            "if ($null -ne $BattlenetProcess) {Stop-Process $BattlenetProcess -Force -ErrorAction 'SilentlyContinue'} else {error \"Unable to $cmd $app\" successfully; break}"
-        ]
-    },
-    "shortcuts": [
-        [
-            "Battle.net Launcher.exe",
-            "Battle.net"
-        ]
+    "url": "https://us.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe#/Battle.net-Setup.exe",
+    "hash": "002f33fee7b8a159058368b7e93e492931c4ca72e90660bdb2691bcd62fedd3c",
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "$setup = \"$dir/Battle.net-Setup.exe\"",
+        "& $setup --installpath=$dir",
+        "$StartDate = Get-Date",
+        "Do { $SetupProcess = Get-Process Battle.net-Setup -ErrorAction Ignore } Until ($null -ne $SetupProcess -or $StartDate.AddSeconds(10) -lt (Get-Date))",
+        "if ($null -ne $SetupProcess) { Wait-Process $SetupProcess.Id }",
+        "$BattlenetProcess = Get-Process Battle.net -ErrorAction Ignore",
+        "if ($null -ne $BattlenetProcess) { Stop-Process $BattlenetProcess -Force -ErrorAction Ignore } else { error \"Unable to $cmd $app\" successfully; break }",
+        "Remove-Item $setup",
+        "Remove-Item \"$dir/.battlenet\" -Recurse -ErrorAction SilentlyContinue"
     ],
     "pre_uninstall": [
-        "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-        "$BattleNetProcesses = Get-Process -Name \"Agent\", \"Battle.net\" -ErrorAction 'SilentlyContinue'",
-        "if ($null -ne $BattleNetProcesses) {error \"Make sure Battle.net nor Agent.exe are running before uninstalling.\"; break}"
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "if ($null -ne (Get-Process 'Agent', 'Battle.net' -ErrorAction Ignore)) { error 'Make sure neither Battle.net nor Agent.exe are running before uninstalling.'; break }"
     ],
     "post_uninstall": [
-        "$BattleNetLocal = \"$home\\AppData\\Local\\Battle.net\"",
-        "If (Test-Path $BattleNetLocal) {Remove-Item -Path \"$BattleNetLocal\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
-        "$BattleNetRoaming = \"$home\\AppData\\Roaming\\Battle.net\"",
-        "If (Test-Path $BattleNetRoaming) {Remove-Item -Path \"$BattleNetRoaming\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
-        "$BattleNetProgramData = \"$env:ALLUSERSPROFILE\\Battle.net\"",
-        "If (Test-Path -Path $BattleNetProgramData) {Remove-Item -Path \"$BattleNetProgramData\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
-        "$BattleNetStartMenu = \"$env:ALLUSERSPROFILE\\Microsoft\\Windows\\Start Menu\\Programs\\Battle.net*\"",
-        "If (Test-Path -Path $BattleNetStartMenu) {Remove-Item -Path \"$BattleNetStartMenu\" -Force -Recurse -ErrorAction 'SilentlyContinue'}",
-        "Remove-Item Registry::HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Battle.net -ErrorAction 'SilentlyContinue'",
-        "Remove-Item Registry::HKLM\\SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Battle.net -ErrorAction 'SilentlyContinue'"
-    ]
+        "\"$env:ALLUSERSPROFILE/Battle.net\",",
+        "\"$env:ALLUSERSPROFILE/Battle.net_components\",",
+        "\"$env:ALLUSERSPROFILE/Microsoft/Windows/Start Menu/Programs/Battle.net\",",
+        "'HKLM:/SOFTWARE/Microsoft/Windows/CurrentVersion/Uninstall/Battle.net',",
+        "'HKLM:/SOFTWARE/WOW6432Node/Microsoft/Windows/CurrentVersion/Uninstall/Battle.net' | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue"
+    ],
+    "checkver": {
+        "url": "https://formulae.brew.sh/api/cask/battle-net.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "url": "https://us.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe#/Battle.net-Setup.exe"
+    }
 }

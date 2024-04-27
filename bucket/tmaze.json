@@ -1,12 +1,16 @@
 {
-    "version": "1.14.3",
+    "version": "1.14.4",
     "description": "Simple multiplatform maze solving game for terminal",
     "homepage": "https://github.com/ur-fault/TMaze",
     "license": "https://mirror.ghproxy.com/https://raw.githubusercontent.com/ur-fault/TMaze/master/LICENSE",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/1.14.3/tmaze-1.14.3-win-x86_64.exe#/tmaze.exe",
-            "hash": "5589d81db9b5fcb8663ab2f86f373e77439ef4030653d134ef2cf4fb96a12a81"
+            "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/1.14.4/tmaze_windows-x86_64_1.14.4.exe#/tmaze.exe",
+            "hash": "e89dbcb450ba44142a9c465791085af80e078b99fa4fb75b3055479831e0d45f"
+        },
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/1.14.4/tmaze_windows-x86_1.14.4.exe#/tmaze.exe",
+            "hash": "611fce15633ce36096d7bb8f4998a958464e3cc88cceeb7bc4338a0dc8aa971d"
         }
     },
     "bin": "tmaze.exe",
@@ -14,7 +18,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/$version/tmaze-$version-win-x86_64.exe#/tmaze.exe"
+                "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/$version/tmaze_windows-x86_64_$version.exe#/tmaze.exe"
+            },
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/ur-fault/TMaze/releases/download/$version/tmaze_windows-x86_$version.exe#/tmaze.exe"
             }
         }
     }

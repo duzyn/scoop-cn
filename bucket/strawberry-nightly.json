@@ -14,10 +14,9 @@
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\*-Debug-*.exe\"",
-        "Expand-7zipArchive \"$dir\\StrawberrySetup-*-msvc-x$($architecture.Substring(0, 2)).exe\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse",
-        "'StrawberrySetup-*', 'Uninstall' | ForEach-Object { Remove-Item \"$dir\\$_.exe\" }"
+        "Remove-Item \"$dir/*-Debug-*.exe\"",
+        "Expand-7zipArchive \"$dir/StrawberrySetup-*-msvc-x$($architecture.Substring(0, 2)).exe\" \"$dir\" -Removal",
+        "Remove-Item \"$dir/`$PLUGINSDIR\" -Recurse"
     ],
     "bin": "strawberry.exe",
     "shortcuts": [
