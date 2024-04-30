@@ -1,0 +1,43 @@
+{
+    "version": "1.11.0-beta.5",
+    "description": "Stupid Fast Scoop Utilities. Incredibly fast replacements for commonly used Scoop commands, written in Rust.",
+    "homepage": "https://github.com/jewlexx/sfsu",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v1.11.0-beta.5/sfsu-x86_64.exe#/sfsu.exe",
+            "hash": "d0fd73b5ff10aa324265262370edb91ffac8ba2036858cd85cd233d7aefddf27"
+        },
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v1.11.0-beta.5/sfsu-i686.exe#/sfsu.exe",
+            "hash": "5df41e3321533db04390dac692b2e64a330605c556b742efe5caea1386cb9622"
+        },
+        "arm64": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v1.11.0-beta.5/sfsu-aarch64.exe#/sfsu.exe",
+            "hash": "24115ff75087eb9c55649b76f3d8303263269cb77e5545a29200464056065e50"
+        }
+    },
+    "notes": "In order to replace scoop commands use `Invoke-Expression (&sfsu hook)` in your Powershell profile.",
+    "bin": "sfsu.exe",
+    "checkver": {
+        "url": "https://api.github.com/repositories/558838965/releases",
+        "jsonpath": "$[?(@.prerelease == true)].tag_name",
+        "regex": "v([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v$version/sfsu-x86_64.exe#/sfsu.exe"
+            },
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v$version/sfsu-i686.exe#/sfsu.exe"
+            },
+            "arm64": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jewlexx/sfsu/releases/download/v$version/sfsu-aarch64.exe#/sfsu.exe"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
