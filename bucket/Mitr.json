@@ -3,7 +3,14 @@
     "description": "A formal Loopless Thai and Sans Latin design. The name 'Mitr' means friend.",
     "homepage": "http://github.com/cadsondemak/mitr",
     "license": "OFL-1.1",
-    "url": "https://fonts.google.com/download?family=Mitr#/fonts.zip",
+    "url": [
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-200.ttf",
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-300.ttf",
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-400.ttf",
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-500.ttf",
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-600.ttf",
+        "https://mirror.ghproxy.com/https://github.com/cadsondemak/mitr/raw/master/fonts/Mitr-700.ttf"
+    ],
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
