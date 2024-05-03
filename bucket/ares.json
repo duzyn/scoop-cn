@@ -1,20 +1,20 @@
 {
-    "version": "137",
+    "version": "138",
     "description": "Multi-system emulator focused on accuracy and preservation",
     "homepage": "https://ares-emu.net",
     "license": "ISC",
     "notes": "Configuration file cannot be persisted, but will be retained during the update",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v137/ares-windows.zip",
-            "hash": "f94f715db667a6aba99a504dc7dfcd28eeebacb80cfdd62143def87b64febf6a"
+            "url": "https://mirror.ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v138/ares-windows.zip",
+            "hash": "18346b29fecce83e0985bfb095e94315545fb0ff8c0a3316c0b82d0f7bfdbd52"
         },
         "arm64": {
-            "url": "https://mirror.ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v137/ares-windows-msvc-arm64.zip",
-            "hash": "f84d25d67162d5bbdd59dd1e0aa808ee25d8a9e4d67708971213ae9e2a34bdb1"
+            "url": "https://mirror.ghproxy.com/https://github.com/ares-emulator/ares/releases/download/v138/ares-windows-msvc-arm64.zip",
+            "hash": "aaf403f6ea1aa1d4ecc4ce4ed0495079ff7274704fc41ed63d290a3d861ee6f2"
         }
     },
-    "extract_dir": "ares-v137",
+    "extract_dir": "ares-v138",
     "post_install": [
         "if (!(Test-Path \"$persist_dir\\settings.bml.bak\")) {",
         "   New-Item -ItemType File \"$dir\\settings.bml\" | Out-Null",
