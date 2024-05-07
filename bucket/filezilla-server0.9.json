@@ -8,7 +8,7 @@
     "hash": "sha512:0e0a92f3693d31d09341354ce212f42e1941743cf5f49bffe58b0c05cbc04865470e96c145ae0ffeea060a86d618da2a7de78a38946a9c3a2dcb956d0f2b3cfa",
     "installer": {
         "script": [
-            "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\source\", \"$dir\\`$R1\", \"$dir\\Uninstall.exe.nsis\" -Recurse",
+            "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\source\", \"$dir\\`$R1\" -Recurse",
             "if(!(Test-Path \"$dir\\FileZilla Server.xml\")) {Set-Content \"$dir\\FileZilla Server.xml\" $null}"
         ]
     },
