@@ -1,0 +1,69 @@
+{
+    "version": "3.3.5",
+    "description": "Windows binaries for Hadoop versions.",
+    "homepage": "https://github.com/cdarlint/winutils/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": [
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop.cmd",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop.dll",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop.exp",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop.lib",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hadoop.pdb",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hdfs",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/hdfs.cmd",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/libwinutils.lib",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/mapred",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/mapred.cmd",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/winutils.exe",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/winutils.pdb",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/yarn",
+        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-3.3.5/bin/yarn.cmd"
+    ],
+    "hash": [
+        "e8a1f032a56beceb1989c8467b58109d2bff47f8c7bc5de3dde76cf2c6452abf",
+        "2d7f5d9b5ea01189cb0e0dfcea9e06eb58a6427a35e67afe72a80da30f9fd324",
+        "d3dd64afdc85f2a7eb5345abf2ecaa744b0a157de40859313337d47f81ee1c7b",
+        "03d8a1ed662ee4fcb7393e83386c1c086897a4b2f5a5df20eee84bc215ac5311",
+        "2923e73622a1b6ecc5785692f9fb0f32361862ea369adf931a186a079dbec220",
+        "6b8ac1bf6985f73f59f5633a7f02c1e945fde23080a8056c11ed760fbb54dd9a",
+        "db79a2c81efa42a1255232f1239b67da920130f6df04807212ab1ea59edfa0ff",
+        "ddc96e03b6ff62bd551ff5b9ec54a8b5d228aaf4836a7a4156f6a2e1b1c23741",
+        "5c35b97e49b639112135deaf94afc5753333d6f9fc815adbe3ef6a3843a36ae5",
+        "11c9502db17e000b838664ae76ace002f7bd6607a61e73a010022b5ee6bd6566",
+        "d743c658af11eebc5350768e9f29d0a1dca42bbfad6b60b1ebf023bbf9de24fc",
+        "a0ca6e358357c41ef56ebdb02c38e4a4d55da7ca7a13001678bb2ef7d644adea",
+        "ba630ced9e7d587e17bbf78b17df7e1c83f07b32a0eef3b16cb3bf442454e627",
+        "56ac42988d7fe5758667c5ca6be0c4455cb0bf073fa14dbdb6a105e3b3d6f234",
+        "ad3544310c6687376d8d6b5f796c4b0d9fe64edec3907e63dd517f82a861d0bf"
+    ],
+    "bin": "winutils.exe",
+    "checkver": {
+        "url": "https://api.github.com/repos/cdarlint/winutils/contents/",
+        "jsonpath": "$..name",
+        "reverse": true,
+        "regex": "hadoop-(3.3\\.\\d+)"
+    },
+    "autoupdate": {
+        "url": [
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop.cmd",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop.dll",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop.exp",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop.lib",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hadoop.pdb",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hdfs",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/hdfs.cmd",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/libwinutils.lib",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/mapred",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/mapred.cmd",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/winutils.exe",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/winutils.pdb",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/yarn",
+            "https://mirror.ghproxy.com/https://raw.githubusercontent.com/cdarlint/winutils/master/hadoop-$version/bin/yarn.cmd"
+        ]
+    }
+}
