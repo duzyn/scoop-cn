@@ -1,33 +1,33 @@
 {
-    "version": "13.2.0-16.0.6-11.0.0-r1",
+    "version": "14.1.0-18.1.5-11.0.1-r1",
     "description": "GNU Compiler Collection with LLVM/Clang/LLD/LLDB (UCRT, WinLibs build)",
     "homepage": "https://winlibs.com",
     "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "437401d7ebda2cd56cb25c13023730ebbebd011850768f3519191da669265a27",
+            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.1.0posix-18.1.5-11.0.1-ucrt-r1/winlibs-x86_64-posix-seh-gcc-14.1.0-llvm-18.1.5-mingw-w64ucrt-11.0.1-r1.7z",
+            "hash": "16c15e587a488ca24b49f7b178028efa719aed3eb9db7ce79449fce097909cbd",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "61f859c4a64f6f4c57ef5b83d6f9fdf08480cd6e0dbc0cc61575e3496621cb31",
+            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.1.0posix-18.1.5-11.0.1-ucrt-r1/winlibs-i686-posix-dwarf-gcc-14.1.0-llvm-18.1.5-mingw-w64ucrt-11.0.1-r1.7z",
+            "hash": "18d9029fdea70b43e8ac6f6620ab4c5adb2fc3b5a6c255953f22d2ee81a4dc91",
             "extract_dir": "mingw32"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "regex": "(?<gcc>[\\d.]+)-(?<llvm>[\\d.]+)-(?<mingw>[\\d.]+)-ucrt-r(?<release>\\d+)",
+        "regex": "(?<gcc>[\\d.]+)posix-(?<llvm>[\\d.]+)-(?<mingw>[\\d.]+)-ucrt-r(?<release>\\d+)",
         "replace": "${gcc}-${llvm}-${mingw}-r${release}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-llvm-$matchLlvm-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             }
         },
         "hash": {

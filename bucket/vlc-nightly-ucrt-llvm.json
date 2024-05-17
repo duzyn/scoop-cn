@@ -1,0 +1,50 @@
+{
+    "version": "20240516",
+    "description": "A free and open source multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.",
+    "homepage": "https://www.videolan.org/",
+    "license": "GPL-2.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://artifacts.videolan.org/vlc/nightly-win64-ucrt-llvm/20240516-0451/vlc-4.0.0-dev-win64-7f737771.7z",
+            "hash": "sha512:cc7c2b83ed8103d51fdfe0f0a8b7205c3747f426acaa885ba44c93cd88a8379b89ee72d0b15812e6d262ef441d727dd8f8781d4c19335aa987e97543f8e27535"
+        }
+    },
+    "extract_dir": "vlc-4.0.0-dev",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\portable\") -and (Test-Path \"$env:APPDATA\\vlc\")) {",
+        "    info \"Copying old '$env:APPDATA\\vlc' to '$persist_dir\\portable'\"",
+        "    ensure \"$dir\\portable\\vlc\" | Out-Null",
+        "    Copy-Item \"$env:APPDATA\\vlc\\*\" \"$dir\\portable\" -Recurse -Force",
+        "    Move-Item \"$dir\\portable\\vlc-qt-interface.ini\" \"$dir\\portable\\vlc\"",
+        "}"
+    ],
+    "bin": "vlc.exe",
+    "shortcuts": [
+        [
+            "vlc.exe",
+            "VLC media player (UCRT LLVM Nightly)"
+        ]
+    ],
+    "persist": "portable",
+    "checkver": {
+        "script": [
+            "$base_url = 'https://artifacts.videolan.org/vlc/nightly-win64-ucrt-llvm/'",
+            "$page = Invoke-WebRequest $base_url -UseBasicParsing",
+            "$full_version = $page.Links.href.Where({ $_ -match '\\d{8}-\\d{4}/' }, 1)",
+            "$dl_page = Invoke-WebRequest ($base_url + $full_version) -UseBasicParsing",
+            "\"$full_version$($dl_page.Links.href.Where({ $_ -match '.7z$' }, 1))\""
+        ],
+        "regex": "(\\d{8})-(?<time>\\d{4})/(?<filename>(?<extract_dir>vlc-[\\d.]+-dev).+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://artifacts.videolan.org/vlc/nightly-win64-ucrt-llvm/$version-$matchTime/$matchFilename",
+                "hash": {
+                    "url": "$baseurl/SHA512SUM"
+                }
+            }
+        },
+        "extract_dir": "$matchExtract_Dir"
+    }
+}

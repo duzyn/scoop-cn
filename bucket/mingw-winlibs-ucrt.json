@@ -1,33 +1,33 @@
 {
-    "version": "13.2.0-11.0.0-r1",
+    "version": "14.1.0-11.0.1-r1",
     "description": "GNU Compiler Collection (UCRT, WinLibs build)",
     "homepage": "https://winlibs.com",
     "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "6b9663f2f183fb6b962f37e13b3ee6258836122a3dc49d4ac299117219580e32",
+            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.1.0posix-18.1.5-11.0.1-ucrt-r1/winlibs-x86_64-posix-seh-gcc-14.1.0-mingw-w64ucrt-11.0.1-r1.7z",
+            "hash": "b405932d4789ee1a69a2dce306ab6672681d8d6351dd3217555ccc4bea558941",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-mingw-w64ucrt-11.0.0-r1.7z",
-            "hash": "3d14c4f9f2396f45bc0d59b005ec2db931429ca53b568200096f9e797cd0e10b",
+            "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.1.0posix-18.1.5-11.0.1-ucrt-r1/winlibs-i686-posix-dwarf-gcc-14.1.0-mingw-w64ucrt-11.0.1-r1.7z",
+            "hash": "667a2d41d2be68e59ab3246c8f9eddb1ce8463a7953352396fd9f9ec61e26f49",
             "extract_dir": "mingw32"
         }
     },
     "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
     "env_add_path": "bin",
     "checkver": {
-        "regex": "(?<gcc>[\\d.]+)-(?<llvm>[\\d.]+)-(?<mingw>[\\d.]+)-ucrt-r(?<release>\\d+)",
+        "regex": "(?<gcc>[\\d.]+)posix-(?<llvm>[\\d.]+)-(?<mingw>[\\d.]+)-ucrt-r(?<release>\\d+)",
         "replace": "${gcc}-${mingw}-r${release}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGcc-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchLlvm-$matchMingw-ucrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             }
         },
         "hash": {
