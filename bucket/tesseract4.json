@@ -23,7 +23,7 @@
     "post_install": [
         "$langdir = versiondir tesseract4-languages current $global",
         "if (Test-Path $langdir) {",
-        "   env \"TESSDATA_PREFIX\" $global $langdir",
+        "   Set-EnvVar -Name TESSDATA_PREFIX -Value $langdir -Global:$global",
         "}"
     ],
     "env_set": {
