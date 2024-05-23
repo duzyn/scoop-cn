@@ -11,11 +11,6 @@
             "url": "https://cdn.azul.com/zulu/bin/zulu22.30.13-ca-fx-jre22.0.1-win_x64.zip",
             "hash": "6edda1594b9edfee61355452bb670d818901795c64f8a1f5f22630aec9a65412",
             "extract_dir": "zulu22.30.13-ca-fx-jre22.0.1-win_x64"
-        },
-        "32bit": {
-            "url": "https://cdn.azul.com/zulu/bin/zulu22.30.13-ca-fx-jre22.0.1-win_i686.zip",
-            "hash": "cc2e8860e6fcc5ceb5e08c3fb691d75ce4ef93443e0eb62529b4de2a9e19aaa3",
-            "extract_dir": "zulu22.30.13-ca-fx-jre22.0.1-win_i686"
         }
     },
     "env_add_path": "bin",
@@ -23,8 +18,8 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
-        "jsonpath": "$.name",
+        "url": "https://api.azul.com/metadata/v1/zulu/packages/?java_version=&os=windows&arch=x64&archive_type=zip&java_package_type=jre&javafx_bundled=true&crac_supported=false&release_type=PSU&latest=true&include_fields=sha256_hash&page_size=1",
+        "jsonpath": "$..download_url",
         "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-fx-jre(?<java>[\\d.]+)-win)_x64.zip",
         "replace": "${version}"
     },
@@ -34,16 +29,8 @@
                 "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
                 "extract_dir": "$matchName_x64",
                 "hash": {
-                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=64",
-                    "jp": "$.sha256_hash"
-                }
-            },
-            "32bit": {
-                "url": "https://cdn.azul.com/zulu/bin/$matchName_i686.zip",
-                "extract_dir": "$matchName_i686",
-                "hash": {
-                    "url": "https://api.azul.com/zulu/download/community/v1.0/bundles/latest/?jdk_version=&bundle_type=jre&features=headfull,fx&javafx=true&ext=zip&os=windows&arch=x86&hw_bitness=32",
-                    "jp": "$.sha256_hash"
+                    "url": "https://api.azul.com/metadata/v1/zulu/packages/?java_version=&os=windows&arch=x64&archive_type=zip&java_package_type=jre&javafx_bundled=true&crac_supported=false&release_type=PSU&latest=true&include_fields=sha256_hash&page_size=1",
+                    "jp": "$..sha256_hash"
                 }
             }
         }

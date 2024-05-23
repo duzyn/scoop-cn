@@ -1,0 +1,38 @@
+{
+    "description": "Zulu is certified build of OpenJDK",
+    "homepage": "https://www.azul.com/products/zulu-community/",
+    "version": "22.30.13",
+    "license": {
+        "identifier": "GPL-2.0-only WITH Classpath-exception-2.0",
+        "url": "https://www.azulsystems.com/license/zulu_third_party_licenses.html"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.azul.com/zulu/bin/zulu22.30.13-ca-jdk22.0.1-win_x64.zip",
+            "hash": "cf112b96b665eb34107590c83af83e56735caa677e2a96d1991419aa26b5d511",
+            "extract_dir": "zulu22.30.13-ca-jdk22.0.1-win_x64"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://api.azul.com/metadata/v1/zulu/packages/?java_version=22&os=windows&arch=x64&archive_type=zip&java_package_type=jdk&javafx_bundled=false&crac_supported=false&release_type=PSU&latest=true&include_fields=sha256_hash&page_size=1",
+        "jsonpath": "$..download_url",
+        "regex": "(?<name>zulu(?<version>[\\d.]+)-ca-jdk(?<java>[\\d.]+)-win)_x64.zip",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.azul.com/zulu/bin/$matchName_x64.zip",
+                "extract_dir": "$matchName_x64",
+                "hash": {
+                    "url": "https://api.azul.com/metadata/v1/zulu/packages/?java_version=22&os=windows&arch=x64&archive_type=zip&java_package_type=jdk&javafx_bundled=false&crac_supported=false&release_type=PSU&latest=true&include_fields=sha256_hash&page_size=1",
+                    "jp": "$..sha256_hash"
+                }
+            }
+        }
+    }
+}
