@@ -1,5 +1,5 @@
 {
-    "version": "2024.1.1.8",
+    "version": "2024.1.1.9",
     "description": "The official IDE for Android development, which includes everything you need to build Android apps.",
     "homepage": "https://developer.android.com/studio/preview",
     "license": {
@@ -11,8 +11,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2024.1.1.8/android-studio-2024.1.1.8-windows.zip",
-            "hash": "EEDEEC4712CE71E4B7C2EF356555008C472336A6A5037E3CEB13A0C83873AEE7",
+            "url": "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2024.1.1.9/android-studio-2024.1.1.9-windows.zip",
+            "hash": "27639bad3a1628b1fc3cde59724ab0f3ee4c82c8071e5cd0265a48a58df4d03a",
             "shortcuts": [
                 [
                     "bin\\studio64.exe",
@@ -21,12 +21,13 @@
             ]
         }
     },
-    "pre_install": [
-        "'uninstall.exe' | ForEach-Object { Remove-Item \"$dir/$_\" -Recurse }"
-    ],
+    "pre_install": "'uninstall.exe' | ForEach-Object { Remove-Item \"$dir/$_\" -Recurse }",
     "extract_dir": "android-studio",
     "checkver": {
-        "regex": "agree_beta_win_bundle_download(?:.|\n)+?android-studio-([\\d.]+)-windows\\.exe"
+        "regex": [
+            "agree_beta_win_bundle_download(?:.|",
+            ")+?android-studio-([\\d.]+)-windows\\.exe"
+        ]
     },
     "autoupdate": {
         "architecture": {
