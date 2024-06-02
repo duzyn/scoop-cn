@@ -12,11 +12,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/angryip/ipscan/releases/download/3.9.1/ipscan-win64-3.9.1.exe#/ipscan.exe",
+            "url": "https://gh-proxy.com/https://github.com/angryip/ipscan/releases/download/3.9.1/ipscan-win64-3.9.1.exe#/ipscan.exe",
             "hash": "ae50c71517182c9773bb138745f10a643b1215078ede439b2b3adb486a9cfb14"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/angryip/ipscan/releases/download/3.9.1/ipscan-3.9.1-setup.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/angryip/ipscan/releases/download/3.9.1/ipscan-3.9.1-setup.exe#/dl.7z",
             "hash": "892405573aa34dfc49b37e4c35b655543e88ec1c5e8ffb27ab8d1bbf90fc6ae0",
             "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse"
         }
@@ -34,10 +34,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/angryip/ipscan/releases/download/$version/ipscan-win64-$version.exe#/ipscan.exe"
+                "url": "https://gh-proxy.com/https://github.com/angryip/ipscan/releases/download/$version/ipscan-win64-$version.exe#/ipscan.exe"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/angryip/ipscan/releases/download/$version/ipscan-$version-setup.exe#/dl.7z"
+                "url": "https://gh-proxy.com/https://github.com/angryip/ipscan/releases/download/$version/ipscan-$version-setup.exe#/dl.7z"
             }
         }
     }

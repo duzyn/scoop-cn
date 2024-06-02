@@ -9,7 +9,7 @@
             "scoop-cn/openjdk"
         ]
     },
-    "url": "https://mirror.ghproxy.com/https://github.com/plantuml/plantuml/releases/download/v1.2024.5/plantuml-1.2024.5.jar#/plantuml.jar",
+    "url": "https://gh-proxy.com/https://github.com/plantuml/plantuml/releases/download/v1.2024.5/plantuml-1.2024.5.jar#/plantuml.jar",
     "hash": "3c551212da4aa421a2c2940b8cfae26951b3591f75d5b93e33775e930641c7db",
     "pre_install": "Set-Content \"$dir\\plantuml.bat\" \"@javaw.exe -jar \"\"%~dp0plantuml.jar\"\"\" -Encoding Ascii",
     "bin": "plantuml.jar",
@@ -21,6 +21,6 @@
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/plantuml/plantuml/releases/download/v$version/plantuml-$version.jar#/plantuml.jar"
+        "url": "https://gh-proxy.com/https://github.com/plantuml/plantuml/releases/download/v$version/plantuml-$version.jar#/plantuml.jar"
     }
 }

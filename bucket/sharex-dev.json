@@ -3,7 +3,7 @@
     "description": "Screen capture, file sharing and productivity tool. (Dev. Version)",
     "homepage": "https://getsharex.com",
     "license": "GPL-3.0-only",
-    "url": "https://mirror.ghproxy.com/https://github.com/ShareX/DevBuilds/releases/download/v16.1.1.381/ShareX-16.1.1.381-portable.zip",
+    "url": "https://gh-proxy.com/https://github.com/ShareX/DevBuilds/releases/download/v16.1.1.381/ShareX-16.1.1.381-portable.zip",
     "hash": "31adccc35f48cd0ab0c55a1bdafff04e22b931946d08ea7cb873fc99e23b8025",
     "pre_install": "if (!(Test-Path \"$persist_dir\\PersonalPath.cfg\")) { New-Item \"$dir\\PersonalPath.cfg\" | Out-Null }",
     "bin": "ShareX.exe",
@@ -23,7 +23,7 @@
         "regex": "v([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/ShareX/DevBuilds/releases/download/v$version/ShareX-$version-portable.zip",
+        "url": "https://gh-proxy.com/https://github.com/ShareX/DevBuilds/releases/download/v$version/ShareX-$version-portable.zip",
         "hash": {
             "url": "https://github.com/ShareX/DevBuilds/releases",
             "regex": "ShareX-$version-portable.zip</td>\\s*<td><code>$sha256</code>"

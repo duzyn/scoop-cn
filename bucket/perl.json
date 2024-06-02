@@ -5,7 +5,7 @@
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_53822_64bit/strawberry-perl-5.38.2.2-64bit-portable.zip",
+            "url": "https://gh-proxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_53822_64bit/strawberry-perl-5.38.2.2-64bit-portable.zip",
             "hash": "ea451686065d6338d7e4d4a04c9af49f17951d15aa4c2e19ab8cb56fa2373440"
         }
     },
@@ -21,12 +21,12 @@
     ],
     "checkver": {
         "url": "https://strawberryperl.com/releases.html",
-        "regex": "https://mirror.ghproxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/(?<tag>[^/]+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip"
+        "regex": "https://gh-proxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/(?<tag>[^/]+)/strawberry-perl-([\\d.]+)-64bit-portable\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/$matchTag/strawberry-perl-$version-64bit-portable.zip",
+                "url": "https://gh-proxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/$matchTag/strawberry-perl-$version-64bit-portable.zip",
                 "hash": {
                     "url": "https://strawberryperl.com/releases.html",
                     "find": "(?sm)$url\" onclick=\".*?Portable edition.*?$sha256"

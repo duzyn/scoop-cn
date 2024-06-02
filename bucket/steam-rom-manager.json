@@ -6,7 +6,7 @@
         "url": "https://github.com/SteamGridDB/steam-rom-manager/blob/master/LICENSE",
         "identifier": "GPL-3.0"
     },
-    "url": "https://mirror.ghproxy.com/https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.9/steam-rom-manager-portable-2.5.9.exe",
+    "url": "https://gh-proxy.com/https://github.com/SteamGridDB/steam-rom-manager/releases/download/v2.5.9/steam-rom-manager-portable-2.5.9.exe",
     "hash": "05d9bfa76fca34ef45bccbf06d9b5e2cc778dd9d09f77f8fccc5eeb7cda86fbd",
     "installer": {
         "script": "Rename-Item \"$dir\\steam-rom-manager-portable-$version.exe\" 'steam-rom-manager.exe' -Force"
@@ -23,6 +23,6 @@
         "regex": ".*[mM]anager-portable-(?<version>[\\d\\w.]+).exe"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/SteamGridDB/steam-rom-manager/releases/download/v$version/steam-rom-manager-portable-$version.exe"
+        "url": "https://gh-proxy.com/https://github.com/SteamGridDB/steam-rom-manager/releases/download/v$version/steam-rom-manager-portable-$version.exe"
     }
 }

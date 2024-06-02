@@ -3,7 +3,7 @@
     "description": "This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.",
     "homepage": "https://github.com/GerbilSoft/rom-properties",
     "license": "GPL-2.0",
-    "url": "https://mirror.ghproxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v2.3/rom-properties_2.3-windows.zip",
+    "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v2.3/rom-properties_2.3-windows.zip",
     "hash": "8148ff3f6b2e35641c5bd3b4657ccdf3a06a5cb2bc5c987fb050ebfeee945de3",
     "pre_install": "if (!(is_admin)) { error \"Administrator rights are required to install $app\"; break }",
     "installer": {
@@ -51,6 +51,6 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v$version/rom-properties_$version-windows.zip"
+        "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v$version/rom-properties_$version-windows.zip"
     }
 }

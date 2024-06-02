@@ -5,13 +5,13 @@
     "license": "GPL-2.0-or-later",
     "notes": "Don't forget to install the 'Kee Browser Extension': https://www.kee.pm/",
     "depends": "scoop-cn/extras/keepass",
-    "url": "https://mirror.ghproxy.com/https://github.com/kee-org/keepassrpc/releases/download/v1.16.0/KeePassRPC.plgx",
+    "url": "https://gh-proxy.com/https://github.com/kee-org/keepassrpc/releases/download/v1.16.0/KeePassRPC.plgx",
     "hash": "a7975896e0ab5c02a1061966eac43741013780b309cc466c1d7c069d5797168b",
     "checkver": {
         "github": "https://github.com/kee-org/keepassrpc"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/kee-org/keepassrpc/releases/download/v$version/KeePassRPC.plgx"
+        "url": "https://gh-proxy.com/https://github.com/kee-org/keepassrpc/releases/download/v$version/KeePassRPC.plgx"
     },
     "installer": {
         "script": "Copy-Item \"$dir\\KeePassRPC.plgx\" \"$(appdir keepass $global)\\current\\Plugins\""
