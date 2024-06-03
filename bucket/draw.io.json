@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v24.4.13/draw.io-24.4.13-windows-installer.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v24.4.13/draw.io-24.4.13-windows-installer.exe#/dl.7z",
             "hash": "368ca639e4d65f46eb885e6fbecc61a7c8d1454cc80217c5cfd122a983e42c73",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -13,7 +13,7 @@
             ]
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v24.4.13/draw.io-ia32-24.4.13-windows-32bit-installer.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v24.4.13/draw.io-ia32-24.4.13-windows-32bit-installer.exe#/dl.7z",
             "hash": "83643e530978e976315ef6e8da47ad47e7b7cdebd381793273179761bfd991d5",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
@@ -34,10 +34,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-$version-windows-installer.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-$version-windows-installer.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
             }
         },
         "hash": {

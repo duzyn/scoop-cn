@@ -5,11 +5,11 @@
     "license": "Zlib",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_msvc16.zip",
+            "url": "https://mirror.ghproxy.com/https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win64_msvc16.zip",
             "hash": "dcb0a3a5e246d475c711e84b3356af0e9b06702faef4e0a34749b9e9bdbd07f0"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win32_msvc16.zip",
+            "url": "https://mirror.ghproxy.com/https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_win32_msvc16.zip",
             "hash": "f1a5482ec20cc8e5c295711abef591679bfd96a71a1e69a66754e408556182cd"
         }
     },
@@ -18,7 +18,7 @@
         "Move-Item \"$dir\\raylib-*\\*\" \"$dir\" && Remove-Item \"$dir\\raylib-*\"",
         "# Configure pkg-config file with the library data.",
         "# Download raylib pkg-config file",
-        "Invoke-WebRequest -Uri https://gh-proxy.com/https://raw.githubusercontent.com/raysan5/raylib/$version/raylib.pc.in -OutFile $dir\\raylib.pc.in",
+        "Invoke-WebRequest -Uri https://mirror.ghproxy.com/https://raw.githubusercontent.com/raysan5/raylib/$version/raylib.pc.in -OutFile $dir\\raylib.pc.in",
         "# Create helper variables:",
         "$pc_in = \"$dir\\raylib.pc.in\"",
         "$pc_out = \"$dir\\lib\\pkgconfig\\raylib.pc\"",
@@ -86,10 +86,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win64_msvc16.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win64_msvc16.zip"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win32_msvc16.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/raysan5/raylib/releases/download/$version/raylib-$version_win32_msvc16.zip"
             }
         }
     }

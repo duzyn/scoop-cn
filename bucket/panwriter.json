@@ -6,7 +6,7 @@
     "depends": "scoop-cn/pandoc",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/mb21/panwriter/releases/download/v0.8.6/PanWriter-Setup-0.8.6.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/mb21/panwriter/releases/download/v0.8.6/PanWriter-Setup-0.8.6.exe#/dl.7z",
             "hash": "3f8c111ede7f7c6d426297638856a5f23dbfdfc0d7377eaaf8ae1162febf8ed5",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -26,7 +26,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/mb21/panwriter/releases/download/v$version/PanWriter-Setup-$version.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/mb21/panwriter/releases/download/v$version/PanWriter-Setup-$version.exe#/dl.7z"
             }
         }
     }

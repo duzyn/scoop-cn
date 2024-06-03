@@ -6,7 +6,7 @@
     "suggest": {
         ".NET Desktop Runtime": "scoop-cn/windowsdesktop-runtime"
     },
-    "url": "https://gh-proxy.com/https://github.com/Tyrrrz/LightBulb/releases/download/2.5/LightBulb.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/Tyrrrz/LightBulb/releases/download/2.5/LightBulb.zip",
     "hash": "32044e2570f69d7a713b1c5e8bf3f5540ebc0596be74431af8f1650fd96352c3",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\Settings.json\")) {",
@@ -27,6 +27,6 @@
         "regex": "tags/([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Tyrrrz/LightBulb/releases/download/$version/LightBulb.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/Tyrrrz/LightBulb/releases/download/$version/LightBulb.zip"
     }
 }

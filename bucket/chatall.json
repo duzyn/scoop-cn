@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-x64.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-x64.exe#/dl.7z",
             "hash": "sha512:bde968267114f5499baaa5c56e2363aa310a4fc8c20fd8442acf3957f6cefb520ba1ea593174012f948ea3b10ec4258ef3f5975063f14a79be9ed0129c540728",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\" -Removal",
@@ -13,7 +13,7 @@
             ]
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-ia32.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-ia32.exe#/dl.7z",
             "hash": "sha512:26f56a332211c6f975cd66ce3bee84f53b7b70eb8f0d3ff49609e876e84b282d7b8d946429d423b3c7ee55680770155e80518d72eab236994049434a3b4fc1ab",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\" -Removal",
@@ -21,7 +21,7 @@
             ]
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-arm64.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v1.80.106/ChatALL-1.80.106-win-arm64.exe#/dl.7z",
             "hash": "sha512:3de8ef42eb0c25f7236ff46dc97403c90c11f73af1d5f5e1f1fcd5f22db78e16650fb51c3f0145cba159a78d0f4d12c0e1996fc1f2a58f2a86814483e2e2e95a",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\" -Removal",
@@ -41,13 +41,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-x64.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-x64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-ia32.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-ia32.exe#/dl.7z"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-arm64.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/sunner/ChatALL/releases/download/v$version/ChatALL-$version-win-arm64.exe#/dl.7z"
             }
         },
         "hash": {

@@ -3,7 +3,7 @@
     "description": "Personal and small-business financial-accounting software",
     "homepage": "https://www.gnucash.org/",
     "license": "GPL-2.0-or-later",
-    "url": "https://gh-proxy.com/https://github.com/Gnucash/gnucash/releases/download/5.6/gnucash-5.6-1.setup.exe",
+    "url": "https://mirror.ghproxy.com/https://github.com/Gnucash/gnucash/releases/download/5.6/gnucash-5.6-1.setup.exe",
     "hash": "4596d431e5785ef3d80bcbea6e1c5e1df98c3b9b27314e6d8d2eae679424f56c",
     "innosetup": true,
     "architecture": {
@@ -36,7 +36,7 @@
         "regex": "/download/([\\d.]+)/gnucash-([\\w.-]+)\\.setup\\.exe"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Gnucash/gnucash/releases/download/$version/gnucash-$match2.setup.exe",
+        "url": "https://mirror.ghproxy.com/https://github.com/Gnucash/gnucash/releases/download/$version/gnucash-$match2.setup.exe",
         "hash": {
             "url": "https://github.com/Gnucash/gnucash/releases/tag/$version",
             "regex": "$sha256.*?$basename"

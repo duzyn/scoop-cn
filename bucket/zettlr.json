@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/Zettlr/Zettlr/releases/download/v3.1.1/Zettlr-3.1.1-x64.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/Zettlr/Zettlr/releases/download/v3.1.1/Zettlr-3.1.1-x64.exe#/dl.7z",
             "hash": "d795422a95327e609c4d2df8c18552718ba3f3b5046c9f3e82b3e820fbb0d7a8",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -25,7 +25,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/Zettlr/Zettlr/releases/download/v$version/Zettlr-$version-x64.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/Zettlr/Zettlr/releases/download/v$version/Zettlr-$version-x64.exe#/dl.7z"
             }
         },
         "hash": {

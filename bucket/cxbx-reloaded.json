@@ -6,7 +6,7 @@
         "identifier": "GPL-2.0",
         "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/blob/master/COPYING"
     },
-    "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-0007d20/CxbxReloaded-Release-VS2022.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-0007d20/CxbxReloaded-Release-VS2022.zip",
     "hash": "81853ad9fcd986c2ff5cda5ee4a56cf814902b76b8a34736ea62a73ff70a40d8",
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.ini\")) { $null = New-Item \"$dir\\settings.ini\" }",
     "bin": "cxbx.exe",
@@ -25,6 +25,6 @@
         "regex": "CI-([a-f\\d]+)."
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release-VS2022.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release-VS2022.zip"
     }
 }

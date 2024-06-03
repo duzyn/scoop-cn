@@ -5,7 +5,7 @@
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/edrlab/thorium-reader/releases/download/v2.4.2/Thorium.Setup.2.4.2.exe#/dl.7z",
+            "url": "https://mirror.ghproxy.com/https://github.com/edrlab/thorium-reader/releases/download/v2.4.2/Thorium.Setup.2.4.2.exe#/dl.7z",
             "hash": "f09b179ae4dc616a118ed4e9ba86a697c10e6f302dd0ca218e7e53d709a0890b",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -23,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/edrlab/thorium-reader/releases/download/v$version/Thorium.Setup.$version.exe#/dl.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/edrlab/thorium-reader/releases/download/v$version/Thorium.Setup.$version.exe#/dl.7z"
             }
         }
     }

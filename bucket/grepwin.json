@@ -6,12 +6,12 @@
     "notes": "Run '$dir\\install-context.reg' to add grepWin to right-click context menu.",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-x64-2.0.15_portable.zip",
+            "url": "https://mirror.ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-x64-2.0.15_portable.zip",
             "hash": "0b94eeb7946ac596ce2bc04872b4a721480714218492baee33fc451258bb09cd",
             "pre_install": "Rename-Item \"$dir\\grepWin-x64-${version}_portable.exe\" 'grepWin.exe'"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-2.0.15_portable.zip",
+            "url": "https://mirror.ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/2.0.15/grepWin-2.0.15_portable.zip",
             "hash": "ee65676acc4dbb9fd657c0819cf4b16197dcefe45aee274566f79a8e798f07eb",
             "pre_install": "Rename-Item \"$dir\\grepWin-${version}_portable.exe\" 'grepWin.exe'"
         }
@@ -48,10 +48,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-x64-$version_portable.zip"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
+                "url": "https://mirror.ghproxy.com/https://github.com/stefankueng/grepWin/releases/download/$version/grepWin-$version_portable.zip"
             }
         }
     }

@@ -6,7 +6,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/earthly/earthly/releases/download/v0.8.13/earthly-windows-amd64.exe#/earthly.exe",
+            "url": "https://mirror.ghproxy.com/https://github.com/earthly/earthly/releases/download/v0.8.13/earthly-windows-amd64.exe#/earthly.exe",
             "hash": "8201bcdd20272e4e68c56ce3b070fd488e410aef6be1e75b3b1992b4cdd0caaa"
         }
     },
@@ -16,7 +16,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/earthly/earthly/releases/download/v$version/earthly-windows-amd64.exe#/earthly.exe",
+                "url": "https://mirror.ghproxy.com/https://github.com/earthly/earthly/releases/download/v$version/earthly-windows-amd64.exe#/earthly.exe",
                 "hash": {
                     "url": "$baseurl/checksum.asc",
                     "regex": "$sha256\\s+\\earthly-windows-amd64.exe"

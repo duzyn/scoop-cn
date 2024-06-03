@@ -9,7 +9,7 @@
     "suggest": {
         "vcredist": "scoop-cn/vcredist2022"
     },
-    "url": "https://gh-proxy.com/https://github.com/dev47apps/windows-releases/releases/download/win-6.5.2/DroidCam.Setup.6.5.2.exe#/dl.7z",
+    "url": "https://mirror.ghproxy.com/https://github.com/dev47apps/windows-releases/releases/download/win-6.5.2/DroidCam.Setup.6.5.2.exe#/dl.7z",
     "hash": "f92ad1e92780a039397fd62d04affe97f1a65d04e7a41c9b5da6dd3fd265967e",
     "pre_install": "Remove-Item \"$dir\\vc_redist.x86.exe\" | Out-Null",
     "bin": "DroidCamApp.exe",
@@ -24,6 +24,6 @@
         "regex": "win-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/dev47apps/windows-releases/releases/download/win-$version/DroidCam.Setup.$version.exe#/dl.7z"
+        "url": "https://mirror.ghproxy.com/https://github.com/dev47apps/windows-releases/releases/download/win-$version/DroidCam.Setup.$version.exe#/dl.7z"
     }
 }

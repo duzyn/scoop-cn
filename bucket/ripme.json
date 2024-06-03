@@ -6,7 +6,7 @@
     "suggest": {
         "JRE": "scoop-cn/temurin17-jre"
     },
-    "url": "https://gh-proxy.com/https://github.com/ripmeapp2/ripme/releases/download/2.1.9/ripme-2.1.9-7-22e915df.jar#/ripme.jar",
+    "url": "https://mirror.ghproxy.com/https://github.com/ripmeapp2/ripme/releases/download/2.1.9/ripme-2.1.9-7-22e915df.jar#/ripme.jar",
     "hash": "782ffec29bd14cfde6d714fa6f76980b3fd7cf96723b1121976134a6a5057e68",
     "pre_install": "Set-Content \"$dir\\ripme.cmd\" '@start javaw.exe -jar \"%~dp0ripme.jar\" %*' -Encoding Ascii",
     "bin": "ripme.jar",
@@ -23,6 +23,6 @@
         "regex": "download/(?<tag>[\\d.]+)/ripme-([\\d.]+)-(?<num>[\\d.]+)-(?<commit>[a-fA-F0-9]+)\\.jar"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/ripmeapp2/ripme/releases/download/$matchTag/ripme-$version-$matchNum-$matchCommit.jar#/ripme.jar"
+        "url": "https://mirror.ghproxy.com/https://github.com/ripmeapp2/ripme/releases/download/$matchTag/ripme-$version-$matchNum-$matchCommit.jar#/ripme.jar"
     }
 }

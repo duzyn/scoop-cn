@@ -6,7 +6,7 @@
         "identifier": "GPL-3.0",
         "url": "https://github.com/simple64/simple64/blob/main/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/simple64/simple64/releases/download/v2024.05.3/simple64-win64-f5e21b0.zip",
+    "url": "https://mirror.ghproxy.com/https://github.com/simple64/simple64/releases/download/v2024.05.3/simple64-win64-f5e21b0.zip",
     "hash": "98766774388b348ef9c954f588f93ae0a95f3bc86650638afd541f13acd3794e",
     "extract_dir": "simple64",
     "pre_install": [
@@ -35,6 +35,6 @@
         "regex": "v([\\d\\.]+)\\/simple64-win64-(?<commit>[\\da-f]{7})\\."
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/simple64/simple64/releases/download/v$version/simple64-win64-$matchCommit.zip"
+        "url": "https://mirror.ghproxy.com/https://github.com/simple64/simple64/releases/download/v$version/simple64-win64-$matchCommit.zip"
     }
 }
