@@ -1,16 +1,16 @@
 {
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Download, update & install Minecraft: Bedrock Edition without the Microsoft Store",
     "homepage": "https://github.com/Aetopia/BedrockUpdater",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/Aetopia/BedrockUpdater/releases/download/v1.0.1/BedrockUpdater.exe",
-            "hash": "c535138cba815ff9e8183bb0b9c29940e9a5f3a7e8cad4ab9f4780919899401a"
+            "url": "https://mirror.ghproxy.com/https://github.com/Aetopia/BedrockUpdater/releases/download/v1.0.2/BedrockUpdater.exe",
+            "hash": "f7f48311c0dd9858b6126a75681df88ab41d33a369a8e95f56b923794dfb103c"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/Aetopia/BedrockUpdater/releases/download/v1.0.1/BedrockUpdater.exe",
-            "hash": "c535138cba815ff9e8183bb0b9c29940e9a5f3a7e8cad4ab9f4780919899401a"
+            "url": "https://mirror.ghproxy.com/https://github.com/Aetopia/BedrockUpdater/releases/download/v1.0.2/BedrockUpdater.exe",
+            "hash": "f7f48311c0dd9858b6126a75681df88ab41d33a369a8e95f56b923794dfb103c"
         }
     },
     "shortcuts": [
@@ -26,10 +26,11 @@
     ],
     "notes": [
         "To uninstall the following:",
-        "	 - Minecraft: Bedrock Edition",
-        "	 - Xbox Identity Provider",
-        "
-Run the following command in PowerShell:",
+        "  - Minecraft: Bedrock Edition",
+        "  - Xbox Identity Provider",
+        "",
+        "Run the following command in PowerShell:",
+        "",
         "Get-AppxPackage | ForEach-Object { if ($_.Name -in @(\"Microsoft.MinecraftUWP\", \"Microsoft.MinecraftWindowsBeta\", \"Microsoft.XboxIdentityProvider\")) { Remove-AppxPackage $_ } }"
     ],
     "checkver": {

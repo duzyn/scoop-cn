@@ -3,7 +3,7 @@
     "description": "Platform for gaming and enhancing gameplay primarily with MUDs",
     "homepage": "https://www.mudlet.org/",
     "license": "GPL-2.0",
-    "url": "https://www.mudlet.org/download/Mudlet-4.17.2-windows-installer.exe#/dl.7z",
+    "url": "https://www.mudlet.org/wp-content/files/Mudlet-4.17.2-windows-installer.exe#/dl.7z",
     "hash": "67cfbfb33c11a0c6b2295083c4c9b157dd68d4fb82e500709625e04722fe124f",
     "pre_install": [
         "Expand-7zipArchive \"$dir\\Mudlet-$version-full.nupkg\" $dir -Removal",
@@ -20,13 +20,9 @@
     ],
     "checkver": {
         "url": "https://www.mudlet.org/download/",
-        "regex": "Mudlet-([\\d.]+)-windows-installer.exe"
+        "regex": "Mudlet (?<version>[\\d.]+) \\(Windows\\)"
     },
     "autoupdate": {
-        "url": "https://www.mudlet.org/download/Mudlet-$version-windows-installer.exe#/dl.7z",
-        "hash": {
-            "url": "https://www.mudlet.org/download/",
-            "regex": "Windows\\s.*?MiB[\\w\\W]+?\">$sha256"
-        }
+        "url": "https://www.mudlet.org/wp-content/files/Mudlet-$matchVersion-windows-installer.exe#/dl.7z"
     }
 }

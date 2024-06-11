@@ -1,0 +1,33 @@
+{
+    "version": "0.4.6",
+    "description": "Program designed to manage and organize DVD backups of Wii games",
+    "homepage": "https://wii.hacks.guide/wii-backups.html#using-wii-backup-manager",
+    "license": "Unknown",
+    "architecture": {
+        "64bit": {
+            "url": "https://static.wiidatabase.de/Wii-Backup-Manager.zip",
+            "hash": "C5301EAEB066C6DBCC48147BF19C973B1187C0BDF715ADC0D74FAC059A7A9099",
+            "shortcuts": [
+                [
+                    "WiiBackupManager_Win64.exe",
+                    "Wii Backup Manager"
+                ]
+            ]
+        },
+        "32bit": {
+            "url": "https://static.wiidatabase.de/Wii-Backup-Manager.zip",
+            "hash": "C5301EAEB066C6DBCC48147BF19C973B1187C0BDF715ADC0D74FAC059A7A9099",
+            "shortcuts": [
+                [
+                    "WiiBackupManager_Win32.exe",
+                    "Wii Backup Manager"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "export templates",
+        "media",
+        "visual styles"
+    ]
+}

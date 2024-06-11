@@ -1,12 +1,12 @@
 {
-    "version": "1.17.1-35-g0159102a1",
+    "version": "1.17.1-753-g5dec3ca2d",
     "description": "Sony PlayStation Portable (PSP) emulator. Development build",
     "homepage": "https://www.ppsspp.org",
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.17.1-35-g0159102a1&platform=windows-amd64#/dl.zip",
-            "hash": "b4f6313527316ed7041c09a5d68869e57f71a78b6ba8b4df8504d419f44c1dd9",
+            "url": "https://builds.ppsspp.org/builds/v1.17.1-753-g5dec3ca2d/ppsspp_win.zip",
+            "hash": "859e6c38df6dd1fa88c8ae4cde76a391572a4a967b7d5f7f3dc2576c30669ccb",
             "shortcuts": [
                 [
                     "PPSSPPWindows64.exe",
@@ -15,17 +15,26 @@
             ]
         },
         "32bit": {
-            "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v1.17.1-35-g0159102a1&platform=windows-x86#/dl.zip",
-            "hash": "f5aef5c81e930200d62e3ac7b8fe8653577a91c9fe1a6ad66ee1b1fb114b0a35",
+            "url": "https://builds.ppsspp.org/builds/v1.17.1-753-g5dec3ca2d/ppsspp_win.zip",
+            "hash": "859e6c38df6dd1fa88c8ae4cde76a391572a4a967b7d5f7f3dc2576c30669ccb",
             "shortcuts": [
                 [
                     "PPSSPPWindows.exe",
                     "PPSSPP (Development)"
                 ]
             ]
+        },
+        "arm64": {
+            "url": "https://builds.ppsspp.org/builds/v1.17.1-753-g5dec3ca2d/PPSSPPWindowsARM64.zip",
+            "hash": "b8df8972e604ad7132d6c92bc28b55c3f65f960bb896a88dd3b37c595dc129dd",
+            "shortcuts": [
+                [
+                    "PPSSPPWindowsARM64.exe",
+                    "PPSSPP (Development)"
+                ]
+            ]
         }
     },
-    "extract_dir": "ppsspp",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -38,17 +47,20 @@
         "demos"
     ],
     "checkver": {
-        "url": "https://buildbot.orphis.net/ppsspp/index.php",
-        "regex": "rev=v(?<version>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-fA-F]+)&(?:amp;)platform=windows-amd64",
+        "url": "https://builds.ppsspp.org/meta/history.json",
+        "regex": "v(?<version>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-fA-F]+)",
         "replace": "${version}-${build}-g${commit}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-amd64#/dl.zip"
+                "url": "https://builds.ppsspp.org/builds/v$matchVersion-$matchBuild-g$matchCommit/ppsspp_win.zip"
             },
             "32bit": {
-                "url": "https://buildbot.orphis.net/ppsspp/index.php?m=dl&rev=v$matchVersion-$matchBuild-g$matchCommit&platform=windows-x86#/dl.zip"
+                "url": "https://builds.ppsspp.org/builds/v$matchVersion-$matchBuild-g$matchCommit/ppsspp_win.zip"
+            },
+            "arm64": {
+                "url": "https://builds.ppsspp.org/builds/v$matchVersion-$matchBuild-g$matchCommit/PPSSPPWindowsARM64.zip"
             }
         }
     }
