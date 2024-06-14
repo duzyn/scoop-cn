@@ -1,10 +1,10 @@
 {
-    "version": "2.8",
+    "version": "2.9",
     "description": "Installs generic USB drivers, such as WinUSB, libusb-win32/libusb0.sys or libusbK.",
     "homepage": "https://zadig.akeo.ie/",
     "license": "GPL-3.0-or-later",
-    "url": "https://mirror.ghproxy.com/https://github.com/pbatard/libwdi/releases/download/v1.5.0/zadig-2.8.exe#/zadig.exe",
-    "hash": "20e4cd7b6768718848f603fe928f36e207dc5ca96fc9db7085d841410d0abae4",
+    "url": "https://mirror.ghproxy.com/https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe#/zadig.exe",
+    "hash": "4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b",
     "pre_install": [
         "New-Item -Path 'HKCU:\\SOFTWARE\\Akeo Consulting\\Zadig' -Force | Out-Null",
         "New-ItemProperty -Path 'HKCU:\\SOFTWARE\\Akeo Consulting\\Zadig' -Name 'UpdateCheckInterval' -Type DWord -Value 0xffffffff | Out-Null"
