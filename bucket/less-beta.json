@@ -1,0 +1,41 @@
+{
+    "version": "658",
+    "description": "A terminal pager program used to view (but not change) the contents of a text file one screen at a time, similar to the 'more' command.",
+    "homepage": "https://www.greenwoodsoftware.com/less/",
+    "license": "GPL-3.0-only|BSD-3-Clause",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v658/less-x64.zip",
+            "hash": "a84b909a8c09ad6e52d69ad4dc2c5d45f98bc74294850dad890c6ac39ab1e6e7"
+        },
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v658/less-x86.zip",
+            "hash": "4cba7f28c58d6e40bc32d6863deed66cf82b3eb0ee9849db2c63511d05d44bf0"
+        },
+        "arm64": {
+            "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v658/less-arm64.zip",
+            "hash": "15f56cde7e2496a818be8f11aba3b79064cac2405ce5e9671ba359ec9789b1bd"
+        }
+    },
+    "bin": [
+        "less.exe",
+        "lesskey.exe"
+    ],
+    "checkver": {
+        "github": "https://github.com/mcunha/less-beta-Windows",
+        "regex": "tag/less-v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v$version/less-x64.zip"
+            },
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v$version/less-x86.zip"
+            },
+            "arm64": {
+                "url": "https://mirror.ghproxy.com/https://github.com/mcunha/less-beta-Windows/releases/download/less-v$version/less-arm64.zip"
+            }
+        }
+    }
+}
