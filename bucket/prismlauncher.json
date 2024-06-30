@@ -34,10 +34,13 @@
         "",
         "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
         "    if (!(Test-Path -Path $persist_dir\\$_)) {",
-        "        New-Item -Type File $dir/$_ | Out-Null",
+        "        New-Item -Type File $persist_dir/$_ | Out-Null",
         "    }",
+        "    New-Item -Type SymbolicLink -Value $persist_dir/$_ -Path $dir/$_ | Out-Null",
         "}",
-        "Add-Content $dir/metacache '{}'",
+        "if (!(Get-Content $persist_dir/metacache)) {",
+        "    Add-Content $persist_dir/metacache '{}'",
+        "}",
         "Remove-Item $original_dir/prismlauncher_updater.exe"
     ],
     "post_install": [
@@ -69,10 +72,7 @@
         "meta",
         "mods",
         "themes",
-        "translations",
-        "accounts.json",
-        "metacache",
-        "prismlauncher.cfg"
+        "translations"
     ],
     "checkver": {
         "github": "https://github.com/PrismLauncher/PrismLauncher"
