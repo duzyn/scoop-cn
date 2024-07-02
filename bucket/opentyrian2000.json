@@ -1,0 +1,42 @@
+{
+    "version": "2000.20240218",
+    "description": "Fork of OpenTyrian with support for Tyrian 2000",
+    "homepage": "https://github.com/KScl/opentyrian2000",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "Place Tyrian 2000 game data files in:",
+        "",
+        "    $persist_dir\\data"
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/KScl/opentyrian2000/releases/download/v2000.20240218/opentyrian2000-x86-Release.zip",
+            "hash": "f5b0384cad2ff5d97a965f7dfcde76695d2b1953ffd99b95978ad856046ded63"
+        },
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/KScl/opentyrian2000/releases/download/v2000.20240218/opentyrian2000-x64-Release.zip",
+            "hash": "dc806e7678a40eb74ee2e2267aa5ecdf7b9af4455533d9d2e223698f6cbfa72d"
+        }
+    },
+    "extract_dir": "opentyrian2000",
+    "shortcuts": [
+        [
+            "opentyrian2000.exe",
+            "OpenTyrian2000"
+        ]
+    ],
+    "persist": [
+        "data"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/KScl/opentyrian2000/releases/download/v$version/opentyrian2000-x86-Release.zip"
+            },
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/KScl/opentyrian2000/releases/download/v$version/opentyrian2000-x64-Release.zip"
+            }
+        }
+    }
+}
