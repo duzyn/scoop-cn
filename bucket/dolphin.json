@@ -1,6 +1,6 @@
 {
-    "version": "5.0",
-    "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay.",
+    "version": "2407",
+    "description": "Nintendo GameCube and Wii emulator, with enhancements and Netplay",
     "homepage": "https://dolphin-emu.org/",
     "license": {
         "identifier": "GPL-2.0-or-later",
@@ -9,8 +9,8 @@
     "suggest": {
         "Microsoft Visual C++ Runtime 2019": "scoop-cn/vcredist2019"
     },
-    "url": "https://dl-mirror.dolphin-emu.org/5.0/dolphin-x64-5.0.exe#/dolphin.lzma",
-    "hash": "e1b3ae8fc890c6588e5656f77ef2747ae7ddfc90b6530b240c0c5b9d0ab3ce8c",
+    "url": "https://dl.dolphin-emu.org/releases/2407/dolphin-2407-x64.7z",
+    "hash": "9283423bc40048ee4fd3531c3fc4ca0799e99d9a2d9295f703683c62a3bc280b",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -23,19 +23,19 @@
         "}"
     ],
     "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
-    "bin": "Dolphin.exe",
+    "bin": "Dolphin-x64\\Dolphin.exe",
     "shortcuts": [
         [
-            "Dolphin.exe",
+            "Dolphin-x64\\Dolphin.exe",
             "Dolphin"
         ]
     ],
     "persist": "User",
     "checkver": {
         "url": "https://dolphin-emu.org/download/",
-        "regex": "https://dl-mirror.dolphin-emu.org/([\\d.]+)/dolphin-x64"
+        "regex": "https://dl.dolphin-emu.org/releases/(?<version>[\\d]+)/"
     },
     "autoupdate": {
-        "url": "https://dl-mirror.dolphin-emu.org/$version/dolphin-x64-$version.exe#/dl.7z"
+        "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-x64.7z"
     }
 }
