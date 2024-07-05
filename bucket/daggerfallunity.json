@@ -1,0 +1,50 @@
+{
+    "version": "1.1.1",
+    "description": "Open source recreation of Daggerfall in the Unity engine",
+    "homepage": "https://github.com/Interkarma/daggerfall-unity",
+    "license": "MIT",
+    "architecture": {
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Interkarma/daggerfall-unity/releases/download/v1.1.1/dfu_windows_32bit-v1.1.1.zip",
+            "hash": "fe9b7c5a2949805f4a4840ed9d4e800e6de7b5bad97c829b9b78254dcb34ab1e"
+        },
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Interkarma/daggerfall-unity/releases/download/v1.1.1/dfu_windows_64bit-v1.1.1.zip",
+            "hash": "a2584d57e7d9b0ba3cdde9b75b0db2a818b5327af657b2833c03759148fe557e"
+        }
+    },
+    "pre_install": [
+        "New-Item -ItemType File \"$dir\\Portable.txt\" | Out-Null"
+    ],
+    "post_install": [
+        "$Subdirs = @('Mods', 'GameFiles')",
+        "ForEach($DirName in $Subdirs) {",
+        "    if (Test-Path \"$dir\\DaggerfallUnity_Data\\StreamingAssets\\$DirName.original\") {",
+        "        Copy-Item \"$dir\\DaggerfallUnity_Data\\StreamingAssets\\$DirName.original\\*\" \"$persist_dir\\DaggerfallUnity_Data\\StreamingAssets\\$DirName\" -Force -Recurse",
+        "        Remove-Item \"$dir\\DaggerfallUnity_Data\\StreamingAssets\\$DirName.original\" -Force -Recurse | Out-Null",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "DaggerfallUnity.exe",
+            "Daggerfall Unity"
+        ]
+    ],
+    "persist": [
+        "PortableAppdata",
+        "DaggerfallUnity_Data\\StreamingAssets\\GameFiles",
+        "DaggerfallUnity_Data\\StreamingAssets\\Mods"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/Interkarma/daggerfall-unity/releases/download/v$version/dfu_windows_32bit-v$version.zip"
+            },
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/Interkarma/daggerfall-unity/releases/download/v$version/dfu_windows_64bit-v$version.zip"
+            }
+        }
+    }
+}
