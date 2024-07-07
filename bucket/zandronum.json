@@ -1,7 +1,7 @@
 {
     "version": "3.1",
-    "homepage": "https://zandronum.com/",
     "description": "Modern multiplayer-oriented source port for Doom",
+    "homepage": "https://zandronum.com/",
     "license": "BSD-3-Clause|Sleepycat",
     "notes": [
         "Place WAD files (game data) in:",
@@ -24,6 +24,7 @@
         "$value | New-Item -ItemType File -Path \"$dir/zandronum_portable.ini\" -ErrorAction Ignore | Out-Null",
         "Copy-Item \"$persist_dir\\zandronum-$($env:USERNAME).ini\" \"$dir\\zandronum-$($env:USERNAME).ini\" -ErrorAction 'SilentlyContinue'"
     ],
+    "post_install": "New-Item -Path $dir\\zandronum-$($env:USERNAME).ini -Value $persist_dir\\zandronum_portable.ini -ItemType SymbolicLink -ErrorAction Ignore | Out-Null",
     "env_set": {
         "DOOMWADDIR": "$persist_dir\\..\\_doom"
     },
@@ -34,7 +35,6 @@
             "Zandronum"
         ]
     ],
-    "post_install": "New-Item -Path $dir\\zandronum-$($env:USERNAME).ini -Value $persist_dir\\zandronum_portable.ini -ItemType SymbolicLink -ErrorAction Ignore | Out-Null",
     "persist": [
         "addons",
         "announcer",
