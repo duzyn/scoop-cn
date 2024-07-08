@@ -20,6 +20,12 @@
         "Remove-Item $setup",
         "Remove-Item \"$dir/.battlenet\" -Recurse -ErrorAction SilentlyContinue"
     ],
+    "shortcuts": [
+        [
+            "Battle.net Launcher.exe",
+            "Battle.net"
+        ]
+    ],
     "pre_uninstall": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "if ($null -ne (Get-Process 'Agent', 'Battle.net' -ErrorAction Ignore)) { error 'Make sure neither Battle.net nor Agent.exe are running before uninstalling.'; break }"
