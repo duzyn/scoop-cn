@@ -17,7 +17,8 @@
         "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:APPDATA\\sudachi\\*\" -Destination \"$persist_dir\\user\" -Recurse",
         "       Remove-Item -Path \"$env:APPDATA\\sudachi\" -Recurse",
-        "   }"
+        "   }",
+        "}"
     ],
     "bin": [
         "sudachi.exe",

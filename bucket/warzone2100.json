@@ -1,10 +1,22 @@
 {
-    "version": "4.5.0",
+    "version": "4.5.1",
     "description": "Real-time strategy game set in a futuristic universe",
     "homepage": "https://wz2100.net/",
     "license": "GPL-2.0-or-later",
-    "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/4.5.0/warzone2100_win_x86_portable.exe#/dl.7z",
-    "hash": "85a43676fc47e306bbc73d989c4c2eaa1d10e316fe523b0951455f974270f4b0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/4.5.1/warzone2100_win_x64_portable.exe#/dl.7z",
+            "hash": "339501348b647e50fc53159ccce472714db90ef8a2410ee21ed42ee00daa4101"
+        },
+        "32bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/4.5.1/warzone2100_win_x86_portable.exe#/dl.7z",
+            "hash": "8a0aa3d87ea49ba5f98c0247ca1b42af9680e1059ac6eadc1d09c07d7b2df004"
+        },
+        "arm64": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/4.5.1/warzone2100_win_arm64_portable.exe#/dl.7z",
+            "hash": "93a94aa6c9b78e24019da71f91fb1c49d981cada50799b71590ab90062a73068"
+        }
+    },
     "bin": "bin\\warzone2100.exe",
     "shortcuts": [
         [
@@ -16,6 +28,16 @@
         "github": "https://github.com/Warzone2100/warzone2100"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/$version/warzone2100_win_x86_portable.exe#/dl.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/$version/warzone2100_win_x64_portable.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/$version/warzone2100_win_x86_portable.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://mirror.ghproxy.com/https://github.com/Warzone2100/warzone2100/releases/download/$version/warzone2100_win_arm64_portable.exe#/dl.7z"
+            }
+        }
     }
 }
