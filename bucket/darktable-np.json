@@ -1,11 +1,11 @@
 {
     "##": "The installer is created by NSIS, but it cannot be extracted by 7-Zip. See Extras#1831 for details.",
-    "version": "4.8.0",
+    "version": "4.8.1",
     "description": "Photography workflow application and raw developer.",
     "homepage": "https://www.darktable.org/",
     "license": "GPL-3.0-only",
-    "url": "https://mirror.ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-4.8.0/darktable-4.8.0-win64.exe#/setup.exe",
-    "hash": "a1396ca8640df4b25ae41ef0dec1649e2c9f33018e955090e770737abf9d2160",
+    "url": "https://mirror.ghproxy.com/https://github.com/darktable-org/darktable/releases/download/release-4.8.1/darktable-4.8.1-win64.exe#/setup.exe",
+    "hash": "a7255eaad0cd36ad4771441ef5ad052d3069a90991de50f9b394a7c235de61e3",
     "installer": {
         "script": [
             "$process = Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Verb RunAs -PassThru",

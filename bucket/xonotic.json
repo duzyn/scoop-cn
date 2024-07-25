@@ -1,37 +1,36 @@
 {
-    "version": "0.8.5",
+    "version": "0.8.6",
     "description": "Free fast-paced first-person shooter",
     "homepage": "https://xonotic.org/",
     "license": "GPL-3.0-or-later",
-    "url": "https://dl.xonotic.org/xonotic-0.8.5.zip",
-    "hash": "0f92aa238362aeb059b9d9026a9bd38d6217423a35c19f126fb39e38736e37e5",
+    "url": "https://dl.xonotic.org/xonotic-0.8.6.zip",
+    "hash": "sha512:cb39879e96f19abb2877588c2d50c5d3e64dd68153bec3dd1bebedf4d765e506afa419c28381d7005aed664cb1a042571c132b5b319e4308cab67745d996c2a6",
     "architecture": {
         "32bit": {
-            "pre_install": "Set-Content -Path \"$dir\\xonotic.bat\" -Value \"pushd $dir && xonotic-x86.exe && popd\""
+            "pre_install": "Set-Content -Path \"$dir\\xonotic.bat\" -Value \"pushd $dir\\Xonotic && xonotic-x86.exe && popd\""
         },
         "64bit": {
-            "pre_install": "Set-Content -Path \"$dir\\xonotic.bat\" -Value \"pushd $dir && xonotic.exe && popd\""
+            "pre_install": "Set-Content -Path \"$dir\\xonotic.bat\" -Value \"pushd $dir\\Xonotic && xonotic.exe && popd\""
         }
     },
-    "extract_dir": "Xonotic",
     "bin": "xonotic.bat",
     "shortcuts": [
         [
             "xonotic.bat",
             "Xonotic",
             "",
-            "misc/logos/icons_ico/xonotic.ico"
+            "Xonotic/misc/logos/icons_ico/xonotic.ico"
         ]
     ],
     "checkver": {
         "url": "https://xonotic.org/download/",
-        "regex": "Xonotic ([\\d.]+) for"
+        "regex": "Download Xonotic ([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://dl.xonotic.org/xonotic-$version.zip",
         "hash": {
-            "url": "https://xonotic.org/download/",
-            "find": "sha256sum: *?([a-fA-F\\d]{64})"
+            "mode": "extract",
+            "url": "https://dl.xonotic.org/xonotic-$version.sha512"
         }
     }
 }

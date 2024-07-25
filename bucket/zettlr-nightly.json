@@ -1,0 +1,50 @@
+{
+    "version": "3.2.0-20240722",
+    "description": "Powerful markdown editor (nightly version)",
+    "homepage": "https://www.zettlr.com",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.zettlr.com/Zettlr-3.2.0-nightly-x64.exe#/dl.7z",
+            "hash": "d0949b975371fa5011900e2d9a51527f451d3e77183b02fb3261e61e97aee19a",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "Zettlr.exe",
+            "Zettlr"
+        ]
+    ],
+    "checkver": {
+        "script": [
+            "$url = 'https://nightly.zettlr.com/'",
+            "$ver_regex = 'Zettlr-([\\d.]+)-nightly-x64\\.exe'",
+            "$date_regex = '<strong>(\\S.+)<\\/strong>'",
+            "",
+            "$page = $(Invoke-WebRequest $url).Content",
+            "if (!($page -match $ver_regex)) { error \"Could not match '$ver_regex' in '$url'\"; continue }",
+            "$ver = $matches[1]",
+            "",
+            "if (!($page -match $date_regex)) { error \"Could not match '$date_regex' in '$url'\"; continue }",
+            "$date_full = $matches[1]",
+            "",
+            "$date = ([datetime]::ParseExact(($date_full -replace '((th|st|nd|rd),)?'), 'ddd MMM d yyyy H:mm:ss', [cultureinfo]::InvariantCulture)).ToString(\"yyyyMMdd\")",
+            "Write-Output $ver-$date"
+        ],
+        "regex": "([\\d.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.zettlr.com/Zettlr-$matchHead-nightly-x64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA256SUMS.txt"
+        }
+    }
+}
