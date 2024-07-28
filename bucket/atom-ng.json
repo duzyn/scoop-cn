@@ -1,0 +1,31 @@
+{
+    "version": "1.66.12",
+    "description": "The hackable text editor for the 21st century (community maintained fork)",
+    "homepage": "https://thorium.rocks/atom-ng/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/Alex313031/atom-ng/releases/download/v1.66.12/Atom-ng_win64_1.66.12_AVX.zip",
+            "hash": "aeb16537b0b504d2a9b34a8ae2284b4f010ca35154e2988909e2ae29573a9aaf",
+            "extract_dir": "Atom-ng_1.66.12_x64"
+        }
+    },
+    "bin": [
+        "resources\\cli\\atom.cmd",
+        "resources\\app\\apm\\bin\\apm.cmd"
+    ],
+    "shortcuts": [
+        [
+            "atom-ng.exe",
+            "Atom NG"
+        ]
+    ],
+    "persist": ".atom",
+    "checkver": {
+        "github": "https://github.com/Alex313031/atom-ng"
+    },
+    "autoupdate": {
+        "url": "https://mirror.ghproxy.com/https://github.com/Alex313031/atom-ng/releases/download/v$version/Atom-ng_win64_$version_AVX.zip",
+        "extract_dir": "Atom-ng_$version_x64"
+    }
+}
