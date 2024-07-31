@@ -149,12 +149,12 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # Scripts
     (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
 
-    # 将 depends 路径改为 scoop-cn
-    (Get-Content $_.FullName) -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' | Set-Content -Path $_.FullName
-
     # 将 suggest 路径改为 scoop-cn
     (Get-Content $_.FullName) -creplace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' | Set-Content -Path $_.FullName
 }
+
+    # 将 depends 路径改为 scoop-cn
+    (Get-Content $_.FullName) -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' | Set-Content -Path $_.FullName
 
 # Start: Free Download Manager
 (Get-Content .\bucket\freedownloadmanager.json).Replace('dn3.freedownloadmanager.org', 'files2.freedownloadmanager.org') | Set-Content -Path .\bucket\freedownloadmanager.json
