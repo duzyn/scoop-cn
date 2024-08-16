@@ -1,0 +1,39 @@
+{
+    "description": "Alibaba Dragonwell, a downstream version of OpenJDK, is the in-house OpenJDK implementation at Alibaba (with extensive custom features optimized for cloud computing environments)",
+    "version": "21.0.3.0.3-21.0.3",
+    "homepage": "https://dragonwell-jdk.io/",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/dragonwell-project/dragonwell21/releases/download/dragonwell-standard-21.0.3.0.3%2B9_jdk-21.0.3-ga/Alibaba_Dragonwell_Standard_21.0.3.0.3.9_x64_windows.zip",
+            "hash": "0b75fc888cb2a9c7e050132fd020c30cbe65f3179feb36812a7c6be3c76ad277"
+        }
+    },
+    "extract_to": "tmp",
+    "installer": {
+        "script": [
+            "(Get-ChildItem -Directory \"$dir\\tmp\").FullName | % { Move-Item \"$_\\*\" \"$dir\" }",
+            "Remove-Item -Recurse \"$dir\\tmp\""
+        ]
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "github": "https://github.com/dragonwell-project/dragonwell21/",
+        "regex": "(?<tag>dragonwell-standard-(?<dragon>[\\d.]+)(?<build>(?:\\%2B|\\+)?[\\d]*)?_jdk-(?<jdk>[\\d.]+)(?:(?<b>-[\\d+])|-ga))/(?<filename>Alibaba_Dragonwell_Standard_(?:[\\d.+]+)_x64_windows)\\.zip",
+        "replace": "${dragon}-${jdk}${b}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/dragonwell-project/dragonwell21/releases/download/$matchTag/$matchFilename.zip"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256.txt",
+            "regex": "$sha256"
+        }
+    }
+}
