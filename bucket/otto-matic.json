@@ -1,0 +1,30 @@
+{
+    "version": "4.0.1",
+    "description": "Multi-platform port of the Mac OS-only game Otto Matic",
+    "homepage": "https://pangeasoft.net/otto/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/OttoMatic/releases/download/4.0.1/OttoMatic-4.0.1-windows-x64.zip",
+            "hash": "974a8cebcc25c6c691bdd8461b78a5410a74771c56a7b1c1234cae7da8f7cfa1"
+        }
+    },
+    "extract_dir": "OttoMatic-4.0.1",
+    "shortcuts": [
+        [
+            "OttoMatic.exe",
+            "Otto Matic"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/OttoMatic/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/OttoMatic/releases/download/$version/OttoMatic-$version-windows-x64.zip",
+                "extract_dir": "OttoMatic-$version"
+            }
+        }
+    }
+}

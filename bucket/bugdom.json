@@ -1,0 +1,30 @@
+{
+    "version": "1.3.4",
+    "description": "Multi-platform port of the Mac OS-only game Bugdom",
+    "homepage": "https://pangeasoft.net/bug/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/Bugdom/releases/download/1.3.4/Bugdom-1.3.4-windows-x64.zip",
+            "hash": "ae75d5d6ad9a4557600cd4cb4d5c8518a3b8bae0bae27fa216e4936d5a7a727d"
+        }
+    },
+    "extract_dir": "Bugdom-1.3.4",
+    "shortcuts": [
+        [
+            "Bugdom.exe",
+            "Bugdom"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/Bugdom/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/Bugdom/releases/download/$version/Bugdom-$version-windows-x64.zip",
+                "extract_dir": "Bugdom-$version"
+            }
+        }
+    }
+}

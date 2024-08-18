@@ -1,0 +1,30 @@
+{
+    "version": "1.1.1",
+    "description": "Multi-platform port of the Mac OS-only game Billy Frontier",
+    "homepage": "https://pangeasoft.net/billy/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/BillyFrontier/releases/download/v1.1.1/BillyFrontier-1.1.1-windows-x64.zip",
+            "hash": "c574a4a1b928d6e85b9ef20ef544769489844d7e394182c00999fcb5c567ed36"
+        }
+    },
+    "extract_dir": "BillyFrontier-1.1.1",
+    "shortcuts": [
+        [
+            "BillyFrontier.exe",
+            "Billy Frontier"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/BillyFrontier/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/BillyFrontier/releases/download/v$version/BillyFrontier-$version-windows-x64.zip",
+                "extract_dir": "BillyFrontier-$version"
+            }
+        }
+    }
+}

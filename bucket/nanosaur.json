@@ -1,0 +1,30 @@
+{
+    "version": "1.4.4",
+    "description": "Multi-platform port of the Mac OS-only game Nanosaur",
+    "homepage": "https://pangeasoft.net/nano/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/Nanosaur/releases/download/v1.4.4/Nanosaur-1.4.4-windows-x64.zip",
+            "hash": "5462fe111e207f8d2953533c4948081cfd01a0d189d47c8cd696d673d1624b13"
+        }
+    },
+    "extract_dir": "Nanosaur-1.4.4",
+    "shortcuts": [
+        [
+            "Nanosaur.exe",
+            "Nanosaur"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/Nanosaur/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/Nanosaur/releases/download/v$version/Nanosaur-$version-windows-x64.zip",
+                "extract_dir": "Nanosaur-$version"
+            }
+        }
+    }
+}

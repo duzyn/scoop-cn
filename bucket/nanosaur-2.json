@@ -1,0 +1,30 @@
+{
+    "version": "2.1.0",
+    "description": "Multi-platform port of the Mac OS-only game Nanosaur II: Hatchling",
+    "homepage": "https://pangeasoft.net/nano2/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/Nanosaur2/releases/download/v2.1.0/Nanosaur2-2.1.0-windows-x64.zip",
+            "hash": "3446e939557178fea458f76465cbc71311449aada19b08ebe58924b9f5447e85"
+        }
+    },
+    "extract_dir": "Nanosaur2-2.1.0",
+    "shortcuts": [
+        [
+            "Nanosaur2.exe",
+            "Nanosaur II- Hatchling"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/Nanosaur2/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/Nanosaur2/releases/download/v$version/Nanosaur2-$version-windows-x64.zip",
+                "extract_dir": "Nanosaur2-$version"
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "version": "3.0.2",
+    "description": "Multi-platform port of the Mac OS-only game Mighty Mike",
+    "homepage": "https://pangeasoft.net/mightymike/",
+    "license": "CC-BY-NC-SA-4.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/jorio/MightyMike/releases/download/v3.0.2/MightyMike-3.0.2-windows-x64-hotfix.zip",
+            "hash": "20b6072fd02c3d9afc7a023ed4f4f896e7598d47b038228286b77f86460b04e2"
+        }
+    },
+    "extract_dir": "MightyMike-3.0.2",
+    "shortcuts": [
+        [
+            "MightyMike.exe",
+            "Mighty Mike"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/jorio/MightyMike/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/jorio/MightyMike/releases/download/v$version/MightyMike-$version-windows-x64-hotfix.zip",
+                "extract_dir": "MightyMike-$version"
+            }
+        }
+    }
+}
