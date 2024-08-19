@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0",
+    "description": "Convert Minecraft worlds between Java Edition and Bedrock Edition",
+    "homepage": "https://github.com/HiveGamesOSS/Chunker",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirror.ghproxy.com/https://github.com/HiveGamesOSS/Chunker/releases/download/1.0.0/chunker-cli-windows-x64.zip",
+            "hash": "70a85d0182472ca3380d8fc881b94194a200aec269510c93f22c69fd8cc007b1"
+        }
+    },
+    "extract_dir": "chunker-cli",
+    "bin": "chunker-cli.exe",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirror.ghproxy.com/https://github.com/HiveGamesOSS/Chunker/releases/download/$version/chunker-cli-windows-x64.zip"
+            }
+        }
+    }
+}
