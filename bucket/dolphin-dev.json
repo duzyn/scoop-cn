@@ -1,5 +1,5 @@
 {
-    "version": "2407-238",
+    "version": "2407-240",
     "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
     "homepage": "https://dolphin-emu.org/",
     "license": {
@@ -9,18 +9,19 @@
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
     },
-    "url": "https://dl.dolphin-emu.org/builds/62/e4/dolphin-master-2407-238-x64.7z",
-    "hash": "478ac8f9df3d6d77aa4d0a768efcfdab7b479f55d26e45891f16a43f1af533a0",
-    "extract_dir": "Dolphin-x64",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.dolphin-emu.org/builds/2f/c0/dolphin-master-2407-240-x64.7z",
+            "hash": "8f259a14738d36a68587672dcf3ad790419912d800f399e929310f3c03d8ace1",
+            "extract_dir": "Dolphin-x64"
+        }
+    },
     "pre_install": [
-        "if (!(Test-Path \"$persist_dir\")) {",
-        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\User\" -ItemType Directory | Out-Null",
-        "   if (Test-Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\") {",
-        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
-        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\\*\" -Destination \"$persist_dir\\User\" -Recurse",
-        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Dolphin Emulator\" -Recurse",
-        "   }",
+        "$appdataPath = \"$Env:AppData\\Dolphin Emulator\"",
+        "if ((Test-Path -Path $appdataPath\\*) -and (!(Test-Path -Path $persist_dir\\*))) {",
+        "   Write-Warning \"Migrating AppData...\"",
+        "   New-Item -Type Directory -Path $persist_dir\\User -Force | Out-Null",
+        "   Copy-Item -Recurse -Force $appdataPath\\* -Destination $persist_dir\\User\\",
         "}"
     ],
     "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
@@ -47,6 +48,11 @@
         "replace": "${major}-${build}"
     },
     "autoupdate": {
-        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z"
+        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z",
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-2407-240-x64.7z"
+            }
+        }
     }
 }
