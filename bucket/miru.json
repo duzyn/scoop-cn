@@ -1,33 +1,29 @@
 {
-    "version": "5.4.1",
+    "version": "5.5.1",
     "description": "Stream anime torrents, real-time with no waiting for downloads",
     "homepage": "https://github.com/ThaUnknown/miru",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/ThaUnknown/miru/releases/download/v5.4.1/win-Miru-5.4.1-installer.exe#/dl.7z",
-            "hash": "sha512:f543f3254eaf38cb22cd181a5c8ea7c5f313d625ac2601bc3beecdbb6dd451229264b5f206a2e85e15ff9436e8e741786dcfc78368ebe4f634299e7a1edaf682"
+            "url": "https://mirror.ghproxy.com/https://github.com/ThaUnknown/miru/releases/download/v5.5.1/win-Miru-5.5.1-portable.exe#/dl.7z",
+            "hash": "2924dafe6d85256a13c71133162c12cf9b2381062bbe885519f088578d4433c2"
         }
     },
     "pre_install": [
         "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
         "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Recurse -Force"
     ],
-    "checkver": "github",
     "shortcuts": [
         [
             "Miru.exe",
             "Miru"
         ]
     ],
+    "checkver": "github",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version-installer.exe#/dl.7z",
-                "hash": {
-                    "url": "$baseurl/latest.yml",
-                    "regex": "sha512:\\s+$base64"
-                }
+                "url": "https://mirror.ghproxy.com/https://github.com/ThaUnknown/miru/releases/download/v$version/win-Miru-$version-portable.exe#/dl.7z"
             }
         }
     }
