@@ -1,0 +1,26 @@
+{
+    "version": "7.12-9",
+    "description": "Mod manager for all PC Hedgehog Engine Sonic games (and Puyo Puyo Tetris 2)",
+    "homepage": "https://github.com/thesupersonic16/HedgeModManager/",
+    "license": "MIT",
+    "url": "https://mirror.ghproxy.com/https://github.com/thesupersonic16/HedgeModManager/releases/download/7.12-9/HedgeModManager.exe",
+    "hash": "565901F1CED9D4893EF1D988AF55F16A9B0FBCD1A860D4B631D5B7381CA924C7",
+    "bin": [
+        [
+            "HedgeModManager.exe"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "HedgeModManager.exe",
+            "Hedge Mod Manager"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/thesupersonic16/HedgeModManager/releases/latest",
+        "jsonpath": "$.tag_name"
+    },
+    "autoupdate": {
+        "url": "https://mirror.ghproxy.com/https://github.com/thesupersonic16/HedgeModManager/releases/download/$version/HedgeModManager.exe"
+    }
+}

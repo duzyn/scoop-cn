@@ -1,0 +1,24 @@
+{
+    "version": "13",
+    "description": "Flashpoint Archive is a community effort to preserve games and animations from the web",
+    "homepage": "https://flashpointarchive.org/",
+    "license": "MIT",
+    "url": "https://download.unstable.life/upload/fp13static.7z",
+    "hash": "B49AEA698B2CA76E52D8482AAE0B19ED1222EB20585B469FEB341F6E7401D3DD",
+    "extract_dir": [
+        "Flashpoint"
+    ],
+    "shortcuts": [
+        [
+            "start-flashpoint.exe",
+            "Flashpoint"
+        ]
+    ],
+    "checkver": {
+        "url": "https://flashpointarchive.org/downloads",
+        "regex": "Flashpoint\\s(\\d+(\\.\\d+)?)"
+    },
+    "autoupdate": {
+        "url": "https://download.unstable.life/upload/fp$cleanVersionstatic.7z"
+    }
+}

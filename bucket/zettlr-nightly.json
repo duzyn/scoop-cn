@@ -1,12 +1,12 @@
 {
-    "version": "3.2.0-20240826",
+    "version": "3.2.0-20240902",
     "description": "Powerful markdown editor (nightly version)",
     "homepage": "https://www.zettlr.com",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
             "url": "https://nightly.zettlr.com/Zettlr-3.2.0-nightly-x64.exe#/dl.7z",
-            "hash": "bc1abd9d43b0cd6b819748a41466badc58ae486c63a00ab2938f41caafc21f98",
+            "hash": "e433300ab9e75d41e9fba351ded9d81a83d9596016c8e7880f03d9410f3a4d1e",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse"
