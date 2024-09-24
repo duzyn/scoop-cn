@@ -1,5 +1,5 @@
 {
-    "version": "2.1.165",
+    "version": "2.1.168",
     "description": "A feature rich FOSS PlayStation 2 emulator (development version)",
     "homepage": "https://pcsx2.net/",
     "license": {
@@ -16,8 +16,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v2.1.165/pcsx2-v2.1.165-windows-x64-Qt.7z",
-            "hash": "619efe9d31020efe05830249ac4333dd5a29da4ffbfc165c8cadb6485ceb857a"
+            "url": "https://mirror.ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v2.1.168/pcsx2-v2.1.168-windows-x64-Qt.7z",
+            "hash": "8075add2f815f5454629dbcec61f523d2da05dd3677110839486b42c99e0669a"
         }
     },
     "pre_install": [
@@ -34,6 +34,7 @@
         "   }",
         "}"
     ],
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.ini\"",
     "bin": [
         [
             "pcsx2-qt.exe",
@@ -55,7 +56,6 @@
         "inis",
         "logs",
         "memcards",
-        "portable.ini",
         "snaps",
         "sstates",
         "textures"
