@@ -1,14 +1,14 @@
 {
-    "version": "2118",
+    "version": "2118.2",
     "description": "Emulator for Nintendo 3DS (fork of Citra), capable of playing many of your favorite games",
     "homepage": "https://lime3ds.github.io/",
     "license": {
         "identifier": "GPL-2.0",
         "url": "https://github.com/Lime3DS/Lime3DS/blob/master/license.txt"
     },
-    "url": "https://mirror.ghproxy.com/https://github.com/Lime3DS/Lime3DS/releases/download/2118/lime3ds-2118-windows-msvc.zip",
-    "hash": "62700c4659b770e4f733447453086fcb7b413a24c45a1f2321f41ed6d439afe5",
-    "extract_dir": "lime3ds-2118-windows-msvc",
+    "url": "https://mirror.ghproxy.com/https://github.com/Lime3DS/Lime3DS/releases/download/2118.2/lime3ds-2118.2-windows-msvc.zip",
+    "hash": "8a3423505acfb8d21050bd20bd6a3fd93a7deda3129fe38f970b360f8b80912f",
+    "extract_dir": "lime3ds-2118.2-windows-msvc",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\user\")) {",
         "   New-Item -Path \"$persist_dir\" -Name \"user\" -ItemType \"directory\" | Out-Null",
@@ -19,9 +19,7 @@
         "   }",
         "}"
     ],
-    "bin": [
-        "lime3ds.exe"
-    ],
+    "bin": "lime3ds.exe",
     "shortcuts": [
         [
             "lime3ds.exe",
