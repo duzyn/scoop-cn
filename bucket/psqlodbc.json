@@ -1,19 +1,20 @@
 {
-    "version": "16.00.0005",
+    "version": "17.00.0000",
     "description": "The official PostgreSQL ODBC Driver",
     "homepage": "https://odbc.postgresql.org/",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-16_00_0005/psqlodbc_x64.msi",
-            "hash": "25c2e550042f132c75dd92e7c7e79ff9060b5f6cd6d363aa85f315b136f9e3bd"
+            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-17_00_0000/psqlodbc_x64.msi",
+            "hash": "9f0ae981a4cde721ec00204cb77c90bd9a40c98abec1895f56094c08bcbffead"
         },
         "32bit": {
-            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-16_00_0005/psqlodbc_x86.msi",
-            "hash": "92df327f486b5b79eedec090de0bfc730d6cd1258d1976bae4d79971476fce7c"
+            "url": "https://ftp.postgresql.org/pub/odbc/releases/REL-17_00_0000/psqlodbc_x86.msi",
+            "hash": "37a0034914ac26d7462d81b7b86644d4f07f74af8f98ea7b69651d40346be41a"
         }
     },
-    "extract_dir": "PFiles\\psqlODBC\\1600",
+    "extract_dir": "PFiles\\psqlODBC\\1700",
+    "env_add_path": "bin",
     "checkver": {
         "url": "https://www.postgresql.org/ftp/odbc/releases/",
         "regex": "REL-(?<major>\\d+)_(?<minor>\\d+)_(?<patch>\\d+)",
