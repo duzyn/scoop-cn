@@ -1,12 +1,12 @@
 {
-    "version": "1.0.7",
+    "version": "1.0.10",
     "description": "Continuation of the experimental emulator for the Nintendo Switch - yuzu",
     "homepage": "https://sudachi.emuplace.app/",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://sudachi.emuplace.app/releases/sudachi-windows-v1.0.7.7z",
-            "hash": "f6c8e27a600d048d44c0564164fb4fff34683fef63b394d129c841bb56a7a271"
+            "url": "https://mirror.ghproxy.com/https://github.com/emuplace/sudachi.emuplace.app/releases/download/v1.0.10/sudachi-windows-v1.0.10.7z",
+            "hash": "2796701cd2bf692b4e44bde0b0bacc5b9d72790a3c17ad43b0cb390753ad9107"
         }
     },
     "pre_install": [
@@ -35,18 +35,14 @@
         "plugins"
     ],
     "checkver": {
-        "url": "https://sudachi.emuplace.app/",
-        "script": [
-            "$jsPath = ((Invoke-WebRequest https://sudachi.emuplace.app/).Content | Select-String -Pattern '/assets/index-\\w+.js').Matches.Value",
-            "$relPath = ((Invoke-WebRequest https://sudachi.emuplace.app$jsPath).Content | Select-String -Pattern '/releases/sudachi-windows-v[\\d.]+.7z').Matches.Value",
-            "return $relPath"
-        ],
-        "regex": "/releases/sudachi-windows-v(?<version>[\\d.]+).7z"
+        "url": "https://api.github.com/repos/emuplace/sudachi.emuplace.app/releases",
+        "jsonpath": "$[?(@.assets[?(@.name =~ /.*windows.*/i)])].tag_name",
+        "regex": "v(?<version>[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://sudachi.emuplace.app/releases/sudachi-windows-v$version.7z"
+                "url": "https://mirror.ghproxy.com/https://github.com/emuplace/sudachi.emuplace.app/releases/download/v$version/sudachi-windows-v$version.7z"
             }
         }
     }
