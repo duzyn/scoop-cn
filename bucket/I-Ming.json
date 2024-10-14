@@ -1,10 +1,20 @@
 {
-    "version": "1.0.22",
-    "description": "Sarasa Gothic, a CJK (Chinese-Japanese-Korean) programming font based on Iosevka and Source Han Sans. (unhinted TTC version)",
-    "homepage": "https://github.com/be5invis/Sarasa-Gothic",
-    "license": "OFL-1.1",
-    "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.22/Sarasa-TTC-Unhinted-1.0.22.7z",
-    "hash": "e1bf7ac94acd4f2be07e489dd04f708b713a7d6fb2bf807c6da1dace3e7aef9e",
+    "version": "8.10",
+    "description": "Traditional printing orthography Traditional Chinese font 傳承印刷字形的正體（繁體）中文字型",
+    "homepage": "https://github.com/ichitenfont/I.Ming",
+    "license": "IPA",
+    "url": [
+        "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/8.10/I.Ming-8.10.ttf",
+        "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/8.10/I.MingCP-8.10.ttf",
+        "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/8.10/I.MingVar-8.10.ttf",
+        "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/8.10/I.MingVarCP-8.10.ttf"
+    ],
+    "hash": [
+        "cba13b75b050d671b611d0063147262e421e14359ad4530948b070f56111f0f3",
+        "1c411a2e97b65c26aaa01707bbe06919569fcd7683c8bb5db114a96264710458",
+        "ba877ed20835c5622e4cbe83b4107e78f11ad919d0268491efd00d4141a2fd78",
+        "9d342893b0eddc5baa46398eb9e83741cad86143ddd493bdb8d04268d78ad527"
+    ],
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -37,7 +47,7 @@
             "}",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
             "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
@@ -46,7 +56,7 @@
     },
     "pre_uninstall": [
         "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-        "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+        "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
         "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
         "        try {",
         "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
@@ -76,17 +86,22 @@
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
             "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
             "}",
             "if ($cmd -eq \"uninstall\") {",
-            "    Write-Host \"The 'Sarasa-Gothic' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
+            "    Write-Host \"Font '$app' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
             "}"
         ]
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v$version/Sarasa-TTC-Unhinted-$version.7z"
+        "url": [
+            "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/$version/I.Ming-$version.ttf",
+            "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/$version/I.MingCP-$version.ttf",
+            "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/$version/I.MingVar-$version.ttf",
+            "https://mirror.ghproxy.com/https://github.com/ichitenfont/I.Ming/releases/download/$version/I.MingVarCP-$version.ttf"
+        ]
     }
 }

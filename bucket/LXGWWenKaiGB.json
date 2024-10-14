@@ -1,10 +1,18 @@
 {
-    "version": "1.0.22",
-    "description": "Sarasa Gothic, a CJK (Chinese-Japanese-Korean) programming font based on Iosevka and Source Han Sans. (unhinted TTC version)",
-    "homepage": "https://github.com/be5invis/Sarasa-Gothic",
+    "version": "1.501",
+    "description": "An open-source Simplified Chinese font derived from Fontworks' Klee One. 一款基于 FONTWORKS 出品字体 Klee One 改造的开源简体中文字体。",
+    "homepage": "https://github.com/lxgw/LxgwWenkaiGB",
     "license": "OFL-1.1",
-    "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v1.0.22/Sarasa-TTC-Unhinted-1.0.22.7z",
-    "hash": "e1bf7ac94acd4f2be07e489dd04f708b713a7d6fb2bf807c6da1dace3e7aef9e",
+    "url": [
+        "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v1.501/LXGWWenKaiGB-Light.ttf",
+        "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v1.501/LXGWWenKaiGB-Regular.ttf",
+        "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v1.501/LXGWWenKaiGB-Medium.ttf"
+    ],
+    "hash": [
+        "116b9640f773cc08f677d5a1e2803524c4afb04790d761a43f4a9fed407c7774",
+        "6578bf7091b1998098137f160a2f99180d0c333effebfcf9244b33f2a39afe71",
+        "b1e6c0c36cb73b4caf114ba4cfd73a38a151afe9a612238de021e438ad77c693"
+    ],
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -37,7 +45,7 @@
             "}",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
             "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
@@ -46,7 +54,7 @@
     },
     "pre_uninstall": [
         "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-        "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+        "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
         "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
         "        try {",
         "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
@@ -76,17 +84,21 @@
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.ttc' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.ttf' | ForEach-Object {",
             "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
             "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
             "}",
             "if ($cmd -eq \"uninstall\") {",
-            "    Write-Host \"The 'Sarasa-Gothic' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
+            "    Write-Host \"Font family '$app' has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta",
             "}"
         ]
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/be5invis/Sarasa-Gothic/releases/download/v$version/Sarasa-TTC-Unhinted-$version.7z"
+        "url": [
+            "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v$version/LXGWWenKaiGB-Light.ttf",
+            "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v$version/LXGWWenKaiGB-Regular.ttf",
+            "https://mirror.ghproxy.com/https://github.com/lxgw/LxgwWenkaiGB/releases/download/v$version/LXGWWenKaiGB-Medium.ttf"
+        ]
     }
 }
