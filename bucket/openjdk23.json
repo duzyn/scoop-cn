@@ -1,21 +1,21 @@
 {
-    "description": "Official Early-Access Builds of OpenJDK",
-    "homepage": "https://jdk.java.net/",
-    "version": "24-19-ea",
+    "description": "Official production-ready open-source builds of OpenJDK 23",
+    "homepage": "https://jdk.java.net/23",
+    "version": "23.0.1-11",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.java.net/java/early_access/jdk24/19/GPL/openjdk-24-ea+19_windows-x64_bin.zip",
-            "hash": "c90e6e8d5c865f3712dc302b6bec4f6c9f66d372764d0dbef55391fb52198a08"
+            "url": "https://download.java.net/java/GA/jdk23.0.1/c28985cbf10d4e648e4004050f8781aa/11/GPL/openjdk-23.0.1_windows-x64_bin.zip",
+            "hash": "aef21ac9784cd3cdedae1126fba91c496633e47bd251f8550fa8e2fc79288732"
         }
     },
-    "extract_dir": "jdk-24",
+    "extract_dir": "jdk-23.0.1",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://jdk.java.net/24",
+        "url": "https://jdk.java.net/23",
         "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
         "replace": "${version}-${build}${ea}"
     },
