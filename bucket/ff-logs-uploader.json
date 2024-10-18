@@ -1,9 +1,9 @@
 {
-    "version": "8.14.0",
+    "version": "8.14.21",
     "description": "Uploads FFXIV game logs sourced from Advanced Combat Tracker",
     "homepage": "https://www.fflogs.com",
     "license": "Unknown",
-    "url": "https://mirror.ghproxy.com/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.14.0/fflogs-v8.14.0.exe#/dl.7z",
+    "url": "https://mirror.ghproxy.com/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.14.21/fflogs-v8.14.21.exe#/dl.7z",
     "architecture": {
         "64bit": {
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
@@ -12,7 +12,7 @@
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
         }
     },
-    "hash": "sha512:fa3994c4cc5ba3843be4c030c98073e8e7eaf89be3744740dec1bb8aa097c7bc1313c0e314bc520f8a0733afca7311f55af965eaf7b5ffc9378c260db347197c",
+    "hash": "sha512:56cea67cad9d0c945e361bfd24102ec39e571bba5054b7e353e1c0b90862c3c724e4bfa265718c373f8f56ada8ac887e9372652b5776ea371f6ca5180c968617",
     "post_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Recurse",
     "bin": "FF Logs Uploader.exe",
     "shortcuts": [
