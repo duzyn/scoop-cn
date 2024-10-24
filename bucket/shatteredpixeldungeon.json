@@ -1,0 +1,24 @@
+{
+    "description": "Traditional roguelike game with pixel-art graphics and simple interface",
+    "homepage": "https://shatteredpixel.com/",
+    "license": "GPL-3.0-only",
+    "version": "2.0.2",
+    "url": "https://mirror.ghproxy.com/https://github.com/00-Evan/shattered-pixel-dungeon/releases/download/v2.0.2/ShatteredPD-v2.0.2-Java.jar",
+    "hash": "697eca5b7823daff2eb77cd2e006dc006665d8a61d1ab2fca296bc75ce83994b",
+    "pre_install": "Set-Content \"$dir\\shatteredpixeldungeon.bat\" @('@echo off', 'start javaw.exe -jar %~dp0ShatteredPD-Java.jar') -Encoding Ascii",
+    "shortcuts": [
+        [
+            "shatteredpixeldungeon.bat",
+            "Shattered Pixel Dungeon"
+        ]
+    ],
+    "suggest": {
+        "oraclejre8": "scoop-cn/oraclejre8"
+    },
+    "checkver": {
+        "github": "https://github.com/00-Evan/shattered-pixel-dungeon"
+    },
+    "autoupdate": {
+        "url": "https://mirror.ghproxy.com/https://github.com/00-Evan/shattered-pixel-dungeon/releases/download/v$version/ShatteredPD-v$version-Java.jar"
+    }
+}

@@ -11,19 +11,23 @@
     },
     "installer": {
         "args": [
-            "/verysilent",
-            "/nocancel",
-            "/norestart",
-            "/dir=$dir"
+            "/VERYSILENT",
+            "/SUPPRESSMSGBOXES",
+            "/SP-",
+            "/NOCANCEL",
+            "/NORESTART",
+            "/NOICONS",
+            "/DIR=$dir"
         ]
     },
-    "post_install": "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\pgAdmin 4\"",
     "uninstaller": {
         "file": "unins000.exe",
         "args": [
-            "/verysilent",
-            "/nocancel",
-            "/norestart"
+            "/VERYSILENT",
+            "/SUPPRESSMSGBOXES",
+            "/SP-",
+            "/NOCANCEL",
+            "/NORESTART"
         ]
     },
     "bin": [
