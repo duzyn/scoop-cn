@@ -1,0 +1,29 @@
+{
+    "version": "0.3a-git-f9cb795",
+    "description": "Sega Model 3 Arcade Emulator",
+    "homepage": "https://supermodel3.com/index.html",
+    "license": "GPL-3.0-only",
+    "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_0.3a-git-f9cb795_Win64.zip",
+    "hash": "0c41a4f1f20427149f66f85654e45ca92a744643588bcc819cd42cacbaaa8d58",
+    "bin": [
+        [
+            "Launch-Supermodel.ps1",
+            "supermodel"
+        ]
+    ],
+    "persist": [
+        "Assets",
+        "Config",
+        "NVRAM",
+        "ROMs",
+        "Saves"
+    ],
+    "pre_install": "\"Push-Location $dir; & ./Supermodel.exe `$args; Pop-Location \" | Out-File (Join-Path $dir 'Launch-Supermodel.ps1')",
+    "checkver": {
+        "url": "https://supermodel3.com/Download.html",
+        "regex": "Supermodel_([0-9a-zA-Z.-]+)_Win64.zip"
+    },
+    "autoupdate": {
+        "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_$version_Win64.zip"
+    }
+}
