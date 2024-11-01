@@ -3,7 +3,7 @@
     "description": "Memory monitoring tool capable of identifying memory-related programming errors such as accesses of uninitialized/unaddressable/freed memory, double frees, memory leaks, handle leaks, GDI API usage errors and accesses to un-reserved thread local storage slots.",
     "homepage": "https://drmemory.org",
     "license": "LGPL-2.1-only",
-    "url": "https://mirror.ghproxy.com/https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-2.6.20005/DrMemory-Windows-2.6.20005.zip",
+    "url": "https://ghp.ci/https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-2.6.20005/DrMemory-Windows-2.6.20005.zip",
     "hash": "40696396f9252936b1e8dda3c5bd41c6b5a1198dde9bbad599ebba272daafdf5",
     "extract_dir": "DrMemory-Windows-2.6.20005",
     "architecture": {
@@ -35,7 +35,7 @@
         "regex": "tag/cronbuild-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-$version/DrMemory-Windows-$version.zip",
+        "url": "https://ghp.ci/https://github.com/DynamoRIO/drmemory/releases/download/cronbuild-$version/DrMemory-Windows-$version.zip",
         "extract_dir": "DrMemory-Windows-$version"
     }
 }

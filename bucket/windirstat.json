@@ -3,7 +3,7 @@
     "description": "A disk usage statistics viewer and cleanup tool.",
     "homepage": "https://windirstat.net",
     "license": "GPL-2.0-only",
-    "url": "https://mirror.ghproxy.com/https://github.com/windirstat/windirstat/releases/download/release%2Fv2.0.3/WinDirStat.7z",
+    "url": "https://ghp.ci/https://github.com/windirstat/windirstat/releases/download/release%2Fv2.0.3/WinDirStat.7z",
     "hash": "e086e6e15858a708a74cd9e6c2e910f2f9e6039de5c337029791a035bcf78b63",
     "architecture": {
         "64bit": {
@@ -27,7 +27,7 @@
         "regex": "release/v([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/windirstat/windirstat/releases/download/release%2Fv$version/WinDirStat.7z",
+        "url": "https://ghp.ci/https://github.com/windirstat/windirstat/releases/download/release%2Fv$version/WinDirStat.7z",
         "hash": {
             "url": "$baseurl/WinDirStat-Hashes.txt"
         }

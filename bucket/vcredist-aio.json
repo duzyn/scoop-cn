@@ -3,7 +3,7 @@
     "description": "All-in-one repack for latest Microsoft Visual C++ Redistributable Runtimes, without the original setup bloat payload.",
     "homepage": "https://github.com/abbodi1406/vcredist",
     "license": "Unlicense",
-    "url": "https://mirror.ghproxy.com/https://github.com/abbodi1406/vcredist/releases/download/v0.84.0/VisualCppRedist_AIO_x86_x64_84.zip",
+    "url": "https://ghp.ci/https://github.com/abbodi1406/vcredist/releases/download/v0.84.0/VisualCppRedist_AIO_x86_x64_84.zip",
     "hash": "727c37fb12b0827f16abed3f46576e46fc5654713072ece9964c57fbb47a31d6",
     "installer": {
         "script": [
@@ -22,7 +22,7 @@
         "github": "https://github.com/abbodi1406/vcredist"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/abbodi1406/vcredist/releases/download/v$version/VisualCppRedist_AIO_x86_x64_$minorVersion.zip",
+        "url": "https://ghp.ci/https://github.com/abbodi1406/vcredist/releases/download/v$version/VisualCppRedist_AIO_x86_x64_$minorVersion.zip",
         "hash": {
             "url": "https://github.com/abbodi1406/vcredist/releases/v$version",
             "regex": "File: $basename[\\S\\s]*?SHA-256: $sha256"

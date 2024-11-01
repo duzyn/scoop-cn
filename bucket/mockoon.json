@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/mockoon/mockoon/releases/download/v9.0.0/mockoon.setup.9.0.0.exe#/dl.7z",
+            "url": "https://ghp.ci/https://github.com/mockoon/mockoon/releases/download/v9.0.0/mockoon.setup.9.0.0.exe#/dl.7z",
             "hash": "2f768f96cb173874fdcf85e73682adb67f4b31deed631ca3401d44ca5b30e6b8",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -26,7 +26,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/mockoon/mockoon/releases/download/v$version/mockoon.setup.$version.exe#/dl.7z"
+                "url": "https://ghp.ci/https://github.com/mockoon/mockoon/releases/download/v$version/mockoon.setup.$version.exe#/dl.7z"
             }
         }
     }

@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/ipfs/ipfs-desktop/releases/download/v0.39.0/ipfs-desktop-setup-0.39.0.exe#/dl.7z",
+            "url": "https://ghp.ci/https://github.com/ipfs/ipfs-desktop/releases/download/v0.39.0/ipfs-desktop-setup-0.39.0.exe#/dl.7z",
             "hash": "sha512:16cc10d7b28c7d7de912141f171b8692710afcd159f54734b2106fb0d23a1238d2a87dcf38c397067a91bf1a8399b33665b5e290588c2d52980133dc04bfd2b3",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -26,7 +26,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/ipfs/ipfs-desktop/releases/download/v$version/ipfs-desktop-setup-$version.exe#/dl.7z"
+                "url": "https://ghp.ci/https://github.com/ipfs/ipfs-desktop/releases/download/v$version/ipfs-desktop-setup-$version.exe#/dl.7z"
             }
         },
         "hash": {

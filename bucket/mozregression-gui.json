@@ -3,7 +3,7 @@
     "description": "Regression range finder for Firefox and other Mozilla products. Helps determining a changeset range corresponding to when a problem was introduced.",
     "homepage": "https://mozilla.github.io/mozregression/",
     "license": "MPL-2.0",
-    "url": "https://mirror.ghproxy.com/https://github.com/mozilla/mozregression/releases/download/6.2.2/mozregression-gui-signed.exe#/dl.7z",
+    "url": "https://ghp.ci/https://github.com/mozilla/mozregression/releases/download/6.2.2/mozregression-gui-signed.exe#/dl.7z",
     "hash": "7bc57715ba33857e27f7d90cf4c385e8e5449e5c592d0c95fbdebe1dd6075f52",
     "pre_install": "Remove-Item \"$dir\\uninstall.exe\"",
     "shortcuts": [
@@ -16,6 +16,6 @@
         "github": "https://github.com/mozilla/mozregression"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/mozilla/mozregression/releases/download/$version/mozregression-gui-signed.exe#/dl.7z"
+        "url": "https://ghp.ci/https://github.com/mozilla/mozregression/releases/download/$version/mozregression-gui-signed.exe#/dl.7z"
     }
 }

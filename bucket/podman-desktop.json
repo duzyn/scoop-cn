@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/containers/podman-desktop/releases/download/v1.13.3/podman-desktop-1.13.3.exe#/dl.7z",
+            "url": "https://ghp.ci/https://github.com/containers/podman-desktop/releases/download/v1.13.3/podman-desktop-1.13.3.exe#/dl.7z",
             "hash": "962c9da92f6bb6d139fac53b39e32516af27561139668c66c74d120fdfd0ccfd",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -23,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/containers/podman-desktop/releases/download/v$version/podman-desktop-$version.exe#/dl.7z"
+                "url": "https://ghp.ci/https://github.com/containers/podman-desktop/releases/download/v$version/podman-desktop-$version.exe#/dl.7z"
             }
         }
     }

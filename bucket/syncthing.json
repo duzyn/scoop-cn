@@ -6,17 +6,17 @@
     "notes": "To start syncthing automatically, use a method described at https://docs.syncthing.net/users/autostart.html#windows",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-amd64-v1.28.0.zip",
+            "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-amd64-v1.28.0.zip",
             "hash": "18471b9e443fa6fe9188f03d0e7a23ab263a0794a10026f9679f2ffe59034703",
             "extract_dir": "syncthing-windows-amd64-v1.28.0"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-386-v1.28.0.zip",
+            "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-386-v1.28.0.zip",
             "hash": "4a9d96fe18022c2f009c4088aec2c4bae2de03bfcb8c44352184acb32b828113",
             "extract_dir": "syncthing-windows-386-v1.28.0"
         },
         "arm64": {
-            "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-arm64-v1.28.0.zip",
+            "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v1.28.0/syncthing-windows-arm64-v1.28.0.zip",
             "hash": "38059b8e245ef5d2a5c958983579f69fea52b3baf3c5609b0f9de6fbc1104fe1",
             "extract_dir": "syncthing-windows-arm64-v1.28.0"
         }
@@ -42,15 +42,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-amd64-v$version.zip",
+                "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-amd64-v$version.zip",
                 "extract_dir": "syncthing-windows-amd64-v$version"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-386-v$version.zip",
+                "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-386-v$version.zip",
                 "extract_dir": "syncthing-windows-386-v$version"
             },
             "arm64": {
-                "url": "https://mirror.ghproxy.com/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-arm64-v$version.zip",
+                "url": "https://ghp.ci/https://github.com/syncthing/syncthing/releases/download/v$version/syncthing-windows-arm64-v$version.zip",
                 "extract_dir": "syncthing-windows-arm64-v$version"
             }
         },

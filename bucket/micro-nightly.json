@@ -1,16 +1,16 @@
 {
-    "version": "nightly-2024-10-31",
+    "version": "nightly-2024-11-01",
     "description": "A terminal-based text editor that aims to be easy to use and intuitive, while also taking advantage of the full capabilities of modern terminals.",
     "homepage": "https://micro-editor.github.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-nightly-win64.zip",
-            "hash": "da244a327da06949d2ab35b6d2f93817dc5733e4a35f4354a17195da9c13b26c"
+            "url": "https://ghp.ci/https://github.com/zyedidia/micro/releases/download/nightly/micro-nightly-win64.zip",
+            "hash": "4701fab8a7783d35ce0162169c81de40e8eb668e72c86a8d25b85c71eb6214ef"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-nightly-win64.zip",
-            "hash": "da244a327da06949d2ab35b6d2f93817dc5733e4a35f4354a17195da9c13b26c"
+            "url": "https://ghp.ci/https://github.com/zyedidia/micro/releases/download/nightly/micro-nightly-win64.zip",
+            "hash": "4701fab8a7783d35ce0162169c81de40e8eb668e72c86a8d25b85c71eb6214ef"
         }
     },
     "extract_dir": "micro-nightly",
@@ -23,10 +23,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
+                "url": "https://ghp.ci/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
+                "url": "https://ghp.ci/https://github.com/zyedidia/micro/releases/download/nightly/micro-$matchMicro-win64.zip"
             }
         },
         "extract_dir": "micro-$matchMicro"

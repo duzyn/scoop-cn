@@ -5,17 +5,17 @@
     "license": "GPL-3.0-or-later,ZPL-2.1,Apache-2.0 WITH LLVM-exception,ISC",
     "architecture": {
         "64bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-x86_64.zip",
+            "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-x86_64.zip",
             "hash": "7dd9884c976bb20bcbcda9077aa3dd2e857cfd073012f39668cdeddb285d93f8",
             "extract_dir": "llvm-mingw-20241030-ucrt-x86_64"
         },
         "32bit": {
-            "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-i686.zip",
+            "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-i686.zip",
             "hash": "70ea4cf62e93dad8ce69b0cb3e50abf9cde10cbf23e8122882837f9e8aa0abfa",
             "extract_dir": "llvm-mingw-20241030-ucrt-i686"
         },
         "arm64": {
-            "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-aarch64.zip",
+            "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/20241030/llvm-mingw-20241030-ucrt-aarch64.zip",
             "hash": "130925497c004fc97fdc495d6b82e2692e0d56dc1bf7ce13c8856e20d6002b7b",
             "extract_dir": "llvm-mingw-20241030-ucrt-aarch64"
         }
@@ -30,15 +30,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-x86_64.zip",
+                "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-x86_64.zip",
                 "extract_dir": "llvm-mingw-$matchTime-ucrt-x86_64"
             },
             "32bit": {
-                "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-i686.zip",
+                "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-i686.zip",
                 "extract_dir": "llvm-mingw-$matchTime-ucrt-i686"
             },
             "arm64": {
-                "url": "https://mirror.ghproxy.com/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-aarch64.zip",
+                "url": "https://ghp.ci/https://github.com/mstorsjo/llvm-mingw/releases/download/$matchTime/llvm-mingw-$matchTime-ucrt-aarch64.zip",
                 "extract_dir": "llvm-mingw-$matchTime-ucrt-aarch64"
             }
         }

@@ -14,7 +14,7 @@
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
     },
-    "url": "https://mirror.ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v2.0.2/pcsx2-v2.0.2-windows-x64-Qt.7z",
+    "url": "https://ghp.ci/https://github.com/PCSX2/pcsx2/releases/download/v2.0.2/pcsx2-v2.0.2-windows-x64-Qt.7z",
     "hash": "daf7a4025a90b8ff646f50469ad35765a6b4cee183c78fb08a9eb5343cbf6938",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
@@ -48,7 +48,7 @@
         "github": "https://github.com/PCSX2/pcsx2/"
     },
     "autoupdate": {
-        "url": "https://mirror.ghproxy.com/https://github.com/PCSX2/pcsx2/releases/download/v$version/pcsx2-$version-binaries.7z",
+        "url": "https://ghp.ci/https://github.com/PCSX2/pcsx2/releases/download/v$version/pcsx2-$version-binaries.7z",
         "extract_dir": "PCSX2 $version"
     }
 }
