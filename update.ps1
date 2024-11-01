@@ -40,14 +40,14 @@ Remove-Item -Path .\scoop-sysinternals -Recurse -Force
 
 Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # GitHub Releases
-    (Get-Content $_.FullName) -replace '(github\.com/.+/releases/.*download)', 'mirror.ghproxy.com/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/releases/.*download)', 'ghp.ci/https://$1' | Set-Content -Path $_.FullName
 
     # GitHub Archive
-    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'mirror.ghproxy.com/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'ghp.ci/https://$1' | Set-Content -Path $_.FullName
 
     # GitHub Raw
-    (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'mirror.ghproxy.com/https://$1' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'mirror.ghproxy.com/https://$1'          | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'ghp.ci/https://$1' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'ghp.ci/https://$1'          | Set-Content -Path $_.FullName
 
     # SourceForge
     # Use jaist
@@ -84,18 +84,18 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' | Set-Content -Path $_.FullName
 
     # DBeaver
-    (Get-Content $_.FullName) -replace 'dbeaver\.io/files', 'mirror.ghproxy.com/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'dbeaver\.io/files', 'ghp.ci/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
     # Or
     # (Get-Content $_.FullName) -replace 'dbeaver\.io/files', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' | Set-Content -Path $_.FullName
 
     # OBS Studio
-    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'ghp.ci/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
     # Or
     # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.nju.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
     # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
 
     # OBS Studio 2.7
-    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'mirror.ghproxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghp.ci/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
 
     # GIMP
     (Get-Content $_.FullName) -replace 'download\.gimp\.org/mirror/pub', 'mirrors.aliyun.com/gimp' | Set-Content -Path $_.FullName
@@ -113,7 +113,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' | Set-Content -Path $_.FullName
 
     # Strawberry
-    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'mirror.ghproxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghp.ci/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
 
     # SumatraPDF
     (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
@@ -138,7 +138,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.ybti.net/dist' | Set-Content -Path $_.FullName
 
     # FastCopy
-    (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'mirror.ghproxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'ghp.ci/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
 
     # Kodi
     (Get-Content $_.FullName) -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi' | Set-Content -Path $_.FullName
