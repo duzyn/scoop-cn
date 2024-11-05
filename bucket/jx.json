@@ -1,16 +1,16 @@
 {
-    "version": "3.10.170",
+    "version": "3.10.176",
     "description": "A command line tool for installing and using Jenkins X",
     "homepage": "https://github.com/jenkins-x/jx",
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghp.ci/https://github.com/jenkins-x/jx/releases/download/v3.10.170/jx-windows-amd64.zip",
-            "hash": "cd9b3c9cac95329d279e0b5843a92f332c75a316702a31906ff04e4d701fbc55"
+            "url": "https://ghp.ci/https://github.com/jenkins-x/jx/releases/download/v3.10.176/jx-windows-amd64.zip",
+            "hash": "3d0466d4e9e6e3497a77160b2291511b367df6aa75f13f601d5c49371f8c1fea"
         },
         "arm64": {
-            "url": "https://ghp.ci/https://github.com/jenkins-x/jx/releases/download/v3.10.170/jx-windows-arm64.zip",
-            "hash": "3fbe07302efccf9047a11243941a234e474e9c5cc4f02c3a7b0e7de66eece703"
+            "url": "https://ghp.ci/https://github.com/jenkins-x/jx/releases/download/v3.10.176/jx-windows-arm64.zip",
+            "hash": "7c6d6aba61f2eda4c19dfa9c7deb2764e7b14cf09fa7d00c6afac0d6c28d6138"
         }
     },
     "pre_install": "Stop-Process -Name 'jx' -ErrorAction 'Ignore' -Verbose",
