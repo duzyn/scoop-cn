@@ -62,19 +62,47 @@ irm https://ghp.ci/https://raw.githubusercontent.com/duzyn/scoop-cn/master/insta
 irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 ```
 
-安装成功后，会提示“scoop and scoop-cn was installed successfully!”
+安装成功后，会提示“Scoop and scoop-cn was installed successfully!”
 
 ## 只添加 scoop-cn 仓库
 
-如果已经安装了 scoop，不想重新安装可以按以下步骤进行：
+如果已经安装了 Scoop，不想重新安装可以按以下步骤进行：
 
-1. 添加本仓库，运行命令
+1. 运行以下命令添加本仓库
 
     ```powershell
     scoop bucket add scoop-cn https://ghp.ci/https://github.com/duzyn/scoop-cn
     ```
 
-2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行 scoop list 来检查替换成功。如果要批量修改，可以借助 grepWin 来写个正则表达式搜索替换这个值。
+2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行以下命令来批量替换：
+
+    ```powershell
+    Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "(main|extras|versions|nirsoft|sysinternals|php|nerd-fonts|nonportable|java|games)"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName }
+    ```
+
+    命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。
+
+3. 可以运行 `scoop list` 来检查替换是否成功。比如未修改前是这样的：
+
+    ```powershell
+    Installed apps:
+
+    Name          Version           Source         Updated             Info
+    ----          -------           ------         -------             ----
+    7zip          24.08             main           2024-11-06 17:52:51
+    git           2.47.0.2          main           2024-11-06 17:53:04
+    ```
+
+    运行命令替换之后变为：
+
+    ```powershell
+    Installed apps:
+
+    Name          Version           Source         Updated             Info
+    ----          -------           ------         -------             ----
+    7zip          24.08             scoop-cn       2024-11-06 17:52:51
+    git           2.47.0.2          scoop-cn       2024-11-06 17:53:04
+    ```
 
 ## 安装应用
 

@@ -44,4 +44,4 @@ scoop bucket add scoop-cn https://ghp.ci/https://github.com/duzyn/scoop-cn
 # Set-Location "$SCOOP_DIR\buckets\scoop-cn"
 # git config pull.rebase true
 
-Write-Host "scoop and scoop-cn was installed successfully!"
+Write-Host "Scoop and scoop-cn was installed successfully!"
