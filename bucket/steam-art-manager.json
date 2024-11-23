@@ -1,13 +1,13 @@
 {
-    "version": "2.4.0",
+    "version": "3.10.5",
     "description": "Tool for setting the artwork of your Steam library",
     "homepage": "https://github.com/Tormak9970/Steam-Art-Manager",
     "license": {
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/Tormak9970/Steam-Art-Manager/blob/main/LICENSE"
     },
-    "url": "https://ghp.ci/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v2.4.0/Steam.Art.Manager_2.4.0_x64_en-US.msi.zip",
-    "hash": "88fe6ef51c7376696b9e58f3a961dfab79aad446d050eaebd54bd7856856095d",
+    "url": "https://ghp.ci/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.10.5/steam-art-manager_3.10.5.msi.zip",
+    "hash": "3c08d11bfd0f9ee7b960695644fceb8580d6786d01425788973d0dfdac25b408",
     "pre_install": [
         "Get-ChildItem \"$dir\\Steam Art Manager_*.msi\" | Select-Object -First 1 | ForEach-Object { Rename-Item $_ \"dl.msi\" }",
         "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir \"PFiles\\Steam Art Manager\" -Removal | Out-Null"
@@ -29,6 +29,6 @@
         "github": "https://github.com/Tormak9970/Steam-Art-Manager"
     },
     "autoupdate": {
-        "url": "https://ghp.ci/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v$version/Steam.Art.Manager_$version_x64_en-US.msi.zip"
+        "url": "https://ghp.ci/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.10.5/steam-art-manager_$version.msi.zip"
     }
 }
