@@ -1,44 +1,22 @@
 {
     "description": "Oracle Java Platform, Standard Edition Runtime Environment (JRE)",
     "homepage": "https://www.java.com/",
-    "version": "8u431",
+    "version": "8u421",
     "license": "https://www.oracle.com/technetwork/java/javase/terms/license/javase-license.html",
+    "notes": "Deprecated, no extraction source available.",
     "architecture": {
         "64bit": {
-            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=251409_0d8f12bc927a4e2c9f8568ca567db4ee#/dl.tar.gz",
-            "hash": "eb84f52b94e811d777c4b5d222050e3103ab415172deb6ced4763d24a4dacf0c"
+            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=250130_d8aa705069af427f9b83e66b34f5e380#/dl.tar.gz",
+            "hash": "e8082d390a831b14067a465068fceda45291170e8d155be0991bced9702cbbe7"
         },
         "32bit": {
-            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=251408_0d8f12bc927a4e2c9f8568ca567db4ee#/dl.tar.gz",
-            "hash": "6e6e541bc5b96ef69ebaf247d8cf9bfb0eb8b6fee289a9f163db74b08983ceec"
+            "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=250128_d8aa705069af427f9b83e66b34f5e380#/dl.tar.gz",
+            "hash": "f5000329f2ddfa7a24abf84d9cd9d7be015013b513f6c9a3458018b6bcd9f3f1"
         }
     },
-    "extract_dir": "jre1.8.0_431",
+    "extract_dir": "jre1.8.0_421",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
-    },
-    "checkver": {
-        "url": "https://orasites-prodapp.cec.ocp.oraclecloud.com/content/published/api/v1.1/items/COREFA37E773006D4BE183DB8D7F504C5718?channelToken=1f7d2611846d4457b213dfc9048724dc",
-        "script": [
-            "$ver = json_path $page $.fields.json.latest8Version",
-            "$secid = json_path $page $.fields.json.secID",
-            "$win32 = [int](json_path $page $.fields.json.win_offline_bundle) + 1",
-            "$win64 = [int](json_path $page $.fields.json.win_x64_bundle) + 1",
-            "Write-Output \"$ver $win32 $win64 $secid\""
-        ],
-        "regex": "(?<long>(?<ver>[\\d.]+)_(?<build>[\\d]+)) (?<win32b>[\\d]+) (?<win64b>[\\d]+) (?<secid>[\\da-f]{32})",
-        "replace": "8u${build}"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=$matchWin64b_$matchSecid#/dl.tar.gz"
-            },
-            "32bit": {
-                "url": "https://javadl.oracle.com/webapps/download/AutoDL?BundleId=$matchWin32b_$matchSecid#/dl.tar.gz"
-            }
-        },
-        "extract_dir": "jre$matchLong"
     }
 }
