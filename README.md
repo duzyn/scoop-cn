@@ -1,6 +1,8 @@
 <!-- omit in toc -->
 # Scoop 应用库中国加速
 
+![GitHub Actions Workflow Status](https://github.com/duzyn/scoop-cn/actions/workflows/schedule.yml/badge.svg)
+
 - [Scoop 在中国使用的问题](#scoop-在中国使用的问题)
 - [本应用库介绍](#本应用库介绍)
 - [前提条件](#前提条件)
@@ -8,7 +10,6 @@
 - [只添加 scoop-cn 仓库](#只添加-scoop-cn-仓库)
 - [安装应用](#安装应用)
 - [查看帮助](#查看帮助)
-- [类似项目](#类似项目)
 
 ## Scoop 在中国使用的问题
 
@@ -126,6 +127,4 @@ scoop install scoop-cn/APPNAME
 scoop help
 ```
 
-## 类似项目
-
-macOS 和 Linux 上 Homebrew 可用的 [homebrew-cn](https://github.com/duzyn/homebrew-cn)
+![Star History Chart](https://api.star-history.com/svg?repos=duzyn/scoop-cn&type=Date)
