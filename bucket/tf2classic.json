@@ -1,0 +1,23 @@
+{
+    "version": "2.1.5",
+    "license": "Freeware",
+    "homepage": "https://tf2classic.com/",
+    "description": "Team Fortress 2 Classic is a free Sourcemod that aims to re-imagine the 2008/2009 era of the original Team Fortress 2. New features range from weapons and maps to gamemodes such as VIP and Four-Team.",
+    "url": "https://wiki.tf2classic.com/kachemak/tf2classic.zip",
+    "post_install": [
+        "New-Item -ItemType SymbolicLink -Path 'C:\\Program Files (x86)\\Steam\\steamapps\\sourcemods\\tf2classic' -Target \"$dir\""
+    ],
+    "checkver": {
+        "url": "https://tf2classic.com/history",
+        "regex": "([\\d.]+) Patch"
+    },
+    "pre_uninstall": [
+        "if ($cmd -eq \"uninstall\") { rm -r 'C:\\Program Files (x86)\\Steam\\steamapps\\sourcemods\\tf2classic' }"
+    ],
+    "notes": [
+        "To run TF2 Classic, you must have Source SDK Base 2013 Multiplayer installed. If you do not have it, follow this link: steam://install/243750"
+    ],
+    "persist": [
+        "cfg"
+    ]
+}
