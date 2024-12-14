@@ -116,7 +116,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghp.ci/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
 
     # SumatraPDF
-    (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
+    # (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
 
     # Vim
     (Get-Content $_.FullName) -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' | Set-Content -Path $_.FullName
@@ -135,7 +135,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # https://tor.calyxinstitute.org/dist/
     # https://torproject.mirror.metalgamer.eu/dist/
     # https://cyberside.net.ee/sibul/dist/
-    (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.ybti.net/dist' | Set-Content -Path $_.FullName
+    (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist/' | Set-Content -Path $_.FullName
 
     # FastCopy
     (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'ghp.ci/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
@@ -157,18 +157,18 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 }
 
 # Start: Free Download Manager
-(Get-Content .\bucket\freedownloadmanager.json).Replace('dn3.freedownloadmanager.org', 'files2.freedownloadmanager.org') | Set-Content -Path .\bucket\freedownloadmanager.json
+# (Get-Content .\bucket\freedownloadmanager.json).Replace('dn3.freedownloadmanager.org', 'files2.freedownloadmanager.org') | Set-Content -Path .\bucket\freedownloadmanager.json
 
-$JSON = Get-Content .\bucket\freedownloadmanager.json | ConvertFrom-Json
+# $JSON = Get-Content .\bucket\freedownloadmanager.json | ConvertFrom-Json
 
-Invoke-RestMethod $JSON.architecture."64bit".url -Outfile .\fdm_x64_setup.exe
-Invoke-RestMethod $JSON.architecture."32bit".url -Outfile .\fdm_x86_setup.exe
+# Invoke-RestMethod $JSON.architecture."64bit".url -Outfile .\fdm_x64_setup.exe
+# Invoke-RestMethod $JSON.architecture."32bit".url -Outfile .\fdm_x86_setup.exe
 
-$JSON.architecture."64bit".hash = (Get-FileHash .\fdm_x64_setup.exe -Algorithm SHA256).Hash.ToLower()
-$JSON.architecture."32bit".hash = (Get-FileHash .\fdm_x86_setup.exe -Algorithm SHA256).Hash.ToLower()
+# $JSON.architecture."64bit".hash = (Get-FileHash .\fdm_x64_setup.exe -Algorithm SHA256).Hash.ToLower()
+# $JSON.architecture."32bit".hash = (Get-FileHash .\fdm_x86_setup.exe -Algorithm SHA256).Hash.ToLower()
 
-$JSON | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\freedownloadmanager.json
+# $JSON | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\freedownloadmanager.json
 
-Remove-Item -Path .\fdm_x64_setup.exe
-Remove-Item -Path .\fdm_x86_setup.exe
+# Remove-Item -Path .\fdm_x64_setup.exe
+# Remove-Item -Path .\fdm_x86_setup.exe
 # End: Free Download Manager
