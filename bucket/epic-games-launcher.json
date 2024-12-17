@@ -23,12 +23,11 @@
         "url": "https://scoop.sh",
         "useragent": "$app/$version",
         "script": [
-            "$redirUrl = [System.Net.HttpWebRequest]::Create(",
-            "'https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi'",
-            ").GetResponse().ResponseUri.AbsoluteUri;",
-            "return $redirUrl"
+            "$redirUrl = [Net.HttpWebRequest]::Create('https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncherInstaller.msi')",
+            "$redirUrl.method = 'head'",
+            "[Web.HttpUtility]::ParseQueryString($redirUrl.GetResponse().ResponseUri.Query).Get('launcherfilename')"
         ],
-        "regex": "EpicInstaller-([\\d.]+).msi"
+        "regex": "\\AEpicInstaller-([\\d.]+)\\.msi\\Z"
     },
     "autoupdate": {
         "url": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-$version.msi#/setup.msi_"
