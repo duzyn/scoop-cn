@@ -1,0 +1,45 @@
+{
+    "version": "1.9.3",
+    "description": "Next-Generation of Chiaki (the open-source remote play client for PlayStation)",
+    "homepage": "https://streetpea.github.io/chiaki-ng/",
+    "license": {
+        "identifier": "AGPL-3.0-only",
+        "url": "https://github.com/streetpea/chiaki-ng/blob/main/COPYING"
+    },
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://ghp.ci/https://github.com/streetpea/chiaki-ng/releases/download/v1.9.3/chiaki-ng-windows-installer.exe",
+            "hash": "52aa644f80e4f16217c7b54793d266084074f6a172eafa42060e166a9a6fa467"
+        }
+    },
+    "innosetup": true,
+    "bin": [
+        [
+            "chiaki.exe",
+            "chiaki-ng"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "chiaki.exe",
+            "chiaki-ng"
+        ]
+    ],
+    "post_uninstall": [
+        "Remove-Item -Path \"$env:LocalAppData\\Chiaki\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "Remove-Item -Path \"$env:AppData\\Chiaki\" -Recurse -Force -ErrorAction SilentlyContinue"
+    ],
+    "checkver": {
+        "github": "https://github.com/streetpea/chiaki-ng/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghp.ci/https://github.com/streetpea/chiaki-ng/releases/download/v$version/chiaki-ng-windows-installer.exe"
+            }
+        }
+    }
+}
