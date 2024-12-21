@@ -1,5 +1,5 @@
 {
-    "version": "0.0.34-17210",
+    "version": "0.0.34-17222",
     "description": "Open-source Sony PlayStation 3 emulator",
     "homepage": "https://rpcs3.net/",
     "license": {
@@ -15,8 +15,8 @@
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
     },
-    "url": "https://ghp.ci/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-0fd6956bb04f20caeca9a257856a6dfed483599c/rpcs3-v0.0.34-17210-0fd6956b_win64.7z",
-    "hash": "9923cbe51b0854126a366284ebbd5f0a62dd2d8a18efccf060f62918651c317e",
+    "url": "https://ghgo.xyz/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-ff0249d662fcedee602c9206e73b5feb91f164c1/rpcs3-v0.0.34-17222-ff0249d6_win64.7z",
+    "hash": "475e6b1ce15a2b4d91a0897338fd4154fdf2131af559c3cb3db7227172532ce8",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -55,7 +55,7 @@
         "replace": "${build}"
     },
     "autoupdate": {
-        "url": "https://ghp.ci/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z",
+        "url": "https://ghgo.xyz/https://github.com/rpcs3/rpcs3-binaries-win/releases/download/build-$matchFullhash/rpcs3-v$matchBuild-$matchShorthash_win64.7z",
         "hash": {
             "url": "https://rpcs3.net/compatibility?b",
             "regex": "Windows SHA-256: ($sha256)"

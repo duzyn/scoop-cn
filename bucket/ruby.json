@@ -9,12 +9,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://ghp.ci/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.6-2/rubyinstaller-3.3.6-2-x64.7z",
+            "url": "https://ghgo.xyz/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.6-2/rubyinstaller-3.3.6-2-x64.7z",
             "hash": "85cc68618b615d37c97fe71547ad875a80e25c34cb4593a82075a09b595864b6",
             "extract_dir": "rubyinstaller-3.3.6-2-x64"
         },
         "32bit": {
-            "url": "https://ghp.ci/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.6-2/rubyinstaller-3.3.6-2-x86.7z",
+            "url": "https://ghgo.xyz/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.3.6-2/rubyinstaller-3.3.6-2-x86.7z",
             "hash": "960fbc3f64191cdad58023aa9b59a3cbfa7f63530d1635f14c0b173643e92118",
             "extract_dir": "rubyinstaller-3.3.6-2-x86"
         }
@@ -30,22 +30,22 @@
     },
     "persist": "gems",
     "checkver": {
-        "url": "https://ghp.ci/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+        "url": "https://ghgo.xyz/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
         "regex": "Ruby (\\S+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghp.ci/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x64.7z",
+                "url": "https://ghgo.xyz/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x64.7z",
                 "extract_dir": "rubyinstaller-$version-x64"
             },
             "32bit": {
-                "url": "https://ghp.ci/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x86.7z",
+                "url": "https://ghgo.xyz/https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-$version/rubyinstaller-$version-x86.7z",
                 "extract_dir": "rubyinstaller-$version-x86"
             }
         },
         "hash": {
-            "url": "https://ghp.ci/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
+            "url": "https://ghgo.xyz/https://raw.githubusercontent.com/oneclick/rubyinstaller.org-website/master/_data/downloads.yaml",
             "regex": "(?sm)$basename[^.].*?$sha256"
         }
     }

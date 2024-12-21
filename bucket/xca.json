@@ -3,7 +3,7 @@
     "description": "X - Certificate and Key management",
     "homepage": "https://www.hohnstaedt.de/xca/",
     "license": "BSD-3-Clause",
-    "url": "https://ghp.ci/https://github.com/chris2511/xca/releases/download/RELEASE.2.8.0/xca-portable-2.8.0.zip",
+    "url": "https://ghgo.xyz/https://github.com/chris2511/xca/releases/download/RELEASE.2.8.0/xca-portable-2.8.0.zip",
     "hash": "ca8bbc72e278e96b34237bdd26de7300f5561e332ffc3c02cda832582e581721",
     "extract_dir": "xca-portable-2.8.0",
     "shortcuts": [
@@ -17,9 +17,9 @@
         "regex": "/releases/tag/RELEASE\\.([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://ghp.ci/https://github.com/chris2511/xca/releases/download/RELEASE.$version/xca-portable-$version.zip",
+        "url": "https://ghgo.xyz/https://github.com/chris2511/xca/releases/download/RELEASE.$version/xca-portable-$version.zip",
         "hash": {
-            "url": "https://ghp.ci/https://raw.githubusercontent.com/chris2511/xca/master/misc/binary-hashes.json",
+            "url": "https://ghgo.xyz/https://raw.githubusercontent.com/chris2511/xca/master/misc/binary-hashes.json",
             "jsonpath": "$.['$basename']"
         },
         "extract_dir": "xca-portable-$version"

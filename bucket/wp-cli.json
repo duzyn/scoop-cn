@@ -10,7 +10,7 @@
             "php-nts"
         ]
     },
-    "url": "https://ghp.ci/https://github.com/wp-cli/wp-cli/releases/download/v2.11.0/wp-cli-2.11.0.phar#/wp-cli.phar",
+    "url": "https://ghgo.xyz/https://github.com/wp-cli/wp-cli/releases/download/v2.11.0/wp-cli-2.11.0.phar#/wp-cli.phar",
     "hash": "sha512:adb12146bab8d829621efed41124dcd0012f9027f47e0228be7080296167566070e4a026a09c3989907840b21de94b7a35f3bfbd5f827c12f27c5803546d1bba",
     "pre_install": [
         "echo 'if($args.length -eq 2 -and ($args[0] -eq \"cli\" -and $args[1] -eq \"update\")) { & scoop update wp-cli }' | out-file \"$dir\\wp.ps1\"",
@@ -21,7 +21,7 @@
         "github": "https://github.com/wp-cli/wp-cli"
     },
     "autoupdate": {
-        "url": "https://ghp.ci/https://github.com/wp-cli/wp-cli/releases/download/v$version/wp-cli-$version.phar#/wp-cli.phar",
+        "url": "https://ghgo.xyz/https://github.com/wp-cli/wp-cli/releases/download/v$version/wp-cli-$version.phar#/wp-cli.phar",
         "hash": {
             "url": "$url.sha512"
         }

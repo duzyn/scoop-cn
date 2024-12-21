@@ -3,7 +3,7 @@
     "description": "Video subtitles editor",
     "homepage": "http://www.nikse.dk/subtitleedit/",
     "license": "GPL-3.0-only",
-    "url": "https://ghp.ci/https://github.com/SubtitleEdit/subtitleedit/releases/download/4.0.9/SE409.zip",
+    "url": "https://ghgo.xyz/https://github.com/SubtitleEdit/subtitleedit/releases/download/4.0.9/SE409.zip",
     "hash": "3436f93c5531103ce25aa07a2d47a82346978ef3de3fd31a39bef93961d0c145",
     "pre_install": "if (!(Test-Path \"$persist_dir\\Settings.xml\")) { New-Item \"$dir\\Settings.xml\" | Out-Null }",
     "bin": "SubtitleEdit.exe",
@@ -18,7 +18,7 @@
         "github": "https://github.com/SubtitleEdit/subtitleedit"
     },
     "autoupdate": {
-        "url": "https://ghp.ci/https://github.com/SubtitleEdit/subtitleedit/releases/download/$version/SE$cleanVersion.zip",
+        "url": "https://ghgo.xyz/https://github.com/SubtitleEdit/subtitleedit/releases/download/$version/SE$cleanVersion.zip",
         "hash": {
             "url": "https://github.com/SubtitleEdit/subtitleedit/releases/tag/$version/",
             "regex": "(?sm)$basename.*?SHA256 Checksum:\\s*<code>$sha256</"
