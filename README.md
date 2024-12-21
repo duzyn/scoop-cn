@@ -110,6 +110,12 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 
 如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在删除本仓库后重新添加本仓库。
 
+运行以下命令设置新 GitHub 代理地址的 Scoop 仓库：
+
+```powershell
+scoop config scoop_repo https://ghgo.xyz/https://github.com/ScoopInstaller/Scoop
+```
+
 运行以下命令删除 main 仓库和本仓库：
 
 ```powershell
@@ -117,17 +123,11 @@ scoop bucket rm main
 scoop bucket rm scoop-cn
 ```
 
-运行以下命令重新添加新 GitHub 代理地址的 main 仓库和本仓库，下例中 `https://ghgo.xyz/` 是新 GitHub 代理地址，应换成实际的：
+再运行以下命令重新添加新 GitHub 代理地址的 main 仓库和本仓库，下例中 `https://ghgo.xyz/` 是新 GitHub 代理地址，应换成实际的：
 
 ```powershell
 scoop bucket add main https://ghgo.xyz/https://github.com/ScoopInstaller/Main
 scoop bucket add scoop-cn https://ghgo.xyz/https://github.com/duzyn/scoop-cn
-```
-
-再运行以下命令设置新代理地址的 Scoop 仓库：
-
-```powershell
-scoop config scoop_repo https://ghgo.xyz/https://github.com/ScoopInstaller/Scoop
 ```
 
 ## 安装应用
