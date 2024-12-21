@@ -8,6 +8,7 @@
 - [前提条件](#前提条件)
 - [安装 Scoop 和 scoop-cn（推荐）](#安装-scoop-和-scoop-cn推荐)
 - [只添加 scoop-cn 仓库](#只添加-scoop-cn-仓库)
+- [重新添加 scoop-cn 仓库](#重新添加-scoop-cn-仓库)
 - [安装应用](#安装应用)
 - [查看帮助](#查看帮助)
 
@@ -26,7 +27,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 
 ## 本应用库介绍
 
-本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://ghp.ci/) 和 [GitHub Actions](https://github.com/features/actions) 。
+本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://ghgo.xyz/) 和 [GitHub Actions](https://github.com/features/actions) 。
 
 特性有：
 
@@ -54,7 +55,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装 Scoop：
 
 ```powershell
-irm https://ghp.ci/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
+irm https://ghgo.xyz/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
 或使用 jsDelivr 的地址：
@@ -72,7 +73,7 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 1. 运行以下命令添加本仓库
 
     ```powershell
-    scoop bucket add scoop-cn https://ghp.ci/https://github.com/duzyn/scoop-cn
+    scoop bucket add scoop-cn https://ghgo.xyz/https://github.com/duzyn/scoop-cn
     ```
 
 2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行以下命令来批量替换：
@@ -104,6 +105,30 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
     7zip          24.08             scoop-cn       2024-11-06 17:52:51
     git           2.47.0.2          scoop-cn       2024-11-06 17:53:04
     ```
+
+## 重新添加 scoop-cn 仓库
+
+如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在删除本仓库后重新添加本仓库。
+
+运行以下命令删除 main 仓库和本仓库：
+
+```powershell
+scoop bucket rm main
+scoop bucket rm scoop-cn
+```
+
+运行以下命令重新添加新 GitHub 代理地址的 main 仓库和本仓库，下例中 `https://ghgo.xyz/` 是新 GitHub 代理地址，应换成实际的：
+
+```powershell
+scoop bucket add main https://ghgo.xyz/https://github.com/ScoopInstaller/Main
+scoop bucket add scoop-cn https://ghgo.xyz/https://github.com/duzyn/scoop-cn
+```
+
+再运行以下命令设置新代理地址的 Scoop 仓库：
+
+```powershell
+scoop config scoop_repo https://ghgo.xyz/https://github.com/ScoopInstaller/Scoop
+```
 
 ## 安装应用
 
