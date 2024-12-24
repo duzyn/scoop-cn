@@ -1,13 +1,13 @@
 {
-    "version": "0.9.5",
+    "version": "1.0rc",
     "description": "A Nintendo DS emulator aiming for fast and accurate emulation",
     "homepage": "http://melonds.kuribo64.net/",
     "license": {
         "identifier": "GPL-3.0",
         "url": "https://github.com/melonDS-emu/melonDS/blob/master/LICENSE"
     },
-    "url": "https://ghgo.xyz/https://github.com/melonDS-emu/melonDS/releases/download/0.9.5/melonDS_0.9.5_win_x64.zip",
-    "hash": "289b1644004d8762987dc1daf3a61eedfafb0a5f442801bfb9d2a18299fd39a9",
+    "url": "https://ghgo.xyz/https://github.com/melonDS-emu/melonDS/releases/download/1.0rc/melonDS-windows-x86_64.zip",
+    "hash": "eda68ed9295bfce4504d9356d3614fbd77648dc3ab1e4ad415f78778f745b33e",
     "installer": {
         "script": [
             "$FILE = 'melonDS.ini'",
@@ -25,9 +25,10 @@
     ],
     "persist": "melonDS.ini",
     "checkver": {
-        "github": "https://github.com/melonDS-emu/melonDS"
+        "github": "https://github.com/melonDS-emu/melonDS",
+        "regex": "/releases/tag/(?:v|V)?([\\w.]+)"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/melonDS-emu/melonDS/releases/download/$version/melonDS_$version_win_x64.zip"
+        "url": "https://ghgo.xyz/https://github.com/melonDS-emu/melonDS/releases/download/$version/melonDS-windows-x86_64.zip"
     }
 }
