@@ -6,15 +6,15 @@
     "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-6.0'",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x64.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x64.exe",
             "hash": "sha512:2e264fc6e3b1619922c1ab81071e64f5608bbe74be5546b18ffaed24ed0198f64d5334fad9a250889b9f619da0a4d8d589596c1541f9dc965eba738a9e5f9232"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x86.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x86.exe",
             "hash": "sha512:2bc9b299eec071c6220ad11a6e9578dd68bea87cefaef625f1f3f5b51b9fdac5941ec66ab4094228c60d75edfe9225fcb0a940a251d944bd50ce237767611d3e"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-arm64.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-arm64.exe",
             "hash": "sha512:c9a40b603c669a621e92ef58ecc9a2c48f26bb9c6efa4d9e7f76a1743b2b957a79828dd8ce71a4647caa7444d07b71d102e7eb61b6439a17215fa136d52bbe3d"
         }
     },
@@ -23,23 +23,23 @@
         "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
     },
     "checkver": {
-        "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/6.0/latest.version",
+        "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/6.0/latest.version",
         "regex": "([\\d.]+)$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
             },
             "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
             },
             "arm64": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
             }
         },
         "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+            "url": "https://builds.dotnet.microsoft.com/dotnet/checksums/$version-sha.txt"
         }
     }
 }
