@@ -6,7 +6,7 @@
     "notes": "npm global prefix set to: $env:APPDATA\\npm",
     "architecture": {
         "64bit": {
-            "url": "https://npmmirror.com/mirrors/node/v23.5.0/node-v23.5.0-win-x64.7z",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v23.5.0/node-v23.5.0-win-x64.7z",
             "hash": "4d86167dd98801c723a13e65519822d409b603acbec9b0d1107a4ad8578a7c53",
             "extract_dir": "node-v23.5.0-win-x64"
         }
@@ -25,13 +25,13 @@
         "npm.cmd"
     ],
     "checkver": {
-        "url": "https://npmmirror.com/mirrors/node/latest/",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/latest/",
         "regex": "node-v([\\d.]+)-win-x64\\.7z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://npmmirror.com/mirrors/node/v$version/node-v$version-win-x64.7z",
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             }
         },

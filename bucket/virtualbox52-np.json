@@ -3,7 +3,7 @@
     "description": "Powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.",
     "homepage": "https://www.virtualbox.org/wiki/Download_Old_Builds_5_2",
     "license": "GPL-2.0-only",
-    "url": "http://mirrors.nju.edu.cn/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe#/VBox52Setup.exe",
+    "url": "http://mirrors.tuna.tsinghua.edu.cn/virtualbox/5.2.44/VirtualBox-5.2.44-139111-Win.exe#/VBox52Setup.exe",
     "hash": "2335e98f1c41f3aad5e16d2d5d18298e19d1cb04021fd752e3e2cd952996c7cd",
     "installer": {
         "script": [
@@ -43,7 +43,7 @@
     ],
     "checkver": "VirtualBox-(?<version>[\\d.]+)-(?<revision>\\d+)-Win.exe",
     "autoupdate": {
-        "url": "http://mirrors.nju.edu.cn/virtualbox/$version/VirtualBox-$version-$matchRevision-Win.exe#/VBox52Setup.exe",
+        "url": "http://mirrors.tuna.tsinghua.edu.cn/virtualbox/$version/VirtualBox-$version-$matchRevision-Win.exe#/VBox52Setup.exe",
         "hash": {
             "url": "https://www.virtualbox.org/download/hashes/$version/SHA256SUMS"
         }
