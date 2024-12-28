@@ -39,136 +39,97 @@ Remove-Item -Path .\scoop-games        -Recurse -Force
 Remove-Item -Path .\scoop-sysinternals -Recurse -Force
 
 Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
+    $content = Get-Content $_.FullName
+
     # GitHub Releases
-    (Get-Content $_.FullName) -replace '(github\.com/.+/releases/.*download)', 'ghgo.xyz/https://$1' | Set-Content -Path $_.FullName
+    $content = $content -replace '(github\.com/.+/releases/.*download)', 'ghgo.xyz/https://$1' 
 
     # GitHub Archive
-    (Get-Content $_.FullName) -replace '(github\.com/.+/archive/)', 'ghgo.xyz/https://$1' | Set-Content -Path $_.FullName
+    $content = $content -replace '(github\.com/.+/archive/)', 'ghgo.xyz/https://$1' 
 
     # GitHub Raw
-    (Get-Content $_.FullName) -replace '(raw\.githubusercontent\.com)', 'ghgo.xyz/https://$1' | Set-Content -Path $_.FullName
-    (Get-Content $_.FullName) -replace '(github\.com/.+/raw/)', 'ghgo.xyz/https://$1'          | Set-Content -Path $_.FullName
-
-    # SourceForge
-    # Use jaist
-    # (Get-Content $_.FullName) -replace '(//downloads\.sourceforge\.net/project/.+)(\")', '$1?use_mirror=jaist$2' | Set-Content -Path $_.FullName
-    # (Get-Content $_.FullName) -replace '(#/.+)(\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
-    # (Get-Content $_.FullName) -replace '(//sourceforge\.net/projects/.+/files/.+)(\")', '$1/download?use_mirror=jaist$2' | Set-Content -Path $_.FullName
-    # (Get-Content $_.FullName) -replace '(#/.+)(/download\?use_mirror=jaist)', '$2$1' | Set-Content -Path $_.FullName
-    # Or use zenlayer
+    $content = $content -replace '(raw\.githubusercontent\.com)', 'ghgo.xyz/https://$1' 
+    $content = $content -replace '(github\.com/.+/raw/)', 'ghgo.xyz/https://$1'          
 
     # KDE Apps
-    (Get-Content $_.FullName) -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' 
 
     # 7-Zip
-    (Get-Content $_.FullName) -replace 'www\.7-zip\.org/a', 'mirror.nju.edu.cn/7-zip' | Set-Content -Path $_.FullName
+    $content = $content -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' 
 
     # LaTeX, MiKTeX
-    (Get-Content $_.FullName) -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.aliyun.com/CTAN' | Set-Content -Path $_.FullName
+    $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.tuna.tsinghua.edu.cn/CTAN' 
 
     # Node
-    (Get-Content $_.FullName) -replace 'nodejs\.org/dist', 'npmmirror.com/mirrors/node' | Set-Content -Path $_.FullName
-    # Or
-    # (Get-Content $_.FullName) -replace 'nodejs\.org/dist', 'mirrors.aliyun.com/nodejs-release' | Set-Content -Path $_.FullName
-
+    $content = $content -replace 'nodejs\.org/dist', 'mirrors.tuna.tsinghua.edu.cn/nodejs-release' 
+    
     # Python
-    (Get-Content $_.FullName) -replace 'www\.python\.org/ftp/python', 'npmmirror.com/mirrors/python' | Set-Content -Path $_.FullName
+    $content = $content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python' 
 
     # Go
-    (Get-Content $_.FullName) -replace 'dl\.google\.com/go', 'mirrors.aliyun.com/golang' | Set-Content -Path $_.FullName
+    $content = $content -replace 'dl\.google\.com/go', 'mirrors.ustc.edu.cn/golang' 
 
     # VLC
-    (Get-Content $_.FullName) -replace 'download\.videolan\.org/pub', 'mirrors.aliyun.com/videolan' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.tuna.tsinghua.edu.cn/videolan-ftp' 
 
     # Inkscape
-    (Get-Content $_.FullName) -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' | Set-Content -Path $_.FullName
+    $content = $content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' 
 
     # DBeaver
-    (Get-Content $_.FullName) -replace 'dbeaver\.io/files', 'ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download' | Set-Content -Path $_.FullName
-    # Or
-    # (Get-Content $_.FullName) -replace 'dbeaver\.io/files', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' | Set-Content -Path $_.FullName
+    # $content = $content -replace 'dbeaver\.io/files', 'ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download' 
+    $content = $content -replace 'dbeaver\.io/files', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' 
 
     # OBS Studio
-    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
-    # Or
-    # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.nju.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
-    # (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' | Set-Content -Path $_.FullName
+    # $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' 
+    $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' 
 
     # OBS Studio 2.7
-    (Get-Content $_.FullName) -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' | Set-Content -Path $_.FullName
+    $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' 
 
     # GIMP
-    (Get-Content $_.FullName) -replace 'download\.gimp\.org/mirror/pub', 'mirrors.aliyun.com/gimp' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.ustc.edu.cn/gimp' 
 
     # Blender
-    (Get-Content $_.FullName) -replace 'download\.blender\.org', 'mirrors.aliyun.com/blender' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender' 
 
     # VirtualBox
-    (Get-Content $_.FullName) -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.nju.edu.cn/virtualbox' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.tuna.tsinghua.edu.cn/virtualbox' 
 
     # Wireshark
-    # (Get-Content $_.FullName) -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark' | Set-Content -Path $_.FullName
+    $content = $content -replace 'www\.wireshark\.org/download', 'mirrors.tuna.tsinghua.edu.cn/wireshark' 
 
     # Lunacy
-    (Get-Content $_.FullName) -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' | Set-Content -Path $_.FullName
+    $content = $content -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' 
 
     # Strawberry
-    (Get-Content $_.FullName) -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghgo.xyz/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' | Set-Content -Path $_.FullName
-
-    # SumatraPDF
-    # (Get-Content $_.FullName) -replace 'files\.sumatrapdfreader\.org/file/kjk-files/software/sumatrapdf/rel', 'www.sumatrapdfreader.org/dl/rel' | Set-Content -Path $_.FullName
+    $content = $content -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghgo.xyz/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' 
 
     # Vim
-    (Get-Content $_.FullName) -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' | Set-Content -Path $_.FullName
+    $content = $content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' 
 
     # Cygwin
-    (Get-Content $_.FullName) -replace '//.*/cygwin/', '//mirrors.aliyun.com/cygwin/' | Set-Content -Path $_.FullName
+    $content = $content -replace '//.*/cygwin/', '//mirrors.tuna.tsinghua.edu.cn/cygwin/' 
 
     # Tor Browser, Tor
-    # Or
-    # https://tor.ybti.net/dist/
-    # https://mirror.freedif.org/TorProject/dist
-    # https://mirror.oldsql.cc/tor/dist/
-    # https://tor.zilog.es/dist/
-    # https://torproject.ph3x.at/dist/
-    # https://www.eprci.com/tor/dist/
-    # https://tor.calyxinstitute.org/dist/
-    # https://torproject.mirror.metalgamer.eu/dist/
-    # https://cyberside.net.ee/sibul/dist/
-    (Get-Content $_.FullName) -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist/' | Set-Content -Path $_.FullName
+    $content = $content -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist' 
 
     # FastCopy
-    (Get-Content $_.FullName) -replace 'fastcopy\.jp/archive', 'ghgo.xyz/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' | Set-Content -Path $_.FullName
+    $content = $content -replace 'fastcopy\.jp/archive', 'ghgo.xyz/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' 
 
     # Kodi
-    (Get-Content $_.FullName) -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi' | Set-Content -Path $_.FullName
+    $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi' 
 
     # Typora
-    (Get-Content $_.FullName) -replace 'download\.typora\.io', 'download2.typoraio.cn' | Set-Content -Path $_.FullName
+    $content = $content -replace 'download\.typora\.io', 'download2.typoraio.cn' 
 
     # Scripts
-    (Get-Content $_.FullName) -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' | Set-Content -Path $_.FullName
+    $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' 
 
     # 将 suggest 路径改为 scoop-cn
-    (Get-Content $_.FullName) -creplace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' | Set-Content -Path $_.FullName
+    $content = $content -creplace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
 
     # 将 depends 路径改为 scoop-cn
-    (Get-Content $_.FullName) -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' | Set-Content -Path $_.FullName
+    $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
+    Set-Content -Path $_.FullName -Value $content
 }
 
-# Start: Free Download Manager
-# (Get-Content .\bucket\freedownloadmanager.json).Replace('dn3.freedownloadmanager.org', 'files2.freedownloadmanager.org') | Set-Content -Path .\bucket\freedownloadmanager.json
-
-# $JSON = Get-Content .\bucket\freedownloadmanager.json | ConvertFrom-Json
-
-# Invoke-RestMethod $JSON.architecture."64bit".url -Outfile .\fdm_x64_setup.exe
-# Invoke-RestMethod $JSON.architecture."32bit".url -Outfile .\fdm_x86_setup.exe
-
-# $JSON.architecture."64bit".hash = (Get-FileHash .\fdm_x64_setup.exe -Algorithm SHA256).Hash.ToLower()
-# $JSON.architecture."32bit".hash = (Get-FileHash .\fdm_x86_setup.exe -Algorithm SHA256).Hash.ToLower()
-
-# $JSON | ConvertTo-Json -Depth 4 | Set-Content -Path .\bucket\freedownloadmanager.json
-
-# Remove-Item -Path .\fdm_x64_setup.exe
-# Remove-Item -Path .\fdm_x86_setup.exe
-# End: Free Download Manager
