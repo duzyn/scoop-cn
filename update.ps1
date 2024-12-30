@@ -122,6 +122,9 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # Typora
     $content = $content -replace 'download\.typora\.io', 'download2.typoraio.cn' 
 
+		# Gradle
+		$content = $content -replace 'services\.gradle\.org/distributions', 'mirror.nju.edu.cn/gradle' 
+
     # Scripts
     $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' 
 
