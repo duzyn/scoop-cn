@@ -6,7 +6,7 @@
     "suggest": {
         "JDK": "scoop-cn/openjdk"
     },
-    "url": "https://services.gradle.org/distributions/gradle-8.12-all.zip",
+    "url": "https://mirror.nju.edu.cn/gradle/gradle-8.12-all.zip",
     "hash": "7ebdac923867a3cec0098302416d1e3c6c0c729fc4e2e05c10637a8af33a76c5",
     "extract_dir": "gradle-8.12",
     "post_install": [
@@ -25,7 +25,7 @@
         "regex": "The current Gradle release is version ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://services.gradle.org/distributions/gradle-$version-all.zip",
+        "url": "https://mirror.nju.edu.cn/gradle/gradle-$version-all.zip",
         "hash": {
             "url": "$url.sha256"
         },
