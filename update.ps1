@@ -52,7 +52,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace '(github\.com/.+/raw/)', 'ghgo.xyz/https://$1'          
 
     # KDE Apps
-    $content = $content -replace 'download\.kde\.org', 'mirrors.ustc.edu.cn/kde' 
+    $content = $content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde' 
 
     # 7-Zip
     $content = $content -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' 
@@ -67,7 +67,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python' 
 
     # Go
-    $content = $content -replace 'dl\.google\.com/go', 'mirrors.ustc.edu.cn/golang' 
+    $content = $content -replace 'dl\.google\.com/go', 'mirrors.nju.edu.cn/golang' 
 
     # VLC
     $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.tuna.tsinghua.edu.cn/videolan-ftp' 
@@ -87,7 +87,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' 
 
     # GIMP
-    $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.ustc.edu.cn' 
+    $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.nju.edu.cn/gimp' 
 
     # Blender
     $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender' 
@@ -105,7 +105,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'ghgo.xyz/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' 
 
     # Vim
-    $content = $content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.ustc.edu.cn/vim/pc' 
+    $content = $content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.nju.edu.cn/vim/pc' 
 
     # Cygwin
     $content = $content -replace '//.*/cygwin/', '//mirrors.tuna.tsinghua.edu.cn/cygwin/' 
