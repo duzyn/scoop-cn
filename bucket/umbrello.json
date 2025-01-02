@@ -7,11 +7,11 @@
     "depends": "scoop-cn/7zip19.00-helper",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.ustc.edu.cn/kde/stable/umbrello/2.32.0/win64/umbrello-mingw64-2.32.0-126.1-portable.7z#/dl.7z_",
+            "url": "https://mirrors.nju.edu.cn/kde/stable/umbrello/2.32.0/win64/umbrello-mingw64-2.32.0-126.1-portable.7z#/dl.7z_",
             "hash": "32432219de0fe3f9c6aac4d86959d3701f1df2239b888fa1f8f191ef2f232563"
         },
         "32bit": {
-            "url": "https://mirrors.ustc.edu.cn/kde/stable/umbrello/2.32.0/win32/umbrello-mingw32-2.32.0-54.1-portable.7z#/dl.7z_",
+            "url": "https://mirrors.nju.edu.cn/kde/stable/umbrello/2.32.0/win32/umbrello-mingw32-2.32.0-54.1-portable.7z#/dl.7z_",
             "hash": "546b3b467edb31db825a3d048d71aa52ba1d7562140f59888ee9b0066afd40c9"
         }
     },
@@ -30,8 +30,8 @@
     ],
     "checkver": {
         "script": [
-            "$arch_64bit = @{ url='https://mirrors.ustc.edu.cn/kde/stable/umbrello/latest/win64/'; regex='umbrello-mingw64-([\\d.]+)-([\\d.]+)' }",
-            "$arch_32bit = @{ url='https://mirrors.ustc.edu.cn/kde/stable/umbrello/latest/win32/'; regex='umbrello-mingw32-([\\d.]+)-([\\d.]+)' }",
+            "$arch_64bit = @{ url='https://mirrors.nju.edu.cn/kde/stable/umbrello/latest/win64/'; regex='umbrello-mingw64-([\\d.]+)-([\\d.]+)' }",
+            "$arch_32bit = @{ url='https://mirrors.nju.edu.cn/kde/stable/umbrello/latest/win32/'; regex='umbrello-mingw32-([\\d.]+)-([\\d.]+)' }",
             "$arch_64bit, $arch_32bit | ForEach-Object {",
             "    $cont = $(Invoke-WebRequest $_.url).Content",
             "    if(!($cont -match $_.regex)) { error \"Could not match '$_.regex' in '$_.url'\"; continue }",
@@ -46,14 +46,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.ustc.edu.cn/kde/stable/umbrello/$version/win64/umbrello-mingw64-$version-$match2-portable.7z#/dl.7z_",
+                "url": "https://mirrors.nju.edu.cn/kde/stable/umbrello/$version/win64/umbrello-mingw64-$version-$match2-portable.7z#/dl.7z_",
                 "hash": {
                     "url": "$url.mirrorlist",
                     "regex": "$sha256"
                 }
             },
             "32bit": {
-                "url": "https://mirrors.ustc.edu.cn/kde/stable/umbrello/$version/win32/umbrello-mingw32-$version-$match3-portable.7z#/dl.7z_",
+                "url": "https://mirrors.nju.edu.cn/kde/stable/umbrello/$version/win32/umbrello-mingw32-$version-$match3-portable.7z#/dl.7z_",
                 "hash": {
                     "url": "$url.mirrorlist",
                     "regex": "$sha256"
