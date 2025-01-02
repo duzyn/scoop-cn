@@ -1,6 +1,3 @@
-# 开启调试
-# Set-PSDebug -Trace 1
-
 # 删除已有的文件
 Remove-Item -Path .\bucket  -Recurse -Force
 Remove-Item -Path .\scripts -Recurse -Force

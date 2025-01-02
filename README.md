@@ -89,8 +89,8 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
     ```powershell
     Installed apps:
 
-    Name          Version           Source         Updated             Info
-    ----          -------           ------         -------             ----
+    Name          Version           Source         Updated               Info
+    ----          -------           ------         -------               ----
     7zip          24.08             main           2024-11-06 17:52:51
     git           2.47.0.2          main           2024-11-06 17:53:04
     ```
@@ -100,8 +100,8 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
     ```powershell
     Installed apps:
 
-    Name          Version           Source         Updated             Info
-    ----          -------           ------         -------             ----
+    Name          Version           Source         Updated               Info
+    ----          -------           ------         -------               ----
     7zip          24.08             scoop-cn       2024-11-06 17:52:51
     git           2.47.0.2          scoop-cn       2024-11-06 17:53:04
     ```
