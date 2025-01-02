@@ -87,7 +87,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' 
 
     # GIMP
-    $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.ustc.edu.cn/gimp' 
+    $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.ustc.edu.cn' 
 
     # Blender
     $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender' 
