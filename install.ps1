@@ -5,27 +5,27 @@
 $SCOOP_DIR = $env:SCOOP, "$env:USERPROFILE\scoop" | Where-Object { -not [String]::IsNullOrEmpty($_) } | Select-Object -First 1
 
 # 设置 GitHub 代理地址
-$GithubProxy = "https://ghgo.xyz"
+$GITHUB_PROXY = "https://ghgo.xyz"
 
 # 安装 Scoop
-(Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1").Replace("https://github.com", "$GithubProxy/https://github.com")  | Invoke-Expression
+(Invoke-RestMethod "$GITHUB_PROXY/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1").Replace("https://github.com", "$GITHUB_PROXY/https://github.com")  | Invoke-Expression
 
 # 将 Scoop 的仓库源替换为代理的
-scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop"
+scoop config scoop_repo "$GITHUB_PROXY/https://github.com/ScoopInstaller/Scoop"
 
 # 目前没有安装 Git，所以先下载几个必需的软件的 JSON，组成一个临时的应用仓库
 New-Item -ItemType "directory" -Path "$SCOOP_DIR\buckets\scoop-cn\bucket"
 New-Item -ItemType "directory" -Path "$SCOOP_DIR\buckets\scoop-cn\scripts\7-zip"
 New-Item -ItemType "directory" -Path "$SCOOP_DIR\buckets\scoop-cn\scripts\git"
 
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/7zip.json"                             -OutFile "$SCOOP_DIR\buckets\scoop-cn\bucket\7zip.json"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/7-zip/install-context.reg"            -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\7-zip\install-context.reg"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/7-zip/uninstall-context.reg"          -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\7-zip\uninstall-context.reg"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/git.json"                              -OutFile "$SCOOP_DIR\buckets\scoop-cn\bucket\git.json"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/install-context.reg"              -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\install-context.reg"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/uninstall-context.reg"            -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\uninstall-context.reg"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/install-file-associations.reg"    -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\install-file-associations.reg"
-Invoke-RestMethod -Uri "$GithubProxy/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/uninstall-file-associations.reg"  -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\uninstall-file-associations.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/7zip.json"                             -OutFile "$SCOOP_DIR\buckets\scoop-cn\bucket\7zip.json"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/7-zip/install-context.reg"            -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\7-zip\install-context.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/7-zip/uninstall-context.reg"          -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\7-zip\uninstall-context.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/bucket/git.json"                              -OutFile "$SCOOP_DIR\buckets\scoop-cn\bucket\git.json"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/install-context.reg"              -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\install-context.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/uninstall-context.reg"            -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\uninstall-context.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/install-file-associations.reg"    -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\install-file-associations.reg"
+Invoke-RestMethod -Uri "$GITHUB_PROXY/https://raw.githubusercontent.com/duzyn/scoop-cn/master/scripts/git/uninstall-file-associations.reg"  -OutFile "$SCOOP_DIR\buckets\scoop-cn\scripts\git\uninstall-file-associations.reg"
 
 # 安装时注意顺序是 7-Zip, Git
 scoop install scoop-cn/7zip
@@ -33,12 +33,12 @@ scoop install scoop-cn/git
 
 # 将 Scoop 的 main 仓库源替换为代理的
 if (Test-Path -Path "$SCOOP_DIR\buckets\main") { scoop bucket rm main }
-Write-Host "Adding main bucket from $GithubProxy/https://github.com/ScoopInstaller/Main..."
-scoop bucket add main "$GithubProxy/https://github.com/ScoopInstaller/Main"
+Write-Host "Adding main bucket from $GITHUB_PROXY/https://github.com/ScoopInstaller/Main..."
+scoop bucket add main "$GITHUB_PROXY/https://github.com/ScoopInstaller/Main"
 
 # scoop-cn 库还不是 Git 仓库，删掉后，重新添加 Git 仓库
 if (Test-Path -Path "$SCOOP_DIR\buckets\scoop-cn") { scoop bucket rm scoop-cn }
-Write-Host "Adding scoop-cn bucket from $GithubProxy/https://github.com/duzyn/scoop-cn..."
-scoop bucket add scoop-cn "$GithubProxy/https://github.com/duzyn/scoop-cn"
+Write-Host "Adding scoop-cn bucket from $GITHUB_PROXY/https://github.com/duzyn/scoop-cn..."
+scoop bucket add scoop-cn "$GITHUB_PROXY/https://github.com/duzyn/scoop-cn"
 
 Write-Host "Scoop and scoop-cn was installed successfully!"
