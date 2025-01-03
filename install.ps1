@@ -2,7 +2,7 @@
 # Set-Executionpolicy -ExecutionPolicy RemoteSigned -Scope Currentuser
 
 # 如果有设 SCOOP 环境变量，就按环境变量来
-$SCOOP_DIR = $ScoopDir, $env:SCOOP, "$env:USERPROFILE\scoop" | Where-Object { -not [String]::IsNullOrEmpty($_) } | Select-Object -First 1
+$SCOOP_DIR = $env:SCOOP, "$env:USERPROFILE\scoop" | Where-Object { -not [String]::IsNullOrEmpty($_) } | Select-Object -First 1
 
 # 设置 GitHub 代理地址
 $GithubProxy = "https://ghgo.xyz"
