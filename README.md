@@ -1,16 +1,6 @@
-<!-- omit in toc -->
 # Scoop 应用库中国加速
 
 ![GitHub Actions Workflow Status](https://github.com/duzyn/scoop-cn/actions/workflows/schedule.yml/badge.svg)
-
-- [Scoop 在中国使用的问题](#scoop-在中国使用的问题)
-- [本应用库介绍](#本应用库介绍)
-- [前提条件](#前提条件)
-- [安装 Scoop 和 scoop-cn（推荐）](#安装-scoop-和-scoop-cn推荐)
-- [只添加 scoop-cn 仓库](#只添加-scoop-cn-仓库)
-- [重新添加 scoop-cn 仓库](#重新添加-scoop-cn-仓库)
-- [安装应用](#安装应用)
-- [查看帮助](#查看帮助)
 
 ## Scoop 在中国使用的问题
 
@@ -52,7 +42,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 ## 安装 Scoop 和 scoop-cn（推荐）
 
-此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装 Scoop：
+此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装：
 
 ```powershell
 irm https://ghgo.xyz/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
@@ -106,28 +96,16 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
     git           2.47.0.2          scoop-cn       2024-11-06 17:53:04
     ```
 
-## 重新添加 scoop-cn 仓库
+## 更新 GitHub 代理地址
 
-如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在删除本仓库后重新添加本仓库。
+如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在本仓库使用新 GitHub 代理地址后更新 GitHub 代理地址。
 
-运行以下命令设置新 GitHub 代理地址的 Scoop 仓库：
+运行以下命令设置新 GitHub 代理地址，下例中 `https://ghgo.xyz` 是当前在使用的：
 
 ```powershell
 scoop config scoop_repo https://ghgo.xyz/https://github.com/ScoopInstaller/Scoop
-```
-
-运行以下命令删除 main 仓库和本仓库：
-
-```powershell
-scoop bucket rm main
-scoop bucket rm scoop-cn
-```
-
-再运行以下命令重新添加新 GitHub 代理地址的 main 仓库和本仓库，下例中 `https://ghgo.xyz/` 是新 GitHub 代理地址，应换成实际的：
-
-```powershell
-scoop bucket add main https://ghgo.xyz/https://github.com/ScoopInstaller/Main
-scoop bucket add scoop-cn https://ghgo.xyz/https://github.com/duzyn/scoop-cn
+git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://ghgo.xyz/https://github.com/ScoopInstaller/Main
+git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://ghgo.xyz/https://github.com/duzyn/scoop-cn
 ```
 
 ## 安装应用
