@@ -3,8 +3,8 @@ Remove-Item -Path .\bucket  -Recurse -Force
 Remove-Item -Path .\scripts -Recurse -Force
 
 # 将克隆的最新的文件拷贝到待处理的文件夹
-New-Item -ItemType "directory" -Path ".\bucket"
-New-Item -ItemType "directory" -Path ".\scripts"
+New-Item -ItemType Directory -Path .\bucket
+New-Item -ItemType Directory -Path .\scripts
 
 # Scoop 官方的十个库
 Copy-Item -Path ".\Main\bucket\*"               -Destination ".\bucket"  -Recurse -Force
@@ -55,10 +55,10 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' 
 
     # LaTeX, MiKTeX
-    $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.tuna.tsinghua.edu.cn/CTAN' 
+    $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.nju.edu.cn/CTAN' 
 
     # Node
-    $content = $content -replace 'nodejs\.org/dist', 'mirrors.tuna.tsinghua.edu.cn/nodejs-release' 
+    $content = $content -replace 'nodejs\.org/dist', 'mirrors.nju.edu.cn/nodejs-release' 
     
     # Python
     $content = $content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python' 
@@ -67,18 +67,18 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'dl\.google\.com/go', 'mirrors.nju.edu.cn/golang' 
 
     # VLC
-    $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.tuna.tsinghua.edu.cn/videolan-ftp' 
+    $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.nju.edu.cn/videolan-ftp' 
 
     # Inkscape
     $content = $content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' 
 
     # DBeaver
-    # $content = $content -replace 'dbeaver\.io/files', 'ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download' 
-    $content = $content -replace 'dbeaver\.io/files', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' 
+    $content = $content -replace 'dbeaver\.io/files', 'ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download' 
+    # $content = $content -replace 'dbeaver\.io/files', 'mirrors.nju.edu.cn/github-release/dbeaver/dbeaver' 
 
     # OBS Studio
-    # $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' 
-    $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.tuna.tsinghua.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' 
+    $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip' 
+    # $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'mirrors.nju.edu.cn/github-release/obsproject/obs-studio/OBS%20Studio%20$1/OBS-Studio-$1-Windows.zip' 
 
     # OBS Studio 2.7
     $content = $content -replace 'cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full' 
@@ -87,13 +87,13 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.nju.edu.cn/gimp' 
 
     # Blender
-    $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender' 
+    $content = $content -replace 'download\.blender\.org', 'mirrors.nju.edu.cn/blender' 
 
     # VirtualBox
-    $content = $content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.tuna.tsinghua.edu.cn/virtualbox' 
+    $content = $content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.nju.edu.cn/virtualbox' 
 
     # Wireshark
-    $content = $content -replace 'www\.wireshark\.org/download', 'mirrors.tuna.tsinghua.edu.cn/wireshark' 
+    $content = $content -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark' 
 
     # Lunacy
     $content = $content -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' 
@@ -105,7 +105,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.nju.edu.cn/vim/pc' 
 
     # Cygwin
-    $content = $content -replace '//.*/cygwin/', '//mirrors.tuna.tsinghua.edu.cn/cygwin/' 
+    $content = $content -replace '//.*/cygwin/', '//mirrors.nju.edu.cn/cygwin/' 
 
     # Tor Browser, Tor
     $content = $content -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist' 
@@ -114,7 +114,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'fastcopy\.jp/archive', 'ghgo.xyz/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' 
 
     # Kodi
-    $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi' 
+    $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.nju.edu.cn/kodi' 
 
     # Typora
     $content = $content -replace 'download\.typora\.io', 'download2.typoraio.cn' 
@@ -130,6 +130,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
 
     # 将 depends 路径改为 scoop-cn
     $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
-    Set-Content -Path $_.FullName -Value $content
+    
+		Set-Content -Path $_.FullName -Value $content
 }
 
