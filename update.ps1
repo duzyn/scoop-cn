@@ -7,21 +7,21 @@ New-Item -ItemType Directory -Path .\bucket
 New-Item -ItemType Directory -Path .\scripts
 
 # Scoop 官方的十个库
-Copy-Item -Path ".\Main\bucket\*"               -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\Main\scripts\*"              -Destination ".\scripts" -Recurse -Force
-Copy-Item -Path ".\Extras\bucket\*"             -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\Extras\scripts\*"            -Destination ".\scripts" -Recurse -Force
-Copy-Item -Path ".\Versions\bucket\*"           -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\Versions\scripts\*"          -Destination ".\scripts" -Recurse -Force
-Copy-Item -Path ".\Nonportable\bucket\*"        -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\Nonportable\scripts\*"       -Destination ".\scripts" -Recurse -Force
-Copy-Item -Path ".\Java\bucket\*"               -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\PHP\bucket\*"                -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\scoop-nirsoft\bucket\*"      -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\scoop-nerd-fonts\bucket\*"   -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\scoop-games\bucket\*"        -Destination ".\bucket"  -Recurse -Force
-Copy-Item -Path ".\scoop-games\scripts\*"       -Destination ".\scripts" -Recurse -Force
-Copy-Item -Path ".\scoop-sysinternals\bucket\*" -Destination ".\bucket"  -Recurse -Force
+Copy-Item -Path .\Main\bucket\*               -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\Extras\bucket\*             -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\Versions\bucket\*           -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\Nonportable\bucket\*        -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\Java\bucket\*               -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\PHP\bucket\*                -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\scoop-nirsoft\bucket\*      -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\scoop-nerd-fonts\bucket\*   -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\scoop-games\bucket\*        -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\scoop-sysinternals\bucket\* -Destination .\bucket  -Recurse -Force
+Copy-Item -Path .\Main\scripts\*              -Destination .\scripts -Recurse -Force
+Copy-Item -Path .\Extras\scripts\*            -Destination .\scripts -Recurse -Force
+Copy-Item -Path .\Versions\scripts\*          -Destination .\scripts -Recurse -Force
+Copy-Item -Path .\Nonportable\scripts\*       -Destination .\scripts -Recurse -Force
+Copy-Item -Path .\scoop-games\scripts\*       -Destination .\scripts -Recurse -Force
 
 # 复制完后，删掉克隆的文件夹
 Remove-Item -Path .\Main               -Recurse -Force
@@ -126,7 +126,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' 
 
     # 将 suggest 路径改为 scoop-cn
-    $content = $content -creplace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
+    $content = $content -replace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
 
     # 将 depends 路径改为 scoop-cn
     $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
