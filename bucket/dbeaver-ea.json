@@ -12,7 +12,7 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.nju.edu.cn/github-release/dbeaver/dbeaver/ea/dbeaver-ce-24.3.3-win32.win32.x86_64.zip",
+            "url": "https://ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download/ea/dbeaver-ce-24.3.3-win32.win32.x86_64.zip",
             "hash": "90896aac0339e60d3dc18267de52a0acb7f8ffab7b03651ff1fe69bd5865e4fe"
         }
     },
@@ -34,14 +34,14 @@
         ]
     ],
     "checkver": {
-        "url": "https://mirrors.nju.edu.cn/github-release/dbeaver/dbeaver/ea/",
+        "url": "https://ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download/ea/",
         "regex": "href=\"dbeaver-ce-(?<ver>[\\d.]+)-win32.win32.x86_64.zip\".*</td><td>(?<date>\\d{4}-\\d{2}-\\d{2}) \\d{2}:\\d{2}:\\d{2}</td>",
         "replace": "${ver}-${date}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.nju.edu.cn/github-release/dbeaver/dbeaver/ea/dbeaver-ce-$matchVer-win32.win32.x86_64.zip"
+                "url": "https://ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download/ea/dbeaver-ce-$matchVer-win32.win32.x86_64.zip"
             }
         }
     }

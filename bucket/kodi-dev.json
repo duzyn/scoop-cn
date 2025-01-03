@@ -8,11 +8,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win64/master/KodiSetup-20250102-dad09250-master-x64.exe#/dl.7z",
+            "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win64/master/KodiSetup-20250102-dad09250-master-x64.exe#/dl.7z",
             "hash": "b5b0dd57bdae8440359b2112ae5e2acd45f48167373d6db5a85f6e1c8c9cc969"
         },
         "32bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win32/master/KodiSetup-20250102-dad09250-master-x86.exe#/dl.7z",
+            "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win32/master/KodiSetup-20250102-dad09250-master-x86.exe#/dl.7z",
             "hash": "ec6f475de14c43340ffe5359903636a33dd7f90ae9983ed32dc987a5c9138eb2"
         }
     },
@@ -31,7 +31,7 @@
             "$script_ver = ''",
             "$urls =  @()",
             "foreach ($build in $builds) {",
-            "   $base_url = 'https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/'+ $build + '/master/'",
+            "   $base_url = 'https://mirrors.nju.edu.cn/kodi/nightlies/windows/'+ $build + '/master/'",
             "   $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
             "   $full_version = $dl_page.links | Where-Object href -match '\\.exe$' | Select-Object -first 1 -expand href",
             "   $script_ver = $full_version -split '-' | Select-Object -Skip 1 | Select-Object -First 1",
@@ -44,10 +44,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win64/master/$matchWin64bit#/dl.7z"
+                "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win64/master/$matchWin64bit#/dl.7z"
             },
             "32bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win32/master/$matchWin32bit#/dl.7z"
+                "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win32/master/$matchWin32bit#/dl.7z"
             }
         },
         "hash": {
