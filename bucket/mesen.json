@@ -6,7 +6,7 @@
         "identifier": "GPL-3.0",
         "url": "https://github.com/SourMesen/Mesen/blob/master/LICENSE"
     },
-    "url": "$githubProxy/https://github.com/SourMesen/Mesen/releases/download/0.9.9/Mesen.0.9.9.zip",
+    "url": "https://ghgo.xyz//0.9.9/Mesen.0.9.9.zip",
     "hash": "91bd2b1ba007c9349864a96e490dbdaada78033d51e0be1aabbf442a4b9a7cda",
     "pre_install": [
         "if(!(Test-Path(\"$persist_dir\\FdsBios.bin\"))) { New-Item \"$dir\\FdsBios.bin\" | Out-Null }",
@@ -36,6 +36,6 @@
         "github": "https://github.com/SourMesen/Mesen/"
     },
     "autoupdate": {
-        "url": "$githubProxy/https://github.com/SourMesen/Mesen/releases/download/$version/Mesen.$version.zip"
+        "url": "https://ghgo.xyz//$version/Mesen.$version.zip"
     }
 }

@@ -3,7 +3,7 @@
     "description": "Offline build planner for Path of Exile, Community Fork",
     "homepage": "https://github.com/PathOfBuildingCommunity/PathOfBuilding",
     "license": "MIT",
-    "url": "$githubProxy/https://github.com/PathOfBuildingCommunity/PathOfBuilding/releases/download/v2.49.0/PathOfBuildingCommunity-Portable.zip",
+    "url": "https://ghgo.xyz//v2.49.0/PathOfBuildingCommunity-Portable.zip",
     "hash": "09f051edffc2ba9bc538f9e6f5a6b7d2e28355d3059adae5a4290de149e04c2b",
     "pre_install": [
         "if(!(Test-Path \"$dir\\Settings.xml\")) {",
@@ -28,6 +28,6 @@
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "$githubProxy/https://github.com/PathOfBuildingCommunity/PathOfBuilding/releases/download/v$version/PathOfBuildingCommunity-Portable.zip"
+        "url": "https://ghgo.xyz//v$version/PathOfBuildingCommunity-Portable.zip"
     }
 }

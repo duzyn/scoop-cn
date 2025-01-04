@@ -5,12 +5,12 @@
     "license": "ZPL-2.1",
     "architecture": {
         "64bit": {
-            "url": "$githubProxy/https://github.com/niXman/mingw-builds-binaries/releases/download/14.2.0-rt_v12-rev0/x86_64-14.2.0-release-posix-seh-msvcrt-rt_v12-rev0.7z",
+            "url": "https://ghgo.xyz//14.2.0-rt_v12-rev0/x86_64-14.2.0-release-posix-seh-msvcrt-rt_v12-rev0.7z",
             "hash": "8afdb7e16253e3d235ea933cb40b2c14d0c9ba334aa668ab9e2eada472a0caef",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "$githubProxy/https://github.com/niXman/mingw-builds-binaries/releases/download/14.2.0-rt_v12-rev0/i686-14.2.0-release-posix-dwarf-msvcrt-rt_v12-rev0.7z",
+            "url": "https://ghgo.xyz//14.2.0-rt_v12-rev0/i686-14.2.0-release-posix-dwarf-msvcrt-rt_v12-rev0.7z",
             "hash": "e5a4e3b11900bdd7bd1c3b6050e7ae0c6c9d5c12b19cd8e1cd444a99eb49359e",
             "extract_dir": "mingw32"
         }
@@ -25,10 +25,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$githubProxy/https://github.com/niXman/mingw-builds-binaries/releases/download/$version/x86_64-$match1-release-posix-seh-msvcrt-$matchBuild.7z"
+                "url": "https://ghgo.xyz//$version/x86_64-$match1-release-posix-seh-msvcrt-$matchBuild.7z"
             },
             "32bit": {
-                "url": "$githubProxy/https://github.com/niXman/mingw-builds-binaries/releases/download/$version/i686-$match1-release-posix-dwarf-msvcrt-$matchBuild.7z"
+                "url": "https://ghgo.xyz//$version/i686-$match1-release-posix-dwarf-msvcrt-$matchBuild.7z"
             }
         }
     }

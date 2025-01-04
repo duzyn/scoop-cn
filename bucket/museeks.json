@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "$githubProxy/https://github.com/martpie/museeks/releases/download/0.13.1/museeks-x64-setup.exe#/dl.7z",
+            "url": "https://ghgo.xyz//0.13.1/museeks-x64-setup.exe#/dl.7z",
             "hash": "6d320d42fc089963048e6f14dac77aa075dd71fc3b8b31410363874eedf7e85a",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
         },
         "32bit": {
-            "url": "$githubProxy/https://github.com/martpie/museeks/releases/download/0.13.1/museeks-ia32-setup.exe#/dl.7z",
+            "url": "https://ghgo.xyz//0.13.1/museeks-ia32-setup.exe#/dl.7z",
             "hash": "aeba3b3a774a21403b318fc78ff6d85a24b3eff48b660986810b487b05fce8d1",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
         }
@@ -29,10 +29,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$githubProxy/https://github.com/martpie/museeks/releases/download/$version/museeks-x64-setup.exe#/dl.7z"
+                "url": "https://ghgo.xyz//$version/museeks-x64-setup.exe#/dl.7z"
             },
             "32bit": {
-                "url": "$githubProxy/https://github.com/martpie/museeks/releases/download/$version/museeks-ia32-setup.exe#/dl.7z"
+                "url": "https://ghgo.xyz//$version/museeks-ia32-setup.exe#/dl.7z"
             }
         },
         "hash": {

@@ -6,7 +6,7 @@
     "suggest": {
         "Java": "scoop-cn/openjdk"
     },
-    "url": "$githubProxy/https://github.com/karatelabs/karate/releases/download/v1.5.0/karate-1.5.0.jar#/karate.jar",
+    "url": "https://ghgo.xyz//v1.5.0/karate-1.5.0.jar#/karate.jar",
     "hash": "deecf9d5d42fcaf2bb81c991a148dfb3382105a3df55cfd225a29211691f82bf",
     "pre_install": [
         "$cont = \"@echo off`r`n\" + 'cd /d \"%~dp0\"' + \"`r`njava -cp karate.jar;. com.intuit.karate.Main %*\"",
@@ -18,6 +18,6 @@
         "github": "https://github.com/karatelabs/karate"
     },
     "autoupdate": {
-        "url": "$githubProxy/https://github.com/karatelabs/karate/releases/download/v$version/karate-$version.jar#/karate.jar"
+        "url": "https://ghgo.xyz//v$version/karate-$version.jar#/karate.jar"
     }
 }

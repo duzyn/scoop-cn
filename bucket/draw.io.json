@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "$githubProxy/https://github.com/jgraph/drawio-desktop/releases/download/v26.0.3/draw.io-26.0.3-windows-installer.exe#/dl.7z",
+            "url": "https://ghgo.xyz//v26.0.3/draw.io-26.0.3-windows-installer.exe#/dl.7z",
             "hash": "88b94415d2879be6cae2eb1a4102ac6e627528e2d832798022a5b9efff854a40",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -13,7 +13,7 @@
             ]
         },
         "32bit": {
-            "url": "$githubProxy/https://github.com/jgraph/drawio-desktop/releases/download/v26.0.3/draw.io-ia32-26.0.3-windows-32bit-installer.exe#/dl.7z",
+            "url": "https://ghgo.xyz//v26.0.3/draw.io-ia32-26.0.3-windows-32bit-installer.exe#/dl.7z",
             "hash": "3c186d2be5a106301f063317b1b876ce6bb764764944b3e184f5815e4eaf6ed2",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
@@ -34,10 +34,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "$githubProxy/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-$version-windows-installer.exe#/dl.7z"
+                "url": "https://ghgo.xyz//v$version/draw.io-$version-windows-installer.exe#/dl.7z"
             },
             "32bit": {
-                "url": "$githubProxy/https://github.com/jgraph/drawio-desktop/releases/download/v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
+                "url": "https://ghgo.xyz//v$version/draw.io-ia32-$version-windows-32bit-installer.exe#/dl.7z"
             }
         },
         "hash": {
