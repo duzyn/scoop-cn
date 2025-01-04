@@ -41,32 +41,32 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = Get-Content $_.FullName
 
     # GitHub Releases
-    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', '$$githubProxy/$1'
+    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', "$githubProxy/$1"
 
     # GitHub Archive
-    $content = $content -replace '(https?://github\.com/.+/archive/)', '$$githubProxy/$1'
+    $content = $content -replace '(https?://github\.com/.+/archive/)', "$githubProxy/$1"
 
     # GitHub Gists
-    $content = $content -replace '(https?://gist.github\.com/.+/)', '$$githubProxy/$1'
+    $content = $content -replace '(https?://gist.github\.com/.+/)', "$githubProxy/$1"
 
     # GitHub Raw
-    $content = $content -replace '(https?://raw\.githubusercontent\.com)', '$$githubProxy/$1'
-    $content = $content -replace '(https?://github\.com/.+/raw/)', '$$githubProxy/$1'         
+    $content = $content -replace '(https?://raw\.githubusercontent\.com)', "$githubProxy/$1"
+    $content = $content -replace '(https?://github\.com/.+/raw/)', "$githubProxy/$1"         
 
     # DBeaver，not debaver-ea
-    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', '$$githubProxy/https://github.com/dbeaver/dbeaver/releases/download/$1/'
+    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', "$githubProxy/https://github.com/dbeaver/dbeaver/releases/download/$1/"
     
     # FastCopy
-    $content = $content -replace 'https?://fastcopy\.jp/archive', '$$githubProxy/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
+    $content = $content -replace 'https?://fastcopy\.jp/archive', "$githubProxy/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main"
 
     # OBS Studio
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', '$$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', "$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip"
 
     # OBS Studio 2.7
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', '$$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', "$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full"
 
     # Strawberry
-    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', '$$githubProxy/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x'
+    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', "$githubProxy/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x"
 
     # KDE Apps
     # $content = $content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde'
