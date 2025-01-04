@@ -3,7 +3,7 @@
     "description": "Light-weight screenshot software.",
     "homepage": "https://getgreenshot.org",
     "license": "GPL-3.0-only",
-    "url": "https://ghgo.xyz/https://github.com/greenshot/greenshot/releases/download/v1.3.277/Greenshot-INSTALLER-1.3.277-UNSTABLE.exe",
+    "url": "https://ghgo.xyz//v1.3.277/Greenshot-INSTALLER-1.3.277-UNSTABLE.exe",
     "hash": "b1a6982940802c911ab2969c41c19808adc1e7a8c0d444507c868d5f55a0adf5",
     "innosetup": true,
     "pre_install": "if (!(Test-Path \"$persist_dir\\greenshot.ini\")) { New-Item -ItemType File \"$dir\\greenshot.ini\" | Out-Null }",
@@ -20,6 +20,6 @@
         "regex": "Greenshot-INSTALLER-([\\d.]+)-UNSTABLE"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/greenshot/greenshot/releases/download/v$version/Greenshot-INSTALLER-$version-UNSTABLE.exe"
+        "url": "https://ghgo.xyz//v$version/Greenshot-INSTALLER-$version-UNSTABLE.exe"
     }
 }

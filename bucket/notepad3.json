@@ -9,19 +9,19 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz/https://github.com/rizonesoft/Notepad3/releases/download/RELEASE_6.24.1221.1/Notepad3_6.24.1221.1_x64_Portable.zip",
+            "url": "https://ghgo.xyz//RELEASE_6.24.1221.1/Notepad3_6.24.1221.1_x64_Portable.zip",
             "hash": "3ab81bdf132f041a489a09ed2476886218efef8242fe5badf1c8920868c21f70"
         },
         "32bit": {
-            "url": "https://ghgo.xyz/https://github.com/rizonesoft/Notepad3/releases/download/RELEASE_6.24.1221.1/Notepad3_6.24.1221.1_x86_Portable.zip",
+            "url": "https://ghgo.xyz//RELEASE_6.24.1221.1/Notepad3_6.24.1221.1_x86_Portable.zip",
             "hash": "bacda2e4617194104167b8dc7171adaac414f0f952fb59a6518f656ca0fa9c34"
         }
     },
     "post_install": [
         "$appdir = \"$dir\\Notepad3.exe\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_\"",
+        "    if (Test-Path \"$-cn\\$app\\$_\") {",
+        "        $content = Get-Content \"$-cn\\$app\\$_\"",
         "        $content = $content.Replace('$appdir', $appdir)",
         "        if ($global) {",
         "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
@@ -60,10 +60,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz/https://github.com/rizonesoft/Notepad3/releases/download/RELEASE_$version/Notepad3_$version_x64_Portable.zip"
+                "url": "https://ghgo.xyz//RELEASE_$version/Notepad3_$version_x64_Portable.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz/https://github.com/rizonesoft/Notepad3/releases/download/RELEASE_$version/Notepad3_$version_x86_Portable.zip"
+                "url": "https://ghgo.xyz//RELEASE_$version/Notepad3_$version_x86_Portable.zip"
             }
         }
     }

@@ -35,8 +35,8 @@
     "post_install": [
         "$dir_escaped = \"$dir\".Replace('\\', '\\\\')",
         "\"install-context-$architecture\", \"uninstall-context\" | ForEach-Object {",
-        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare\\$_.reg\") {",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare\\$_.reg\"",
+        "  if (Test-Path \"$-cn\\beyondcompare\\$_.reg\") {",
+        "    $content = Get-Content \"$-cn\\beyondcompare\\$_.reg\"",
         "    $content = $content.Replace('$install_dir', $dir_escaped)",
         "    if ($global) {",
         "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

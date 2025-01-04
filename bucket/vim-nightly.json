@@ -9,11 +9,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz/https://github.com/vim/vim-win32-installer/releases/download/v9.1.0988/gvim_9.1.0988_x64.zip",
+            "url": "https://ghgo.xyz//v9.1.0988/gvim_9.1.0988_x64.zip",
             "hash": "39be7a04c170c4b374ade5d769048abdd6fd3bd5880db6a331ead14fb86e6a40"
         },
         "32bit": {
-            "url": "https://ghgo.xyz/https://github.com/vim/vim-win32-installer/releases/download/v9.1.0988/gvim_9.1.0988_x86.zip",
+            "url": "https://ghgo.xyz//v9.1.0988/gvim_9.1.0988_x86.zip",
             "hash": "0ebf4e77abed032baac7e80383c9f0b7c768a3b7936985d9f9d84c4b0ffbf0a8"
         }
     },
@@ -22,7 +22,7 @@
         "Remove-Item \"$dir\\`$*\", \"$dir\\uninstal.*\", \"$dir\\install.exe\" -Recurse",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
+        "    $content = (Get-Content \"$-cn\\vim\\$_\").Replace('$vim', $vimpath)",
         "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "    Set-Content \"$dir\\$_\" $content",
         "}"
@@ -103,10 +103,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz/https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x64.zip"
+                "url": "https://ghgo.xyz//v$version/gvim_$version_x64.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz/https://github.com/vim/vim-win32-installer/releases/download/v$version/gvim_$version_x86.zip"
+                "url": "https://ghgo.xyz//v$version/gvim_$version_x86.zip"
             }
         },
         "extract_dir": "vim\\vim$majorVersion$minorVersion"

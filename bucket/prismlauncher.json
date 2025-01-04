@@ -11,7 +11,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz/https://github.com/PrismLauncher/PrismLauncher/releases/download/9.1/PrismLauncher-Windows-MSVC-Portable-9.1.zip",
+            "url": "https://ghgo.xyz//9.1/PrismLauncher-Windows-MSVC-Portable-9.1.zip",
             "hash": "b2441ce28e959627b0d5f6361c7ff8fee4ef8fa54ecb922ec734c259d4fe95ff"
         }
     },
@@ -45,9 +45,9 @@
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\") {",
+        "    if (Test-Path \"$-cn\\prismlauncher\\$_.reg\") {",
         "        $exePath = \"$dir\\prismlauncher.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\").Replace('$EXEPATH', $exePath)",
+        "        $content = (Get-Content \"$-cn\\prismlauncher\\$_.reg\").Replace('$EXEPATH', $exePath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
@@ -80,7 +80,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz/https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-Windows-MSVC-Portable-$version.zip"
+                "url": "https://ghgo.xyz//$version/PrismLauncher-Windows-MSVC-Portable-$version.zip"
             }
         }
     }

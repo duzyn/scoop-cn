@@ -5,7 +5,7 @@
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.nju.edu.cn/kde/stable/labplot/labplot-2.11.1-x86_64-setup.exe#/dl.7z",
+            "url": "https://download.kde.org/stable/labplot/labplot-2.11.1-x86_64-setup.exe#/dl.7z",
             "hash": "fa5b3212adcbd892b167a78fc18180a575f4153ab032c90d31a918d5a9087dee"
         }
     },
@@ -20,13 +20,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://mirrors.nju.edu.cn/kde/stable/labplot/",
+        "url": "https://download.kde.org/stable/labplot/",
         "regex": "labplot-([\\d.]+)-(64bit|x86_64)-setup\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.nju.edu.cn/kde/stable/labplot/labplot-$version-x86_64-setup.exe#/dl.7z"
+                "url": "https://download.kde.org/stable/labplot/labplot-$version-x86_64-setup.exe#/dl.7z"
             }
         }
     }

@@ -3,7 +3,7 @@
     "description": "Personal and small-business financial-accounting software",
     "homepage": "https://www.gnucash.org/",
     "license": "GPL-2.0-or-later",
-    "url": "https://ghgo.xyz/https://github.com/Gnucash/gnucash/releases/download/5.10/gnucash-5.10.setup.exe",
+    "url": "https://ghgo.xyz//5.10/gnucash-5.10.setup.exe",
     "hash": "42f71da194db3d2f12a3127760ab153f32759323130c3d74af378ebe9c754c61",
     "innosetup": true,
     "architecture": {
@@ -36,7 +36,7 @@
         "regex": "/download/([\\d.]+)/gnucash-([\\w.-]+)\\.setup\\.exe"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/Gnucash/gnucash/releases/download/$version/gnucash-$match2.setup.exe",
+        "url": "https://ghgo.xyz//$version/gnucash-$match2.setup.exe",
         "hash": {
             "url": "https://github.com/Gnucash/gnucash/releases/tag/$version",
             "regex": "$sha256.*?$basename"

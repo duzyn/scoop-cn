@@ -3,7 +3,7 @@
     "description": "Massively spiffy yet delicately unobtrusive compression library. Unencumbered by patents.",
     "homepage": "http://www.zlib.net/",
     "license": "Zlib",
-    "url": "https://ghgo.xyz/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/zlib/zlib-1.2.12-windows-32bit-vc14.2.7z",
+    "url": "https://ghgo.xyz//ScoopInstaller/Binary/master/zlib/zlib-1.2.12-windows-32bit-vc14.2.7z",
     "hash": "0d7245a2e499320cb4803b3889df8a9051d2dfc0c53d2908a3d99b687943c68b",
     "notes": [
         "For CMake (and other build tools) to find this installation of zlib, run:",
@@ -12,8 +12,8 @@
     "post_install": [
         "$dirpath = \"$dir\".Replace('\\', '\\\\')",
         "'register', 'unregister' | ForEach-Object {",
-        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\zlib\\$_.reg\") {",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\zlib\\$_.reg\"",
+        "  if (Test-Path \"$-cn\\zlib\\$_.reg\") {",
+        "    $content = Get-Content \"$-cn\\zlib\\$_.reg\"",
         "    $content = $content.Replace('$dir', $dirpath)",
         "    $content | Set-Content -Path \"$dir\\$_.reg\"",
         "  }",

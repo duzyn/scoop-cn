@@ -3,7 +3,7 @@
     "description": "Video subtitles editor",
     "homepage": "http://www.nikse.dk/subtitleedit/",
     "license": "GPL-3.0-only",
-    "url": "https://ghgo.xyz/https://github.com/SubtitleEdit/subtitleedit/releases/download/4.0.10/SE4010.zip",
+    "url": "https://ghgo.xyz//4.0.10/SE4010.zip",
     "hash": "60dddda7cba49327ee4818a8794106d94a32bef5cb251b3137c86900c756c2b0",
     "pre_install": "if (!(Test-Path \"$persist_dir\\Settings.xml\")) { New-Item \"$dir\\Settings.xml\" | Out-Null }",
     "bin": "SubtitleEdit.exe",
@@ -18,7 +18,7 @@
         "github": "https://github.com/SubtitleEdit/subtitleedit"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/SubtitleEdit/subtitleedit/releases/download/$version/SE$cleanVersion.zip",
+        "url": "https://ghgo.xyz//$version/SE$cleanVersion.zip",
         "hash": {
             "url": "https://github.com/SubtitleEdit/subtitleedit/releases/tag/$version/",
             "regex": "(?sm)$basename.*?SHA256 Checksum:\\s*<code>$sha256</"
