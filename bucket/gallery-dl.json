@@ -3,13 +3,13 @@
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
     "homepage": "https://github.com/mikf/gallery-dl",
     "license": "GPL-2.0-or-later",
-    "url": "https://ghgo.xyz//v1.28.3/gallery-dl.exe",
+    "url": "$githubProxy/https://github.com/mikf/gallery-dl/releases/download/v1.28.3/gallery-dl.exe",
     "hash": "7b88826bbfb8a9fc1342a2e05642d67b909345d925f883cb823100e062dca804",
     "bin": "gallery-dl.exe",
     "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
     "persist": "gallery-dl.conf",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$version/gallery-dl.exe"
+        "url": "$githubProxy/https://github.com/mikf/gallery-dl/releases/download/v$version/gallery-dl.exe"
     }
 }

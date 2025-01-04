@@ -6,11 +6,11 @@
     "notes": "Configuration file cannot be persisted, but will be retained during the update",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v141/ares-windows.zip",
+            "url": "$githubProxy/https://github.com/ares-emulator/ares/releases/download/v141/ares-windows.zip",
             "hash": "129a3a5bd8640db4424f241759a88debd51d6f432de8a2cf0874527bdcf1019b"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v141/ares-windows-msvc-arm64.zip",
+            "url": "$githubProxy/https://github.com/ares-emulator/ares/releases/download/v141/ares-windows-msvc-arm64.zip",
             "hash": "fa82cf516e23a3f074b0eff9abfd5f053dd8c99714c648d848daf4cc37833013"
         }
     },
@@ -52,10 +52,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$cleanVersion/ares-windows.zip"
+                "url": "$githubProxy/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows.zip"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$cleanVersion/ares-windows-msvc-arm64.zip"
+                "url": "$githubProxy/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-arm64.zip"
             }
         },
         "extract_dir": "ares-v$cleanVersion"

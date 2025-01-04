@@ -5,12 +5,12 @@
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v4.10.2/ccache-4.10.2-windows-x86_64.zip",
+            "url": "$githubProxy/https://github.com/ccache/ccache/releases/download/v4.10.2/ccache-4.10.2-windows-x86_64.zip",
             "hash": "6252f081876a9a9f700fae13a5aec5d0d486b28261d7f1f72ac11c7ad9df4da9",
             "extract_dir": "ccache-4.10.2-windows-x86_64"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v4.10.2/ccache-4.10.2-windows-i686.zip",
+            "url": "$githubProxy/https://github.com/ccache/ccache/releases/download/v4.10.2/ccache-4.10.2-windows-i686.zip",
             "hash": "30bd081f45f92affe74b776f19b8872a09b6b5df3ec6c43c552863d73c804871",
             "extract_dir": "ccache-4.10.2-windows-i686"
         }
@@ -22,11 +22,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/ccache-$version-windows-x86_64.zip",
+                "url": "$githubProxy/https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-x86_64.zip",
                 "extract_dir": "ccache-$version-windows-x86_64"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/ccache-$version-windows-i686.zip",
+                "url": "$githubProxy/https://github.com/ccache/ccache/releases/download/v$version/ccache-$version-windows-i686.zip",
                 "extract_dir": "ccache-$version-windows-i686"
             }
         }

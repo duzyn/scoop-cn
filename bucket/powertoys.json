@@ -12,11 +12,11 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.87.1/PowerToysUserSetup-0.87.1-x64.exe",
+            "url": "$githubProxy/https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysUserSetup-0.87.1-x64.exe",
             "hash": "8efaf47ed00bf230d2c2cc3cb6765c903a6a47e0aaed0bbb329cef918207b486"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v0.87.1/PowerToysUserSetup-0.87.1-arm64.exe",
+            "url": "$githubProxy/https://github.com/microsoft/PowerToys/releases/download/v0.87.1/PowerToysUserSetup-0.87.1-arm64.exe",
             "hash": "212fc8055789bd2dc4de554b9aee291a9c077907e263a302939266263a9d512b"
         }
     },
@@ -30,8 +30,8 @@
     },
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$-cn\\$app\\$_.ps1\") {",
-        "        $content = Get-Content \"$-cn\\$app\\$_.ps1\"",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.ps1\") {",
+        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.ps1\"",
         "        $content = $content.Replace('{{scoop_dir}}', $original_dir)",
         "        if ($global) {",
         "            $content = $content.Replace('{{install_scope}}', 'perMachine')",
@@ -79,14 +79,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//$matchTag/PowerToysUserSetup-$version-x64.exe",
+                "url": "$githubProxy/https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysUserSetup-$version-x64.exe",
                 "hash": {
                     "url": "https://github.com/microsoft/PowerToys/releases/tag/$matchTag",
                     "regex": ">$sha256<"
                 }
             },
             "arm64": {
-                "url": "https://ghgo.xyz//$matchTag/PowerToysUserSetup-$version-arm64.exe",
+                "url": "$githubProxy/https://github.com/microsoft/PowerToys/releases/download/$matchTag/PowerToysUserSetup-$version-arm64.exe",
                 "hash": {
                     "url": "https://github.com/microsoft/PowerToys/releases/tag/$matchTag",
                     "regex": ">(?:[a-fA-F0-9]{64})<[\\s\\S]*?>([a-fA-F0-9]{64})<"

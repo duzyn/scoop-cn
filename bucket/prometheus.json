@@ -5,12 +5,12 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v3.1.0/prometheus-3.1.0.windows-amd64.tar.gz",
+            "url": "$githubProxy/https://github.com/prometheus/prometheus/releases/download/v3.1.0/prometheus-3.1.0.windows-amd64.tar.gz",
             "hash": "a655b2e589a906d977a83c7290ed5d5323e7f25ead12716a1545aef23d60d70c",
             "extract_dir": "prometheus-3.1.0.windows-amd64"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v3.1.0/prometheus-3.1.0.windows-386.tar.gz",
+            "url": "$githubProxy/https://github.com/prometheus/prometheus/releases/download/v3.1.0/prometheus-3.1.0.windows-386.tar.gz",
             "hash": "a2842ffdaa6049b2550d0da6e88567432d47fe434fe1c02564bfd67d95669e05",
             "extract_dir": "prometheus-3.1.0.windows-386"
         }
@@ -33,11 +33,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/prometheus-$version.windows-amd64.tar.gz",
+                "url": "$githubProxy/https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-amd64.tar.gz",
                 "extract_dir": "prometheus-$version.windows-amd64"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/prometheus-$version.windows-386.tar.gz",
+                "url": "$githubProxy/https://github.com/prometheus/prometheus/releases/download/v$version/prometheus-$version.windows-386.tar.gz",
                 "extract_dir": "prometheus-$version.windows-386"
             }
         },

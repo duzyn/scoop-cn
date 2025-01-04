@@ -5,11 +5,11 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.199.0/eksctl_Windows_amd64.zip",
+            "url": "$githubProxy/https://github.com/weaveworks/eksctl/releases/download/v0.199.0/eksctl_Windows_amd64.zip",
             "hash": "f882f03c855759be2612a08d9e3b9d44479baeecccbb86705f8def1448b4d9d8"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v0.199.0/eksctl_Windows_arm64.zip",
+            "url": "$githubProxy/https://github.com/weaveworks/eksctl/releases/download/v0.199.0/eksctl_Windows_arm64.zip",
             "hash": "d7c5425c163bc91e49e0489a5fdc91e8f09f63daa42c3e138e9f81c2ad7ee9b0"
         }
     },
@@ -20,10 +20,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/eksctl_Windows_amd64.zip"
+                "url": "$githubProxy/https://github.com/weaveworks/eksctl/releases/download/v$version/eksctl_Windows_amd64.zip"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$version/eksctl_Windows_arm64.zip"
+                "url": "$githubProxy/https://github.com/weaveworks/eksctl/releases/download/v$version/eksctl_Windows_arm64.zip"
             }
         },
         "hash": {

@@ -6,11 +6,11 @@
     "notes": "Since upstream does NOT provide pre-compiled binary of arm64 for every release, LLVM arm64 is now a separate manifest: 'llvm-arm64'.",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//llvmorg-19.1.6/LLVM-19.1.6-win64.exe#/dl.7z",
+            "url": "$githubProxy/https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/LLVM-19.1.6-win64.exe#/dl.7z",
             "hash": "ccb7140dd9eb2c0e8ab1feed2d38c6fd22a161c1843b48b444c500f2f60e4f1c"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//llvmorg-19.1.6/LLVM-19.1.6-win32.exe#/dl.7z",
+            "url": "$githubProxy/https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/LLVM-19.1.6-win32.exe#/dl.7z",
             "hash": "110bf3c367635e2a29360864dbd57b7f7531b6e041866acbc45e39644e131b5c"
         }
     },
@@ -27,10 +27,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
+                "url": "$githubProxy/https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win64.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
+                "url": "$githubProxy/https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/LLVM-$version-win32.exe#/dl.7z"
             }
         }
     }

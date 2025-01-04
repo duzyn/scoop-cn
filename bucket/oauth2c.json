@@ -5,11 +5,11 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v1.17.0/oauth2c_1.17.0_Windows_x86_64.tar.gz",
+            "url": "$githubProxy/https://github.com/cloudentity/oauth2c/releases/download/v1.17.0/oauth2c_1.17.0_Windows_x86_64.tar.gz",
             "hash": "a6c14fb9c5f01e414cbc5769738e1ef4ef915d8d274250457fcf1516134efb07"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v1.17.0/oauth2c_1.17.0_Windows_arm64.tar.gz",
+            "url": "$githubProxy/https://github.com/cloudentity/oauth2c/releases/download/v1.17.0/oauth2c_1.17.0_Windows_arm64.tar.gz",
             "hash": "da7fb86e2b16359ac30e53a81a64ab4b67a69e80106c80bf75ead63bd991364e"
         }
     },
@@ -18,10 +18,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/oauth2c_$version_Windows_x86_64.tar.gz"
+                "url": "$githubProxy/https://github.com/cloudentity/oauth2c/releases/download/v$version/oauth2c_$version_Windows_x86_64.tar.gz"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$version/oauth2c_$version_Windows_arm64.tar.gz"
+                "url": "$githubProxy/https://github.com/cloudentity/oauth2c/releases/download/v$version/oauth2c_$version_Windows_arm64.tar.gz"
             }
         },
         "hash": {

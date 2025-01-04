@@ -4,7 +4,7 @@
     "description": "Plays & manages your music library. Looks beautiful & juicy. Playlists, visuals, synced lyrics, pitch shift, volume boost & more.",
     "license": {
         "identifier": "Freeware",
-        "url": "https://ghgo.xyz//harmonoid/harmonoid/master/EULA.txt"
+        "url": "$githubProxy/https://raw.githubusercontent.com/harmonoid/harmonoid/master/EULA.txt"
     },
     "notes": [
         "To install harmonoid file associations, run:",
@@ -19,7 +19,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.3.8/harmonoid-windows-exe.zip",
+            "url": "$githubProxy/https://github.com/alexmercerind2/harmonoid-releases/releases/download/v0.3.8/harmonoid-windows-exe.zip",
             "hash": "10439b686a4bb95fe469299ba676a5dfa3f9de492a288b77db02b9b2ee524ea4"
         }
     },
@@ -27,7 +27,7 @@
     "pre_install": [
         "$newDir = $dir.Replace($version, 'current')",
         "",
-        "$scriptsDir = \"$-cn\"",
+        "$scriptsDir = \"$bucketsdir\\scoop-cn\\scripts\"",
         "",
         "Get-ChildItem \"$scriptsDir\\harmonoid\\*.ps1\" | ForEach-Object {",
         "    $content = ($_ | Get-Content).Replace('CURRENT_DIRECTORY', $newDir)",
@@ -62,7 +62,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/harmonoid-windows-exe.zip"
+                "url": "$githubProxy/https://github.com/alexmercerind2/harmonoid-releases/releases/download/v$version/harmonoid-windows-exe.zip"
             }
         }
     }

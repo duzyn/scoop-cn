@@ -5,11 +5,11 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.169.2/helmfile_0.169.2_windows_amd64.tar.gz",
+            "url": "$githubProxy/https://github.com/helmfile/helmfile/releases/download/v0.169.2/helmfile_0.169.2_windows_amd64.tar.gz",
             "hash": "d1b12a67a31c8224d64b6061d596b058be31b180c98a3e866b4afbf84e975dc3"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v0.169.2/helmfile_0.169.2_windows_386.tar.gz",
+            "url": "$githubProxy/https://github.com/helmfile/helmfile/releases/download/v0.169.2/helmfile_0.169.2_windows_386.tar.gz",
             "hash": "98bcf17b8e27e9c632d0a3e455fc4cb240cf3375bc26d22a5c4089b00d887c12"
         }
     },
@@ -18,10 +18,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/helmfile_$version_windows_amd64.tar.gz"
+                "url": "$githubProxy/https://github.com/helmfile/helmfile/releases/download/v$version/helmfile_$version_windows_amd64.tar.gz"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/helmfile_$version_windows_386.tar.gz"
+                "url": "$githubProxy/https://github.com/helmfile/helmfile/releases/download/v$version/helmfile_$version_windows_386.tar.gz"
             }
         },
         "hash": {

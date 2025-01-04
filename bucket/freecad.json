@@ -5,7 +5,7 @@
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//1.0.0/FreeCAD_1.0.0-conda-Windows-x86_64-py311.7z",
+            "url": "$githubProxy/https://github.com/FreeCAD/FreeCAD/releases/download/1.0.0/FreeCAD_1.0.0-conda-Windows-x86_64-py311.7z",
             "hash": "c32c43897172c2669ade854a4e71b9e158e7e86dfaf728e2aba0b6e3104347ae"
         }
     },
@@ -24,7 +24,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//$matchHead/FreeCAD_$version-conda-Windows-x86_64-$matchSuffix.7z"
+                "url": "$githubProxy/https://github.com/FreeCAD/FreeCAD/releases/download/$matchHead/FreeCAD_$version-conda-Windows-x86_64-$matchSuffix.7z"
             }
         },
         "hash": {

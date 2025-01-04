@@ -10,7 +10,7 @@
     "url": "https://download.microsoft.com/download/#/dl.7z_",
     "hash": "395a73c8ae2c2a2f1942b1db41ca045d9defaca64cc77dde2a7991479dd77910",
     "pre_install": [
-        "$scriptdir = \"$-cn\"",
+        "$scriptdir = \"$bucketsdir\\scoop-cn\\scripts\"",
         "if ($architecture -eq '64bit') {",
         "     Copy-Item \"$scriptdir\\install-office-365-apps.xml\" \"$dir\\\"",
         "}",

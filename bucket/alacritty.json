@@ -10,13 +10,13 @@
     "suggest": {
         "vcredist": "scoop-cn/vcredist2022"
     },
-    "url": "https://ghgo.xyz//v0.14.0/Alacritty-v0.14.0-portable.exe#/alacritty.exe",
+    "url": "$githubProxy/https://github.com/alacritty/alacritty/releases/download/v0.14.0/Alacritty-v0.14.0-portable.exe#/alacritty.exe",
     "hash": "4a68ca354934b7e031a5bbb84bc9ebc4b23cb8df542505015595a4809cc4814b",
     "post_install": [
         "$alacrittyPath = \"$dir\\alacritty.exe\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$-cn\\$app\\$_.reg\") {",
-        "        $content = Get-Content \"$-cn\\$app\\$_.reg\"",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\") {",
+        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\"",
         "        $content = $content.Replace('$alacrittyPath', $alacrittyPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
@@ -34,6 +34,6 @@
     "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *>nul }",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$version/Alacritty-v$version-portable.exe#/alacritty.exe"
+        "url": "$githubProxy/https://github.com/alacritty/alacritty/releases/download/v$version/Alacritty-v$version-portable.exe#/alacritty.exe"
     }
 }

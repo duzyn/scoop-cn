@@ -5,17 +5,17 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v1.68.2/rclone-v1.68.2-windows-amd64.zip",
+            "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v1.68.2/rclone-v1.68.2-windows-amd64.zip",
             "hash": "812bf76cc02c04cf6327f3683f3d5a88e47d36c39db84c1a745777496be7d993",
             "extract_dir": "rclone-v1.68.2-windows-amd64"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v1.68.2/rclone-v1.68.2-windows-386.zip",
+            "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v1.68.2/rclone-v1.68.2-windows-386.zip",
             "hash": "d076d341122287cf92033aeecf1dd6900ff407c22981fa5ddf49689d5301a7e2",
             "extract_dir": "rclone-v1.68.2-windows-386"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v1.68.2/rclone-v1.68.2-windows-arm64.zip",
+            "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v1.68.2/rclone-v1.68.2-windows-arm64.zip",
             "hash": "cbc6584266cf62bb9f4df912cb00d566c1cbc50ce2748f5e433f1937209e807e",
             "extract_dir": "rclone-v1.68.2-windows-arm64"
         }
@@ -59,15 +59,15 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/rclone-v$version-windows-amd64.zip",
+                "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-amd64.zip",
                 "extract_dir": "rclone-v$version-windows-amd64"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/rclone-v$version-windows-386.zip",
+                "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-386.zip",
                 "extract_dir": "rclone-v$version-windows-386"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$version/rclone-v$version-windows-arm64.zip",
+                "url": "$githubProxy/https://github.com/rclone/rclone/releases/download/v$version/rclone-v$version-windows-arm64.zip",
                 "extract_dir": "rclone-v$version-windows-arm64"
             }
         },

@@ -6,7 +6,7 @@
     "suggest": {
         "vcredist": "scoop-cn/vcredist2022"
     },
-    "url": "https://ghgo.xyz//v1.7.4-Beta1/Syncplay_1.7.4_Beta1_Portable.zip",
+    "url": "$githubProxy/https://github.com/Syncplay/syncplay/releases/download/v1.7.4-Beta1/Syncplay_1.7.4_Beta1_Portable.zip",
     "hash": "07700a7f32e97b5f69575cde201e3d840faf75a94930a4aec7be332cb0cd88ee",
     "bin": "Syncplay.exe",
     "shortcuts": [
@@ -27,6 +27,6 @@
         "regex": "\\A(?<prefix>v)? (\\S+) (?<underscore>\\S+)\\Z"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//$matchPrefix$version/Syncplay_$matchUnderscore_Portable.zip"
+        "url": "$githubProxy/https://github.com/Syncplay/syncplay/releases/download/$matchPrefix$version/Syncplay_$matchUnderscore_Portable.zip"
     }
 }

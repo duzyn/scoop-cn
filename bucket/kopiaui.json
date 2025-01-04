@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.18.2/KopiaUI-0.18.2-win.zip",
+            "url": "$githubProxy/https://github.com/kopia/kopia/releases/download/v0.18.2/KopiaUI-0.18.2-win.zip",
             "hash": "d16c17350c7bfa786ebba03021949c2bc06c465db8e7870222598fe0127b97c3"
         }
     },
@@ -22,7 +22,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/KopiaUI-$version-win.zip",
+                "url": "$githubProxy/https://github.com/kopia/kopia/releases/download/v$version/KopiaUI-$version-win.zip",
                 "hash": {
                     "url": "$baseurl/checksums.txt",
                     "regex": "$sha256\\s+$basename"

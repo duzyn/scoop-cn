@@ -3,7 +3,7 @@
     "description": "Download your Spotify playlists and songs along with album art and metadata (from YouTube if a match is found).",
     "homepage": "https://github.com/spotDL/spotify-downloader",
     "license": "MIT",
-    "url": "https://ghgo.xyz//v4.2.10/spotdl-4.2.10-win32.exe",
+    "url": "$githubProxy/https://github.com/spotDL/spotify-downloader/releases/download/v4.2.10/spotdl-4.2.10-win32.exe",
     "hash": "877682c405b8f4da9383c37a65d64b65ba455d26cb4b34d017e1f73c859c38ea",
     "bin": [
         [
@@ -16,7 +16,7 @@
         "regex": "\\/releases\\/tag\\/(?:v|V)?([\\d.\\-a-zA-Z]+)"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$version/spotdl-$version-win32.exe",
+        "url": "$githubProxy/https://github.com/spotDL/spotify-downloader/releases/download/v$version/spotdl-$version-win32.exe",
         "bin": [
             [
                 "spotdl-$version-win32.exe",

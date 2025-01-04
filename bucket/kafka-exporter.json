@@ -5,12 +5,12 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v1.8.0/kafka_exporter-1.8.0.windows-amd64.tar.gz",
+            "url": "$githubProxy/https://github.com/danielqsj/kafka_exporter/releases/download/v1.8.0/kafka_exporter-1.8.0.windows-amd64.tar.gz",
             "hash": "b1cfabab382f45112d5e1875b168a988c7293c0868df71fd01175df6f8caf08c",
             "extract_dir": "kafka_exporter-1.8.0.windows-amd64"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v1.8.0/kafka_exporter-1.8.0.windows-386.tar.gz",
+            "url": "$githubProxy/https://github.com/danielqsj/kafka_exporter/releases/download/v1.8.0/kafka_exporter-1.8.0.windows-386.tar.gz",
             "hash": "77a69f2006b3d6eca6435551fa731f75e58edbc7040e81cdbc3b62a52843441f",
             "extract_dir": "kafka_exporter-1.8.0.windows-386"
         }
@@ -20,11 +20,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/kafka_exporter-$version.windows-amd64.tar.gz",
+                "url": "$githubProxy/https://github.com/danielqsj/kafka_exporter/releases/download/v$version/kafka_exporter-$version.windows-amd64.tar.gz",
                 "extract_dir": "kafka_exporter-$version.windows-amd64"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/kafka_exporter-$version.windows-386.tar.gz",
+                "url": "$githubProxy/https://github.com/danielqsj/kafka_exporter/releases/download/v$version/kafka_exporter-$version.windows-386.tar.gz",
                 "extract_dir": "kafka_exporter-$version.windows-386"
             }
         }

@@ -5,11 +5,11 @@
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v4.9.1/veyon-4.9.1.0-win64-setup.exe#/installer.exe",
+            "url": "$githubProxy/https://github.com/veyon/veyon/releases/download/v4.9.1/veyon-4.9.1.0-win64-setup.exe#/installer.exe",
             "hash": "33d4739cb424a8a4b3c7cc4cc1a313044df52b31d185bd3c117424bd79238b6b"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v4.9.1/veyon-4.9.1.0-win32-setup.exe#/installer.exe",
+            "url": "$githubProxy/https://github.com/veyon/veyon/releases/download/v4.9.1/veyon-4.9.1.0-win32-setup.exe#/installer.exe",
             "hash": "c598494781f5d6dc8dccc9f21184c003bcd42dfe0b96cb752378c986fafa7ec2"
         }
     },
@@ -45,10 +45,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win64-setup.exe#/installer.exe"
+                "url": "$githubProxy/https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win64-setup.exe#/installer.exe"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win32-setup.exe#/installer.exe"
+                "url": "$githubProxy/https://github.com/veyon/veyon/releases/download/v$majorVersion.$minorVersion.$patchVersion/veyon-$version-win32-setup.exe#/installer.exe"
             }
         }
     }

@@ -5,11 +5,11 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0,EPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//jdk8u432-b06_openj9-0.48.0/ibm-semeru-open-jdk_x64_windows_8u432b06_openj9-0.48.0.zip",
+            "url": "$githubProxy/https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u432-b06_openj9-0.48.0/ibm-semeru-open-jdk_x64_windows_8u432b06_openj9-0.48.0.zip",
             "hash": "7a150f11f0714e12e2ecc0a95b80479b1bed20c9024f7010a1eee1beeee20d59"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//jdk8u432-b06_openj9-0.48.0/ibm-semeru-open-jdk_x86-32_windows_8u432b06_openj9-0.48.0.zip",
+            "url": "$githubProxy/https://github.com/ibmruntimes/semeru8-binaries/releases/download/jdk8u432-b06_openj9-0.48.0/ibm-semeru-open-jdk_x86-32_windows_8u432b06_openj9-0.48.0.zip",
             "hash": "4b3faec30a15e013b304985ae7688c0d854c1e4bf4254933ff3729f25ac794f4"
         }
     },
@@ -26,10 +26,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//$matchTag/ibm-semeru-open-jdk_x64_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
+                "url": "$githubProxy/https://github.com/ibmruntimes/semeru8-binaries/releases/download/$matchTag/ibm-semeru-open-jdk_x64_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//$matchTag/ibm-semeru-open-jdk_x86-32_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
+                "url": "$githubProxy/https://github.com/ibmruntimes/semeru8-binaries/releases/download/$matchTag/ibm-semeru-open-jdk_x86-32_windows_$matchMajor$matchUpdate$matchBuild_openj9$matchJvmver.zip"
             }
         },
         "hash": {

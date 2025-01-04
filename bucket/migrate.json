@@ -5,11 +5,11 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v4.18.1/migrate.windows-amd64.zip",
+            "url": "$githubProxy/https://github.com/golang-migrate/migrate/releases/download/v4.18.1/migrate.windows-amd64.zip",
             "hash": "bdfbbd61094d17cbc08167c0269cf863159f2f98fa389de40e04ceae99880361"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v4.18.1/migrate.windows-386.zip",
+            "url": "$githubProxy/https://github.com/golang-migrate/migrate/releases/download/v4.18.1/migrate.windows-386.zip",
             "hash": "de4d82daa67c50d039ac291e57b206d0bca8d886a2ac65ca19118ef5c8489913"
         }
     },
@@ -18,10 +18,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/migrate.windows-amd64.zip"
+                "url": "$githubProxy/https://github.com/golang-migrate/migrate/releases/download/v$version/migrate.windows-amd64.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/migrate.windows-386.zip"
+                "url": "$githubProxy/https://github.com/golang-migrate/migrate/releases/download/v$version/migrate.windows-386.zip"
             }
         },
         "hash": {

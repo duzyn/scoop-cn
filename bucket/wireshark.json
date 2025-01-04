@@ -26,7 +26,7 @@
         ]
     },
     "post_install": [
-        "Get-ChildItem \"$-cn\\wireshark\" | Copy-Item -Force -Destination \"$dir\"",
+        "Get-ChildItem \"$bucketsdir\\scoop-cn\\scripts\\wireshark\" | Copy-Item -Force -Destination \"$dir\"",
         "& \"$dir\\enable-usbpcap.ps1\" 2>$null   # Attempt try to enable USBPcap if already installed"
     ],
     "bin": [

@@ -9,7 +9,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v3.64.0/LosslessCut-win-x64.7z",
+            "url": "$githubProxy/https://github.com/mifi/lossless-cut/releases/download/v3.64.0/LosslessCut-win-x64.7z",
             "hash": "158ae74e26790134fe634f3371e2081db54cfffe41836a33204c82e54c66227a"
         }
     },
@@ -23,8 +23,8 @@
     "post_install": [
         "$dirpath = \"$dir\".Replace('\\', '\\\\')",
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "  if (Test-Path \"$-cn\\losslesscut\\$_.reg\") {",
-        "    $content = Get-Content \"$-cn\\losslesscut\\$_.reg\"",
+        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\losslesscut\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\losslesscut\\$_.reg\"",
         "    $content = $content.Replace('$dirpath', $dirpath)",
         "    $content | Set-Content -Path \"$dir\\$_.reg\"",
         "  }",
@@ -43,7 +43,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/LosslessCut-win-x64.7z"
+                "url": "$githubProxy/https://github.com/mifi/lossless-cut/releases/download/v$version/LosslessCut-win-x64.7z"
             }
         }
     }

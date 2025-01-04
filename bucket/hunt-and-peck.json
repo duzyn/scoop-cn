@@ -8,8 +8,8 @@
         "Press Ctrl + ; to navigate within the tray"
     ],
     "url": [
-        "https://ghgo.xyz//release%2F1.7/HuntAndPeck-1.7.zip",
-        "https://ghgo.xyz//zsims/hunt-and-peck/master/src/HuntAndPeck/Resources/originalbird.ico#/icon.ico"
+        "$githubProxy/https://github.com/zsims/hunt-and-peck/releases/download/release%2F1.7/HuntAndPeck-1.7.zip",
+        "$githubProxy/https://raw.githubusercontent.com/zsims/hunt-and-peck/master/src/HuntAndPeck/Resources/originalbird.ico#/icon.ico"
     ],
     "hash": [
         "752a959d985f30654b27551a103adb56f47ef1e7dfb76819bcf20d29a76691ee",
@@ -28,6 +28,6 @@
         "regex": "release/([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//release%2F$version/HuntAndPeck-$version.zip"
+        "url": "$githubProxy/https://github.com/zsims/hunt-and-peck/releases/download/release%2F$version/HuntAndPeck-$version.zip"
     }
 }

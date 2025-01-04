@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v0.27.3/kubeseal-0.27.3-windows-amd64.tar.gz",
+            "url": "$githubProxy/https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.27.3/kubeseal-0.27.3-windows-amd64.tar.gz",
             "hash": "5c9ac7ad840c6d309655033e2d708c1eb06930f8ffe31b7b67d6c047447b1be8"
         }
     },
@@ -14,7 +14,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/kubeseal-$version-windows-amd64.tar.gz",
+                "url": "$githubProxy/https://github.com/bitnami-labs/sealed-secrets/releases/download/v$version/kubeseal-$version-windows-amd64.tar.gz",
                 "hash": {
                     "url": "$baseurl/sealed-secrets_$version_checksums.txt"
                 }

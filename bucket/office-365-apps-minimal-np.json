@@ -10,7 +10,7 @@
     "url": "https://download.microsoft.com/download/#/dl.7z_",
     "hash": "14ebff9d2416cdab7983c755f4baf30956ad6abeb940d3d4d6f4e22dae5697ca",
     "pre_install": [
-        "$scriptdir = \"$-cn\"",
+        "$scriptdir = \"$bucketsdir\\scoop-cn\\scripts\"",
         "if ($architecture -eq '64bit') {",
         "     Copy-Item \"$scriptdir\\install-office-365-apps-minimal.xml\" \"$dir\\\"",
         "}",

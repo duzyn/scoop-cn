@@ -3,7 +3,7 @@
     "homepage": "https://shatteredpixel.com/",
     "license": "GPL-3.0-only",
     "version": "2.5.4",
-    "url": "https://ghgo.xyz//v2.5.4/ShatteredPD-v2.5.4-Java.jar",
+    "url": "$githubProxy/https://github.com/00-Evan/shattered-pixel-dungeon/releases/download/v2.5.4/ShatteredPD-v2.5.4-Java.jar",
     "hash": "58287b48834af949b6f6c99bc721a81a861b9b7b6b0aca5dbeb2627c669269a8",
     "pre_install": "Set-Content \"$dir\\shatteredpixeldungeon.bat\" @('@echo off', 'start javaw.exe -jar %~dp0ShatteredPD-Java.jar') -Encoding Ascii",
     "shortcuts": [
@@ -19,6 +19,6 @@
         "github": "https://github.com/00-Evan/shattered-pixel-dungeon"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$version/ShatteredPD-v$version-Java.jar"
+        "url": "$githubProxy/https://github.com/00-Evan/shattered-pixel-dungeon/releases/download/v$version/ShatteredPD-v$version-Java.jar"
     }
 }

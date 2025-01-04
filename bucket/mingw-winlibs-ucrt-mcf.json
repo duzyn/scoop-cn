@@ -5,12 +5,12 @@
     "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//14.2.0mcf-12.0.0-ucrt-r1/winlibs-x86_64-mcf-seh-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z",
+            "url": "$githubProxy/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.2.0mcf-12.0.0-ucrt-r1/winlibs-x86_64-mcf-seh-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z",
             "hash": "cb381f1f1d08fc7febc7c6748d925ed03257ab06b2facb52c7a435f2601422a4",
             "extract_dir": "mingw64"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//14.2.0mcf-12.0.0-ucrt-r1/winlibs-i686-mcf-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z",
+            "url": "$githubProxy/https://github.com/brechtsanders/winlibs_mingw/releases/download/14.2.0mcf-12.0.0-ucrt-r1/winlibs-i686-mcf-dwarf-gcc-14.2.0-mingw-w64ucrt-12.0.0-r1.7z",
             "hash": "01aa01d541d7188e0b528fd7a23d67a64e58712271d5376633aa7b572963af1a",
             "extract_dir": "mingw32"
         }
@@ -24,10 +24,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//$matchGccmcf-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-mcf-seh-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "$githubProxy/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccmcf-$matchMingw-ucrt-r$matchRelease/winlibs-x86_64-mcf-seh-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//$matchGccmcf-$matchMingw-ucrt-r$matchRelease/winlibs-i686-mcf-dwarf-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
+                "url": "$githubProxy/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccmcf-$matchMingw-ucrt-r$matchRelease/winlibs-i686-mcf-dwarf-gcc-$matchGcc-mingw-w64ucrt-$matchMingw-r$matchRelease.7z"
             }
         },
         "hash": {

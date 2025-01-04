@@ -5,11 +5,11 @@
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v29.2/protoc-29.2-win64.zip",
+            "url": "$githubProxy/https://github.com/google/protobuf/releases/download/v29.2/protoc-29.2-win64.zip",
             "hash": "59ea61efb24b9d8a214171e2ca3fec55c3f1517eff067656c875d8a1cd06ce4f"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v29.2/protoc-29.2-win32.zip",
+            "url": "$githubProxy/https://github.com/google/protobuf/releases/download/v29.2/protoc-29.2-win32.zip",
             "hash": "ef709f71a51b3a89a9b26de678205cef3c95e21d0818b167fbf5b039a724afd1"
         }
     },
@@ -18,10 +18,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/protoc-$version-win64.zip"
+                "url": "$githubProxy/https://github.com/google/protobuf/releases/download/v$version/protoc-$version-win64.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/protoc-$version-win32.zip"
+                "url": "$githubProxy/https://github.com/google/protobuf/releases/download/v$version/protoc-$version-win32.zip"
             }
         }
     }

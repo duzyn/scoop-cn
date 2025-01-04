@@ -28,7 +28,7 @@
             "$pyint = $pyint -Replace 'py::python2', 'py::python'",
             "$pyint | Set-Content 'lib\\gimp\\2.0\\interpreters\\pygimp.interp'",
             "Pop-Location",
-            "Copy-Item \"$-cn\\gimp\\default.env\" \"$dir\\lib\\gimp\\2.0\\environ\\\" | Out-Null"
+            "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\gimp\\default.env\" \"$dir\\lib\\gimp\\2.0\\environ\\\" | Out-Null"
         ]
     },
     "bin": [

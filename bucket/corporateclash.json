@@ -4,7 +4,7 @@
     "homepage": "https://corporateclash.net",
     "license": "Proprietary",
     "notes": "This is only the launcher, an account is required to play.",
-    "url": "https://ghgo.xyz//v1.3.1/installer.exe#/dl.7z",
+    "url": "$githubProxy/https://github.com/CorporateClash/pyside2-releases/releases/download/v1.3.1/installer.exe#/dl.7z",
     "hash": "f37031b5bb6018103f71e70295e34f453171b2b934aae457a04fba7af8231448",
     "pre_install": [
         "Remove-Item $dir -Recurse -Force  -Include * -Exclude new_launcher.exe",
@@ -21,6 +21,6 @@
         "github": "https://github.com/CorporateClash/pyside2-releases"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$version/installer.exe#/dl.7z"
+        "url": "$githubProxy/https://github.com/CorporateClash/pyside2-releases/releases/download/v$version/installer.exe#/dl.7z"
     }
 }

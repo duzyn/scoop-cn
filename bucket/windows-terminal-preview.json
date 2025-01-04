@@ -6,15 +6,15 @@
     "notes": "Add Windows Terminal Preview as a context menu option by running `reg import \"$dir\\install-context.reg\"`",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_x64.zip",
+            "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_x64.zip",
             "hash": "ce435f21a234271af2c53c0be996d2433c5fbb4a8ecd83b61253eb8b6a6b07ec"
         },
         "32bit": {
-            "url": "https://ghgo.xyz//v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_x86.zip",
+            "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_x86.zip",
             "hash": "04267d98492ce7943a08ca14e86ee9dcd40f02af3869a9aea9ab47af843e126b"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_arm64.zip",
+            "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v1.22.3232.0/Microsoft.WindowsTerminalPreview_1.22.3232.0_arm64.zip",
             "hash": "3d9feac5fb76884f4a7906e2fc3b38103aa455366a385720c2b548fbb567abbc"
         }
     },
@@ -38,9 +38,9 @@
     },
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$-cn\\windows-terminal-preview\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal-preview\\$_.reg\") {",
         "        $wtPath = \"$dir\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$-cn\\windows-terminal-preview\\$_.reg\").Replace('$wt', $wtPath)",
+        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal-preview\\$_.reg\").Replace('$wt', $wtPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
@@ -75,13 +75,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/Microsoft.WindowsTerminalPreview_$version_x64.zip"
+                "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_x64.zip"
             },
             "32bit": {
-                "url": "https://ghgo.xyz//v$version/Microsoft.WindowsTerminalPreview_$version_x86.zip"
+                "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_x86.zip"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$version/Microsoft.WindowsTerminalPreview_$version_arm64.zip"
+                "url": "$githubProxy/https://github.com/microsoft/terminal/releases/download/v$version/Microsoft.WindowsTerminalPreview_$version_arm64.zip"
             }
         },
         "hash": {

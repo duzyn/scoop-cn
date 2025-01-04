@@ -5,11 +5,11 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//v3.11.0/chart-testing_3.11.0_windows_amd64.zip",
+            "url": "$githubProxy/https://github.com/helm/chart-testing/releases/download/v3.11.0/chart-testing_3.11.0_windows_amd64.zip",
             "hash": "299731fccf9a870ee08cdeb89ae4d9800a5ece9cd9c1b3041e0062d7a17d05d6"
         },
         "arm64": {
-            "url": "https://ghgo.xyz//v3.11.0/chart-testing_3.11.0_windows_arm64.zip",
+            "url": "$githubProxy/https://github.com/helm/chart-testing/releases/download/v3.11.0/chart-testing_3.11.0_windows_arm64.zip",
             "hash": "dcbf3ed33b49a696b35188e6288c1dc5a7af6672205661fa2f5fce4245d18e0e"
         }
     },
@@ -22,10 +22,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//v$version/chart-testing_$version_windows_amd64.zip"
+                "url": "$githubProxy/https://github.com/helm/chart-testing/releases/download/v$version/chart-testing_$version_windows_amd64.zip"
             },
             "arm64": {
-                "url": "https://ghgo.xyz//v$version/chart-testing_$version_windows_arm64.zip"
+                "url": "$githubProxy/https://github.com/helm/chart-testing/releases/download/v$version/chart-testing_$version_windows_arm64.zip"
             }
         },
         "hash": {

@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//version_121/binaryen-version_121-x86_64-windows.tar.gz",
+            "url": "$githubProxy/https://github.com/WebAssembly/binaryen/releases/download/version_121/binaryen-version_121-x86_64-windows.tar.gz",
             "hash": "3a97e43ccbfe8edbf9c9f8bea7b4a77b8f8a2e55192510894586d75116b258ed"
         }
     },
@@ -30,7 +30,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
+                "url": "$githubProxy/https://github.com/WebAssembly/binaryen/releases/download/version_$version/binaryen-version_$version-x86_64-windows.tar.gz",
                 "hash": {
                     "url": "$url.sha256"
                 }
