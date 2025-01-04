@@ -35,100 +35,106 @@ Remove-Item -Path .\scoop-nerd-fonts   -Recurse -Force
 Remove-Item -Path .\scoop-games        -Recurse -Force
 Remove-Item -Path .\scoop-sysinternals -Recurse -Force
 
+$githubProxy = "https://ghgo.xyz"
+
 Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
-    $Content = Get-Content $_.FullName
+    $content = Get-Content $_.FullName
 
     # GitHub Releases
-    $Content = $Content -replace '(https?://github\.com/.+/releases/.*download)', 'https://ghgo.xyz/$1' 
+    $content = $content -replace "(https?://github\.com/.+/releases/.*download)", "$githubProxy/$1"
 
     # GitHub Archive
-    $Content = $Content -replace '(https?://github\.com/.+/archive/)', 'https://ghgo.xyz/$1' 
+    $content = $content -replace "(https?://github\.com/.+/archive/)", "$githubProxy/$1"
+
+    # GitHub Gists
+    $content = $content -replace "(https?://gist.github\.com/.+/)", "$githubProxy/$1"
 
     # GitHub Raw
-    $Content = $Content -replace '(https?://raw\.githubusercontent\.com)', 'https://ghgo.xyz/$1' 
-    $Content = $Content -replace '(https?://github\.com/.+/raw/)', 'https://ghgo.xyz/$1'          
+    $content = $content -replace "(https?://raw\.githubusercontent\.com)", "$githubProxy/$1"
+    $content = $content -replace "(https?://github\.com/.+/raw/)", "$githubProxy/$1"         
 
-    # KDE Apps
-    $Content = $Content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde' 
-
-    # 7-Zip
-    $Content = $Content -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' 
-
-    # LaTeX, MiKTeX
-    $Content = $Content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.nju.edu.cn/CTAN' 
-
-    # Node
-    $Content = $Content -replace 'nodejs\.org/dist', 'mirrors.nju.edu.cn/nodejs-release' 
+    # DBeaver，not debaver-ea
+    $content = $content -replace "https?://dbeaver\.io/files/([\d\.]+)/", "$githubProxy/https://github.com/dbeaver/dbeaver/releases/download/$1/"
     
-    # Python
-    $Content = $Content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python' 
-
-    # Go
-    $Content = $Content -replace 'dl\.google\.com/go', 'mirrors.nju.edu.cn/golang' 
-
-    # VLC
-    $Content = $Content -replace 'download\.videolan\.org/pub', 'mirrors.nju.edu.cn/videolan-ftp' 
-
-    # Inkscape
-    $Content = $Content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape' 
-
-    # DBeaver
-    $Content = $Content -replace 'https?://dbeaver\.io/files', 'https://ghgo.xyz/https://github.com/dbeaver/dbeaver/releases/download'
+    # FastCopy
+    $content = $content -replace "https?://fastcopy\.jp/archive", "$githubProxy/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main"
 
     # OBS Studio
-    $Content = $Content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'https://ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip'
+    $content = $content -replace "https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip", "$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip"
 
     # OBS Studio 2.7
-    $Content = $Content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://ghgo.xyz/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
-
-    # GIMP
-    $Content = $Content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.nju.edu.cn/gimp' 
-
-    # Blender
-    $Content = $Content -replace 'download\.blender\.org', 'mirrors.nju.edu.cn/blender' 
-
-    # VirtualBox
-    $Content = $Content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.nju.edu.cn/virtualbox' 
-
-    # Wireshark
-    $Content = $Content -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark' 
-
-    # Lunacy
-    $Content = $Content -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/' 
+    $content = $content -replace "https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full", "$githubProxy/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full"
 
     # Strawberry
-    $Content = $Content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'https://ghgo.xyz/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x' 
+    $content = $content -replace "https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x", "$githubProxy/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x"
 
-    # Vim
-    $Content = $Content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.nju.edu.cn/vim/pc' 
+    # KDE Apps
+    # $content = $content -replace "download\.kde\.org", "mirrors.nju.edu.cn/kde"
+
+    # 7-Zip
+    $content = $content -replace "www\.7-zip\.org/a", "mirrors.nju.edu.cn/7-zip"
+
+    # Blender
+    $content = $content -replace "download\.blender\.org", "mirrors.nju.edu.cn/blender"
 
     # Cygwin
-    $Content = $Content -replace '//.*/cygwin/', '//mirrors.nju.edu.cn/cygwin/' 
+    $content = $content -replace "//.*/cygwin/", "//mirrors.nju.edu.cn/cygwin/"
 
-    # Tor Browser, Tor
-    $Content = $Content -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist' 
+    # GIMP
+    $content = $content -replace "download\.gimp\.org/mirror/pub", "mirrors.nju.edu.cn/gimp"
+    
+    # Go
+    $content = $content -replace "dl\.google\.com/go", "mirrors.nju.edu.cn/golang"
 
-    # FastCopy
-    $Content = $Content -replace 'https?://fastcopy\.jp/archive', 'https://ghgo.xyz/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main' 
+    # Gradle
+    $content = $content -replace "services\.gradle\.org/distributions", "mirror.nju.edu.cn/gradle"
+
+    # Inkscape
+    $content = $content -replace "media\.inkscape\.org/dl/resources/file", "mirrors.nju.edu.cn/inkscape"
 
     # Kodi
-    $Content = $Content -replace 'mirrors\.kodi\.tv', 'mirrors.nju.edu.cn/kodi' 
+    $content = $content -replace "mirrors\.kodi\.tv", "mirrors.nju.edu.cn/kodi"
+
+    # LaTeX, MiKTeX
+    $content = $content -replace "(miktex\.org/download/ctan)|(mirrors.+/CTAN)", "mirrors.nju.edu.cn/CTAN"
+
+    # Node
+    $content = $content -replace "nodejs\.org/dist", "mirrors.nju.edu.cn/nodejs-release"
+    
+    # Python
+    $content = $content -replace "www\.python\.org/ftp/python", "mirrors.nju.edu.cn/python"
+
+    # Vim
+    $content = $content -replace "ftp\.nluug\.nl/pub/vim/pc", "mirrors.nju.edu.cn/vim/pc"
+
+    # VirtualBox
+    $content = $content -replace "download\.virtualbox\.org/virtualbox", "mirrors.nju.edu.cn/virtualbox"
+
+    # VLC
+    $content = $content -replace "download\.videolan\.org/pub", "mirrors.nju.edu.cn/videolan-ftp"
+
+    # Wireshark
+    $content = $content -replace "www\.wireshark\.org/download", "mirrors.nju.edu.cn/wireshark"
+
+    # Lunacy
+    $content = $content -replace "lun-eu\.icons8\.com/s/", "lcdn.icons8.com/"
+
+    # Tor Browser, Tor
+    # mirror list: https://raw.githubusercontent.com/torproject/torbrowser-launcher/refs/heads/main/share/torbrowser-launcher/mirrors.txt
+    $content = $content -replace "archive\.torproject\.org/tor-package-archive", "tor.calyxinstitute.org/dist"
 
     # Typora
-    $Content = $Content -replace 'download\.typora\.io', 'download2.typoraio.cn' 
-
-		# Gradle
-		$Content = $Content -replace 'services\.gradle\.org/distributions', 'mirror.nju.edu.cn/gradle' 
+    $content = $content -replace "download\.typora\.io", "download2.typoraio.cn"
 
     # Scripts
-    $Content = $Content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2' 
+    $content = $content -replace "(bucketsdir\\\\).+(\\\\scripts)", "$1scoop-cn$2"
 
     # 将 suggest 路径改为 scoop-cn
-    $Content = $Content -replace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
+    $content = $content -replace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
 
     # 将 depends 路径改为 scoop-cn
-    $Content = $Content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
+    $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
     
-		Set-Content -Path $_.FullName -Value $Content
+		Set-Content -Path $_.FullName -Value $content
 }
 
