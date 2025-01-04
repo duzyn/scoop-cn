@@ -3,7 +3,7 @@
     "description": "Set of software components that allows the creation of user mode file systems.",
     "homepage": "http://www.secfs.net/winfsp/",
     "license": "GPL-3.0-only",
-    "url": "https://ghgo.xyz//v2.0/winfsp-2.0.23075.msi#/setup.msi_",
+    "url": "https://ghgo.xyz/https://github.com/billziss-gh/winfsp/releases/download/v2.0/winfsp-2.0.23075.msi#/setup.msi_",
     "hash": "6324dc81194a6a08f97b6aeca303cf5c2325c53ede153bae9fc4378f0838c101",
     "installer": {
         "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", 'ADDLOCAL=F.Developer', '/qn') -RunAs | Out-Null"
@@ -16,6 +16,6 @@
         "regex": "v(?<short>[\\d.]+)/winfsp-(?<version>[\\d.]+).*\\.msi"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz//v$matchShort/winfsp-$matchVersion.msi#/setup.msi_"
+        "url": "https://ghgo.xyz/https://github.com/billziss-gh/winfsp/releases/download/v$matchShort/winfsp-$matchVersion.msi#/setup.msi_"
     }
 }

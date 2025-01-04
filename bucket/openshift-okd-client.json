@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz//4.17.0-okd-scos.0/openshift-client-windows-4.17.0-okd-scos.0.zip",
+            "url": "https://ghgo.xyz/https://github.com/openshift/okd/releases/download/4.17.0-okd-scos.0/openshift-client-windows-4.17.0-okd-scos.0.zip",
             "hash": "856b1b49fabeae298f3286ceb89f2fa3b96bd690aa5158f36a6f2031c6172ad3"
         }
     },
@@ -17,10 +17,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz//$version/openshift-client-windows-$version.zip",
+                "url": "https://ghgo.xyz/https://github.com/openshift/okd/releases/download/$version/openshift-client-windows-$version.zip",
                 "hash": {
                     "mode": "extract",
-                    "url": "https://ghgo.xyz//$version/sha256sum.txt",
+                    "url": "https://ghgo.xyz/https://github.com/openshift/okd/releases/download/$version/sha256sum.txt",
                     "find": "([a-fA-F0-9]{64})\\s+\\./openshift-client-windows-$version.zip"
                 }
             }
