@@ -17,7 +17,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 
 ## 本应用库介绍
 
-本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://ghgo.xyz/) 和 [GitHub Actions](https://github.com/features/actions) 。
+本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://ghproxy.cc/) 和 [GitHub Actions](https://github.com/features/actions) 。
 
 特性有：
 
@@ -45,7 +45,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装：
 
 ```powershell
-irm https://ghgo.xyz/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
+irm https://ghproxy.cc/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
 或使用 jsDelivr 的地址：
@@ -63,7 +63,7 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 1. 运行以下命令添加本仓库
 
     ```powershell
-    scoop bucket add scoop-cn https://ghgo.xyz/https://github.com/duzyn/scoop-cn
+    scoop bucket add scoop-cn https://ghproxy.cc/https://github.com/duzyn/scoop-cn
     ```
 
 2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行以下命令来批量替换：
@@ -100,12 +100,12 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 
 如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在本仓库使用新 GitHub 代理地址后更新 GitHub 代理地址。
 
-运行以下命令设置新 GitHub 代理地址，下例中 `https://ghgo.xyz` 是当前在使用的：
+运行以下命令设置新 GitHub 代理地址，下例中 `https://ghproxy.cc` 是当前在使用的：
 
 ```powershell
-scoop config scoop_repo https://ghgo.xyz/https://github.com/ScoopInstaller/Scoop
-git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://ghgo.xyz/https://github.com/ScoopInstaller/Main
-git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://ghgo.xyz/https://github.com/duzyn/scoop-cn
+scoop config scoop_repo https://ghproxy.cc/https://github.com/ScoopInstaller/Scoop
+git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://ghproxy.cc/https://github.com/ScoopInstaller/Main
+git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://ghproxy.cc/https://github.com/duzyn/scoop-cn
 ```
 
 ## 安装应用

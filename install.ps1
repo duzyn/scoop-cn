@@ -5,7 +5,7 @@
 $scoopDir = $env:SCOOP, "$env:USERPROFILE\scoop" | Where-Object { -not [String]::IsNullOrEmpty($_) } | Select-Object -First 1
 
 # 设置 GitHub 代理地址
-$githubProxy = "https://ghgo.xyz"
+$githubProxy = "https://ghproxy.cc"
 
 # 隐藏进度条
 $global:ProgressPreference = 'SilentlyContinue'
