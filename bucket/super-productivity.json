@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://ghgo.xyz/https://github.com/johannesjo/super-productivity/releases/download/v11.1.1/Super-Productivity-Setup-x64.exe#/dl.7z",
+            "url": "https://ghproxy.cc/https://github.com/johannesjo/super-productivity/releases/download/v11.1.1/Super-Productivity-Setup-x64.exe#/dl.7z",
             "hash": "sha512:e9289d56cba13c463fac6bde319fb3ded7b9b41837a665ba07e0f773c7d717bd1ad94d50d213bd290db049b4a67f2973d7742c659aae796e72fc84d487aec1c1",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -13,7 +13,7 @@
             ]
         },
         "arm64": {
-            "url": "https://ghgo.xyz/https://github.com/johannesjo/super-productivity/releases/download/v11.1.1/Super-Productivity-Setup-arm64.exe#/dl.7z",
+            "url": "https://ghproxy.cc/https://github.com/johannesjo/super-productivity/releases/download/v11.1.1/Super-Productivity-Setup-arm64.exe#/dl.7z",
             "hash": "sha512:a1c1f6f4051455e330168cb9acaea90823adf4ff8ac56f9bbcfb1cfbcb243bc63cdc0ca7f791066d93bd36090b6fbad230e6cebc1cdac75ae73a1e132a34eb91",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
@@ -33,10 +33,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghgo.xyz/https://github.com/johannesjo/super-productivity/releases/download/v$version/Super-Productivity-Setup-x64.exe#/dl.7z"
+                "url": "https://ghproxy.cc/https://github.com/johannesjo/super-productivity/releases/download/v$version/Super-Productivity-Setup-x64.exe#/dl.7z"
             },
             "arm64": {
-                "url": "https://ghgo.xyz/https://github.com/johannesjo/super-productivity/releases/download/v$version/Super-Productivity-Setup-arm64.exe#/dl.7z"
+                "url": "https://ghproxy.cc/https://github.com/johannesjo/super-productivity/releases/download/v$version/Super-Productivity-Setup-arm64.exe#/dl.7z"
             }
         },
         "hash": {

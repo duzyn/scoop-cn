@@ -1,5 +1,5 @@
 {
-    "version": "20250106-gdc9cddd",
+    "version": "20250107-g1063c3d",
     "description": "A fast PlayStation 1 emulator for PC and Android (preview build)",
     "homepage": "https://github.com/stenzek/duckstation/",
     "license": {
@@ -11,8 +11,8 @@
         "Place the BIOS file in $persist_dir\\bios",
         "Learn more at: https://web.archive.org/web/20210620033009/https://www.duckstation.org/wiki/BIOS"
     ],
-    "url": "https://ghgo.xyz/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
-    "hash": "5f0382a8d20c2fba659ad52d1e3229cf4a814564571ac680eba23ab016675f3c",
+    "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
+    "hash": "d802649d7cf4d2a32e4e5a8dcab443ebc19e7ecaa8cfd68e84366e0cf9ab1738",
     "installer": {
         "script": [
             "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
@@ -56,6 +56,6 @@
         "replace": "${year}${month}${day}-g${commit}"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
+        "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
     }
 }

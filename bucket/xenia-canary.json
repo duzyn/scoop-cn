@@ -1,13 +1,13 @@
 {
-    "version": "20250106214518-3b49054",
+    "version": "20250107221113-7437c02",
     "description": "Xbox 360 Research Emulator (development version)",
     "homepage": "https://xenia.jp",
     "license": {
         "identifier": "BSD-3-Clause",
         "url": "https://github.com/xenia-canary/xenia-canary/blob/canary_pr/LICENSE"
     },
-    "url": "https://ghgo.xyz/https://github.com/xenia-canary/xenia-canary/releases/download/3b49054/xenia_canary.zip",
-    "hash": "93f9b092772371c274b68e11099519cccd0dc61aa4ff5617302568a194f4c440",
+    "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary/releases/download/7437c02/xenia_canary.zip",
+    "hash": "b303643fcec2f86d032fbd94008cff14e70b5317de575d83bc15efc58bc4111f",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -46,6 +46,6 @@
         "replace": "${year}${month}${day}${hour}${minute}${second}-${commit}"
     },
     "autoupdate": {
-        "url": "https://ghgo.xyz/https://github.com/xenia-canary/xenia-canary/releases/download/$matchCommit/xenia_canary.zip"
+        "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary/releases/download/$matchCommit/xenia_canary.zip"
     }
 }
