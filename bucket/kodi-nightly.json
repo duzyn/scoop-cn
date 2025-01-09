@@ -8,11 +8,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win64/Omega/KodiSetup-20250107-bcb2da55-Omega-x64.exe#/dl.7z",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win64/Omega/KodiSetup-20250107-bcb2da55-Omega-x64.exe#/dl.7z",
             "hash": "3637dff9aae2034d1d38cb72747cde1402fe0c450ab8e156614c187decb25049"
         },
         "32bit": {
-            "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win32/Omega/KodiSetup-20250107-bcb2da55-Omega-x86.exe#/dl.7z",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win32/Omega/KodiSetup-20250107-bcb2da55-Omega-x86.exe#/dl.7z",
             "hash": "8751ca6ee665cde96567594467cde9d7bb40105f432a211aa657b0f4a8840633"
         }
     },
@@ -33,7 +33,7 @@
             "$script_ver = ''",
             "$urls =  @()",
             "foreach ($build in $builds) {",
-            "   $base_url = 'https://mirrors.nju.edu.cn/kodi/nightlies/windows/'+ $build + '/' + $name + '/'",
+            "   $base_url = 'https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/'+ $build + '/' + $name + '/'",
             "   $dl_page = Invoke-WebRequest $base_url -UseBasicParsing",
             "   $full_version = $dl_page.links | Where-Object href -match '\\.exe$' | Select-Object -first 1 -expand href",
             "   $script_ver = $full_version -split '-' | Select-Object -Skip 1 | Select-Object -First 1",
@@ -47,10 +47,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win64/$matchWin64bit#/dl.7z"
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win64/$matchWin64bit#/dl.7z"
             },
             "32bit": {
-                "url": "https://mirrors.nju.edu.cn/kodi/nightlies/windows/win32/$matchWin32bit#/dl.7z"
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/kodi/nightlies/windows/win32/$matchWin32bit#/dl.7z"
             }
         },
         "hash": {

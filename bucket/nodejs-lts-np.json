@@ -6,12 +6,12 @@
     "notes": "npm global prefix set to: $env:APPDATA\\npm",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.nju.edu.cn/nodejs-release/v22.13.0/node-v22.13.0-win-x64.7z",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.13.0/node-v22.13.0-win-x64.7z",
             "hash": "a81087ab40a4336908b7cfd3473b9571549b045f38fcdb7181cca979ceadd018",
             "extract_dir": "node-v22.13.0-win-x64"
         },
         "32bit": {
-            "url": "https://mirrors.nju.edu.cn/nodejs-release/v22.13.0/node-v22.13.0-win-x86.7z",
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.13.0/node-v22.13.0-win-x86.7z",
             "hash": "e7325b3da93357965f756b5473bbf3e8dccaaf72f5607ac58e2aae5eedcc0d84",
             "extract_dir": "node-v22.13.0-win-x86"
         }
@@ -30,18 +30,18 @@
         "npm.cmd"
     ],
     "checkver": {
-        "url": "https://mirrors.nju.edu.cn/nodejs-release/index.json",
+        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/index.json",
         "jsonpath": "$..[?(@.lts != false)].version",
         "regex": "v([\\d\\.]+).*"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.nju.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             },
             "32bit": {
-                "url": "https://mirrors.nju.edu.cn/nodejs-release/v$version/node-v$version-win-x86.7z",
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x86.7z",
                 "extract_dir": "node-v$version-win-x86"
             }
         },
