@@ -73,10 +73,10 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip'
 
     # Blender
-    $content = $content -replace 'download\.blender\.org', 'mirrors.nju.edu.cn/blender'
+    $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender'
 
     # Cygwin
-    $content = $content -replace '//.*/cygwin/', '//mirrors.nju.edu.cn/cygwin/'
+    $content = $content -replace '//.*/cygwin/', '//mirrors.tuna.tsinghua.edu.cn/cygwin/'
 
     # GIMP
     $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.nju.edu.cn/gimp'
@@ -91,13 +91,13 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape'
 
     # Kodi
-    $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.nju.edu.cn/kodi'
+    $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi'
 
     # LaTeX, MiKTeX
-    $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.nju.edu.cn/CTAN'
+    $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.tuna.tsinghua.edu.cn/CTAN'
 
     # Node
-    $content = $content -replace 'nodejs\.org/dist', 'mirrors.nju.edu.cn/nodejs-release'
+    $content = $content -replace 'nodejs\.org/dist', 'mirrors.tuna.tsinghua.edu.cn/nodejs-release'
     
     # Python
     $content = $content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python'
@@ -106,13 +106,13 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'ftp\.nluug\.nl/pub/vim/pc', 'mirrors.nju.edu.cn/vim/pc'
 
     # VirtualBox
-    $content = $content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.nju.edu.cn/virtualbox'
+    $content = $content -replace 'download\.virtualbox\.org/virtualbox', 'mirrors.tuna.tsinghua.edu.cn/virtualbox'
 
     # VLC
-    $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.nju.edu.cn/videolan-ftp'
+    $content = $content -replace 'download\.videolan\.org/pub', 'mirrors.tuna.tsinghua.edu.cn/videolan-ftp'
 
     # Wireshark
-    $content = $content -replace 'www\.wireshark\.org/download', 'mirrors.nju.edu.cn/wireshark'
+    $content = $content -replace 'www\.wireshark\.org/download', 'mirrors.tuna.tsinghua.edu.cn/wireshark'
 
     # Lunacy
     $content = $content -replace 'lun-eu\.icons8\.com/s/', 'lcdn.icons8.com/'
