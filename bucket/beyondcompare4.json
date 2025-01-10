@@ -1,0 +1,67 @@
+{
+    "version": "4.4.7.28397",
+    "description": "Directory and file compare functions in one package",
+    "homepage": "https://www.scootersoftware.com",
+    "license": {
+        "identifier": "Shareware",
+        "url": "https://www.scootersoftware.com/index.php?zz=kb_licensev4"
+    },
+    "notes": [
+        "Add Beyond Compare as a context menu option by running: '$dir\\install-context.reg'",
+        "When migrated from 'extras/beyondcompare', persistence data required a manual migration:",
+        "i.e. Rename '~\\persist\\beyondcompare' to '~\\persist\\beyondcompare4', then (re)install the manifest."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://www.scootersoftware.com/files/BCompare-4.4.7.28397_x64.msi",
+            "hash": "089b8acbe228e876f4847132ec71fe256b134703e2e6205619b28905cb69f881"
+        },
+        "32bit": {
+            "url": "https://www.scootersoftware.com/files/BCompare-4.4.7.28397_x86.msi",
+            "hash": "7d722749e18309212f7d483b80e992b1c0f35dc437b93be6133cfe6b03574307"
+        }
+    },
+    "extract_dir": "Beyond Compare 4",
+    "bin": [
+        "Bcomp.exe",
+        "BCompare.exe"
+    ],
+    "shortcuts": [
+        [
+            "BCompare.exe",
+            "Beyond Compare 4"
+        ],
+        [
+            "BCClipboard.exe",
+            "Clipboard Compare"
+        ]
+    ],
+    "post_install": [
+        "$dir_escaped = \"$dir\".Replace('\\', '\\\\')",
+        "\"install-context-$architecture\", \"uninstall-context\" | ForEach-Object {",
+        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare4\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\beyondcompare4\\$_.reg\"",
+        "    $content = $content.Replace('$install_dir', $dir_escaped)",
+        "    if ($global) {",
+        "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",
+        "    }",
+        "    $outfile_no_arch = $_.Replace(\"-$architecture\", \"\")",
+        "    $content | Set-Content -Path \"$dir\\$outfile_no_arch.reg\"",
+        "  }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://www.scootersoftware.com/kb/dl4_winalternate",
+        "regex": "BCompare-([\\d.]+)_x64\\.msi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://www.scootersoftware.com/files/BCompare-$version_x64.msi"
+            },
+            "32bit": {
+                "url": "https://www.scootersoftware.com/files/BCompare-$version_x86.msi"
+            }
+        }
+    }
+}
