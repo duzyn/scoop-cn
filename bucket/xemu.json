@@ -4,39 +4,73 @@
     "homepage": "https://xemu.app",
     "license": {
         "identifier": "GPL-2.0",
-        "url": "https://github.com/mborgerson/xemu/blob/master/LICENSE"
+        "url": "https://github.com/xemu-project/xemu/blob/master/COPYING"
     },
+    "notes": [
+        "ATTENTION: xemu requires a dump of the Xbox Boot ROM, Flash ROM (BIOS) & Hard Disk Image to function.",
+        "Place the Boot ROM file in $persist_dir\\bootrom",
+        "Place the Flash ROM (BIOS) file in $persist_dir\\flashrom",
+        "Place the Hard Disk Image file in $persist_dir\\hdd",
+        "You must still manually load the Boot ROM, Flash ROM (BIOS) & Hard Disk Image inside xemu.",
+        "Learn more at https://xemu.app/docs/required-files/"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/mborgerson/xemu/releases/download/v0.8.8/xemu-win-release.zip",
+            "url": "https://ghproxy.cc/https://github.com/xemu-project/xemu/releases/download/v0.8.8/xemu-win-x86_64-release.zip",
             "hash": "ab38d66ccccb7bc638521aa439f373478077e1c2716fc7ff22170ebd1ab80b8c"
+        },
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/xemu-project/xemu/releases/download/v0.8.8/xemu-win-aarch64-release.zip",
+            "hash": "8c2cf251608c0e06f39ca5b39ee9d779c5b41007a56cd857bc4cb59bd5ff457d"
         }
     },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\bios\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\data\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\xemu\\xemu\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\xemu\\xemu\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\xemu\" -Recurse",
+        "   } else {",
+        "       New-item \"$persist_dir\\xemu.toml\" -ItemType File | Out-Null",
+        "       New-item \"$persist_dir\\shader_cache_list\" -ItemType File | Out-Null",
+        "   }",
+        "}"
+    ],
+    "post_install": [
+        "if (Test-Path \"$persist_dir\\eeprom.bin\") {",
+        "   Move-Item -Path \"$persist_dir\\eeprom.bin\" -Destination \"$persist_dir\\eeprom\\eeprom.bin\"",
+        "   (Get-Content -Path \"$persist_dir\\xemu.toml\").Replace(\"eeprom_path = '$env:APPDATA\\xemu\\xemu\\eeprom.bin'\", \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\") | Set-Content -Path \"$persist_dir\\xemu.toml\"",
+        "} else {",
+        "    '[sys.files]', \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\" | Set-Content \"$persist_dir\\xemu.toml\"",
         "}"
     ],
     "bin": "xemu.exe",
     "shortcuts": [
         [
             "xemu.exe",
-            "Xemu"
+            "xemu"
         ]
     ],
     "persist": [
-        "bios",
-        "data"
+        "bootrom",
+        "flashrom",
+        "eeprom",
+        "hdd",
+        "shaders",
+        "shader_cache_list",
+        "xemu.toml"
     ],
     "checkver": {
-        "github": "https://github.com/mborgerson/xemu"
+        "github": "https://github.com/xemu-project/xemu"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/mborgerson/xemu/releases/download/v$version/xemu-win-release.zip"
+                "url": "https://ghproxy.cc/https://github.com/xemu-project/xemu/releases/download/v$version/xemu-win-x86_64-release.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/xemu-project/xemu/releases/download/v$version/xemu-win-aarch64-release.zip"
             }
         }
     }
