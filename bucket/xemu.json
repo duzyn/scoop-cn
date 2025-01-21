@@ -41,7 +41,7 @@
         "if (Test-Path \"$persist_dir\\eeprom.bin\") {",
         "   Move-Item -Path \"$persist_dir\\eeprom.bin\" -Destination \"$persist_dir\\eeprom\\eeprom.bin\"",
         "   (Get-Content -Path \"$persist_dir\\xemu.toml\").Replace(\"eeprom_path = '$env:APPDATA\\xemu\\xemu\\eeprom.bin'\", \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\") | Set-Content -Path \"$persist_dir\\xemu.toml\"",
-        "} else {",
+        "} elseif (!(Get-Content \"$persist_dir\\xemu.toml\")) {",
         "    '[sys.files]', \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\" | Set-Content \"$persist_dir\\xemu.toml\"",
         "}"
     ],
