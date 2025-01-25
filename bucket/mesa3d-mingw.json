@@ -1,0 +1,26 @@
+{
+    "version": "24.3.3",
+    "description": "Windows builds of Mesa3D, an open source implementation of OpenGL, OpenGL ES, Vulkan and other specifications (MinGW build)",
+    "homepage": "https://github.com/pal1000/mesa-dist-win",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://docs.mesa3d.org/license.html"
+    },
+    "url": "https://ghproxy.cc/https://github.com/pal1000/mesa-dist-win/releases/download/24.3.3/mesa3d-24.3.3-release-mingw.7z",
+    "hash": "f7f434f5c70632d844864f52ce9848a3c8c8772388575180a0a8c33d9c39b721",
+    "notes": [
+        "",
+        "This project provides multiple drivers and deployment options:",
+        "",
+        "1. System-wide deployment tool - For systems lacking hardware accelerated OpenGL",
+        "",
+        "2. Per-application deployment tool - Deploy Mesa for specific programs",
+        "",
+        "Run the deployment tools from the Mesa installation directory to configure",
+        ""
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://ghproxy.cc/https://github.com/pal1000/mesa-dist-win/releases/download/$version/mesa3d-$version-release-mingw.7z"
+    }
+}
