@@ -8,8 +8,8 @@
         "New-Item -ItemType SymbolicLink -Path 'C:\\Program Files (x86)\\Steam\\steamapps\\sourcemods\\tf2classic' -Target \"$dir\""
     ],
     "checkver": {
-        "url": "https://tf2classic.com/history",
-        "regex": "([\\d.]+) Patch"
+        "url": "https://tf2classic.com/",
+        "regex": "Game v([\\d.]+)"
     },
     "pre_uninstall": [
         "if ($cmd -eq \"uninstall\") { rm -r 'C:\\Program Files (x86)\\Steam\\steamapps\\sourcemods\\tf2classic' }"
