@@ -1,13 +1,13 @@
 {
-    "version": "0.4.0",
+    "version": "0.6.0",
     "description": "PlayStation 4 emulator for Windows, Linux and macOS",
     "homepage": "https://shadps4.net/",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/shadps4-emu/shadPS4/blob/main/LICENSE"
     },
-    "url": "https://ghproxy.cc/https://github.com/shadps4-emu/shadPS4/releases/download/v.0.4.0/shadps4-win64-qt-0.4.0.zip",
-    "hash": "877e5c238673c3f5a2f6111caeb63a33ef4ff251fe878ea376b81294e1753666",
+    "url": "https://ghproxy.cc/https://github.com/shadps4-emu/shadPS4/releases/download/v.0.6.0/shadps4-win64-qt-0.6.0.zip",
+    "hash": "cb057e133e729c1deb9bed1b4687ac89c0416254b8f6c460afaf485239f5afcb",
     "bin": "shadPS4.exe",
     "shortcuts": [
         [
@@ -15,11 +15,11 @@
             "shadPS4"
         ]
     ],
-    "persist": [
-        "user"
-    ],
+    "persist": "user",
     "checkver": {
-        "github": "https://github.com/shadps4-emu/shadPS4/"
+        "url": "https://api.github.com/repos/shadps4-emu/shadPS4/releases/latest",
+        "jsonpath": "$.tag_name",
+        "regex": "v\\.([\\d.]+)"
     },
     "autoupdate": {
         "url": "https://ghproxy.cc/https://github.com/shadps4-emu/shadPS4/releases/download/v.$version/shadps4-win64-qt-$version.zip"
