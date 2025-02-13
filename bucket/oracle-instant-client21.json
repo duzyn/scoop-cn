@@ -1,5 +1,5 @@
 {
-    "version": "21.15.0.0.0",
+    "version": "21.17.0.0.0",
     "description": "Connect to a local or remote Oracle Database for development and production deployment.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -11,23 +11,23 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2115000/instantclient-basic-windows.x64-21.15.0.0.0dbru.zip",
-            "hash": "9cb28a535f3b19cb95cc2d14b5e67c7ea4efeaa1b1358913c1ce60183debd2c5",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2117000/instantclient-basic-windows.x64-21.17.0.0.0dbru.zip",
+            "hash": "f5eca9ed92cd7327fbe08b389a64c1f2edf576ae32d3445623f9601a78659588",
             "env_set": {
                 "OCI_LIB64": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/2115000/instantclient-basic-nt-21.15.0.0.0dbru.zip",
-            "hash": "74b86a60faff68a9978e1a5f1516408fcbd0ba05f45b708c79a7d1c49fda90f5",
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/2117000/instantclient-basic-nt-21.17.0.0.0dbru.zip",
+            "hash": "0e123af39e56ac363cf07e51eb0bc7273bbf50af598325fedf9a4ae5e9186a8c",
             "env_set": {
                 "OCI_LIB32": "$dir",
                 "TNS_ADMIN": "$dir\\network\\admin"
             }
         }
     },
-    "extract_dir": "instantclient_21_15",
+    "extract_dir": "instantclient_21_17",
     "env_add_path": ".",
     "persist": "network\\admin",
     "checkver": {
