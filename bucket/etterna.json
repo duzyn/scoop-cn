@@ -1,0 +1,43 @@
+{
+    "version": "0.74.3",
+    "description": "Advanced cross-platform rhythm game focused on keyboard play",
+    "homepage": "https://etternaonline.com/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/etternagame/etterna/releases/download/v0.74.3/Etterna-0.74.3-win64.exe#/dl.7z",
+            "hash": "313af0967e2d6544a42352d98ca6b198449787c18f31807b161945d7d5f447f1"
+        },
+        "32bit": {
+            "url": "https://ghproxy.cc/https://github.com/etternagame/etterna/releases/download/v0.74.3/Etterna-0.74.3-win32.exe#/dl.7z",
+            "hash": "e93eaee0a45c3b7f477b4a4e176aaf0b971aff27038aa712431ed0f94103f2cb"
+        }
+    },
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "bin": "Program\\Etterna.exe",
+    "shortcuts": [
+        [
+            "Program\\Etterna.exe",
+            "Etterna"
+        ]
+    ],
+    "persist": [
+        "NoteSkins",
+        "Save",
+        "Songs",
+        "Themes"
+    ],
+    "checkver": {
+        "github": "https://github.com/etternagame/etterna"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/etternagame/etterna/releases/download/v$version/Etterna-$version-win64.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.cc/https://github.com/etternagame/etterna/releases/download/v$version/Etterna-$version-win32.exe#/dl.7z"
+            }
+        }
+    }
+}
