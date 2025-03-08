@@ -1,10 +1,18 @@
 {
-    "version": "4.17.2",
+    "version": "4.19.1",
     "description": "Platform for gaming and enhancing gameplay primarily with MUDs",
     "homepage": "https://www.mudlet.org/",
     "license": "GPL-2.0",
-    "url": "https://www.mudlet.org/wp-content/files/Mudlet-4.17.2-windows-installer.exe#/dl.7z",
-    "hash": "67cfbfb33c11a0c6b2295083c4c9b157dd68d4fb82e500709625e04722fe124f",
+    "architecture": {
+        "64bit": {
+            "url": "https://www.mudlet.org/wp-content/files/Mudlet-4.19.1-windows-64-installer.exe#/dl.7z",
+            "hash": "7389f9776550aa468f688c5b050e733b0ac308880168e11a3dac33fab5a304d1"
+        },
+        "32bit": {
+            "url": "https://www.mudlet.org/wp-content/files/Mudlet-4.19.1-windows-32-installer.exe#/dl.7z",
+            "hash": "d40b3d7d88118fd80cc929b716b6d015103eb9bdb0daa47b245c7989d7656534"
+        }
+    },
     "pre_install": [
         "Expand-7zipArchive \"$dir\\Mudlet-$version-full.nupkg\" $dir -Removal",
         "Remove-Item \"$dir\\_rels\", \"$dir\\package\", \"$dir\\*.*\", \"$dir\\RELEASES\" -Recurse",
@@ -20,9 +28,17 @@
     ],
     "checkver": {
         "url": "https://www.mudlet.org/download/",
-        "regex": "Mudlet (?<version>[\\d.]+) \\(Windows\\)"
+        "regex": "Mudlet (?<version>[\\d.]+) \\(windows-32\\)",
+        "reverse": true
     },
     "autoupdate": {
-        "url": "https://www.mudlet.org/wp-content/files/Mudlet-$matchVersion-windows-installer.exe#/dl.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://www.mudlet.org/wp-content/files/Mudlet-$matchVersion-windows-64-installer.exe#/dl.7z"
+            },
+            "32bit": {
+                "url": "https://www.mudlet.org/wp-content/files/Mudlet-$matchVersion-windows-32-installer.exe#/dl.7z"
+            }
+        }
     }
 }
