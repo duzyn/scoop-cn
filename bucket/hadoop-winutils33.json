@@ -40,7 +40,11 @@
         "56ac42988d7fe5758667c5ca6be0c4455cb0bf073fa14dbdb6a105e3b3d6f234",
         "ad3544310c6687376d8d6b5f796c4b0d9fe64edec3907e63dd517f82a861d0bf"
     ],
-    "bin": "winutils.exe",
+    "env_add_path": "bin",
+    "env_set": {
+        "HADOOP_HOME": "$dir"
+    },
+    "pre_install": "New-Item -ItemType SymbolicLink -Path \"$dir\\bin\" -Value \".\" | Out-Null",
     "checkver": {
         "url": "https://api.github.com/repos/cdarlint/winutils/contents/",
         "jsonpath": "$..name",

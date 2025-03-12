@@ -1,18 +1,18 @@
 {
-    "version": "4.3-beta3",
+    "version": "4.4-beta4",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.3/beta3/mono/Godot_v4.3-beta3_mono_win64.zip",
-            "hash": "sha512:dc5ee769741f296f71fdaa81141a44af823ee5347981abdce80edeee8c463907f58443a7fc391cd65489325e1bafd5a3f13733b24dc86fac1bf26be756f8695e",
-            "extract_dir": "Godot_v4.3-beta3_mono_win64"
+            "url": "https://ghproxy.cc/https://github.com/godotengine/godot-builds/releases/download/4.4-beta4/Godot_v4.4-beta4_mono_win64.zip",
+            "hash": "sha512:73d6b576023d7d9cfbfcef046b5a7fb80a9007e9046def317ae225f8d349fd798714e97d33137f09f2a223329134f03f5861830a835da3fc54d79b1dfbc1843e",
+            "extract_dir": "Godot_v4.4-beta4_mono_win64"
         },
         "32bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.3/beta3/mono/Godot_v4.3-beta3_mono_win32.zip",
-            "hash": "sha512:1efa6993b5711e8dd0753b927e47474448b59ead3deae846a2ac7824f99477a5611da994768160052a9679357657b62c3af62e6633af366bb58456b1278d32c4",
-            "extract_dir": "Godot_v4.3-beta3_mono_win32"
+            "url": "https://ghproxy.cc/https://github.com/godotengine/godot-builds/releases/download/4.4-beta4/Godot_v4.4-beta4_mono_win32.zip",
+            "hash": "sha512:90357e597c5b89d3d8a28b40ac8a87e8242340fc92302cb127d040ddaa21f3cf9d861c8834d32c0ed95bf2432a17f920d527bcee4520af523dd9d36c048884db",
+            "extract_dir": "Godot_v4.4-beta4_mono_win32"
         }
     },
     "pre_install": [
@@ -27,18 +27,18 @@
         ]
     ],
     "checkver": {
-        "url": "https://godotengine.org/blog/pre-release/",
-        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) beta (?<beta>[\\d.]+)",
+        "url": "https://github.com/godotengine/godot-builds/releases",
+        "regex": "(?<ver>[\\d.]+)-beta(?<beta>[\\d.]+)",
         "replace": "${1}-beta${2}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip",
+                "url": "https://ghproxy.cc/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win64.zip",
                 "extract_dir": "Godot_v$version_mono_win64"
             },
             "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip",
+                "url": "https://ghproxy.cc/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win32.zip",
                 "extract_dir": "Godot_v$version_mono_win32"
             }
         },

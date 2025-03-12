@@ -1,10 +1,10 @@
 {
-    "version": "2.99.18",
+    "version": "3.0.0-RC3",
     "description": "GNU Image Manipulation Program",
     "homepage": "https://www.gimp.org",
     "license": "GPL-3.0-only",
-    "url": "https://mirrors.nju.edu.cn/gimp/gimp/v2.99/windows/gimp-2.99.18-setup.exe",
-    "hash": "2a09a05407a0dbf160f96a1ebb6455e6ffbe920bfb4c62adbb1cd83b116b7e1c",
+    "url": "https://mirrors.nju.edu.cn/gimp/gimp/v3.0/windows/gimp-3.0.0-RC3-setup.exe",
+    "hash": "5845a53cd4ffa954abb91e404feea5b41afa50df3dcbd13c90e5ee17e4ddaa86",
     "innosetup": true,
     "installer": {
         "script": [
@@ -40,33 +40,33 @@
         ]
     },
     "bin": [
-        "bin\\gimp-console-2.99.exe",
+        "bin\\gimp-console-3.0.exe",
         [
-            "bin\\gimp-console-2.99.exe",
+            "bin\\gimp-console-3.0.exe",
             "gimp-console"
         ],
         [
-            "bin\\gimp-console-2.99.exe",
+            "bin\\gimp-console-3.0.exe",
             "gimp"
         ],
-        "bin\\gimptool-2.99.exe",
+        "bin\\gimptool-3.0.exe",
         [
-            "bin\\gimptool-2.99.exe",
+            "bin\\gimptool-3.0.exe",
             "gimptool"
         ]
     ],
     "shortcuts": [
         [
-            "bin\\gimp-2.99.exe",
+            "bin\\gimp-3.0.exe",
             "GIMP Development Version"
         ]
     ],
     "checkver": {
         "url": "https://testing.gimp.org/downloads/devel/",
-        "regex": "The current development release of GIMP is \\<b\\>([\\d.]+)"
+        "regex": "The current development release of GIMP is \\<b\\>([\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://mirrors.nju.edu.cn/gimp/gimp/v$majorVersion.$minorVersion/windows/gimp-$matchHead-setup$matchTail.exe",
+        "url": "https://mirrors.nju.edu.cn/gimp/gimp/v$majorVersion.$minorVersion/windows/gimp-$matchHead$matchTail-setup.exe",
         "hash": {
             "url": "$baseurl/SHA256SUMS"
         },

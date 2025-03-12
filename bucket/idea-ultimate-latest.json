@@ -1,0 +1,73 @@
+{
+    "version": "251.23774.16",
+    "description": "Cross-Platform IDE for Java by JetBrains (Latest).",
+    "homepage": "https://www.jetbrains.com/idea/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/store/license.html"
+    },
+    "url": "https://download.jetbrains.com/idea/ideaIU-251.23774.16.win.zip",
+    "hash": "783e6aec080285d124759ab425d3befe74edc830eb0a81a1c0564a012301df99",
+    "extract_to": "IDE",
+    "pre_install": "Get-ChildItem \"$persist_dir\\IDE\\bin\\idea*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$dir\\IDE\\bin\"",
+    "installer": {
+        "script": "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir"
+    },
+    "architecture": {
+        "64bit": {
+            "bin": [
+                [
+                    "IDE\\bin\\idea64.exe",
+                    "idea"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\idea64.exe",
+                    "JetBrains\\IDEA Ultimate (Latest)"
+                ]
+            ]
+        },
+        "32bit": {
+            "bin": "IDE\\bin\\idea.exe",
+            "shortcuts": [
+                [
+                    "IDE\\bin\\idea.exe",
+                    "JetBrains\\IDEA Ultimate (Latest)"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "profile"
+    ],
+    "pre_uninstall": "Get-ChildItem \"$dir\\IDE\\bin\\idea*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$persist_dir\\IDE\\bin\"",
+    "checkver": {
+        "script": [
+            "$latestRelease = Invoke-RestMethod -Uri \"https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&platform=zip&type=release\"",
+            "$latestRc = Invoke-RestMethod -Uri \"https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&platform=zip&type=rc\"",
+            "$latestEap = Invoke-RestMethod -Uri \"https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&platform=zip&type=eap\"",
+            "if (([System.Version]$latestRelease.IIU.build -gt [System.Version]$latestRc.IIU.build) -and ([System.Version]$latestRelease.IIU.build -gt [System.Version]$latestEap.IIU.build)) {",
+            "$latestBuildNumber = $latestRelease.IIU.build",
+            "$latestRelease = $latestRelease.IIU.version",
+            "}",
+            "elseif (([System.Version]$latestRc.IIU.build -gt [System.Version]$latestRelease.IIU.build) -and ([System.Version]$latestRc.IIU.build -gt [System.Version]$latestEap.IIU.build)) {",
+            "$latestRelease = $latestRc.IIU.build",
+            "$latestBuildNumber = $latestRelease",
+            "}",
+            "else {",
+            "$latestRelease = $latestEap.IIU.build",
+            "$latestBuildNumber = $latestRelease",
+            "}",
+            "Write-Output \"$latestBuildNumber $latestRelease\""
+        ],
+        "regex": "(?<version>[\\d.]+) (?<release>[\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.jetbrains.com/idea/ideaIU-$matchRelease.win.zip",
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
