@@ -1,9 +1,9 @@
 {
     "version": "7.0",
-    "description": "An open source monospace font with round corner and ligatures for IDE and command line. (ttf version)",
+    "description": "An open source monospace font with round corner and ligatures for IDE and command line. (Minimal version, ttf format, unhinted version)",
     "homepage": "https://github.com/subframe7536/Maple-font",
     "license": "OFL-1.1",
-    "url": "https://ghproxy.cc/https://github.com/subframe7536/Maple-font/releases/download/v7.0/MapleMono-ttf.zip",
+    "url": "https://ghproxy.cc/https://github.com/subframe7536/Maple-font/releases/download/v7.0/MapleMono-TTF.zip",
     "hash": "1609689e46e7a618b09b11a3ed9d28cdf1ccc29263efef7a83a58cb4c7b7ac8a",
     "installer": {
         "script": [
@@ -87,6 +87,9 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/subframe7536/Maple-font/releases/download/v$version/MapleMono-ttf.zip"
+        "url": "https://ghproxy.cc/https://github.com/subframe7536/Maple-font/releases/download/v$version/MapleMono-TTF.zip",
+        "hash": {
+            "url": "$baseurl/MapleMono-TTF.sha256"
+        }
     }
 }

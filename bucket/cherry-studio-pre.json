@@ -1,6 +1,6 @@
 {
     "version": "1.1.5",
-    "description": "A desktop client that supports for multiple LLM providers.",
+    "description": "A desktop client that supports for multiple LLM providers (Pre-release).",
     "homepage": "https://cherry-ai.com",
     "license": "Apache-2.0",
     "architecture": {
@@ -33,7 +33,8 @@
     ],
     "persist": "data",
     "checkver": {
-        "github": "https://github.com/CherryHQ/cherry-studio"
+        "url": "https://api.github.com/repos/CherryHQ/cherry-studio/releases",
+        "regex": "download/v([\\d.]+)/"
     },
     "autoupdate": {
         "architecture": {
