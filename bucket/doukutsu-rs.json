@@ -1,0 +1,37 @@
+{
+    "version": "0.102.0-beta7",
+    "description": "Faithful reimplementation Cave Story's engine written in Rust",
+    "homepage": "https://github.com/doukutsu-rs/doukutsu-rs",
+    "license": "Custom",
+    "notes": [
+        "Place game data in:",
+        "",
+        "    $persist_dir\\data"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/doukutsu-rs/doukutsu-rs/releases/download/0.102.0-beta7/doukutsu-rs_windows_0.102.0-beta7.x86_64.exe#/doukutsu-rs.exe",
+            "hash": "b687cf11c0ff9707cae0f03c08f6af8aad962a768ec3d75b9e89ae640ed05540"
+        }
+    },
+    "bin": "doukutsu-rs.exe",
+    "shortcuts": [
+        [
+            "doukutsu-rs.exe",
+            "Cave Story (doukutsu-rs)"
+        ]
+    ],
+    "persist": "data",
+    "checkver": {
+        "url": "https://api.github.com/repos/doukutsu-rs/doukutsu-rs/releases/latest",
+        "regex": "releases/download/([^/]+)/doukutsu-rs_windows_\\1\\.x86_64\\.exe",
+        "replace": "$1"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/doukutsu-rs/doukutsu-rs/releases/download/$version/doukutsu-rs_windows_$version.x86_64.exe#/doukutsu-rs.exe"
+            }
+        }
+    }
+}
