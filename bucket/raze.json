@@ -1,5 +1,5 @@
 {
-    "version": "1.11.0",
+    "version": "1.11.0b",
     "description": "Modern source port for Duke Nukem 3D, Blood, Redneck Rampage, Shadow Warrior and Exhumed/Powerslave",
     "homepage": "https://raze.zdoom.org/about",
     "license": "Custom",
@@ -10,8 +10,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/ZDoom/Raze/releases/download/1.11.0/raze-1.11.0-windows.zip",
-            "hash": "91414f368ad20e7b36726bae8319de2d9c8b582770216209945db5a162eea066"
+            "url": "https://ghproxy.cc/https://github.com/ZDoom/Raze/releases/download/1.11.0/Raze-1.11.0b-windows.zip",
+            "hash": "16718c28d8d6853b418d467af0354b8c2a21f6c1bebb1686ef2da9896caac2e5"
         }
     },
     "bin": "raze.exe",
@@ -23,12 +23,14 @@
     ],
     "persist": "data",
     "checkver": {
-        "github": "https://github.com/coelckers/raze"
+        "url": "https://api.github.com/repos/ZDoom/Raze/releases/latest",
+        "regex": "releases/download/([\\d.]+)/Raze-(\\1[a-z]?)-windows\\.zip",
+        "replace": "$2"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/ZDoom/Raze/releases/download/$version/raze-$version-windows.zip"
+                "url": "https://ghproxy.cc/https://github.com/ZDoom/Raze/releases/download/$match1/Raze-$match2-windows.zip"
             }
         }
     }
