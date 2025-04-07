@@ -68,8 +68,8 @@ jobs:
         run: |
           .\update.ps1
           echo "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")" >log
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+          git config user.name "github-actions"
           git add --all
           git commit -m "Updated on $(Get-Date -Format "yyyy-MM-dd HH:mm K")"
           git push -f origin master
