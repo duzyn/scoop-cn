@@ -1,13 +1,17 @@
 {
-    "version": "20250126163205-a4412ad",
-    "description": "Xbox 360 Research Emulator (development version)",
-    "homepage": "https://xenia.jp",
+    "version": "20250406155356-0771938",
+    "description": "Xbox 360 Emulator Research Project (development version)",
+    "homepage": "https://github.com/xenia-canary/xenia-canary",
     "license": {
         "identifier": "BSD-3-Clause",
-        "url": "https://github.com/xenia-canary/xenia-canary/blob/canary_pr/LICENSE"
+        "url": "https://github.com/xenia-canary/xenia-canary/blob/canary_experimental/LICENSE"
     },
-    "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary/releases/download/a4412ad/xenia_canary.zip",
-    "hash": "d78aaf63eb2dd3520b81e218b30d1653ddd43f53978aa01644905bec7977774d",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary-releases/releases/download/0771938/xenia_canary_windows.zip",
+            "hash": "aaf0a88f4c0dd5d5283b7a79c9e2d247edde2a03f2e17ae836971f9fb8627e14"
+        }
+    },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -32,10 +36,12 @@
         "xenia-canary.config.toml",
         "content",
         "cache",
+        "cache0",
+        "cache1",
         "patches"
     ],
     "checkver": {
-        "url": "https://github.com/xenia-canary/xenia-canary/releases.atom",
+        "url": "https://github.com/xenia-canary/xenia-canary-releases/releases.atom",
         "script": [
             "$xml = [xml]$page",
             "$updated = ($xml.feed.entry | Where-Object {$_.title -ne 'canary_experimental'} | Sort-Object -Descending { $_.updated })[0].updated",
@@ -46,6 +52,6 @@
         "replace": "${year}${month}${day}${hour}${minute}${second}-${commit}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary/releases/download/$matchCommit/xenia_canary.zip"
+        "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary-releases/releases/download/$matchCommit/xenia_canary_windows.zip"
     }
 }
