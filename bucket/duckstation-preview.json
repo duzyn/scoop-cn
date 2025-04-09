@@ -1,9 +1,9 @@
 {
     "version": "20250409-g2156053",
-    "description": "A fast PlayStation 1 emulator for PC and Android (preview build)",
-    "homepage": "https://github.com/stenzek/duckstation/",
+    "description": "Fast PlayStation 1 emulator (preview build)",
+    "homepage": "https://www.duckstation.org/",
     "license": {
-        "identifier": "GPL-3.0-only",
+        "identifier": "CC-BY-NC-ND-4.0",
         "url": "https://github.com/stenzek/duckstation/blob/master/LICENSE"
     },
     "notes": [
@@ -11,29 +11,58 @@
         "Place the BIOS file in $persist_dir\\bios",
         "Learn more at: https://web.archive.org/web/20210620033009/https://www.duckstation.org/wiki/BIOS"
     ],
-    "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
-    "hash": "a279c4d226b41012df9bf1daa7c0ba7c76d50369bdb14f224f086e5b8930da9b",
-    "installer": {
-        "script": [
-            "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
-            "if (!(Test-Path \"$persist_dir\")) {",
-            "  '[Main]', 'SettingsVersion = 3', '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$dir\\settings.ini\"",
-            "}"
-        ]
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
     },
-    "uninstaller": {
-        "script": "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
+            "hash": "a279c4d226b41012df9bf1daa7c0ba7c76d50369bdb14f224f086e5b8930da9b",
+            "post_install": [
+                "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
+                "echo \"update bin/shortcuts\"",
+                "$shell = New-Object -COM WScript.Shell",
+                "$shortcut = $shell.CreateShortCut(\"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation (preview).lnk\")",
+                "$shortcut.TargetPath = \"$original_dir\\duckstation-qt-x64-ReleaseLTCG.exe\"",
+                "$shortcut.Save()"
+            ],
+            "bin": [
+                [
+                    "duckstation-qt-x64-ReleaseLTCG.exe",
+                    "duckstation"
+                ]
+            ]
+        },
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-arm64-release.zip",
+            "hash": "10dd780312358ace5f98a096921c36b1d3b71a25503606e09b4fd88ff8a263ee",
+            "post_install": [
+                "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
+                "echo \"update bin/shortcuts\"",
+                "$shell = New-Object -COM WScript.Shell",
+                "$shortcut = $shell.CreateShortCut(\"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation (preview).lnk\")",
+                "$shortcut.TargetPath = \"$original_dir\\duckstation-qt-ARM64-ReleaseLTCG.exe\"",
+                "$shortcut.Save()"
+            ],
+            "bin": [
+                [
+                    "duckstation-qt-ARM64-ReleaseLTCG.exe",
+                    "duckstation"
+                ]
+            ]
+        }
     },
-    "post_install": [
-        "echo \"update bin/shortcuts\"",
-        "$shell = New-Object -COM WScript.Shell",
-        "$shortcut = $shell.CreateShortCut(\"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation (preview).lnk\")",
-        "$shortcut.TargetPath = \"$original_dir\\duckstation-qt-x64-ReleaseLTCG.exe\"",
-        "$shortcut.Save()"
-    ],
-    "post_uninstall": [
-        "echo \"update bin/shortcuts\"",
-        "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation (preview).lnk\""
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:USERPROFILE\\Documents\\DuckStation\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\DuckStation\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\DuckStation\" -Recurse",
+        "   } else {",
+        "       '[Main]', 'SettingsVersion = 3', '[AutoUpdater]', 'CheckAtStartup = false' | Set-Content \"$dir\\settings.ini\"",
+        "   }",
+        "}"
     ],
     "persist": [
         "bios",
@@ -50,12 +79,26 @@
         "textures",
         "settings.ini"
     ],
+    "pre_uninstall": [
+        "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+    ],
+    "post_uninstall": [
+        "echo \"update bin/shortcuts\"",
+        "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation (preview).lnk\""
+    ],
     "checkver": {
         "url": "https://github.com/stenzek/duckstation/releases/tag/preview",
         "regex": " datetime=\"(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})[\\s\\S]*?.*duckstation/commit/(?<commit>[0-9a-f]{7})",
         "replace": "${year}${month}${day}-g${commit}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-ARM64-release.zip"
+            }
+        }
     }
 }
