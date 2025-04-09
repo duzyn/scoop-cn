@@ -1,0 +1,57 @@
+{
+    "version": "1.28.8",
+    "description": "Universal .NET-powered modding framework for any native x86/x64 game",
+    "homepage": "https://reloaded-project.github.io/Reloaded-II/",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/Reloaded-Project/Reloaded-II/blob/master/LICENSE.md"
+    },
+    "suggest": {
+        "Microsoft .NET 9.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime",
+        "Microsoft .NET 9.0 Desktop Runtime (x86)": "scoop-cn/windowsdesktop-runtime -a 32bit"
+    },
+    "url": "https://ghproxy.cc/https://github.com/Reloaded-Project/Reloaded-II/releases/download/1.28.8/Release.zip",
+    "hash": "8e9311310a1d9c0ea1473e78aa82d710e5d26820a7ac48f89a5f7d48fad1c70c",
+    "architecture": {
+        "32bit": {
+            "bin": [
+                [
+                    "Reloaded-II32.exe",
+                    "reloaded-ii"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Reloaded-II32.exe",
+                    "Reloaded-II"
+                ]
+            ]
+        },
+        "64bit": {
+            "bin": [
+                [
+                    "Reloaded-II.exe",
+                    "reloaded-ii"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "Reloaded-II.exe",
+                    "Reloaded-II"
+                ]
+            ]
+        }
+    },
+    "persist": [
+        "Apps",
+        "Mods",
+        "Plugins",
+        "User"
+    ],
+    "checkver": {
+        "github": "https://github.com/Reloaded-Project/Reloaded-II"
+    },
+    "autoupdate": {
+        "url": "https://ghproxy.cc/https://github.com/Reloaded-Project/Reloaded-II/releases/download/$version/Release.zip"
+    }
+}
