@@ -1,21 +1,21 @@
 {
     "description": "Official General-Availability Release of OpenJDK",
     "homepage": "https://jdk.java.net/",
-    "version": "23.0.2-7",
+    "version": "24",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.java.net/java/GA/jdk23.0.2/6da2a6609d6e406f85c491fcb119101b/7/GPL/openjdk-23.0.2_windows-x64_bin.zip",
-            "hash": "f6d4d5674be54ab026781951512ad11832c9957538d06c20121ed5a4edde6b5a"
+            "url": "https://download.java.net/java/GA/jdk24/1f9ff9062db4449d8ca828c504ffae90/36/GPL/openjdk-24_windows-x64_bin.zip",
+            "hash": "11d1d9f6ac272d5361c8a0bef01894364081c7fb1a6914c2ad2fc312ae83d63b"
         }
     },
-    "extract_dir": "jdk-23.0.2",
+    "extract_dir": "jdk-24",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://jdk.java.net/23",
+        "url": "https://jdk.java.net/24",
         "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
         "replace": "${version}-${build}${ea}"
     },
