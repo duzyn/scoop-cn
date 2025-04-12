@@ -6,6 +6,9 @@
         "identifier": "BSD-3-Clause",
         "url": "https://github.com/xenia-project/xenia/blob/master/LICENSE"
     },
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.cc/https://github.com/xenia-project/release-builds-windows/releases/download/v1.0.2817-master/xenia_master.zip",
@@ -15,15 +18,16 @@
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\portable.txt\" -ItemType File | Out-Null",
-        "   New-item \"$persist_dir\\xenia.config.toml\" -ItemType File | Out-Null",
         "   if (Test-Path \"$env:USERPROFILE\\Documents\\Xenia\") {",
         "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\\*\" -Destination \"$persist_dir\" -Recurse",
         "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\" -Recurse",
+        "   } else {",
+        "       New-item \"$dir\\xenia.config.toml\" -ItemType File | Out-Null",
         "   }",
         "}"
     ],
+    "post_install": "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
     "bin": "xenia.exe",
     "shortcuts": [
         [
@@ -32,10 +36,9 @@
         ]
     ],
     "persist": [
-        "portable.txt",
-        "xenia.config.toml",
+        "cache",
         "content",
-        "cache"
+        "xenia.config.toml"
     ],
     "checkver": {
         "github": "https://github.com/xenia-project/release-builds-windows",

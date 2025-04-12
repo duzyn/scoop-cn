@@ -6,6 +6,9 @@
         "identifier": "BSD-3-Clause",
         "url": "https://github.com/xenia-canary/xenia-canary/blob/canary_experimental/LICENSE"
     },
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary-releases/releases/download/0771938/xenia_canary_windows.zip",
@@ -14,13 +17,14 @@
     },
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
-        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
-        "   New-item \"$persist_dir\\portable.txt\" -ItemType File | Out-Null",
-        "   New-item \"$persist_dir\\xenia-canary.config.toml\" -ItemType File | Out-Null",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
         "   if (Test-Path \"$env:USERPROFILE\\Documents\\Xenia\") {",
         "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Rename-Item \"$persist_dir\\xenia.config.toml\" -NewName \"xenia-canary.config.toml\"",
         "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\" -Recurse",
+        "   } else {",
+        "       New-item \"$dir\\xenia-canary.config.toml\" -ItemType File | Out-Null",
         "   }",
         "}"
     ],
@@ -32,13 +36,12 @@
         ]
     ],
     "persist": [
-        "portable.txt",
-        "xenia-canary.config.toml",
-        "content",
         "cache",
         "cache0",
         "cache1",
-        "patches"
+        "content",
+        "patches",
+        "xenia-canary.config.toml"
     ],
     "checkver": {
         "url": "https://github.com/xenia-canary/xenia-canary-releases/releases.atom",
@@ -52,6 +55,10 @@
         "replace": "${year}${month}${day}${hour}${minute}${second}-${commit}"
     },
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary-releases/releases/download/$matchCommit/xenia_canary_windows.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/xenia-canary/xenia-canary-releases/releases/download/$matchCommit/xenia_canary_windows.zip"
+            }
+        }
     }
 }
