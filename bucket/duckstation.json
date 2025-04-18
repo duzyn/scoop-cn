@@ -1,5 +1,5 @@
 {
-    "version": "20250409-ga310d3a",
+    "version": "20250418-g75ae7de",
     "description": "Fast PlayStation 1 emulator",
     "homepage": "https://www.duckstation.org/",
     "license": {
@@ -17,7 +17,7 @@
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/latest/duckstation-windows-x64-release.zip",
-            "hash": "fe4e8eca83bd7e08bfc39a961b579a5a8ffa156cf6f4b47932e0f21f04893380",
+            "hash": "e394c59f079a5528bd279a6cc44bd997cfa1b801b55a48f57c83da0f056b75b5",
             "post_install": [
                 "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
                 "echo \"update bin/shortcuts\"",
@@ -34,8 +34,8 @@
             ]
         },
         "arm64": {
-            "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/latest/duckstation-windows-arm64-release.zip",
-            "hash": "e74f5f21ae2a509f04f3d5d54e5f2f2bd3d7a98a92ccdb301ecf1d958f49cac8",
+            "url": "https://ghproxy.cc/https://github.com/stenzek/duckstation/releases/download/latest/duckstation-windows-ARM64-release.zip",
+            "hash": "610e3db3e2feb6ea6b076482a81d41881b645fba14989b63a8bd57f5bff96088",
             "post_install": [
                 "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
                 "echo \"update bin/shortcuts\"",
@@ -79,9 +79,7 @@
         "textures",
         "settings.ini"
     ],
-    "pre_uninstall": [
-        "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
-    ],
+    "pre_uninstall": "Copy-Item \"$dir\\settings.ini\" \"$persist_dir\" -ErrorAction SilentlyContinue -Force",
     "post_uninstall": [
         "echo \"update bin/shortcuts\"",
         "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\Scoop Apps\\DuckStation.lnk\""
