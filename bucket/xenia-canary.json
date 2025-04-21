@@ -24,6 +24,7 @@
         "       Rename-Item \"$persist_dir\\xenia.config.toml\" -NewName \"xenia-canary.config.toml\"",
         "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\" -Recurse",
         "   } else {",
+        "       New-item \"$dir\\recent.toml\" -ItemType File | Out-Null",
         "       New-item \"$dir\\xenia-canary.config.toml\" -ItemType File | Out-Null",
         "   }",
         "}"
@@ -37,10 +38,10 @@
     ],
     "persist": [
         "cache",
-        "cache0",
-        "cache1",
+        "cache_host",
         "content",
         "patches",
+        "recent.toml",
         "xenia-canary.config.toml"
     ],
     "checkver": {
