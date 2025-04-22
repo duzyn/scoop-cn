@@ -1,0 +1,28 @@
+{
+    "version": "3.9.9",
+    "description": "Software project management and comprehension tool",
+    "homepage": "https://maven.apache.org/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "JDK": "scoop-cn/openjdk"
+    },
+    "url": "https://archive.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.zip",
+    "hash": "sha512:8beac8d11ef208f1e2a8df0682b9448a9a363d2ad13ca74af43705549e72e74c9378823bf689287801cbbfc2f6ea9596201d19ccacfdfb682ee8a2ff4c4418ba",
+    "extract_dir": "apache-maven-3.9.9",
+    "env_add_path": "bin",
+    "persist": [
+        "conf",
+        "lib\\ext"
+    ],
+    "checkver": {
+        "url": "https://maven.apache.org/docs/history.html",
+        "regex": "<b>(3.[\\d.]+)</b>"
+    },
+    "autoupdate": {
+        "url": "https://archive.apache.org/dist/maven/maven-3/$version/binaries/apache-maven-$version-bin.zip",
+        "hash": {
+            "url": "$url.sha512"
+        },
+        "extract_dir": "apache-maven-$version"
+    }
+}
