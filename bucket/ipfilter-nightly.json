@@ -1,10 +1,10 @@
 {
-    "version": "1745298497",
+    "version": "1745384894",
     "description": "Protects privacy and security when using Bit Torrent by blocking a list of potentially malicious peers.",
     "homepage": "https://www.ipfilter.app/",
     "license": "MIT",
     "url": "https://ghproxy.cc/https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip",
-    "hash": "4c8944d9fa4e160d98f44cadfe49354d5fba8b719270863c95d6a4e6e268ad61",
+    "hash": "550715f74a1913858cfd3a650eb93ab3ffdfb5c7bb913418ba001fff0cae8486",
     "checkver": {
         "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/487352/releases/tags/lists).assets[0].updated_at -UFormat %s } catch { '' }",
         "regex": "\\A(\\d+)\\Z"
