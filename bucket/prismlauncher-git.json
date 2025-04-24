@@ -1,5 +1,5 @@
 {
-    "version": "7.0-15a981b",
+    "version": "10.0-15a981b",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
@@ -31,10 +31,17 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success",
-        "jsonpath": "$.workflow_runs[0].head_sha",
-        "regex": "(?<sha>\\A[a-f\\d]{0,7})",
-        "replace": "7.0-${sha}"
+        "script": [
+            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success&event=push'",
+            "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
+            "$cmakeContent = Invoke-WebRequest \"https://ghproxy.cc/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
+            "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
+            "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",
+            "$version = \"$majorVersion.$minorVersion-$fullSha\"",
+            "$version"
+        ],
+        "regex": "(?<version>[\\d.]+)-(?<sha>[a-f0-9]{7,7})",
+        "replace": "${version}-${sha}"
     },
     "autoupdate": {
         "architecture": {
