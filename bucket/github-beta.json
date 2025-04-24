@@ -5,8 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-3.4.19-beta3-x64-full.nupkg?env=beta",
-            "hash": "sha1:544d269990dc47ac5d641626344068c433fc6574"
+            "url": "https://ghproxy.cc/https://github.com/desktop/desktop/releases/download/release-3.4.19-beta3/GitHubDesktop-3.4.19-beta3-x64-full.nupkg",
+            "hash": "fd2c9a3afe272feca055f749af1c34a84f72c932ae04d3422674dc9e8ee911f3"
+        },
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/desktop/desktop/releases/download/release-3.4.19-beta3/GitHubDesktop-3.4.19-beta3-arm64-full.nupkg",
+            "hash": "6073fe70b47b7c245fdafed3e9f42dcc53552a3c6b329b218ddd66ab9572162f"
         }
     },
     "extract_dir": "lib\\net45",
@@ -18,19 +22,20 @@
         ]
     ],
     "checkver": {
-        "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
-        "regex": "GitHubDesktop-([\\d.\\-beta]+)-full\\.nupkg",
-        "reverse": true
+        "url": "https://api.github.com/repositories/58559694/tags",
+        "regex": "tags/release-([\\d.]+-beta\\d+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://central.github.com/deployments/desktop/desktop/latest/GitHubDesktop-$version-x64-full.nupkg?env=beta",
-                "hash": {
-                    "url": "https://central.github.com/api/deployments/desktop/desktop/latest/RELEASES?env=beta",
-                    "regex": "$sha1\\s+GithubDesktop-$version-"
-                }
+                "url": "https://ghproxy.cc/https://github.com/desktop/desktop/releases/download/release-$version/GitHubDesktop-$version-x64-full.nupkg"
+            },
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/desktop/desktop/releases/download/release-$version/GitHubDesktop-$version-arm64-full.nupkg"
             }
+        },
+        "hash": {
+            "url": "$baseurl/GitHub.Desktop-$version-checksums.txt"
         }
     }
 }
