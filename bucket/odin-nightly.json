@@ -9,8 +9,15 @@
             "hash": "45c8ae8559f9f88af9cb94a9379063bd5aff36fcb341ba60ebd8012483044203"
         }
     },
-    "extract_dir": "dist",
+    "pre_install": [
+        "$binDir = Get-ChildItem -Path \"$dir\" -Filter 'odin.exe' -Recurse | Select-Object -ExpandProperty DirectoryName",
+        "if ($binDir -ne $dir) {",
+        "  Move-Item -Path \"$binDir\\*\" -Destination \"$dir\"",
+        "  Remove-Item -Path \"$binDir\"",
+        "}"
+    ],
     "bin": "odin.exe",
+    "persist": "shared",
     "checkver": {
         "url": "https://odinbinaries.thisdrunkdane.io/file/odin-binaries/nightly.json",
         "regex": "nightly%2B([\\d\\-]+).zip",
@@ -22,6 +29,5 @@
                 "url": "https://f001.backblazeb2.com/file/odin-binaries/nightly/odin-windows-amd64-nightly%2B$version.zip"
             }
         }
-    },
-    "persist": "shared"
+    }
 }

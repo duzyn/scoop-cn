@@ -1,15 +1,15 @@
 {
-    "version": "29085",
+    "version": "40504",
     "description": "A free and open-source multi-platform parametric 3D modeler.",
     "homepage": "https://www.freecadweb.org",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-29085-Win-Conda-x86_64.7z",
-            "hash": "c05924e52b1349afeb3fd3ce46a9629ace189ba20326f59d44078caf64a18a1b"
+            "url": "https://ghproxy.cc/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-40504-conda-Windows-x86_64-py311.7z",
+            "hash": "6fcffd7d73e710b025a38d7aff8600d83463ed8ff23e4f184c66f481ac8d923b"
         }
     },
-    "extract_dir": "FreeCAD_weekly-builds-29085-Win-Conda-x86_64",
+    "extract_dir": "FreeCAD_weekly-builds-40504-conda-Windows-x86_64-py311",
     "bin": "bin\\FreeCADCmd.exe",
     "shortcuts": [
         [
@@ -18,19 +18,19 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/FreeCAD/FreeCAD-Bundle/releases/tag/weekly-builds",
-        "regex": "FreeCAD_weekly-builds-([\\d]+)-Win-Conda"
+        "url": "https://api.github.com/repos/FreeCAD/FreeCAD-Bundle/releases/tags/weekly-builds",
+        "regex": "FreeCAD_weekly-builds-([\\d]+)-conda-Windows"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-$version-Win-Conda-x86_64.7z"
+                "url": "https://ghproxy.cc/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311.7z"
             }
         },
         "hash": {
             "url": "$url-SHA256.txt",
             "regex": "(?sm):\\s+([a-fA-F\\d\\s]+)CertUtil"
         },
-        "extract_dir": "FreeCAD_weekly-builds-$version-Win-Conda-x86_64"
+        "extract_dir": "FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311"
     }
 }

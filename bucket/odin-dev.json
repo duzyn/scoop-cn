@@ -6,11 +6,18 @@
     "architecture": {
         "64bit": {
             "url": "https://ghproxy.cc/https://github.com/odin-lang/Odin/releases/download/dev-2025-04/odin-windows-amd64-dev-2025-04.zip",
-            "hash": "40a26f3da1fa56a08af4068273742cd927429153fab4766ff428b8a8ce7d9800"
+            "hash": "3a12a57880a7fe63de0363b6930cdd02e624fdb955c1308c23d888e5ac7b135b"
         }
     },
-    "extract_dir": "dist",
+    "pre_install": [
+        "$binDir = Get-ChildItem -Path \"$dir\" -Filter 'odin.exe' -Recurse | Select-Object -ExpandProperty DirectoryName",
+        "if ($binDir -ne $dir) {",
+        "  Move-Item -Path \"$binDir\\*\" -Destination \"$dir\"",
+        "  Remove-Item -Path \"$binDir\"",
+        "}"
+    ],
     "bin": "odin.exe",
+    "persist": "shared",
     "checkver": {
         "url": "https://github.com/odin-lang/Odin/releases/latest",
         "regex": "/releases/tag/dev-([\\d-]+)"
@@ -21,6 +28,5 @@
                 "url": "https://ghproxy.cc/https://github.com/odin-lang/Odin/releases/download/dev-$version/odin-windows-amd64-dev-$version.zip"
             }
         }
-    },
-    "persist": "shared"
+    }
 }
