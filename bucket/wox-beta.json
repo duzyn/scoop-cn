@@ -1,5 +1,5 @@
 {
-    "version": "1.4.1196",
+    "version": "2.0.0-beta.2",
     "description": "A full-featured launcher, access programs and web contents as you type.",
     "homepage": "http://www.wox.one",
     "license": "MIT",
@@ -7,10 +7,15 @@
         "Python3": "python",
         "Everything": "scoop-cn/everything"
     },
-    "url": "https://ghproxy.cc/https://github.com/Wox-launcher/Wox/releases/download/v1.4.1196/Wox-1.4.1196-full.nupkg",
-    "hash": "sha1:69fcc97e4b7b2702885463793ad617ed2d0c94b6",
-    "extract_dir": "lib\\net462",
-    "bin": "Wox.exe",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/Wox-launcher/Wox/releases/download/v2.0.0-beta.2/wox-windows-amd64.exe",
+            "hash": "2a99e5bca335e96f9361c162db2e6d8beb3ec876e5596c13e2b3112bd79ce043"
+        }
+    },
+    "installer": {
+        "script": "Rename-Item \"$dir\\wox-windows-amd64.exe\" 'Wox.exe'"
+    },
     "shortcuts": [
         [
             "Wox.exe",
@@ -19,12 +24,13 @@
     ],
     "checkver": {
         "url": "https://github.com/Wox-launcher/Wox/releases",
-        "regex": "tree/v([\\d.]+)"
+        "regex": "tree/v([\\d.]+-beta\\.\\d+)"
     },
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/Wox-launcher/Wox/releases/download/v$version/Wox-$version-full.nupkg",
-        "hash": {
-            "url": "$baseurl/RELEASES"
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/Wox-launcher/Wox/releases/download/v$version/wox-windows-amd64.exe"
+            }
         }
     }
 }
