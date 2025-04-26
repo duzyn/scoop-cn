@@ -1,16 +1,20 @@
 {
-    "version": "0.81",
+    "version": "0.83u1",
     "description": "PuTTY CAC is a fork of the PuTTY, a popular Secure Shell (SSH) terminal. PuTTY CAC adds the ability to use the Windows Certificate API (CAPI) or a Public Key Cryptography Standards (PKCS) library to perform SSH public key authentication using a private key associated with a certificate that is stored on a hardware token.",
     "homepage": "https://github.com/NoMoreFood/putty-cac",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://raw.githubusercontent.com/NoMoreFood/putty-cac/0.81/binaries/puttycac-64bit-0.81.zip",
-            "hash": "3cfc405c5899956768c56355637557f5ce19f5ce3524408a796bab62d31db91e"
+            "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-x64.zip",
+            "hash": "7feca8f5d919d4d359955780a5a5f01debbe936827f10815f106abd63bf95ca4"
         },
         "32bit": {
-            "url": "https://ghproxy.cc/https://raw.githubusercontent.com/NoMoreFood/putty-cac/0.81/binaries/puttycac-0.81.zip",
-            "hash": "ef5b20567cf2de5dd634aa3451a2748126a83bca5aeed9c94e9c85b09c3df855"
+            "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-x86.zip",
+            "hash": "0c58834e98c9f404cc4916487edf86815f8b041ce6c93cb65c1140f5c59a7c54"
+        },
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-arm64.zip",
+            "hash": "075638c617401387edb4f673aa585b68afba5f07ecea4fcd9d0d1d8df9b2b5ef"
         }
     },
     "bin": [
@@ -51,10 +55,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://raw.githubusercontent.com/NoMoreFood/putty-cac/$version/binaries/puttycac-64bit-$version.zip"
+                "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-x64.zip"
             },
             "32bit": {
-                "url": "https://ghproxy.cc/https://raw.githubusercontent.com/NoMoreFood/putty-cac/$version/binaries/puttycac-$version.zip"
+                "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-x86.zip"
+            },
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/NoMoreFood/putty-cac/raw/0.83u1/binaries/puttycac-0.83u1-arm64.zip"
             }
         },
         "hash": {

@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.9/Cherry-Studio-1.2.9-setup.exe#/dl.7z",
+            "url": "https://ghproxy.cc/https://github.com/CherryHQ/cherry-studio/releases/download/v1.2.9/Cherry-Studio-1.2.9-x64-setup.exe#/dl.7z",
             "hash": "sha512:dc282d742df9850377a02cdbacee2a5ab4d92a77eb78f854e06203db44681145b6bb6f4f7c3491ec0539a1f4b6815fc7ead8765c96661234016d704fe080fb23",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -39,7 +39,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-setup.exe#/dl.7z",
+                "url": "https://ghproxy.cc/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-setup.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "sha512: $base64"
