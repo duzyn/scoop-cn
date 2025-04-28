@@ -1,5 +1,5 @@
 {
-    "version": "2503",
+    "version": "2503a",
     "description": "Nintendo GameCube and Wii emulator, with enhancements and Netplay",
     "homepage": "https://dolphin-emu.org/",
     "license": {
@@ -11,13 +11,13 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.dolphin-emu.org/releases/2503/dolphin-2503-x64.7z",
-            "hash": "dd4d8ef51539838455d7c7eb6650d133e125b532bcb0f9c2bbba6d366651905f",
+            "url": "https://dl.dolphin-emu.org/releases/2503a/dolphin-2503a-x64.7z",
+            "hash": "97a81ff65af58854d3d4278af7e9dc8370f99a6ba0096da4abe81e4c4052e2a6",
             "extract_dir": "Dolphin-x64"
         },
         "arm64": {
-            "url": "https://dl.dolphin-emu.org/releases/2503/dolphin-2503-ARM64.7z",
-            "hash": "9d36d5d49695dd6b8732f56b024aa589ea129a7743fa55d53fd656216672106d",
+            "url": "https://dl.dolphin-emu.org/releases/2503a/dolphin-2503a-ARM64.7z",
+            "hash": "ad0d9826b1a128f6af87e7219ff31964602b04f9e3e6339d7c1fe40dae0dc866",
             "extract_dir": "Dolphin-ARM64"
         }
     },
@@ -43,7 +43,7 @@
     "persist": "User",
     "checkver": {
         "url": "https://dolphin-emu.org/download/",
-        "regex": "https://dl.dolphin-emu.org/releases/(?<version>[\\d]+)/"
+        "regex": "https://dl.dolphin-emu.org/releases/(?<version>\\d+[\\w-]*)/"
     },
     "autoupdate": {
         "architecture": {
