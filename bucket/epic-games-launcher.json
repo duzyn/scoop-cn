@@ -10,13 +10,13 @@
     "hash": "d2cc5d628fff5e1f5158fe11c3e7ae8f2dadbd0cbedd63fad68e78804d946bb3",
     "post_install": [
         "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
-        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn', \"INSTALLDIR=$dir\", \"TARGETDIR=$dir\")",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn', \"INSTALLDIR=`\"$dir`\"\", \"TARGETDIR=`\"$dir`\"\")",
         "Stop-Service -Name 'EpicOnlineServices' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'EpicGamesLauncher' -Force -ErrorAction 'SilentlyContinue'"
     ],
     "pre_uninstall": [
         "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
         "Stop-Service -Name 'EpicOnlineServices' -Force -ErrorAction 'SilentlyContinue'; Stop-Process -Name 'EpicGamesLauncher' -Force -ErrorAction 'SilentlyContinue'",
-        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn'); Start-Sleep -Seconds 3",
+        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn'); Start-Sleep -Seconds 3",
         "Remove-Item \"$env:LOCALAPPDATA\\Epic Online Services\" -Force -Recurse -ErrorAction 'SilentlyContinue'"
     ],
     "checkver": {
