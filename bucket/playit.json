@@ -1,31 +1,38 @@
 {
-    "version": "0.15.19",
-    "description": "Playit.gg is a networking service that enables users to host game servers at home accessible to players worldwide through its custom tunneling software and Anycast Network",
+    "version": "0.15.26",
+    "description": "Playit.gg is a networking service that enables users to host game servers at home, making them accessible to players worldwide through its custom tunneling software and Anycast Network",
     "homepage": "https://playit.gg/",
-    "license": "BSD-3-Clause",
+    "license": {
+        "identifier": "BSD-2-Clause",
+        "url": "https://github.com/playit-cloud/playit-agent/blob/master/LICENSE.txt"
+    },
     "architecture": {
+        "32bit": {
+            "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86-signed.exe",
+            "hash": "f7bcf4175af95221a6ec3039dd8157e0bb30f1df62f8707c075e1f549c7bc23b",
+            "pre_install": "Rename-Item -Path $dir/playit-windows-x86-signed.exe -NewName $dir/playit.exe"
+        },
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.19/playit-windows-x86_64_signed.exe",
-            "hash": "9be57640f4d5f4943ee40f159ba2c6a947f0760e399f2b55f1f4dffe47ca97cf"
+            "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe",
+            "hash": "dd1acb19e47bca4a935f2f72a68390bd2fc3a8ed608af7c9c247d3a69d7fba0a",
+            "pre_install": "Rename-Item -Path $dir/playit-windows-x86_64-signed.exe -NewName $dir/playit.exe"
         }
     },
-    "bin": [
-        [
-            "playit-windows-x86.exe",
-            "playit"
-        ]
-    ],
+    "bin": "playit.exe",
     "shortcuts": [
         [
-            "playit-windows-x86.exe",
+            "playit.exe",
             "Playit.gg"
         ]
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/playit-cloud/playit-agent/releases/latest"
+        "github": "https://github.com/playit-cloud/playit-agent"
     },
     "autoupdate": {
         "architecture": {
+            "32bit": {
+                "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86-signed.exe"
+            },
             "64bit": {
                 "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86_64-signed.exe"
             }
