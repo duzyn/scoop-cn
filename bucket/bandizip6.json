@@ -7,14 +7,13 @@
         "url": "https://en.bandisoft.com/bandizip/eula/"
     },
     "url": "https://www.bandisoft.com/bandizip/dl.php?old-portable#/BANDIZIP6-PORTABLE.ZIP",
-    "hash": "fb3f9db5e0a93aeca35f975cb54893bbc46eecedecf4d9b1088dbb1c378569b1",
+    "hash": "391768aca0e962d0a717b0c8ee63037af0a8dcb7f13fa9be8c380cff0436e4dd",
     "architecture": {
         "64bit": {
             "pre_install": [
                 "Rename-Item \"$dir\\Bandizip64.exe\" 'Bandizip.exe'",
                 "Remove-Item \"$dir\\Bandizip32.exe\"",
                 "if (!(Test-Path \"$persist_dir\\Bandizip.ini\")) { New-Item \"$dir\\Bandizip.ini\" -ItemType File | Out-Null }"
-
             ]
         },
         "32bit": {
@@ -22,7 +21,6 @@
                 "Rename-Item \"$dir\\Bandizip32.exe\" 'Bandizip.exe'",
                 "Remove-Item \"$dir\\Bandizip64.exe\"",
                 "if (!(Test-Path \"$persist_dir\\Bandizip.ini\")) { New-Item \"$dir\\Bandizip.ini\" -ItemType File | Out-Null }"
-
             ]
         }
     },
