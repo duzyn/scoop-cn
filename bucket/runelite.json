@@ -4,12 +4,16 @@
     "homepage": "https://runelite.net",
     "license": "BSD-2-Clause",
     "architecture": {
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/2.7.4/RuneLiteSetupAArch64.exe",
+            "hash": "6de39c2ad8e8f7582b0cd0eebf3caab25c2365457192d31c0a0544266323a23e"
+        },
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/2.7.4/RuneLiteSetup.exe#/dl.7z",
+            "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/2.7.4/RuneLiteSetup.exe",
             "hash": "8bde0a49f6e185008a78af6769d2ca05dd2f1573408bf89dfb0673261beef394"
         },
         "32bit": {
-            "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/2.7.4/RuneLiteSetup32.exe#/dl.7z",
+            "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/2.7.4/RuneLiteSetup32.exe",
             "hash": "7bdd83fbfafca6e7f0f90c10c18de481dfdacbac99ec8d9237b8fab1f2420283"
         }
     },
@@ -25,11 +29,14 @@
     },
     "autoupdate": {
         "architecture": {
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/$version/RuneLiteSetupAArch64.exe"
+            },
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/$version/RuneLiteSetup.exe#/dl.7z"
+                "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/$version/RuneLiteSetup.exe"
             },
             "32bit": {
-                "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/$version/RuneLiteSetup32.exe#/dl.7z"
+                "url": "https://ghproxy.cc/https://github.com/runelite/launcher/releases/download/$version/RuneLiteSetup32.exe"
             }
         },
         "hash": {

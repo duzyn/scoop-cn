@@ -1,20 +1,20 @@
 {
-    "version": "141",
+    "version": "144",
     "description": "Multi-system emulator focused on accuracy and preservation",
     "homepage": "https://ares-emu.net",
     "license": "ISC",
     "notes": "Configuration file cannot be persisted, but will be retained during the update",
     "architecture": {
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v141/ares-windows.zip",
-            "hash": "129a3a5bd8640db4424f241759a88debd51d6f432de8a2cf0874527bdcf1019b"
+            "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v144/ares-windows-x64.zip",
+            "hash": "c6ff53bf6bd2626c904322cf1fbbff6c8b6ef893119d6ae5322197d10138f790"
         },
         "arm64": {
-            "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v141/ares-windows-msvc-arm64.zip",
-            "hash": "fa82cf516e23a3f074b0eff9abfd5f053dd8c99714c648d848daf4cc37833013"
+            "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v144/ares-windows-clang-cl-arm64.zip",
+            "hash": "6cc9ff372f726045d482413f9b3efd1f29afdbaa86dd297094a053af74bf9d67"
         }
     },
-    "extract_dir": "ares-v141",
+    "extract_dir": "ares-v144",
     "post_install": [
         "if (!(Test-Path \"$persist_dir\\settings.bml.bak\")) {",
         "   New-Item -ItemType File \"$dir\\settings.bml\" | Out-Null",
@@ -52,10 +52,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows.zip"
+                "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-x64.zip"
             },
             "arm64": {
-                "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-msvc-arm64.zip"
+                "url": "https://ghproxy.cc/https://github.com/ares-emulator/ares/releases/download/v$cleanVersion/ares-windows-clang-cl-arm64.zip"
             }
         },
         "extract_dir": "ares-v$cleanVersion"
