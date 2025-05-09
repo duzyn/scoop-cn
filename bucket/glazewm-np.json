@@ -1,0 +1,136 @@
+{
+    "version": "3.8.1",
+    "description": "A tiling window manager for Windows inspired by i3 and Polybar (nonportable installation).",
+    "homepage": "https://github.com/glzr-io/glazewm",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/glzr-io/glazewm/releases/download/v3.8.1/standalone-glazewm-v3.8.1-x64.msi",
+            "hash": "2FE716634E7C78B1FBE1207697A8A8207C6B4B902F4A5C65D100ABF5BDA796D5",
+            "installer": {
+                "script": [
+                    "if (!(is_admin)) {",
+                    "    Start-Process powershell -ArgumentList \"-ExecutionPolicy Bypass -Command & { scoop install $global:scoop_local_bucket/glazewm-np }\" -Verb RunAs;",
+                    "    break;",
+                    "}",
+                    "$programFilesPath = [System.Environment]::GetFolderPath('ProgramFiles');",
+                    "$destinationPath = Join-Path $programFilesPath 'glzr.io\\GlazeWM';",
+                    "$sourcePath = \"$dir\\PFiles64\\glzr.io\\GlazeWM\";",
+                    "Start-Process msiexec -ArgumentList @('/i', \"$dir\\$fname\", '/quiet', '/norestart') -Wait -Verb RunAs",
+                    "if (!(Test-Path $sourcePath)) { throw \"Source path not found: $sourcePath\" }",
+                    "if (!(Test-Path $destinationPath)) { New-Item -ItemType Directory -Force -Path $destinationPath }",
+                    "Copy-Item -Recurse -Force \"$sourcePath\\*\" \"$destinationPath\"",
+                    "Copy-Item -Force \"$dir\\$fname\" \"$destinationPath\\glazewm.msi\"",
+                    "if (!(Test-Path \"$destinationPath\\glazewm.exe\")) { throw \"Installation failed. glazewm.exe not found in $destinationPath\" }",
+                    "Write-Host \"Installation successful. Files located in: $destinationPath\";",
+                    "",
+                    "Write-Host 'Creating shortcut for GlazeWM...';",
+                    "$startMenuPath = Join-Path ([Environment]::GetFolderPath('StartMenu')) 'Programs';",
+                    "$shortcutPath = Join-Path $startMenuPath 'GlazeWM.lnk';",
+                    "$shell = New-Object -ComObject WScript.Shell;",
+                    "$shortcut = $shell.CreateShortcut($shortcutPath);",
+                    "$shortcut.TargetPath = \"$destinationPath\\glazewm.exe\";",
+                    "$shortcut.WorkingDirectory = \"$destinationPath\";",
+                    "$shortcut.IconLocation = \"$destinationPath\\glazewm.exe\";",
+                    "$shortcut.Save();",
+                    "Write-Host \"Shortcut created in Start Menu: $shortcutPath\";",
+                    "",
+                    "Write-Host 'Refreshing Windows Search Index...';",
+                    "Start-Sleep -Seconds 2;",
+                    "Stop-Service 'WSearch' -Force;",
+                    "Start-Sleep -Seconds 3;",
+                    "Start-Service 'WSearch';",
+                    "Write-Host 'Windows Search Index refreshed successfully.';"
+                ]
+            }
+        },
+        "arm64": {
+            "url": "https://ghproxy.cc/https://github.com/glzr-io/glazewm/releases/download/v3.8.1/standalone-glazewm-v3.8.1-arm64.msi",
+            "hash": "9A92A7F4FEB667363A4FC20EE8CA8D9B3E9412CE5BD43F67575C868EA851C0B5",
+            "installer": {
+                "script": [
+                    "if (!(is_admin)) {",
+                    "    Start-Process powershell -ArgumentList \"-ExecutionPolicy Bypass -Command & { scoop install $global:scoop_local_bucket/glazewm-np }\" -Verb RunAs;",
+                    "    break;",
+                    "}",
+                    "$programFilesPath = [System.Environment]::GetFolderPath('ProgramFiles');",
+                    "$destinationPath = Join-Path $programFilesPath 'glzr.io\\GlazeWM';",
+                    "$sourcePath = \"$dir\\PFiles64\\glzr.io\\GlazeWM\";",
+                    "Start-Process msiexec -ArgumentList @('/i', \"$dir\\$fname\", '/quiet', '/norestart') -Wait -Verb RunAs",
+                    "if (!(Test-Path $sourcePath)) { throw \"Source path not found: $sourcePath\" }",
+                    "if (!(Test-Path $destinationPath)) { New-Item -ItemType Directory -Force -Path $destinationPath }",
+                    "Copy-Item -Recurse -Force \"$sourcePath\\*\" \"$destinationPath\"",
+                    "Copy-Item -Force \"$dir\\$fname\" \"$destinationPath\\glazewm.msi\"",
+                    "if (!(Test-Path \"$destinationPath\\glazewm.exe\")) { throw \"Installation failed. glazewm.exe not found in $destinationPath\" }",
+                    "Write-Host \"Installation successful. Files located in: $destinationPath\";",
+                    "",
+                    "Write-Host 'Creating shortcut for GlazeWM...';",
+                    "$startMenuPath = Join-Path ([Environment]::GetFolderPath('StartMenu')) 'Programs';",
+                    "$shortcutPath = Join-Path $startMenuPath 'GlazeWM.lnk';",
+                    "$shell = New-Object -ComObject WScript.Shell;",
+                    "$shortcut = $shell.CreateShortcut($shortcutPath);",
+                    "$shortcut.TargetPath = \"$destinationPath\\glazewm.exe\";",
+                    "$shortcut.WorkingDirectory = \"$destinationPath\";",
+                    "$shortcut.IconLocation = \"$destinationPath\\glazewm.exe\";",
+                    "$shortcut.Save();",
+                    "Write-Host \"Shortcut created in Start Menu: $shortcutPath\";",
+                    "",
+                    "Write-Host 'Refreshing Windows Search Index...';",
+                    "Start-Sleep -Seconds 2;",
+                    "Stop-Service 'WSearch' -Force;",
+                    "Start-Sleep -Seconds 3;",
+                    "Start-Service 'WSearch';",
+                    "Write-Host 'Windows Search Index refreshed successfully.';"
+                ]
+            }
+        }
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) {",
+            "    Start-Process powershell -ArgumentList \"-ExecutionPolicy Bypass -Command & { scoop uninstall glazewm-np }\" -Verb RunAs;",
+            "    break;",
+            "}",
+            "$programFilesPath = [System.Environment]::GetFolderPath('ProgramFiles');",
+            "$destinationPath = Join-Path $programFilesPath 'glzr.io\\GlazeWM';",
+            "try {",
+            "    $productCode = (Get-WmiObject -Query \"SELECT IdentifyingNumber FROM Win32_Product WHERE Name = 'GlazeWM'\").IdentifyingNumber;",
+            "    if ($productCode) {",
+            "        Start-Process msiexec -ArgumentList @('/x', $productCode, '/quiet', '/norestart') -Wait -Verb RunAs;",
+            "        if (!(Test-Path $destinationPath)) {",
+            "            Write-Host 'GlazeWM uninstalled successfully.';",
+            "        } else {",
+            "            throw 'MSI uninstallation failed. Proceeding with manual cleanup.';",
+            "        }",
+            "    } else {",
+            "        throw 'ProductCode not found for GlazeWM.';",
+            "    }",
+            "} catch {",
+            "    Remove-Item -Recurse -Force $destinationPath;",
+            "    if (!(Test-Path $destinationPath)) {",
+            "        Write-Host 'GlazeWM uninstalled successfully (manual cleanup).';",
+            "    } else {",
+            "        throw 'Uninstallation failed. Directory still exists.';",
+            "    }",
+            "}"
+        ]
+    },
+    "shortcuts": [
+        [
+            "%ProgramFiles%\\glzr.io\\GlazeWM\\glazewm.exe",
+            "GlazeWM",
+            "%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\GlazeWM.lnk"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/glzr-io/glazewm/releases/download/v$version/standalone-glazewm-v$version-x64.msi"
+            },
+            "arm64": {
+                "url": "https://ghproxy.cc/https://github.com/glzr-io/glazewm/releases/download/v$version/standalone-glazewm-v$version-arm64.msi"
+            }
+        }
+    }
+}
