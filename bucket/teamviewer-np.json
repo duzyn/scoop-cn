@@ -1,37 +1,42 @@
 {
-    "version": "15.41.10",
+    "version": "15.65.6",
     "description": "Software for remote control, desktop sharing, online meetings, web conferencing and file transfer between computers.",
     "homepage": "https://www.teamviewer.com/",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.teamviewer.com/en/eula/"
     },
-    "url": "https://example.com/#/dummy.txt",
-    "hash": "ea8fac7c65fb589b0d53560f5251f74f9e9b243478dcb6b3ea79b5e36449c8d9",
+    "architecture": {
+        "64bit": {
+            "url": "https://dl.teamviewer.com/download/version_15x/TeamViewer_Setup_x64.exe#/setup.exe",
+            "hash": "99846cb4b108028390ef39001ef22cfd98308805afae41d26e540e4cbe528535"
+        },
+        "32bit": {
+            "url": "https://dl.teamviewer.com/download/version_15x/TeamViewer_Setup.exe#/setup.exe",
+            "hash": "8622f0f9236d6f48126faeb8d51d5f1b196ee16cd35f04d39292888d5f05f48f"
+        }
+    },
     "installer": {
         "script": [
-            "# TeamViewer's installer adds additional info (changes hash) every time. This is a workaround.",
-            "$majorVersion = [version]::new($manifest.version).Major",
-            "if ($architecture -eq '64bit') { $url = \"https://download.teamviewer.com/download/version_${majorVersion}x/TeamViewer_Setup_x64.exe\" }",
-            "elseif ($architecture -eq '32bit') { $url = \"https://download.teamviewer.com/download/version_${majorVersion}x/TeamViewer_Setup.exe\" }",
-            "",
-            "$ProgressPreference = 'SilentlyContinue'",
-            "$retry_count = 0",
-            "warn 'Downloading TeamViewer installer...'",
-            "for (;;) {",
-            "    $retry_count += 1",
-            "    if ($retry_count > 5) { error 'Could not download the installer. The network might be unstable.'; break }",
-            "    $r = Invoke-WebRequest $url -OutFile \"$dir\\setup.exe\"",
-            "    warn 'Checking file integrity...'",
-            "    7z t \"$dir\\setup.exe\" | Out-Null",
-            "    if ($LASTEXITCODE -eq 0) { break }",
-            "    else { warn 'File check failed. Retrying' }",
-            "}",
             "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/norestart') -Verb RunAs | Out-Null",
             "Remove-Item \"$dir\\setup.exe\", \"$dir\\dummy.txt\""
         ]
     },
-    "pre_uninstall": "Stop-Process -Name 'teamviewer' -ErrorAction SilentlyContinue",
+    "pre_uninstall": [
+        "$is_running = $null -ne $(Get-Process -Name 'teamviewer' -ErrorAction SilentlyContinue)",
+        "if ($is_running) {",
+        "    Write-Host \"`nTeamViewer is running, would you like to continue?\" -ForegroundColor Yellow",
+        "    $answer = Read-Host -Prompt \"Enter 'y' to continue, any other key to cancel\"",
+        "    if ('y' -eq $answer) {",
+        "        Write-Host \"Stopping process...\" -ForegroundColor Yellow -NoNewline",
+        "        Stop-Process -Name 'teamviewer' -ErrorAction Stop",
+        "        Start-Sleep -Milliseconds 250",
+        "    } else {",
+        "        Write-Host \"Uninstallation cancelled.\" -ForegroundColor Red",
+        "        break",
+        "    }",
+        "}"
+    ],
     "uninstaller": {
         "script": [
             "$uninstall = \"$env:ProgramFiles\\TeamViewer\\uninstall.exe\"",
@@ -41,10 +46,17 @@
     },
     "checkver": {
         "useragent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.26 Safari/537.36",
-        "url": "https://www.teamviewer.com/en-us/download/windows/",
-        "regex": "<p>Current\\sversion:\\s([\\d.]+)</p>"
+        "url": "https://www.teamviewer.com/en-us/download/portal/windows/",
+        "regex": "<span data-dl-version-label>([\\d.]+)<\\/span>"
     },
     "autoupdate": {
-        "url": "https://example.com/#/dummy.txt"
+        "architecture": {
+            "64bit": {
+                "url": "https://dl.teamviewer.com/download/version_$majorVersionx/TeamViewer_Setup_x64.exe#/setup.exe"
+            },
+            "32bit": {
+                "url": "https://dl.teamviewer.com/download/version_$majorVersionx/TeamViewer_Setup.exe#/setup.exe"
+            }
+        }
     }
 }
