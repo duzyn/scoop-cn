@@ -16,7 +16,10 @@
         ]
     },
     "post_install": [
-        "$package_name = (Get-AppxPackage -Name '*JackieLiu*Notepads*').PackageFamilyName",
+        "while ($null -eq $package_name) {",
+        "    Start-Sleep -Milliseconds 250",
+        "    $package_name = (Get-AppxPackage -Name '*JackieLiu*Notepads*').PackageFamilyName",
+        "}",
         "while (-not (Test-Path \"$env:LOCALAPPDATA\\Packages\\$package_name\\Settings\\settings.dat\")) { Start-Sleep -Milliseconds 250 }",
         "Copy-Item -Recurse -Force \"$dir\\Settings\" -Destination \"$env:LOCALAPPDATA\\Packages\\$package_name\""
     ],

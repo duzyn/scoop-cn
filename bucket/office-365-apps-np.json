@@ -1,5 +1,5 @@
 {
-    "version": "2.2.282.0",
+    "version": "16.0.18623.20156",
     "description": "Family of client software, server software and services developed by Microsoft.",
     "homepage": "https://www.office.com/",
     "license": {
@@ -7,8 +7,8 @@
         "url": "https://www.microsoft.com/licensing/terms/productoffering/OfficeDesktopApplicationsWindows/MCA"
     },
     "depends": "scoop-cn/7zip19.00-helper",
-    "url": "https://download.microsoft.com/download/#/dl.7z_",
-    "hash": "8ffc63965ada105607c9d935f338af084d914fff5b166a8cb9417bbfe9c03458",
+    "url": "https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_18623-20156.exe#/dl.7z_",
+    "hash": "8b7c8c7cf7bc38bc7167c883073cf1490744443222fdcd5027d2142127a1ec66",
     "pre_install": [
         "$scriptdir = \"$bucketsdir\\scoop-cn\\scripts\"",
         "if ($architecture -eq '64bit') {",
@@ -33,7 +33,7 @@
             "$ProgressPreference = 'SilentlyContinue'",
             "$url1 = 'https://docs.microsoft.com/en-us/officeupdates/odt-release-history'",
             "$regex1 = '<p>Version ([\\d.]+)'",
-            "$url2 = 'https://www.microsoft.com/en-au/download/confirmation.aspx?id=49117'",
+            "$url2 = 'https://www.microsoft.com/en-us/download/details.aspx?id=49117'",
             "$regex2 = 'download/([\\w/-]+)(officedeploymenttool_[\\d-]+\\.exe)'",
             "",
             "$cont = $(Invoke-WebRequest $url1).Content",

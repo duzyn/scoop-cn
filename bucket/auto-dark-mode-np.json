@@ -1,10 +1,10 @@
 {
-    "version": "10.4.1.1",
+    "version": "10.4.2.29",
     "description": "Automatically switches between the dark and light theme of Windows 10 at scheduled times.",
     "homepage": "https://github.com/Armin2208/Windows-Auto-Night-Mode",
     "license": "GPL-3.0-only",
-    "url": "https://ghproxy.cc/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/10.4.1.1/AutoDarkModeX_10.4.1.1.exe#/setup.exe",
-    "hash": "700032a3ceb02aa536e8a3671b72b9bcefa5c70d9d71f516f6d9d9af5be6a326",
+    "url": "https://ghproxy.cc/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/10.4.2.29/AutoDarkModeX_10.4.2.29_x86.exe#/setup.exe",
+    "hash": "B7404DA1B91F207AFA63F3B444B427F2CE11E4AAE710544B1360768CF8C61AB4",
     "notes": "Settings need to be reapplied after updating.",
     "installer": {
         "script": [
@@ -22,9 +22,9 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/$version/AutoDarkModeX_$version.exe#/setup.exe",
+        "url": "https://ghproxy.cc/https://github.com/AutoDarkMode/Windows-Auto-Night-Mode/releases/download/$version/AutoDarkModeX_$version_x86.exe#/setup.exe",
         "hash": {
-            "url": "$baseurl/AutoDarkModeX_$version.sha256"
+            "url": "$baseurl/AutoDarkModeX_$version_x86.exe.sha256"
         }
     }
 }

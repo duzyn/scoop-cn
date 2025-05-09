@@ -6,7 +6,7 @@
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.protonvpn.net/download/ProtonVPN_v4.1.12.exe",
+            "url": "https://download.protonvpn.net/download/ProtonVPN_v4.1.12_x64.exe",
             "hash": "32cc6750ddd2a607fc232cf276d787ea22f35f3d363b1cc5417bf3f19f98a414"
         }
     },
@@ -34,7 +34,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.protonvpn.net/download/ProtonVPN_v$version.exe",
+                "url": "https://download.protonvpn.net/download/ProtonVPN_v$version_x64.exe",
                 "hash": {
                     "url": "https://protonvpn.com/download/windows-releases.json",
                     "jsonpath": "$.Categories[?(@.Name == 'Stable')].Releases[?(@.Version == '$version')].File.SHA256CheckSum"
