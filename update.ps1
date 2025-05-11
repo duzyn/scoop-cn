@@ -70,7 +70,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # $content = $content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde'
 
     # 7-Zip
-    $content = $content -replace 'www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
+    $content = $content -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://ghproxy.cc/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
 
     # Blender
     $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender'
