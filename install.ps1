@@ -8,7 +8,7 @@ $global:ProgressPreference = 'SilentlyContinue'
 $GithubProxy = "https://ghproxy.cc"
 
 # 如果有设 SCOOP 环境变量，就按环境变量来
-$ScoopDir = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
+$ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 
 # 安装 Scoop
 (Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1").Replace("https://github.com", "$GithubProxy/https://github.com")  | Invoke-Expression
@@ -17,15 +17,15 @@ $ScoopDir = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop"
 
 # 替换 7zip, git 的下载地址为代理的
-(Get-Content "$ScoopDir\buckets\main\bucket\7zip.json") -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' | Set-Content "$ScoopDir\buckets\main\bucket\7zip.json"
-(Get-Content "$ScoopDir\buckets\main\bucket\git.json") -replace '(https?://github\.com/.+/releases/.*download)', 'https://ghproxy.cc/$1' | Set-Content "$ScoopDir\buckets\main\bucket\git.json"
+(Get-Content "$ScoopPath\buckets\main\bucket\7zip.json") -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' | Set-Content "$ScoopPath\buckets\main\bucket\7zip.json"
+(Get-Content "$ScoopPath\buckets\main\bucket\git.json") -replace '(https?://github\.com/.+/releases/.*download)', 'https://ghproxy.cc/$1' | Set-Content "$ScoopPath\buckets\main\bucket\git.json"
 
 # 安装时注意顺序是 7zip, git
 scoop install 7zip
 scoop install git
 
 # 将 Scoop 的 main 仓库源替换为代理的
-if (Test-Path -Path "$ScoopDir\buckets\main") { scoop bucket rm main }
+if (Test-Path -Path "$ScoopPath\buckets\main") { scoop bucket rm main }
 scoop bucket add main "$GithubProxy/https://github.com/ScoopInstaller/Main"
 
 # 添加 scoop-cn 仓库
