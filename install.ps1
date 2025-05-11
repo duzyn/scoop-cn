@@ -17,7 +17,7 @@ $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop"
 
 # 替换 7zip, git 的下载地址为代理的
-(Get-Content "$ScoopPath\buckets\main\bucket\7zip.json") -replace 'www\.7-zip\.org/a', 'mirrors.nju.edu.cn/7-zip' | Set-Content "$ScoopPath\buckets\main\bucket\7zip.json"
+(Get-Content "$ScoopPath\buckets\main\bucket\7zip.json") -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://ghproxy.cc/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content "$ScoopPath\buckets\main\bucket\7zip.json"
 (Get-Content "$ScoopPath\buckets\main\bucket\git.json") -replace '(https?://github\.com/.+/releases/.*download)', 'https://ghproxy.cc/$1' | Set-Content "$ScoopPath\buckets\main\bucket\git.json"
 
 # 安装时注意顺序是 7zip, git
@@ -35,6 +35,7 @@ scoop bucket add scoop-cn "$GithubProxy/https://github.com/duzyn/scoop-cn"
 Get-ChildItem -Path "$ScoopPath\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "main"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName }
 
 # 检查下安装结果是否正确
+scoop config
 scoop bucket list
 scoop list
 
