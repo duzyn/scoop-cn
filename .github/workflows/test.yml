@@ -17,6 +17,7 @@ jobs:
         shell: pwsh
         run: |
           .\install.ps1
-          scoop config
+          scoop config scoop_repo
+          scoop which 7z
+          scoop which git
           scoop bucket list
-          scoop list
