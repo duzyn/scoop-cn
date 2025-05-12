@@ -1,7 +1,7 @@
 name: Test Workflow
 
 on:
-  workflow_dispatch: # 添加手动触发器
+  workflow_dispatch:
 
 jobs:
   run-install-script:
@@ -16,3 +16,15 @@ jobs:
       - name: Run install.ps1
         shell: pwsh
         run: .\install.ps1
+
+      - name: Check config
+        shell: pwsh
+        run: scoop config
+
+      - name: Check bucket
+        shell: pwsh
+        run: scoop bucket list
+
+      - name: Check installed apps
+        shell: pwsh
+        run: scoop list
