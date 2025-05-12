@@ -23,8 +23,9 @@
         "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
     },
     "checkver": {
-        "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/7.0/latest.version",
-        "regex": "([\\d.]+)$"
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "jsonpath": "$.releases-index[?(@.channel-version == '7.0')].latest-runtime",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
