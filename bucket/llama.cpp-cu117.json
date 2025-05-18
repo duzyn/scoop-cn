@@ -1,0 +1,42 @@
+{
+    "version": "b5415",
+    "description": "Inference of LLaMA model in pure C/C++ (CUDA 11.7 version)",
+    "homepage": "https://github.com/ggml-org/llama.cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/ggml-org/llama.cpp/releases/download/b5415/llama-b5415-bin-win-cuda11.7-x64.zip",
+            "hash": "a14a360171c81553dd307cfd3c968c250ec39648056ac298b7f1c29eb599be02"
+        }
+    },
+    "bin": [
+        "llama-batched-bench.exe",
+        "llama-bench.exe",
+        "llama-cli.exe",
+        "llama-gemma3-cli.exe",
+        "llama-gguf-split.exe",
+        "llama-imatrix.exe",
+        "llama-llava-cli.exe",
+        "llama-minicpmv-cli.exe",
+        "llama-mtmd-cli.exe",
+        "llama-perplexity.exe",
+        "llama-quantize.exe",
+        "llama-qwen2vl-cli.exe",
+        "llama-run.exe",
+        "llama-server.exe",
+        "llama-tokenize.exe",
+        "llama-tts.exe"
+    ],
+    "persist": "models",
+    "checkver": {
+        "github": "https://github.com/ggml-org/llama.cpp",
+        "regex": "/releases/tag/(b[\\d]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda11.7-x64.zip"
+            }
+        }
+    }
+}
