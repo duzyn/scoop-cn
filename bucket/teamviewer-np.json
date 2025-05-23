@@ -19,7 +19,7 @@
     "installer": {
         "script": [
             "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('/S', '/norestart') -Verb RunAs | Out-Null",
-            "Remove-Item \"$dir\\setup.exe\", \"$dir\\dummy.txt\""
+            "Remove-Item \"$dir\\setup.exe\""
         ]
     },
     "pre_uninstall": [
