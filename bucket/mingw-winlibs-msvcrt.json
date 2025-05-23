@@ -1,0 +1,37 @@
+{
+    "version": "15.1.0-12.0.0-r1",
+    "description": "GNU Compiler Collection (MSVCRT, WinLibs build)",
+    "homepage": "https://winlibs.com",
+    "license": "GPL-3.0-or-later,ZPL-2.1,BSD-2-Clause,...",
+    "architecture": {
+        "64bit": {
+            "url": "https://ghproxy.cc/https://github.com/brechtsanders/winlibs_mingw/releases/download/15.1.0posix-12.0.0-msvcrt-r1/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64msvcrt-12.0.0-r1.7z",
+            "hash": "3bf8f6bc87229e9f119269c92f225216722998d76ea8420aa241a6e951becf4a",
+            "extract_dir": "mingw64"
+        },
+        "32bit": {
+            "url": "https://ghproxy.cc/https://github.com/brechtsanders/winlibs_mingw/releases/download/15.1.0posix-12.0.0-msvcrt-r1/winlibs-i686-posix-dwarf-gcc-15.1.0-mingw-w64msvcrt-12.0.0-r1.7z",
+            "hash": "6e006c4f48c67b8742aa027a86ecd257e1cdadf025006190b70461311441c74d",
+            "extract_dir": "mingw32"
+        }
+    },
+    "post_install": "Copy-Item \"$dir\\bin\\mingw32-make.exe\" \"$dir\\bin\\make.exe\"",
+    "env_add_path": "bin",
+    "checkver": {
+        "regex": "(?<gcc>[\\d.]+)posix-(?<mingw>[\\d.]+)-msvcrt-r(?<release>\\d+)",
+        "replace": "${gcc}-${mingw}-r${release}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://ghproxy.cc/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchMingw-msvcrt-r$matchRelease/winlibs-x86_64-posix-seh-gcc-$matchGcc-mingw-w64msvcrt-$matchMingw-r$matchRelease.7z"
+            },
+            "32bit": {
+                "url": "https://ghproxy.cc/https://github.com/brechtsanders/winlibs_mingw/releases/download/$matchGccposix-$matchMingw-msvcrt-r$matchRelease/winlibs-i686-posix-dwarf-gcc-$matchGcc-mingw-w64msvcrt-$matchMingw-r$matchRelease.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
