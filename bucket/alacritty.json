@@ -10,7 +10,7 @@
     "suggest": {
         "vcredist": "scoop-cn/vcredist2022"
     },
-    "url": "https://ghproxy.cc/https://github.com/alacritty/alacritty/releases/download/v0.15.1/Alacritty-v0.15.1-portable.exe#/alacritty.exe",
+    "url": "https://gh-proxy.com/https://github.com/alacritty/alacritty/releases/download/v0.15.1/Alacritty-v0.15.1-portable.exe#/alacritty.exe",
     "hash": "8e95115a265a64a210a5537f13924ec4cd86bd7974f18d60d024023f37888817",
     "post_install": [
         "$alacrittyPath = \"$dir\\alacritty.exe\".Replace('\\', '\\\\')",
@@ -34,6 +34,6 @@
     "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *>nul }",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/alacritty/alacritty/releases/download/v$version/Alacritty-v$version-portable.exe#/alacritty.exe"
+        "url": "https://gh-proxy.com/https://github.com/alacritty/alacritty/releases/download/v$version/Alacritty-v$version-portable.exe#/alacritty.exe"
     }
 }

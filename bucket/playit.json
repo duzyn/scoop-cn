@@ -8,12 +8,12 @@
     },
     "architecture": {
         "32bit": {
-            "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86-signed.exe",
+            "url": "https://gh-proxy.com/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86-signed.exe",
             "hash": "f7bcf4175af95221a6ec3039dd8157e0bb30f1df62f8707c075e1f549c7bc23b",
             "pre_install": "Rename-Item -Path $dir/playit-windows-x86-signed.exe -NewName $dir/playit.exe"
         },
         "64bit": {
-            "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe",
+            "url": "https://gh-proxy.com/https://github.com/playit-cloud/playit-agent/releases/download/v0.15.26/playit-windows-x86_64-signed.exe",
             "hash": "dd1acb19e47bca4a935f2f72a68390bd2fc3a8ed608af7c9c247d3a69d7fba0a",
             "pre_install": "Rename-Item -Path $dir/playit-windows-x86_64-signed.exe -NewName $dir/playit.exe"
         }
@@ -31,10 +31,10 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86-signed.exe"
+                "url": "https://gh-proxy.com/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86-signed.exe"
             },
             "64bit": {
-                "url": "https://ghproxy.cc/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86_64-signed.exe"
+                "url": "https://gh-proxy.com/https://github.com/playit-cloud/playit-agent/releases/download/v$version/playit-windows-x86_64-signed.exe"
             }
         }
     }

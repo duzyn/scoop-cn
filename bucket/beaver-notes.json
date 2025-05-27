@@ -1,5 +1,5 @@
 {
-    "$schema": "https://ghproxy.cc/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "$schema": "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
     "version": "3.9.0",
     "description": "A privacy-focused note-taking application",
     "homepage": "https://beavernotes.com/",
@@ -12,7 +12,7 @@
             "pre_install": "Expand-7zipArchive -Path \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" -DestinationPath \"$dir\""
         }
     },
-    "url": "https://ghproxy.cc/https://github.com/Beaver-Notes/Beaver-Notes/releases/download/3.9.0/Beaver-notes-3.9.0-portable.exe#/dl.7z",
+    "url": "https://gh-proxy.com/https://github.com/Beaver-Notes/Beaver-Notes/releases/download/3.9.0/Beaver-notes-3.9.0-portable.exe#/dl.7z",
     "hash": "08e7994bd626ec5deaad2d3f74e7cc5bbc14d23e644c4f7c6b0e3573660b6059",
     "post_install": [
         "$ScriptBlock = [scriptblock]{Remove-Item -Path \"$dir\\`$PLUGINSDIR\" -Force -Recurse}",
@@ -40,7 +40,7 @@
         "github": "https://github.com/Beaver-Notes/Beaver-Notes"
     },
     "autoupdate": {
-        "url": "https://ghproxy.cc/https://github.com/Beaver-Notes/Beaver-Notes/releases/download/$version/Beaver-notes-$version-portable.exe#/dl.7z",
+        "url": "https://gh-proxy.com/https://github.com/Beaver-Notes/Beaver-Notes/releases/download/$version/Beaver-notes-$version-portable.exe#/dl.7z",
         "hash": {
             "url": "$baseurl/checksums.sha256"
         }
