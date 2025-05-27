@@ -1,5 +1,5 @@
 {
-    "version": "0.49.6",
+    "version": "0.50.5",
     "description": "The AI Code Editor",
     "homepage": "https://www.cursor.com/",
     "license": {
@@ -9,12 +9,12 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/win32/x64/user-setup/CursorUserSetup-x64-0.49.6.exe",
-            "hash": "78a5bc17ffaf9c8b382ad07d0d97237d1f32a0350061a5df8d8ee903bbd7d674"
+            "url": "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/win32/x64/user-setup/CursorUserSetup-x64-0.50.5.exe",
+            "hash": "e528174a4cf1a50ed779be530cc4649ffe4522496c179eab91436ee93c09fb87"
         },
         "arm64": {
-            "url": "https://downloads.cursor.com/production/0781e811de386a0c5bcb07ceb259df8ff8246a52/win32/arm64/user-setup/CursorUserSetup-arm64-0.49.6.exe",
-            "hash": "d46b5d5b166bec6e8bfb13a5aa348fe03e12a6e9f8480fd4e865864237bec036"
+            "url": "https://downloads.cursor.com/production/96e5b01ca25f8fbd4c4c10bc69b15f6228c80771/win32/arm64/user-setup/CursorUserSetup-arm64-0.50.5.exe",
+            "hash": "71a64e33d49eb4f536cae38ea8753dec8fc540e7355fb04249e658edf26c32fa"
         }
     },
     "extract_dir": "{code_GetDestDir}",
@@ -34,7 +34,13 @@
         "    (Get-Content \"$extensions_file\") -replace '(?<=cursor(/|\\\\\\\\)).*?(?=(/|\\\\\\\\)data(/|\\\\\\\\)extensions)', $version | Set-Content \"$extensions_file\"",
         "}"
     ],
-    "bin": "resources\\app\\bin\\cursor.cmd",
+    "bin": [
+        [
+            "resources\\app\\bin\\cursor.cmd",
+            "",
+            "--user-data-dir=\"$dir\\data\\user-data\" --extensions-dir=\"$dir\\data\\extensions\""
+        ]
+    ],
     "shortcuts": [
         [
             "Cursor.exe",

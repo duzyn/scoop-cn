@@ -1,13 +1,12 @@
+name: Auto Update
+
 on:
-  push:
-    branches:
-      - "master"
+  workflow_dispatch:
   schedule:
     - cron: "0 * * * *"
 
 jobs:
-  excavate:
-    name: Excavate
+  auto-update:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3

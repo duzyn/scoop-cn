@@ -1,7 +1,7 @@
 name: Test Workflow
 
 on:
-  workflow_dispatch: # 添加手动触发器
+  workflow_dispatch:
 
 jobs:
   run-install-script:
@@ -15,4 +15,9 @@ jobs:
 
       - name: Run install.ps1
         shell: pwsh
-        run: .\install.ps1
+        run: |
+          .\install.ps1
+          scoop config scoop_repo
+          scoop which 7z
+          scoop which git
+          scoop bucket list

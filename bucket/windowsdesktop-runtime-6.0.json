@@ -1,21 +1,21 @@
 {
-    "version": "6.0.35",
+    "version": "6.0.36",
     "description": "Microsoft .NET 6.0 Desktop Runtime",
     "homepage": "https://dotnet.microsoft.com/download/dotnet/6.0",
     "license": "MIT",
     "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-6.0'",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x64.exe",
-            "hash": "sha512:2e264fc6e3b1619922c1ab81071e64f5608bbe74be5546b18ffaed24ed0198f64d5334fad9a250889b9f619da0a4d8d589596c1541f9dc965eba738a9e5f9232"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x64.exe",
+            "hash": "sha512:86fa63997e7e0dc6f3bf609e00880388dcf8d985c8f6417d07ebbbb1ecc957bf90214c8ff93f559a0e762b5626ba8c56c581f4d506aa4de7555f9792c2da254d"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-x86.exe",
-            "hash": "sha512:2bc9b299eec071c6220ad11a6e9578dd68bea87cefaef625f1f3f5b51b9fdac5941ec66ab4094228c60d75edfe9225fcb0a940a251d944bd50ce237767611d3e"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-x86.exe",
+            "hash": "sha512:a18351aabfe1590e58af79e57ac2414254ba80cb7a1fef19545a6b8418575c735fc1dc164c3c7fed426c4698f099991487fa4f443bab93afd41d1563845fbcf4"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.35/windowsdesktop-runtime-6.0.35-win-arm64.exe",
-            "hash": "sha512:c9a40b603c669a621e92ef58ecc9a2c48f26bb9c6efa4d9e7f76a1743b2b957a79828dd8ce71a4647caa7444d07b71d102e7eb61b6439a17215fa136d52bbe3d"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/6.0.36/windowsdesktop-runtime-6.0.36-win-arm64.exe",
+            "hash": "sha512:0d5fd97a305960851ff8527a7db65fadae661411d7a9b6e8dd972180cffce7bfa1b842db2baf1b8affd1843d317a2d640ab465a5876177505a34c75aa4631d66"
         }
     },
     "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
@@ -23,8 +23,9 @@
         "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
     },
     "checkver": {
-        "url": "https://dotnetcli.azureedge.net/dotnet/WindowsDesktop/6.0/latest.version",
-        "regex": "([\\d.]+)$"
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "jsonpath": "$.releases-index[?(@.channel-version == '6.0')].latest-runtime",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

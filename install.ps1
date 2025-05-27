@@ -34,9 +34,4 @@ scoop bucket add scoop-cn "$GithubProxy/https://github.com/duzyn/scoop-cn"
 # 将 7zip 和 git 转为后续用 scoop-cn 来更新
 Get-ChildItem -Path "$ScoopPath\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "main"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName }
 
-# 检查下安装结果是否正确
-scoop config
-scoop bucket list
-scoop list
-
 Write-Host "Scoop and scoop-cn was installed successfully!"

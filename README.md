@@ -31,7 +31,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 [PowerShell](https://learn.microsoft.com/zh-cn/powershell/) 版本在 5.1 或以上，如果没有 PowerShell 大于 5.1 版本，可以下载安装 [PowerShell Core](https://github.com/PowerShell/PowerShell)。运行以下命令查看：
 
 ```powershell
-$PSVersionTable.PSVersion.Major # should be >= 5.1
+$PSVersionTable.PSVersion.Major # 应该 >= 5.1
 ```
 
 其次，允许本地运行 PowerShell 脚本，以管理员打开 PowerShell，运行以下命令，回答 Y：
@@ -48,10 +48,12 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 irm https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
-或使用 jsDelivr 的地址：
+或使用其他镜像地址：
 
 ```powershell
+# 以下命令二选一
 irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
+irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
 安装成功后，会提示“Scoop and scoop-cn was installed successfully!”
