@@ -1,12 +1,12 @@
 {
-    "version": "4.2.4-99-g3b1884c5c",
+    "version": "4.2.5-389-g1b3978f8d",
     "description": "A free single-player dungeon exploration Roguelike (Pre-release)",
     "homepage": "https://rephial.org/",
     "license": "GPL-2.0",
     "notes": "Configuration files cannot be persisted, but will be retained during the update",
-    "url": "https://gh-proxy.net/https://github.com/angband/angband/releases/download/4.2.4-99-g3b1884c5c/Angband-4.2.4-99-g3b1884c5c-win.zip",
-    "hash": "90715cc3647ea95f79f2e6e1f350f557c2a0cddbd4aa15c64405301527ad33a8",
-    "extract_dir": "angband-4.2.4-99-g3b1884c5c",
+    "url": "https://gh-proxy.net/https://github.com/angband/angband/releases/download/4.2.5-389-g1b3978f8d/Angband-4.2.5-389-g1b3978f8d-win.zip",
+    "hash": "c0f4d1a7c158ae65adedd7bc793cc60d6ad5b825e6e8fa77a1d513f43c2b4c41",
+    "extract_dir": "angband-4.2.5-389-g1b3978f8d",
     "post_install": [
         "'angband.INI' | ForEach-Object {",
         "    if (!(Test-Path \"$persist_dir\\$_.bak\")) {",
@@ -35,9 +35,8 @@
         ]
     },
     "checkver": {
-        "url": "https://github.com/angband/angband/releases",
-        "regex": "Angband-(?<major>[\\d]+)\\.(?<minor>[\\d]+)\\.(?<patch>[\\d]+)-(?<build>[\\d]+)-g(?<commit>[\\da-z]+)-win\\.zip",
-        "replace": "${major}.${minor}.${patch}-${build}-g${commit}"
+        "url": "https://api.github.com/repos/angband/angband/releases",
+        "jsonpath": "$[?(@.prerelease == true)].tag_name"
     },
     "autoupdate": {
         "url": "https://gh-proxy.net/https://github.com/angband/angband/releases/download/$version/Angband-$version-win.zip",

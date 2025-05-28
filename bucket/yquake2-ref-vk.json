@@ -1,12 +1,12 @@
 {
-    "version": "1.0.6",
+    "version": "1.0.10",
     "description": "vkQuake2's Vulkan renderer library ported for use with Yamagi Quake II",
     "homepage": "https://github.com/yquake2/ref_vk",
     "license": "https://github.com/yquake2/ref_vk/blob/master/LICENSE",
     "depends": "scoop-cn/yquake2",
-    "url": "https://gh-proxy.net/https://github.com/yquake2/ref_vk/releases/download/v1.0.6/ref_vk-1.0.6.zip",
-    "hash": "a053f988533fe222cc91dec3d07387a92c8b70e55298dea960175de12df149ba",
-    "extract_dir": "ref_vk-1.0.6",
+    "url": "https://gh-proxy.net/https://github.com/yquake2/ref_vk/releases/download/v1.0.10/ref_vk-i686-v1.0.10.zip",
+    "hash": "76625a29fc90647106cdafda8bf45b23d8fe00f3093d7ae39020fbb79ba056db",
+    "extract_dir": "ref_vk-i686-v1.0.10",
     "installer": {
         "script": "Copy-Item \"$dir\\ref_vk.dll\" \"$(versiondir 'yquake2' 'current' $global)\" -Force"
     },
@@ -21,7 +21,7 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/yquake2/ref_vk/releases/download/v$version/ref_vk-$version.zip",
-        "extract_dir": "ref_vk-$version"
+        "url": "https://gh-proxy.net/https://github.com/yquake2/ref_vk/releases/download/v$version/ref_vk-i686-v$version.zip",
+        "extract_dir": "ref_vk-i686-v$version"
     }
 }

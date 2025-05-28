@@ -1,5 +1,5 @@
 {
-    "version": "2407-240",
+    "version": "2503a-603",
     "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
     "homepage": "https://dolphin-emu.org/",
     "license": {
@@ -11,9 +11,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.dolphin-emu.org/builds/2f/c0/dolphin-master-2407-240-x64.7z",
-            "hash": "8f259a14738d36a68587672dcf3ad790419912d800f399e929310f3c03d8ace1",
+            "url": "https://dl.dolphin-emu.org/builds/eb/db/dolphin-master-2503a-603-x64.7z",
+            "hash": "1169e5b149dc1299902cf9ffe4cf1624943aebc43045e65458b8941aab413e04",
             "extract_dir": "Dolphin-x64"
+        },
+        "arm64": {
+            "url": "https://dl.dolphin-emu.org/builds/d4/45/dolphin-master-2503a-603-ARM64.7z",
+            "hash": "9921a6780b8c96f4f194853b22a3ba3831350767291a9bd7ea995c6c086e56fe",
+            "extract_dir": "Dolphin-ARM64"
         }
     },
     "pre_install": [
@@ -43,15 +48,16 @@
     ],
     "persist": "User",
     "checkver": {
-        "url": "https://dolphin-emu.org/download/list/master/1/",
-        "regex": "\\/(?<rand1>.{2})\\/(?<rand2>.{2})\\/dolphin-master-(?<major>[\\d\\.]+)-(?<build>[\\d]+)",
-        "replace": "${major}-${build}"
+        "url": "https://dolphin-emu.org/download/",
+        "regex": "(?<prefix1>.{5})/dolphin-master-(?<version>[\\w-]+)-x64[\\s\\S]+?(?<prefix2>.{5})/dolphin-master-\\k<version>-ARM64"
     },
     "autoupdate": {
-        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z",
         "architecture": {
             "64bit": {
-                "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-2407-240-x64.7z"
+                "url": "https://dl.dolphin-emu.org/builds/$matchPrefix1/dolphin-master-$version-x64.7z"
+            },
+            "arm64": {
+                "url": "https://dl.dolphin-emu.org/builds/$matchPrefix2/dolphin-master-$version-ARM64.7z"
             }
         }
     }
