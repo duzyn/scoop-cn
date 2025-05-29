@@ -1,19 +1,17 @@
 {
-    "version": "2.15",
+    "version": "2.16",
     "description": "Universal ASIO driver for WDM audio.",
     "homepage": "https://asio4all.org",
     "license": "Freeware",
-    "url": "https://asio4all.org/downloads/ASIO4ALL_2_15_English.exe",
-    "hash": "b22282d5a2daa646deb624cf461bf4f1dfeda541cc505a6781124275f8c2960d",
+    "url": "https://asio4all.org/downloads/ASIO4ALL_2_16.exe",
+    "hash": "c6b2f621a53584c581a9f5ce288d6d88562a062e2859de787c5e5d9453b75c50",
     "installer": {
         "args": [
             "/S",
             "/D=$dir"
         ]
     },
-    "post_install": [
-        "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\ASIO4ALL Web Site.lnk\""
-    ],
+    "post_install": "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\ASIO4ALL Web Site.lnk\"",
     "uninstaller": {
         "file": "uninstall.exe",
         "args": "/S"
@@ -23,6 +21,6 @@
         "regex": ">([\\d.]+)</h2>"
     },
     "autoupdate": {
-        "url": "https://asio4all.org/downloads/ASIO4ALL_$underscoreVersion_English.exe"
+        "url": "https://asio4all.org/downloads/ASIO4ALL_$underscoreVersion.exe"
     }
 }
