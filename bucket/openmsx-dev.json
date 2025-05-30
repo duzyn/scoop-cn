@@ -1,13 +1,13 @@
 {
-    "version": "19.1-450-g0dcc41318",
+    "version": "20.0-469-g3534a1d3c",
     "description": "Cycle-accurate MSX emulator (Development builds)",
     "homepage": "https://openmsx.fixato.net/",
     "license": "GPL-2.0",
     "notes": "User data are stored in C:\\Users\\[USERNAME]\\Documents\\openMSX",
     "architecture": {
         "64bit": {
-            "url": "https://openmsx.fixato.net/builds/windows/x64/openmsx-19.1-450-g0dcc41318-windows-vc-x64-bin.zip",
-            "hash": "e219e6d3ad8aae753e3c6f5729c0ed1c67a71e394c932afb0885e216446248d3"
+            "url": "https://vampier.net/openMSX/openmsx-20.0-469-g3534a1d3c-windows-vc-x64-bin.zip",
+            "hash": "80aadfe28b411be804d91541e3af2fa1ecb1029dffde72221e885299bdd47f8a"
         }
     },
     "bin": [
@@ -27,14 +27,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://openmsx.fixato.net/builds/windows/x64/",
-        "regex": "openmsx-(?<ver>[\\d.]+)-(?<build>[\\d]+)-g(?<commit>[\\da-f]{9})-windows-vc-x64-bin\\.zip",
-        "replace": "${ver}-${build}-g${commit}"
+        "url": "https://vampier.net/openMSX/",
+        "regex": "openmsx-(?<version>[\\w.-]+)-windows-vc-x64-bin.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://openmsx.fixato.net/builds/windows/x64/openmsx-$version-windows-vc-x64-bin.zip"
+                "url": "https://vampier.net/openMSX/openmsx-$version-windows-vc-x64-bin.zip"
             }
         }
     }

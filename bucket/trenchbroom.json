@@ -1,11 +1,15 @@
 {
-    "version": "2024.2",
+    "version": "2025.3",
     "description": "Level editor for Quake-based games",
     "homepage": "https://kristianduske.com/trenchbroom/",
     "license": "GPL-3.0-or-later",
     "depends": "scoop-cn/vcredist2022",
-    "url": "https://gh-proxy.net/https://github.com/kduske/TrenchBroom/releases/download/v2024.2/TrenchBroom-Win32-v2024.2-Release.7z",
-    "hash": "8e680c6eec4295ca1161edd521fcff7708f47853ded87cad99a72d322bd981a2",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.net/https://github.com/TrenchBroom/TrenchBroom/releases/download/v2025.3/TrenchBroom-Win64-AMD64-v2025.3-Release.zip",
+            "hash": "md5:43f01430ed6988d38ec33aef49cc1daa"
+        }
+    },
     "bin": "TrenchBroom.exe",
     "shortcuts": [
         [
@@ -17,6 +21,13 @@
         "github": "https://github.com/kduske/TrenchBroom"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/kduske/TrenchBroom/releases/download/v$version/TrenchBroom-Win32-v$version-Release.7z"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.net/https://github.com/TrenchBroom/TrenchBroom/releases/download/v$version/TrenchBroom-Win64-AMD64-v$version-Release.zip",
+                "hash": {
+                    "url": "$url.md5"
+                }
+            }
+        }
     }
 }

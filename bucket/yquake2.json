@@ -1,5 +1,5 @@
 {
-    "version": "8.41",
+    "version": "8.51",
     "description": "Conservative Quake 2 source port focused on singleplayer and cooperative gameplay",
     "homepage": "https://www.yamagi.org/quake2/",
     "license": "GPL-2.0-or-later",
@@ -33,9 +33,9 @@
     "suggest": {
         "Vulkan renderer": "yquake2-ref-vk"
     },
-    "url": "https://deponie.yamagi.org/quake2/windows/quake2-8.41.zip",
-    "hash": "1a2f083cf91b933ef33b2c020b24cc81a7a2ac09dc475ffbd40195f49b92182a",
-    "extract_dir": "quake2-8.41",
+    "url": "https://deponie.yamagi.org/quake2/windows/quake2-8.51.zip",
+    "hash": "7cf0f75b25432ca89c10463818bc8d3633240353645132b622dee32ab93759ad",
+    "extract_dir": "quake2-8.51",
     "installer": {
         "script": [
             "$persistFolders = @(",
@@ -86,13 +86,10 @@
         "zaero"
     ],
     "checkver": {
-        "url": "https://deponie.yamagi.org/quake2/windows",
-        "regex": "(?'ver'\\d\\.\\d{2}[a-z]?)",
-        "replace": "${ver}",
-        "reverse": true
+        "regex": "Yamagi Quake II, Version\\n(?<version>[\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://deponie.yamagi.org/quake2/windows/quake2-$matchVer.zip",
-        "extract_dir": "quake2-$matchVer"
+        "url": "https://deponie.yamagi.org/quake2/windows/quake2-$version.zip",
+        "extract_dir": "quake2-$version"
     }
 }

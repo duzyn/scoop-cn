@@ -1,21 +1,20 @@
 {
-    "version": "nightly",
+    "version": "0.277.0",
     "description": "GUI frontend for MAME, the multi-purpose emulation framework",
-    "homepage": "http://www.mameui.info/",
+    "homepage": "https://messui.1emulation.com",
     "license": "GPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "http://www.mameui.info/MAMEUI.7z",
-            "extract_dir": "MAMEUI",
-            "bin": "mameui.exe",
-            "shortcuts": [
-                [
-                    "MAMEUI.exe",
-                    "MAMEUI"
-                ]
-            ]
+            "url": "https://messui.1emulation.com/mameui277.7z",
+            "hash": "70b2cf6934f4d105fd557a73268a815863d4d4cf735e5d7331cac8ddd088c60b"
         }
     },
+    "shortcuts": [
+        [
+            "mameui.exe",
+            "MAMEUI"
+        ]
+    ],
     "persist": [
         "cfg",
         "diff",
@@ -27,13 +26,12 @@
         "sta"
     ],
     "checkver": {
-        "regex": "MAMEUI v\\.([\\d]+) Download",
-        "replace": "0.${1}"
+        "regex": "MAMEUI64 ([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://www.mameui.info/MAMEUI.7z"
+                "url": "https://messui.1emulation.com/mameui$minorVersion.7z"
             }
         }
     }

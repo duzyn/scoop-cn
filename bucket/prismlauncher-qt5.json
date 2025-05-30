@@ -70,7 +70,8 @@
         "prismlauncher.cfg"
     ],
     "checkver": {
-        "github": "https://github.com/PrismLauncher/PrismLauncher"
+        "url": "https://api.github.com/repos/PrismLauncher/PrismLauncher/releases",
+        "regex": "Windows-MSVC-Legacy-Portable-([\\d.]+)\\.zip"
     },
     "autoupdate": {
         "url": "https://gh-proxy.net/https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-Windows-MSVC-Legacy-Portable-$version.zip"

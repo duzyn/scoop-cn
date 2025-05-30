@@ -1,5 +1,5 @@
 {
-    "version": "v2_r53",
+    "version": "2_r53",
     "description": "uMod (Universal Modding Engine, earlier OpenTexMod) is an utility to find, save and modify textures that supports original TexMod *.tpf mods",
     "license": "GPL-3.0-only",
     "homepage": "https://code.google.com/archive/p/texmod/",
@@ -16,10 +16,10 @@
         ]
     ],
     "checkver": {
-        "url": "https://code.google.com/archive/p/texmod/downloads",
-        "regex": "uMod(_alpha|_beta)?_(?<version>v(\\d+)_r(\\d+))"
+        "url": "https://storage.googleapis.com/storage/v1/b/google-code-archive/o/v2%2Fcode.google.com%2Ftexmod%2Fdownloads-page-1.json?alt=media&stripTrailingSlashes=false",
+        "regex": "uMod(?<prefix>(?:_alpha|_beta)?)_v(?<version>\\d+_r\\d+)"
     },
     "autoupdate": {
-        "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/texmod/uMod_alpha_v$version.zip"
+        "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/texmod/uMod$matchPrefix_v$version.zip"
     }
 }

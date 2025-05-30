@@ -1,5 +1,5 @@
 {
-    "version": "20220407-3aee05d9",
+    "version": "23.0.0",
     "description": "A roguelike game set in the early 20th century",
     "homepage": "https://sites.google.com/site/infraarcana/home",
     "license": {
@@ -9,9 +9,9 @@
     "notes": "User data are stored in C:\\Users\\[USERNAME]\\AppData\\Roaming\\infra_arcana",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/2306331827/artifacts/download#/dl.zip",
-            "hash": "a897f0c3ba1ae7590fbc70e1a7a9611e92bff4dcb4b9ca1e56c5c0477bb01110",
-            "extract_dir": "ia-windows-x64-v21.0.1-3aee05d9-2022-04-07"
+            "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v23.0.0/download?job=build-windows",
+            "hash": "d11b5cb2c9afea6c2ae849c7d81f73f8d4a2f50ef5f7f4360a9e93f320aa1253",
+            "extract_dir": "ia_windows_x64_v23.0.0"
         }
     },
     "shortcuts": [
@@ -25,15 +25,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs",
-        "regex": "passed(?:.*\\n){4}.*(?<job>[0-9]{10})\">build-windows(?:.*\\n){13}.*\\/commit\\/[0-9a-f]{40}\">(?<commit>[0-9a-f]{8})<\\/a>(?:.*\\n){20}.*datetime=\"(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})",
-        "replace": "${year}${month}${day}-${commit}"
+        "regex": "Download v(?<version>[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/$matchJob/artifacts/download#/dl.zip",
-                "extract_dir": "ia-windows-x64-v21.0.1-$matchCommit-$matchYear-$matchMonth-$matchDay"
+                "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v$version/download?job=build-windows",
+                "extract_dir": "ia_windows_x64_v$version"
             }
         }
     }

@@ -1,15 +1,15 @@
 {
     "version": "0.1.23.1030a3",
-    "homepage": "https://www.revoltworld.net/dl/rvgllauncher/",
+    "homepage": "https://re-volt.gitlab.io/rvgl-launcher/",
     "description": "A cross-platform installer, launcher and package manager for the RVGL Re-Volt reimplementation",
     "license": "GPL-3.0-only",
     "architecture": {
         "32bit": {
-            "url": "https://rvgl.re-volt.io/downloads/rvgl_launcher_win32.zip",
+            "url": "https://rvgl.org/downloads/rvgl_launcher_win32.zip",
             "hash": "0220c7fc503f32dfedd4389510b89511d285efd268919f1272e39545bc7c7430"
         },
         "64bit": {
-            "url": "https://rvgl.re-volt.io/downloads/rvgl_launcher_win64.zip",
+            "url": "https://rvgl.org/downloads/rvgl_launcher_win64.zip",
             "hash": "77cc8f41357b47e557533966d59deec71f9dd4e9a6b3dbd576b42766302b73f9"
         }
     },
@@ -19,14 +19,25 @@
             "RVGL Launcher"
         ]
     ],
-    "checkver": "Version\\s+\\n\\s+<span\\sclass=\"badge\">([\\w.]+)</span>",
+    "checkver": {
+        "url": "https://rvgl.org/downloads/rvgl_launcher.json",
+        "jsonpath": "$.version"
+    },
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://rvgl.re-volt.io/downloads/rvgl_launcher_win32.zip"
+                "url": "https://rvgl.org/downloads/rvgl_launcher_win32.zip",
+                "hash": {
+                    "url": "https://rvgl.org/downloads/rvgl_launcher.json",
+                    "jsonpath": "$.win32.checksum"
+                }
             },
             "64bit": {
-                "url": "https://rvgl.re-volt.io/downloads/rvgl_launcher_win64.zip"
+                "url": "https://rvgl.org/downloads/rvgl_launcher_win64.zip",
+                "hash": {
+                    "url": "https://rvgl.org/downloads/rvgl_launcher.json",
+                    "jsonpath": "$.win64.checksum"
+                }
             }
         }
     }

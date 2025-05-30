@@ -1,5 +1,5 @@
 {
-    "version": "2.6.2",
+    "version": "2.6.66",
     "description": "Enhanced, highly-compatible source port for Doom",
     "homepage": "http://prboom-plus.sourceforge.net/",
     "license": "GPL-2.0-or-later",
@@ -8,9 +8,13 @@
         "",
         "    $persist_dir\\..\\_doom"
     ],
-    "url": "https://gh-proxy.net/https://github.com/coelckers/prboom-plus/releases/download/v2.6.2/prboom-plus-262-w32.zip",
-    "hash": "20313e00d8841a618e23e7c671d65870194bee634468fecd2f3697ac05f21476",
-    "extract_dir": "prboom-plus-262-w32",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.net/https://github.com/coelckers/prboom-plus/releases/download/v2.6.66/prboom-plus-2666-ucrt64.zip",
+            "hash": "9c8c2b021a57739e8428b599d80c25a6b95150084cb04a7e433877123b15b141"
+        }
+    },
+    "extract_dir": "prboom-plus-2666-ucrt64",
     "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
     "env_set": {
         "DOOMWADDIR": "$persist_dir\\..\\_doom"
@@ -53,10 +57,15 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/coelckers/prboom-plus"
+        "github": "https://github.com/coelckers/prboom-plus",
+        "regex": "releases/tag/v([\\d.]+[a-z]*)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/coelckers/prboom-plus/releases/download/v$version/prboom-plus-$cleanVersion-w32.zip",
-        "extract_dir": "prboom-plus-$cleanVersion-w32"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.net/https://github.com/coelckers/prboom-plus/releases/download/v$version/prboom-plus-$cleanVersion-ucrt64.zip"
+            }
+        },
+        "extract_dir": "prboom-plus-$cleanVersion-ucrt64"
     }
 }
