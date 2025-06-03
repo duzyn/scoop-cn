@@ -9,10 +9,12 @@
     "notes": "User data are stored in C:\\Users\\[USERNAME]\\AppData\\Roaming\\infra_arcana",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v23.0.0/download?job=build-windows",
-            "hash": "d11b5cb2c9afea6c2ae849c7d81f73f8d4a2f50ef5f7f4360a9e93f320aa1253",
-            "extract_dir": "ia_windows_x64_v23.0.0"
+            "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v23.0.0/download?job=build-windows#infraarcana-23.0.0.zip",
+            "hash": "d11b5cb2c9afea6c2ae849c7d81f73f8d4a2f50ef5f7f4360a9e93f320aa1253"
         }
+    },
+    "installer": {
+        "script": "Expand-7ZipArchive \"$dir\\$fname\" -ExtractDir \"ia_windows_x64_v$version\" -Removal"
     },
     "shortcuts": [
         [
@@ -30,8 +32,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v$version/download?job=build-windows",
-                "extract_dir": "ia_windows_x64_v$version"
+                "url": "https://gitlab.com/martin-tornqvist/ia/-/jobs/artifacts/v$version/download?job=build-windows#infraarcana-$version.zip"
             }
         }
     }

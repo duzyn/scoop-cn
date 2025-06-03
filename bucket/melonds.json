@@ -23,7 +23,10 @@
             "melonDS"
         ]
     ],
-    "persist": "melonDS.ini",
+    "persist": [
+        "melonDS.ini",
+        "melonDS.toml"
+    ],
     "checkver": {
         "github": "https://github.com/melonDS-emu/melonDS",
         "regex": "/releases/tag/(?:v|V)?([\\w.]+)"
