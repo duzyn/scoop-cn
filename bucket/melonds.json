@@ -10,9 +10,14 @@
     "hash": "eda68ed9295bfce4504d9356d3614fbd77648dc3ab1e4ad415f78778f745b33e",
     "installer": {
         "script": [
-            "$FILE = 'melonDS.ini'",
-            "if (!(Test-Path \"$persist_dir\\$FILE\")) {",
-            "    New-Item \"$dir\\$FILE\" -Type File | Out-Null",
+            "if (Test-Path \"$persist_dir\\melonDS.toml\" -PathType Container) {",
+            "    Remove-Item \"$persist_dir\\melonDS.toml\" -Recurse -Force",
+            "}",
+            "$FILES = @('melonDS.ini', 'melonDS.toml')",
+            "foreach ($FILE in $FILES) {",
+            "    if (!(Test-Path \"$persist_dir\\$FILE\")) {",
+            "        New-Item \"$dir\\$FILE\" -Type File | Out-Null",
+            "    }",
             "}"
         ]
     },
