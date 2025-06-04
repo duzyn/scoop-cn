@@ -1,35 +1,24 @@
 {
-    "version": "6.7.1",
+    "version": "7.0",
     "description": "Multi-platform Atari 2600 VCS emulator",
     "homepage": "https://stella-emu.github.io/",
     "license": "GPL-2.0-only",
-    "url": "https://gh-proxy.net/https://github.com/stella-emu/stella/releases/download/6.7.1/Stella-6.7.1-windows.zip",
-    "hash": "6781efff51aa28390b2f858a1e7b8b98111fad62bccede400c6e741b43a49099",
-    "architecture": {
-        "32bit": {
-            "shortcuts": [
-                [
-                    "32-bit/Stella.exe",
-                    "Stella"
-                ]
-            ]
-        },
-        "64bit": {
-            "shortcuts": [
-                [
-                    "64-bit/Stella.exe",
-                    "Stella"
-                ]
-            ]
-        }
-    },
-    "extract_dir": "Stella-6.7.1",
+    "url": "https://gh-proxy.net/https://github.com/stella-emu/stella/releases/download/7.0/Stella-7.0c-windows.zip",
+    "hash": "44102ccf8af74b021cf143db346e561c5d6ed2a2e91d79ee6d3c99d7c42f4653",
+    "extract_dir": "Stella-7.0c",
+    "shortcuts": [
+        [
+            "Stella.exe",
+            "Stella"
+        ]
+    ],
     "persist": "config",
     "checkver": {
-        "github": "https://github.com/stella-emu/stella"
+        "url": "https://api.github.com/repos/stella-emu/stella/releases",
+        "regex": "releases/download/(?<version>[\\d.]+)/Stella-\\k<version>(?<postfix>\\w*)-windows.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/stella-emu/stella/releases/download/$version/Stella-$version-windows.zip",
-        "extract_dir": "Stella-$version"
+        "url": "https://gh-proxy.net/https://github.com/stella-emu/stella/releases/download/$version/Stella-$version$matchPostfix-windows.zip",
+        "extract_dir": "Stella-$version$matchPostfix"
     }
 }

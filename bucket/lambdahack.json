@@ -20,7 +20,10 @@
             "Lambda Hack"
         ]
     ],
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repos/LambdaHack/LambdaHack/releases",
+        "regex": "LambdaHack_(?<version>[\\d.]+)_windows-x86_64\\.zip"
+    },
     "autoupdate": {
         "architecture": {
             "32bit": {

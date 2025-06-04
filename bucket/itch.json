@@ -5,11 +5,11 @@
     "license": "MIT",
     "architecture": {
         "32bit": {
-            "url": "https://broth.itch.ovh/itch/windows-386/26.1.9/archive/default#/dl.zip",
+            "url": "https://broth.itch.zone/itch/windows-386/26.1.9/archive/default#/itch-windows-386.zip",
             "hash": "802586991ce79b96ed9af7cdaea5ff6e4a19163e9557b2a29c9b1660697bf673"
         },
         "64bit": {
-            "url": "https://broth.itch.ovh/itch/windows-amd64/26.1.9/archive/default#/dl.zip",
+            "url": "https://broth.itch.zone/itch/windows-amd64/26.1.9/archive/default#/itch-windows-amd64.zip",
             "hash": "cc8e966e113b300b29acbdb3b3010db797e5e6d6c7703f7ab1416334763c328a"
         }
     },
@@ -20,16 +20,16 @@
         ]
     ],
     "checkver": {
-        "url": "https://broth.itch.ovh/itch/windows-amd64",
+        "url": "https://broth.itch.zone/itch/windows-amd64",
         "regex": "windows-amd64/([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://broth.itch.ovh/itch/windows-386/$version/archive/default#/dl.zip"
+                "url": "https://broth.itch.zone/itch/windows-386/$version/archive/default#/itch-windows-386.zip"
             },
             "64bit": {
-                "url": "https://broth.itch.ovh/itch/windows-amd64/$version/archive/default#/dl.zip"
+                "url": "https://broth.itch.zone/itch/windows-amd64/$version/archive/default#/itch-windows-amd64.zip"
             }
         }
     }

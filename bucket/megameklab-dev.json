@@ -3,7 +3,9 @@
     "description": "BattleTech unit modification program for MegaMek (development version)",
     "homepage": "https://megamek.org",
     "license": "GPL-2.0-or-later",
-    "url": "https://gh-proxy.net/https://github.com/MegaMek/megameklab/releases/download/v0.50.06/megameklab-windows-0.50.06.zip",
+    "url": "https://gh-proxy.net/https://github.com/MegaMek/megameklab/releases/download/v0.50.06/megameklab-0.50.06.tar.gz",
+    "hash": "48baf8914ac041149565ff5d9cceed4a6cba55785eaa79c69e29a7109cf1859f",
+    "extract_dir": "MegaMekLab-0.50.06",
     "shortcuts": [
         [
             "MegaMekLab.exe",
@@ -11,9 +13,11 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/MegaMek/megameklab"
+        "url": "https://megamek.org/downloads.html",
+        "re": "MegaMekLab[\\s\\S]+?Development:[\\s]+(?<version>[\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/MegaMek/megameklab/releases/download/v$version/megameklab-windows-$version.zip"
+        "url": "https://gh-proxy.net/https://github.com/MegaMek/megameklab/releases/download/v$version/megameklab-$version.tar.gz",
+        "extract_dir": "MegaMekLab-$version"
     }
 }

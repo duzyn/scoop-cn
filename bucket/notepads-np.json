@@ -7,41 +7,39 @@
     "hash": "64e48c47ee39aa63616946e4d9f3d287d96b4650fc119eb8cbc73a1d58b36540",
     "installer": {
         "script": [
-            "if (!(is_admin)) {",
-            "    error \"Administrator rights are required to install $app.\"",
-            "    break",
-            "}",
-            "",
-            "Add-AppxProvisionedPackage -Online -PackagePath \"$dir\\Notepads.msixbundle\" -SkipLicense | Out-Null"
+            "$ProgressPreference = \"SilentlyContinue\"",
+            "Add-AppxPackage -Path \"$dir\\Notepads.msixbundle\""
         ]
     },
     "post_install": [
-        "while ($null -eq $package_name) {",
-        "    Start-Sleep -Milliseconds 250",
-        "    $package_name = (Get-AppxPackage -Name '*JackieLiu*Notepads*').PackageFamilyName",
+        "$package_dir = Resolve-Path -Path \"$env:LOCALAPPDATA\\Packages\\*JackieLiu*Notepads*\" | Select-Object -ExpandProperty Path",
+        "if (-not (Test-Path -Path \"$persist_dir\\LocalAppData\")) {",
+        "    New-Item -Path \"$persist_dir\\LocalAppData\" -ItemType Directory -Force | Out-Null",
+        "    Get-ChildItem \"$package_dir\" | Copy-Item -Destination \"$persist_dir\\LocalAppData\" -Force -Recurse",
         "}",
-        "while (-not (Test-Path \"$env:LOCALAPPDATA\\Packages\\$package_name\\Settings\\settings.dat\")) { Start-Sleep -Milliseconds 250 }",
-        "Copy-Item -Recurse -Force \"$dir\\Settings\" -Destination \"$env:LOCALAPPDATA\\Packages\\$package_name\""
+        "Remove-Item \"$package_dir\" -Force -Recurse",
+        "New-Item -ItemType Junction -Path \"$package_dir\" -Target \"$persist_dir\\LocalAppData\" -Force | Out-Null"
     ],
     "uninstaller": {
         "script": [
-            "if (!(is_admin)) {",
-            "    error \"Administrator rights are required to uninstall $app.\"",
-            "    break",
-            "}",
             "$ProgressPreference = \"SilentlyContinue\"",
-            "Stop-Process -ErrorAction Ignore -Name Notepads",
-            "Start-Sleep -Milliseconds 250",
-            "",
-            "$package = Get-AppxPackage -Name '*JackieLiu*Notepads*'",
-            "",
-            "Remove-Item -ErrorAction Ignore -Recurse -Force \"$persist_dir\\Settings\"",
-            "Copy-Item -Recurse -Force \"$env:LOCALAPPDATA\\Packages\\$($package.PackageFamilyName)\\Settings\" -Destination $persist_dir",
-            "",
-            "Remove-AppxPackage $package"
+            "$is_running = $null -ne $(Get-Process -Name Notepads -ErrorAction SilentlyContinue)",
+            "if ($is_running) {",
+            "    Write-Host \"`nNotepads is running, would you like to continue?\" -ForegroundColor Yellow",
+            "    $answer = Read-Host -Prompt \"Enter 'y' to continue, any other key to cancel\"",
+            "    if ('y' -eq $answer) {",
+            "        Write-Host \"Stopping process...\" -ForegroundColor Yellow -NoNewline",
+            "        Stop-Process -Name Notepads -ErrorAction Stop",
+            "        Start-Sleep -Milliseconds 250",
+            "    } else {",
+            "        Write-Host \"Uninstallation cancelled.\" -ForegroundColor Red",
+            "        break",
+            "    }",
+            "}",
+            "Get-AppxPackage -Name '*JackieLiu*Notepads*' | Remove-AppxPackage -PreserveRoamableApplicationData -ErrorAction Stop",
+            "Resolve-Path -Path \"$env:LOCALAPPDATA\\Packages\\*JackieLiu*Notepads*\" | Remove-Item -Force -Recurse -ErrorAction SilentlyContinue"
         ]
     },
-    "persist": "Settings",
     "checkver": {
         "github": "https://github.com/0x7c13/Notepads"
     },

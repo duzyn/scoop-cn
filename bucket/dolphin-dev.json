@@ -1,5 +1,5 @@
 {
-    "version": "2407-240",
+    "version": "2506-1",
     "description": "A Nintendo GameCube and Wii emulator, with enhancements and Netplay. (development version)",
     "homepage": "https://dolphin-emu.org/",
     "license": {
@@ -11,9 +11,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.dolphin-emu.org/builds/2f/c0/dolphin-master-2407-240-x64.7z",
-            "hash": "8f259a14738d36a68587672dcf3ad790419912d800f399e929310f3c03d8ace1",
+            "url": "https://dl.dolphin-emu.org/builds/ae/20/dolphin-master-2506-1-x64.7z",
+            "hash": "de8296374e738834cfc04b681a2b101541f9d9d36bc3a67416db501be01a7713",
             "extract_dir": "Dolphin-x64"
+        },
+        "arm64": {
+            "url": "https://dl.dolphin-emu.org/builds/8d/57/dolphin-master-2506-1-ARM64.7z",
+            "hash": "118bb43e065224053a246308b092a1fddae4a4302a1b33da967c82164cbdaf8a",
+            "extract_dir": "Dolphin-ARM64"
         }
     },
     "pre_install": [
@@ -43,15 +48,16 @@
     ],
     "persist": "User",
     "checkver": {
-        "url": "https://dolphin-emu.org/download/list/master/1/",
-        "regex": "\\/(?<rand1>.{2})\\/(?<rand2>.{2})\\/dolphin-master-(?<major>[\\d\\.]+)-(?<build>[\\d]+)",
-        "replace": "${major}-${build}"
+        "url": "https://dolphin-emu.org/download/",
+        "regex": "(?<prefix1>.{5})/dolphin-master-(?<version>[\\w-]+)-x64[\\s\\S]+?(?<prefix2>.{5})/dolphin-master-\\k<version>-ARM64"
     },
     "autoupdate": {
-        "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-$matchMajor-$matchBuild-x64.7z",
         "architecture": {
             "64bit": {
-                "url": "https://dl.dolphin-emu.org/builds/$matchRand1/$matchRand2/dolphin-master-2407-240-x64.7z"
+                "url": "https://dl.dolphin-emu.org/builds/$matchPrefix1/dolphin-master-$version-x64.7z"
+            },
+            "arm64": {
+                "url": "https://dl.dolphin-emu.org/builds/$matchPrefix2/dolphin-master-$version-ARM64.7z"
             }
         }
     }

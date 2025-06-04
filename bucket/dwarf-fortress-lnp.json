@@ -1,9 +1,9 @@
 {
     "version": "0.47.05-r11",
     "description": "Peridexis Errant's Lazy Newb Pack for Dwarf Fortress",
-    "homepage": "http://dffd.bay12games.com/file.php?id=7622",
+    "homepage": "https://dffd.bay12games.com/file.php?id=7622",
     "license": "Custom",
-    "url": "http://dffd.bay12games.com/download.php?id=7622&f=PeridexisErrant%27s+Starter+Pack+0.47.05-r11.zip#/dl.7z",
+    "url": "https://dffd.bay12games.com/download.php?id=7622&f=PeridexisErrant%27s+Starter+Pack+0.47.05-r11.zip#/dl.7z",
     "hash": "117a477ac4370ebff07fbfd2b6c535ef298cb0d7c7c3b403b514dc0aed14d836",
     "bin": [
         [
@@ -18,13 +18,13 @@
         ]
     ],
     "checkver": {
-        "url": "http://dffd.bay12games.com/file.php?id=7622",
-        "re": "File version:.*\\n[^>]+>(.*)<"
+        "url": "https://dffd.bay12games.com/file_version.php?id=7622",
+        "regex": "Version: ([\\w\\.-]+)"
     },
     "autoupdate": {
-        "url": "http://dffd.bay12games.com/download.php?id=7622&f=PeridexisErrant%27s+Starter+Pack+$version.zip#/dl.7z",
+        "url": "https://dffd.bay12games.com/download.php?id=7622&f=PeridexisErrant%27s+Starter+Pack+$version.zip#/dl.7z",
         "hash": {
-            "url": "http://dffd.bay12games.com/file.php?id=7622",
+            "url": "https://dffd.bay12games.com/file.php?id=7622",
             "find": "SHA-256:[^>]+>(.*)<"
         }
     }

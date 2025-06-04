@@ -17,8 +17,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/rimpy-custom/RimPy/tags",
-        "regex": "([\\d.]+)</a></h2>"
+        "url": "https://api.github.com/repos/rimpy-custom/RimPy/releases",
+        "jsonpath": "$..assets[?(@.name == 'RimPy_Windows.zip')].browser_download_url",
+        "regex": "releases/download/(?<version>[\\d.]+)/RimPy_Windows\\.zip"
     },
     "autoupdate": {
         "architecture": {

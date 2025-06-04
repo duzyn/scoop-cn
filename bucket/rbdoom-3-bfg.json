@@ -1,5 +1,5 @@
 {
-    "version": "v1.4.0",
+    "version": "1.6.0",
     "description": "Source port for Doom 3: BFG Edition",
     "homepage": "https://github.com/RobertBeckebans/RBDOOM-3-BFG",
     "license": "https://github.com/RobertBeckebans/RBDOOM-3-BFG/blob/master/COPYING.txt",
@@ -12,8 +12,8 @@
         "",
         "https://download.microsoft.com/download/8/4/A/84A35BF1-DAFE-4AE8-82AF-AD2AE20B6B14/directx_Jun2010_redist.exe"
     ],
-    "url": "https://gh-proxy.net/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/v1.4.0/RBDOOM-3-BFG-1.4.0.9-lite-win64-20220306-git-f81a8c1.7z",
-    "hash": "c116eba68c0c2abc6bed8ef6343d62e4f00f2328b98c0fc5a56523166e540c87",
+    "url": "https://gh-proxy.net/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/v1.6.0/RBDOOM-3-BFG-1.6.0.22-full-win64-20250510-git-ba39ba6.7z",
+    "hash": "f1b9a325cede2a281ece7d10a1a8bc48ce760d12ae23e37c62308631a886abae",
     "shortcuts": [
         [
             "RBDoom3BFG.exe",
@@ -22,10 +22,10 @@
     ],
     "persist": "base",
     "checkver": {
-        "url": "https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/latest",
-        "regex": "/RobertBeckebans/RBDOOM-3-BFG/releases/download/([a-zA-Z\\d.\\-]+)/RBDOOM-3-BFG-(?<file>[a-zA-Z\\d.\\-]+)\\.7z"
+        "url": "https://api.github.com/repos/RobertBeckebans/RBDOOM-3-BFG/releases/latest",
+        "regex": "/RobertBeckebans/RBDOOM-3-BFG/releases/download/(?<prefix>v)?(?<version>[\\w.-]+)/RBDOOM-3-BFG-(?<file>[a-zA-Z\\d.\\-]+)\\.7z"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/$version/RBDOOM-3-BFG-$matchFile.7z"
+        "url": "https://gh-proxy.net/https://github.com/RobertBeckebans/RBDOOM-3-BFG/releases/download/$matchPrefix$version/RBDOOM-3-BFG-$matchFile.7z"
     }
 }

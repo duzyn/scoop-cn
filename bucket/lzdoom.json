@@ -1,5 +1,5 @@
 {
-    "version": "3.88",
+    "version": "4.11.4",
     "description": "Legacy source port for Doom, Heretic, Hexen and more (based on GZDoom)",
     "homepage": "https://zdoom.org/",
     "license": "GPL-3.0-or-later",
@@ -10,12 +10,12 @@
     ],
     "architecture": {
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/drfrag666/gzdoom/releases/download/3.88/LZDoom_3.88_x86.zip",
-            "hash": "7bb5607a59f27a8095e59319b52fe9176911c19431b7267a0b1d119a039dab5f"
+            "url": "https://gh-proxy.net/https://github.com/drfrag666/lzdoom/releases/download/l4.11.4/lzdoom-l4.11.4-x86.zip",
+            "hash": "af7a25e75f1a690103f519abc0d3deae999139657b2e4cd7fee155a0c52fc4c3"
         },
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/drfrag666/gzdoom/releases/download/3.88/LZDoom_3.88_x64.zip",
-            "hash": "331210c7b2d85080333e3e00140bd0119da58256fe1d142591b079ef4fe74fda"
+            "url": "https://gh-proxy.net/https://github.com/drfrag666/lzdoom/releases/download/l4.11.4/lzdoom-l4.11.4-x64.zip",
+            "hash": "beb735fc95d9e5720de5083f35935fcf06d3eb6d9fdfb88c61d074370b5fda66"
         }
     },
     "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
@@ -30,15 +30,17 @@
         ]
     ],
     "checkver": {
-        "github": "https://github.com/drfrag666/gzdoom"
+        "github": "https://github.com/drfrag666/lzdoom",
+        "regex": "/releases/tag/(?<prefix>[a-z]*)(?<version1>[\\d.]+)(?<version2>[a-z]?)",
+        "replace": "${version1}${version2}"
     },
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/drfrag666/gzdoom/releases/download/$version/LZDoom_$version_x86.zip"
+                "url": "https://gh-proxy.net/https://github.com/drfrag666/lzdoom/releases/download/$matchPrefix$version/lzdoom-$matchPrefix$version-x86.zip"
             },
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/drfrag666/gzdoom/releases/download/$version/LZDoom_$version_x64.zip"
+                "url": "https://gh-proxy.net/https://github.com/drfrag666/lzdoom/releases/download/$matchPrefix$version/lzdoom-$matchPrefix$version-x64.zip"
             }
         }
     }

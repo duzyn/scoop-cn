@@ -1,12 +1,12 @@
 {
-    "version": "2024-11-15-0247",
+    "version": "2025-06-03-2109",
     "description": "Roguelike in a post-apocalyptic world (with sprite-based graphics, experimental build)",
     "homepage": "https://cataclysmdda.org",
     "license": "CC-BY-SA-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-2024-11-15-0247/cdda-windows-tiles-x64-2024-11-15-0247.zip",
-            "hash": "61c5ed7b34d4e98bffea622bddb715cdabe010c9418a8ad5802def2643711b08"
+            "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-2025-06-03-2109/cdda-windows-with-graphics-and-sounds-x64-2025-06-03-2109.zip",
+            "hash": "326405df2a73aceba29e96697926ce0deff91137c3bb47490f5fbb899ed79f4e"
         }
     },
     "shortcuts": [
@@ -22,13 +22,13 @@
         "templates"
     ],
     "checkver": {
-        "url": "https://github.com/CleverRaven/Cataclysm-DDA/releases/",
-        "re": "Cataclysm-DDA experimental build ([\\d.-]+)"
+        "url": "https://api.github.com/repos/CleverRaven/Cataclysm-DDA/releases",
+        "regex": "cdda-experimental-(?<version>\\d{4}-\\d{2}-\\d{2}-\\d{4})/cdda-windows-with-graphics-and-sounds-x64-\\k<version>\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-$version/cdda-windows-tiles-x64-$version.zip"
+                "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/cdda-experimental-$version/cdda-windows-with-graphics-and-sounds-x64-$version.zip"
             }
         }
     }

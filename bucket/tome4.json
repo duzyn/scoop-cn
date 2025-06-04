@@ -1,11 +1,11 @@
 {
-    "version": "1.7.0",
+    "version": "1.7.6",
     "description": "Tales of Maj’Eyal (ToME) is a free, open source roguelike RPG, featuring tactical turn-based combat and advanced character building.",
     "homepage": "https://te4.org",
     "license": "GPL-3.0-only",
-    "url": "http://te4.org/dl/t-engine/t-engine4-windows-1.7.0.zip",
-    "hash": "76ac63f8682642015b4ac14af2b9caab1ffc6c8260a51ad34c26eccffaca3197",
-    "extract_dir": "t-engine4-windows-1.7.0",
+    "url": "https://te4.org/dl/t-engine/t-engine4-windows-1.7.6.zip",
+    "hash": "38dddcf9a09e3640b1195372763ade25187d0a840556614b72d9223d3fe97c8c",
+    "extract_dir": "t-engine4-windows-1.7.6",
     "bin": [
         [
             "t-engine.exe",
@@ -29,10 +29,10 @@
     "persist": "game\\addons",
     "checkver": {
         "url": "https://te4.org/download",
-        "re": "Tales of Maj'Eyal Installer (.*) for Windows"
+        "re": "Tales of Maj'Eyal ([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://te4.org/dl/t-engine/t-engine4-windows-$version.zip",
+        "url": "https://te4.org/dl/t-engine/t-engine4-windows-$version.zip",
         "extract_dir": "t-engine4-windows-$version"
     }
 }

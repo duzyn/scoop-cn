@@ -1,19 +1,15 @@
 {
     "homepage": "https://cataclysmdda.org",
     "description": "Roguelike in a post-apocalyptic world (with sprite-based graphics)",
-    "version": "0.G",
+    "version": "0.H-RELEASE",
     "license": {
         "identifier": "CC-BY-SA-3.0,GPL-2.0+,OFL-1.0,BSL-1.0,Zlib,MIT,BSD(libbacktrace)",
         "url": "https://github.com/CleverRaven/Cataclysm-DDA/blob/master/LICENSE.txt"
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.G/cdda-windows-tiles-x64-2023-03-01-0054.zip",
-            "hash": "d55283e881d9d70af4823b2486d776e4bf30f2a4e53e0ebb25f8fd53f4b0d363"
-        },
-        "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.G/cdda-windows-tiles-x32-2023-03-01-0054.zip",
-            "hash": "e7ca644fbf65463694e7869a01a6b3888bff74579322adb37755a0aaec0fec74"
+            "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/0.H-RELEASE/cdda-windows-with-graphics-and-sounds-x64-2024-11-23-1857.zip",
+            "hash": "856b4e27f570b0ffb791e4572dab5691b79918c15b41d36e49ab689419231540"
         }
     },
     "shortcuts": [
@@ -29,16 +25,13 @@
         "templates"
     ],
     "checkver": {
-        "url": "https://cataclysmdda.org/releases/",
-        "regex": "The most recent stable release is ([\\d\\-.A-Z]+)?( )"
+        "url": "https://api.github.com/repos/CleverRaven/Cataclysm-DDA/releases/latest",
+        "regex": "releases/download/(?<version>[\\w\\.-]+)/cdda-windows-with-graphics-and-sounds-x64-(?<date>[\\d-]+)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/$version/cdda-windows-tiles-x64-2023-03-01-0054.zip"
-            },
-            "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/$version/cdda-windows-tiles-x32-2023-03-01-0054.zip"
+                "url": "https://gh-proxy.net/https://github.com/CleverRaven/Cataclysm-DDA/releases/download/$version/cdda-windows-with-graphics-and-sounds-x64-$matchDate.zip"
             }
         }
     }

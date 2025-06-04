@@ -18,13 +18,13 @@
         ]
     ],
     "checkver": {
-        "url": "https://www.archimatetool.com/download/",
-        "regex": "archi/(?<short>[\\d.]+)/Archi-Win64-([\\d.]+)\\.zip"
+        "url": "https://github.com/archimatetool/archi/tags",
+        "regex": "release_([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.archimatetool.com/downloads/archi/$matchShort/Archi-Win64-$version.zip"
+                "url": "https://www.archimatetool.com/downloads/archi/$version/Archi-Win64-$version.zip"
             }
         },
         "hash": {

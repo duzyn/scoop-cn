@@ -1,16 +1,16 @@
 {
-    "version": "1.8.3",
+    "version": "1.9.1",
     "description": "Modern preset-oriented graphical launcher of ZDoom and derivatives",
     "homepage": "https://github.com/Youda008/DoomRunner",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v1.8.3/DoomRunner-1.8.3-Windows-64bit-static.zip",
-            "hash": "60b17c7ffc1c29df30553f533ff7977145a0fa5dc058fa1780fff845bd41674c"
+            "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v1.9.1/DoomRunner-1.9.1-Windows-recent.64bit.-static.zip",
+            "hash": "54693d669dfb31b3121fd2c4317b380b0161e9925c25485bb0cc7f8ea22028bc"
         },
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v1.8.3/DoomRunner-1.8.3-Windows-32bit-static.zip",
-            "hash": "dd0b8bbc4da30cdf30088a0eab43af42ab1d72597a44c9660fa5ac28ab2bc6a1"
+            "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v1.9.1/DoomRunner-1.9.1-Windows-legacy.32bit.-static.zip",
+            "hash": "8c40eb0d651507bb5f571112b578f66af096d9045607a6fde0df397e29d6b432"
         }
     },
     "pre_install": [
@@ -30,10 +30,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-64bit-static.zip"
+                "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-recent.64bit.-static.zip"
             },
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-32bit-static.zip"
+                "url": "https://gh-proxy.net/https://github.com/Youda008/DoomRunner/releases/download/v$version/DoomRunner-$version-Windows-legacy.32bit.-static.zip"
             }
         }
     }
