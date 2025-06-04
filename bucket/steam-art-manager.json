@@ -6,7 +6,7 @@
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/Tormak9970/Steam-Art-Manager/blob/main/LICENSE"
     },
-    "url": "https://gh-proxy.net/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.11.1/steam-art-manager_3.11.1.msi.zip",
+    "url": "https://gh-proxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.11.1/steam-art-manager_3.11.1.msi.zip",
     "hash": "1cb1e723605758e34dbfde8168d728198f58ab885c1c494e2afb68626a7182fb",
     "pre_install": [
         "Get-ChildItem \"$dir\\Steam Art Manager_*.msi\" | Select-Object -First 1 | ForEach-Object { Rename-Item $_ \"dl.msi\" }",
@@ -29,6 +29,6 @@
         "github": "https://github.com/Tormak9970/Steam-Art-Manager"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v$version/steam-art-manager_$version.msi.zip"
+        "url": "https://gh-proxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v$version/steam-art-manager_$version.msi.zip"
     }
 }

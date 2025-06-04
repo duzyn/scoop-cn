@@ -3,7 +3,7 @@
     "description": "Uploads FFXIV game logs sourced from Advanced Combat Tracker",
     "homepage": "https://www.fflogs.com",
     "license": "Unknown",
-    "url": "https://gh-proxy.net/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.17.18/fflogs-v8.17.18.exe#/dl.7z",
+    "url": "https://gh-proxy.com/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v8.17.18/fflogs-v8.17.18.exe#/dl.7z",
     "architecture": {
         "64bit": {
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
@@ -25,7 +25,7 @@
         "github": "https://github.com/RPGLogs/Uploaders-fflogs"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v$version/fflogs-v$version.exe#/dl.7z",
+        "url": "https://gh-proxy.com/https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v$version/fflogs-v$version.exe#/dl.7z",
         "hash": {
             "url": "$baseurl/latest.yml",
             "find": "sha512:\\s+(.*)"

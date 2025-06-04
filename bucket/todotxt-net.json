@@ -3,7 +3,7 @@
     "description": "Implementation of todo.txt for Windows using the .NET framework",
     "homepage": "https://benrhughes.github.io/todotxt.net/",
     "license": "BSD-2-Clause-FreeBSD",
-    "url": "https://gh-proxy.net/https://github.com/benrhughes/todotxt.net/releases/download/v3.3.1/todotxt-portable-3.3.1.zip",
+    "url": "https://gh-proxy.com/https://github.com/benrhughes/todotxt.net/releases/download/v3.3.1/todotxt-portable-3.3.1.zip",
     "hash": "1b85b951595ec1416b5a63553685f3d2a6a25dfea34128c58e93ee184729187c",
     "extract_dir": "ProgramFiles",
     "pre_install": "if (!(Test-Path \"$persist_dir\\todotxt.settings\")) { New-Item \"$dir\\todotxt.settings\" -ItemType File | Out-Null }",
@@ -19,6 +19,6 @@
         "github": "https://github.com/benrhughes/todotxt.net"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/benrhughes/todotxt.net/releases/download/v$version/todotxt-portable-$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/benrhughes/todotxt.net/releases/download/v$version/todotxt-portable-$version.zip"
     }
 }

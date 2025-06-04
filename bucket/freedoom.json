@@ -15,14 +15,14 @@
             "qzdoom"
         ]
     },
-    "url": "https://gh-proxy.net/https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedoom-0.13.0.zip",
+    "url": "https://gh-proxy.com/https://github.com/freedoom/freedoom/releases/download/v0.13.0/freedoom-0.13.0.zip",
     "hash": "3f9b264f3e3ce503b4fb7f6bdcb1f419d93c7b546f4df3e874dd878db9688f59",
     "extract_dir": "freedoom-0.13.0",
     "installer": {
         "script": [
             "$dlFile = 'dl.zip'",
             "$archiveUrls = @(",
-            "   \"https://gh-proxy.net/https://github.com/freedoom/freedoom/releases/download/v$version/freedm-$version.zip\"",
+            "   \"https://gh-proxy.com/https://github.com/freedoom/freedoom/releases/download/v$version/freedm-$version.zip\"",
             ")",
             "$archiveUrls | ForEach-Object {",
             "   Invoke-CachedDownload $app $version \"$_\" \"$dir\\$dlFile\"",
@@ -54,7 +54,7 @@
         "github": "https://github.com/freedoom/freedoom"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/freedoom/freedoom/releases/download/v$version/freedoom-$version.zip",
+        "url": "https://gh-proxy.com/https://github.com/freedoom/freedoom/releases/download/v$version/freedoom-$version.zip",
         "extract_dir": "freedoom-$version"
     }
 }

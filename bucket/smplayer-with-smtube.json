@@ -57,7 +57,7 @@
     "checkver": {
         "script": [
             "# matching from Extras bucket to avoid mangling FossHub mode in the script",
-            "$url1 = 'https://gh-proxy.net/https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/smplayer.json'",
+            "$url1 = 'https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/smplayer.json'",
             "$regex1 = 'smplayer-portable-([\\d.]+)-win32-qt([\\d.]+)\\.7z'",
             "if ((Invoke-RestMethod $url1).architecture.'32bit'.url -notmatch $regex1) { error \"Could not match '$regex1' on '$url1'\"; continue }",
             "$smplayer_ver = $matches[1]; $smplayer_qtver = $matches[2]",

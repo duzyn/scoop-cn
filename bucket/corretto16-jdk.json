@@ -15,7 +15,7 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "url": "https://gh-proxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
         "jsonpath": "$.windows.x64.jdk.16.zip.resource",
         "regex": "/([\\d.]+)/"
     },
@@ -24,7 +24,7 @@
             "64bit": {
                 "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jdk.zip",
                 "hash": {
-                    "url": "https://gh-proxy.net/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "url": "https://gh-proxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
                     "jsonpath": "$.windows.x64.jdk.16.zip.checksum_sha256"
                 }
             }

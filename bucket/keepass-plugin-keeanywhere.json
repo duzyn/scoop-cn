@@ -5,7 +5,7 @@
     "license": "MIT",
     "notes": "Amazon Drive: Due to unclear Amazon Policy this Provider may stop working at any time. Please do not rely on this functionality!",
     "depends": "scoop-cn/keepass",
-    "url": "https://gh-proxy.net/https://github.com/Kyrodan/KeeAnywhere/releases/download/v2.1.0/KeeAnywhere-2.1.0.plgx#/KeeAnywhere.plgx",
+    "url": "https://gh-proxy.com/https://github.com/Kyrodan/KeeAnywhere/releases/download/v2.1.0/KeeAnywhere-2.1.0.plgx#/KeeAnywhere.plgx",
     "hash": "d79f2ae151f8809632ff8586bb4b74b6defc081e843eb0ef7214e7b5cdae7ae9",
     "installer": {
         "script": "Copy-Item \"$dir\\KeeAnywhere.plgx\" \"$(appdir keepass $global)\\current\\Plugins\" -Force"
@@ -15,6 +15,6 @@
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/Kyrodan/KeeAnywhere/releases/download/v$version/KeeAnywhere-$version.plgx#/KeeAnywhere.plgx"
+        "url": "https://gh-proxy.com/https://github.com/Kyrodan/KeeAnywhere/releases/download/v$version/KeeAnywhere-$version.plgx#/KeeAnywhere.plgx"
     }
 }

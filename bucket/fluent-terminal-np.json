@@ -3,7 +3,7 @@
     "description": "Terminal emulator based on UWP and web technologies.",
     "homepage": "https://github.com/felixse/FluentTerminal",
     "license": "GPL-3.0-only",
-    "url": "https://gh-proxy.net/https://github.com/felixse/FluentTerminal/releases/download/0.7.7.0/FluentTerminal.Package_0.7.7.0.zip",
+    "url": "https://gh-proxy.com/https://github.com/felixse/FluentTerminal/releases/download/0.7.7.0/FluentTerminal.Package_0.7.7.0.zip",
     "hash": "799cc25c0f8a67a36d00187a2a06e0fd1505e0b63e48286d8619296629d79a44",
     "installer": {
         "script": [
@@ -27,8 +27,8 @@
             "if ($dependencies.FullName.Count -gt 0) { Add-AppxPackage -Path $bundle.FullName -DependencyPath $dependencies.FullName -ForceApplicationShutdown -ForceUpdateFromAnyVersion | Out-Null }",
             "else { Add-AppxPackage -Path $bundle.FullName -ForceApplicationShutdown -ForceUpdateFromAnyVersion | Out-Null }",
             "",
-            "Invoke-WebRequest https://gh-proxy.net/https://raw.githubusercontent.com/felixse/FluentTerminal/master/Explorer%20Context%20Menu%20Integration/Install.bat -OutFile \"$dir\\InstallContextMenu.bat\" -UseBasicParsing",
-            "Invoke-WebRequest https://gh-proxy.net/https://raw.githubusercontent.com/felixse/FluentTerminal/master/Explorer%20Context%20Menu%20Integration/Uninstall.bat -OutFile \"$dir\\UninstallContextMenu.bat\" -UseBasicParsing",
+            "Invoke-WebRequest https://gh-proxy.com/https://raw.githubusercontent.com/felixse/FluentTerminal/master/Explorer%20Context%20Menu%20Integration/Install.bat -OutFile \"$dir\\InstallContextMenu.bat\" -UseBasicParsing",
+            "Invoke-WebRequest https://gh-proxy.com/https://raw.githubusercontent.com/felixse/FluentTerminal/master/Explorer%20Context%20Menu%20Integration/Uninstall.bat -OutFile \"$dir\\UninstallContextMenu.bat\" -UseBasicParsing",
             "cmd /c \"$dir\\InstallContextMenu.bat > nul 2> nul\""
         ]
     },
@@ -63,6 +63,6 @@
         "github": "https://github.com/felixse/FluentTerminal"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/felixse/FluentTerminal/releases/download/$version/FluentTerminal.Package_$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/felixse/FluentTerminal/releases/download/$version/FluentTerminal.Package_$version.zip"
     }
 }

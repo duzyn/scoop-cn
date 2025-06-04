@@ -3,7 +3,7 @@
     "description": "A gatis Windows utility similar to DISM, but with a GUI and based on CBS",
     "homepage": "https://github.com/Chuyu-Team/Dism-Multi-language/",
     "license": "MIT",
-    "url": "https://gh-proxy.net/https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip",
+    "url": "https://gh-proxy.com/https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.2/Dism++10.1.1002.1B.zip",
     "hash": "5bbab96d60704854efd8246a7d9371688b9102261544827fc8884126d70bcb3b",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\Config\\Config.ini\")) {",
@@ -65,6 +65,6 @@
         "regex": "v(?<tag>[\\d.]+)/Dism%2B%2B(?<version>[\\d.]+[\\w]?)\\.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v$matchTag/Dism++$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v$matchTag/Dism++$version.zip"
     }
 }

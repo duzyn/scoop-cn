@@ -3,7 +3,7 @@
     "description": "X - Certificate and Key management",
     "homepage": "https://www.hohnstaedt.de/xca/",
     "license": "BSD-3-Clause",
-    "url": "https://gh-proxy.net/https://github.com/chris2511/xca/releases/download/RELEASE.2.9.0/xca-portable-2.9.0.zip",
+    "url": "https://gh-proxy.com/https://github.com/chris2511/xca/releases/download/RELEASE.2.9.0/xca-portable-2.9.0.zip",
     "hash": "50d8a44a795a07ebef4238e22e0318a607f85464aba9f2853e0630196de1141f",
     "extract_dir": "xca-portable-2.9.0",
     "shortcuts": [
@@ -17,9 +17,9 @@
         "regex": "/releases/tag/RELEASE\\.([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/chris2511/xca/releases/download/RELEASE.$version/xca-portable-$version.zip",
+        "url": "https://gh-proxy.com/https://github.com/chris2511/xca/releases/download/RELEASE.$version/xca-portable-$version.zip",
         "hash": {
-            "url": "https://gh-proxy.net/https://raw.githubusercontent.com/chris2511/xca/master/misc/binary-hashes.json",
+            "url": "https://gh-proxy.com/https://raw.githubusercontent.com/chris2511/xca/master/misc/binary-hashes.json",
             "jsonpath": "$.['$basename']"
         },
         "extract_dir": "xca-portable-$version"
