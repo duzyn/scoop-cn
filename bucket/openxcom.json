@@ -1,5 +1,5 @@
 {
-    "version": "2024_02_28_0704",
+    "version": "2025_02_07_2001",
     "description": "Open source reimplementation of the 'UFO: Enemy Unknown' and 'X-COM: Terror From the Deep' video games",
     "homepage": "https://openxcom.org/",
     "license": "GPL-3.0-or-later",
@@ -8,29 +8,43 @@
         "If you own the games on Steam, the Windows installer will automatically detect it and copy the resources over for you.",
         "",
         "If you want to copy things over manually, you can find the Steam game folders at:",
-        "　　UFO: 'Steam\\SteamApps\\common\\XCom UFO Defense\\XCOM'",
-        "　　TFTD: 'Steam\\SteamApps\\common\\X-COM Terror from the Deep\\TFD'"
+        "   UFO: 'Steam\\SteamApps\\common\\XCom UFO Defense\\XCOM'",
+        "   TFTD: 'Steam\\SteamApps\\common\\X-COM Terror from the Deep\\TFD'"
     ],
-    "url": "https://openxcom.org/git_builds/openxcom_git_master_2024_02_28_0704.zip",
-    "hash": "0d7e728aa7352ca04d790e08b83c4d70c7efb88509ad7be3f0ea161d965502e5",
-    "extract_dir": "openxcom",
+    "architecture": {
+        "64bit": {
+            "url": "https://openxcom.org/download/nightlies/openxcom_git_2025_02_07_2001_win64.zip",
+            "hash": "710397ce0b8e0d53048db5ba8935f10e7f3884abfc7c92ac5bd8dd2ea3951fa1"
+        },
+        "32bit": {
+            "url": "https://openxcom.org/download/nightlies/openxcom_git_2025_02_07_2001_win32.zip",
+            "hash": "c3ee38766bc59c28f23b9d492f0be329c8201f004f63fff7cfbcfde8eff1569d"
+        }
+    },
     "bin": [
         [
-            "openxcom.exe",
+            "OpenXcom.exe",
             "OpenXcom"
         ]
     ],
     "shortcuts": [
         [
-            "openxcom.exe",
+            "OpenXcom.exe",
             "OpenXcom"
         ]
     ],
     "checkver": {
         "url": "https://openxcom.org/git-builds/",
-        "regex": "openxcom_git_master_([\\d_]+)\\.zip"
+        "regex": "nightlies/openxcom_git_([\\d_]+)_win64\\.zip"
     },
     "autoupdate": {
-        "url": "https://openxcom.org/git_builds/openxcom_git_master_$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://openxcom.org/download/nightlies/openxcom_git_$version_win64.zip"
+            },
+            "32bit": {
+                "url": "https://openxcom.org/download/nightlies/openxcom_git_$version_win32.zip"
+            }
+        }
     }
 }
