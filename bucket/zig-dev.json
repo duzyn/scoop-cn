@@ -20,7 +20,7 @@
         "arm64": {
             "url": "https://ziglang.org/builds/zig-aarch64-windows-0.15.0-dev.703+597dd328e.zip",
             "hash": "f08d67cd77f99d44c74cd7acf9a1156098f722f328c2607d2dbc9db392fca436",
-            "extract_dir": "zig-aarch64-windows-aarch64-0.15.0-dev.703+597dd328e"
+            "extract_dir": "zig-aarch64-windows-0.15.0-dev.703+597dd328e"
         }
     },
     "bin": "zig.exe",
@@ -53,7 +53,7 @@
                     "url": "https://ziglang.org/download/index.json",
                     "jsonpath": "$.master.aarch64-windows.shasum"
                 },
-                "extract_dir": "zig-aarch64-windows-aarch64-$matchVersion+$matchCommit"
+                "extract_dir": "zig-aarch64-windows-$matchVersion+$matchCommit"
             }
         }
     }
