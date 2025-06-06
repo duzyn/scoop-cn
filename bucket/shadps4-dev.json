@@ -1,13 +1,13 @@
 {
-    "version": "2025-06-05-d4fbeea",
+    "version": "2025-06-06-91d2945",
     "description": "PlayStation 4 emulator for Windows, Linux and macOS (development version)",
     "homepage": "https://shadps4.net/",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/shadps4-emu/shadPS4/blob/main/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-06-05-d4fbeea/shadps4-win64-qt-2025-06-05-d4fbeea.zip",
-    "hash": "639709fab26d50e02c76f872c6d779b6acda4c5dc2cc4124b0069a1068d3f509",
+    "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-06-06-91d29459fb55cb0d28006639e7a38134c5a368ec/shadps4-win64-qt-2025-06-06-91d2945.zip",
+    "hash": "32afac33bd75d37d4882e99c7bc096cd509912a11eeea32d9a1298070e325d29",
     "bin": "shadPS4.exe",
     "shortcuts": [
         [
@@ -18,10 +18,10 @@
     "persist": "user",
     "checkver": {
         "url": "https://api.github.com/repos/shadps4-emu/shadPS4/releases?per_page=1",
-        "jsonpath": "$[?(@.prerelease == true)].tag_name",
-        "regex": "((\\d+-){3}[a-f0-9]{7})"
+        "jsonpath": "$[?(@.prerelease == true)]",
+        "regex": "/(?<tag>[\\w-]+)/shadps4-win64-qt-(?<version>[\\w-]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-$version/shadps4-win64-qt-$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/$matchTag/shadps4-win64-qt-$version.zip"
     }
 }
