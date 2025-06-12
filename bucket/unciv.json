@@ -25,7 +25,8 @@
         "SaveFiles"
     ],
     "checkver": {
-        "github": "https://github.com/yairm210/UnCiv"
+        "url": "https://api.github.com/repos/yairm210/UnCiv/releases",
+        "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.name == 'Unciv-Windows64.zip')])].tag_name"
     },
     "autoupdate": {
         "url": "https://gh-proxy.com/https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
