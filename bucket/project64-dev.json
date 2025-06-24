@@ -31,7 +31,8 @@
     ],
     "checkver": {
         "url": "https://www.pj64-emu.com/nightly-builds",
-        "regex": "((?<major>[\\d]+)\\.(?<minor>[\\d]+)\\.(?<patch>[\\d]+)-(?<build>[\\d]+)-(?<commit>[\\da-f]+))"
+        "regex": "href=\"/file/project64-win32-dev-(?<major>[\\d]+)-(?<minor>[\\d]+)-(?<patch>[\\d]+)-(?<build>[\\d]+)-(?<commit>[\\da-f]+).*btn zip",
+        "replace": "${major}.${minor}.${patch}-${build}-${commit}"
     },
     "autoupdate": {
         "url": "https://www.pj64-emu.com/file/setup-project64-Dev-$dashVersion/#/setup-project64-Dev-$dashVersion.exe"

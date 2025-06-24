@@ -31,6 +31,9 @@
         "} elseif (!($migration)) {",
         "    Write-Warning \"A global Scoop installation was detected with multiple user accounts. Please see the notes at the end of the install process.\"",
         "}",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    New-Item -Type File -Path $dir/$_",
+        "}",
         "Remove-Item $original_dir/prismlauncher_updater.exe"
     ],
     "post_install": [
@@ -42,20 +45,8 @@
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
         "}",
-        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
-        "    if (!(Test-Path -Path $persist_dir\\$_)) {",
-        "        New-Item -Type File $persist_dir/$_ | Out-Null",
-        "    }",
-        "    move-item $persist_dir/$_ $dir",
-        "}",
         "if (!(Get-Content $dir/metacache)) {",
         "    Add-Content $dir/metacache '{}'",
-        "}"
-    ],
-    "pre_uninstall": [
-        "ensure $persist_dir",
-        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
-        "    move-item $dir/$_ $persist_dir",
         "}"
     ],
     "bin": "prismlauncher.exe",
@@ -72,13 +63,17 @@
         "icons",
         "iconthemes",
         "instances",
+        "java",
         "libraries",
         "logs",
         "meta",
         "mods",
         "skins",
         "themes",
-        "translations"
+        "translations",
+        "account.json",
+        "metacache",
+        "prismlauncher.cfg"
     ],
     "checkver": {
         "github": "https://github.com/PrismLauncher/PrismLauncher"
