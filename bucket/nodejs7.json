@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v7.10.1/node-v7.10.1-win-x64.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v7.10.1/node-v7.10.1-win-x64.7z",
             "hash": "38be44aa73fd057d22b13f5b5adf55008add5b890d9c018cff416515af44ff08",
             "extract_dir": "node-v7.10.1-win-x64"
         },
         "32bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v7.10.1/node-v7.10.1-win-x86.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v7.10.1/node-v7.10.1-win-x86.7z",
             "hash": "0568d134d189521a0a0c933082dc7192a0c07b753d2dca9a6c61ee219de7745e",
             "extract_dir": "node-v7.10.1-win-x86"
         }
@@ -28,17 +28,17 @@
         "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
     ],
     "checkver": {
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/latest-v7.x/",
+        "url": "https://mirrors.ustc.edu.cn/node/latest-v7.x/",
         "regex": "node-v([\\d.]+)-x86.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             },
             "32bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x86.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x86.7z",
                 "extract_dir": "node-v$version-win-x86"
             }
         },

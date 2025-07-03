@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v14.21.3/node-v14.21.3-win-x64.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v14.21.3/node-v14.21.3-win-x64.7z",
             "hash": "a00c71e662cb1752f180e54921ca2c79bdefc7200a51b8805888ac3723889579",
             "extract_dir": "node-v14.21.3-win-x64"
         },
         "32bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v14.21.3/node-v14.21.3-win-x86.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v14.21.3/node-v14.21.3-win-x86.7z",
             "hash": "7a1f86386bb5f39c93bfd910a10966c69331c3f775457c0ea0c044ee6fbf000f",
             "extract_dir": "node-v14.21.3-win-x86"
         }
@@ -28,17 +28,17 @@
         "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
     ],
     "checkver": {
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/latest-fermium/",
+        "url": "https://mirrors.ustc.edu.cn/node/latest-fermium/",
         "regex": "node-v([\\d.]+)-x86\\.msi"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             },
             "32bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x86.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x86.7z",
                 "extract_dir": "node-v$version-win-x86"
             }
         },

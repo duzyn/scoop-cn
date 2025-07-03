@@ -5,17 +5,17 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.17.0/node-v22.17.0-win-x64.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v22.17.0/node-v22.17.0-win-x64.7z",
             "hash": "77f58f65389a84b1243e58fc5af1bee1ceda57a029e22644cac1c1d3117aa826",
             "extract_dir": "node-v22.17.0-win-x64"
         },
         "32bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.17.0/node-v22.17.0-win-x86.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v22.17.0/node-v22.17.0-win-x86.7z",
             "hash": "4f9aa2d620c4ccd90ca895644807e8114ab8d28919271f105434669d4f2c671e",
             "extract_dir": "node-v22.17.0-win-x86"
         },
         "arm64": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v22.17.0/node-v22.17.0-win-arm64.7z",
+            "url": "https://mirrors.ustc.edu.cn/node/v22.17.0/node-v22.17.0-win-arm64.7z",
             "hash": "38a183b193b25a7c42b3ce40f11694ba12976ad98fd93cdc0990ed7d77f30c1a",
             "extract_dir": "node-v22.17.0-win-arm64"
         }
@@ -33,22 +33,22 @@
         "cache"
     ],
     "checkver": {
-        "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/index.json",
+        "url": "https://mirrors.ustc.edu.cn/node/index.json",
         "jsonpath": "$..[?(@.lts != false)].version",
         "regex": "v([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x64.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x64.7z",
                 "extract_dir": "node-v$version-win-x64"
             },
             "32bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-x86.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x86.7z",
                 "extract_dir": "node-v$version-win-x86"
             },
             "arm64": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v$version/node-v$version-win-arm64.7z",
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-arm64.7z",
                 "extract_dir": "node-v$version-win-arm64"
             }
         },
