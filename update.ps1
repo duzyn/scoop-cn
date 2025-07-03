@@ -97,7 +97,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace '(miktex\.org/download/ctan)|(mirrors.+/CTAN)', 'mirrors.tuna.tsinghua.edu.cn/CTAN'
 
     # Node
-    $content = $content -replace 'nodejs\.org/dist', 'mirrors.tuna.tsinghua.edu.cn/nodejs-release'
+    $content = $content -replace 'nodejs\.org/dist', 'mirrors.ustc.edu.cn/node'
     
     # Python
     $content = $content -replace 'www\.python\.org/ftp/python', 'mirrors.nju.edu.cn/python'
