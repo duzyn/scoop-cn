@@ -1,10 +1,10 @@
 {
-    "version": "3.2.25073.1647",
+    "version": "3.2.25186.1619",
     "description": "A powerful, multi-purpose tool that helps you monitor system resources, debug software and detect malware.",
     "homepage": "https://systeminformer.sourceforge.io",
     "license": "MIT",
-    "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25073.1647/systeminformer-3.2.25073.1647-canary-bin.zip",
-    "hash": "aadf27295cf5c85ceb4d61d1e0467dffb69f5d82087d1bf031a8e157548fe9c8",
+    "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25186.1619/systeminformer-3.2.25186.1619-bin.zip",
+    "hash": "126f7d66fe9409adeb4aa5e338f2956d702f21afbe305b16561a1bbbfd1fbf88",
     "architecture": {
         "32bit": {
             "extract_dir": "i386"
@@ -40,10 +40,10 @@
         "regex": "systeminformer-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-$version-canary-bin.zip",
+        "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-$version-bin.zip",
         "hash": {
             "url": "https://systeminformer.sourceforge.io/canary",
-            "regex": "(?s)Hashes.*?Binaries.*?SHA2.*?$sha256"
+            "regex": "(?s)Binaries.*SHA-256.*?$sha256"
         }
     }
 }
