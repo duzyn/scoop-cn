@@ -1,16 +1,15 @@
 {
-    "version": "0.9.9",
-    "description": "A high-accuracy NES and Famicom emulator and NSF player.",
+    "version": "2.1.1",
+    "description": "Multi-system emulator (NES, SNES, GB, GBA, PCE, SMS/GG, WS) for Windows, Linux and macOS",
     "homepage": "https://www.mesen.ca",
     "license": {
         "identifier": "GPL-3.0",
-        "url": "https://github.com/SourMesen/Mesen/blob/master/LICENSE"
+        "url": "https://github.com/SourMesen/Mesen2/blob/master/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen/releases/download/0.9.9/Mesen.0.9.9.zip",
-    "hash": "91bd2b1ba007c9349864a96e490dbdaada78033d51e0be1aabbf442a4b9a7cda",
+    "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen2/releases/download/2.1.1/Mesen_2.1.1_Windows.zip",
+    "hash": "23ccc2bc060b663c68dad3a8c5d6da7d23a50f872d04f135bafa2b04ff7d5cbe",
     "pre_install": [
-        "if(!(Test-Path(\"$persist_dir\\FdsBios.bin\"))) { New-Item \"$dir\\FdsBios.bin\" | Out-Null }",
-        "if (!(Test-Path \"$persist_dir\\settings.xml\")) { New-Item -ItemType File \"$dir\\settings.xml\" | Out-Null }"
+        "if (!(Test-Path \"$persist_dir\\settings.json\")) { New-Item -ItemType File \"$dir\\settings.json\" | Out-Null }"
     ],
     "bin": "Mesen.exe",
     "shortcuts": [
@@ -20,22 +19,23 @@
         ]
     ],
     "persist": [
-        "settings.xml",
-        "FdsBios.bin",
-        "Avi",
-        "GoogleDrive",
-        "HdPacks",
-        "Movies",
+        "settings.json",
         "RecentGames",
-        "SaveStates",
-        "Saves",
         "Screenshots",
-        "Wave"
+        "Avi",
+        "Wave",
+        "Movies",
+        "HdPacks",
+        "Saves",
+        "SaveStates",
+        "Cheats",
+        "GameConfig",
+        "Firmware"
     ],
     "checkver": {
-        "github": "https://github.com/SourMesen/Mesen/"
+        "github": "https://github.com/SourMesen/Mesen2"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen/releases/download/$version/Mesen.$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen2/releases/download/$version/Mesen_$version_Windows.zip"
     }
 }
