@@ -1,17 +1,17 @@
 {
-    "version": "2.48.1.windows.1",
+    "version": "2.50.1.windows.1",
     "description": "Distributed version control system",
     "homepage": "https://gitforwindows.org",
     "license": "GPL-2.0-only",
     "notes": "Set Git Credential Manager Core by running: \"git config --global credential.helper manager-core\"",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/git-for-windows/git/releases/download/v2.48.1.windows.1/PortableGit-2.48.1-64-bit.7z.exe#/dl.7z",
-            "hash": "a4335111b3363871cac632be93d7466154d8eb08782ff55103866b67d6722257"
+            "url": "https://gh-proxy.com/https://github.com/git-for-windows/git/releases/download/v2.50.1.windows.1/PortableGit-2.50.1-64-bit.7z.exe#/dl.7z",
+            "hash": "c45a7dfa2bde34059f6dbd85f49a95d73d5aea29305f51b79595e56e4f323a3d"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/git-for-windows/git/releases/download/v2.48.1.windows.1/PortableGit-2.48.1-32-bit.7z.exe#/dl.7z",
-            "hash": "63ddbc7ea11ea8a1375f39f45d38f928dbec564360ad12dd11d0d649474063a0"
+            "url": "https://gh-proxy.com/https://github.com/git-for-windows/git/releases/download/v2.50.1.windows.1/PortableGit-2.50.1-32-bit.7z.exe#/dl.7z",
+            "hash": "7692d9af16b08150e28dae6c63106a46995fb44e5f4c85182ac7eb1b840543c5"
         }
     },
     "post_install": "'scp', 'sftp', 'ssh*' | ForEach-Object { Remove-Item $original_dir\\usr\\bin\\$_.exe }",
