@@ -14,6 +14,16 @@
             "/DIR=$dir"
         ]
     },
+    "post_install": [
+        "$config_path = \"$env:ProgramData\\GOG.com\\Galaxy\\config.json\"",
+        "if (Test-Path $config_path) {",
+        "    $config = Get-Content $config_path -ErrorAction SilentlyContinue | ConvertFrom-Json -ErrorAction SilentlyContinue",
+        "    if (($null -ne $config) -and ($config.libraryPath -match \"$((appdir $app $global).replace('\\', '\\\\'))\\\\[\\d.]+\\\\Games\") ) {",
+        "        $config.libraryPath  = \"$persist_dir\\Games\"",
+        "        $config | ConvertTo-Json | Set-Content $config_path -ErrorAction SilentlyContinue",
+        "    }",
+        "}"
+    ],
     "shortcuts": [
         [
             "GalaxyClient.exe",
