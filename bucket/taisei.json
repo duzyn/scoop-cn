@@ -1,16 +1,12 @@
 {
-    "version": "1.4.2",
+    "version": "1.4.3",
     "description": "Free and open source Touhou Project clone and fangame",
     "homepage": "https://github.com/taisei-project/taisei",
     "license": "MIT",
     "architecture": {
-        "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v1.4.2/Taisei-1.4.2-windows-x86.zip",
-            "hash": "898f8597f79cd3bb293a8d4e6a5af7c0e9fea1b47db84b6471204582214d45bc"
-        },
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v1.4.2/Taisei-1.4.2-windows-x86_64.zip",
-            "hash": "ce78461fc535095c4e3e0a9be89b659fe0bd18a28c6e023e3c0c63a65aea2586"
+            "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v1.4.3/Taisei-1.4.3-windows-x86_64.zip",
+            "hash": "2942cacb3bf540947d444dbd466be78f43765a075f2620a2ce56464b7dfa68c2"
         }
     },
     "bin": "taisei.exe",
@@ -23,11 +19,11 @@
     "checkver": "github",
     "autoupdate": {
         "architecture": {
-            "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v$version/Taisei-$version-windows-x86.zip"
-            },
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v$version/Taisei-$version-windows-x86_64.zip"
+                "url": "https://gh-proxy.com/https://github.com/taisei-project/taisei/releases/download/v$version/Taisei-$version-windows-x86_64.zip",
+                "hash": {
+                    "url": "$url.sha256sum"
+                }
             }
         }
     }
