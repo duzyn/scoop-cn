@@ -7,7 +7,7 @@
         "url": "https://support.gog.com/hc/en-us/articles/212632089"
     },
     "url": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_2.0.86.13.exe",
-    "hash": "md5:1429cda4ccaffd28b70b179e6046ad0f",
+    "hash": "04b6de20a454f82b468104097b729119fd0e5d085ffb953cbe640539b6d66755",
     "installer": {
         "args": [
             "/VERYSILENT",
@@ -22,7 +22,8 @@
         "        $config.libraryPath  = \"$persist_dir\\Games\"",
         "        $config | ConvertTo-Json | Set-Content $config_path -ErrorAction SilentlyContinue",
         "    }",
-        "}"
+        "}",
+        "Move-Item \"$persist_dir\\galaxy-2.0.db\" \"$env:ProgramData\\GOG.com\\Galaxy\\storage\" -Force -ErrorAction SilentlyContinue"
     ],
     "shortcuts": [
         [
@@ -35,6 +36,7 @@
         "Dependencies-Temp",
         "Games"
     ],
+    "pre_uninstall": "Copy-Item \"$env:ProgramData\\GOG.com\\Galaxy\\storage\\galaxy-2.0.db\" \"$persist_dir\" -Force -ErrorAction SilentlyContinue",
     "uninstaller": {
         "script": "Start-Process \"$dir\\unins000.exe\" -Wait -ArgumentList \"/VERYSILENT\""
     },
@@ -43,10 +45,6 @@
         "jsonpath": "$.content.windows.version"
     },
     "autoupdate": {
-        "url": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_$version.exe",
-        "hash": {
-            "url": "https://remote-config.gog.com/components/webinstaller?component_version=2.0.0",
-            "jsonpath": "$.content.windows.installerMd5"
-        }
+        "url": "https://content-system.gog.com/open_link/download?path=/open/galaxy/client/setup_galaxy_$version.exe"
     }
 }
