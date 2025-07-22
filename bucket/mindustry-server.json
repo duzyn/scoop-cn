@@ -7,7 +7,7 @@
         "Java Runtime Environment": "scoop-cn/adoptopenjdk-hotspot-jre",
         "Mindustry": "scoop-cn/mindustry"
     },
-    "url": "https://gh-proxy.com/https://github.com/Anuken/Mindustry/releases/download/v149/server-release.jar#/Mindustry-Server.jar",
+    "url": "https://gh-proxy.net/https://github.com/Anuken/Mindustry/releases/download/v149/server-release.jar#/Mindustry-Server.jar",
     "hash": "1b261145a4520824560e43d413abc98fd3c02f619edc0e1ac238cb4d7590d516",
     "pre_install": "Set-Content -Path \"$dir\\mindustry-server.bat\" -Value \"pushd $dir && java -jar Mindustry-Server.jar && popd\"",
     "bin": "mindustry-server.bat",
@@ -22,6 +22,6 @@
         "regex": "Anuken\\/Mindustry\\/tree\\/v(\\d+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Anuken/Mindustry/releases/download/v$version/server-release.jar#/Mindustry-Server.jar"
+        "url": "https://gh-proxy.net/https://github.com/Anuken/Mindustry/releases/download/v$version/server-release.jar#/Mindustry-Server.jar"
     }
 }

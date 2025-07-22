@@ -1,13 +1,13 @@
 {
-    "version": "4.17.6",
+    "version": "4.17.7",
     "homepage": "https://github.com/yairm210/UnCiv",
     "description": "Open source, mod-friendly Android + Desktop remake of Civ V, made with LibGDX",
     "license": "MPL-2.0",
     "suggest": {
         "Java Runtime Environment": "scoop-cn/temurin-jre"
     },
-    "url": "https://gh-proxy.com/https://github.com/yairm210/Unciv/releases/download/4.17.6/Unciv-Windows64.zip",
-    "hash": "921b174001d8b00e79954f5750167d9fe0a80b65b045d30033acae5387fd736e",
+    "url": "https://gh-proxy.net/https://github.com/yairm210/Unciv/releases/download/4.17.7/Unciv-Windows64.zip",
+    "hash": "3d74bffa3030a1dee83c015b2af89be11c69799c785ae174cb920b0ff7fadf9b",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
         "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
@@ -29,6 +29,6 @@
         "jsonpath": "$[?(@.prerelease == false && @.assets[?(@.name == 'Unciv-Windows64.zip')])].tag_name"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
+        "url": "https://gh-proxy.net/https://github.com/yairm210/Unciv/releases/download/$version/Unciv-Windows64.zip"
     }
 }
