@@ -1,5 +1,5 @@
 {
-    "version": "20250724-g13233cc",
+    "version": "20250724-gd0e0017",
     "description": "Fast PlayStation 1 emulator (preview build)",
     "homepage": "https://www.duckstation.org/",
     "license": {
@@ -17,7 +17,7 @@
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.net/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-x64-release.zip",
-            "hash": "5624090db5038baf719085dcb3f76913804011f4c2aacb27c92441882401c949",
+            "hash": "967f030f1f12f31289f0a47033edf00e885ec86e1a358dd040ec83a1bc6f9373",
             "post_install": [
                 "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
                 "echo \"update bin/shortcuts\"",
@@ -35,7 +35,7 @@
         },
         "arm64": {
             "url": "https://gh-proxy.net/https://github.com/stenzek/duckstation/releases/download/preview/duckstation-windows-ARM64-release.zip",
-            "hash": "87b9ab291d7ba9128e53b16f5c2990393eb4cf170c98e988e734e07e76534010",
+            "hash": "4b78308a8466e8f1c06ba42e67221dce17ce6491ae4112762ea7d19a19b9ef9b",
             "post_install": [
                 "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
                 "echo \"update bin/shortcuts\"",
