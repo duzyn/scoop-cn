@@ -1,5 +1,5 @@
 {
-    "version": "9.0.4",
+    "version": "9.0.5",
     "description": "A PC port of Legend of Zelda: Ocarina of Time",
     "homepage": "https://www.shipofharkinian.com",
     "license": "Unlicense",
@@ -10,8 +10,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/HarbourMasters/Shipwright/releases/download/9.0.4/SoH-Blair-Echo-Win64.zip",
-            "hash": "8884710efa396b9164593bec761d70651c4863b3849e8a9c26859f0e1f4282c1"
+            "url": "https://gh-proxy.net/https://github.com/HarbourMasters/Shipwright/releases/download/9.0.5/SoH-Blair-Foxtrot-Win64.zip",
+            "hash": "0be869e2298cf9f0b5b58907e2aba6c4fc21321561a1fdcbf5293aa81603dc70"
         }
     },
     "pre_install": [
@@ -49,7 +49,7 @@
     },
     "checkver": {
         "github": "https://github.com/HarbourMasters/Shipwright/",
-        "regex": "(?<majorName>(\\w+))\\s(?<minorName>(\\w+))\\s(?<version>([\\d\\.]+))",
+        "regex": "/(?<version>([\\d.]+))/SoH-(?<majorName>\\w+)-(?<minorName>\\w+)-Win64\\.zip",
         "replace": "${version}"
     },
     "autoupdate": {
