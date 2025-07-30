@@ -1,40 +1,37 @@
 {
-    "version": "2025.7.13.17",
+    "version": "2025.7.27.57",
     "description": "An unofficial Minecraft Bedrock for Windows Launcher",
     "homepage": "https://bedrocklauncher.github.io/",
     "license": "GPL-3.0-only",
     "notes": [
-        "Run the launcher on an Administrator account. Running it on a normal account and providing Admin rights at the prompt will result in an error and crash of the launcher.",
-        "Please also ensure you are using a Microsoft account on your PC, or your Microsoft Store is logged in with a Microsoft account which has access to the game (Either bought or Game Pass).",
+        "Please ensure you are using a Microsoft account on your PC, or your Microsoft Store is logged in with a Microsoft account which has access to the game (Either bought or Game Pass).",
         "See \"Important Notes\" section at https://github.com/BedrockLauncher/BedrockLauncher/releases/latest"
     ],
     "suggest": {
         "VCRedist": "scoop-cn/vcredist2022",
-        ".NET 6.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime-6.0"
+        ".NET 8.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime-lts"
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/BedrockLauncher/BedrockLauncher/releases/download/2025.7.13.17/BedrockLauncher2025.7.13.17.zip",
-            "hash": "6baf623948308f2e9a58257a65dcd0eec8937a7bf8466ef5b60aec389a1e46b4"
+            "url": "https://gh-proxy.net/https://github.com/BedrockLauncher/BedrockLauncher/releases/download/2025.7.27.57/BedrockLauncher.2025.7.27.57.zip",
+            "hash": "7eea2e929960418e872e9fb7cdd5773f860195edaa69f182d83199c8d96d8c85"
         }
     },
     "extract_dir": "BedrockLauncher",
     "shortcuts": [
         [
-            "StartBedrockLauncher.exe",
-            "Bedrock Launcher",
-            "",
-            "app\\BedrockLauncher.exe"
+            "BedrockLauncher.exe",
+            "Bedrock Launcher"
         ]
     ],
-    "persist": "app\\data",
+    "persist": "data",
     "checkver": {
         "github": "https://github.com/BedrockLauncher/BedrockLauncher"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/BedrockLauncher/BedrockLauncher/releases/download/$version/BedrockLauncher$version.zip"
+                "url": "https://gh-proxy.net/https://github.com/BedrockLauncher/BedrockLauncher/releases/download/$version/BedrockLauncher.$version.zip"
             }
         }
     }
