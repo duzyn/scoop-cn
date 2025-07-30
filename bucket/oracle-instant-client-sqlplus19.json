@@ -1,5 +1,5 @@
 {
-    "version": "19.27.0.0.0",
+    "version": "19.28.0.0.0",
     "description": "The SQL*Plus command line tool for SQL and PL/SQL queries with Oracle Instant Client.",
     "homepage": "https://www.oracle.com/database/technologies/instant-client.html",
     "license": {
@@ -9,15 +9,15 @@
     "depends": "scoop-cn/oracle-instant-client19",
     "architecture": {
         "64bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/1927000/instantclient-sqlplus-windows.x64-19.27.0.0.0dbru.zip",
-            "hash": "90111ab7c84c777a1ba871ff10be118120c31e90439c06e23c94b2325ac52925"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1928000/instantclient-sqlplus-windows.x64-19.28.0.0.0dbru.zip",
+            "hash": "db93e57711219f6eeffa66a4c9267879a741f3005f97a9eb8ababdaa2ba6b295"
         },
         "32bit": {
-            "url": "https://download.oracle.com/otn_software/nt/instantclient/1927000/instantclient-sqlplus-nt-19.27.0.0.0dbru.zip",
-            "hash": "9c15ef67a77853e61404cca7c0149511d39d142c597dc8a0ae8c758671421eb8"
+            "url": "https://download.oracle.com/otn_software/nt/instantclient/1928000/instantclient-sqlplus-nt-19.28.0.0.0dbru.zip",
+            "hash": "d20331ce964071c4c6890e91bb80010de00f623e476e5db5aae156204463612f"
         }
     },
-    "extract_dir": "instantclient_19_27",
+    "extract_dir": "instantclient_19_28",
     "pre_install": [
         "$instantclient = currentdir 'oracle-instant-client19'",
         "Copy-Item -Path \"$dir\\*\" -Destination \"$instantclient\" -Force -Recurse | Out-Null"
