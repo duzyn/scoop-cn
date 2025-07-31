@@ -1,13 +1,13 @@
 {
-    "version": "1.2.180.1720",
+    "version": "1.2.181.1721",
     "homepage": "https://www.grammarly.com/",
     "description": "An AI-powered grammar assistant and plagiarism detector that helps with improving writing in english.",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.grammarly.com/terms"
     },
-    "url": "https://download-windows.grammarly.com/versions/1.2.180.1720/GrammarlyInstaller.exe",
-    "hash": "bd67f92e2629c5791e6539c2b5232ddec0db8050fc546524f01ecc8d4a3e2b92",
+    "url": "https://download-windows.grammarly.com/versions/1.2.181.1721/GrammarlyInstaller.exe",
+    "hash": "61d835b059df578f32bf43edf865fe417a456f446282590a60a437df85102e55",
     "pre_install": [
         "Start-Process \"$dir\\GrammarlyInstaller.exe\" -Args '/S'",
         "while (!(Test-Path \"$env:LOCALAPPDATA\\Grammarly\\DesktopIntegrations\\Uninstall.exe\")) {",
