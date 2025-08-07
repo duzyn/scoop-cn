@@ -4,7 +4,7 @@
     "homepage": "https://www.ipfilter.app/",
     "license": "MIT",
     "url": "https://gh-proxy.net/https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip",
-    "hash": "7fefe028f2f71be63694f8f7217b9a1ee126d77231ed5ffb32c09af8f1f4a9cf",
+    "hash": "53d6acc1fe5aa2ed1c944d4cd6027ec6db43900309244859b65f932e8ebf9443",
     "checkver": {
         "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/487352/releases/tags/lists).assets[0].updated_at -UFormat %s } catch { '' }",
         "regex": "\\A(\\d+)\\Z"
