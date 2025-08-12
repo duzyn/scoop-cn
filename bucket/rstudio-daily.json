@@ -1,13 +1,13 @@
 {
-    "version": "2025.08.0-356",
+    "version": "2025.08.0-357",
     "description": "An IDE for R with console, syntax-highlighting, editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.",
     "homepage": "https://www.rstudio.com/",
     "license": "AGPL-3.0-only",
     "depends": "scoop-cn/r",
     "architecture": {
         "64bit": {
-            "url": "https://s3.amazonaws.com/rstudio-ide-build/electron/windows/RStudio-2025.08.0-356.exe#/dl.7z",
-            "hash": "aa1d3c902a44168720194f92ed2750849ecd1c449e7ebd8c5d8daed6641c6602",
+            "url": "https://s3.amazonaws.com/rstudio-ide-build/electron/windows/RStudio-2025.08.0-357.exe#/dl.7z",
+            "hash": "ed1823273f9d2533cdd5b696221fa03a81e7fe935aabd5ae6751e1457fbfa2e0",
             "post_install": [
                 "Remove-Item \"$dir\\`$*\" -Recurse",
                 "if (!(Test-Path \"$env:Appdata\\RStudio\")) {",
