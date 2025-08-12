@@ -22,7 +22,13 @@
             "AssetRipper"
         ]
     ],
-    "post_uninstall": "Remove-Item \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\\AssetRipper.lnk\" -Force -ErrorAction SilentlyContinue",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\AssetRipper.Settings.json\")) {",
+        "    $config = @{'Import' = @{}; 'Processing' = @{}; 'Export' = @{}}",
+        "    $config | ConvertTo-Json | Set-Content \"$dir\\AssetRipper.Settings.json\" -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "persist": "AssetRipper.Settings.json",
     "checkver": "github",
     "autoupdate": {
         "architecture": {
