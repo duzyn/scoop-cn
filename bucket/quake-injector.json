@@ -3,7 +3,7 @@
     "homepage": "https://www.quaddicted.com/tools/quake_injector",
     "description": "Tool to download, install and play custom Quake maps (and singleplayer Quake-style mods) easily",
     "license": "GPL-3.0",
-    "url": "https://gh-proxy.net/https://github.com/hrehfeld/QuakeInjector/releases/download/alpha07/QuakeInjector.exe-alpha07.zip",
+    "url": "https://gh-proxy.com/https://github.com/hrehfeld/QuakeInjector/releases/download/alpha07/QuakeInjector.exe-alpha07.zip",
     "hash": "22db9c66b1f09b015e0a4fb4d6fc918d49bbc05d7e74b3c7a733c418d2d27258",
     "pre_install": "'config.properties', 'database.xml' | ForEach-Object { if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null } }",
     "bin": "QuakeInjector.exe",
@@ -22,6 +22,6 @@
         "regex": "([\\w]+)</a></h2>"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/hrehfeld/QuakeInjector/releases/download/$version/QuakeInjector.exe-$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/hrehfeld/QuakeInjector/releases/download/$version/QuakeInjector.exe-$version.zip"
     }
 }

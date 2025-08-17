@@ -9,7 +9,7 @@
             "scoop-cn/temurinjdk"
         ]
     },
-    "url": "https://gh-proxy.net/https://github.com/BrunoReX/jmkvpropedit/releases/download/v1.5.2/jmkvpropedit-v1.5.2.zip",
+    "url": "https://gh-proxy.com/https://github.com/BrunoReX/jmkvpropedit/releases/download/v1.5.2/jmkvpropedit-v1.5.2.zip",
     "hash": "1a3998ee7ad343852b0f8e669278b03a88d546a7335dec166cead96c33fc27b9",
     "pre_install": "$manifest.persist | ForEach-Object { if (-not (Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null } }",
     "shortcuts": [
@@ -21,6 +21,6 @@
     "persist": "JMkvpropedit.ini",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/BrunoReX/jmkvpropedit/releases/download/v$version/jmkvpropedit-v$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/BrunoReX/jmkvpropedit/releases/download/v$version/jmkvpropedit-v$version.zip"
     }
 }

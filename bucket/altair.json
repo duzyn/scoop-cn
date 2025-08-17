@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/altair-graphql/altair/releases/download/v8.2.5/altair_8.2.5_x64_win.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/altair-graphql/altair/releases/download/v8.2.5/altair_8.2.5_x64_win.exe#/dl.7z",
             "hash": "sha512:759b18e47994484f27aa62deda1fddb6463846a2f1215f54a38df62e0d965af5abf5c12f2f3646e6d51af9881d32bed063d7a1732bafe1bf8cd2fc528c1c2cb6",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -25,7 +25,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/altair-graphql/altair/releases/download/v$version/altair_$version_x64_win.exe#/dl.7z",
+                "url": "https://gh-proxy.com/https://github.com/altair-graphql/altair/releases/download/v$version/altair_$version_x64_win.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "sha512:\\s+$base64"

@@ -8,7 +8,7 @@
     },
     "architecture": {
         "32bit": {
-            "url": "https://gh-proxy.net/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
+            "url": "https://gh-proxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
             "hash": "c5000bfb8d01c568cb4b7df64cb16f2361729e19d43dd7bee30d1db72ac1b2c5",
             "pre_install": [
                 "Write-Host -ForegroundColor Yellow \"WARN: MAME no longer provides up to date 32bit binaries\"",
@@ -16,7 +16,7 @@
                 "$choice = (Read-Host -Prompt \"[Y / N]\").toLower()",
                 "switch ($choice) {",
                 "   y {scoop uninstall mame",
-                "       scoop install https://gh-proxy.net/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
+                "       scoop install https://gh-proxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json",
                 "       scoop hold mame",
                 "       exit 0",
                 "   }",
@@ -28,7 +28,7 @@
             ]
         },
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/mamedev/mame/releases/download/mame0279/mame0279b_64bit.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame0279/mame0279b_64bit.exe#/dl.7z",
             "hash": "77d4039a89d8290db14570843ab58195fdcddccbbc533dbccb2e2a5eb875f6bb",
             "pre_install": [
                 "if(!(Test-Path \"$persist_dir\\mame.ini\")) {",
@@ -73,10 +73,10 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://gh-proxy.net/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json"
+                "url": "https://gh-proxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json"
             },
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/mamedev/mame/releases/download/mame$cleanVersion/mame$cleanVersionb_64bit.exe#/dl.7z"
+                "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame$cleanVersion/mame$cleanVersionb_64bit.exe#/dl.7z"
             }
         }
     }

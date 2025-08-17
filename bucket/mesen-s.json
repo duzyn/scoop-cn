@@ -7,7 +7,7 @@
         "url": "https://github.com/SourMesen/Mesen-S/blob/master/LICENSE"
     },
     "notes": "Configuration files cannot be persisted, but will be retained during the update",
-    "url": "https://gh-proxy.net/https://github.com/SourMesen/Mesen-S/releases/download/0.4.0/Mesen-S.0.4.0.zip",
+    "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen-S/releases/download/0.4.0/Mesen-S.0.4.0.zip",
     "hash": "ce4ee543dd3aaa4a10e8597d5aa4735fbe9252c8d679e5772dbee827cfaa2d96",
     "pre_install": "if (!(Test-Path \"$persist_dir\\settings.xml\")) { New-Item -ItemType File \"$dir\\settings.xml\" | Out-Null }",
     "bin": "Mesen-S.exe",
@@ -33,6 +33,6 @@
         "github": "https://github.com/SourMesen/Mesen-S/"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/SourMesen/Mesen-S/releases/download/$version/Mesen-S.$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/SourMesen/Mesen-S/releases/download/$version/Mesen-S.$version.zip"
     }
 }

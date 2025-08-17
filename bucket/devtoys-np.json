@@ -3,7 +3,7 @@
     "homepage": "https://devtoys.app/",
     "description": "A Swiss Army knife for developers.",
     "license": "MIT",
-    "url": "https://gh-proxy.net/https://github.com/veler/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle",
+    "url": "https://gh-proxy.com/https://github.com/veler/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle",
     "hash": "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3",
     "pre_install": [
         "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-Command', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\"); Start-Sleep -Seconds 2",
@@ -19,6 +19,6 @@
         "github": "https://github.com/veler/DevToys"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/veler/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle"
+        "url": "https://gh-proxy.com/https://github.com/veler/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle"
     }
 }

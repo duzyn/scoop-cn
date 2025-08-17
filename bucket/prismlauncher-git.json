@@ -34,7 +34,7 @@
         "script": [
             "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success&event=push'",
             "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
-            "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.net/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
+            "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.com/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
             "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",
             "$version = \"$majorVersion.$minorVersion-$fullSha\"",

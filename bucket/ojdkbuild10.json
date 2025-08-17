@@ -5,12 +5,12 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86_64.zip",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86_64.zip",
             "hash": "39801db76f04b9f1491b0d0a64258535f14e319a3cd08d3e161b18a6af7a842d",
             "extract_dir": "java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86_64"
         },
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86.zip",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/10.0.2-1/java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86.zip",
             "hash": "ea3a8b6a7106ea47f1841d92f211270f28c27b6e265efdae2c2eb78d628be39f",
             "extract_dir": "java-10-openjdk-10.0.2-1.b13.ojdkbuild.windows.x86"
         }
@@ -20,17 +20,17 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
         "regex": "download/(?<short>[\\d.-]+)/java-10-openjdk-([\\d.-]+(?<build>b\\d+))\\."
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86_64.zip",
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86_64.zip",
                 "extract_dir": "java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86_64"
             },
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86.zip",
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/$matchShort/java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86.zip",
                 "extract_dir": "java-$majorVersion-openjdk-$version.ojdkbuild.windows.x86"
             }
         },

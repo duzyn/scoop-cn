@@ -3,7 +3,7 @@
     "description": "A secure socks5 proxy, designed to protect your Internet traffic.",
     "homepage": "https://github.com/shadowsocks/shadowsocks-windows",
     "license": "GPL-3.0-only",
-    "url": "https://gh-proxy.net/https://github.com/shadowsocks/shadowsocks-windows/releases/download/4.4.1.0/Shadowsocks-4.4.1.0.zip",
+    "url": "https://gh-proxy.com/https://github.com/shadowsocks/shadowsocks-windows/releases/download/4.4.1.0/Shadowsocks-4.4.1.0.zip",
     "hash": "62b74a688d22bfdf20f673a351580029d7b9de67c6facc9a5613b22b3f798968",
     "pre_install": [
         "function CreateFile ($name, $value = $null) {",
@@ -32,7 +32,7 @@
         "regex": "Shadowsocks-([\\d.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/shadowsocks/shadowsocks-windows/releases/download/$matchHead.0/Shadowsocks-$version.zip",
+        "url": "https://gh-proxy.com/https://github.com/shadowsocks/shadowsocks-windows/releases/download/$matchHead.0/Shadowsocks-$version.zip",
         "hash": {
             "url": "$url.hash",
             "regex": "$sha512"

@@ -19,7 +19,7 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+        "url": "https://gh-proxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
         "jsonpath": "$.windows.x64.jre.8.zip.resource",
         "regex": "/([\\d.]+)/"
     },
@@ -28,14 +28,14 @@
             "64bit": {
                 "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x64-jre.zip",
                 "hash": {
-                    "url": "https://gh-proxy.net/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "url": "https://gh-proxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
                     "jsonpath": "$.windows.x64.jre.8.zip.checksum_sha256"
                 }
             },
             "32bit": {
                 "url": "https://corretto.aws/downloads/resources/$version/amazon-corretto-$version-windows-x86-jre.zip",
                 "hash": {
-                    "url": "https://gh-proxy.net/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
+                    "url": "https://gh-proxy.com/https://github.com/corretto/corretto-downloads/raw/main/latest_links/indexmap_with_checksum.json",
                     "jsonpath": "$.windows.x86.jre.8.zip.checksum_sha256"
                 }
             }

@@ -4,7 +4,7 @@
     "description": "Graphical frontend for browsing your game library and launching all kinds of emulators from the same place",
     "license": "GPL-3.0-only",
     "notes": "Application settings are stored in the \"%LOCALAPPDATA%\\pegasus-frontend\" directory, or the \"config\" folder inside the app directory.",
-    "url": "https://gh-proxy.net/https://github.com/mmatyas/pegasus-frontend/releases/download/weekly_2024w38/pegasus-fe_alpha16-82-gc3462e68_win-mingw-static.zip",
+    "url": "https://gh-proxy.com/https://github.com/mmatyas/pegasus-frontend/releases/download/weekly_2024w38/pegasus-fe_alpha16-82-gc3462e68_win-mingw-static.zip",
     "hash": "393316e4768ffd8269a27d360f9cb517e067ef629b9b51ec5cc13ee08e5b1c8c",
     "pre_install": "if (!(Test-Path \"$persist_dir\\portable.txt\")) { New-Item \"$dir\\portable.txt\" -ItemType 'File' | Out-Null }",
     "bin": "pegasus-fe.exe",
@@ -25,6 +25,6 @@
         "regex": "(?<Release>[\\w_]+)/pegasus-fe_([\\w-]+)_win-mingw-static\\.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/mmatyas/pegasus-frontend/releases/download/$matchRelease/pegasus-fe_$version_win-mingw-static.zip"
+        "url": "https://gh-proxy.com/https://github.com/mmatyas/pegasus-frontend/releases/download/$matchRelease/pegasus-fe_$version_win-mingw-static.zip"
     }
 }

@@ -3,7 +3,7 @@
     "description": "Installs generic USB drivers, such as WinUSB, libusb-win32/libusb0.sys or libusbK.",
     "homepage": "https://zadig.akeo.ie/",
     "license": "GPL-3.0-or-later",
-    "url": "https://gh-proxy.net/https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe#/zadig.exe",
+    "url": "https://gh-proxy.com/https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe#/zadig.exe",
     "hash": "4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b",
     "pre_install": [
         "New-Item -Path 'HKCU:\\SOFTWARE\\Akeo Consulting\\Zadig' -Force | Out-Null",
@@ -21,6 +21,6 @@
         "replace": "${zadigversion}"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/pbatard/libwdi/releases/download/v$matchLibwdiversion/zadig-$version.exe#/zadig.exe"
+        "url": "https://gh-proxy.com/https://github.com/pbatard/libwdi/releases/download/v$matchLibwdiversion/zadig-$version.exe#/zadig.exe"
     }
 }

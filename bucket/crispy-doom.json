@@ -8,7 +8,7 @@
         "",
         "    $persist_dir\\..\\_doom"
     ],
-    "url": "https://gh-proxy.net/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-7.0/crispy-doom-7.0.0-win32.zip",
+    "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-7.0/crispy-doom-7.0.0-win32.zip",
     "hash": "7d0dc90f0b669b17578c146d3e555b56026946f8541c6d5aabcff9f0b71716eb",
     "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
     "env_set": {
@@ -60,6 +60,6 @@
         "regex": "/releases/tag/crispy-doom-([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-$version/crispy-doom-$version.0-win32.zip"
+        "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-$version/crispy-doom-$version.0-win32.zip"
     }
 }
