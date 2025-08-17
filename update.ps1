@@ -58,7 +58,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'https?://fastcopy\.jp/archive', 'https://gh-proxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
 
     # OBS Studio
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows\.zip', 'https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows.zip'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows', 'https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows'
 
     # OBS Studio 2.7
     $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
