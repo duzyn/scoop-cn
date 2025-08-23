@@ -1,5 +1,5 @@
 {
-    "version": "12.9.6",
+    "version": "12.9.7",
     "homepage": "https://www.goodsync.com",
     "description": "Simple and secure file backup/synchronization software.",
     "license": {
@@ -7,7 +7,7 @@
         "url": "https://www.goodsync.com/license"
     },
     "url": "https://www.goodsync.com/download/GoodSync-Setup.exe",
-    "hash": "63ec215eb24862577b98d1bbf1ea782e4ee8530f3d7ebd1e4a3148404433c5de",
+    "hash": "ad03463d4bd66aa02c898b2ea62462979d1feeec80288257ea9d46dbfb23f551",
     "pre_install": [
         "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
         "Start-Process \"$dir\\GoodSync-Setup.exe\" -Wait -ArgumentList '/S' -Verb RunAs",
