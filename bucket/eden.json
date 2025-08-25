@@ -1,0 +1,45 @@
+{
+    "version": "v0.0.3-rc3",
+    "description": "Open source Nintendo Switch emulator (forked from yuzu)",
+    "homepage": "https://eden-emu.dev/",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://git.eden-emu.dev/eden-emu/eden/raw/branch/master/LICENSE.txt"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v0.0.3-rc3/Eden-Windows-v0.0.3-rc3-amd64.zip",
+            "hash": "88c398a4c556615e79b22f3c2f6d3ce316824238a717c64666aeffefd81ac0db"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\user\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\eden\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\eden\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\eden\" -Recurse",
+        "   }",
+        "}"
+    ],
+    "bin": "eden.exe",
+    "shortcuts": [
+        [
+            "eden.exe",
+            "Eden"
+        ]
+    ],
+    "persist": "user",
+    "checkver": {
+        "github": "https://github.com/eden-emulator/Releases/",
+        "regex": "tag/(v?[0-9]+(?:\\.[0-9]+){1,2}(?:-[A-Za-z0-9.-]+)?)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-amd64.zip"
+            }
+        }
+    }
+}
