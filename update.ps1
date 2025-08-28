@@ -122,7 +122,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'archive\.torproject\.org/tor-package-archive', 'tor.calyxinstitute.org/dist'
 
     # Typora
-    $content = $content -replace 'download\.typora\.io', 'download2.typoraio.cn'
+    $content = $content -replace 'download\.typora\.io', 'downloads.typoraio.cn'
 
     # Scripts
     $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2'
