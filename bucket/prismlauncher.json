@@ -4,7 +4,8 @@
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
     "notes": [
-        "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this: \"$dir\\install-associations.reg\"",
+        "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this:",
+        "reg import \"$dir\\install-associations.reg\"",
         "",
         "This package is now using the portable version of Prism Launcher, and data should have been migrated automatically.",
         "If you are using a global install on a system with more than one user, you will need to copy a user's data from %appdata% to the new Scoop PrismLauncher persist directory"
@@ -78,6 +79,7 @@
     "checkver": {
         "github": "https://github.com/PrismLauncher/PrismLauncher"
     },
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }",
     "autoupdate": {
         "architecture": {
             "64bit": {
