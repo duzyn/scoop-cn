@@ -1,5 +1,5 @@
 {
-    "version": "1.2.4",
+    "version": "1.5.11",
     "description": "The AI Code Editor",
     "homepage": "https://www.cursor.com/",
     "license": {
@@ -9,12 +9,12 @@
     "innosetup": true,
     "architecture": {
         "64bit": {
-            "url": "https://downloads.cursor.com/production/a8e95743c5268be73767c46944a71f4465d05c90/win32/x64/user-setup/CursorUserSetup-x64-1.2.4.exe",
-            "hash": "3f999fe24c51707b159201534a6886e1e169760344250979603ea0fc7b9e8506"
+            "url": "https://downloads.cursor.com/production/2f2737de9aa376933d975ae30290447c910fdf46/win32/x64/user-setup/CursorUserSetup-x64-1.5.11.exe",
+            "hash": "e5c1137a89702b8953e10bd7cf10874eeb60b50d1e88e64d54cba53af484297d"
         },
         "arm64": {
-            "url": "https://downloads.cursor.com/production/a8e95743c5268be73767c46944a71f4465d05c90/win32/arm64/user-setup/CursorUserSetup-arm64-1.2.4.exe",
-            "hash": "7d7082e5eea88040ca7ac4ec8058b91be8a2dfb6fb8cd409214bf0975a6de00d"
+            "url": "https://downloads.cursor.com/production/2f2737de9aa376933d975ae30290447c910fdf46/win32/arm64/user-setup/CursorUserSetup-arm64-1.5.11.exe",
+            "hash": "405abb4c670f7f7a430cbfd0bf7aa161847fe657f3b9728acd3d747729218feb"
         }
     },
     "extract_dir": "{code_GetDestDir}",
@@ -51,7 +51,7 @@
     "persist": "data",
     "checkver": {
         "url": "https://www.cursor.com/api/download?platform=win32-x64-user&releaseTrack=latest",
-        "regex": "version\":\"([\\d.]+).*production/(?<Code>[\\w]+)/win32"
+        "regex": "production/(?<Code>[\\w]+)/win32.*-([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {

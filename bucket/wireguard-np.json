@@ -11,6 +11,10 @@
         "32bit": {
             "url": "https://download.wireguard.com/windows-client/wireguard-x86-0.5.3.msi#/setup.msi_",
             "hash": "ad1af1ae3474ef35de3809979aee98758430881b270e47e89e027b3490791d0d"
+        },
+        "arm64": {
+            "url": "https://download.wireguard.com/windows-client/wireguard-arm64-0.5.3.msi#/setup.msi_",
+            "hash": "e11f22d22e2e938822c39b88ee04af814b2fb53b70acb00a0bd1bcb2c3f36b1c"
         }
     },
     "installer": {
@@ -45,6 +49,9 @@
             },
             "32bit": {
                 "url": "https://download.wireguard.com/windows-client/wireguard-x86-$version.msi#/setup.msi_"
+            },
+            "arm64": {
+                "url": "https://download.wireguard.com/windows-client/wireguard-arm64-$version.msi#/setup.msi_"
             }
         }
     }
