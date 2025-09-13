@@ -1,0 +1,58 @@
+{
+    "version": "1.1.2",
+    "description": "A PC port of Legend of Zelda: Majora's Mask",
+    "homepage": "https://www.shipofharkinian.com",
+    "license": "CC0-1.0",
+    "notes": [
+        "2 Ship 2 Harkinian requires specific ROM(s) of Majora's Mask to function.",
+        "Learn more at https://www.shipofharkinian.com/setup-guide and https://2ship.equipment."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/HarbourMasters/2ship2harkinian/releases/download/1.1.2/2Ship-Satoko-Charlie-Win64.zip",
+            "hash": "7bc9415f4c633f32d5135d95a40d9d66e484a39a72a9c9833b1e04fb798c3435"
+        }
+    },
+    "pre_install": [
+        "'2ship2harkinian.json', 'imgui.ini' | % {",
+        "   if (!(Test-Path \"$persist_dir\\$_\")) {",
+        "      New-Item \"$dir\\$_\" | Out-Null",
+        "   }",
+        "}"
+    ],
+    "post_install": [
+        "if (Test-Path \"$persist_dir\\mm.o2r\") {",
+        "    Copy-Item \"$persist_dir\\mm.o2r\" \"$dir\\mm.o2r\" -Force",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "2ship.exe",
+            "2 Ship 2 Harkinian"
+        ]
+    ],
+    "persist": [
+        "logs",
+        "mods",
+        "saves",
+        "2ship2harkinian.json",
+        "imgui.ini"
+    ],
+    "pre_uninstall": [
+        "if (Test-Path \"$dir\\mm.o2r\") {",
+        "    Copy-Item \"$dir\\mm.o2r\" \"$persist_dir\\mm.o2r\" -Force",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/HarbourMasters/2ship2harkinian/",
+        "regex": "(?<majorName>(\\w+))\\s(?<minorName>(\\w+))\\s(?<version>([\\d\\.]+))",
+        "replace": "${version}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/HarbourMasters/2ship2harkinian/releases/download/$version/2Ship-$matchMajorname-$matchMinorname-Win64.zip"
+            }
+        }
+    }
+}
