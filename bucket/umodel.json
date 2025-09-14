@@ -1,0 +1,44 @@
+{
+    "version": "2023.07.07",
+    "description": "Umodel is a program for viewing and extracting resources from various games made with Unreal Engine",
+    "homepage": "https://www.gildor.org/en/projects/umodel",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/gildor2/UEViewer/blob/master/LICENSE.txt"
+    },
+    "url": "https://www.gildor.org//down/47/umodel/umodel_win32.zip",
+    "hash": "2cead261b360dbcc3e703f091837b415f868250dd6a73a154f4232d09e226ef8",
+    "architecture": {
+        "32bit": {
+            "bin": "umodel.exe",
+            "shortcuts": [
+                [
+                    "umodel.exe",
+                    "umodel"
+                ]
+            ]
+        },
+        "64bit": {
+            "bin": "umodel_64.exe",
+            "shortcuts": [
+                [
+                    "umodel_64.exe",
+                    "umodel"
+                ]
+            ]
+        }
+    },
+    "checkver": {
+        "script": [
+            "$url = 'https://www.gildor.org/en/projects/umodel#files'",
+            "$response = Invoke-WebRequest -Uri $url -UseBasicParsing",
+            "$response.Content -match 'href=\"(?<url>.*?)\">Win32 version.*?Updated<br>(?<date>[\\w\\s,]+)-' | Out-Null",
+            "$date = Get-Date $matches['date'] -Format 'yyyy.MM.dd'",
+            "Write-Output \"$($matches['url']),$date\""
+        ],
+        "regex": "(?<url>.*?),(?<version>[\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://www.gildor.org/$matchUrl"
+    }
+}
