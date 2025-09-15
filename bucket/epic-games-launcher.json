@@ -1,13 +1,13 @@
 {
-    "version": "18.8.1",
+    "version": "18.10.0",
     "homepage": "https://store.epicgames.com/",
     "description": "The official launcher for Epic Games Store",
     "license": {
         "identifier": "Freeware",
         "url": "https://www.epicgames.com/site/en-US/tos"
     },
-    "url": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-18.8.1.msi#/setup.msi_",
-    "hash": "bb3f013a3ad7e2ab1f87e7eef2fc5efc08a9e8fc39e91338a94d5b5c28e1efdf",
+    "url": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Win32/EpicInstaller-18.10.0.msi#/setup.msi_",
+    "hash": "3511e73e24ba87046cc61827ad6d6613461352d6d67ffdbff3feb603894ac8dc",
     "post_install": [
         "if (!(is_admin)) {error \"$app requires admin rights to $cmd\"; break}",
         "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn', \"INSTALLDIR=`\"$dir`\"\", \"TARGETDIR=`\"$dir`\"\")",
