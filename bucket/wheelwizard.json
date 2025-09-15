@@ -1,0 +1,84 @@
+{
+    "version": "2.3.2",
+    "description": "Mario Kart Wii mod manager and launcher, purpose-built for the Retro Rewind custom track distribution with several online features",
+    "homepage": "https://github.com/TeamWheelWizard/WheelWizard",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/TeamWheelWizard/WheelWizard/blob/main/LICENSE"
+    },
+    "suggest": {
+        "Dolphin Emulator": "scoop-cn/dolphin"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/TeamWheelWizard/WheelWizard/releases/download/2.3.2/WheelWizardWindows.exe",
+            "hash": "982ee35922a0b9ccebdefc28d544dc0c5f67ab80a8866dfb070a7f7c25dd6f47"
+        }
+    },
+    "pre_install": [
+        "# Migrate AppData if it exists and not already migrated",
+        "$appDataPath = \"$Env:AppData\\CT-MKWII\"",
+        "$persistDataPath = \"$persist_dir\\CT-MKWII\"",
+        "if ((Test-Path -Path $appDataPath) -and (-not (Test-Path -Path $persistDataPath)) -and",
+        "    (-not ($global -and (Get-LocalUser | Where-Object { $_.Enabled -eq $true }).Count -gt 1))) {",
+        "    Write-Host \"Migrating app data...\"",
+        "    ensure \"$persist_dir\" | Out-Null",
+        "    Move-Item -Path \"$appDataPath\" -Destination \"$persist_dir\" -Force",
+        "}",
+        "",
+        "# If Dolphin is installed, set the DolphinLocation & UserFolderPath in config.json if not already set",
+        "$installedDolphin = $false",
+        "$installedDolphinApp = $null",
+        "$installedDolphinGlobal = $false",
+        "foreach ($dolphinApp in @('dolphin', 'dolphin-dev')) {",
+        "    foreach ($dolphinGlobal in @($false, $true)) {",
+        "        if ((installed $dolphinApp $dolphinGlobal) -and",
+        "            ('games' -eq (Get-Content \"$(currentdir $dolphinApp $dolphinGlobal)\\install.json\" | ConvertFrom-Json).bucket)) {",
+        "            $installedDolphin = $true",
+        "            $installedDolphinApp = $dolphinApp",
+        "            $installedDolphinGlobal = $dolphinGlobal",
+        "            break",
+        "        }",
+        "    }",
+        "    if ($installedDolphin) { break }",
+        "}",
+        "",
+        "if ($installedDolphin) {",
+        "    $dolphinDir = currentdir $installedDolphinApp $installedDolphinGlobal",
+        "    Write-Host \"Dolphin installation detected, configuring Wheel Wizard to use it...\"",
+        "    $config = @{}",
+        "    $configPath = \"$persistDataPath\\config.json\"",
+        "    if (Test-Path -Path $configPath) {",
+        "        $config = Get-Content $configPath | ConvertFrom-Json",
+        "    }",
+        "    if (-not $config.DolphinLocation) {",
+        "        Write-Host \"Setting dolphin path to `\"$dolphinDir\\Dolphin.exe`\"...\"",
+        "        $config.DolphinLocation = \"$dolphinDir\\Dolphin.exe\"",
+        "    }",
+        "    if (-not $config.UserFolderPath) {",
+        "        Write-Host \"Setting user folder path to `\"$dolphinDir\\User`\"...\"",
+        "        $config.UserFolderPath = \"$dolphinDir\\User\"",
+        "    }",
+        "    ensure \"$persistDataPath\" | Out-Null",
+        "    $config | ConvertTo-Json | Set-Content -Path $configPath -Force",
+        "}",
+        "",
+        "# Create portable-ww.txt to force portable mode",
+        "Set-Content -Value $null -Path \"$dir\\portable-ww.txt\""
+    ],
+    "shortcuts": [
+        [
+            "WheelWizardWindows.exe",
+            "Wheel Wizard"
+        ]
+    ],
+    "persist": "CT-MKWII",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/TeamWheelWizard/WheelWizard/releases/download/$version/WheelWizardWindows.exe"
+            }
+        }
+    }
+}
