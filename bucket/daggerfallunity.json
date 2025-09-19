@@ -13,9 +13,7 @@
             "hash": "a2584d57e7d9b0ba3cdde9b75b0db2a818b5327af657b2833c03759148fe557e"
         }
     },
-    "pre_install": [
-        "New-Item -ItemType File \"$dir\\Portable.txt\" | Out-Null"
-    ],
+    "pre_install": "New-Item -ItemType File \"$dir\\Portable.txt\" | Out-Null",
     "post_install": [
         "$Subdirs = @('Mods', 'GameFiles')",
         "ForEach($DirName in $Subdirs) {",

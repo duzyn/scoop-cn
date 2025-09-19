@@ -27,9 +27,7 @@
             "SAK"
         ]
     ],
-    "post_install": [
-        "Copy-Item \"$persist_dir\\prod.keys\" \"$dir\\bin\\prod.keys\" -Force -ErrorAction SilentlyContinue"
-    ],
+    "post_install": "Copy-Item \"$persist_dir\\prod.keys\" \"$dir\\bin\\prod.keys\" -Force -ErrorAction SilentlyContinue",
     "pre_uninstall": [
         "ensure $persist_dir",
         "Copy-Item \"$dir\\bin\\prod.keys\" \"$persist_dir\\prod.keys\" -Force -ErrorAction SilentlyContinue"

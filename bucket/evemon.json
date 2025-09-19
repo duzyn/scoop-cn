@@ -7,15 +7,17 @@
     "hash": "35fe49eab245280dc86db64fa2f08d43e44988b948a611d6c87bd484ead321d1",
     "extract_dir": "EVEMon",
     "bin": "EVEMon.exe",
-    "shortcuts": [["EVEMon.exe", "EVEMon"]],
+    "shortcuts": [
+        [
+            "EVEMon.exe",
+            "EVEMon"
+        ]
+    ],
     "checkver": {
         "github": "https://github.com/mgoeppner/evemon",
         "regex": "tag/([\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/mgoeppner/evemon/releases/download/$version/EVEMon-binaries-$version.zip",
-        "hash": {
-            "mode": "download"
-        }
+        "url": "https://gh-proxy.com/https://github.com/mgoeppner/evemon/releases/download/$version/EVEMon-binaries-$version.zip"
     }
 }
