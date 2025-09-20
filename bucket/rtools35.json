@@ -24,7 +24,7 @@
             "       if ($renv -cmatch 'PATH=') {",
             "           $renv = $renv -replace 'PATH=\"(.*)', ('PATH=\"' + $rtoolspath + ';$1')",
             "       } else {",
-            "           $renv += '\r\nPATH=\"' + $rtoolspath + ';${PATH}\"'",
+            "           $renv += '`r`nPATH=\"' + $rtoolspath + ';${PATH}\"'",
             "       }",
             "       $renv | Set-Content $renvloc -Encoding ASCII",
             "   }",

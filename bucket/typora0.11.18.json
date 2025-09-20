@@ -9,33 +9,33 @@
     "architecture": {
         "64bit": {
             "url": [
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.001",
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.002",
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.003"
-             ],
-             "hash": [
-                 "3c5ade21aa26214bbf2c162061c8bf34be3d4d54475bb3263e28efc0ac2d8658",
-                 "2ac7ca6d1fe00cedc38996641a74a593dc5364ebc32c71ebfce32de5cc72d054",
-                 "0935d035940cdc919b8aeb9a0cad744de3028a1b86aec4f0da9e37c46746ffe5"
-             ]
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.001",
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.002",
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_64bit.7z.003"
+            ],
+            "hash": [
+                "3c5ade21aa26214bbf2c162061c8bf34be3d4d54475bb3263e28efc0ac2d8658",
+                "2ac7ca6d1fe00cedc38996641a74a593dc5364ebc32c71ebfce32de5cc72d054",
+                "0935d035940cdc919b8aeb9a0cad744de3028a1b86aec4f0da9e37c46746ffe5"
+            ]
         },
         "32bit": {
             "url": [
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.001",
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.002",
-                 "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.003"
-             ],
-             "hash": [
-                 "04f067c664153747393a6ca34e5f1cb0d7b0fe8936c13952eed5c197b6088fde",
-                 "6fd89dd8acd94922b9563b3892c2ca9e9f7fcd5b64fb8d6fdb0918a6f382fee7",
-                 "61c77764b5b6bc3a8e105b1b8cb19bf26d630d939e1a35aae1bc07fbdb5e6d3c"
-             ]
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.001",
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.002",
+                "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Binary/master/typora/typora-0.11.18_32bit.7z.003"
+            ],
+            "hash": [
+                "04f067c664153747393a6ca34e5f1cb0d7b0fe8936c13952eed5c197b6088fde",
+                "6fd89dd8acd94922b9563b3892c2ca9e9f7fcd5b64fb8d6fdb0918a6f382fee7",
+                "61c77764b5b6bc3a8e105b1b8cb19bf26d630d939e1a35aae1bc07fbdb5e6d3c"
+            ]
         }
     },
     "pre_install": [
-         "Get-ChildItem \"$dir\\typora-*.exe\" | Rename-Item -NewName 'dl.exe'",
-         "Expand-InnoArchive \"$dir\\dl.exe\" \"$dir\" -Removal | Out-Null"
-     ],
+        "Get-ChildItem \"$dir\\typora-*.exe\" | Rename-Item -NewName 'dl.exe'",
+        "Expand-InnoArchive \"$dir\\dl.exe\" \"$dir\" -Removal | Out-Null"
+    ],
     "bin": "Typora.exe",
     "shortcuts": [
         [

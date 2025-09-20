@@ -1,19 +1,17 @@
 {
-    "version":  "nightly",
+    "version": "nightly",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
-    "homepage":  "http://dotnet.github.io/",
-    "license":  "MIT",
-    "architecture":  {
-        "64bit":  {
-            "url":  "https://dotnetcli.blob.core.windows.net/dotnet/dev/Installers/Latest/dotnet-win-x64.latest.msi"
+    "homepage": "http://dotnet.github.io/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/dev/Installers/Latest/dotnet-win-x64.latest.msi"
         }
     },
-    "extract_dir":  "dotnet",
-    "bin":  [
-        "bin\\dotnet.exe"
-    ],
+    "extract_dir": "dotnet",
+    "bin": "bin\\dotnet.exe",
     "env_set": {
-        "DOTNET_HOME":  "$dir"
+        "DOTNET_HOME": "$dir"
     },
     "notes": [
         "dotnet cli has the following prerequisites:",

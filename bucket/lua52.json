@@ -1,50 +1,50 @@
 {
-  "version": "5.2.4",
-  "description": "A powerful, efficient, lightweight, embeddable scripting language (version 5.2)",
-  "homepage": "http://www.lua.org",
-  "license": "MIT",
-  "architecture": {
-      "64bit": {
-          "url": [
-              "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Tools%20Executables/lua-5.2.4_Win64_bin.zip",
-              "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Windows%20Libraries/Dynamic/lua-5.2.4_Win64_dllw6_lib.zip"
-          ],
-          "hash": [
-              "6cc8153640b5c1fc4632f18dadaa8696c5b7aef85e885245280d7e31011549d9",
-              "1f301605fd304754e179c37803af78d930175f7ca7301be62d97ff2228dee3dd"
-          ]
-      },
-      "32bit": {
-          "url": [
-              "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Tools%20Executables/lua-5.2.4_Win32_bin.zip",
-              "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Windows%20Libraries/Dynamic/lua-5.2.4_Win32_dllw6_lib.zip"
-          ],
-          "hash": [
-              "2ab5a24ac1a78bb88bde0bb75ad09c7fabc2c9f886fbf4e9f72e5b7745a9f76a",
-              "95240e52d0d10c5b4575d11ee35428f171b0819b6a9d543685cafe16610f6607"
-          ]
-      }
-  },
-  "bin": [
-      [
-          "lua52.exe",
-          "lua52"
-      ],
-      [
-          "lua52.exe",
-          "lua"
-      ],
-      [
-          "luac52.exe",
-          "luac52"
-      ],
-      [
-          "luac52.exe",
-          "luac"
-      ]
-  ],
-  "env_set": {
-      "LUA_PATH": "$dir",
-      "LUA_CPATH": "$dir"
-  }
+    "version": "5.2.4",
+    "description": "A powerful, efficient, lightweight, embeddable scripting language (version 5.2)",
+    "homepage": "http://www.lua.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Tools%20Executables/lua-5.2.4_Win64_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Windows%20Libraries/Dynamic/lua-5.2.4_Win64_dllw6_lib.zip"
+            ],
+            "hash": [
+                "6cc8153640b5c1fc4632f18dadaa8696c5b7aef85e885245280d7e31011549d9",
+                "1f301605fd304754e179c37803af78d930175f7ca7301be62d97ff2228dee3dd"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Tools%20Executables/lua-5.2.4_Win32_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.2.4/Windows%20Libraries/Dynamic/lua-5.2.4_Win32_dllw6_lib.zip"
+            ],
+            "hash": [
+                "2ab5a24ac1a78bb88bde0bb75ad09c7fabc2c9f886fbf4e9f72e5b7745a9f76a",
+                "95240e52d0d10c5b4575d11ee35428f171b0819b6a9d543685cafe16610f6607"
+            ]
+        }
+    },
+    "bin": [
+        [
+            "lua52.exe",
+            "lua52"
+        ],
+        [
+            "lua52.exe",
+            "lua"
+        ],
+        [
+            "luac52.exe",
+            "luac52"
+        ],
+        [
+            "luac52.exe",
+            "luac"
+        ]
+    ],
+    "env_set": {
+        "LUA_PATH": "$dir",
+        "LUA_CPATH": "$dir"
+    }
 }
