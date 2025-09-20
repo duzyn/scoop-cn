@@ -21,12 +21,10 @@
             "Arduino Debug 1.8"
         ]
     ],
-    "persist": [
-        "portable"
-    ],
+    "persist": "portable",
     "checkver": {
-        "url": "https://www.arduino.cc/wiki/page-data/en/software/page-data.json",
-        "regex": "arduino-(1.8.\\d+)"
+        "url": "https://www.arduino.cc/en/software/",
+        "regex": "arduino-(1\\.8\\.\\d+)"
     },
     "autoupdate": {
         "url": "https://downloads.arduino.cc/arduino-$version-windows.zip",
