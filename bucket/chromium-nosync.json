@@ -4,6 +4,11 @@
     "description": "Browser aiming for safer, faster, and more stable way for all users to experience the web.",
     "homepage": "https://www.chromium.org",
     "license": "BSD-3-Clause",
+    "notes": [
+        "This build will no longer receive updates. See:",
+        "https://github.com/Hibbiki/chromium-win64/commit/09101f3",
+        "Consider alternatives such as 'extras/chromium' or 'extras/ungoogled-chromium'."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.com/https://github.com/Hibbiki/chromium-win64/releases/download/v138.0.7204.184-r1465706/chrome.nosync.7z",
@@ -32,10 +37,6 @@
         "}"
     ],
     "persist": "User Data",
-    "checkver": {
-        "url": "https://github.com/Hibbiki/chromium-win64/releases/latest",
-        "regex": ">v([\\d.]+-r\\d+)</h1>"
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {
