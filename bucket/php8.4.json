@@ -1,0 +1,48 @@
+{
+    "version": "8.4.12",
+    "homepage": "https://windows.php.net/downloads/releases/",
+    "description": "PHP 8.4 (thread-safe/TS build) for Windows. Widely used open-source scripting language for web development.",
+    "license": {
+        "identifier": "PHP-3.01",
+        "url": "https://www.php.net/license/"
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.4.12-Win32-vs17-x86.zip",
+            "hash": "ae31e43ea29c3684a4bacf3dd25947dc940bba6b33d159f895710d9cd5fbc678"
+        },
+        "64bit": {
+            "url": "https://windows.php.net/downloads/releases/php-8.4.12-Win32-vs17-x64.zip",
+            "hash": "602dbfd1a65e99e8bb29c7ff2c8a7888f3cd72a8162de99b7860bbe117779d1c"
+        }
+    },
+    "post_install": "if($bucket) { . \"$(Find-BucketDirectory $bucket\\bin\\postinstall.ps1)\" -dir \"$dir\" }",
+    "env_set": {
+        "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
+    },
+    "bin": [
+        "php.exe",
+        "php-cgi.exe"
+    ],
+    "persist": "conf.d",
+    "checkver": {
+        "url": "https://windows.php.net/download/",
+        "re": "<h3 id=\"php-8.4\".*?>.*?\\(([\\d.-]+)\\)</h3>"
+    },
+    "autoupdate": {
+        "hash": {
+            "url": "$baseurl/sha256sum.txt"
+        },
+        "architecture": {
+            "32bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x86.zip"
+            },
+            "64bit": {
+                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x64.zip"
+            }
+        }
+    }
+}
