@@ -3,15 +3,13 @@
     "version": "5.2.7",
     "license": {
         "identifier": "PHP-3.01",
-        "url": "https://secure.php.net/license/"
+        "url": "https://www.php.net/license/"
     },
     "bin": [
         "php.exe",
         "php-cgi.exe"
     ],
-    "persist": [
-        "conf.d"
-    ],
+    "persist": "conf.d",
     "env_set": {
         "PHP_INI_SCAN_DIR": "$persist_dir;$dir\\conf.d;"
     },
