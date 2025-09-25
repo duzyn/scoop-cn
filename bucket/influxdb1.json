@@ -5,16 +5,14 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.11.8_windows_amd64.zip",
-            "hash": "8cc0d67a92a72da19f408e432208ee3ec76cc618a8ae2fb235578e985db45909",
-            "extract_dir": "influxdb-1.11.8-1"
+            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.11.8-windows-amd64.zip",
+            "hash": "8cc0d67a92a72da19f408e432208ee3ec76cc618a8ae2fb235578e985db45909"
         }
     },
     "persist": "influxdb.conf",
     "bin": [
         "influx.exe",
         "influx_inspect.exe",
-        "influx_stress.exe",
         "influxd.exe"
     ],
     "checkver": {
@@ -25,12 +23,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version_windows_amd64.zip",
+                "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version-windows-amd64.zip",
                 "hash": {
                     "url": "https://portal.influxdata.com/versions.json",
                     "jsonpath": "$.influxdb_stable.downloads[?(@.platform =~ /^Windows/)].sha256"
-                },
-                "extract_dir": "influxdb-$version-1"
+                }
             }
         }
     }
