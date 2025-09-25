@@ -1,0 +1,34 @@
+{
+    "version": "4.5.15",
+    "description": "Create your own Galgame in the fastest way, and support exporting as web pages and Windows executable files",
+    "homepage": "https://github.com/OpenWebGAL/WebGAL_Terre",
+    "license": "MPL-2.0",
+    "url": "https://gh-proxy.com/https://github.com/OpenWebGAL/WebGAL_Terre/releases/download/4.5.15/WebGAL_Terre_Windows_4.5.15.zip",
+    "extract_dir": "release",
+    "hash": "3fc4901ad720a193eb68cc303b002950dbc735bc99dfbe1cdbf8c653c78804bb",
+    "persist": [
+        "Exported_Games",
+        "logs",
+        [
+            "public\\games",
+            "games"
+        ],
+        [
+            "public\\templates",
+            "templates"
+        ]
+    ],
+    "bin": "WebGAL_Terre.exe",
+    "shortcuts": [
+        [
+            "WebGAL_Terre.exe",
+            "WebGAL_Terre"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/OpenWebGAL/WebGAL_Terre"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/OpenWebGAL/WebGAL_Terre/releases/download/$version/WebGAL_Terre_Windows_$version.zip"
+    }
+}
