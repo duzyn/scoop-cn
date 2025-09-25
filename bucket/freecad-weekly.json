@@ -1,15 +1,15 @@
 {
-    "version": "43071",
+    "version": "2025.09.24",
     "description": "A free and open-source multi-platform parametric 3D modeler.",
     "homepage": "https://www.freecadweb.org",
     "license": "LGPL-2.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-43071-conda-Windows-x86_64-py311.7z",
-            "hash": "575945d0923caff6518bf34ca8f7e1b6e6ab137545bf1507c03fa7951af37d73"
+            "url": "https://gh-proxy.com/https://github.com/FreeCAD/FreeCAD/releases/download/weekly-2025.09.24/FreeCAD_weekly-2025.09.24-Windows-x86_64-py311.7z",
+            "hash": "9b112087ea8169d53e4e7721f6ccd749c0e86de4b0aa0d9d3ec8cad83b726dfa"
         }
     },
-    "extract_dir": "FreeCAD_weekly-builds-43071-conda-Windows-x86_64-py311",
+    "extract_dir": "FreeCAD_weekly-2025.09.24-Windows-x86_64-py311",
     "bin": "bin\\FreeCADCmd.exe",
     "shortcuts": [
         [
@@ -18,19 +18,15 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/FreeCAD/FreeCAD-Bundle/releases/tags/weekly-builds",
-        "regex": "FreeCAD_weekly-builds-([\\d]+)-conda-Windows"
+        "url": "https://api.github.com/repos/FreeCAD/FreeCAD/releases",
+        "regex": "FreeCAD_weekly-([\\d.]+)-Windows-x86_64"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/FreeCAD/FreeCAD-Bundle/releases/download/weekly-builds/FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311.7z"
+                "url": "https://gh-proxy.com/https://github.com/FreeCAD/FreeCAD/releases/download/weekly-$version/FreeCAD_weekly-$version-Windows-x86_64-py311.7z"
             }
         },
-        "hash": {
-            "url": "$url-SHA256.txt",
-            "regex": "(?sm):\\s+([a-fA-F\\d\\s]+)CertUtil"
-        },
-        "extract_dir": "FreeCAD_weekly-builds-$version-conda-Windows-x86_64-py311"
+        "extract_dir": "FreeCAD_weekly-$version-Windows-x86_64-py311"
     }
 }

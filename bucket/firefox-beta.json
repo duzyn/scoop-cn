@@ -1,7 +1,7 @@
 {
     "version": "144.0b5",
     "description": "Beta builds of Firefox: the popular open source web browser.",
-    "homepage": "https://www.mozilla.org/en-US/firefox/beta/",
+    "homepage": "https://www.firefox.com/en-US/channel/desktop/#beta",
     "license": "MPL-2.0",
     "notes": [
         "To set profile 'Scoop-Beta' as *DEFAULT*, or profiles/settings was lost after update:",
@@ -50,9 +50,8 @@
         "profile"
     ],
     "checkver": {
-        "url": "https://aus5.mozilla.org/update/6/Firefox/93.0/_/WINNT_x86_64-msvc-x64/en-US/beta/_/_/_/_/update.xml",
-        "xpath": "/updates/update/patch/@URL",
-        "regex": "firefox-([\\db.]+)-"
+        "url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+        "jsonpath": "$.LATEST_FIREFOX_RELEASED_DEVEL_VERSION"
     },
     "autoupdate": {
         "architecture": {
