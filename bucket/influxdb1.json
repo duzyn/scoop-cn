@@ -1,31 +1,31 @@
 {
-    "version": "1.11.8",
+    "version": "1.12.2",
     "description": "Scalable datastore for metrics, events, and real-time analytics.",
     "homepage": "https://www.influxdata.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://dl.influxdata.com/influxdb/releases/influxdb-1.11.8-windows-amd64.zip",
-            "hash": "8cc0d67a92a72da19f408e432208ee3ec76cc618a8ae2fb235578e985db45909"
+            "url": "https://download.influxdata.com/influxdb/releases/v1.12.2/influxdb-1.12.2-windows.zip",
+            "hash": "bd2bd7a7c1a9aee521a814448b292bb2be1cab2b49dbff069abc70f4920de28a"
         }
     },
-    "persist": "influxdb.conf",
     "bin": [
         "influx.exe",
         "influx_inspect.exe",
         "influxd.exe"
     ],
+    "persist": "influxdb.conf",
     "checkver": {
-        "url": "https://portal.influxdata.com/versions.json",
+        "url": "https://www.influxdata.com/versions.json",
         "jsonpath": "$.influxdb_stable.version",
-        "regex": "([\\d.]+)"
+        "regex": "(1\\.[\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dl.influxdata.com/influxdb/releases/influxdb-$version-windows-amd64.zip",
+                "url": "https://download.influxdata.com/influxdb/releases/v$version/influxdb-$version-windows.zip",
                 "hash": {
-                    "url": "https://portal.influxdata.com/versions.json",
+                    "url": "https://www.influxdata.com/versions.json",
                     "jsonpath": "$.influxdb_stable.downloads[?(@.platform =~ /^Windows/)].sha256"
                 }
             }
