@@ -1,5 +1,5 @@
 {
-    "version": "10.0.100-preview.7.25380.108",
+    "version": "10.0.100-rc.1.25451.107",
     "description": ".NET is a free, cross-platform, open source developer platform for building many different types of applications.",
     "homepage": "https://www.microsoft.com/net/",
     "license": "MIT",
@@ -8,16 +8,16 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.7.25380.108/dotnet-sdk-10.0.100-preview.7.25380.108-win-x64.zip",
-            "hash": "sha512:c97a06d6859a9abb054a846f3f9b7f4b366fce26d25f411c0f793ca4777bd8f641214aaafb9a84f278b6d78f362e34e4167be460968145f4d2a764de777afdcc"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-rc.1.25451.107/dotnet-sdk-10.0.100-rc.1.25451.107-win-x64.zip",
+            "hash": "sha512:030194995e98e1c0f22b77c2d42ded91503fb989db789ed56d3cf9bc08473a0450c79c086c65fc456ae906e1aff90d1b93785d1d69b1465b20721833438062a5"
         },
         "32bit": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.7.25380.108/dotnet-sdk-10.0.100-preview.7.25380.108-win-x86.zip",
-            "hash": "sha512:e4e95b50ef7f86542f4af21447b2f6cab73c9479d532fe225cd80b53b14382b21dc6dd8da1cc7a2ec74b79eca9e049279708750880cb3bee9b616a97bb8294aa"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-rc.1.25451.107/dotnet-sdk-10.0.100-rc.1.25451.107-win-x86.zip",
+            "hash": "sha512:bf6a1e691e79d96ecf51c234242f2abd70af6f63c94d1e2a1050d723e2302bd2f9636d9e4797422244deed7bfd0132af6ade1ac37308bc399a22af866498b601"
         },
         "arm64": {
-            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-preview.7.25380.108/dotnet-sdk-10.0.100-preview.7.25380.108-win-arm64.zip",
-            "hash": "sha512:7b4ecb1646191e335b3e8fed6a438aafd347896f537888af2038034e1d3c5d59aca9e84a7eea7ca62269560e6407757a5d16d6021b9f5026eb60e311ed7a793d"
+            "url": "https://dotnetcli.azureedge.net/dotnet/Sdk/10.0.100-rc.1.25451.107/dotnet-sdk-10.0.100-rc.1.25451.107-win-arm64.zip",
+            "hash": "sha512:26b1251b0e7a3ff461ed99a59ecdc43cd9ba547bd34cd84d5e77816a3ee19020671a1c314d30d1162d4c844f5413fcd36bceed32c381c5f99cc31c1b566f5e85"
         }
     },
     "env_add_path": ".",
@@ -28,7 +28,7 @@
     "pre_uninstall": "info 'If the uninstall fails with a message saying that access is denied, you may need to log out of your current account, log back in and try again.'",
     "checkver": {
         "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
-        "jsonpath": "$..releases-index[?(@.support-phase == 'preview' || @.support-phase == 'rc')].latest-sdk"
+        "jsonpath": "$..releases-index[?(@.support-phase == 'preview' || @.support-phase == 'rc' || @.support-phase == 'go-live')].latest-sdk"
     },
     "autoupdate": {
         "architecture": {
