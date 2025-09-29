@@ -3,28 +3,29 @@
     "description": "A powerful, multi-purpose tool that helps you monitor system resources, debug software and detect malware.",
     "homepage": "https://systeminformer.sourceforge.io",
     "license": "MIT",
-    "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25271.1646/systeminformer-build-bin.zip",
-    "hash": "0b46ba50fbc3aab32c00f14c9ddcb273ae41b11a02ca29cf5e58d88544695cc7",
     "architecture": {
         "32bit": {
-            "extract_dir": "i386"
+            "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25271.1646/systeminformer-build-win32-bin.zip",
+            "hash": "b1b4e38ce38d0ba863bfef394490d53bdb350cadff6c34d508f24ebd3d2a16e0"
         },
         "64bit": {
-            "extract_dir": "amd64"
+            "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25271.1646/systeminformer-build-win64-bin.zip",
+            "hash": "c4cf421aed4f27798f7eed6ee99bab16ea584f43d9efbb4c175d1ca9b7db2058"
         },
         "arm64": {
-            "extract_dir": "arm64"
+            "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/3.2.25271.1646/systeminformer-build-arm64-bin.zip",
+            "hash": "aae7953383b1c139eb19b9a2d6165260915f736063293e24ba4fabb7e7a0a4f5"
         }
     },
     "pre_install": [
-        "ensure \"$persist_dir\" | Out-Null",
-        "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object { Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -ErrorAction 'SilentlyContinue' }"
-    ],
-    "shortcuts": [
-        [
-            "SystemInformer.exe",
-            "System Informer"
-        ]
+        "# Hardlink cannot be used here, as System Informer would create a new file instead of writing directly.",
+        "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object {",
+        "    if (-not (Test-Path \"$persist_dir\\$_\")) {",
+        "        New-Item \"$dir\\$_\" -ItemType File | Out-Null",
+        "    } else {",
+        "        Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -ErrorAction 'SilentlyContinue'",
+        "    }",
+        "}"
     ],
     "post_install": [
         "# Clear icon GUIDs",
@@ -34,11 +35,33 @@
         "($settingsXml.settings.ChildNodes | Where-Object { $_.name.Contains(\"IconGuids\") }) | ForEach-Object { [void]$_.ParentNode.RemoveChild($_) }",
         "$settingsXml.Save($settings)"
     ],
-    "pre_uninstall": "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object { Copy-Item \"$dir\\$_\" \"$persist_dir\\$_\" -ErrorAction 'SilentlyContinue' }",
+    "shortcuts": [
+        [
+            "SystemInformer.exe",
+            "System Informer"
+        ]
+    ],
+    "pre_uninstall": [
+        "# Hardlink cannot be used here, as System Informer would create a new file instead of writing directly.",
+        "ensure $persist_dir",
+        "'SystemInformer.exe.settings.xml', 'usernotesdb.xml' | ForEach-Object {",
+        "    Copy-Item \"$dir\\$_\" \"$persist_dir\\$_\" -ErrorAction 'SilentlyContinue'",
+        "}"
+    ],
     "checkver": {
         "github": "https://github.com/winsiderss/si-builds"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-build-bin.zip"
+        "architecture": {
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-build-win32-bin.zip"
+            },
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-build-win64-bin.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/winsiderss/si-builds/releases/download/$version/systeminformer-build-arm64-bin.zip"
+            }
+        }
     }
 }
