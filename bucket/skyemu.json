@@ -1,0 +1,97 @@
+{
+    "version": "4",
+    "description": "Fast, accurate, and lightweight emulator for GBA, GB, GBC, and NDS (experimental)",
+    "homepage": "https://github.com/skylersaleh/SkyEmu",
+    "license": "MIT",
+    "url": "https://gh-proxy.com/https://github.com/skylersaleh/SkyEmu/releases/download/v4/SkyEmu-v4-Windows.exe",
+    "hash": "545603e935fc60f08d80eedbdb571c3c5101f2007531df25c9cb67076cc58cc4",
+    "bin": [
+        [
+            "SkyEmu-v4-Windows.exe",
+            "SkyEmu"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "SkyEmu-v4-Windows.exe",
+            "SkyEmu"
+        ]
+    ],
+    "persist": [
+        "bios",
+        "cheats",
+        "saves"
+    ],
+    "post_install": [
+        "$appdataPath = Join-Path $env:APPDATA 'Sky\\SkyEmu'",
+        "if ((Test-Path $appdataPath) -and (Test-Path $persist_dir)) {",
+        "  Write-Host 'Migrating existing SkyEmu settings to Scoop persist folder...' -ForegroundColor Yellow",
+        "  Copy-Item -Path \"$appdataPath\\*\" -Destination $persist_dir -Recurse -Force -ErrorAction SilentlyContinue",
+        "  Remove-Item -LiteralPath $appdataPath -Recurse -Force -ErrorAction SilentlyContinue",
+        "}",
+        "$appdataParent = Split-Path $appdataPath -Parent",
+        "if (-not (Test-Path $appdataParent)) {",
+        "  New-Item -ItemType Directory -Path $appdataParent | Out-Null",
+        "}",
+        "if (-not (Test-Path $appdataPath)) {",
+        "  New-Item -ItemType Junction -Path $appdataPath -Target $persist_dir | Out-Null",
+        "}"
+    ],
+    "post_uninstall": [
+        "$appdataPath = Join-Path $env:APPDATA 'Sky\\SkyEmu'",
+        "if (Test-Path $appdataPath) {",
+        "  Remove-Item -LiteralPath $appdataPath -Force -Recurse -ErrorAction SilentlyContinue",
+        "}",
+        "$appdataParent = Split-Path $appdataPath -Parent",
+        "if ((Test-Path $appdataParent) -and ((Get-ChildItem -Path $appdataParent -Force | Measure-Object).Count -eq 0)) {",
+        "  Remove-Item -LiteralPath $appdataParent -Force -Recurse -ErrorAction SilentlyContinue",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/skylersaleh/SkyEmu"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/skylersaleh/SkyEmu/releases/download/v$version/SkyEmu-v$version-Windows.exe"
+    },
+    "notes": [
+        "To use Scoop-managed persistent folders (bios, cheats, saves), configure the search paths inside SkyEmu accordingly.",
+        "",
+        "These folders are located at:",
+        "  $persist_dir",
+        "",
+        "==================== BIOS Setup ====================",
+        "For accurate emulation of Game Boy (DMG), Game Boy Color (GBC), and Game Boy Advance (GBA) games, place the official BIOS files in the following folder:",
+        "",
+        "  $persist_dir\\bios",
+        "",
+        "Supported BIOS filenames:",
+        "",
+        "  gba_bios.bin       — GBA BIOS",
+        "  cgb_boot.bin       — GBC BIOS",
+        "  gbc_bios.bin       — GBC BIOS",
+        "  cgb0_boot.bin      — GBC BIOS",
+        "  cgb_agb_boot.bin   — GBC BIOS",
+        "  dmg_rom.bin        — GB BIOS (DMG)",
+        "  dmg0_rom.bin       — GB BIOS (DMG)",
+        "  gb_bios.bin        — GB BIOS (DMG)",
+        "",
+        "You only need one valid BIOS file per system. Multiple are supported for compatibility.",
+        "",
+        "  Make sure all BIOS files:",
+        "- Are placed in the '$persist_dir\\bios' folder",
+        "- Use lowercase filenames",
+        "- Have a .bin file extension",
+        "",
+        "Example: Place 'gba_bios.bin' into:",
+        "  $persist_dir\\bios\\gba_bios.bin",
+        "",
+        "Then, in SkyEmu settings, set the BIOS search path to this folder.",
+        "",
+        "====================================================",
+        "",
+        "For Nintendo DS emulation (experimental), place these additional files in the same 'bios' folder:",
+        "  nds7.bin       — ARM7 BIOS",
+        "  nds9.bin       — ARM9 BIOS",
+        "  firmware.bin   — System firmware/OS image"
+    ]
+}
