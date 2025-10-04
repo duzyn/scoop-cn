@@ -1,0 +1,58 @@
+{
+    "version": "4.6-dev1",
+    "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
+    "homepage": "https://godotengine.org/",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.6-dev1/Godot_v4.6-dev1_mono_win64.zip",
+            "hash": "sha512:054a07326a66335e8aaae3319d0be406bcc148f6ab59b4ff26a688a92b274bab5af98c1fee9305796b2cd92b1df9bdd837546c28cbe6a1b1c4268bfa52a84103",
+            "extract_dir": "Godot_v4.6-dev1_mono_win64"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.6-dev1/Godot_v4.6-dev1_mono_win32.zip",
+            "hash": "sha512:ec76de1e18ba100b1146cbb22d82f0990675265bad5a7ad286128a7ebda71f8c8615d8e9f4d11914c14cf57a8af312a3401a864c4f4c3f97e1ba0046f9eca7e2",
+            "extract_dir": "Godot_v4.6-dev1_mono_win32"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.6-dev1/Godot_v4.6-dev1_mono_windows_arm64.zip",
+            "hash": "sha512:c580e95fb16bdf60b4acf272be321f3732bd8acc42616e6d9d97321c8c692635c208bcd04c0b2f9a1d4a5f96ebbcb90c507b8fb4b77b1f70407d506aa9f847f3",
+            "extract_dir": "Godot_v4.6-dev1_mono_windows_arm64"
+        }
+    },
+    "pre_install": [
+        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
+    ],
+    "bin": "godot-mono.exe",
+    "shortcuts": [
+        [
+            "godot-mono.exe",
+            "Godot Engine (Mono)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/godotengine/godot-builds/releases",
+        "jsonpath": "$[?(@.tag_name =~ /[\\d.]+-dev\\d+/)].tag_name",
+        "regex": "(?<version>[\\d.]+-dev\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win64.zip",
+                "extract_dir": "Godot_v$version_mono_win64"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win32.zip",
+                "extract_dir": "Godot_v$version_mono_win32"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_windows_arm64.zip",
+                "extract_dir": "Godot_v$version_mono_windows_arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHA512-SUMS.txt"
+        }
+    }
+}
