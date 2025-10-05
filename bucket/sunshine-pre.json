@@ -1,0 +1,42 @@
+{
+    "version": "2025.930.130407",
+    "description": "A Gamestream host for Moonlight",
+    "homepage": "https://github.com/LizardByte/Sunshine",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "Check the '$dir\\scripts' folder to setup the service and firewall rules.",
+        "Sunshine can be configured at https://localhost:47990/ by default."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/LizardByte/Sunshine/releases/download/v2025.930.130407/Sunshine-Windows-AMD64-portable.zip",
+            "hash": "200c96fa131e495b8315f4b816891296696595cc90d3810877f99650dde2b1f5"
+        }
+    },
+    "extract_dir": "Sunshine",
+    "pre_install": "Set-Content -Path \"$dir\\sunshine.bat\" -Value (@('@echo off', 'pushd %~dp0 && sunshine.exe %* && popd') -join \"`r`n\")",
+    "bin": [
+        "sunshine.bat",
+        "tools\\dxgi-info.exe",
+        "tools\\audio-info.exe"
+    ],
+    "shortcuts": [
+        [
+            "sunshine.exe",
+            "Sunshine"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://api.github.com/repositories/438803890/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "\\Av([\\d.]+)\\Z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/LizardByte/Sunshine/releases/download/v$version/Sunshine-Windows-AMD64-portable.zip"
+            }
+        }
+    }
+}

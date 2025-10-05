@@ -1,25 +1,35 @@
 {
-    "version": "4.3-rc3",
+    "version": "4.5.1-rc1",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.3/rc3/mono/Godot_v4.3-rc3_mono_win64.zip",
-            "hash": "sha512:6ed9bee95ceec869a80812b403bdd60a63780ae94148bbbd25dcb62747c02a7fa929d60f0d77d2dad72177d2ca87e83681f3d26c536fa57511350faad22e37c2",
-            "extract_dir": "Godot_v4.3-rc3_mono_win64"
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.5.1-rc1/Godot_v4.5.1-rc1_mono_win64.zip",
+            "hash": "sha512:7dc2117053d4e5a33e8ca30f3000d7aae3b74022e7538d1b49fd29c2113b10c07c848c62eae6abd60e1dd6b2eb6e2a9b5e8ca7330741744a1dc9672c6196fef4",
+            "extract_dir": "Godot_v4.5.1-rc1_mono_win64"
         },
         "32bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.3/rc3/mono/Godot_v4.3-rc3_mono_win32.zip",
-            "hash": "sha512:a140bf72d70778dc929b1677315a678271e1b4c26eb5f422ccdb99008773c5b3ecc460e2058bd3f256040e8b704575ac2a5ea15203d177e482b9de8556fd3f17",
-            "extract_dir": "Godot_v4.3-rc3_mono_win32"
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.5.1-rc1/Godot_v4.5.1-rc1_mono_win32.zip",
+            "hash": "sha512:b12b13f60f073b52a7572e5c1e107de736fd191ae97ff39cf433a91cd5c8248a64306df8d26a7471ab83b116df3d7bd244b10d61108691d195291771f3cf9f69",
+            "extract_dir": "Godot_v4.5.1-rc1_mono_win32"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.5.1-rc1/Godot_v4.5.1-rc1_mono_windows_arm64.zip",
+            "hash": "sha512:0f4c046bfc369de749e9fda4bc5b750723e735c4d6700c59cb1ebd653c57921490737f1ec05557c40b93e7ea08202ba1d1f62c4ab9a8cff7ad7127b5503a2326",
+            "extract_dir": "Godot_v4.5.1-rc1_mono_windows_arm64"
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*_console.exe\" | Rename-Item -NewName 'godot-mono.console.exe'",
         "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
     ],
-    "bin": "godot-mono.exe",
+    "bin": [
+        [
+            "godot-mono.console.exe",
+            "godot-mono"
+        ]
+    ],
     "shortcuts": [
         [
             "godot-mono.exe",
@@ -27,19 +37,22 @@
         ]
     ],
     "checkver": {
-        "url": "https://godotengine.org/blog/pre-release/",
-        "regex": "Release candidate: Godot (?<ver>[\\d.]+) RC (?<rc>[\\d.]+)",
-        "replace": "${1}-rc${2}"
+        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-rc\\d+$/)].name"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win64.zip",
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win64.zip",
                 "extract_dir": "Godot_v$version_mono_win64"
             },
             "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/$preReleaseVersion/mono/Godot_v$version_mono_win32.zip",
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win32.zip",
                 "extract_dir": "Godot_v$version_mono_win32"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_windows_arm64.zip",
+                "extract_dir": "Godot_v$version_mono_windows_arm64"
             }
         },
         "hash": {
