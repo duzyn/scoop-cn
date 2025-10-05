@@ -21,10 +21,15 @@
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*_console.exe\" | Rename-Item -NewName 'godot-mono.console.exe'",
         "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
     ],
-    "bin": "godot-mono.exe",
+    "bin": [
+        [
+            "godot-mono.console.exe",
+            "godot-mono"
+        ]
+    ],
     "shortcuts": [
         [
             "godot-mono.exe",
@@ -32,9 +37,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/godotengine/godot-builds/releases",
-        "jsonpath": "$[?(@.tag_name =~ /[\\d.]+-dev\\d+/)].tag_name",
-        "regex": "(?<version>[\\d.]+-dev\\d+)"
+        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-dev\\d+$/)].name"
     },
     "autoupdate": {
         "architecture": {

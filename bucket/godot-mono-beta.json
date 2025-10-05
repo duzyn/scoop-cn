@@ -13,13 +13,23 @@
             "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.5-beta7/Godot_v4.5-beta7_mono_win32.zip",
             "hash": "sha512:1afaddd349d61ea9c4946f846a89fe952a9b22523321bb0900517dbe9967aafd59eec745ed5f46380dfb986ac0c4033c6e00750c259458b5eb4bb891efa30dc8",
             "extract_dir": "Godot_v4.5-beta7_mono_win32"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/4.5-beta7/Godot_v4.5-beta7_mono_windows_arm64.zip",
+            "hash": "sha512:43d911e3c49197a9d916a225264b30b5162f3d7911020defe8392b9cb4157caf67479e5112632707cf9c71aa6c2441451bbbe191abb36be8f7f826bac5292c28",
+            "extract_dir": "Godot_v4.5-beta7_mono_windows_arm64"
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*_console.exe\" | Rename-Item -NewName 'godot-mono.console.exe'",
         "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot-mono.exe'"
     ],
-    "bin": "godot-mono.exe",
+    "bin": [
+        [
+            "godot-mono.console.exe",
+            "godot-mono"
+        ]
+    ],
     "shortcuts": [
         [
             "godot-mono.exe",
@@ -27,9 +37,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/godotengine/godot-builds/releases",
-        "regex": "(?<ver>[\\d.]+)-beta(?<beta>[\\d.]+)",
-        "replace": "${1}-beta${2}"
+        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-beta\\d+$/)].name"
     },
     "autoupdate": {
         "architecture": {
@@ -40,6 +49,10 @@
             "32bit": {
                 "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_win32.zip",
                 "extract_dir": "Godot_v$version_mono_win32"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_mono_windows_arm64.zip",
+                "extract_dir": "Godot_v$version_mono_windows_arm64"
             }
         },
         "hash": {

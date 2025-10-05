@@ -18,10 +18,15 @@
         }
     },
     "pre_install": [
-        "Remove-Item \"$dir\\Godot_*_console.*\"",
+        "Get-Item \"$dir\\Godot_*_console.exe\" | Rename-Item -NewName 'godot.console.exe'",
         "Get-Item \"$dir\\Godot_*.exe\" | Rename-Item -NewName 'godot.exe'"
     ],
-    "bin": "godot.exe",
+    "bin": [
+        [
+            "godot.console.exe",
+            "godot"
+        ]
+    ],
     "shortcuts": [
         [
             "godot.exe",
@@ -29,9 +34,8 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/godotengine/godot-builds/releases",
-        "jsonpath": "$[?(@.tag_name =~ /[\\d.]+-dev\\d+/)].tag_name",
-        "regex": "(?<version>[\\d.]+-dev\\d+)"
+        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-dev\\d+$/)].name"
     },
     "autoupdate": {
         "architecture": {
