@@ -1,7 +1,7 @@
 {
     "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
     "homepage": "https://adoptium.net",
-    "version": "25.0.0-36.0.LTS",
+    "version": "25.0.0-36.0",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
@@ -17,7 +17,7 @@
     "checkver": {
         "url": "https://api.adoptium.net/v3/assets/feature_releases/25/ga?jvm_impl=hotspot&heap_size=normal&os=windows&architecture=x64&image_type=jre&project=jdk&vendor=eclipse&page_size=1&sort_order=DESC",
         "script": [
-            "$ver = (json_path $page $..version_data.semver).replace('+', '-')",
+            "$ver = (json_path $page $..version_data.semver).replace('+', '-').replace('.LTS', '')",
             "$link = (json_path $page $..release_link).replace('%2B', '+')",
             "$name = json_path $page $..binaries[0].package.name",
             "Write-Output \"$ver $link $name\""
@@ -33,7 +33,7 @@
         },
         "hash": {
             "url": "$url.sha256.txt",
-            "regex": "^([a-fA-F0-9]+)\\s"
+            "find": "^([a-fA-F0-9]+)\\s"
         },
         "extract_dir": "$matchTag-jre"
     }
