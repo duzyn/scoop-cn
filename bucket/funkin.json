@@ -1,0 +1,37 @@
+{
+    "version": "0.7.5",
+    "description": "Friday Night Funkin' is a rhythm game",
+    "homepage": "https://www.newgrounds.com/portal/view/770371",
+    "license": {
+        "identifier": "Apache-2.0",
+        "url": "https://github.com/FunkinCrew/Funkin/blob/main/LICENSE.md"
+    },
+    "notes": [
+        "- Source code: https://github.com/FunkinCrew/Funkin (Apache 2.0; assets reserved).",
+        "- Mods: A 'mods' folder is located at persist\\funkin for community content; it will persist across updates.",
+        "- Save data is stored in %APPDATA%\\FunkinCrew and will persist outside Scoop's management."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/FunkinCrew/Funkin/releases/download/v0.7.5/funkin-windows-64bit.zip",
+            "hash": "287ac88c1cb1186ee9ae5f275bccff729d25d593e92543061420393095991b01"
+        }
+    },
+    "shortcuts": [
+        [
+            "Funkin.exe",
+            "Friday Night Funkin'"
+        ]
+    ],
+    "persist": "mods",
+    "checkver": {
+        "github": "https://github.com/FunkinCrew/Funkin"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/FunkinCrew/Funkin/releases/download/v$version/funkin-windows-64bit.zip"
+            }
+        }
+    }
+}
