@@ -1,0 +1,31 @@
+{
+    "version": "7.14.12",
+    "description": "v2rayN (WPF-based, .NET 8 self-contained version) is a GUI client for V2Ray, with support for Xray, sing-box, and other compatible cores.",
+    "homepage": "https://github.com/2dust/v2rayN",
+    "license": "GPL-3.0-only",
+    "suggest": {
+        "v2fly-core": "v2ray"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.net/https://github.com/2dust/v2rayN/releases/download/7.14.12/v2rayN-windows-64-SelfContained.zip",
+            "hash": "543c5ce62f32f4a73526c7fcec4bbab5766803620a5a9b5131c5c425fd9ab388",
+            "extract_dir": "v2rayN-windows-64-SelfContained"
+        }
+    },
+    "shortcuts": [
+        [
+            "v2rayN.exe",
+            "v2rayN"
+        ]
+    ],
+    "persist": "guiConfigs",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.net/https://github.com/2dust/v2rayN/releases/download/$version/v2rayN-windows-64-SelfContained.zip"
+            }
+        }
+    }
+}
