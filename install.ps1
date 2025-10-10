@@ -5,7 +5,7 @@
 $global:ProgressPreference = 'SilentlyContinue'
 
 # 设置 GitHub 代理地址
-$GithubProxy = "https://gh-proxy.com"
+$GithubProxy = "https://gh-proxy.net"
 
 # 如果有设 SCOOP 环境变量，就按环境变量来
 $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
@@ -17,8 +17,8 @@ $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop"
 
 # 替换 7zip, git 的下载地址为代理的
-(Get-Content "$ScoopPath\buckets\main\bucket\7zip.json") -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content "$ScoopPath\buckets\main\bucket\7zip.json"
-(Get-Content "$ScoopPath\buckets\main\bucket\git.json") -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.com/$1' | Set-Content "$ScoopPath\buckets\main\bucket\git.json"
+(Get-Content "$ScoopPath\buckets\main\bucket\7zip.json") -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.net/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content "$ScoopPath\buckets\main\bucket\7zip.json"
+(Get-Content "$ScoopPath\buckets\main\bucket\git.json") -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.net/$1' | Set-Content "$ScoopPath\buckets\main\bucket\git.json"
 
 # 安装时注意顺序是 7zip, git
 scoop install 7zip
