@@ -1,5 +1,5 @@
 {
-    "version": "0.0.38-18179",
+    "version": "0.0.38-18185",
     "description": "Open-source Sony PlayStation 3 emulator",
     "homepage": "https://rpcs3.net/",
     "license": {
@@ -15,8 +15,8 @@
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
     },
-    "url": "https://gh-proxy.com/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-b18a0830f3be7b9a7368344c5e212b00dcf8a0a0/rpcs3-v0.0.38-18179-b18a0830_win64_msvc.7z",
-    "hash": "de83687f5931e0ad30602e64de34a880361fc8d61eb719b5285d50d76ac9ddf5",
+    "url": "https://gh-proxy.net/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/build-9e49b9100fab7293c5f616f6aebc91799461c26c/rpcs3-v0.0.38-18185-9e49b910_win64_msvc.7z",
+    "hash": "47d2f51790e2a01b0402ae7db3ab7c52bbda1ba95ed5c6896da09ebcc649092c",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\")) {",
         "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
@@ -55,9 +55,9 @@
         "regex": "releases/download/(?<build>build-[a-f\\d]+)/rpcs3-v(?<version>[\\d.-]+)-(?<commit>[a-f\\d]+)_win64_msvc\\.7z"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/$matchBuild/rpcs3-v$version-$matchCommit_win64_msvc.7z",
+        "url": "https://gh-proxy.net/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/$matchBuild/rpcs3-v$version-$matchCommit_win64_msvc.7z",
         "hash": {
-            "url": "https://gh-proxy.com/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/$matchBuild/rpcs3-v$version-$matchCommit_win64_msvc.7z.sha256"
+            "url": "https://gh-proxy.net/https://github.com/RPCS3/rpcs3-binaries-win/releases/download/$matchBuild/rpcs3-v$version-$matchCommit_win64_msvc.7z.sha256"
         }
     }
 }

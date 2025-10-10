@@ -6,7 +6,7 @@
     "depends": "scoop-cn/terraform011",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v1.83.3/terraform-provider-ibm_1.83.3_windows_amd64.zip",
+            "url": "https://gh-proxy.net/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v1.83.3/terraform-provider-ibm_1.83.3_windows_amd64.zip",
             "hash": "30e8bf5ddbf7d80ce5a2ff94e6054604d9ecd83b8966afa213f88a24ddcc7d0d",
             "installer": {
                 "script": "Copy-Item -Force \"$dir\\terraform-provider-ibm_v$version.exe\" \"$env:APPDATA\\terraform.d\\plugins\\windows_amd64\""
@@ -23,7 +23,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/terraform-provider-ibm_$version_windows_amd64.zip"
+                "url": "https://gh-proxy.net/https://github.com/IBM-Cloud/terraform-provider-ibm/releases/download/v$version/terraform-provider-ibm_$version_windows_amd64.zip"
             }
         },
         "hash": {

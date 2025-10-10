@@ -5,12 +5,12 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.3/Cherry-Studio-1.6.3-x64-setup.exe#/dl.7z",
+            "url": "https://gh-proxy.net/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.3/Cherry-Studio-1.6.3-x64-setup.exe#/dl.7z",
             "hash": "sha512:089ce6c4563b867bf3b8ef42944fddf406c5a2eac83aae7bd386340e1410f926fb9f19de0109b2a0f5d915404e4ee98b09c36e7bf564982247ba3ae0c8bd87a4",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.3/Cherry-Studio-1.6.3-arm64-setup.exe#/dl.7z",
+            "url": "https://gh-proxy.net/https://github.com/CherryHQ/cherry-studio/releases/download/v1.6.3/Cherry-Studio-1.6.3-arm64-setup.exe#/dl.7z",
             "hash": "7a1a4e47673ffea3be99d5bd94beb15b09df72877ca5954a2b64351b7b2ed11a",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\""
         }
@@ -39,14 +39,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-setup.exe#/dl.7z",
+                "url": "https://gh-proxy.net/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-x64-setup.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "sha512: $base64"
                 }
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-setup.exe#/dl.7z"
+                "url": "https://gh-proxy.net/https://github.com/CherryHQ/cherry-studio/releases/download/v$version/Cherry-Studio-$version-arm64-setup.exe#/dl.7z"
             }
         }
     }
