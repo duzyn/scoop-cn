@@ -1,21 +1,20 @@
 {
-    "version": "15",
+    "version": "20251013145234+7b65e71",
     "description": "App that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching",
     "homepage": "https://github.com/DevilXD/TwitchDropsMiner",
     "license": "MIT",
-    "url": "https://gh-proxy.net/https://github.com/DevilXD/TwitchDropsMiner/releases/download/v15/Twitch.Drops.Miner.zip",
-    "hash": "b337d8accefd133d90aa19d606b442314a49875b369852fb895fa56fd96fe23c",
-    "extract_dir": "Twitch Drops Miner",
-    "pre_install": [
-        "'settings.json', 'cookies.jar' | ForEach-Object {",
-        "    if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
-        "}"
-    ],
+    "url": "https://nightly.link/DevilXD/TwitchDropsMiner/actions/runs/18469744944/Twitch.Drops.Miner.Windows.zip#/dl.zip",
+    "hash": "d473a4ac137169ff3d0ff0961f1a1a17c78d9ee154d311773691de33333d13e3",
     "shortcuts": [
         [
             "Twitch Drops Miner (by DevilXD).exe",
-            "Twitch Drops"
+            "Twitch Drops (Git)"
         ]
+    ],
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\Twitch.Drops.Miner.Windows.zip\" -ExtractDir 'Twitch Drops Miner' -Removal",
+        "if (!(Test-Path \"$persist_dir\\cookies.jar\")) { New-Item \"$dir\\cookies.jar\" | Out-Null }",
+        "if (!(Test-Path \"$persist_dir\\settings.json\")) { Set-Content \"$dir\\settings.json\" '{}' -Encoding 'Ascii'}"
     ],
     "persist": [
         "cache",
@@ -23,9 +22,19 @@
         "cookies.jar"
     ],
     "checkver": {
-        "github": "https://github.com/DevilXD/TwitchDropsMiner"
+        "script": [
+            "$url = 'https://api.github.com/repositories/434668441/actions/workflows/ci.yml/runs?branch=master&status=success&per_page=1&event=push'",
+            "$cont = Invoke-RestMethod -UseBasicParsing -Method Get -Headers @{'Accept'='application/vnd.github+json';'Accept-Encoding'='gzip'} -MaximumRedirection 0 -Uri $url",
+            "$workflow_run = $cont.workflow_runs[0]",
+            "$commit = $workflow_run.head_sha.Trim().SubString(0,7)",
+            "$created_date = ([DateTime]$workflow_run.created_at).ToUniversalTime().ToString('yyyyMMddHHmmss')",
+            "$id = $workflow_run.id",
+            "Write-Output ('commit:\"' + $commit + '\"') ('date:\"' + $created_date + '\"') ('id:\"' + $id + '\"')"
+        ],
+        "regex": "commit:\"(?<commit>[\\w\\d]+)\"\\sdate:\"(?<date>\\d+)\"\\sid:\"(?<id>\\d+)\"",
+        "replace": "${date}+${commit}"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/DevilXD/TwitchDropsMiner/releases/download/v$version/Twitch.Drops.Miner.zip"
+        "url": "https://nightly.link/DevilXD/TwitchDropsMiner/actions/runs/$matchId/Twitch.Drops.Miner.Windows.zip#/dl.zip"
     }
 }
