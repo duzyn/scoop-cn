@@ -1,0 +1,49 @@
+{
+    "version": "24.10.0",
+    "description": "An asynchronous event driven JavaScript runtime designed to build scalable network applications.",
+    "homepage": "https://nodejs.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://mirrors.ustc.edu.cn/node/v24.10.0/node-v24.10.0-win-x64.7z",
+            "hash": "36b3dffd682813134698103842d52cdaf2d56ddedbf3a48e430812126a275f85",
+            "extract_dir": "node-v24.10.0-win-x64"
+        },
+        "arm64": {
+            "url": "https://mirrors.ustc.edu.cn/node/v24.10.0/node-v24.10.0-win-arm64.7z",
+            "hash": "eecfbb713407222f89d70e60dd92503705380c2406dfe195f29bd8455c46baa0",
+            "extract_dir": "node-v24.10.0-win-arm64"
+        }
+    },
+    "persist": [
+        "bin",
+        "cache"
+    ],
+    "env_add_path": [
+        "bin",
+        "."
+    ],
+    "post_install": [
+        "# Set npm prefix to install modules inside bin and npm cache so they persist",
+        "Set-Content -Value \"prefix=$persist_dir\\bin`ncache=$persist_dir\\cache\" -Path \"$dir\\node_modules\\npm\\npmrc\""
+    ],
+    "checkver": {
+        "url": "https://mirrors.ustc.edu.cn/node/latest-v24.x/",
+        "regex": "node-v([\\d.]+)-win-x64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-x64.7z",
+                "extract_dir": "node-v$version-win-x64"
+            },
+            "arm64": {
+                "url": "https://mirrors.ustc.edu.cn/node/v$version/node-v$version-win-arm64.7z",
+                "extract_dir": "node-v$version-win-arm64"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/SHASUMS256.txt.asc"
+        }
+    }
+}
