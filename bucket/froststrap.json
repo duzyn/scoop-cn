@@ -1,0 +1,32 @@
+{
+    "$schema": "https://gh-proxy.net/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "version": "1.2.6.0",
+    "description": "Fork of Bloxstrap and Fishstrap, focused on performance and customization",
+    "homepage": "https://realmeddsam.github.io/Froststrap-Website/",
+    "license": "MIT",
+    "suggest": {
+        ".NET 6.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime-6.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.net/https://github.com/RealMeddsam/Froststrap/releases/download/v1.2.6.0/Froststrap-v1.2.6.0.exe#/Froststrap.exe",
+            "hash": "FFBDAAA24C4B763D22AA1F4EA9BFB7C2460861074FC29201E5EB732BE12499D4"
+        }
+    },
+    "installer": {
+        "script": "if ($cmd -eq 'update') {Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet', '-upgrade'); } else { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet'); }"
+    },
+    "uninstaller": {
+        "script": "Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-uninstall', '-quiet');"
+    },
+    "checkver": {
+        "github": "https://github.com/RealMeddsam/Froststrap"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.net/https://github.com/RealMeddsam/Froststrap/releases/download/v$version/Froststrap-v$version.exe#/Froststrap.exe"
+            }
+        }
+    }
+}
