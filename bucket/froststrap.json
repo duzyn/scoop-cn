@@ -5,7 +5,7 @@
     "homepage": "https://realmeddsam.github.io/Froststrap-Website/",
     "license": "MIT",
     "suggest": {
-        ".NET 6.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime-6.0"
+        ".NET 8.0 Desktop Runtime": "scoop-cn/windowsdesktop-runtime-lts"
     },
     "architecture": {
         "64bit": {
@@ -14,7 +14,7 @@
         }
     },
     "installer": {
-        "script": "if ($cmd -eq 'update') {Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet', '-upgrade'); } else { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet'); }"
+        "script": "if ($cmd -eq 'update') { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet', '-upgrade'); exit 0 } else { Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-quiet'); }"
     },
     "uninstaller": {
         "script": "Start-Process \"$dir\\Froststrap.exe\" -Wait -Args @('-uninstall', '-quiet');"

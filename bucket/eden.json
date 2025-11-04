@@ -1,5 +1,5 @@
 {
-    "version": "v0.0.3",
+    "version": "v0.0.4-rc1",
     "description": "Open source Nintendo Switch emulator (forked from yuzu)",
     "homepage": "https://eden-emu.dev/",
     "license": {
@@ -8,8 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/v0.0.3/Eden-Windows-v0.0.3-amd64.zip",
-            "hash": "5dc85bf801899268693d6f5accd56b44e37083ff0f620bb330bcff8094a0c70d"
+            "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/v0.0.4-rc1/Eden-Windows-v0.0.4-rc1-amd64-msvc-standard.zip",
+            "hash": "1d0d4020f5b3f2ec4b0591a79ded8c13e200e7c1489d15a9d7fe423ed72817b2"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/v0.0.4-rc1/Eden-Windows-v0.0.4-rc1-arm64-msvc-standard.zip",
+            "hash": "9ac409ee4cd0f39c0aef6f6134f2cc2804988eb1713214fbf74d93b602adac02"
         }
     },
     "pre_install": [
@@ -38,7 +42,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-amd64.zip"
+                "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-amd64-msvc-standard.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.net/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-arm64-msvc-standard.zip"
             }
         }
     }
