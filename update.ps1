@@ -39,38 +39,38 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = Get-Content $_.FullName
 
     # GitHub Releases
-    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.net/$1'
+    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', 'https://ghfast.top/$1'
 
     # GitHub Archive
-    $content = $content -replace '(https?://github\.com/.+/archive/)', 'https://gh-proxy.net/$1'
+    $content = $content -replace '(https?://github\.com/.+/archive/)', 'https://ghfast.top/$1'
 
     # GitHub Gists
-    $content = $content -replace '(https?://gist.github\.com/.+/)', 'https://gh-proxy.net/$1'
+    $content = $content -replace '(https?://gist.github\.com/.+/)', 'https://ghfast.top/$1'
 
     # GitHub Raw
-    $content = $content -replace '(https?://raw\.githubusercontent\.com)', 'https://gh-proxy.net/$1'
-    $content = $content -replace '(https?://github\.com/.+/raw/)', 'https://gh-proxy.net/$1'         
+    $content = $content -replace '(https?://raw\.githubusercontent\.com)', 'https://ghfast.top/$1'
+    $content = $content -replace '(https?://github\.com/.+/raw/)', 'https://ghfast.top/$1'         
 
     # DBeaver，not debaver-ea
-    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', 'https://gh-proxy.net/https://github.com/dbeaver/dbeaver/releases/download/$1/'
+    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', 'https://ghfast.top/https://github.com/dbeaver/dbeaver/releases/download/$1/'
     
     # FastCopy
-    $content = $content -replace 'https?://fastcopy\.jp/archive', 'https://gh-proxy.net/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
+    $content = $content -replace 'https?://fastcopy\.jp/archive', 'https://ghfast.top/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
 
     # OBS Studio
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows', 'https://gh-proxy.net/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows', 'https://ghfast.top/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows'
 
     # OBS Studio 2.7
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://gh-proxy.net/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://ghfast.top/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
 
     # Strawberry
-    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'https://gh-proxy.net/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x'
+    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'https://ghfast.top/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x'
 
     # KDE Apps
     # $content = $content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde'
 
     # 7-Zip
-    $content = $content -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.net/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
+    $content = $content -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://ghfast.top/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
 
     # Blender
     $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender'
