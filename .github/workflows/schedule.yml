@@ -65,6 +65,11 @@ jobs:
           repository: "niheaven/scoop-sysinternals"
           fetch-depth: 1
           path: "scoop-sysinternals"
+      - uses: actions/checkout@v3
+        with:
+          repository: "ous50/ous50-bucket"
+          fetch-depth: 1
+          path: "ous50"
       - name: Update buckets
         shell: pwsh
         run: |

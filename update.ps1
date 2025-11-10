@@ -22,6 +22,7 @@ Copy-Item -Path .\Extras\scripts\*            -Destination .\scripts -Recurse -F
 Copy-Item -Path .\Versions\scripts\*          -Destination .\scripts -Recurse -Force
 Copy-Item -Path .\Nonportable\scripts\*       -Destination .\scripts -Recurse -Force
 Copy-Item -Path .\scoop-games\scripts\*       -Destination .\scripts -Recurse -Force
+Copy-Item -Path .\ous50\scripts\*       -Destination .\scripts -Recurse -Force
 
 # 复制完后，删掉克隆的文件夹
 Remove-Item -Path .\Main               -Recurse -Force
@@ -34,6 +35,7 @@ Remove-Item -Path .\scoop-nirsoft      -Recurse -Force
 Remove-Item -Path .\scoop-nerd-fonts   -Recurse -Force
 Remove-Item -Path .\scoop-games        -Recurse -Force
 Remove-Item -Path .\scoop-sysinternals -Recurse -Force
+Remove-Item -Path .\ous50 -Recurse -Force
 
 Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = Get-Content $_.FullName
