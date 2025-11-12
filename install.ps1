@@ -16,7 +16,7 @@ $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1" | Invoke-Expression
 
 # 将 Scoop 的仓库源替换为代理的
-Write-Host "Setting Scoop repo…"
+Write-Host "Setting Scoop repo..."
 scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop.git"
 
 # 替换 7zip, git, aria2 的下载地址为代理的
@@ -31,15 +31,15 @@ scoop install aria2
 
 # 将 Scoop 的 main 仓库源替换为代理的
 if (Test-Path -Path "$ScoopPath\buckets\main") {
-    Write-Host "Removing original main bucket…"
+    Write-Host "Removing original main bucket..."
     scoop bucket rm main
 }
 
-Write-Host "Adding main bucket…"
+Write-Host "Adding main bucket..."
 scoop bucket add main "$GithubProxy/https://github.com/ScoopInstaller/Main.git"
 
 # 添加 scoop-cn 仓库
-Write-Host "Adding scoop-cn bucket…"
+Write-Host "Adding scoop-cn bucket..."
 scoop bucket add scoop-cn "$GithubProxy/https://github.com/duzyn/scoop-cn.git"
 
 # 将 7zip, git, aria2 转为后续用 scoop-cn 来更新
