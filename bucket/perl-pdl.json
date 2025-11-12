@@ -1,16 +1,17 @@
 {
-    "homepage": "http://strawberryperl.com",
+    "$schema": "https://gh-proxy.net/https://raw.githubusercontent.com/ScoopInstaller/Scoop/b588a06e41d920d2123ec70aee682bae14935939/schema.json",
+    "homepage": "https://strawberryperl.com",
     "description": "Strawberry Perl with extra PDL related modules and external libraries.",
-    "version": "5.32.1.1",
+    "version": "5.42.0.1",
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
     "architecture": {
         "32bit": {
-            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit-PDL.zip",
-            "hash": "sha1:b989bfccf7967564afd10301e712d2c4ebc7acb3"
+            "url": "https://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-32bit-PDL.zip",
+            "hash": "9226ea757a9b5592df8a2c3bdc37d3ef8d6383ab13a82cc9176bc95ecbed4ae4"
         },
         "64bit": {
-            "url": "http://strawberryperl.com/download/5.32.1.1/strawberry-perl-5.32.1.1-64bit-PDL.zip",
-            "hash": "sha1:281a9f000bbe834267ef0855195f1cd5acb0d72c"
+            "url": "https://gh-proxy.net/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54201_64bit/strawberry-perl-5.42.0.1-64bit-PDL.zip",
+            "hash": "3b7305590ba39bfd23b939b9b7e9c5269f002ae4bb73e82c2f87770799e32012"
         }
     },
     "post_install": [
@@ -25,21 +26,30 @@
         "c\\bin"
     ],
     "checkver": {
-        "url": "http://strawberryperl.com/releases.html",
-        "regex": "strawberry-perl-([\\d.]+)-32bit-PDL\\.zip"
+        "script": [
+            "$releasesURL = 'https://strawberryperl.com/releases.json'",
+            "$releasesJSON = Invoke-WebRequest ($releasesURL) | ConvertFrom-Json",
+            "$URL64bit = ($releasesJSON | Where-Object { $_.edition.pdl.url -like '*-64bit-PDL.zip' } | Select-Object -First 1).edition.pdl.url",
+            "$v64bit = ($releasesJSON | Where-Object { $_.edition.pdl.url -like '*-64bit-PDL.zip' } | Select-Object -First 1).version",
+            "$URL32bit = ($releasesJSON | Where-Object { $_.edition.pdl.url -like '*-32bit-PDL.zip' } | Select-Object -First 1).edition.pdl.url",
+            "$v32bit = ($releasesJSON | Where-Object { $_.edition.pdl.url -like '*-32bit-PDL.zip' } | Select-Object -First 1).version",
+            "Write-Output ('v:'+$v64bit+' url:' + $URL64bit + ' v:'+$v32bit + ' url:' + $URL32bit)"
+        ],
+        "regex": "v:(?<version>[\\d\\.]+) url:(?<URL64bit>https://.+/\\S+) v:(?<version32bit>[\\d\\.]+) url:(?<URL32bit>https://.+/\\S+\\.zip)"
     },
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-32bit-PDL.zip"
+                "url": "$matchUrl32bit"
             },
             "64bit": {
-                "url": "http://strawberryperl.com/download/$version/strawberry-perl-$version-64bit-PDL.zip"
+                "url": "$matchUrl64bit"
             }
         },
         "hash": {
-            "url": "http://strawberryperl.com/releases.html",
-            "find": "(?sm)$basename\" onclick.*?PDL.*?$sha1"
+            "mode": "json",
+            "url": "https://strawberryperl.com/releases.json",
+            "jsonpath": "$[?(@.edition.pdl && @.edition.pdl.url == '$url')].edition.pdl.sha256"
         }
     }
 }
