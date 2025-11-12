@@ -56,7 +56,7 @@ irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
 irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
 ```
 
-安装成功后，会提示“Scoop and scoop-cn was installed successfully!”
+安装成功后，会提示“scoop-cn was installed successfully!”
 
 ## 只添加 scoop-cn 仓库
 
