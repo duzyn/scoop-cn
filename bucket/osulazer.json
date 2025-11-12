@@ -3,7 +3,7 @@
     "description": "A free-to-win rhythm game. Rhythm is just a click away!",
     "homepage": "https://osu.ppy.sh/",
     "license": "MIT",
-    "url": "https://gh-proxy.net/https://github.com/ppy/osu/releases/download/2025.1029.1-lazer/osulazer-2025.1029.1-lazer-full.nupkg#/dl.7z",
+    "url": "https://gh-proxy.com/https://github.com/ppy/osu/releases/download/2025.1029.1-lazer/osulazer-2025.1029.1-lazer-full.nupkg#/dl.7z",
     "hash": "5794ca5cc751e77ca623032b24e2e7d1953e64bb73f6b2c912fedce7b2461e0d",
     "extract_dir": "lib\\app",
     "pre_install": "Rename-Item -Path $dir/osu!.exe -NewName $dir/osulazer.exe",
@@ -19,6 +19,6 @@
         "regex": "/releases/tag/(?:v|V)?([\\w-.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/ppy/osu/releases/download/$version/osulazer-$version-full.nupkg#/dl.7z"
+        "url": "https://gh-proxy.com/https://github.com/ppy/osu/releases/download/$version/osulazer-$version-full.nupkg#/dl.7z"
     }
 }

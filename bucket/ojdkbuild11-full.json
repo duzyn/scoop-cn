@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.15.9-1/java-11-openjdk-11.0.15.9-1.windows.ojdkbuild.x86_64.msi",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-11-openjdk-11.0.15.9-1/java-11-openjdk-11.0.15.9-1.windows.ojdkbuild.x86_64.msi",
             "hash": "344e55f22fc25d42b6c4a090fa3fba4710202e3062e6737792c277833d844d02"
         }
     },
@@ -16,13 +16,13 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
         "regex": "download/java-11-openjdk-([\\d.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.msi"
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.msi"
             }
         },
         "hash": {

@@ -3,7 +3,7 @@
     "description": "A code-search engine that uses GPT-4 to answer questions about your code. Search both your local and remote repositories with natural language, regex and filtered queries.",
     "homepage": "https://bloop.ai",
     "license": "Apache-2.0",
-    "url": "https://gh-proxy.net/https://github.com/BloopAI/bloop/releases/download/v0.6.5/bloop_0.6.5_x64-setup.exe#/dl.7z",
+    "url": "https://gh-proxy.com/https://github.com/BloopAI/bloop/releases/download/v0.6.5/bloop_0.6.5_x64-setup.exe#/dl.7z",
     "hash": "133781ab9860fdeb16ec16af2a353f95aee8a141a8035211374fef584c012d24",
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
     "bin": "bloop.exe",
@@ -18,6 +18,6 @@
         "regex": "bloop_([\\d.]+)_x64-setup.exe"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/BloopAI/bloop/releases/download/v$version/bloop_$version_x64-setup.exe#/dl.7z"
+        "url": "https://gh-proxy.com/https://github.com/BloopAI/bloop/releases/download/v$version/bloop_$version_x64-setup.exe#/dl.7z"
     }
 }

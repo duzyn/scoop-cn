@@ -4,8 +4,8 @@
     "homepage": "https://github.com/mikedilger/gossip",
     "license": "MIT",
     "url": [
-        "https://gh-proxy.net/https://github.com/mikedilger/gossip/releases/download/v0.14.0/gossip.0.14.0.msi",
-        "https://gh-proxy.net/https://raw.githubusercontent.com/mikedilger/gossip/master/packaging/windows/gossip.ico"
+        "https://gh-proxy.com/https://github.com/mikedilger/gossip/releases/download/v0.14.0/gossip.0.14.0.msi",
+        "https://gh-proxy.com/https://raw.githubusercontent.com/mikedilger/gossip/master/packaging/windows/gossip.ico"
     ],
     "hash": [
         "fae7063d0e2741ec55cccc51753ed4c5f9be374665b25323cf6c31179c4f4736",
@@ -27,7 +27,7 @@
         "regex": "download/v(?<tag>[\\d.]+)/gossip.([\\d.]+)\\.msi"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/mikedilger/gossip/releases/download/v$matchTag/gossip.$version.msi",
+        "url": "https://gh-proxy.com/https://github.com/mikedilger/gossip/releases/download/v$matchTag/gossip.$version.msi",
         "hash": {
             "url": "$baseurl/SHA256sums.txt"
         }

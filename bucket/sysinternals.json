@@ -11,7 +11,7 @@
     "checkver": {
         "script": [
             "try {",
-            "    $resp = Invoke-WebRequest 'https://gh-proxy.net/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sysinternals-suite.md'",
+            "    $resp = Invoke-WebRequest 'https://gh-proxy.com/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/sysinternals-suite.md'",
             "    # scrape information from a line like 'ms.date: 12/16/2024'",
             "    $lines = $resp.Content.Split([Environment]::NewLine)",
             "    $lines | Select-String -Pattern 'ms.date: (?<month>\\d+)/(?<day>\\d+)/(?<year>\\d+)' | Write-Output",

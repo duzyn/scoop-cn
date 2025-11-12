@@ -5,7 +5,7 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-d49165c/selenium-manager-windows.exe#/selenium-manager.exe",
+            "url": "https://gh-proxy.com/https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/selenium-manager-d49165c/selenium-manager-windows.exe#/selenium-manager.exe",
             "hash": "6220742cfb31e8fcb65ab5b1920f7ba416d1ec314ad876e0f03bc59c1f073c05"
         }
     },
@@ -16,7 +16,7 @@
             "$request = ((Invoke-WebRequest -Uri 'https://github.com/SeleniumHQ/selenium/').Content -split \"`n\" | Select-String 'selenium-([\\d.]+)')",
             "$selenium_ver_string = $request.Matches[0].Value",
             "$selenium_ver = $request.Matches.Groups[1].Value",
-            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://gh-proxy.net/https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl')).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
+            "$selenium_manager_ver_string = @((Invoke-WebRequest -Uri ('https://gh-proxy.com/https://github.com/SeleniumHQ/selenium/raw/' + $selenium_ver_string + '/common/selenium_manager.bzl')).Content -split \"`n\" | Select-String 'selenium-manager-([a-z0-9]+)').Matches.Value[0]",
             "Write-Output $selenium_ver $selenium_manager_ver_string"
         ],
         "regex": "(?<version>.+)\\s(?<managerversion>.+)"
@@ -24,7 +24,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/$matchManagerversion/selenium-manager-windows.exe#/selenium-manager.exe"
+                "url": "https://gh-proxy.com/https://github.com/SeleniumHQ/selenium_manager_artifacts/releases/download/$matchManagerversion/selenium-manager-windows.exe#/selenium-manager.exe"
             }
         }
     }

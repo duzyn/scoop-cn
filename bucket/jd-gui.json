@@ -9,7 +9,7 @@
             "scoop-cn/openjdk"
         ]
     },
-    "url": "https://gh-proxy.net/https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.jar#/jd-gui.jar",
+    "url": "https://gh-proxy.com/https://github.com/java-decompiler/jd-gui/releases/download/v1.6.6/jd-gui-1.6.6.jar#/jd-gui.jar",
     "hash": "2c9d3efa8b06438a7284139f68f6efcbfb2a11e0b9d20a3370d50189685afc0b",
     "pre_install": "Set-Content \"$dir\\jd-gui.bat\" '@start javaw.exe -jar \"%~dp0jd-gui.jar\" %*' -Encoding Ascii",
     "bin": "jd-gui.jar",
@@ -21,6 +21,6 @@
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/java-decompiler/jd-gui/releases/download/v$version/jd-gui-$version.jar#/jd-gui.jar"
+        "url": "https://gh-proxy.com/https://github.com/java-decompiler/jd-gui/releases/download/v$version/jd-gui-$version.jar#/jd-gui.jar"
     }
 }

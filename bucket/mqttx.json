@@ -5,15 +5,15 @@
     "license": "Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-x64.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-x64.exe#/dl.7z",
             "hash": "sha512:d2af8839ad6e9ce5c1bb382ecbbd171e08041f369b29413049e768a220f86df88ac3393a02b09e42fb6fa5abbf751e786b2a489c14f5933f6e2f903429ed38b4"
         },
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-ia32.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-ia32.exe#/dl.7z",
             "hash": "sha512:63330193e443ccd47444aeebfda335c129ec5359bdc8d7f57abdd34cdc711ae621b4817aca5a7382ff99afdf098580d597991e3965dccf484a0328bb403d5f1f"
         },
         "arm64": {
-            "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-arm64.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v1.11.1/MQTTX-Setup-1.11.1-arm64.exe#/dl.7z",
             "hash": "sha512:a634b5e379440c628fac41d1dfff3e083367d51a98746239c26853494a202a2c09028e4c4ba9f6b3e3bcc33a8c96400aa1f5f272e4cea44bcb911da34b571500"
         }
     },
@@ -34,21 +34,21 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-x64.exe#/dl.7z",
+                "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-x64.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "(?sm)x64.*?sha512:\\s+$base64"
                 }
             },
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-ia32.exe#/dl.7z",
+                "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-ia32.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "(?sm)ia32.*?sha512:\\s+$base64"
                 }
             },
             "arm64": {
-                "url": "https://gh-proxy.net/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-arm64.exe#/dl.7z",
+                "url": "https://gh-proxy.com/https://github.com/emqx/MQTTX/releases/download/v$version/MQTTX-Setup-$version-arm64.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "(?sm)arm64.*?sha512:\\s+$base64"

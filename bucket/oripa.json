@@ -9,7 +9,7 @@
             "scoop-cn/oraclejdk"
         ]
     },
-    "url": "https://gh-proxy.net/https://github.com/oripa/oripa/releases/download/v1.77_release/oripa-1.77-all.jar#/oripa.jar",
+    "url": "https://gh-proxy.com/https://github.com/oripa/oripa/releases/download/v1.77_release/oripa-1.77-all.jar#/oripa.jar",
     "hash": "e82396e1165f8077d565f10b10f8fcc0d07eba40c11d42d4be72ffbcd5178890",
     "pre_install": "Set-Content \"$dir\\oripa.bat\" \"@start javaw -jar \"\"%~dp0\\$fname\"\" %*\" -Encoding ASCII",
     "bin": "oripa.jar",
@@ -23,6 +23,6 @@
         "github": "https://github.com/oripa/oripa"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/oripa/oripa/releases/download/v$version_release/oripa-$version-all.jar#/oripa.jar"
+        "url": "https://gh-proxy.com/https://github.com/oripa/oripa/releases/download/v$version_release/oripa-$version-all.jar#/oripa.jar"
     }
 }

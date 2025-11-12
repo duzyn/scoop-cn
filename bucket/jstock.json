@@ -4,7 +4,7 @@
     "homepage": "https://jstock.org",
     "license": "GPL-2.0-only",
     "extract_dir": "jstock",
-    "url": "https://gh-proxy.net/https://github.com/yccheok/jstock/releases/download/release_1-0-7-60/jstock-1.0.7.60-bin.zip",
+    "url": "https://gh-proxy.com/https://github.com/yccheok/jstock/releases/download/release_1-0-7-60/jstock-1.0.7.60-bin.zip",
     "hash": "86c549ca82bc9cd4af7d2b5ad5e3269f64e9456eab10c100730e0d428e3ba675",
     "pre_install": "Set-Content \"$dir\\jstock.bat\" '@start javaw.exe -jar \"%~dp0jstock.jar\" %*' -Encoding Ascii",
     "suggest": {
@@ -25,6 +25,6 @@
         "replace": "${1}.${2}.${3}.${4}"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/yccheok/jstock/releases/download/release_$dashVersion/jstock-$version-bin.zip"
+        "url": "https://gh-proxy.com/https://github.com/yccheok/jstock/releases/download/release_$dashVersion/jstock-$version-bin.zip"
     }
 }

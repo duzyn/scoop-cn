@@ -10,7 +10,7 @@
         "If an error occurs when updating or uninstalling, execute the following command then retry:",
         "`Stop-Process -Name 'explorer'`"
     ],
-    "url": "https://gh-proxy.net/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy5.11.1_installer.exe",
+    "url": "https://gh-proxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy5.11.1_installer.exe",
     "hash": "c37aa8478b615afcb3f5454b322ce1abe1c5de959629da6b1bc384f02b97ba6e",
     "pre_install": [
         "Start-Process \"$dir\\$fname\" -Args @('/SILENT', \"/DIR=\"\"$dir\"\"\", '/NOPROG', '/NODESK') -Wait",
@@ -39,6 +39,6 @@
     ],
     "checkver": "Download v([\\d.]+)",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy$version_installer.exe"
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main/FastCopy$version_installer.exe"
     }
 }

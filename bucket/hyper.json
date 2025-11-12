@@ -5,7 +5,7 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/vercel/hyper/releases/download/v3.4.1/Hyper-Setup-3.4.1.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/vercel/hyper/releases/download/v3.4.1/Hyper-Setup-3.4.1.exe#/dl.7z",
             "hash": "sha512:bcf6155ca67859fc6565d16fe6c68ab279a379f800b3dca10764068d6dd15d70ba31b60d4be5d042036c5a59fa36f2b5cbfd0b67a041aabdfa9401e7b71cec3e",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -26,7 +26,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/vercel/hyper/releases/download/v$version/Hyper-Setup-$version.exe#/dl.7z",
+                "url": "https://gh-proxy.com/https://github.com/vercel/hyper/releases/download/v$version/Hyper-Setup-$version.exe#/dl.7z",
                 "hash": {
                     "url": "$baseurl/latest.yml",
                     "regex": "sha512:\\s+$base64"

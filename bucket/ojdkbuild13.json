@@ -5,7 +5,7 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-13-openjdk-13.0.4.8-1/java-13-openjdk-13.0.4.8-1.windows.ojdkbuild.x86_64.zip",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-13-openjdk-13.0.4.8-1/java-13-openjdk-13.0.4.8-1.windows.ojdkbuild.x86_64.zip",
             "hash": "f32b480c4e7b420aed9ff6aa797cfda4c6669a0ddfae5809b7b36ea6934155db",
             "extract_dir": "java-13-openjdk-13.0.4.8-1.windows.ojdkbuild.x86_64"
         }
@@ -15,13 +15,13 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
         "regex": "download/java-13-openjdk-([\\d.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.zip",
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$majorVersion-openjdk-$version/java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64.zip",
                 "extract_dir": "java-$majorVersion-openjdk-$version.windows.ojdkbuild.x86_64"
             }
         },

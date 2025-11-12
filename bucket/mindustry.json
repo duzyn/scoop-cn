@@ -6,7 +6,7 @@
     "suggest": {
         "Java Runtime Environment": "scoop-cn/temurin-jre"
     },
-    "url": "https://gh-proxy.net/https://github.com/Anuken/Mindustry/releases/download/v153/Mindustry.jar",
+    "url": "https://gh-proxy.com/https://github.com/Anuken/Mindustry/releases/download/v153/Mindustry.jar",
     "hash": "6541965beedde5bcce00b4161fd944071d9ebcd9d224da2a660903cc61471812",
     "pre_install": "Set-Content -Path \"$dir\\mindustry.bat\" -Value \"pushd $dir && javaw -jar Mindustry.jar && popd\"",
     "bin": "mindustry.bat",
@@ -22,6 +22,6 @@
         "regex": "v([\\d.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/Anuken/Mindustry/releases/download/v$version/Mindustry.jar"
+        "url": "https://gh-proxy.com/https://github.com/Anuken/Mindustry/releases/download/v$version/Mindustry.jar"
     }
 }

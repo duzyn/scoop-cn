@@ -3,7 +3,7 @@
     "description": "FamiStudio NES Music Editor",
     "homepage": "https://github.com/BleuBleu/FamiStudio",
     "license": "MIT",
-    "url": "https://gh-proxy.net/https://github.com/BleuBleu/FamiStudio/releases/download/4.4.3/FamiStudio443-WinPortableExe.zip",
+    "url": "https://gh-proxy.com/https://github.com/BleuBleu/FamiStudio/releases/download/4.4.3/FamiStudio443-WinPortableExe.zip",
     "hash": "50983204bcee7de3cf3bb0cf117ee131e5e2898da149ae96ca854a96505d5203",
     "pre_install": "if (!(Test-Path \"$persist_dir\\FamiStudio.ini\")) { New-Item \"$dir\\FamiStudio.ini\" | Out-Null }",
     "bin": "FamiStudio.exe",
@@ -19,6 +19,6 @@
     ],
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.net/https://github.com/BleuBleu/FamiStudio/releases/download/$version/FamiStudio$cleanVersion-WinPortableExe.zip"
+        "url": "https://gh-proxy.com/https://github.com/BleuBleu/FamiStudio/releases/download/$version/FamiStudio$cleanVersion-WinPortableExe.zip"
     }
 }

@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_windows_installer_x64_4.2.0.6119.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_windows_installer_x64_4.2.0.6119.exe#/dl.7z",
             "hash": "d173a61eb339c513060d6a9ddb43f156a75c2140ab8c6f540faa075d54ddb000",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\""
         },
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_windows_installer_ia32_4.2.0.6119.exe#/dl.7z",
+            "url": "https://gh-proxy.com/https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_windows_installer_ia32_4.2.0.6119.exe#/dl.7z",
             "hash": "1b5321469f08c57b95fb7e94082d64fa4e6558f095e152ddbfcbc986bcd76f5f",
             "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\""
         }
@@ -29,10 +29,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/oldj/SwitchHosts/releases/download/v$matchHead/SwitchHosts_windows_installer_x64_$version.exe#/dl.7z"
+                "url": "https://gh-proxy.com/https://github.com/oldj/SwitchHosts/releases/download/v$matchHead/SwitchHosts_windows_installer_x64_$version.exe#/dl.7z"
             },
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/oldj/SwitchHosts/releases/download/v$matchHead/SwitchHosts_windows_installer_ia32_$version.exe#/dl.7z"
+                "url": "https://gh-proxy.com/https://github.com/oldj/SwitchHosts/releases/download/v$matchHead/SwitchHosts_windows_installer_ia32_$version.exe#/dl.7z"
             }
         }
     }

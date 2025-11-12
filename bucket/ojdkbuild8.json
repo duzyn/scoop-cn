@@ -5,12 +5,12 @@
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09/java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86_64.zip",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09/java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86_64.zip",
             "hash": "3f7c46c2ba4ae6056bf5d9af891b80cd57acf3c8185c7e98c6f2a4132bc90e04",
             "extract_dir": "java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86_64"
         },
         "32bit": {
-            "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09-x86/java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86.zip",
+            "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-1.8.0-openjdk-1.8.0.332-1.b09-x86/java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86.zip",
             "hash": "a25b5ce4cab081aaa152bee42a696c7f95c7cd24c89f6fca280d9f928751124a",
             "extract_dir": "java-1.8.0-openjdk-1.8.0.332-1.b09.ojdkbuild.windows.x86"
         }
@@ -20,17 +20,17 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
+        "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/raw/master/README.md",
         "regex": "download/java-1.8.0-openjdk-([\\db.-]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version/java-$matchHead-openjdk-$version.ojdkbuild.windows.x86_64.zip",
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version/java-$matchHead-openjdk-$version.ojdkbuild.windows.x86_64.zip",
                 "extract_dir": "java-$matchHead-openjdk-$version.ojdkbuild.windows.x86_64"
             },
             "32bit": {
-                "url": "https://gh-proxy.net/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version-x86/java-$matchHead-openjdk-$version.ojdkbuild.windows.x86.zip",
+                "url": "https://gh-proxy.com/https://github.com/ojdkbuild/ojdkbuild/releases/download/java-$matchHead-openjdk-$version-x86/java-$matchHead-openjdk-$version.ojdkbuild.windows.x86.zip",
                 "extract_dir": "java-$matchHead-openjdk-$version.ojdkbuild.windows.x86"
             }
         },
