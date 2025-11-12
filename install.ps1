@@ -11,7 +11,9 @@ $GithubProxy = "https://gh-proxy.com"
 $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 
 # 安装 Scoop
-(Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1").Replace("https://github.com", "$GithubProxy/https://github.com")  | Invoke-Expression
+# (Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1").Replace("https://github.com", "$GithubProxy/https://github.com")  | Invoke-Expression
+# gh-proxy.com 无需替换字符串，网站自动替换了
+Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1" | Invoke-Expression
 
 # 将 Scoop 的仓库源替换为代理的
 scoop config scoop_repo "$GithubProxy/https://github.com/ScoopInstaller/Scoop.git"
