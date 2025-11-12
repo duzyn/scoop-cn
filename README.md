@@ -65,7 +65,7 @@ irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
 1. 运行以下命令添加本仓库
 
     ```powershell
-    scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn
+    scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
     ```
 
 2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行以下命令来批量替换：
@@ -76,7 +76,7 @@ irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
 
     命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。
 
-3. 可以运行 `scoop list` 来检查替换是否成功。比如未修改前是这样的：
+3. 可以运行 `scoop list` 来检查替换是否成功。比如未替换前是这样的：
 
     ```powershell
     Installed apps:
