@@ -1,0 +1,46 @@
+{
+    "version": "10.0.0",
+    "description": "Microsoft .NET 10.0 Desktop Runtime",
+    "homepage": "https://dotnet.microsoft.com/download/dotnet",
+    "license": "MIT",
+    "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-10.0'",
+    "architecture": {
+        "64bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/10.0.0/windowsdesktop-runtime-10.0.0-win-x64.exe",
+            "hash": "sha512:e51fada1505023810d561b2fb08b82d8e175ddc0b8878695ed2cec2d77e93f3f72a7e784e7ef0c45634a020335f9f3d5ce93b35dc883d7d3d10562874c03a762"
+        },
+        "32bit": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/10.0.0/windowsdesktop-runtime-10.0.0-win-x86.exe",
+            "hash": "sha512:3689bbc2115433e2b585ba3a0b8fe59990e35c967cc8a2d44dc90379bc55d1abfdbccabe51aea9dc1e5d62a3cfd66a90a463421d565c16daa0afba1c4570c12e"
+        },
+        "arm64": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/10.0.0/windowsdesktop-runtime-10.0.0-win-arm64.exe",
+            "hash": "sha512:6c8b3c89a43aed39cbb19968b6a9727c2cc5d15cca1b68c8486cb355df76fcaaa1209a0ad06cb431b226bc561f06e521098934c96cea7d11d6322a6a48fcc422"
+        }
+    },
+    "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
+    "installer": {
+        "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
+    },
+    "checkver": {
+        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "jsonpath": "$.releases-index[?(@.channel-version == '10.0')].latest-runtime",
+        "regex": "([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+            },
+            "32bit": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+            },
+            "arm64": {
+                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
+            }
+        },
+        "hash": {
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+        }
+    }
+}
