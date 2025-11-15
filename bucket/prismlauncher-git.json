@@ -1,17 +1,20 @@
 {
-    "version": "10.0-573aa8c",
+    "version": "10.0-86b39b2",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
-    "notes": "To add Prism Launcher file association options for .ZIPs and .MRPACKS, run this: \"$dir\\install-associations.reg\"",
-    "architecture": {
-        "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-573aa8c-Debug.zip",
-            "hash": "181c2549b03028ddf68838e09d43bcdd4bf43faf35c1c5e2b2042f6370d2dcb4"
-        }
-    },
+    "notes": [
+        "Add Prism Launcher file association options for .ZIPs and .MRPACKS by running:",
+        "reg import \"$dir\\install-associations.reg\""
+    ],
     "suggest": {
         "vcredist": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MSVC-86b39b2-Debug.zip",
+            "hash": "e01979e7910fe646285a3eda43c6d85cce54484184f285c34f9af890d7fe160c"
+        }
     },
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
@@ -30,9 +33,10 @@
             "Prism Launcher"
         ]
     ],
+    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }",
     "checkver": {
         "script": [
-            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/trigger_builds.yml/runs?branch=develop&status=success&event=push'",
+            "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/build.yml/runs?branch=develop&status=success&event=push'",
             "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
             "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.com/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
@@ -46,7 +50,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/trigger_builds/develop/PrismLauncher-Windows-MSVC-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MSVC-$matchSha-Debug.zip"
             }
         }
     }
