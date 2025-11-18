@@ -1,5 +1,5 @@
 {
-    "version": "0.280",
+    "version": "0.282",
     "description": "Arcade machine emulator",
     "homepage": "http://mamedev.org",
     "license": {
@@ -28,8 +28,8 @@
             ]
         },
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame0280/mame0280b_64bit.exe#/dl.7z",
-            "hash": "67cb5049e497fcd551ca052d815ba4a581435f49d405b501c6ac01ec7610073d",
+            "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame0282/mame0282b_x64.exe#/dl.7z",
+            "hash": "4f9b2965f250c62bd511a9f2c4df33da78b7a8523139d943e5a7676ed23bc3ba",
             "pre_install": [
                 "if(!(Test-Path \"$persist_dir\\mame.ini\")) {",
                 "   Start-Process \"$dir\\mame.exe\" -WorkingDirectory \"$dir\" -ArgumentList \"-createconfig\"",
@@ -76,7 +76,7 @@
                 "url": "https://gh-proxy.com/https://raw.githubusercontent.com/Calinou/scoop-games/27ba46f443a3446a70bf1f93eeb09797be0fb286/bucket/mame.json"
             },
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame$cleanVersion/mame$cleanVersionb_64bit.exe#/dl.7z"
+                "url": "https://gh-proxy.com/https://github.com/mamedev/mame/releases/download/mame$cleanVersion/mame$cleanVersionb_x64.exe#/dl.7z"
             }
         }
     }

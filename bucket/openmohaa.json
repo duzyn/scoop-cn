@@ -1,0 +1,45 @@
+{
+    "version": "0.82.1",
+    "description": "Open re-implementation of Medal of Honor: Allied Assault and expansions",
+    "homepage": "https://github.com/openmoh/openmohaa",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "Copy the game contents to",
+        "$persist_dir\\main, $persist_dir\\mainta, and $persist_dir\\maintt",
+        "Configuration is stored in %appdata%\\openmohaa",
+        "See https://docs.openmohaa.org/ for more info"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/openmoh/openmohaa/releases/download/v0.82.1/openmohaa-v0.82.1-windows-x64.zip",
+            "hash": "dba183f9c666928b3925e6fdd1f2a780517ef283170d14d55b7650607ca7bb6d"
+        }
+    },
+    "shortcuts": [
+        [
+            "launch_openmohaa_base.exe",
+            "MoH Allied Assault (openmohaa)"
+        ],
+        [
+            "launch_openmohaa_breakthrough.exe",
+            "MoH AA Breakthrough (openmohaa)"
+        ],
+        [
+            "launch_openmohaa_spearhead.exe",
+            "MoH AA Spearhead (openmohaa)"
+        ]
+    ],
+    "persist": [
+        "main",
+        "mainta",
+        "maintt"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/openmoh/openmohaa/releases/download/v$version/openmohaa-v$version-windows-x64.zip"
+            }
+        }
+    }
+}
