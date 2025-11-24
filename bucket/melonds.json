@@ -1,13 +1,13 @@
 {
-    "version": "1.0",
+    "version": "1.1",
     "description": "A Nintendo DS emulator aiming for fast and accurate emulation",
     "homepage": "http://melonds.kuribo64.net/",
     "license": {
         "identifier": "GPL-3.0",
         "url": "https://github.com/melonDS-emu/melonDS/blob/master/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/melonDS-emu/melonDS/releases/download/1.0/melonDS-windows-x86_64.zip",
-    "hash": "4ffc3c03a6384275760faa18f56751b47377ef90bd5b5bf085d1e6e94a1e3e01",
+    "url": "https://gh-proxy.com/https://github.com/melonDS-emu/melonDS/releases/download/1.1/melonDS-1.1-windows-x86_64.zip",
+    "hash": "9f3f8a244103be20b5b657af5b0ed1b2a66bb20a7181476a6d294c9a53d4f8c8",
     "installer": {
         "script": [
             "if (Test-Path \"$persist_dir\\melonDS.toml\" -PathType Container) {",
@@ -37,6 +37,6 @@
         "regex": "/releases/tag/(?:v|V)?([\\w.]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/melonDS-emu/melonDS/releases/download/$version/melonDS-windows-x86_64.zip"
+        "url": "https://gh-proxy.com/https://github.com/melonDS-emu/melonDS/releases/download/$version/melonDS-$version-windows-x86_64.zip"
     }
 }
