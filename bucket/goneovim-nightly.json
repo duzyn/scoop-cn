@@ -1,5 +1,5 @@
 {
-    "version": "20251128",
+    "version": "20251128-e039e0d",
     "description": "Neovim GUI which uses a Golang Qt backend",
     "homepage": "https://github.com/akiyosi/goneovim",
     "license": "MIT",
@@ -27,9 +27,18 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repositories/107124394/releases/tags/nightly",
-        "jsonpath": "$.assets[?(@.name =~ /goneovim-windows-(x86_64|arm64).zip/)].updated_at",
-        "regex": ".*(?<year>\\d{4})\\D(?<month>\\d{2})\\D(?<day>\\d{2}).*",
-        "replace": "${year}${month}${day}"
+        "script": [
+            "try {",
+            "    $release = $page | ConvertFrom-Json",
+            "    $date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
+            "    $commit = $release.target_commitish",
+            "    return \"$date-$commit\"",
+            "",
+            "}catch {",
+            "    return ''",
+            "}"
+        ],
+        "regex": "(?<version>^\\d{8}-[0-9a-f]{7})"
     },
     "autoupdate": {
         "architecture": {
