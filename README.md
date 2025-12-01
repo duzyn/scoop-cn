@@ -74,7 +74,7 @@ irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
     Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "(main|extras|versions|nirsoft|sysinternals|php|nerd-fonts|nonportable|java|games)"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName }
     ```
 
-    命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。
+    命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。如果你设置过 SCOOP 环境变量，需将 `$env:USERPROFILE\scoop\apps` 改成 `$env:SCOOP\apps`。
 
 3. 可以运行 `scoop list` 来检查替换是否成功。比如未替换前是这样的：
 
