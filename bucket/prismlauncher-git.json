@@ -12,8 +12,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MSVC-92738fe-Debug.zip",
-            "hash": "f4726b92c8fb108a3ec535553324084f981f8eb2f141bb5d100c1ab6683d5d9d"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-92738fe-Debug.zip",
+            "hash": "07c4110b07154e974f2ba1d6c31ec508de9cabe5971ee15492e2f1b4de556fb6"
+        },
+        "arm64": {
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-92738fe-Debug.zip",
+            "hash": "073daab856f0800e0a35402b2f9c060ca5b7693b0d7916008f78f9c66d2b9bab"
         }
     },
     "post_install": [
@@ -50,7 +54,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MSVC-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-$matchSha-Debug.zip"
+            },
+            "arm64": {
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-$matchSha-Debug.zip"
             }
         }
     }
