@@ -33,11 +33,11 @@
         "}"
     ],
     "env_set": {
-        "CHROME_EXECUTABLE": "$dir\\thorium.exe"
+        "CHROME_EXECUTABLE": "$dir\\bin\\thorium.exe"
     },
     "persist": "USER_DATA",
     "checkver": {
-        "github": "https://github.com/Alex313031/Thorium-Win",
+        "url": "https://api.github.com/repositories/424006400/releases",
         "regex": "/releases/tag/M(?<version>(?:\\d+\\.){3}\\d+)"
     },
     "autoupdate": {
