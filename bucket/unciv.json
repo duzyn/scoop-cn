@@ -1,13 +1,13 @@
 {
-    "version": "4.19.0-patch2",
+    "version": "4.19.1",
     "homepage": "https://github.com/yairm210/UnCiv",
     "description": "Open source, mod-friendly Android + Desktop remake of Civ V, made with LibGDX",
     "license": "MPL-2.0",
     "suggest": {
         "Java Runtime Environment": "scoop-cn/temurin-jre"
     },
-    "url": "https://gh-proxy.com/https://github.com/yairm210/Unciv/releases/download/4.19.0-patch2/Unciv-Windows64.zip",
-    "hash": "8c318af187413af8f2be3b0ebae3981104b17627a8013090d8ca3cc474e97ae1",
+    "url": "https://gh-proxy.com/https://github.com/yairm210/Unciv/releases/download/4.19.1/Unciv-Windows64.zip",
+    "hash": "5d4904a9ed9a1ae73a173503d211c5a92af9cda9de94cdf98e1b7034163f4c8f",
     "pre_install": [
         "if (!(Test-Path \"$persist_dir\\GameSettings.json\")) {",
         "New-Item \"$dir\\GameSettings.json\" -Value '{resolution:1200x800,windowState:{width:1920,height:1080},isFreshlyCreated:true,multiplayer:{userId:},version:1}' | Out-Null",
