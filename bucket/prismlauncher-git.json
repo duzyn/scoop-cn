@@ -1,4 +1,5 @@
 {
+    "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
     "version": "10.0-1dd8c96",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
@@ -20,6 +21,21 @@
             "hash": "e1e3a86608fa75548f5aaa71942b30ce9fd21a34f9349dc03e123ca524580029"
         }
     },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "$contents = @{",
+        "    'metacache' = '{}'",
+        "}",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\") {",
+        "        Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -Force",
+        "    } else {",
+        "        Set-Content -Path \"$dir\\$_\" -Value $contents[$_]",
+        "    }",
+        "}",
+        "Remove-Item -Path $dir\\prismlauncher_updater.exe -Force -ErrorAction Ignore"
+    ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
         "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher-git\\$_.reg\") {",
@@ -37,7 +53,32 @@
             "Prism Launcher"
         ]
     ],
-    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }",
+    "persist": [
+        "assets",
+        "cache",
+        "catpacks",
+        "icons",
+        "iconthemes",
+        "instances",
+        "java",
+        "libraries",
+        "logs",
+        "meta",
+        "mods",
+        "skins",
+        "themes",
+        "translations"
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_\") {",
+        "        Copy-Item -Path \"$dir\\$_\" -Destination \"$persist_dir\\$_\" -Force",
+        "    }",
+        "}",
+        "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
+    ],
     "checkver": {
         "script": [
             "$apiUrl = 'https://api.github.com/repositories/553135896/actions/workflows/build.yml/runs?branch=develop&status=success&event=push'",
