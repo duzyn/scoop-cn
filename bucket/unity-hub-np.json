@@ -15,7 +15,7 @@
     "installer": {
         "script": [
             "if(!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
+            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/S', \"/D=$dir\") -Wait -Verb RunAs | Out-Null",
             "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Unity Hub.lnk\"",
             "Remove-Item \"$Env:Public\\Desktop\\Unity Hub.lnk\"",
             "Remove-Item \"$dir\\setup.exe\""
