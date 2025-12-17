@@ -22,6 +22,22 @@
                     "JetBrains\\PhpStorm (Latest)"
                 ]
             ]
+        },
+        "arm64": {
+            "url": "https://download.jetbrains.com/webide/PhpStorm-253.29346.44-aarch64.exe#/dl.7z",
+            "hash": "d0a75cb2e54b92f7862ae7fe7b8d518fa913b2a48cdcc9fc4f6fc4826491b50f",
+            "bin": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "phpstorm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\phpstorm64.exe",
+                    "JetBrains\\PhpStorm (Latest)"
+                ]
+            ]
         }
     },
     "extract_to": "IDE",
@@ -39,26 +55,32 @@
     "checkver": {
         "script": [
             "$productCode = 'PS'",
-            "$releaseURLs = @(",
-            "    ('https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type=eap' -f $productCode),",
-            "    ('https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type=rc' -f $productCode),",
-            "    ('https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type=release' -f $productCode)",
-            ")",
-            "$latestRelease = $ReleaseURLs | ForEach-Object {",
-            "    $url = $_",
+            "$releaseURL = 'https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type={1}'",
+            "$latestRelease = @('eap', 'rc', 'release') | ForEach-Object {",
+            "    $type = $_",
+            "    $url = $releaseURL -f $productCode, $type",
             "    $response = Invoke-RestMethod -Uri $url -UseBasicParsing",
             "    [PSCustomObject]@{",
             "        version = ($response.$productCode)[0].majorVersion",
             "        build = ($response.$productCode)[0].build",
+            "        urlx64 = ($response.$productCode)[0].downloads.windows.link",
+            "        urlArm64 = ($response.$productCode)[0].downloads.windowsARM64.link",
             "    }",
             "} | Sort-Object {[version]$_.build} -Descending | Select-Object -First 1",
-            "Write-Output \"$($latestRelease.version)-$($latestRelease.build)\""
+            "Write-Output \"$($latestRelease.version)-$($latestRelease.build),$($latestRelease.urlx64),$($latestRelease.urlArm64)\""
         ],
-        "regex": "(?<ver>[\\d.]+)-(?<build>[\\d.]+)",
+        "regex": "(?<ver>[\\d.]+)-(?<build>[\\d.]+),https://download\\.jetbrains\\.com/(?<urlx64>[^,]+),https://download\\.jetbrains\\.com/(?<urlarm64>.+)",
         "replace": "${ver}-${build}"
     },
     "autoupdate": {
-        "url": "https://download.jetbrains.com/webide/PhpStorm-$matchBuild.exe#/dl.7z",
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/$matchUrlx64#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://download.jetbrains.com/$matchUrlarm64#/dl.7z"
+            }
+        },
         "hash": {
             "url": "$url.sha256"
         }
