@@ -1,0 +1,93 @@
+{
+    "version": "2025.3-253.29346.46",
+    "description": "Cross-Platform IDE for Python by JetBrains (Latest).",
+    "homepage": "https://www.jetbrains.com/pycharm/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/legal/docs/toolbox/license/"
+    },
+    "notes": [
+        "PyCharm Community Edition and Professional Edition have now been merged into a unified product.",
+        "PyCharm Community 2025.2 is the last standalone version available to existing users only.",
+        "For more information, see: https://blog.jetbrains.com/pycharm/2025/04/unified-pycharm/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/python/pycharm-253.29346.46.exe#/dl.7z",
+            "hash": "b04ecb9dadba9e67761e146791bcab70be9b2f8574d5da670ef0f86ce5b33883",
+            "bin": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "pycharm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "JetBrains\\PyCharm (Latest)"
+                ]
+            ]
+        },
+        "arm64": {
+            "url": "https://download.jetbrains.com/python/pycharm-253.29346.46-aarch64.exe#/dl.7z",
+            "hash": "d04d45d2d50190821649ebce27abeaec9a7e52ca75ac701f3394ffc4cdc67005",
+            "bin": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "pycharm"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\pycharm64.exe",
+                    "JetBrains\\PyCharm (Latest)"
+                ]
+            ]
+        }
+    },
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\"",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "IDE\\bin\\pycharm64.exe.vmoptions",
+        "profile"
+    ],
+    "checkver": {
+        "script": [
+            "$productCode = 'PCP'",
+            "$releaseURL = 'https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type={1}'",
+            "$latestRelease = @('eap', 'rc', 'release') | ForEach-Object {",
+            "    $releaseType = $_",
+            "    $url = $releaseURL -f $productCode, $releaseType",
+            "    $response = Invoke-RestMethod -Uri $url -UseBasicParsing",
+            "    [PSCustomObject]@{",
+            "        version = ($response.$productCode)[0].majorVersion",
+            "        build = ($response.$productCode)[0].build",
+            "        urlx64 = ($response.$productCode)[0].downloads.windows.link",
+            "        urlArm64 = ($response.$productCode)[0].downloads.windowsARM64.link",
+            "    }",
+            "} | Sort-Object {[version]$_.build} -Descending | Select-Object -First 1",
+            "Write-Output \"$($latestRelease.version)-$($latestRelease.build),$($latestRelease.urlx64),$($latestRelease.urlArm64)\""
+        ],
+        "regex": "(?<ver>[\\d.]+)-(?<build>[\\d.]+),https://download\\.jetbrains\\.com/(?<urlx64>[^,]+),https://download\\.jetbrains\\.com/(?<urlarm64>.+)",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/$matchUrlx64#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://download.jetbrains.com/$matchUrlarm64#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}

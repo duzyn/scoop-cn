@@ -1,0 +1,88 @@
+{
+    "version": "2025.3-253.28294.335",
+    "description": "Cross-Platform IDE for C and C++ by JetBrains. (Latest)",
+    "homepage": "https://www.jetbrains.com/clion/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.jetbrains.com/legal/docs/toolbox/license/"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.jetbrains.com/cpp/CLion-2025.3.exe#/dl.7z",
+            "hash": "e133a267fd485669cff38395dffab273743b318254bb23d9ac2e17950f819e87",
+            "bin": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "clion"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "JetBrains\\CLion (Latest)"
+                ]
+            ]
+        },
+        "arm64": {
+            "url": "https://download.jetbrains.com/cpp/CLion-2025.3-aarch64.exe#/dl.7z",
+            "hash": "0b65c5050dc82a55c920cc5e1aa3001983d627013713a426f386c513d1050c8c",
+            "bin": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "clion"
+                ]
+            ],
+            "shortcuts": [
+                [
+                    "IDE\\bin\\clion64.exe",
+                    "JetBrains\\CLion (Latest)"
+                ]
+            ]
+        }
+    },
+    "extract_to": "IDE",
+    "installer": {
+        "script": [
+            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\"",
+            "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
+        ]
+    },
+    "persist": [
+        "IDE\\bin\\idea.properties",
+        "IDE\\bin\\clion64.exe.vmoptions",
+        "profile"
+    ],
+    "checkver": {
+        "script": [
+            "$productCode = 'CL'",
+            "$releaseURL = 'https://data.services.jetbrains.com/products/releases?code={0}&latest=true&platform=zip&type={1}'",
+            "$latestRelease = @('eap', 'rc', 'release') | ForEach-Object {",
+            "    $releaseType = $_",
+            "    $url = $releaseURL -f $productCode, $releaseType",
+            "    $response = Invoke-RestMethod -Uri $url -UseBasicParsing",
+            "    [PSCustomObject]@{",
+            "        version = ($response.$productCode)[0].majorVersion",
+            "        build = ($response.$productCode)[0].build",
+            "        urlx64 = ($response.$productCode)[0].downloads.windows.link",
+            "        urlArm64 = ($response.$productCode)[0].downloads.windowsARM64.link",
+            "    }",
+            "} | Sort-Object {[version]$_.build} -Descending | Select-Object -First 1",
+            "Write-Output \"$($latestRelease.version)-$($latestRelease.build),$($latestRelease.urlx64),$($latestRelease.urlArm64)\""
+        ],
+        "regex": "(?<ver>[\\d.]+)-(?<build>[\\d.]+),https://download\\.jetbrains\\.com/(?<urlx64>[^,]+),https://download\\.jetbrains\\.com/(?<urlarm64>.+)",
+        "replace": "${ver}-${build}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.jetbrains.com/$matchUrlx64#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://download.jetbrains.com/$matchUrlarm64#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
