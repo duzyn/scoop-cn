@@ -1,4 +1,5 @@
 {
+    "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
     "version": "9.4",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
@@ -10,14 +11,18 @@
         "This package is now using the portable version of Prism Launcher, and data should have been migrated automatically.",
         "If you are using a global install on a system with more than one user, you will need to copy a user's data from %appdata% to the new Scoop PrismLauncher persist directory"
     ],
+    "suggest": {
+        "Microsoft Visual C++ Redistributables": "scoop-cn/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-Portable-9.4.zip",
             "hash": "29c5cf47bc454fa6220925b4b988e4590dc7a3fa3920831d7d4fd79118773724"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/9.4/PrismLauncher-Windows-MSVC-arm64-Portable-9.4.zip",
+            "hash": "c37514a0ae7f0051337119d80355389061ed8c2dfa98f8ff0688b965321c6477"
         }
-    },
-    "suggest": {
-        "Microsoft Visual C++ Redistributables": "scoop-cn/vcredist2022"
     },
     "pre_install": [
         "$migration = $true",
@@ -32,10 +37,19 @@
         "} elseif (!($migration)) {",
         "    Write-Warning \"A global Scoop installation was detected with multiple user accounts. Please see the notes at the end of the install process.\"",
         "}",
-        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
-        "    New-Item -Type File -Path $dir/$_",
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "$contents = @{",
+        "    'metacache' = '{}'",
         "}",
-        "Remove-Item $original_dir/prismlauncher_updater.exe"
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\") {",
+        "        Copy-Item \"$persist_dir\\$_\" \"$dir\\$_\" -Force",
+        "    } else {",
+        "        Set-Content -Path \"$dir\\$_\" -Value $contents[$_]",
+        "    }",
+        "}",
+        "Remove-Item -Path \"$dir\\prismlauncher_updater.exe\" -Force -ErrorAction Ignore"
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
@@ -45,9 +59,6 @@
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",
-        "}",
-        "if (!(Get-Content $dir/metacache)) {",
-        "    Add-Content $dir/metacache '{}'",
         "}"
     ],
     "bin": "prismlauncher.exe",
@@ -71,19 +82,28 @@
         "mods",
         "skins",
         "themes",
-        "translations",
-        "account.json",
-        "metacache",
-        "prismlauncher.cfg"
+        "translations"
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "'accounts.json', 'metacache', 'prismlauncher.cfg' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_\") {",
+        "        Copy-Item -Path \"$dir\\$_\" -Destination \"$persist_dir\\$_\" -Force",
+        "    }",
+        "}",
+        "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     ],
     "checkver": {
         "github": "https://github.com/PrismLauncher/PrismLauncher"
     },
-    "pre_uninstall": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }",
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://gh-proxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-Windows-MSVC-Portable-$version.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/$version/PrismLauncher-Windows-MSVC-arm64-Portable-$version.zip"
             }
         }
     }
