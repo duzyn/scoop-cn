@@ -7,10 +7,11 @@
         "url": "https://vb-audio.com/Services/licensing.htm"
     },
     "notes": "Free for non-professional use only.",
-    "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup.exe#/setup.exe",
-    "hash": "53eaf679406de0f556e69ac02086994b623016bb5ccff16b849d5f1023f8fb3b",
+    "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup_v1122.zip",
+    "hash": "4d63bfe2a5eaea8ccf6ea8abe27c053c05689ccc11bf365130c6b246973ba4fa",
     "installer": {
         "script": [
+            "Get-ChildItem \"$dir\\Voicemeeter*Setup.exe\" | Rename-Item -NewName 'setup.exe'",
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "Start-Process -Wait \"$dir\\setup.exe\" -ArgumentList @('-i', '-h') -Verb RunAs"
         ]
@@ -26,6 +27,6 @@
         "regex": "Voicemeeter ([\\d.]+) \\(ZIP Package\\)"
     },
     "autoupdate": {
-        "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup.exe#/setup.exe"
+        "url": "https://download.vb-audio.com/Download_CABLE/VoicemeeterSetup_v$cleanVersion.zip"
     }
 }
