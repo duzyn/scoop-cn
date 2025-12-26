@@ -1,13 +1,12 @@
 {
-    "##": "Please avoid removing the checkver.url property until https://github.com/ScoopInstaller/Scoop/pull/6490 has been merged into master.",
-    "version": "4.0.21.0",
+    "version": "4.0.24.0",
     "homepage": "https://files.community/",
     "description": "A modern file manager that helps users organize their files and folders.",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.files.community/files/stable/Files.Package_4.0.21.0_Test/Files.Package_4.0.21.0_x64_arm64.msixbundle",
-            "hash": "06ee6d8d3fd6fd3b7d3feb7823bad2790c2a63cf62f44a82ac22a66a4a124110"
+            "url": "https://cdn.files.community/files/stable/Files.Package_4.0.24.0_Test/Files.Package_4.0.24.0_x64_arm64.msixbundle",
+            "hash": "577c3d80ce6c28cadcd3d3352ea0775c484e63270222bc8368e84e3e12d41988"
         }
     },
     "installer": {
@@ -18,20 +17,8 @@
         "script": "Get-AppxPackage 'Files' | Remove-AppxPackage"
     },
     "checkver": {
-        "url": "https://github.com/files-community/Files",
-        "script": [
-            "try {",
-            "  $latest = Invoke-WebRequest -Uri 'https://api.github.com/repos/files-community/Files/releases/latest'",
-            "  $tag_name = ($latest.Content | ConvertFrom-Json).tag_name -replace 'v', ''",
-            "  $tag_ver = [System.Version]::Parse($tag_name)",
-            "  $major = if ($tag_ver.Major -eq -1) { 0 } else { $tag_ver.Major }",
-            "  $minor = if ($tag_ver.Minor -eq -1) { 0 } else { $tag_ver.Minor }",
-            "  $build = if ($tag_ver.Build -eq -1) { 0 } else { $tag_ver.Build }",
-            "  $revision = if ($tag_ver.Revision -eq -1) { 0 } else { $tag_ver.Revision }",
-            "  Write-Output \"$major.$minor.$build.$revision\"",
-            "} catch { error $_.Exception.Message; throw }"
-        ],
-        "regex": "(\\d.+)"
+        "url": "https://cdn.files.community/files/stable/Files.Package.appinstaller",
+        "regex": "(?s)MainBundle.*?Version=\"([\\d.]+)\""
     },
     "autoupdate": {
         "architecture": {
