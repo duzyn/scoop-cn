@@ -82,7 +82,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'download\.gimp\.org/mirror/pub', 'mirrors.nju.edu.cn/gimp'
     
     # Go
-    $content = $content -replace 'dl\.google\.com/go', 'mirrors.nju.edu.cn/golang'
+    $content = $content -replace 'dl\.google\.com/go', 'mirrors.aliyun.com/golang'
 
     # Gradle
     $content = $content -replace 'services\.gradle\.org/distributions', 'mirror.nju.edu.cn/gradle'
