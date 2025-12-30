@@ -1,14 +1,34 @@
 {
     "version": "cf031f1",
-    "description": "Microsoft Xbox emulator",
+    "description": "Xbox (Original) Emulator",
     "homepage": "https://cxbx-reloaded.co.uk/",
     "license": {
         "identifier": "GPL-2.0",
         "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/blob/master/COPYING"
     },
-    "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-cf031f1/CxbxReloaded-Release.zip",
-    "hash": "88a5e98876678095c34ca114a62c5ff5ad0845cdb03e20d3b53adeb61cf28373",
-    "pre_install": "if (!(Test-Path \"$persist_dir\\settings.ini\")) { $null = New-Item \"$dir\\settings.ini\" }",
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-cf031f1/CxbxReloaded-Release.zip",
+            "hash": "88a5e98876678095c34ca114a62c5ff5ad0845cdb03e20d3b53adeb61cf28373"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\Cxbx-Reloaded\") {",
+        "       Write-Host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\Cxbx-Reloaded\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       (Get-Content -Path \"$persist_dir\\settings.ini\").Replace(\"DataStorageToggle = 0x0\", \"DataStorageToggle = 0x1\") | Set-Content -Path \"$persist_dir\\settings.ini\"",
+        "       Remove-Item -Path \"$env:APPDATA\\Cxbx-Reloaded\" -Recurse -Force",
+        "   } else {",
+        "       New-Item \"$dir\\EEPROM.bin\" -ItemType File | Out-Null",
+        "       New-item \"$dir\\settings.ini\" -ItemType File | Out-Null",
+        "   }",
+        "}"
+    ],
     "bin": "cxbx.exe",
     "shortcuts": [
         [
@@ -18,6 +38,10 @@
     ],
     "persist": [
         "EmuDisk",
+        "EmuMediaBoard",
+        "EmuMu",
+        "SymbolCache",
+        "EEPROM.bin",
         "settings.ini"
     ],
     "checkver": {
@@ -25,6 +49,10 @@
         "regex": "CI-([a-f\\d]+)."
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release.zip"
+            }
+        }
     }
 }

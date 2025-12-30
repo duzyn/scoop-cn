@@ -1,5 +1,5 @@
 {
-    "version": "v0.0.4",
+    "version": "0.0.4",
     "description": "Open source Nintendo Switch emulator (forked from yuzu)",
     "homepage": "https://eden-emu.dev/",
     "license": {
@@ -37,15 +37,15 @@
     "persist": "user",
     "checkver": {
         "github": "https://github.com/eden-emulator/Releases/",
-        "regex": "tag/(v?[0-9]+(?:\\.[0-9]+){1,2}(?:-[A-Za-z0-9.-]+)?)"
+        "regex": "v([\\d]+(?:\\.[\\d]+)+(?:-[A-Za-z\\d.-]+)?)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-amd64-msvc-standard.zip"
+                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v$version/Eden-Windows-v$version-amd64-msvc-standard.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/$version/Eden-Windows-$version-mingw-arm64-clang-standard.zip"
+                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v$version/Eden-Windows-v$version-mingw-arm64-clang-standard.zip"
             }
         }
     }
