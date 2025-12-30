@@ -1,7 +1,6 @@
 {
-    "$schema": "https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
     "version": "3.0.1.0",
-    "description": "Bloxstrap fork aiming to enhance some features",
+    "description": "A Bloxstrap fork aiming to enhance some features",
     "homepage": "https://www.fishstrap.app/",
     "license": "MIT",
     "suggest": {
@@ -14,7 +13,7 @@
         }
     },
     "installer": {
-        "script": "if ($cmd -eq 'update') {Start-Process \"$dir\\Fishstrap.exe\" -Wait -Args @('-quiet', '-upgrade'); } else { Start-Process \"$dir\\Fishstrap.exe\" -Wait -Args @('-quiet'); }"
+        "script": "if ($cmd -eq 'update') { Start-Process \"$dir\\Fishstrap.exe\" -Wait -Args @('-quiet', '-upgrade'); exit 0 } else { Start-Process \"$dir\\Fishstrap.exe\" -Wait -Args @('-quiet'); }"
     },
     "uninstaller": {
         "script": "Start-Process \"$dir\\Fishstrap.exe\" -Wait -Args @('-uninstall', '-quiet');"
