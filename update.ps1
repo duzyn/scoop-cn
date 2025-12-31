@@ -91,7 +91,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # $content = $content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape'
 
     # ffmpeg
-    $content = $content -replace 'www.gyan.dev/ffmpeg/builds/packages/ffmpeg-(.*)-', 'https://gh-proxy.com/https://github.com/GyanD/codexffmpeg/releases/download/$1/ffmpeg-$1-'
+    $content = $content -replace 'www.gyan.dev/ffmpeg/builds/packages/ffmpeg-(.*)-', 'gh-proxy.com/https://github.com/GyanD/codexffmpeg/releases/download/$1/ffmpeg-$1-'
 
     # Kodi
     $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi'
