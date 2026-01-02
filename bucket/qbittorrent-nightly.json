@@ -1,15 +1,22 @@
 {
-    "version": "20568777806",
+    "version": "20627556084",
     "description": "Free and reliable P2P Bittorent client.",
     "homepage": "https://github.com/qbittorrent/qBittorrent",
     "license": {
         "identifier": "GPL-2.0-only",
         "url": "https://github.com/qbittorrent/qBittorrent/blob/master/COPYING"
     },
+    "notes": [
+        "For file associations, run:",
+        "reg import \"$dir\\install-associations.reg\""
+    ],
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022"
+    },
     "architecture": {
         "64bit": {
             "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-2.0.11.zip",
-            "hash": "06e61f9753d783329e489e0d12493feb47a26e45805634682a63b43a4b91c343",
+            "hash": "d4fc5cf3ee87d3e45a9dfc57500891eb41329514f3997177cf13b7b06cd19f0a",
             "extract_dir": "qBittorrent"
         }
     },
@@ -36,6 +43,16 @@
         "    }",
         "}"
     ],
+    "post_install": [
+        "'install-associations', 'uninstall-associations' | ForEach-Object {",
+        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\") {",
+        "        $qbitPath = \"$dir\".Replace('\\', '\\\\')",
+        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\").Replace('$qbit', $qbitPath)",
+        "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
+        "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
+        "    }",
+        "}"
+    ],
     "bin": "qbittorrent.exe",
     "shortcuts": [
         [
@@ -44,11 +61,14 @@
         ]
     ],
     "persist": "profile",
+    "uninstaller": {
+        "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
+    },
     "checkver": {
         "script": [
             "try {",
             "    (Invoke-RestMethod 'https://api.github.com/repositories/3351871/actions/workflows/ci_windows.yaml/runs?branch=master&status=success').workflow_runs[0].id,",
-            "    (Invoke-RestMethod https://gh-proxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libt_version: \\[\"([\\d.]+)\", \"[\\d.]+\"\\]').matches.groups[1].value -join ' '",
+            "    (Invoke-RestMethod https://gh-proxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libtorrent:\\n.*version:\\s*\"(\\d+(?:\\.\\d+){2})\"').matches.groups[1].value -join ' '",
             "}",
             "catch { '' }"
         ],
