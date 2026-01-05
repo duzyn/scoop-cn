@@ -1,10 +1,10 @@
 {
-    "version": "0.3a-git-487d642",
+    "version": "0.3a-20260101-git-92bd36b",
     "description": "Sega Model 3 Arcade Emulator",
-    "homepage": "https://supermodel3.com/index.html",
+    "homepage": "https://github.com/trzy/Supermodel",
     "license": "GPL-3.0-only",
-    "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_0.3a-git-487d642_Win64.zip",
-    "hash": "368a028caf48085ff84901d517441c8b61493c0cab404fb21f47b81886706679",
+    "url": "https://gh-proxy.com/https://github.com/trzy/Supermodel/releases/download/v0.3a-20260101-git-92bd36b/supermodel-0.3a-20260101-git-92bd36b-windows.zip",
+    "hash": "17a3230e57b3416d35e6c402f874e01f1d7474cc2495b914117703b10fa72d48",
     "bin": [
         [
             "Launch-Supermodel.ps1",
@@ -20,10 +20,10 @@
     ],
     "pre_install": "\"Push-Location $dir; & ./Supermodel.exe `$args; Pop-Location \" | Out-File (Join-Path $dir 'Launch-Supermodel.ps1')",
     "checkver": {
-        "url": "https://supermodel3.com/Download.html",
-        "regex": "Supermodel_([0-9a-zA-Z.-]+)_Win64.zip"
+        "url": "https://github.com/trzy/Supermodel/releases",
+        "regex": "releases/tag/v(?<version>[\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://supermodel3.com/Files/Git_Snapshots/Supermodel_$version_Win64.zip"
+        "url": "https://gh-proxy.com/https://github.com/trzy/Supermodel/releases/download/v$version/supermodel-$version-windows.zip"
     }
 }
