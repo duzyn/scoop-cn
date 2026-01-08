@@ -1,0 +1,64 @@
+{
+    "version": "0.29.4",
+    "description": "Modern Doom source port with a focus on speedrunning features (successor of PrBoom+)",
+    "homepage": "https://github.com/kraflab/dsda-doom",
+    "license": "GPL-2.0-only",
+    "notes": [
+        "To persist your screenshots:",
+        "",
+        "1) Create a screenshots folder somewhere like",
+        "    - C:\\Users\\<username>\\Pictures\\dsda-doom\\",
+        "    - C:\\Users\\<username>\\scoop\\persist\\dsda-doom\\screenshots\\",
+        "",
+        "2) Set the \"screenshot_dir\" variable inside your config file to the directory's full path, like so",
+        "    - \"C:\\Users\\<username>\\Pictures\\dsda-doom\\\"",
+        "    - \"C:\\Users\\<username>\\scoop\\persist\\dsda-doom\\screenshots\\\"",
+        "",
+        "Place your WAD files inside",
+        "",
+        "C:\\Users\\<username>\\scoop\\persist\\_doom\\"
+    ],
+    "suggest": {
+        "Launcher (frontend)": [
+            "scoop-cn/doomrunner",
+            "scoop-cn/zdl"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/kraflab/dsda-doom/releases/download/v0.29.4/dsda-doom-0.29.4-win-x64.zip",
+            "hash": "471e3a19eab45f6a11624a067a2decbe811f73a3699e772adb0774d0e2e81f3d",
+            "extract_dir": "dsda-doom-0.29.4-win-x64"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\dsda-doom.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\dsda-doom.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$scoopdir\\persist\\_doom\")) {",
+        "   New-item \"$scoopdir\\persist\\_doom\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "bin": "dsda-doom.exe",
+    "shortcuts": [
+        [
+            "dsda-doom.exe",
+            "DSDA Doom"
+        ]
+    ],
+    "persist": [
+        "dsda-doom.cfg",
+        "dsda_doom_data"
+    ],
+    "checkver": {
+        "github": "https://github.com/kraflab/dsda-doom/"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/kraflab/dsda-doom/releases/download/v$version/dsda-doom-$version-win-x64.zip",
+                "extract_dir": "dsda-doom-$version-win-x64"
+            }
+        }
+    }
+}

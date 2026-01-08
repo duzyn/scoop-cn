@@ -1,19 +1,38 @@
 {
-    "version": "7.0",
+    "version": "7.1",
     "description": "Faithful enhanced-resolution source port for Doom",
-    "homepage": "https://www.chocolate-doom.org/wiki/index.php/Crispy_Doom",
+    "homepage": "https://fabiangreffrath.github.io/crispy-homepage",
     "license": "GPL-2.0-or-later",
     "notes": [
         "Place WAD files (game data) in:",
         "",
         "    $persist_dir\\..\\_doom"
     ],
-    "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-7.0/crispy-doom-7.0.0-win32.zip",
-    "hash": "7d0dc90f0b669b17578c146d3e555b56026946f8541c6d5aabcff9f0b71716eb",
-    "pre_install": "New-Item -ItemType Directory -Force -Path $persist_dir\\..\\_doom | Out-Null",
+    "suggest": {
+        "Launcher (frontend)": [
+            "scoop-cn/doomrunner",
+            "scoop-cn/zdl"
+        ]
+    },
+    "persist": [
+        "crispy-doom.cfg",
+        "default.cfg"
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\crispy-doom.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\crispy-doom.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$persist_dir\\default.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\default.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$scoopdir\\persist\\_doom\")) {",
+        "   New-item \"$scoopdir\\persist\\_doom\" -ItemType Directory | Out-Null",
+        "}"
+    ],
     "env_set": {
         "DOOMWADDIR": "$persist_dir\\..\\_doom"
     },
+    "bin": "crispy-doom.exe",
     "shortcuts": [
         [
             "crispy-doom.exe",
@@ -55,11 +74,22 @@
             "Setup Crispy Doom"
         ]
     ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-7.1/crispy-doom-7.1.0-win64.zip",
+            "hash": "7a41e999473f6e9333f76684af12a8d19c2928250809214681ccf4c79d5dba0d"
+        }
+    },
     "checkver": {
-        "github": "https://github.com/fabiangreffrath/crispy-doom",
-        "regex": "/releases/tag/crispy-doom-([\\d.]+)"
+        "url": "https://api.github.com/repositories/17395051/releases/latest",
+        "regex": "crispy-doom-([\\d.]+)\\/crispy-doom-([\\d.]+)-win64.zip",
+        "replace": "${1}"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-$version/crispy-doom-$version.0-win32.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/crispy-doom/releases/download/crispy-doom-$version/crispy-doom-$match2-win64.zip"
+            }
+        }
     }
 }

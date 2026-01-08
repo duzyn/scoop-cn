@@ -1,0 +1,72 @@
+{
+    "version": "15.3.0",
+    "description": "Woof! is a continuation of the Boom/MBF bloodline of Doom source ports",
+    "homepage": "https://fabiangreffrath.github.io/woof/",
+    "license": "GPL-2.0",
+    "notes": [
+        "Place your WAD files inside",
+        "",
+        "C:\\Users\\<username>\\scoop\\persist\\_doom\\"
+    ],
+    "suggest": {
+        "Launcher (frontend)": [
+            "scoop-cn/doomrunner",
+            "scoop-cn/zdl"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/woof/releases/download/woof_15.3.0/Woof-15.3.0-win64.zip",
+            "hash": "f9c4fd5c5f1bfeba8d830b9942f226dc104d82619ba992f3ccb991998f4b14cf",
+            "extract_dir": "Woof-15.3.0-win64"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/woof/releases/download/woof_15.3.0/Woof-15.3.0-win32.zip",
+            "hash": "295b6d9fc7c9f766fdad820cecd19459ce21dbb62ae8d60a098032924a67177e",
+            "extract_dir": "Woof-15.3.0-win32"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\woof.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\woof.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$scoopdir\\persist\\_doom\")) {",
+        "   New-item \"$scoopdir\\persist\\_doom\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "env_set": {
+        "DOOMWADDIR": "$persist_dir\\..\\_doom"
+    },
+    "bin": "woof.exe",
+    "shortcuts": [
+        [
+            "woof.exe",
+            "Woof!"
+        ],
+        [
+            "woof-setup.exe",
+            "Woof Setup"
+        ]
+    ],
+    "persist": [
+        "woof.cfg",
+        "autoload",
+        "savegames"
+    ],
+    "checkver": {
+        "github": "https://github.com/fabiangreffrath/woof/",
+        "re": "woof_([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/woof/releases/download/woof_$version/Woof-$version-win64.zip",
+                "extract_dir": "Woof-$version-win64"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/fabiangreffrath/woof/releases/download/woof_$version/Woof-$version-win32.zip",
+                "extract_dir": "Woof-$version-win32"
+            }
+        }
+    }
+}
