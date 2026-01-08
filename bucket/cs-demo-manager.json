@@ -1,0 +1,59 @@
+{
+    "version": "3.17.0",
+    "description": "Companion application for your Counter-Strike demos",
+    "homepage": "https://cs-demo-manager.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/akiver/cs-demo-manager/releases/download/v3.17.0/CS-Demo-Manager-Setup-3.17.0.exe#/dl.7z",
+            "hash": "d1842a3fbe0b362d456f2d3192adae78385af3fed6a2985b075834d03bd8cae9"
+        }
+    },
+    "extract_dir": "$PLUGINSDIR",
+    "pre_install": [
+        "Remove-Item *.dll",
+        "Expand-7zipArchive -Path $dir\\app-64.7z -DestinationPath $dir -Removal"
+    ],
+    "installer": {
+        "script": [
+            "$targetPath = \"$persist_dir\\.csdm\"",
+            "ensure $targetPath | Out-Null",
+            "$configPath = \"$HOME\\.csdm\"",
+            "$linkType = (Get-Item -Path $configPath -ErrorAction SilentlyContinue).LinkType",
+            "if (Test-Path $configPath) {",
+            "    if ($linkType -eq 'Junction') {",
+            "        Remove-Item -Path $configPath -Force",
+            "    } else {",
+            "        Get-ChildItem -Path $configPath -Force | Move-Item -Destination $targetPath -Force",
+            "        Remove-Item -Path $configPath -Force -Recurse",
+            "    }",
+            "}",
+            "New-Item $configPath -ItemType Junction -Target $targetPath | Out-Null"
+        ]
+    },
+    "bin": "csdm.cmd",
+    "shortcuts": [
+        [
+            "cs-demo-manager.exe",
+            "CS Demo Manager"
+        ]
+    ],
+    "suggest": {
+        "The database": "scoop-cn/postgresql"
+    },
+    "notes": [
+        "https://cs-demo-manager.com/docs/installation",
+        "Reading the step by step instructions here is highly recommended.",
+        "CS:DM requires an accessible PostgreSQL database to work properly."
+    ],
+    "checkver": {
+        "github": "https://github.com/akiver/cs-demo-manager"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/akiver/cs-demo-manager/releases/download/v$version/CS-Demo-Manager-Setup-$version.exe#/dl.7z"
+            }
+        }
+    }
+}
