@@ -1,0 +1,50 @@
+{
+    "version": "1.1.11",
+    "description": "Highly compatible N64 emulator",
+    "homepage": "https://github.com/gopher64/gopher64",
+    "license": "GPL-3.0",
+    "notes": [
+        "You must completely uninstall Bandicam and Mirillis Action if you have them installed; they are incompatible with gopher64.",
+        "Wiki: https://github.com/gopher64/gopher64/wiki"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/gopher64/gopher64/releases/download/v1.1.11/gopher64-windows-x86_64.exe",
+            "hash": "8c91d1ff05e5d02c6357994646b80289ba9df752cccb0a33252f79281ea6e3ec"
+        }
+    },
+    "pre_install": [
+        "$dataDir = Join-Path $persist_dir 'portable_data'",
+        "if (!(Test-Path $dataDir)) {",
+        "   New-Item $dataDir -ItemType Directory | Out-Null",
+        "}",
+        "if (Test-Path \"$env:APPDATA\\gopher64\") {",
+        "   Write-Host \"Migrating AppData...\" -ForegroundColor Yellow",
+        "   Copy-Item \"$env:APPDATA\\gopher64\\*\" $dataDir -Recurse -Force",
+        "   Remove-Item \"$env:APPDATA\\gopher64\" -Recurse -Force",
+        "}"
+    ],
+    "post_install": "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
+    "shortcuts": [
+        [
+            "gopher64-windows-x86_64.exe",
+            "Gopher64"
+        ]
+    ],
+    "persist": "portable_data",
+    "checkver": {
+        "github": "https://github.com/gopher64/gopher64"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/gopher64/gopher64/releases/download/v$version/gopher64-windows-x86_64.exe",
+                "hash": {
+                    "mode": "json",
+                    "jsonpath": "$[0].assets[?(@.name == '$basename')].digest",
+                    "url": "https://api.github.com/repos/gopher64/gopher64/releases?per_page=1"
+                }
+            }
+        }
+    }
+}
