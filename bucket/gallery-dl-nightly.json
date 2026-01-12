@@ -1,16 +1,16 @@
 {
-    "version": "2026.01.10",
+    "version": "2026.01.12",
     "description": "Command-line program to download image-galleries and -collections from several image hosting sites.",
     "homepage": "https://github.com/mikf/gallery-dl",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/gdl-org/builds/releases/download/2026.01.10/gallery-dl_windows.exe#/gallery-dl.exe",
-            "hash": "af0fc07fda34782391c46b5d76f3f701136392cf90754357428aaa7d62ad5342"
+            "url": "https://gh-proxy.com/https://github.com/gdl-org/builds/releases/download/2026.01.12/gallery-dl_windows.exe#/gallery-dl.exe",
+            "hash": "6c8651ab5a5aa422599a02b5b0780bd06ec210998d67084c67cc22ab8d7a5634"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/gdl-org/builds/releases/download/2026.01.10/gallery-dl_windows_x86.exe#/gallery-dl.exe",
-            "hash": "98cd73e6ee67e746a8eb4ecb899ae6f9e2876a0dd1e78bc35dc6151fc945c0c2"
+            "url": "https://gh-proxy.com/https://github.com/gdl-org/builds/releases/download/2026.01.12/gallery-dl_windows_x86.exe#/gallery-dl.exe",
+            "hash": "06a48f69c59a0c41cc37536d86365764e85b81861bdbe8778b5a107b1b19f03f"
         }
     },
     "pre_install": "if (-not (Test-Path \"$persist_dir\\gallery-dl.conf\")) { Set-Content \"$dir\\gallery-dl.conf\" '{}' -Encoding Ascii | Out-Null }",
