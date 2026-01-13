@@ -14,17 +14,37 @@
         }
     },
     "pre_install": [
-        "$dataDir = Join-Path $persist_dir 'portable_data'",
+        "$dataDir = Join-Path $persist_dir \"portable_data\"",
         "if (!(Test-Path $dataDir)) {",
-        "   New-Item $dataDir -ItemType Directory | Out-Null",
+        "    New-Item $dataDir -ItemType Directory | Out-Null",
         "}",
-        "if (Test-Path \"$env:APPDATA\\gopher64\") {",
-        "   Write-Host \"Migrating AppData...\" -ForegroundColor Yellow",
-        "   Copy-Item \"$env:APPDATA\\gopher64\\*\" $dataDir -Recurse -Force",
-        "   Remove-Item \"$env:APPDATA\\gopher64\" -Recurse -Force",
+        "$oldDir = Join-Path $env:APPDATA \"gopher64\"",
+        "if (Test-Path $oldDir) {",
+        "    Write-Host \"Migrating AppData...\" -ForegroundColor Yellow",
+        "    New-Item \"$dataDir\\data\" -ItemType Directory -Force | Out-Null",
+        "    New-Item \"$dataDir\\config\" -ItemType Directory -Force | Out-Null",
+        "    Get-ChildItem $oldDir -File | ForEach-Object {",
+        "        Copy-Item $_.FullName \"$dataDir\\config\" -Force",
+        "    }",
+        "    if (Test-Path \"$oldDir\\saves\") {",
+        "        Copy-Item \"$oldDir\\saves\" \"$dataDir\\data\" -Recurse -Force",
+        "    }",
+        "    if (Test-Path \"$oldDir\\states\") {",
+        "        Copy-Item \"$oldDir\\states\" \"$dataDir\\data\" -Recurse -Force",
+        "    }",
+        "    $oldProgress = $ProgressPreference",
+        "    $ProgressPreference = 'SilentlyContinue'",
+        "    Remove-Item $oldDir -Recurse -Force",
+        "    $ProgressPreference = $oldProgress",
         "}"
     ],
     "post_install": "New-item \"$dir\\portable.txt\" -ItemType File | Out-Null",
+    "bin": [
+        [
+            "gopher64-windows-x86_64.exe",
+            "gopher64"
+        ]
+    ],
     "shortcuts": [
         [
             "gopher64-windows-x86_64.exe",
