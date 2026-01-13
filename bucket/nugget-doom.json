@@ -1,0 +1,72 @@
+{
+    "version": "4.5.0",
+    "description": "Doom source port forked from Woof! with additional features",
+    "homepage": "https://github.com/MrAlaux/Nugget-Doom",
+    "license": "GPL-2.0",
+    "notes": [
+        "Place your WAD files inside",
+        "",
+        "C:\\Users\\<username>\\scoop\\persist\\_doom\\"
+    ],
+    "suggest": {
+        "Launcher (frontend)": [
+            "scoop-cn/doomrunner",
+            "scoop-cn/zdl"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/MrAlaux/Nugget-Doom/releases/download/nugget-doom-4.5.0/Nugget-Doom-4.5.0-win64.zip",
+            "hash": "bdd41d4fb2ab9ebb1fa5b2cd687b25d380d964e5bd8f68e23251496db72dfc98",
+            "extract_dir": "Nugget-Doom-4.5.0-win64"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/MrAlaux/Nugget-Doom/releases/download/nugget-doom-4.5.0/Nugget-Doom-4.5.0-win32.zip",
+            "hash": "572c6389ab7873e2b44753fe2983673829ef3dc82646a663a7c4ce2ce8b456a2",
+            "extract_dir": "Nugget-Doom-4.5.0-win32"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\nugget-doom.cfg\")) {",
+        "   New-Item -ItemType File \"$dir\\nugget-doom.cfg\" | Out-Null",
+        "}",
+        "if (!(Test-Path \"$scoopdir\\persist\\_doom\")) {",
+        "   New-item \"$scoopdir\\persist\\_doom\" -ItemType Directory | Out-Null",
+        "}"
+    ],
+    "env_set": {
+        "DOOMWADDIR": "$persist_dir\\..\\_doom"
+    },
+    "bin": "nugget-doom.exe",
+    "shortcuts": [
+        [
+            "nugget-doom.exe",
+            "Nugget Doom"
+        ],
+        [
+            "nugget-doom-setup.exe",
+            "Nugget Doom Setup"
+        ]
+    ],
+    "persist": [
+        "nugget-doom.cfg",
+        "autoload",
+        "savegames"
+    ],
+    "checkver": {
+        "github": "https://github.com/MrAlaux/Nugget-Doom",
+        "re": "nugget-doom-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/MrAlaux/Nugget-Doom/releases/download/nugget-doom-$version/Nugget-Doom-$version-win64.zip",
+                "extract_dir": "Nugget-Doom-$version-win64"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/MrAlaux/Nugget-Doom/releases/download/nugget-doom-$version/Nugget-Doom-$version-win32.zip",
+                "extract_dir": "Nugget-Doom-$version-win32"
+            }
+        }
+    }
+}
