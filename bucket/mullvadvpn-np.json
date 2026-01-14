@@ -5,30 +5,30 @@
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.mullvad.net/app/desktop/releases/2025.14/MullvadVPN-2025.14.exe#/setup.exe",
-            "hash": "cd9262981a9b30c48d7014b8b355a1e5adfcfb86b01cab25766de68d15fccd7b"
+            "url": "https://gh-proxy.com/https://github.com/mullvad/mullvadvpn-app/releases/download/2025.14/MullvadVPN-2025.14_x64.exe",
+            "hash": "332a1f05bc367a199f0a17fb1e19d3ffcbf79a5024bced619c9e771d31281830"
         }
     },
-    "pre_install": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\setup.exe\" -Verb 'RunAs' -Args @('/allusers', '/S')",
-        "while (!(Get-Process -Name 'mullvad-daemon' -ErrorAction 'SilentlyContinue')) { Start-Sleep -Seconds 5 }",
-        "Remove-Item \"$dir\\setup.exe\""
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Stop-Service -Name 'MullvadVPN' -ErrorAction 'SilentlyContinue' -Force; Stop-Process -Name 'Mullvad VPN' -ErrorAction 'SilentlyContinue' -Force",
-        "Start-Process \"$env:ProgramFiles\\Mullvad VPN\\Uninstall Mullvad VPN.exe\" -Wait -Verb 'RunAs' -Args @('/allusers', '/S')",
-        "Start-Sleep -Seconds 2"
-    ],
+    "installer": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList @('/S')",
+            "Remove-Item \"$dir\\$fname\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+            "if ($cmd -ne 'update') { Invoke-ExternalCommand \"$env:ProgramFiles\\Mullvad VPN\\Uninstall Mullvad VPN.exe\" -ArgumentList @('/allusers', '/S') }"
+        ]
+    },
     "checkver": {
-        "url": "https://mullvad.net/en/download/windows/",
-        "regex": ">Latest\\sversion:\\s([\\d.]+)"
+        "github": "https://github.com/mullvad/mullvadvpn-app"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.mullvad.net/app/desktop/releases/$version/MullvadVPN-$version.exe#/setup.exe"
+                "url": "https://gh-proxy.com/https://github.com/mullvad/mullvadvpn-app/releases/download/$version/MullvadVPN-$version_x64.exe"
             }
         }
     }
