@@ -1,10 +1,5 @@
 {
-    "##": [
-        "This app is non-portable due to:",
-        "(1) It requires installing drivers to work.",
-        "(2) The installer cannot be properly extracted."
-    ],
-    "version": "2.8.1.1390",
+    "version": "3.1.2.1076",
     "description": "File sync and sharing software powered by P2P technology for fast and secure transfers.",
     "homepage": "https://www.resilio.com/",
     "license": {
@@ -13,42 +8,36 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe#/setup.exe",
-            "hash": "6b78a98202bdf72572b8f5590422cfae7b24b8775499406fec7ed1b68b98011d"
-        },
-        "32bit": {
-            "url": "https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe#/setup.exe",
-            "hash": "8101ab7a109a8bf48555b87f0e7f0aca6311b3cd32db2906d6df4be7b88c8947"
+            "url": "https://download-cdn.resilio.com/3.1.2.1076/windows/x64/0/Resilio-Sync_x64.exe",
+            "hash": "fa96216bf92b90fb5ee600909eaa2ae4df5df7add505585aed90560f2304a176"
         }
     },
     "installer": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "$cec = @{1 = 'Run Resilio Sync to set up sync routines'}",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -ContinueExitCodes $cec -RunAs | Out-Null",
-            "Stop-Process -Name 'Resilio Sync'",
+            "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList @('/PERFORMINSTALL', '/S') -ContinueExitCodes $cec",
             "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Resilio Sync.lnk\"",
-            "Remove-Item \"$dir\\setup.exe\""
+            "Remove-Item \"$dir\\$fname\""
         ]
     },
     "uninstaller": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
             "$cec = @{1 = 'You may need to restart your PC for the app to be completely removed'}",
-            "Invoke-ExternalCommand \"$Env:AppData\\Resilio Sync\\Resilio Sync.exe\" -ArgumentList @('/UNINSTALL', '/S') -RunAs -ContinueExitCodes $cec | Out-Null"
+            "$args = @('/UNINSTALL', '/S')",
+            "if ($cmd -ne 'update') { $args += '/REMSETTINGS' }",
+            "Invoke-ExternalCommand \"$Env:AppData\\Resilio Sync\\Resilio Sync.exe\" -ArgumentList $args -ContinueExitCodes $cec"
         ]
     },
     "checkver": {
-        "url": "https://help.resilio.com/hc/en-us/articles/206216855-Resilio-Sync-change-log",
-        "regex": "<meta property=\"og\\:description\" content=\"([\\d.]+)"
+        "url": "https://syncapp.zendesk.com/api/v2/help_center/en-us/articles/31386579044755.json",
+        "regex": "(\\d+\\.\\d+\\.\\d+\\.\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download-cdn.resilio.com/stable/windows64/Resilio-Sync_x64.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://download-cdn.resilio.com/stable/windows/Resilio-Sync.exe#/setup.exe"
+                "url": "https://download-cdn.resilio.com/$version/windows/x64/0/Resilio-Sync_x64.exe"
             }
         }
     }
