@@ -1,12 +1,12 @@
 {
-    "version": "2026-01-11",
+    "version": "2026-01-13",
     "description": "Zed is a high-performance, multiplayer code editor from the creators of Atom and Tree-sitter. It's also open source.",
     "homepage": "https://zed.dev/",
     "license": "AGPL-3.0, Apache-2.0, GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/2026-01-11/zed.zip",
-            "hash": "eec93f96f06c575bc2045c1873d691d4ea66df1924a81459e774747c201a1fc7"
+            "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/2026-01-13/zed.zip",
+            "hash": "2d5782e9917d9979e67fb5fa8644971018acbf7dbec3548179bddb8e67e23370"
         }
     },
     "extract_dir": "zed",
@@ -19,12 +19,13 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repos/deevus/zed-windows-builds/releases",
-        "regex": "(?<version>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))"
+        "jp": "$[*].tag_name",
+        "regex": "(\\d{4}-\\d{2}-\\d{2})"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/$matchVersion/zed.zip",
+        "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/$version/zed.zip",
         "hash": {
-            "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/$matchVersion/sha256sums.txt"
+            "url": "https://gh-proxy.com/https://github.com/deevus/zed-windows-builds/releases/download/$version/sha256sums.txt"
         }
     }
 }
