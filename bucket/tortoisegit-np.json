@@ -1,0 +1,59 @@
+{
+    "version": "2.18.0.1",
+    "description": "TortoiseGit is a Windows Shell Interface to Git and based on TortoiseSVN.",
+    "homepage": "https://tortoisegit.org/",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://gitlab.com/tortoisegit/tortoisegit/-/blob/master/LICENSE"
+    },
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022",
+        "git": "scoop-cn/git"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://download.tortoisegit.org/tgit/2.18.0.0/TortoiseGit-2.18.0.1-64bit.msi#/dl._msi",
+            "hash": "cbf7d52aa0ecca665521e14d8d1a4b6cda52a4bc13de45f49084e15571c77410"
+        },
+        "arm64": {
+            "url": "https://download.tortoisegit.org/tgit/2.18.0.0/TortoiseGit-2.18.0.1-arm64.msi#/dl._msi",
+            "hash": "d6cc582bb7cdcf57e662861639be8b4d02ed5f75627b04ae2caaea4c7d40658b"
+        }
+    },
+    "pre_install": "if (!(is_admin)) { error \"Admin rights required to install TortoiseGit\"; break }",
+    "installer": {
+        "script": [
+            "$succ = Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\$fname\", '/passive', '/quiet', '/log', \"$dir\\install.log\")",
+            "if(-not $succ) {",
+            "    Select-String -Path \"$dir\\install.log\" -Pattern \"MSI \\(s\\).*required\" | ForEach-Object { info \"from log: $_\" }",
+            "    if (Select-String -Path \"$dir\\install.log\" -Pattern \"latest.*2015-2022 Redistributable\") {",
+            "       error \"Missing requirement 'Microsoft Visual C++ Redistributable for Visual Studio 2015-2022'\"",
+            "       info \"consider installing scoop package 'extras/vcredist2022'\"",
+            "    }",
+            "    error \"Failed ($succ) to run `\"$dir\\$fname`\".`nLog file:`n  $(friendly_path `\"$dir\\install.log`\")\"",
+            "    break",
+            "}"
+        ]
+    },
+    "post_install": [
+        "New-ItemProperty -Path 'HKCU:\\SOFTWARE\\TortoiseGit' -Name 'VersionCheck' -PropertyType DWord -Value 0 -Force | Out-Null"
+    ],
+    "pre_uninstall": "if (!(is_admin)) { error \"Admin rights required to uninstall TortoiseGit\"; break }",
+    "uninstaller": {
+        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/uninstall', \"$dir\\dl._msi\", '/qn', '/log', \"$dir\\uninstall.log\")"
+    },
+    "checkver": {
+        "url": "https://tortoisegit.org/docs/releasenotes/",
+        "regex": "Release ([0-9.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.$patchVersion.0/TortoiseGit-$version-64bit.msi#/dl._msi"
+            },
+            "arm64": {
+                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.$patchVersion.0/TortoiseGit-$version-arm64.msi#/dl._msi"
+            }
+        }
+    }
+}
