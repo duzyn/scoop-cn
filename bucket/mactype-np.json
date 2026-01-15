@@ -1,6 +1,6 @@
 {
     "##": "The MacType installer is created with AdvancedInstaller.",
-    "version": "2021.1-rc1",
+    "version": "1.2025.6.9",
     "description": "Provides better font rendering for Windows.",
     "homepage": "https://mactype.net",
     "license": "GPL-3.0-or-later",
@@ -12,8 +12,8 @@
         "- Run in Service Mode (recommended)",
         "- Add `HookChildProcesses=0` to profile; see: https://github.com/snowie2000/mactype/wiki/HookChildProcesses"
     ],
-    "url": "https://gh-proxy.com/https://github.com/snowie2000/mactype/releases/download/2021.1-rc1/MacTypeInstaller_2021.1-rc1.exe",
-    "hash": "3a73d19d4940b6308d07f1eb19a9b6db007423f3d2ebba1216f2df224a8b01f5",
+    "url": "https://gh-proxy.com/https://github.com/snowie2000/mactype/releases/download/v1.2025.6.9/MacTypeInstaller_2025.6.9.exe",
+    "hash": "66678f5535c2e2aa24d20d538612cf340acf9113b63579f722404e4ece9dd0de",
     "innosetup": true,
     "uninstaller": {
         "script": [
@@ -45,11 +45,9 @@
         "MacType.ini"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/snowie2000/mactype/releases/latest",
-        "jsonpath": "$.tag_name",
-        "regex": "([\\w.-]+)"
+        "github": "https://github.com/snowie2000/mactype"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/snowie2000/mactype/releases/download/$version/MacTypeInstaller_$version.exe"
+        "url": "https://gh-proxy.com/https://github.com/snowie2000/mactype/releases/download/v$version/MacTypeInstaller_$minorVersion.$patchVersion.$buildVersion.exe"
     }
 }
