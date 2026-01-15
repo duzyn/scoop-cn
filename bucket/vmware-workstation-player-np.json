@@ -1,14 +1,15 @@
 {
+    "##": "Deprecated: https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/",
     "version": "17.5.0-22583795",
     "homepage": "https://www.vmware.com/ca/products/workstation-player.html",
-    "description": "An application for creating and running virtual machines on your computer.",
+    "description": "[Deprecated] An application for creating and running virtual machines on your computer.",
     "license": {
         "identifier": "Freeware",
-        "url": "https://www.vmware.com/ca/help/legal.html"
+        "url": "https://web.archive.org/web/20230331034845/https://www.vmware.com/ca/help/legal.html"
     },
     "architecture": {
         "64bit": {
-            "url": "https://download3.vmware.com/software/WKST-PLAYER-1750/VMware-player-full-17.5.0-22583795.exe#/setup.exe",
+            "url": "https://web.archive.org/web/20240216155830if_/https://download3.vmware.com/software/WKST-PLAYER-1750/VMware-player-full-17.5.0-22583795.exe#/setup.exe",
             "hash": "cb45b416d0b85e0d34aa2cabcfdecc8dfd82437dba91c221fbb4bce388b54717"
         }
     },
@@ -26,27 +27,5 @@
         "   Start-Sleep -Seconds 2",
         "   Write-Host \"Please restart your computer to uninstall $app properly\" -F 'Red'",
         "}"
-    ],
-    "checkver": {
-        "url": "https://scoop.sh/",
-        "script": [
-            "$userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'",
-            "(Invoke-WebRequest 'https://www.vmware.com/go/getplayer-win' -UserAgent $userAgent).BaseResponse.RequestMessage.RequestUri.AbsoluteUri"
-        ],
-        "regex": "WKST-PLAYER-(?<Half>[\\d]+)/VMware-player-full-([\\w.-]+)\\.exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://download3.vmware.com/software/WKST-PLAYER-$matchHalf/VMware-player-full-$version.exe#/setup.exe",
-                "hash": {
-                    "type": "sha256",
-                    "url": "https://customerconnect.vmware.com/channel/public/api/v1.0/dlg/details?locale=en_US&downloadGroup=WKST-PLAYER-$matchHalf",
-                    "mode": "json",
-                    "jsonpath": "$.downloadFiles[0].sha256checksum",
-                    "find": "$sha256"
-                }
-            }
-        }
-    }
+    ]
 }
