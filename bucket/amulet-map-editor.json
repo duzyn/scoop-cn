@@ -1,12 +1,17 @@
 {
-    "version": "0.10.47",
-    "description": "Minecraft world editor and converter that supports all versions since Java 1.12 and Bedrock 1.7",
+    "version": "0.10.44",
+    "description": "Minecraft world editor and converter",
     "homepage": "https://www.amuletmc.com",
-    "license": "Unknown",
+    "license": "Proprietary",
+    "notes": [
+        "Amulet has moved to a paid subscription model for versions 0.10.45+.",
+        "This manifest has been frozen at the last publicly available version (0.10.44), and will no longer be updated.",
+        "This version also has no upstream support for Minecraft Versions Java 1.21.11+ and Bedrock 1.12.120+."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/0.10.47/Amulet-v0.10.47-Windows-x64.zip",
-            "hash": "bd8be1c54c9332a8462bd73a6e7fc3e152ab14125f456de0b78230cdf1cb7677",
+            "url": "https://gh-proxy.com/https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/0.10.44/Amulet-v0.10.44-Windows-x64.zip",
+            "hash": "99abd3b7bf2b95caad841a933be99857fee8840e5127712201382d4ba035313c",
             "extract_dir": "Amulet"
         }
     },
@@ -19,11 +24,5 @@
     "persist": [
         "config",
         "logs"
-    ],
-    "checkver": {
-        "github": "https://github.com/Amulet-Team/Amulet-Map-Editor"
-    },
-    "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Amulet-Team/Amulet-Map-Editor/releases/download/$version/Amulet-v$version-Windows-x64.zip"
-    }
+    ]
 }
