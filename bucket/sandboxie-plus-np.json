@@ -3,18 +3,18 @@
         "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
         "The installer is made with InnoSetup, but the app will not work without installing the drivers (via the installer)"
     ],
-    "version": "1.15.12",
+    "version": "1.16.9",
     "description": "Sandbox isolation software (plus variant)",
     "homepage": "https://sandboxie-plus.com/",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.15.12/Sandboxie-Plus-x64-v1.15.12.exe#/setup.exe",
-            "hash": "06c801528b8e0e456495019abc77b43a7367d29da88c227cbba755c1946f320c"
+            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-x64-v1.16.9.exe#/setup.exe",
+            "hash": "435202099f37aec373a9bbb6d734e71a7b567479a7a5aef9a0ac55e3237159a0"
         },
-        "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.15.12/Sandboxie-Plus-x86-v1.15.12.exe#/setup.exe",
-            "hash": "88545c9ef4479c62522eb85038eceb69ebf7fac129c7b5973bde009bcb830542"
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-ARM64-v1.16.9.exe#/setup.exe",
+            "hash": "e05d4894e6c3ab51ff653cf2c8ace73018fd81f5d4a73b88d8f6022cfd3e8dc3"
         }
     },
     "installer": {
@@ -69,9 +69,12 @@
             "64bit": {
                 "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe#/setup.exe"
             },
-            "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x86-v$version.exe#/setup.exe"
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-ARM64-v$version.exe#/setup.exe"
             }
+        },
+        "hash": {
+            "url": "$baseurl/sha256-checksums.txt"
         }
     }
 }
