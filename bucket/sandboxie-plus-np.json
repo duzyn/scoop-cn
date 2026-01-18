@@ -1,36 +1,36 @@
 {
-    "##": [
-        "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
-        "The installer is made with InnoSetup, but the app will not work without installing the drivers (via the installer)"
-    ],
     "version": "1.16.9",
-    "description": "Sandbox isolation software (plus variant)",
-    "homepage": "https://sandboxie-plus.com/",
-    "license": "GPL-3.0-or-later",
+    "description": "An enhanced edition of Sandboxie that provides sandbox-based application isolation on Windows with additional features and a modern interface.",
+    "homepage": "https://sandboxie-plus.com",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://github.com/sandboxie-plus/Sandboxie/blob/HEAD/LICENSE.Plus"
+    },
+    "notes": [
+        "If RamDisk or Encrypted Sandboxes are required, the ImDisk driver must be installed.",
+        "",
+        "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/.",
+        "Please note that `sandboxie-start` should be used instead of the `start` command mentioned in the documentation."
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-x64-v1.16.9.exe#/setup.exe",
+            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-x64-v1.16.9.exe",
             "hash": "435202099f37aec373a9bbb6d734e71a7b567479a7a5aef9a0ac55e3237159a0"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-ARM64-v1.16.9.exe#/setup.exe",
+            "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v1.16.9/Sandboxie-Plus-ARM64-v1.16.9.exe",
             "hash": "e05d4894e6c3ab51ff653cf2c8ace73018fd81f5d4a73b88d8f6022cfd3e8dc3"
         }
     },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "installer": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
-            "Start-Process \"$dir\\setup.exe\" -ArgumentList @('/verysilent', \"/dir=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
-            "Remove-Item \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Sandboxie-Plus\" -Recurse",
-            "Remove-Item \"$([Environment]::GetFolderPath('Desktop'))\\Sandboxie-Plus.lnk\"",
-            "Remove-Item \"$dir\\setup.exe\""
-        ]
-    },
-    "pre_uninstall": "Stop-Process -Name 'SbieSvc' -Force -ErrorAction SilentlyContinue",
-    "uninstaller": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
-            "Invoke-ExternalCommand \"$dir\\unins000.exe\" -ArgumentList '/verysilent' -RunAs | Out-Null"
+            "$args_list = @('/verysilent', \"/dir=`\"$dir`\"\")",
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList $args_list -WindowStyle 'Hidden' -Wait",
+            "@(",
+            "    \"$dir\\$fname\", \"$env:USERPROFILE\\Desktop\\Sandboxie-Plus.lnk\"",
+            "    \"$([Environment]::GetFolderPath('CommonStartMenu'))\\Programs\\Sandboxie-Plus\"",
+            ") | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue"
         ]
     },
     "bin": [
@@ -42,35 +42,48 @@
     "shortcuts": [
         [
             "SandMan.exe",
-            "Sandboxie-Plus"
+            "Sandboxie-Plus\\Sandboxie-Plus"
         ],
         [
             "Start.exe",
-            "Sandboxie Start Menu",
-            "/box:__ask__ start_menu"
-        ],
-        [
-            "Start.exe",
-            "Run any program sandboxed",
+            "Sandboxie-Plus\\Run any program sandboxed",
             "/box:__ask__ run_dialog"
         ],
         [
             "Start.exe",
-            "Run Web browser sandboxed",
+            "Sandboxie-Plus\\Run Web browser sandboxed",
             "default_browser"
+        ],
+        [
+            "Start.exe",
+            "Sandboxie-Plus\\Run Windows Explorer sandboxed",
+            "."
+        ],
+        [
+            "Start.exe",
+            "Sandboxie-Plus\\Sandboxie Start Menu",
+            "/box:__ask__ start_menu"
         ]
     ],
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "uninstaller": {
+        "script": [
+            "Stop-Process -Name 'SbieSvc' -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 1500",
+            "Start-Process -FilePath \"$dir\\unins000.exe\" -ArgumentList @('/verysilent') -WindowStyle 'Hidden' -Wait"
+        ]
+    },
     "checkver": {
-        "github": "https://github.com/sandboxie-plus/Sandboxie",
-        "regex": "Release v([\\d.]+) / (?<classicver>[\\d.]+)"
+        "url": "https://api.github.com/repositories/254327261/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /Plus/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/Sandboxie-Plus-(?:x|ARM)64-v([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-x64-v$version.exe#/setup.exe"
+                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/$matchTag/Sandboxie-Plus-x64-v$version.exe"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$version/Sandboxie-Plus-ARM64-v$version.exe#/setup.exe"
+                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/$matchTag/Sandboxie-Plus-ARM64-v$version.exe"
             }
         },
         "hash": {

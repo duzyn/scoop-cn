@@ -1,12 +1,15 @@
 {
     "##": "For command-line usage, see: https://sandboxie-plus.com/sandboxie/startcommandline/",
     "version": "5.71.9",
-    "description": "Sandbox isolation software (classic variant)",
-    "homepage": "https://sandboxie-plus.com/",
-    "license": "GPL-3.0-or-later",
+    "description": "A sandbox-based isolation tool for Windows that runs applications in a controlled environment, preventing permanent changes to the system.",
+    "homepage": "https://sandboxie-plus.com",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/sandboxie-plus/Sandboxie/blob/HEAD/LICENSE.Classic"
+    },
     "notes": [
-        "You are installing Sandboxie Classic, which is designed to be compatible with the original Sandboxie.",
-        "For more new features, install 'sandboxie-plus-np'"
+        "You are installing Sandboxie Classic, which is intended to maintain compatibility with the original Sandboxie.",
+        "For access to newer features and enhancements, please install 'sandboxie-plus-np'."
     ],
     "architecture": {
         "64bit": {
@@ -14,27 +17,23 @@
             "hash": "3ca95aae7316a892f10b911e852242f020214018c533ab9ecb86b1a80f07a86c"
         }
     },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "installer": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to install\"; break }",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList '/S' -RunAs | Out-Null"
-        ]
+        "script": "Start-Process -FilePath \"$dir\\setup.exe\" -ArgumentList @('/S') -WindowStyle 'Hidden' -Wait"
     },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "uninstaller": {
-        "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to uninstall\"; break }",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -RunAs | Out-Null"
-        ]
+        "script": "Start-Process -FilePath \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -WindowStyle 'Hidden' -Wait"
     },
     "checkver": {
-        "github": "https://github.com/sandboxie-plus/Sandboxie",
-        "regex": "Release v(?<plusver>[\\d.]+) / (?<classicver>[\\d.]+)",
-        "replace": "${classicver}"
+        "url": "https://api.github.com/repositories/254327261/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /Classic/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/Sandboxie-Classic-x64-v([\\d.]+)\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/v$matchPlusver/Sandboxie-Classic-x64-v$version.exe#/setup.exe"
+                "url": "https://gh-proxy.com/https://github.com/sandboxie-plus/Sandboxie/releases/download/$matchTag/Sandboxie-Classic-x64-v$version.exe#/setup.exe"
             }
         },
         "hash": {
