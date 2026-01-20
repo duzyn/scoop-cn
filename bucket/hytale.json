@@ -1,0 +1,22 @@
+{
+    "version": "nightly",
+    "description": "Official launcher for the game Hytale",
+    "notes": [
+        "To force Hytale to use its default folders, run:",
+        "\"$dir\\default-folders.reg\""
+    ],
+    "homepage": "https://hytale.com",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://hytale.com/terms-of-service"
+    },
+    "url": "https://launcher.hytale.com/builds/release/windows/amd64/hytale-launcher-installer-latest.exe#/.7z",
+    "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
+    "post_install": "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\hytale\\default-folders.reg\" \"$dir\\default-folders.reg\" -Force -Recurse",
+    "shortcuts": [
+        [
+            "hytale-launcher.exe",
+            "Hytale"
+        ]
+    ]
+}
