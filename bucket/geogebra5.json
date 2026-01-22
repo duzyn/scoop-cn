@@ -1,5 +1,5 @@
 {
-    "version": "5.2.909.9",
+    "version": "5.4.913.0",
     "description": "A dynamic mathematics software for education that brings together geometry, algebra, spreadsheets, graphing, statistics and calculus.",
     "homepage": "https://www.geogebra.org",
     "license": {
@@ -10,9 +10,9 @@
         "To register file associations, please execute the following command:",
         "reg import \"$dir\\install-associations.reg\""
     ],
-    "url": "https://download.geogebra.org/installers/5.2/GeoGebra-Windows-Portable-5-2-909-9.zip",
-    "hash": "a3a6b6738e7343edc771501fd38bc3a6816a93fd15760e859317c0dd5d65730d",
-    "extract_dir": "GeoGebra 5.2.909.9",
+    "url": "https://download.geogebra.org/installers/5.4/GeoGebra-Windows-Portable-5-4-913-0.zip",
+    "hash": "4d3603433e9c984c5858ddd3a73b645a5e908173c50ea49904b79853ef066efc",
+    "extract_dir": "GeoGebra 5.4.913.0",
     "post_install": [
         "$geogebra_path = $dir -replace '\\\\', '\\\\'",
         "Get-ChildItem -Path \"$bucketsdir\\scoop-cn\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
@@ -38,15 +38,13 @@
     },
     "checkver": {
         "script": [
-            "$name_filter = 'GeoGebra-Windows-Portable-*.zip'",
-            "$release_url = 'https://download.geogebra.org/installers/5.2/'",
-            "$download_page = Invoke-WebRequest -Uri $release_url -UseBasicParsing",
-            "$version_sort = { if ($_.href -match '(?!-)[\\d-]+') { [version]($Matches[0] -replace '-', '.') } }",
-            "$name_list = $download_page.links | Where-Object href -Like $name_filter | Sort-Object $version_sort -Descending | Select-Object -ExpandProperty href",
-            "$latest_version = $name_list[0] -replace '[^\\d]+([\\d-]+).+', '$1' -replace '-', '.'",
-            "Write-Output $latest_version"
+            "$url = 'https://download.geogebra.org/package/win-port'",
+            "$request = [System.Net.HttpWebRequest]::Create($url)",
+            "$response = $request.GetResponse()",
+            "$response.ResponseUri.AbsoluteUri -match 'Portable-(?<dashVersion>[\\d-]+)\\.zip'",
+            "Write-Output ($Matches['dashVersion'] -replace '-', '.')"
         ],
-        "regex": "([\\d.]+)"
+        "regex": "(5\\.[\\d.]+)"
     },
     "autoupdate": {
         "url": "https://download.geogebra.org/installers/$majorVersion.$minorVersion/GeoGebra-Windows-Portable-$dashVersion.zip",
