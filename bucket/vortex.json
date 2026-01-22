@@ -1,0 +1,34 @@
+{
+    "version": "1.15.2",
+    "description": "Open-source mod manager from Nexus Mods",
+    "homepage": "https://nexusmods.com/about/vortex",
+    "license": "GPL-3.0",
+    "suggest": {
+        "vcredist": "scoop-cn/vcredist2022",
+        "windowsdesktop-runtime": "scoop-cn/windowsdesktop-runtime-6.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/Nexus-Mods/Vortex/releases/download/v1.15.2/vortex-setup-1.15.2.exe#/dl.7z",
+            "hash": "e321b871e940ceac507b58e0c49ae407c3be41d4f4e01a8dca09133cc5d3fb7b"
+        }
+    },
+    "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\", \"$dir\\`$TEMP\", \"$dir\\resources\\app-update.yml\" -Recurse -Force",
+    "shortcuts": [
+        [
+            "Vortex.exe",
+            "Vortex"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Nexus-Mods/Vortex"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/Nexus-Mods/Vortex/releases/download/v$version/vortex-setup-$version.exe#/dl.7z"
+            }
+        }
+    }
+}
