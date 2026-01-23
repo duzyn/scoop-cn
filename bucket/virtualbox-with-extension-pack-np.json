@@ -1,5 +1,5 @@
 {
-    "version": "7.2.4",
+    "version": "7.2.4.170995",
     "description": "Powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.",
     "homepage": "https://www.virtualbox.org/",
     "license": {
@@ -11,11 +11,12 @@
         "A license must be purchased for enterprise use.",
         "For more information, go here: https://www.virtualbox.org/wiki/Licensing_FAQ"
     ],
+    "depends": "scoop-cn/vcredist2022",
     "architecture": {
         "64bit": {
             "url": [
                 "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/7.2.4/VirtualBox-7.2.4-170995-Win.exe#/setup.exe",
-                "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/7.2.4/Oracle_VirtualBox_Extension_Pack-7.2.4.vbox-extpack"
+                "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/7.2.4/Oracle_VirtualBox_Extension_Pack-7.2.4-170995.vbox-extpack"
             ],
             "hash": [
                 "22988be9792f39c8e07068504612bd83aae8f8317e2aaf7515079f5cd9421675",
@@ -23,65 +24,80 @@
             ]
         }
     },
+    "pre_install": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "$succ = Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('-extract', '-path', \"$dir\", '-silent')",
+        "if(-not $succ) { error \"Failed ($succ) to unpack `\"$dir\\setup.exe`\"\" ; break }",
+        "Remove-Item \"$dir\\setup.exe\""
+    ],
     "installer": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "Invoke-ExternalCommand \"$dir\\setup.exe\" -ArgumentList @('--extract', '-path', \"$dir\", '--silent') | Out-Null",
-            "Get-ChildItem \"$dir\\VirtualBox*.msi\" | Rename-Item -NewName 'setup.msi'",
-            "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi`\"\", '/qn', '/norestart', \"INSTALLDIR=`\"$dir`\"\") -Wait -Verb RunAs | Out-Null",
-            "Start-Process icacls -ArgumentList @(\"`\"$dir`\"\", '/grant', 'Everyone:F', '/T') -Wait -Verb RunAs | Out-Null",
-            "Remove-Item \"$dir\\setup.exe\", \"$dir\\setup.msi\"",
-            "Remove-Item \"$env:PUBLIC\\Desktop\\Oracle VM VirtualBox.lnk\"",
-            "Remove-Item -Recurse \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Oracle VM VirtualBox\""
+            "$setup = Get-ChildItem \"$dir\\VirtualBox*_amd64.msi\" | Select-Object -First 1",
+            "if (-not $setup) { error \"MSI not found under $dir\"; break }",
+            "$args = @('/i', \"$($setup.FullName)\", '/qn', '/norestart', '/log', \"$dir\\install-log.txt\", 'VBOX_INSTALLDESKTOPSHORTCUT=0', 'VBOX_INSTALLQUICKLAUNCHSHORTCUT=0', 'VBOX_START=0', 'VBOX_INSTALLSTARTMENUENTRIES=0')",
+            "if (!$global) { $args += 'ALLUSERS=2', \"INSTALLDIR=`\"$dir`\"\" }",
+            "if ($global) { $args += 'ALLUSERS=1' }",
+            "$succ = Invoke-ExternalCommand msiexec -ArgumentList $args",
+            "Remove-Item -Path @(\"$dir\\VirtualBox-*64.msi\", \"$dir\\common.cab\")",
+            "if (-not $succ) {",
+            "   Select-String -Path \"$dir\\install-log.txt\" -Pattern 'MSI \\(.*' | ForEach-Object { warn \"from log:`n    $_\" }",
+            "   error \"Failed ($succ) to install `\"$($setup.FullName)`\".`nLog file: `\"$dir\\install-log.txt`\"\"",
+            "   break",
+            "}"
         ]
     },
+    "post_install": [
+        "if ($global) { $installDir =  \"$env:ProgramW6432\\Oracle\\VirtualBox\" } else { $installDir = \"$original_dir\" }",
+        "Invoke-ExternalCommand icacls -ArgumentList @( \"$installDir\", \"/reset\" ) -Quiet | Out-Null",
+        "startmenu_shortcut \"$installDir\\VirtualBox.exe\" 'VirtualBox' $null $null $global",
+        "Get-ChildItem -Path \"$installDir\" -Filter '*.exe' | ForEach-Object {",
+        "   info \"Adding shim '$($_.BaseName)'\"",
+        "   shim \"$($_.FullName)\" $global \"$($_.BaseName)\"",
+        "}",
+        "$extpack = Get-ChildItem -Path \"$dir\" -Filter 'Oracle_VirtualBox_Extension_Pack-*.vbox-extpack' | Select-Object -First 1",
+        "if (-not $extpack) { error \"Extension pack not found under $dir\"; break }",
+        "Invoke-ExternalCommand tar -Activity 'Extracting License' -ArgumentList @('-xzf', \"$($extpack.FullName)\", '-C', \"$dir\", './ExtPack-license.txt') | Out-Null",
+        "$exthash = $(Get-FileHash -Path \"$dir\\ExtPack-license.txt\" -Algorithm SHA256).Hash",
+        "Remove-Item \"$dir\\ExtPack-license.txt\"",
+        "Invoke-ExternalCommand VBoxManage -Activity 'Installing Oracle VirtualBox Extension Pack' -ArgumentList @('extpack', 'install', \"--accept-license=$exthash\", \"$($extpack.FullName)\") -LogPath \"$dir\\install-log-extpack.txt\" | Out-Null",
+        "Remove-Item \"$($extpack.FullName)\"",
+        "info \"Guest additions are located at: '$installDir\\VBoxGuestAdditions.iso'\""
+    ],
+    "pre_uninstall": [
+        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
+        "Remove-Item \"$(shortcut_folder $global)\\VirtualBox.lnk\" -ErrorAction SilentlyContinue",
+        "if ($global) { $installDir = \"$env:ProgramW6432\\Oracle\\VirtualBox\" } else { $installDir = \"$original_dir\" }",
+        "Invoke-ExternalCommand VBoxManage -Activity 'Uninstalling Oracle VirtualBox Extension Pack' -ArgumentList @('extpack', 'uninstall', 'Oracle VirtualBox Extension Pack') -LogPath \"$dir\\uninstall-log-extpack.txt\" | Out-Null",
+        "Remove-Item \"$installDir\\ExtensionPacks\" -ErrorAction SilentlyContinue",
+        "Get-ChildItem -Path \"$installDir\" -Filter '*.exe' | Select-Object -ExpandProperty BaseName | ForEach-Object { rm_shim \"$_\" \"$(shimdir $global)\" }"
+    ],
     "uninstaller": {
         "script": [
-            "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-            "$id_array = wmic product where \"name like 'Oracle VM VirtualBox%'\" get IdentifyingNumber",
-            "if (!($id_array[2] -match '({[0-9A-F-]+})')) { error 'Could not find product ID'; break }",
-            "$id = $matches[1]",
-            "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$id\", '/qn', '/norestart') -RunAs | Out-Null"
+            "$idnum = Get-CimInstance Win32_Product | Where-Object { $_.Name -match 'Oracle VirtualBox [\\d\\.]+' } | Select-Object -ExpandProperty IdentifyingNumber",
+            "if (!$idnum) { error \"Could not find uninstaller for: Oracle VirtualBox\" }",
+            "else {",
+            "   $succ = Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$idnum\", '/qn', '/norestart', '/log', \"$dir\\uninstall-log.txt\")",
+            "   if(-not $succ) { error \"Failed ($succ) to uninstall `nLog file: `\"$dir\\uninstall-log.txt`\"\" }",
+            "}"
         ]
     },
-    "bin": [
-        "VBoxBalloonCtrl.exe",
-        "VBoxBugReport.exe",
-        "VBoxDTrace.exe",
-        "VBoxExtPackHelperApp.exe",
-        "VBoxHeadless.exe",
-        "vbox-img.exe",
-        "VBoxManage.exe",
-        "VBoxNetDHCP.exe",
-        "VBoxNetNAT.exe",
-        "VBoxSDS.exe",
-        "VBoxSVC.exe",
-        "VBoxTestOGL.exe",
-        "VBoxWebSrv.exe",
-        "VirtualBox.exe",
-        "VirtualBoxVM.exe"
-    ],
-    "shortcuts": [
-        [
-            "VirtualBox.exe",
-            "VirtualBox"
-        ]
-    ],
     "checkver": {
         "url": "https://www.virtualbox.org/wiki/Downloads",
-        "regex": "VirtualBox-(?<version>[\\d\\w.]+)-(?<revision>[\\d]+)-Win.exe"
+        "regex": "VirtualBox-(?<version>[\\d.]+)-(?<build>[\\d]+)-Win.exe",
+        "replace": "${version}.${build}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": [
-                    "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/VirtualBox-$version-$matchRevision-Win.exe#/setup.exe",
-                    "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/Oracle_VirtualBox_Extension_Pack-$matchHead.vbox-extpack"
+                    "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/VirtualBox-$matchHead-$buildVersion-Win.exe#/setup.exe",
+                    "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/Oracle_VirtualBox_Extension_Pack-$matchHead-$buildVersion.vbox-extpack"
                 ]
             }
         },
         "hash": {
-            "url": "https://www.virtualbox.org/download/hashes/$matchHead/SHA256SUMS"
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/SHA256SUMS"
         }
     }
 }
+
