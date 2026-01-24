@@ -1,31 +1,47 @@
 {
-    "##": "Deprecated: https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/",
     "version": "17.5.0-22583795",
-    "homepage": "https://www.vmware.com/ca/products/workstation-player.html",
-    "description": "[Deprecated] An application for creating and running virtual machines on your computer.",
+    "homepage": "https://web.archive.org/web/20240111044653/https://www.vmware.com/ca/products/workstation-player.html",
+    "description": "An application for creating and running virtual machines on your computer.",
     "license": {
         "identifier": "Freeware",
         "url": "https://web.archive.org/web/20230331034845/https://www.vmware.com/ca/help/legal.html"
     },
+    "notes": [
+        "As of November 11, 2024, VMware Workstation Pro has been made available free of charge for all users.",
+        "For details, please refer to the official announcement: https://blogs.vmware.com/cloud-foundation/2024/11/11/vmware-fusion-and-workstation-are-now-free-for-all-users/.",
+        "Users are strongly encouraged to consider VMware Workstation Pro if they are interested in VMware desktop virtualization products.",
+        "However, due to the complexity of its download process, it must be obtained manually from the official website: https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion.",
+        "",
+        "Please note that the official website has discontinued the download links for VMware Workstation Player.",
+        "As a temporary measure, this manifest uses the Wayback Machine as the download source.",
+        "Over time, the compatibility, security, and overall reliability of this application may no longer be guaranteed.",
+        "Users should be aware that any issues arising from its use are entirely their own responsibility."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://web.archive.org/web/20240216155830if_/https://download3.vmware.com/software/WKST-PLAYER-1750/VMware-player-full-17.5.0-22583795.exe#/setup.exe",
             "hash": "cb45b416d0b85e0d34aa2cabcfdecc8dfd82437dba91c221fbb4bce388b54717"
         }
     },
-    "pre_install": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList '/x'; Remove-Item \"$dir\\setup.exe\"",
-        "$msiInstaller = (Get-ChildItem \"$env:TEMP\" -Filter 'VMware*' -Recurse -Force).FullName; Copy-Item $msiInstaller \"$dir\\setup.msi\" -Force",
-        "Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/i', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress', 'EULAS_AGREED=1', 'ADDLOCAL=ALL')",
-        "Remove-Item $msiInstaller -Force"
-    ],
-    "pre_uninstall": [
-        "if ($cmd -eq 'uninstall') {",
-        "   if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "   Start-Process 'msiexec' -Wait -Verb 'RunAs' -ArgumentList @('/x', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress')",
-        "   Start-Sleep -Seconds 2",
-        "   Write-Host \"Please restart your computer to uninstall $app properly\" -F 'Red'",
-        "}"
-    ]
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "script": [
+            "Start-Process -FilePath \"$dir\\setup.exe\" -ArgumentList @('/x') -WindowStyle Hidden -Wait",
+            "$installer_files = Get-ChildItem -Path $env:TEMP -Filter 'VMware*' -Recurse -File | Sort-Object -Property LastWriteTime",
+            "$installer_files | Select-Object -Last 1 | Move-Item -Destination \"$dir\\setup.msi\" -Force",
+            "$args_list = @('/i', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress', 'EULAS_AGREED=1', 'ADDLOCAL=ALL')",
+            "Start-Process -FilePath 'msiexec.exe' -ArgumentList $args_list -WindowStyle Hidden -Wait",
+            "Remove-Item -Path \"$dir\\setup.exe\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    $args_list = @('/x', \"$dir\\setup.msi\", '/qn', '/norestart', 'REBOOT=ReallySuppress')",
+            "    Start-Process -FilePath 'msiexec.exe' -ArgumentList $args_list -WindowStyle Hidden -Wait",
+            "    Write-Host \"`nPlease restart your computer to uninstall $app properly.\" -ForegroundColor Red",
+            "}"
+        ]
+    }
 }
