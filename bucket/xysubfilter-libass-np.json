@@ -3,30 +3,36 @@
     "description": "An open-source DirectShow subtitle renderer. Variant with libass backend",
     "homepage": "https://github.com/Masaiki/xy-VSFilter",
     "license": "GPL-2.0-only",
-    "url": "https://gh-proxy.com/https://github.com/Masaiki/xy-VSFilter/releases/download/20251008/XySubFilter_with_libass_20251008.zip",
+    "url": "https://gh-proxy.com/https://github.com/Masaiki/xy-VSFilter/releases/download/20251008/XySubfilter_with_libass_20251008.zip",
     "hash": "a317fc34f3a8a79a8dff31a9fd3f7e73b8c6874c223353066217e798fe17de1e",
     "architecture": {
         "64bit": {
             "extract_dir": "x64"
         },
         "32bit": {
-            "extract_dir": "Win32"
+            "extract_dir": "x86"
         }
     },
-    "pre_install": [
-        "if (-not $global) {",
-        "    Write-Host -Foreground Red \"$app should be installed globally.\"",
-        "    break",
-        "}"
-    ],
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "installer": {
-        "script": "regsvr32 /s \"$dir\\XySubFilter.dll\""
+        "script": [
+            "$args_list = @(\"$dir\\XySubFilter.dll\", '/s')",
+            "Start-Process -FilePath 'regsvr32.exe' -ArgumentList $args_list -NoNewWindow -Wait"
+        ]
     },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "uninstaller": {
-        "script": "regsvr32 /u /s \"$dir\\XySubFilter.dll\""
+        "script": [
+            "$args_list = @('/u', \"$dir\\XySubFilter.dll\", '/s')",
+            "Start-Process -FilePath 'regsvr32.exe' -ArgumentList $args_list -NoNewWindow -Wait"
+        ]
     },
-    "checkver": "github",
+    "checkver": {
+        "url": "https://api.github.com/repositories/363665359/releases/latest",
+        "jsonpath": "$.assets[?(@.name =~ /XySubFilter/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/XySubfilter_with_libass_([\\d.]+)\\.zip"
+    },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/Masaiki/xy-VSFilter/releases/download/$version/XySubFilter_with_libass_$version.zip"
+        "url": "https://gh-proxy.com/https://github.com/Masaiki/xy-VSFilter/releases/download/$matchTag/XySubfilter_with_libass_$version.zip"
     }
 }
