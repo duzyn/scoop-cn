@@ -3,22 +3,79 @@
     "homepage": "https://devtoys.app/",
     "description": "A Swiss Army knife for developers.",
     "license": "MIT",
-    "url": "https://gh-proxy.com/https://github.com/veler/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle",
-    "hash": "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3",
-    "pre_install": [
-        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-Command', \"Add-AppxPackage \"\"$dir\\setup.msixbundle\"\"\"); Start-Sleep -Seconds 2",
-        "Remove-Item \"$dir\\setup.msixbundle\""
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process 'powershell' -Wait -WindowStyle 'Hidden' -ArgumentList @('-Command', \"Get-AppxPackage '*VelerSoftware.DevToys' | Remove-AppxPackage\") | Out-Null",
-        "Remove-Item \"$env:ProgramFiles\\WindowsApps\\*VelerSoftware.DevToys_*\" -Force -Recurse -ErrorAction 'SilentlyContinue'",
-        "Start-Sleep -Seconds 2"
-    ],
+    "architecture": {
+        "32bit": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x86.appx#/xaml.appx",
+                "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+            ],
+            "hash": [
+                "663c0b9866fe9bb41cb77099558c7d17d951adcf17681b129560086a613ba475",
+                "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3"
+            ]
+        },
+        "64bit": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx#/xaml.appx",
+                "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+            ],
+            "hash": [
+                "8ce30d92abec6522beb2544e7b716983f5cba50751b580d89a36048bf4d90316",
+                "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.arm64.appx#/xaml.appx",
+                "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v1.0.13.0/64360VelerSoftware.DevToys_1.0.13.0_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+            ],
+            "hash": [
+                "a34c43cfe3b1344efa23e3581331636ad306760b34ac63184307e74f2e873c27",
+                "020dd37d165ce2568405a32cdbcb93bfbe0a79864df9eb8c742a6a771c785ae3"
+            ]
+        }
+    },
+    "installer": {
+        "script": [
+            "if ($global) { error \"Global installation is not supported for $cmd\"; break }",
+            "$xaml = Get-AppxPackage 'Microsoft.UI.Xaml.2.7' | Sort-Object -Property Version -Descending | Select-Object -First 1",
+            "if ($xaml) { $xamlversion = ($xaml).Version } else { $xamlversion = [version]'0.0.0.0' }",
+            "$ProgressPreference = 'SilentlyContinue'",
+            "if ($xamlversion -lt [version]'7.2208.15002.0') { Add-AppxPackage -Path \"$dir\\xaml.appx\" }",
+            "Add-AppxPackage -Path \"$dir\\devtoys.msixbundle\"",
+            "Remove-Item -Path \"$dir\\xaml.appx\", \"$dir\\devtoys.msixbundle\""
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$ProgressPreference = 'SilentlyContinue'",
+            "Get-AppxPackage '64360VelerSoftware.DevToys' | ForEach-Object { Remove-AppxPackage $_ }",
+            "Get-AppxPackage 'Microsoft.UI.Xaml.2.7' | ForEach-Object { Remove-AppxPackage $_ }"
+        ]
+    },
     "checkver": {
-        "github": "https://github.com/veler/DevToys"
+        "github": "https://github.com/DevToys-app/DevToys"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/veler/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/setup.msixbundle"
+        "architecture": {
+            "32bit": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x86.appx#/xaml.appx",
+                    "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+                ]
+            },
+            "64bit": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.x64.appx#/xaml.appx",
+                    "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.7.3/Microsoft.UI.Xaml.2.7.arm64.appx#/xaml.appx",
+                    "https://gh-proxy.com/https://github.com/DevToys-app/DevToys/releases/download/v$version/64360VelerSoftware.DevToys_$version_neutral_._j80j2txgjg9dj.msixbundle#/devtoys.msixbundle"
+                ]
+            }
+        }
     }
 }

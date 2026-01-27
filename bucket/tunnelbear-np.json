@@ -1,0 +1,37 @@
+{
+    "version": "4.17.0",
+    "description": "A more secure way to browse the web. TunnelBear encrypts your internet connection to keep your online activity private on any network.",
+    "homepage": "https://www.tunnelbear.com/",
+    "license": {
+        "identifier": "proprietary",
+        "url": "https://www.tunnelbear.com/terms-of-service"
+    },
+    "url": "https://tunnelbear.s3.amazonaws.com/downloads/pc/TunnelBear-Installer.exe",
+    "hash": "f9182c431580d38bc3768b55b64c609c58bfad5aafd08678ee4d083cb0b87217",
+    "pre_install": [
+        "if (!(is_admin)) { error \"Admin rights required to install\"; break }",
+        "if (!($global)) { error \"Only global installation supported\"; break }"
+    ],
+    "installer": {
+        "script": [
+            "Expand-DarkArchive \"$dir/$fname\" \"$dir/extracted\" -Removal",
+            "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\extracted\\AttachedContainer\\TunnelBear.Setup.msi\", '/qn', '/log', \"$dir\\install.log\")",
+            "Remove-Item \"$dir\\extracted\" -Force -Recurse"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "   $id = (Get-ItemProperty -Path 'HKLM://SOFTWARE/WOW6432Node/TunnelBear' -Name Id -ErrorAction SilentlyContinue).Id",
+            "   if ($id -ne $null) { Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$id\", '/qn', '/log', \"$dir\\uninstall.log\") }",
+            "}"
+        ]
+    },
+    "checkver": {
+        "url": "https://prod-api-core.tunnelbear.com/core/web/getVersionHistory?platform=pc",
+        "regex": "Version ([0-9.]+)"
+    },
+    "autoupdate": {
+        "url": "https://tunnelbear.s3.amazonaws.com/downloads/pc/TunnelBear-Installer.exe"
+    }
+}
