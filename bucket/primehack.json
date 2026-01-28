@@ -1,0 +1,34 @@
+{
+    "version": "1.0.8",
+    "description": "A fork of Dolphin emulator that brings enhancements for Metroid Prime games",
+    "homepage": "https://github.com/shiiion/dolphin",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/shiiion/dolphin/blob/primehack-master/COPYING"
+    },
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "scoop-cn/vcredist2022"
+    },
+    "url": "https://gh-proxy.com/https://github.com/shiiion/dolphin/releases/download/1.0.8/PrimeHack.Release.v1.0.8a.zip",
+    "hash": "75efeb5fc0ba74c8e41e91f4fb396b1d1c1688158517c3ec0b58bd4358e1efc8",
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
+    "bin": [
+        [
+            "Dolphin.exe",
+            "primehack"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "Dolphin.exe",
+            "PrimeHack"
+        ]
+    ],
+    "persist": "User",
+    "checkver": {
+        "github": "https://github.com/shiiion/dolphin"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/shiiion/dolphin/releases/download/v$version/PrimeHack.Release.v$versiona.zip"
+    }
+}

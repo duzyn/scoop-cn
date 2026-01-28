@@ -1,0 +1,43 @@
+{
+    "version": "1.0.0",
+    "description": "PC Port of Banjo-Kazooie made using N64: Recompiled",
+    "homepage": "https://github.com/BanjoRecomp/BanjoRecomp",
+    "license": "GPL-3.0",
+    "url": "https://gh-proxy.com/https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v1.0.0/BanjoRecompiled-v1.0.0-Windows.zip",
+    "hash": "a55367c6ddf791b2e8596af477cab164f555f8471bf38759e17bde74f0e0b5c4",
+    "pre_install": [
+        "$files = @('general.json', 'graphics.json', 'sound.json', 'bk.n64.us.1.0.z64')",
+        "foreach ($file in $files) {",
+        "    if (!(Test-Path \"$dir\\$file\")) { New-Item \"$dir\\$file\" -Type File | Out-Null }",
+        "}"
+    ],
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
+    "bin": "BanjoRecompiled.exe",
+    "shortcuts": [
+        [
+            "BanjoRecompiled.exe",
+            "Banjo - Recompiled"
+        ]
+    ],
+    "persist": [
+        "mods",
+        "mod_config",
+        "saves",
+        "general.json",
+        "graphics.json",
+        "sound.json",
+        "bk.n64.us.1.0.z64"
+    ],
+    "pre_uninstall": [
+        "$files = @('general.json', 'graphics.json', 'sound.json', 'bk.n64.us.1.0.z64')",
+        "foreach ($file in $files) {",
+        "    if ((Test-Path \"$dir\\$file\") -and -not (Test-Path \"$persist_dir\\$file\")) { Copy-Item \"$dir\\$file\" \"$persist_dir\\$file\" -Force }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/BanjoRecomp/BanjoRecomp"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/BanjoRecomp/BanjoRecomp/releases/download/v$version/BanjoRecompiled-v$version-Windows.zip"
+    }
+}

@@ -1,0 +1,44 @@
+{
+    "version": "1.0.3",
+    "description": "Static recompilation of Starfox 64 for PC",
+    "homepage": "https://github.com/sonicdcer/Starfox64Recomp",
+    "license": "GPL-3.0",
+    "url": "https://gh-proxy.com/https://github.com/sonicdcer/Starfox64Recomp/releases/download/1.0.3/Starfox64Recompiled-v1.0.3-Windows-RelWithDebInfo.zip",
+    "hash": "768c18b0aeb325a0102f722338f09a270a76eeebea29154764147a93d0bde530",
+    "pre_install": [
+        "$files = @('controls.json', 'general.json', 'graphics.json', 'sound.json', 'sf64.n64.us.1.1.z64')",
+        "foreach ($file in $files) {",
+        "    if (!(Test-Path \"$dir\\$file\")) { New-Item \"$dir\\$file\" -Type File | Out-Null }",
+        "}"
+    ],
+    "post_install": "Set-Content -Value $null -Path \"$dir\\portable.txt\"",
+    "bin": "Starfox64Recompiled.exe",
+    "shortcuts": [
+        [
+            "Starfox64Recompiled.exe",
+            "Starfox 64 - Recompiled"
+        ]
+    ],
+    "persist": [
+        "mods",
+        "mod_config",
+        "saves",
+        "controls.json",
+        "general.json",
+        "graphics.json",
+        "sound.json",
+        "sf64.n64.us.1.1.z64"
+    ],
+    "pre_uninstall": [
+        "$files = @('controls.json', 'general.json', 'graphics.json', 'sound.json', 'sf64.n64.us.1.1.z64')",
+        "foreach ($file in $files) {",
+        "    if ((Test-Path \"$dir\\$file\") -and -not (Test-Path \"$persist_dir\\$file\")) { Copy-Item \"$dir\\$file\" \"$persist_dir\\$file\" -Force }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://github.com/sonicdcer/Starfox64Recomp"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/sonicdcer/Starfox64Recomp/releases/download/$version/Starfox64Recompiled-v$version-Windows-RelWithDebInfo.zip"
+    }
+}
