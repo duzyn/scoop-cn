@@ -21,8 +21,7 @@
     "installer": {
         "script": [
             "# Remove unnecessary files",
-            "Remove-Item \"$dir\\certmgr.exe\"",
-            "Remove-Item \"$dir\\installCert.bat\"",
+            "Remove-Item -Path \"$dir\\installCert.bat\" -Force -ErrorAction SilentlyContinue",
             "",
             "# Install certificates",
             "certutil -addstore -f root \"$dir\\IddSampleDriver.cer\" | Out-Null",
