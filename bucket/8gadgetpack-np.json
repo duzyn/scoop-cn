@@ -1,21 +1,21 @@
 {
-    "version": "37.0",
+    "version": "39.0",
     "description": "Gadgets for Windows.",
-    "homepage": "https://8gadgetpack.net/",
-    "license": {
-        "identifier": "Freeware",
-        "url": "https://8gadgetpack.net/#FAQ"
-    },
-    "url": "https://8gadgetpack.net/dl_370/8GadgetPackSetup.msi#/setup.msi_",
-    "hash": "821e33cf757bd01bec6703796c01726e6674b8de3bc1e7ea834318039e46909e",
+    "homepage": "https://gadgetpack.net",
+    "license": "Freeware",
+    "url": "https://gadgetpack.net/dl_390/GadgetPackSetup.msi#/setup.msi_",
+    "hash": "1a89f9c908bf4313a813b63a701c95dcf53538a66ce2ededc5aa0635da1a7338",
     "installer": {
         "script": "Start-Process msiexec -ArgumentList @('/i', \"`\"$dir\\setup.msi_`\"\", '/qn') -Wait -Verb RunAs | Out-Null"
     },
     "uninstaller": {
         "script": "Start-Process msiexec -ArgumentList @('/x', \"`\"$dir\\setup.msi_`\"\", '/qn') -Wait -Verb RunAs | Out-Null"
     },
-    "checkver": "Version ([\\d.]+) released",
+    "checkver": {
+        "url": "https://gadgetpack.net/changelog.html",
+        "regex": "Version\\s*([\\d.]+)"
+    },
     "autoupdate": {
-        "url": "https://8gadgetpack.net/dl_$cleanVersion/8GadgetPackSetup.msi#/setup.msi_"
+        "url": "https://gadgetpack.net/dl_$cleanVersion/GadgetPackSetup.msi#/setup.msi_"
     }
 }
