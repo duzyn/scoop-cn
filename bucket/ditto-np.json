@@ -1,16 +1,15 @@
 {
-    "version": "3.24.246.0",
-    "description": "Windows clipboard extension.",
-    "homepage": "http://ditto-cp.sourceforge.net/",
-    "license": "GPL-3.0-only",
+    "version": "3.25.113.0",
+    "description": "A Windows clipboard enhancement utility that extends the standard clipboard by storing copied items for later reuse, with support for multiple data types including text, images, HTML, and custom formats.",
+    "homepage": "https://sabrogden.github.io/Ditto/",
+    "license": {
+        "identifier": "GPL-3.0-or-later",
+        "url": "https://github.com/sabrogden/Ditto/blob/HEAD/LICENSE"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/3.24.246.0/DittoSetup_64bit_3_24_246_0.exe#/setup.exe",
-            "hash": "sha1:c4830977e33055021e02aea4a26a3decd12c0f28"
-        },
-        "32bit": {
-            "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/3.24.246.0/DittoSetup_3_24_246_0.exe#/setup.exe",
-            "hash": "sha1:05efb206c0741754b600403fcf87b469f8124167"
+            "url": "https://gh-proxy.com/https://github.com/sabrogden/Ditto/releases/download/3.25.113.0/DittoSetup_3_25_113_0.exe#/setup.exe",
+            "hash": "fc354f1e9b9d2984099d4da93b4c569866dfe9bf1f590c1313e85e07f41224d3"
         }
     },
     "installer": {
@@ -35,14 +34,13 @@
             "Ditto"
         ]
     ],
-    "checkver": "var versionDots=\"([\\d.]+)\"",
+    "checkver": {
+        "github": "https://github.com/sabrogden/Ditto"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/$version/DittoSetup_64bit_$underscoreVersion.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://sourceforge.net/projects/ditto-cp/files/Ditto/$version/DittoSetup_$underscoreVersion.exe#/setup.exe"
+                "url": "https://gh-proxy.com/https://github.com/sabrogden/Ditto/releases/download/$version/DittoSetup_$underscoreVersion.exe#/setup.exe"
             }
         }
     }
