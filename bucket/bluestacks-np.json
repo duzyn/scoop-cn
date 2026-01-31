@@ -1,19 +1,15 @@
 {
-    "version": "5.21.150.1026",
+    "version": "5.22.150.1014",
     "description": "Android emulator",
-    "homepage": "https://www.bluestacks.com/",
+    "homepage": "https://www.bluestacks.com/bluestacks-5.html",
     "license": {
         "identifier": "Freeware",
-        "url": "https://www.bluestacks.com/tw/terms-and-privacy.html"
+        "url": "https://www.bluestacks.com/terms-and-privacy.html#terms"
     },
     "architecture": {
         "64bit": {
-            "url": "https://cdn3.bluestacks.com/downloads/windows/nxt/5.21.150.1026/d38633a7cfb05064017b34130c3da255/FullInstaller/x64/BlueStacksFullInstaller_5.21.150.1026_amd64_native.exe#/setup.exe",
-            "hash": "bd9aabda26cc1e26d7308effe76503cd229c334be36bd359bc85290789ef8c64"
-        },
-        "32bit": {
-            "url": "https://cdn3.bluestacks.com/downloads/windows/nxt/5.21.150.1026/d38633a7cfb05064017b34130c3da255/FullInstaller/x86/BlueStacksFullInstaller_5.21.150.1026_x86_native.exe#/setup.exe",
-            "hash": "79bc97e854e11cde0907092a72f2be68fec385c37b21e56166eb7a6892aefd23"
+            "url": "https://ak-build.bluestacks.com/public/app-player/windows/nxt/5.22.150.1014/c6b85b9680fe708a143d721bdc7dd4e3/FullInstaller/x64/BlueStacksFullInstaller_5.22.150.1014_amd64_native.exe#/setup.exe",
+            "hash": "5ad80b2b1d63095d593d81f364247cbd14b2b1acd266218b62303388375e5da7"
         }
     },
     "installer": {
@@ -35,17 +31,33 @@
         ]
     },
     "checkver": {
-        "url": "https://webcache.googleusercontent.com/search?q=cache:https://support.bluestacks.com/hc/en-us/articles/4402611273485-BlueStacks-5-offline-installer",
-        "regex": "windows/nxt/([\\d.]+)/(?<sha>[0-9a-f]+)/"
+        "script": [
+            "$first_letter, $publisher, $package = 'b', 'BlueStack', 'BlueStacks'",
+            "$manifests_root = 'https://api.github.com/repositories/197275551/contents/manifests'",
+            "$package_url = '{0}/{1}/{2}/{3}' -f $manifests_root, $first_letter, $publisher, $package",
+            "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
+            "$path_segments = $response | Where-Object { $_.type -eq 'dir' } |",
+            "        Sort-Object -Property { [version]$_.name } -Descending | ForEach-Object -MemberName name",
+            "foreach ($path_segment in $path_segments) {",
+            "    $manifest_url = '{0}/{1}/{2}/{3}/{4}/{2}.{3}.installer.yaml' -f $manifests_root, $first_letter, $publisher, $package, $path_segment",
+            "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -Headers @{ 'Accept' = 'application/vnd.github.v3.raw' } -ErrorAction Stop",
+            "    if ($null -ne $manifest_info -and $manifest_info -match 'nxt/(?<version>[\\d.]+)/(?<token>[^/]+)') {",
+            "        Write-Output \"$($Matches['version']), $($Matches['token'])\"",
+            "        break",
+            "    }",
+            "}"
+        ],
+        "regex": "([\\d.]+), (?<token>.+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn3.bluestacks.com/downloads/windows/nxt/$version/$matchSha/FullInstaller/x64/BlueStacksFullInstaller_$version_amd64_native.exe#/setup.exe"
-            },
-            "32bit": {
-                "url": "https://cdn3.bluestacks.com/downloads/windows/nxt/$version/$matchSha/FullInstaller/x86/BlueStacksFullInstaller_$version_x86_native.exe#/setup.exe"
+                "url": "https://ak-build.bluestacks.com/public/app-player/windows/nxt/$version/$matchToken/FullInstaller/x64/BlueStacksFullInstaller_$version_amd64_native.exe#/setup.exe"
             }
+        },
+        "hash": {
+            "url": "https://gh-proxy.com/https://raw.githubusercontent.com/microsoft/winget-pkgs/HEAD/manifests/b/BlueStack/BlueStacks/$version/BlueStack.BlueStacks.installer.yaml",
+            "regex": "(?s)$basename.+?$sha256"
         }
     }
 }
