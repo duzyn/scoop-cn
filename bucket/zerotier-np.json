@@ -1,14 +1,14 @@
 {
     "##": "This package is non-portable because the MSI installer installs the drivers required for the app to work.",
-    "version": "1.14.0",
+    "version": "1.16.0",
     "description": "Network connection/management software that combines the capabilities of VPN and SD-WAN.",
     "homepage": "https://www.zerotier.com/",
     "license": {
         "identifier": "Proprietary",
         "url": "https://github.com/zerotier/ZeroTierOne/blob/master/LICENSE.txt"
     },
-    "url": "https://download.zerotier.com/RELEASES/1.14.0/dist/ZeroTier%20One.msi#/setup.msi_",
-    "hash": "4f844eb5632cb7484499ba1b237d91fb2fd4e97176864ede6e74ad33c599c135",
+    "url": "https://download.zerotier.com/RELEASES/1.16.0/dist/ZeroTier%20One.msi#/setup.msi_",
+    "hash": "0f5bb69cdd32e178eac0c04665401db617d026db1dab05624ca058334a61039a",
     "installer": {
         "script": [
             "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
@@ -23,8 +23,7 @@
         ]
     },
     "checkver": {
-        "url": "https://www.zerotier.com/download/",
-        "re": "Latest Version \\| ([\\d.]+)"
+        "github": "https://github.com/zerotier/ZeroTierOne"
     },
     "autoupdate": {
         "url": "https://download.zerotier.com/RELEASES/$version/dist/ZeroTier%20One.msi#/setup.msi_"
