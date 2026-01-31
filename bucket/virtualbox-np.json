@@ -18,13 +18,14 @@
     ],
     "installer": {
         "script": [
-            "$setup = Get-ChildItem \"$dir\\VirtualBox*_amd64.msi\" | Select-Object -First 1",
+            "$setup = Get-ChildItem -Path \"$dir\" -Filter 'VirtualBox-*.msi' | Select-Object -First 1",
             "if (-not $setup) { error \"MSI not found under $dir\"; break }",
             "$args = @('/i', \"$($setup.FullName)\", '/qn', '/norestart', '/log', \"$dir\\install-log.txt\", 'VBOX_INSTALLDESKTOPSHORTCUT=0', 'VBOX_INSTALLQUICKLAUNCHSHORTCUT=0', 'VBOX_START=0', 'VBOX_INSTALLSTARTMENUENTRIES=0')",
             "if (!$global) { $args += 'ALLUSERS=2', \"INSTALLDIR=`\"$dir`\"\" }",
             "if ($global) { $args += 'ALLUSERS=1' }",
             "$succ = Invoke-ExternalCommand msiexec -ArgumentList $args",
-            "Remove-Item -Path @(\"$dir\\VirtualBox-*64.msi\", \"$dir\\common.cab\")",
+            "Get-ChildItem -Path \"$dir\" -Filter 'VirtualBox-*.msi' | Remove-Item",
+            "Get-ChildItem -Path \"$dir\" -Filter 'common.cab' | Remove-Item",
             "if (-not $succ) {",
             "   Select-String -Path \"$dir\\install-log.txt\" -Pattern 'MSI \\(.*' | ForEach-Object { warn \"from log:`n    $_\" }",
             "   error \"Failed ($succ) to install `\"$($setup.FullName)`\".`nLog file: `\"$dir\\install-log.txt`\"\"",
