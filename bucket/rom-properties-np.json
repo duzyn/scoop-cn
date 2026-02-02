@@ -1,22 +1,14 @@
 {
-    "version": "2.6",
+    "version": "2.7.1",
     "description": "This shell extension adds a few nice features to file browsers for managing video game ROM and disc images.",
     "homepage": "https://github.com/GerbilSoft/rom-properties",
-    "license": "GPL-2.0",
-    "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v2.6/rom-properties_2.6-windows.zip",
-    "hash": "0c8e3c56ed2fa76209894f7a906642a74546c9698d980604b8b4bd99389b7f76",
-    "pre_install": "if (!(is_admin)) { error \"Administrator rights are required to install $app\"; break }",
-    "installer": {
-        "script": [
-            "if ($architecture -eq '64bit') {",
-            "    regsvr32 /s \"$dir\\amd64\\rom-properties.dll\"",
-            "}",
-            "regsvr32 /s \"$dir\\i386\\rom-properties.dll\"",
-            "taskkill /f /im explorer.exe | Out-Null",
-            "Start-Sleep -Seconds 1.5",
-            "explorer"
-        ]
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/GerbilSoft/rom-properties/blob/HEAD/LICENSE"
     },
+    "depends": "scoop-cn/vcredist2022",
+    "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v2.7.1/SetupRomProperties-2.7.1.exe",
+    "hash": "17d9e19d3d9d5201c70ab0e1a6b325be7c09e7dfc31b322fc69b73695523a3cc",
     "architecture": {
         "64bit": {
             "bin": [
@@ -29,28 +21,49 @@
                 "rpcli.exe",
                 "i386/rp-download.exe"
             ]
+        },
+        "arm64": {
+            "bin": [
+                "rpcli.exe",
+                "arm64/rp-download.exe"
+            ]
         }
     },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "args": [
+            "/VERYSILENT",
+            "/SUPPRESSMSGBOXES",
+            "/SP-",
+            "/NOCANCEL",
+            "/NORESTART",
+            "/NOICONS",
+            "/DIR=\"$dir\""
+        ]
+    },
+    "post_install": [
+        "Write-Host \"`nINFO  Restarting explorer...\" -ForegroundColor DarkGray",
+        "Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue",
+        "Start-Sleep -Milliseconds 1500"
+    ],
     "shortcuts": [
         [
             "rp-config.exe",
             "ROM Properties Page Configuration"
         ]
     ],
-    "pre_uninstall": "if (!(is_admin)) { error \"Administrator rights are required to uninstall $app\"; break }",
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "uninstaller": {
         "script": [
-            "if ($architecture -eq '64bit') {",
-            "   regsvr32 /u /s \"$dir\\amd64\\rom-properties.dll\"",
-            "}",
-            "regsvr32 /u /s \"$dir\\i386\\rom-properties.dll\"",
-            "taskkill /f /im explorer.exe | Out-Null",
-            "Start-Sleep -Seconds 1.5",
-            "explorer"
+            "$args_list = @('/VERYSILENT', '/SUPPRESSMSGBOXES', '/NORESTART')",
+            "Start-Process -FilePath \"$dir\\unins000.exe\" -ArgumentList $args_list -WindowStyle 'Hidden' -Wait",
+            "Write-Host \"`nINFO  Restarting explorer...\" -ForegroundColor DarkGray",
+            "Stop-Process -Name 'explorer' -Force -ErrorAction SilentlyContinue",
+            "Start-Sleep -Milliseconds 1500"
         ]
     },
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v$version/rom-properties_$version-windows.zip"
+        "url": "https://gh-proxy.com/https://github.com/GerbilSoft/rom-properties/releases/download/v$version/SetupRomProperties-$version.exe"
     }
 }
