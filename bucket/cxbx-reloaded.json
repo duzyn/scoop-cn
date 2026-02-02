@@ -1,5 +1,5 @@
 {
-    "version": "9454f34",
+    "version": "20260130182937-9454f34",
     "description": "Xbox (Original) Emulator",
     "homepage": "https://cxbx-reloaded.co.uk/",
     "license": {
@@ -46,12 +46,20 @@
     ],
     "checkver": {
         "url": "https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases.atom",
-        "regex": "CI-([a-f\\d]+)."
+        "script": [
+            "$xml = [xml]$page",
+            "$entry = $xml.feed.entry | Select-Object -First 1",
+            "$updated = $entry.updated",
+            "$title = $entry.title",
+            "Write-Output \"$updated $title\""
+        ],
+        "regex": "(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})T(?<hour>\\d{2}):(?<minute>\\d{2}):(?<second>\\d{2})Z CI-(?<commit>[a-f\\d]+)",
+        "replace": "${year}${month}${day}${hour}${minute}${second}-${commit}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$version/CxbxReloaded-Release.zip"
+                "url": "https://gh-proxy.com/https://github.com/Cxbx-Reloaded/Cxbx-Reloaded/releases/download/CI-$matchCommit/CxbxReloaded-Release.zip"
             }
         }
     }
