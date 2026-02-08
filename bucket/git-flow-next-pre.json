@@ -1,16 +1,16 @@
 {
-    "version": "0.3.0",
+    "version": "1.0.0",
     "description": "A modern reimplementation of git-flow in Go that offers greater flexibility while maintaining backward compatibility with the original git-flow and git-flow-avh. (Pre-release)",
     "homepage": "https://github.com/gittower/git-flow-next",
     "license": "BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/gittower/git-flow-next/releases/download/v0.3.0/git-flow-next-v0.3.0-windows-amd64.zip",
-            "hash": "90a942eb29d801d067ea9c93c00fe9c94501c9d5b6df448a970cc69edd9a1b4e"
+            "url": "https://gh-proxy.com/https://github.com/gittower/git-flow-next/releases/download/v1.0.0/git-flow-next-v1.0.0-windows-amd64.zip",
+            "hash": "ca0ccb362d3aeddf88287241e7d62544378675c84aca2a41864d7868c957ea0a"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/gittower/git-flow-next/releases/download/v0.3.0/git-flow-next-v0.3.0-windows-386.zip",
-            "hash": "562f296ee3d9d54384bcf1db78d99c88df19886e02d5e7f8d6a1e2f53088c525"
+            "url": "https://gh-proxy.com/https://github.com/gittower/git-flow-next/releases/download/v1.0.0/git-flow-next-v1.0.0-windows-386.zip",
+            "hash": "5863ea1723077afa8578ab9860637467ef30749fadc4aa370b1d16a055cd62f3"
         }
     },
     "pre_install": "Get-ChildItem \"$dir\\git-flow*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'git-flow.exe'",

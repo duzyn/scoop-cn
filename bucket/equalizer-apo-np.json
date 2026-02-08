@@ -1,52 +1,47 @@
 {
-    "version": "1.4",
+    "version": "1.4.2",
     "description": "Parametric/graphic equalizer",
     "homepage": "https://sourceforge.net/projects/equalizerapo/",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.4/EqualizerAPO64-1.4.exe#/setup.exe",
-            "hash": "sha1:e2bae283dcf46815df41577eb1c1d3d60e0169ed"
+            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.4.2/EqualizerAPO-x64-1.4.2.exe",
+            "hash": "sha1:f599c3a16d27864d330529a012fc23a37abdd06d"
         },
         "32bit": {
-            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.4/EqualizerAPO32-1.4.exe#/setup.exe",
-            "hash": "sha1:222ac63cdc5a0fe81e3a2f6749b2b0e0eac64305"
+            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.4.2/EqualizerAPO-x86-1.4.2.exe",
+            "hash": "sha1:26143075a47ed26419919f735980377289e55688"
+        },
+        "arm64": {
+            "url": "https://downloads.sourceforge.net/project/equalizerapo/1.4.2/EqualizerAPO-ARM64-1.4.2.exe",
+            "hash": "sha1:80bf3d9cc7f815de81f4be72f48303d0298a982c"
         }
     },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "installer": {
         "script": [
-            "if (!(is_admin)) {",
-            "    error \"Administrator rights are required to install $app.\"",
-            "    break",
-            "}",
-            "",
-            "Start-Job {",
-            "    while ($configurator_process -eq $null) {",
-            "        Start-Sleep -Milliseconds 250",
-            "        $configurator_process = Get-Process | Where-Object { $_.name -eq 'Configurator' }",
-            "    }",
-            "",
-            "    $configurator_process | ForEach-Object { Stop-Process -Id $_.Id }",
-            "} | Out-Null",
-            "",
-            "Start-Process \"$dir\\setup.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null",
-            "Remove-Item \"$dir\\setup.exe\""
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList @('/S') -WindowStyle 'Hidden' -Wait",
+            "Remove-Item -Path \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue"
         ]
     },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "uninstaller": {
-        "script": "Start-Process \"$Env:ProgramFiles\\EqualizerAPO\\Uninstall.exe\" -ArgumentList '/S' -Wait -Verb RunAs | Out-Null"
+        "script": [
+            "$install_dir = \"$env:ProgramFiles\\EqualizerAPO\"",
+            "Start-Process -Path \"$install_dir\\Uninstall.exe\" -ArgumentList @('/S') -WindowStyle 'Hidden' -Wait"
+        ]
     },
-    "checkver": {
-        "url": "https://sourceforge.net/projects/equalizerapo/files/",
-        "regex": "equalizerapo/files/([\\d.]+)/"
-    },
+    "checkver": "sourceforge",
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO64-$version.exe#/setup.exe"
+                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO-x64-$version.exe"
             },
             "32bit": {
-                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO32-$version.exe#/setup.exe"
+                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO-x86-$version.exe"
+            },
+            "arm64": {
+                "url": "https://downloads.sourceforge.net/project/equalizerapo/$version/EqualizerAPO-ARM64-$version.exe"
             }
         }
     }

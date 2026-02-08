@@ -1,31 +1,40 @@
 {
-    "version": "1.1.7",
-    "homepage": "https://encodegui.com/",
+    "version": "1.2.3",
+    "homepage": "https://encodegui.com",
     "description": "A free and open source video transcoder GUI that utilizes AI tools for a fascinating encoding experience.",
-    "license": "AGPL-3.0",
+    "license": {
+        "identifier": "AGPL-3.0-or-later",
+        "url": "https://github.com/DaGooseYT/EncodeGUI/blob/HEAD/LICENSE"
+    },
     "architecture": {
         "64bit": {
-            "url": "https://encodegui.com/dl/EncodeGUI_1.1.7_setup.zip",
-            "hash": "14ea53d61360b8874863662e8deadaea4efc705c62ac59d8ec5e2bee66cb8765"
+            "url": "https://www.encodegui.com/dl/EncodeGUI_v1.2.3_win_setup.zip",
+            "hash": "a8c7323a0e2142575ed052e3ff81d9daf711bb3dc90edbc1058ba5890202e0de"
         }
     },
-    "post_install": [
-        "Get-ChildItem \"$dir\\EncodeGUI*setup.exe\" | Rename-Item -NewName 'setup.exe'; $arguments = @('/VERYSILENT', '/CURRENTUSER', \"/DIR=$dir\", '/SUPPRESSMSGBOXES')",
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\setup.exe\" -Wait -Verb 'RunAs' -ArgumentList $arguments; Remove-Item \"$dir\\setup.exe\""
-    ],
-    "pre_uninstall": [
-        "if (!(is_admin)) { error \"$app requires admin rights to $cmd\"; break }",
-        "Start-Process \"$dir\\unins000.exe\" -Wait -Verb 'RunAs' -ArgumentList @('/VERYSILENT', '/FORCECLOSEAPPLICATIONS', '/SUPPRESSMSGBOXES')",
-        "Start-Sleep -Seconds 2"
-    ],
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "script": [
+            "$args_list = @('/VERYSILENT', \"/DIR=`\"$dir`\"\", '/SUPPRESSMSGBOXES')",
+            "$installer_file = Get-ChildItem -Path $dir -Filter '*.exe' -File | Select-Object -ExpandProperty FullName -First 1",
+            "Start-Process -FilePath $installer_file -ArgumentList $args_list -WindowStyle Hidden -Wait",
+            "Remove-Item -Path $installer_file -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "uninstaller": {
+        "script": [
+            "$args_list = @('/VERYSILENT', '/FORCECLOSEAPPLICATIONS', '/SUPPRESSMSGBOXES')",
+            "Start-Process -FilePath \"$dir\\unins000.exe\" -ArgumentList $args_list -WindowStyle Hidden -Wait"
+        ]
+    },
     "checkver": {
         "github": "https://github.com/DaGooseYT/EncodeGUI"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://encodegui.com/dl/EncodeGUI_$version_setup.zip"
+                "url": "https://www.encodegui.com/dl/EncodeGUI_v$version_win_setup.zip"
             }
         }
     }
