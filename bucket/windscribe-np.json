@@ -1,0 +1,56 @@
+{
+    "##": [
+        "The `-dir` option can only install the application on the system drive.",
+        "To avoid unnecessary complexity, please do not use the `-dir` option in the installation script."
+    ],
+    "version": "2.19.7",
+    "description": "A feature-rich VPN desktop application that enhances online privacy by hiding the user's location, blocking ads and trackers, and securing network traffic, with support for multiple modern protocols and advanced networking features.",
+    "homepage": "https://windscribe.com",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/Windscribe/Desktop-App/blob/HEAD/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/Windscribe/Desktop-App/releases/download/v2.19.7/Windscribe_2.19.7_amd64.exe",
+            "hash": "106505261ee122d4ddbebc09993c3ee7c7962274af013efc684c064f2f4ee5fa"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/Windscribe/Desktop-App/releases/download/v2.19.7/Windscribe_2.19.7_arm64.exe",
+            "hash": "937676500fb84a4e64c22c3b1fcae7feaf14e8b473d73e5155deba4bf1469bcf"
+        }
+    },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "script": [
+            "$args_list = @('-silent', '-no-auto-start')",
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList $args_list -WindowStyle 'Hidden' -Wait",
+            "Remove-Item -Path \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "uninstaller": {
+        "script": [
+            "$install_dir = \"$env:ProgramFiles\\Windscribe\"",
+            "$uninstaller_file = Get-ChildItem -Path $install_dir -Filter 'unins*.exe' -File | Select-Object -ExpandProperty FullName -First 1",
+            "Start-Process -FilePath $uninstaller_file -ArgumentList @('/VERYSILENT') -WindowStyle Hidden -Wait"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/Windscribe/Desktop-App"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/Windscribe/Desktop-App/releases/download/v$version/Windscribe_$version_amd64.exe"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/Windscribe/Desktop-App/releases/download/v$version/Windscribe_$version_arm64.exe"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/Windscribe/Desktop-App/releases/tag/v$version",
+            "regex": "(?s)$basename.+?$sha256"
+        }
+    }
+}
