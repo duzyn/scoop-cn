@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
@@ -18,9 +18,8 @@ jobs:
         run: |
           .\install.ps1
           echo "Scoop repo has been set to $(scoop config scoop_repo)"
-          echo "7Zip was installed to $(scoop which 7z)"
+          echo "7-Zip was installed to $(scoop which 7z)"
           echo "Git was installed to $(scoop which git)"
-          echo "Aria2 was installed to $(scoop which aria2c)"
-          scoop install scoop-cn/pandoc
-          scoop install scoop-cn/miktex
+          scoop install pandoc
+          scoop install miktex
           scoop bucket list

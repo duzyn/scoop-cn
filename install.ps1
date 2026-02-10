@@ -4,7 +4,6 @@ $global:ProgressPreference = 'SilentlyContinue'
 # --- Configuration ---
 $GithubProxy = "https://gh-proxy.com"
 $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
-$ScoopMainRepo = "$GithubProxy/https://github.com/ScoopInstaller/Main.git"
 $ScoopCNRepo = "$GithubProxy/https://github.com/duzyn/scoop-cn.git"
 
 # --- Functions ---
@@ -57,35 +56,14 @@ function Setup-ScoopCN-Bucket {
         [string]$Path
     )
     
-    # 将 Scoop 的 main 仓库源替换为代理的
+    # 将 Scoop 的 main 仓库源替换为 scoop-cn 的
     if (Test-Path -Path "$Path\buckets\main") {
         Write-Host "Removing original main bucket..."
         scoop bucket rm main
     }
 
     Write-Host "Adding main bucket with proxy..."
-    scoop bucket add main $ScoopMainRepo
-
-    # 添加 scoop-cn 仓库
-    Write-Host "Adding scoop-cn bucket..."
-    scoop bucket add scoop-cn $ScoopCNRepo
-}
-
-function Migrate-Installed-Apps {
-    param(
-        [Parameter(Mandatory=$true)]
-        [string]$Path
-    )
-
-    Write-Host "Migrating 7zip, git to scoop-cn bucket..."
-    # 将 7zip, git 转为后续用 scoop-cn 来更新
-    Get-ChildItem -Path "$Path\apps" -Recurse -Filter "install.json" | ForEach-Object { 
-        $content = Get-Content -Path $_.FullName -Raw
-        # 仅替换 'main' bucket 到 'scoop-cn'
-        if ($content -match '"bucket": "main"') {
-            $content -replace '"bucket": "main"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName 
-        }
-    }
+    scoop bucket add main $ScoopCNRepo
 }
 
 # --- Main Execution ---
@@ -97,7 +75,5 @@ Install-Scoop
 Prepare-And-Install-Essentials -Path $ScoopPath
 
 Setup-ScoopCN-Bucket -Path $ScoopPath
-
-Migrate-Installed-Apps -Path $ScoopPath
 
 Write-Host "scoop-cn was installed successfully!"

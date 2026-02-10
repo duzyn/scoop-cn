@@ -7,10 +7,10 @@
 Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简单易懂，但是在中国访问却可能在每个环节都会遇到无法下载的问题。依次会遇到的是：
 
 1. 首先从 GitHub Raw 下载 [Scoop 安装脚本](https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1)，此时下载会失败。
-2. 如果第一步成功后，会下载 [Scoop 仓库存档](https://github.com/ScoopInstaller/Scoop/archive/master.zip) 和 [Main 应用仓库存档](https://github.com/ScoopInstaller/Main/archive/master.zip)，此时下载又会失败。
+2. 如果第一步成功后，会下载 [Scoop 库存档](https://github.com/ScoopInstaller/Scoop/archive/master.zip) 和 [Main 应用库存档](https://github.com/ScoopInstaller/Main/archive/master.zip)，此时下载又会失败。
 3. 如果第二步成功后，会先下载 7-Zip 和 Git 来做后面的事，因为 [7-Zip 的官网](https://www.7-zip.org/) 也是会偶尔无法访问，Git 下载地址在 [GitHub Releases](https://github.com/git-for-windows/git/releases)，此时下载又会失败。
-4. 如果第三步成功后，会从官方 Main 应用仓库检出代码，地址在 [GitHub 仓库](https://github.com/ScoopInstaller/Main)，此时下载又会失败。
-5. 如果第四步成功后，更新 Scoop 时会从官方 Scoop 仓库检出代码，地址在 [GitHub 仓库](https://github.com/ScoopInstaller/Scoop/)，此时下载又会失败。
+4. 如果第三步成功后，会从官方 Main 应用库检出代码，地址在 [GitHub 库](https://github.com/ScoopInstaller/Main)，此时下载又会失败。
+5. 如果第四步成功后，更新 Scoop 时会从官方 Scoop 库检出代码，地址在 [GitHub 库](https://github.com/ScoopInstaller/Scoop/)，此时下载又会失败。
 6. 后续添加、检出 extras 等应用库都会失败。
 
 如果你使用 Scoop 没有遇到这些问题，恭喜你，后面的内容不用看了。
@@ -40,9 +40,9 @@ $PSVersionTable.PSVersion.Major # 应该 >= 5.1
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-## 安装 Scoop 和 scoop-cn（推荐）
+## 方式一：安装 Scoop 和 scoop-cn（推荐）
 
-此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本仓库。打开 PowerShell，输入以下命令下载安装：
+此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本库为 main 库。打开 PowerShell，输入以下命令下载安装：
 
 ```powershell
 irm https://gh-proxy.com/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
@@ -58,70 +58,72 @@ irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
 
 安装成功后，会提示“scoop-cn was installed successfully!”
 
-## 只添加 scoop-cn 仓库
+安装之后，main 库的地址会换为本库地址。可以运行以下命令安装 app：
+
+```powershell
+scoop install APPNAME
+```
+
+## 方式二：添加 scoop-cn 库，并替换 main 库
 
 如果已经安装了 Scoop，不想重新安装可以按以下步骤进行：
 
-1. 运行以下命令添加本仓库
-
-    ```powershell
-    scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
-    ```
-
-2. 把已经安装的 app 改为使用 scoop-cn 来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 scoop-cn，这样就把已安装的 app 换到 scoop-cn 了。可以运行以下命令来批量替换：
-
-    ```powershell
-    Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "(main|extras|versions|nirsoft|sysinternals|php|nerd-fonts|nonportable|java|games)"', '"bucket": "scoop-cn"' | Set-Content -Path $_.FullName }
-    ```
-
-    命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。如果你设置过 SCOOP 环境变量，需将 `$env:USERPROFILE\scoop\apps` 改成 `$env:SCOOP\apps`。
-
-3. 可以运行 `scoop list` 来检查替换是否成功。比如未替换前是这样的：
-
-    ```powershell
-    Installed apps:
-
-    Name          Version           Source         Updated               Info
-    ----          -------           ------         -------               ----
-    7zip          24.08             main           2024-11-06 17:52:51
-    git           2.47.0.2          main           2024-11-06 17:53:04
-    ```
-
-    运行命令替换之后变为：
-
-    ```powershell
-    Installed apps:
-
-    Name          Version           Source         Updated               Info
-    ----          -------           ------         -------               ----
-    7zip          24.08             scoop-cn       2024-11-06 17:52:51
-    git           2.47.0.2          scoop-cn       2024-11-06 17:53:04
-    ```
-
-## 更新 GitHub 代理地址
-
-如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本仓库。可以在本仓库使用新 GitHub 代理地址后更新 GitHub 代理地址。
-
-运行以下命令设置新 GitHub 代理地址，下例中 `https://gh-proxy.com` 是当前在使用的：
+运行以下命令添加本库：
 
 ```powershell
-scoop config scoop_repo https://gh-proxy.com/https://github.com/ScoopInstaller/Scoop.git
-git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-proxy.com/https://github.com/ScoopInstaller/Main.git
-git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
+scoop bucket rm main # 根据自己情况，库添加了几个，就删几个
+scoop bucket rm extras
+scoop bucket rm versions
+scoop bucket rm nirsoft
+scoop bucket rm sysinternals
+scoop bucket rm php
+scoop bucket rm nerd-fonts
+scoop bucket rm nonportable
+scoop bucket rm java
+scoop bucket rm games
+scoop bucket add main https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
 ```
 
-## 安装应用
-
-搜索应用：
+添加之后，本库将作为 main 库。把已经安装的 app 改为使用本库来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 main。可以运行以下命令来批量替换：
 
 ```powershell
-scoop search APPNAME
+Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "(main|extras|versions|nirsoft|sysinternals|php|nerd-fonts|nonportable|java|games|scoop-cn)"', '"bucket": "main"' | Set-Content -Path $_.FullName }
+```
+
+命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。如果你设置过 SCOOP 环境变量，需将 `$env:USERPROFILE\scoop\apps` 改成 `$env:SCOOP\apps`。
+
+可以运行 `scoop list` 来检查替换是否成功。
+
+可以运行以下命令安装 app：
+
+```powershell
+scoop install APPNAME
+```
+
+## 方式三：只添加 scoop-cn 库
+
+运行以下命令添加本库：
+
+```powershell
+scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
 ```
 
 安装应用：
 
 ```powershell
 scoop install scoop-cn/APPNAME
+```
+
+## 更新 GitHub 代理地址
+
+如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本库，需要更新本库的 GitHub 代理地址。
+
+运行以下命令设置新 GitHub 代理地址，下例中 `https://gh-proxy.com` 是当前在使用的：
+
+```powershell
+scoop config scoop_repo https://gh-proxy.com/https://github.com/ScoopInstaller/Scoop.git
+git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式二使用
+git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式三使用
 ```
 
 ## 查看帮助
@@ -131,5 +133,13 @@ scoop install scoop-cn/APPNAME
 ```powershell
 scoop help
 ```
+
+## 贡献者
+
+<a href="https://github.com/duzyn"><img src="https://github.com/duzyn.png" width="50px;" alt="duzyn"/></a>
+<a href="https://github.com/maoyeedy"><img src="https://github.com/maoyeedy.png" width="50px;" alt="maoyeedy"/></a>
+<a href="https://github.com/techoc"><img src="https://github.com/techoc.png" width="50px;" alt="techoc"/></a>
+<a href="https://github.com/Zacharia2"><img src="https://github.com/Zacharia2.png" width="50px;" alt="Zacharia2"/></a>
+
 
 ![Star History Chart](https://api.star-history.com/svg?repos=duzyn/scoop-cn&type=Date)
