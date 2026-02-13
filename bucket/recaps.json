@@ -20,8 +20,8 @@
     "post_install": [
         "$dirpath = $dir.Replace('\\', '\\\\')",
         "'add-startup.reg', 'remove-startup.reg' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\recaps\\$_\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\recaps\\$_\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\recaps\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\recaps\\$_\"",
         "        $content = $content.Replace('$dir', $dirpath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        $content | Set-Content -Path \"$dir\\$_\"",

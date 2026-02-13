@@ -5,7 +5,7 @@
     "license": "MIT",
     "notes": "Add Windows Terminal as a context menu option by running `reg import \"$dir\\install-context.reg\"`",
     "suggest": {
-        "vcredist": "scoop-cn/vcredist2022"
+        "vcredist": "vcredist2022"
     },
     "architecture": {
         "64bit": {
@@ -41,9 +41,9 @@
     },
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\windows-terminal\\$_.reg\") {",
         "        $wtPath = \"$dir\\wt.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\windows-terminal\\$_.reg\").Replace('$wt', $wtPath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\windows-terminal\\$_.reg\").Replace('$wt', $wtPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

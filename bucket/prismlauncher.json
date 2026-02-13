@@ -12,7 +12,7 @@
         "If you are using a global install on a system with more than one user, you will need to copy a user's data from %appdata% to the new Scoop PrismLauncher persist directory"
     ],
     "suggest": {
-        "Microsoft Visual C++ Redistributables": "scoop-cn/vcredist2022"
+        "Microsoft Visual C++ Redistributables": "vcredist2022"
     },
     "architecture": {
         "64bit": {
@@ -53,9 +53,9 @@
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\prismlauncher\\$_.reg\") {",
         "        $exePath = \"$dir\\prismlauncher.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher\\$_.reg\").Replace('$EXEPATH', $exePath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\prismlauncher\\$_.reg\").Replace('$EXEPATH', $exePath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

@@ -32,7 +32,7 @@
         "if ($architecture -eq 'arm64') { $py_archLabel = 'ARM64' }",
         "'install-pep-514.reg', 'uninstall-pep-514.reg' | ForEach-Object {",
         "    $py_version = ($version -split '\\.')[0..1] -join '.'",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\python\\$_\"",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\python\\$_\"",
         "    $content = $content.Replace('$py_root', $py_root)",
         "    $content = $content.Replace('$py_version', $py_version)",
         "    $content = $content.Replace('$py_fullversion', $version)",

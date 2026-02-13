@@ -13,7 +13,7 @@
     "url": "https://gh-proxy.com/https://github.com/PrismLauncher/PrismLauncher/releases/download/7.2/PrismLauncher-Windows-MSVC-Legacy-Portable-7.2.zip",
     "hash": "c411eb73eb2b76a190a4a1bb0a933962fd9064f271304111c73ea4dc2b5488ff",
     "suggest": {
-        "Microsoft Visual C++ Redistributables": "scoop-cn/vcredist2022"
+        "Microsoft Visual C++ Redistributables": "vcredist2022"
     },
     "pre_install": [
         "$migration = $true",
@@ -38,9 +38,9 @@
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher-qt5\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\prismlauncher-qt5\\$_.reg\") {",
         "        $exePath = \"$dir\\prismlauncher.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher-qt5\\$_.reg\").Replace('$EXEPATH', $exePath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\prismlauncher-qt5\\$_.reg\").Replace('$EXEPATH', $exePath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

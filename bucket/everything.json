@@ -32,8 +32,8 @@
     "post_install": [
         "$app_path = \"$dir\\Everything.exe\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\everything\\$_\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\everything\\$_\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\everything\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\everything\\$_\"",
         "        $content = $content.Replace('$app_path', $app_path)",
         "        if ($global) {",
         "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

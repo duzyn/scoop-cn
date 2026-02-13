@@ -5,7 +5,7 @@
     "license": "GPL-3.0-or-later",
     "url": "https://gh-proxy.com/https://raw.githubusercontent.com/pfn/keepasshttp/b9a6813bfc9ccc9618938249c1bfff744a28ca44/KeePassHttp.plgx",
     "hash": "e00b456692e337e63d21e34cfe23e03d67d5ec1ce08e9b66ca2a88f6a687ef6d",
-    "depends": "scoop-cn/keepass",
+    "depends": "keepass",
     "installer": {
         "script": "Copy-Item \"$dir\\KeePassHttp.plgx\" \"$(appdir keepass $global)\\current\\Plugins\" -Recurse"
     },

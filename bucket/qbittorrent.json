@@ -41,9 +41,9 @@
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\qbittorrent\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\qbittorrent\\$_.reg\") {",
         "        $qbitPath = \"$dir\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\qbittorrent\\$_.reg\").Replace('$qbit', $qbitPath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\qbittorrent\\$_.reg\").Replace('$qbit', $qbitPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

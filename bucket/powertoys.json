@@ -35,8 +35,8 @@
     },
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.ps1\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.ps1\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\$app\\$_.ps1\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\$app\\$_.ps1\"",
         "        $content = $content.Replace('{{scoop_dir}}', $original_dir)",
         "        if ($global) {",
         "            $content = $content.Replace('{{install_scope}}', 'perMachine')",

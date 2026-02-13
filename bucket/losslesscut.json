@@ -23,8 +23,8 @@
     "post_install": [
         "$dirpath = \"$dir\".Replace('\\', '\\\\')",
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\losslesscut\\$_.reg\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\losslesscut\\$_.reg\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\losslesscut\\$_.reg\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\losslesscut\\$_.reg\"",
         "        $content = $content.Replace('$dirpath', $dirpath)",
         "        $content | Set-Content -Path \"$dir\\$_.reg\"",
         "    }",

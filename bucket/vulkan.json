@@ -15,7 +15,7 @@
     ],
     "pre_install": "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstal*\" -Recurse",
     "post_install": [
-        "$script_path = \"$bucketsdir\\scoop-cn\\scripts\\$app\\install-vk-layers.ps1\"",
+        "$script_path = \"$bucketsdir\\main\\scripts\\$app\\install-vk-layers.ps1\"",
         "if (Test-Path $script_path) {",
         "   $vulkan_bin = \"$dir\\Bin\"",
         "   $content = Get-Content $script_path",

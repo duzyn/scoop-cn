@@ -1,5 +1,5 @@
 {
-    "version": "2026.1-261.20362.17",
+    "version": "2026.1-261.20869.47",
     "description": "Cross-Platform IDE for PHP by JetBrains. (Latest)",
     "homepage": "https://www.jetbrains.com/phpstorm/",
     "license": {
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.jetbrains.com/webide/PhpStorm-261.20362.17.exe#/dl.7z",
-            "hash": "d691391edac7f8aa495a6acee0b12fe00551119c36c86f524e7a8d6b0f30f281",
+            "url": "https://download.jetbrains.com/webide/PhpStorm-261.20869.47.exe#/dl.7z",
+            "hash": "61c5076b618c4aa808e5ceec749dfdf57e76ce14da206337c0a2e07775442408",
             "bin": [
                 [
                     "IDE\\bin\\phpstorm64.exe",
@@ -24,8 +24,8 @@
             ]
         },
         "arm64": {
-            "url": "https://download.jetbrains.com/webide/PhpStorm-261.20362.17-aarch64.exe#/dl.7z",
-            "hash": "a19645f2f3a119449329ea2c6402aefced94dd451b2a54fece96ce0bdfe3a186",
+            "url": "https://download.jetbrains.com/webide/PhpStorm-261.20869.47-aarch64.exe#/dl.7z",
+            "hash": "ac356236bebe8159e854390171732a485dcd861343c77b6264dfbd386e439e43",
             "bin": [
                 [
                     "IDE\\bin\\phpstorm64.exe",
@@ -43,7 +43,7 @@
     "extract_to": "IDE",
     "installer": {
         "script": [
-            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\"",
+            "& \"$bucketsdir\\main\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\"",
             "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
         ]
     },

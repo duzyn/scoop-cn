@@ -1,17 +1,17 @@
 {
-    "version": "2026.1-261.20362.17",
+    "version": "2026.1-261.20869.47",
     "description": "Cross-Platform IDE for PHP by JetBrains. (Early Access Program)",
     "homepage": "https://www.jetbrains.com/phpstorm/",
     "license": {
         "identifier": "Proprietary",
         "url": "https://www.jetbrains.com/store/license.html"
     },
-    "url": "https://download.jetbrains.com/webide/PhpStorm-261.20362.17.exe#/dl.7z",
-    "hash": "d691391edac7f8aa495a6acee0b12fe00551119c36c86f524e7a8d6b0f30f281",
+    "url": "https://download.jetbrains.com/webide/PhpStorm-261.20869.47.exe#/dl.7z",
+    "hash": "61c5076b618c4aa808e5ceec749dfdf57e76ce14da206337c0a2e07775442408",
     "extract_to": "IDE",
     "installer": {
         "script": [
-            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "& \"$bucketsdir\\main\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
             "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
         ]
     },

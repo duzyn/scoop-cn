@@ -32,7 +32,7 @@
     "pre_install": [
         "$newDir = $dir.Replace($version, 'current')",
         "",
-        "$scriptsDir = \"$bucketsdir\\scoop-cn\\scripts\"",
+        "$scriptsDir = \"$bucketsdir\\main\\scripts\"",
         "",
         "Get-ChildItem \"$scriptsDir\\harmonoid\\*.ps1\" | ForEach-Object {",
         "    $content = ($_ | Get-Content).Replace('CURRENT_DIRECTORY', $newDir)",

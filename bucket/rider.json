@@ -22,7 +22,7 @@
         "Get-ChildItem \"$persist_dir\\IDE\\bin\\jetbrains_client64.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$dir\\IDE\\bin\""
     ],
     "installer": {
-        "script": "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\""
+        "script": "& \"$bucketsdir\\main\\scripts\\jetbrains\\portable.ps1\" \"$dir\" \"$persist_dir\""
     },
     "bin": [
         [

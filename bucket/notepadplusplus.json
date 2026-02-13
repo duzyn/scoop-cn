@@ -26,9 +26,9 @@
     ],
     "post_install": [
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\notepadplusplus\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\notepadplusplus\\$_.reg\") {",
         "        $nppPath = \"$dir\\notepad++.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\notepadplusplus\\$_.reg\").Replace('$npp', $nppPath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\notepadplusplus\\$_.reg\").Replace('$npp', $nppPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

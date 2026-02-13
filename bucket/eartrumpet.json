@@ -17,7 +17,7 @@
     "post_install": [
         "$exepath = \"$dir\\EarTrumpet.exe\".Replace('\\', '\\\\')",
         "'add-startup', 'remove-startup' | ForEach-Object {",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\eartrumpet\\$_.reg\"",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\eartrumpet\\$_.reg\"",
         "    $content = $content.Replace('$exepath', $exepath)",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

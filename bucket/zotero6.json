@@ -21,7 +21,7 @@
         ]
     ],
     "post_install": [
-        "$scriptsDir = \"$bucketsdir\\scoop-cn\\scripts\"",
+        "$scriptsDir = \"$bucketsdir\\main\\scripts\"",
         "Get-ChildItem \"$scriptsDir\\zotero\\*.ps1\" | ForEach-Object {",
         "    $content = Get-Content $_",
         "    $content = $content.Replace('REPLACE_HERE', $dir)",

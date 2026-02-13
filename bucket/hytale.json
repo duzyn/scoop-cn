@@ -12,7 +12,7 @@
     },
     "url": "https://launcher.hytale.com/builds/release/windows/amd64/hytale-launcher-installer-latest.exe#/.7z",
     "pre_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
-    "post_install": "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\hytale\\default-folders.reg\" \"$dir\\default-folders.reg\" -Force -Recurse",
+    "post_install": "Copy-Item \"$bucketsdir\\main\\scripts\\hytale\\default-folders.reg\" \"$dir\\default-folders.reg\" -Force -Recurse",
     "shortcuts": [
         [
             "hytale-launcher.exe",

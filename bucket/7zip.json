@@ -32,7 +32,7 @@
     "post_install": [
         "$7zip_root = \"$dir\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\7-zip\\$_\"",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\7-zip\\$_\"",
         "    $content = $content.Replace('$7zip_root', $7zip_root)",
         "    if ($global) {",
         "       $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

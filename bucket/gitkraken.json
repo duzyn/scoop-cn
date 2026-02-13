@@ -27,8 +27,8 @@
     "post_install": [
         "$exepath = \"$dir\\gitkraken.exe\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "  if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\gitkraken\\$_.reg\") {",
-        "    $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\gitkraken\\$_.reg\"",
+        "  if (Test-Path \"$bucketsdir\\main\\scripts\\gitkraken\\$_.reg\") {",
+        "    $content = Get-Content \"$bucketsdir\\main\\scripts\\gitkraken\\$_.reg\"",
         "    $content = $content.Replace('$gitkraken', $exepath)",
         "    if ($global) {",
         "      $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

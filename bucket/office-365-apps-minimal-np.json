@@ -6,11 +6,11 @@
         "identifier": "Proprietary",
         "url": "https://www.microsoft.com/licensing/terms/productoffering/OfficeDesktopApplicationsWindows/MCA"
     },
-    "depends": "scoop-cn/7zip19.00-helper",
+    "depends": "7zip19.00-helper",
     "url": "https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_19628-20192.exe#/dl.7z_",
     "hash": "52e3bd4dc386dde60e88395b5372d595fa7178547ab2e47c699dd6d07995e413",
     "pre_install": [
-        "$scriptdir = \"$bucketsdir\\scoop-cn\\scripts\"",
+        "$scriptdir = \"$bucketsdir\\main\\scripts\"",
         "if ($architecture -eq '64bit') {",
         "     Copy-Item \"$scriptdir\\install-office-365-apps-minimal.xml\" \"$dir\\\"",
         "}",

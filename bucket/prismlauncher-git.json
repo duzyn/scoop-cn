@@ -9,7 +9,7 @@
         "reg import \"$dir\\install-associations.reg\""
     ],
     "suggest": {
-        "vcredist": "scoop-cn/vcredist2022"
+        "vcredist": "vcredist2022"
     },
     "architecture": {
         "64bit": {
@@ -38,9 +38,9 @@
     ],
     "post_install": [
         "'install-associations', 'uninstall-associations' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher-git\\$_.reg\") {",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\prismlauncher-git\\$_.reg\") {",
         "        $exePath = \"$dir\\prismlauncher.exe\".Replace('\\', '\\\\')",
-        "        $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\prismlauncher-git\\$_.reg\").Replace('$EXEPATH', $exePath)",
+        "        $content = (Get-Content \"$bucketsdir\\main\\scripts\\prismlauncher-git\\$_.reg\").Replace('$EXEPATH', $exePath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",
         "    }",

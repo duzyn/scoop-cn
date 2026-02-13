@@ -8,15 +8,15 @@
         "reg import \"$dir\\install-context.reg\""
     ],
     "suggest": {
-        "vcredist": "scoop-cn/vcredist2022"
+        "vcredist": "vcredist2022"
     },
     "url": "https://gh-proxy.com/https://github.com/alacritty/alacritty/releases/download/v0.16.1/Alacritty-v0.16.1-portable.exe#/alacritty.exe",
     "hash": "f20c901a31792c3870ead962c60829f5406055729b2f0869c293886f39e86d3a",
     "post_install": [
         "$alacrittyPath = \"$dir\\alacritty.exe\".Replace('\\', '\\\\')",
         "'install-context', 'uninstall-context' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_.reg\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\$app\\$_.reg\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\$app\\$_.reg\"",
         "        $content = $content.Replace('$alacrittyPath', $alacrittyPath)",
         "        if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "        Set-Content \"$dir\\$_.reg\" $content -Encoding Ascii -Force",

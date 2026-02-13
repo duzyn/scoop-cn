@@ -23,8 +23,8 @@
     "post_install": [
         "$sublimepath = \"$dir\\sublime_text.exe\".Replace('\\', '\\\\')",
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
-        "    if (Test-Path \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_\") {",
-        "        $content = Get-Content \"$bucketsdir\\scoop-cn\\scripts\\$app\\$_\"",
+        "    if (Test-Path \"$bucketsdir\\main\\scripts\\$app\\$_\") {",
+        "        $content = Get-Content \"$bucketsdir\\main\\scripts\\$app\\$_\"",
         "        $content = $content.Replace('$sublime', $sublimepath)",
         "        if ($global) {",
         "            $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE')",

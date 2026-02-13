@@ -18,7 +18,7 @@
             "extract_dir": "Tachidesk-Server-v0.7.0-r1439-windows-x86"
         }
     },
-    "pre_install": "Copy-Item \"$bucketsdir\\scoop-cn\\scripts\\tachidesk-server-preview\\tachidesk*.ps1\" -Destination \"$dir\"",
+    "pre_install": "Copy-Item \"$bucketsdir\\main\\scripts\\tachidesk-server-preview\\tachidesk*.ps1\" -Destination \"$dir\"",
     "bin": [
         "tachidesk.ps1",
         "tachidesk-electron.ps1",

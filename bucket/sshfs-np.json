@@ -13,7 +13,7 @@
             "hash": "9643daf27eb7e384dadc9e64a4299c8d92e6c91e07913e9425f5b19aad3b2ded"
         }
     },
-    "depends": "scoop-cn/winfsp-np",
+    "depends": "winfsp-np",
     "installer": {
         "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
     },

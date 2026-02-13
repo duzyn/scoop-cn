@@ -5,7 +5,7 @@
     "license": "MIT",
     "url": "https://gh-proxy.com/https://github.com/brackets-cont/brackets/releases/download/v2.2.1/Brackets-2.2.1.exe#/dl.exe",
     "hash": "a4a4a80f65ee2d8ec77ff4179ebcb940d63ee4f69d3f7de85d5b99df7b246890",
-    "depends": "scoop-cn/lessmsi",
+    "depends": "lessmsi",
     "pre_install": [
         "Invoke-ExternalCommand \"$dir\\dl.exe\" -ArgumentList '/extract' | Out-Null",
         "# Workaround for #8436",

@@ -15,7 +15,7 @@
     "extract_dir": "GeoGebra 5.4.915.1",
     "post_install": [
         "$geogebra_path = $dir -replace '\\\\', '\\\\'",
-        "Get-ChildItem -Path \"$bucketsdir\\scoop-cn\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
+        "Get-ChildItem -Path \"$bucketsdir\\main\\scripts\\$app\" -Filter '*.reg' -File | ForEach-Object {",
         "    $content = Get-Content -Path $_.FullName -Encoding ascii",
         "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE' }",
         "    $content -replace '{{geogebra_dir}}', $geogebra_path | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",

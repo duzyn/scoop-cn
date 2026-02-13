@@ -11,7 +11,7 @@
     "extract_to": "IDE",
     "installer": {
         "script": [
-            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "& \"$bucketsdir\\main\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
             "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
         ]
     },

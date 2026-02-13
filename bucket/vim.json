@@ -25,7 +25,7 @@
     "post_install": [
         "'install-context.reg', 'uninstall-context.reg' | ForEach-Object {",
         "    $vimpath = \"$dir\\gVim.exe\".Replace('\\', '\\\\')",
-        "    $content = (Get-Content \"$bucketsdir\\scoop-cn\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
+        "    $content = (Get-Content \"$bucketsdir\\main\\scripts\\vim\\$_\").Replace('$vim', $vimpath)",
         "    if ($global) { $content = $content.Replace('HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE') }",
         "    Set-Content \"$dir\\$_\" $content",
         "}"

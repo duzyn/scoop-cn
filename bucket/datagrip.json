@@ -12,7 +12,7 @@
     "pre_install": "Get-ChildItem \"$persist_dir\\IDE\\bin\\datagrip*.exe.vmoptions\" -ErrorAction SilentlyContinue | Copy-Item -Destination \"$dir\\IDE\\bin\"",
     "installer": {
         "script": [
-            "& \"$bucketsdir\\scoop-cn\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
+            "& \"$bucketsdir\\main\\scripts\\jetbrains\\portable.ps1\" $dir $persist_dir",
             "Remove-Item \"$dir\\IDE\\`$*\" -Force -Recurse"
         ]
     },
