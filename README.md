@@ -100,20 +100,6 @@ Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json
 scoop install APPNAME
 ```
 
-## 方式三：只添加 scoop-cn 库
-
-运行以下命令添加本库：
-
-```powershell
-scoop bucket add scoop-cn https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git
-```
-
-安装应用：
-
-```powershell
-scoop install scoop-cn/APPNAME
-```
-
 ## 更新 GitHub 代理地址
 
 如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本库，需要更新本库的 GitHub 代理地址。
@@ -124,14 +110,6 @@ scoop install scoop-cn/APPNAME
 scoop config scoop_repo https://gh-proxy.com/https://github.com/ScoopInstaller/Scoop.git
 git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式二使用
 git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式三使用
-```
-
-## 查看帮助
-
-要了解 Scoop 的更多用法，请查看 [Scoop 官网](https://scoop.sh/)。或运行命令查看简要的帮助：
-
-```powershell
-scoop help
 ```
 
 ## 贡献者

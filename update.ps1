@@ -128,13 +128,13 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = $content -replace 'download\.typora\.io', 'downloads.typoraio.cn'
 
     # Scripts
-    $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1scoop-cn$2'
+    $content = $content -replace '(bucketsdir\\\\).+(\\\\scripts)', '$1main$2'
 
-    # 将 suggest 路径改为 scoop-cn
-    $content = $content -replace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"scoop-cn/' 
+    # suggest
+    $content = $content -replace '\"main/|\"extras/|\"versions/|\"nirsoft/|\"sysinternals/|\"php/|\"nerd-fonts/|\"nonportable/|\"java/|\"games/', '"' 
 
-    # 将 depends 路径改为 scoop-cn
-    $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "scoop-cn/' 
+    # depends 
+    $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "' 
     
 		Set-Content -Path $_.FullName -Value $content
 }
