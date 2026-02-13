@@ -63,7 +63,9 @@ function Setup-ScoopCN-Bucket {
     }
 
     Write-Host "Adding main bucket with proxy..."
-    scoop bucket add main $ScoopCNRepo
+    # scoop bucket add main $ScoopCNRepo
+    # 只下载最近一次的提交，否则下载整个提交历史太耗时了
+    git clone --depth 1 $ScoopCNRepo $ScoopPath\buckets\main
 }
 
 # --- Main Execution ---
