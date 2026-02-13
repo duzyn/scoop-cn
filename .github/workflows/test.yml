@@ -1,7 +1,9 @@
 name: Test
 
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - 'install.ps1'
 
 jobs:
   test:
