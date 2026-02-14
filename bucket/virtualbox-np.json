@@ -1,13 +1,13 @@
 {
-    "version": "7.2.6.172322",
+    "version": "7.2.6a-172322",
     "description": "Powerful x86 and AMD64/Intel64 virtualization product for enterprise as well as home use.",
     "homepage": "https://www.virtualbox.org/",
     "license": "GPL-2.0-only",
     "depends": "vcredist2022",
     "architecture": {
         "64bit": {
-            "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/7.2.6/VirtualBox-7.2.6-172322-Win.exe#/setup.exe",
-            "hash": "5194a1695d1b4c07d129e2b1e2088adc3dd2f1f0f73699004375d6dfdfa60fd7"
+            "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/7.2.6/VirtualBox-7.2.6a-172322-Win.exe#/setup.exe",
+            "hash": "15c18780b9a76ff6d5a2dbfe016992e0aea631bf25ffc05a11080bb0ed49a690"
         }
     },
     "pre_install": [
@@ -60,13 +60,12 @@
     },
     "checkver": {
         "url": "https://www.virtualbox.org/wiki/Downloads",
-        "regex": "VirtualBox-(?<version>[\\d.]+)-(?<build>[\\d]+)-Win.exe",
-        "replace": "${version}.${build}"
+        "regex": "VirtualBox-([\\w.-]+)-Win.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/VirtualBox-$matchHead-$buildVersion-Win.exe#/setup.exe"
+                "url": "https://mirrors.tuna.tsinghua.edu.cn/virtualbox/$matchHead/VirtualBox-$version-Win.exe#/setup.exe"
             }
         },
         "hash": {
