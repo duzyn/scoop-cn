@@ -1,12 +1,12 @@
 {
-    "version": "4.0.24.0",
+    "version": "4.0.28.0",
     "homepage": "https://files.community/",
     "description": "A modern file manager that helps users organize their files and folders.",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.files.community/files/stable/Files.Package_4.0.24.0_Test/Files.Package_4.0.24.0_x64_arm64.msixbundle",
-            "hash": "577c3d80ce6c28cadcd3d3352ea0775c484e63270222bc8368e84e3e12d41988"
+            "url": "https://cdn.files.community/files/stable/Files.Package_4.0.28.0_Test/Files.Package_4.0.28.0_x64_arm64.msixbundle",
+            "hash": "0285d8732dfb18c6d23175db4317506a668ae2c2e9be0c7cf3ae98aba73784f1"
         }
     },
     "installer": {
@@ -17,14 +17,32 @@
         "script": "Get-AppxPackage 'Files' | Remove-AppxPackage"
     },
     "checkver": {
-        "url": "https://cdn.files.community/files/stable/Files.Package.appinstaller",
-        "regex": "(?s)MainBundle.*?Version=\"([\\d.]+)\""
+        "script": [
+            "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/f/FilesCommunity/Files'",
+            "$first_letter, $publisher, $package = $package_url.Split('/') | Select-Object -Last 3",
+            "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
+            "$path_segments = $response | Where-Object { $_.type -eq 'dir' } |",
+            "        Sort-Object -Property { [version]$_.name } -Descending | ForEach-Object -MemberName name",
+            "foreach ($path_segment in $path_segments) {",
+            "    $manifest_url = \"$package_url/{2}/{0}.{1}.installer.yaml\" -f $publisher, $package, $path_segment",
+            "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -Headers @{ 'Accept' = 'application/vnd.github.v3.raw' } -ErrorAction Stop",
+            "    if ($null -ne $manifest_info -and $manifest_info -match 'Files.Package_(?<version>[\\d.]+)_Test') {",
+            "        Write-Output $Matches['version']",
+            "        break",
+            "    }",
+            "}"
+        ],
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://cdn.files.community/files/stable/Files.Package_$version_Test/Files.Package_$version_x64_arm64.msixbundle"
             }
+        },
+        "hash": {
+            "url": "https://gh-proxy.com/https://raw.githubusercontent.com/microsoft/winget-pkgs/HEAD/manifests/f/FilesCommunity/Files/$version/FilesCommunity.Files.installer.yaml",
+            "regex": "(?s)$basename.+?$sha256"
         }
     }
 }

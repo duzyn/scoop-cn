@@ -32,14 +32,13 @@
     },
     "checkver": {
         "script": [
-            "$first_letter, $publisher, $package = 'b', 'BlueStack', 'BlueStacks'",
-            "$manifests_root = 'https://api.github.com/repositories/197275551/contents/manifests'",
-            "$package_url = '{0}/{1}/{2}/{3}' -f $manifests_root, $first_letter, $publisher, $package",
+            "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/b/BlueStack/BlueStacks'",
+            "$first_letter, $publisher, $package = $package_url.Split('/') | Select-Object -Last 3",
             "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
             "$path_segments = $response | Where-Object { $_.type -eq 'dir' } |",
             "        Sort-Object -Property { [version]$_.name } -Descending | ForEach-Object -MemberName name",
             "foreach ($path_segment in $path_segments) {",
-            "    $manifest_url = '{0}/{1}/{2}/{3}/{4}/{2}.{3}.installer.yaml' -f $manifests_root, $first_letter, $publisher, $package, $path_segment",
+            "    $manifest_url = \"$package_url/{2}/{0}.{1}.installer.yaml\" -f $publisher, $package, $path_segment",
             "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -Headers @{ 'Accept' = 'application/vnd.github.v3.raw' } -ErrorAction Stop",
             "    if ($null -ne $manifest_info -and $manifest_info -match 'nxt/(?<version>[\\d.]+)/(?<token>[^/]+)') {",
             "        Write-Output \"$($Matches['version']), $($Matches['token'])\"",
