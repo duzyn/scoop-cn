@@ -1,12 +1,22 @@
 {
-    "version": "30.1.0-rc1",
+    "version": "32.1.0-rc1",
     "description": "Video recording and live streaming software",
     "homepage": "https://obsproject.com",
     "license": "GPL-2.0-only",
     "architecture": {
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/32.1.0-rc1/OBS-Studio-32.1.0-rc1-Windows-arm64.zip",
+            "hash": "0e34115c817b972b3df7a76db5f1451bc6c534f66ceae334c0a48230768260ad",
+            "shortcuts": [
+                [
+                    "bin\\64bit\\obs64.exe",
+                    "OBS Studio (Preview)"
+                ]
+            ]
+        },
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/30.1.0-rc1/OBS-Studio-30.1-rc1.zip",
-            "hash": "fcaf4e366e7b005e2878b1bebb819eb2ca884a3f1661eb69d4fe67b17e7a5638",
+            "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/32.1.0-rc1/OBS-Studio-32.1.0-rc1-Windows-x64.zip",
+            "hash": "ca0a529ecd59f1e19df12b12bdae2ce4930369ec73ede9b5d9ac82fe9690c685",
             "shortcuts": [
                 [
                     "bin\\64bit\\obs64.exe",
@@ -22,13 +32,16 @@
     ],
     "checkver": {
         "url": "https://api.github.com/repositories/13233158/releases",
-        "jsonpath": "$..assets[0].browser_download_url",
-        "regex": "/([\\d.]+-(?:rc|beta)\\d+)/"
+        "jsonpath": "$[0].tag_name",
+        "regex": "\\A([\\d.]+(?:-(?:rc|beta)\\d+)?)\\Z"
     },
     "autoupdate": {
         "architecture": {
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$version/OBS-Studio-$version-Windows-arm64.zip"
+            },
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$version/OBS-Studio-$majorVersion.$minorVersion-$preReleaseVersion.zip"
+                "url": "https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$version/OBS-Studio-$version-Windows-x64.zip"
             }
         }
     }
