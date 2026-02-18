@@ -1,0 +1,43 @@
+{
+    "version": "4.7.0",
+    "description": "A unified platform to organize your game collection, track gameplay, with real-time cloud sync across devices and detailed gameplay reports.",
+    "homepage": "https://github.com/ximu3/vnite",
+    "license": "GPL-3.0-only",
+    "url": "https://gh-proxy.com/https://github.com/ximu3/vnite/releases/download/v4.7.0/vnite-4.7.0-setup.exe#/dl.7z",
+    "hash": "40a8597c9f211331756323cf3641c1f13b868e4e9919d6ffef1140fedad22b26",
+    "installer": {
+        "script": [
+            "$nestedSevenZip = \"$dir\\`$PLUGINSDIR\\app-64.7z\"",
+            "if (Test-Path $nestedSevenZip) {",
+            "    Expand-7ZipArchive $nestedSevenZip \"$dir\"",
+            "    Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\`$R0\" -Recurse -Force -ErrorAction 'SilentlyContinue'",
+            "}",
+            "",
+            "ensure \"$persist_dir\" | Out-Null",
+            "$targetPath = \"$env:APPDATA\\vnite\"",
+            "if (Test-Path $targetPath) {",
+            "    $linkType = (Get-Item -Path $targetPath -ErrorAction 'SilentlyContinue').LinkType",
+            "    if ($linkType -eq 'Junction') {",
+            "        Remove-Item $targetPath -Force -ErrorAction 'SilentlyContinue'",
+            "    } else {",
+            "        Get-ChildItem -Path $targetPath -Force | Move-Item -Destination $persist_dir -Force",
+            "        Remove-Item -Path $targetPath -Force -Recurse",
+            "    }",
+            "}",
+            "New-Item -Path $targetPath -ItemType Junction -Target \"$persist_dir\" | Out-Null"
+        ]
+    },
+    "uninstaller": {
+        "script": "Remove-Item \"$env:APPDATA\\vnite\" -Force -Recurse -ErrorAction 'SilentlyContinue'"
+    },
+    "shortcuts": [
+        [
+            "Vnite.exe",
+            "Vnite"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/ximu3/vnite/releases/download/v$version/vnite-$version-setup.exe#/dl.7z"
+    }
+}
