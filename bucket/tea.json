@@ -7,6 +7,10 @@
         "64bit": {
             "url": "https://gitea.com/gitea/tea/releases/download/v0.12.0/tea-0.12.0-windows-amd64.exe.xz",
             "hash": "e97557168447bf5adf4265322dfbef49172a8b422c35d35af5d4b47af0d8df38"
+        },
+        "arm64": {
+            "url": "https://gitea.com/gitea/tea/releases/download/v0.12.0/tea-0.12.0-windows-arm64.exe.xz",
+            "hash": "4cc12659544d45d56e491e2df369189f6e0dba46517076cc41a718e1293d806e"
         }
     },
     "pre_install": "Get-Item \"$dir\\tea-*.exe\" | Rename-Item  -NewName \"$dir\\tea.exe\"",
@@ -18,6 +22,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://gitea.com/gitea/tea/releases/download/v$version/tea-$version-windows-amd64.exe.xz"
+            },
+            "arm64": {
+                "url": "https://gitea.com/gitea/tea/releases/download/v$version/tea-$version-windows-arm64.exe.xz"
             }
         },
         "hash": {
