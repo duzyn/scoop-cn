@@ -18,6 +18,10 @@
         "32bit": {
             "url": "https://gh-proxy.com/https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20260224/mpv-i686-20260224-git-4620834.7z",
             "hash": "bf9150bf5e90b17a48a999ee35a3a84b4a7079cc021ca13388071ca8c3b42daa"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/20260224/mpv-aarch64-20260224-git-4620834.7z",
+            "hash": "df90fde6c00de8d7688f3b8970a90fb59cd606270b0393e499b95153c0d988ec"
         }
     },
     "pre_install": "Remove-Item \"$dir\\updater.bat\"",
@@ -41,6 +45,9 @@
             },
             "32bit": {
                 "url": "https://gh-proxy.com/https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/$version/mpv-i686-$version-git-$matchCommit.7z"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/shinchiro/mpv-winbuild-cmake/releases/download/$version/mpv-aarch64-$version-git-$matchCommit.7z"
             }
         }
     }
