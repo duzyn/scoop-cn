@@ -1,36 +1,42 @@
 {
-    "version": "3.5.20357",
+    "version": "3.7.21011",
     "description": "SSHFS For Windows",
-    "homepage": "http://www.github.com/billziss-gh/sshfs-win/",
-    "license": "GPL-2.0-or-later",
-    "architecture": {
-        "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20357/sshfs-win-3.5.20357-x64.msi#/setup.msi_",
-            "hash": "1657e397f8dce1c2d2e3220007f9c9f882631882b9bec4608f7835e87dcd096c"
-        },
-        "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.5.20357/sshfs-win-3.5.20357-x86.msi#/setup.msi_",
-            "hash": "9643daf27eb7e384dadc9e64a4299c8d92e6c91e07913e9425f5b19aad3b2ded"
-        }
+    "homepage": "https://winfsp.dev",
+    "license": {
+        "identifier": "GPL-2.0-or-later",
+        "url": "https://github.com/winfsp/sshfs-win/blob/HEAD/License.txt"
     },
     "depends": "winfsp-np",
-    "installer": {
-        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x64.msi#/setup.msi_",
+            "hash": "76080d7bfb1ba0a807f8874d07388bec4bc30893f2da511d5cb7a16d4490f7d1"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x86.msi#/setup.msi_",
+            "hash": "f74e399a44b54b447f7e8ed4f012ba1932c5f90be71a6942ea304841eab610b0"
+        }
     },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "script": "Start-Process -FilePath 'msiexec.exe' -ArgumentList @('/i', \"$dir\\setup.msi_\", '/qn') -WindowStyle Hidden -Wait"
+    },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "uninstaller": {
-        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -RunAs | Out-Null"
+        "script": "Start-Process -FilePath 'msiexec.exe' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -WindowStyle Hidden -Wait"
     },
     "checkver": {
-        "url": "https://github.com/billziss-gh/sshfs-win/releases/latest",
-        "regex": "v(?<short>[\\d.]+)/sshfs-win-(?<version>[\\d.]+).*\\.msi"
+        "url": "https://api.github.com/repositories/61451917/releases",
+        "jsonpath": "$[*].assets[?(@.name =~ /sshfs-win/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/sshfs-win-([\\d.]+)-x"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v$matchShort/sshfs-win-$matchVersion-x64.msi#/setup.msi_"
+                "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x64.msi#/setup.msi_"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/v$matchShort/sshfs-win-$matchVersion-x86.msi#/setup.msi_"
+                "url": "https://gh-proxy.com/https://github.com/billziss-gh/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x86.msi#/setup.msi_"
             }
         }
     }
