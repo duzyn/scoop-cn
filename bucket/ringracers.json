@@ -1,0 +1,21 @@
+{
+    "version": "2.4",
+    "description": "Dr. Robotnik's Ring Racers is a kart racing video game originally based on the 3D Sonic the Hedgehog fangame Sonic Robo Blast 2, itself based on a modified version of Doom Legacy.",
+    "homepage": "https://kartkrew.org/",
+    "license": "GPL-2.0-or-later",
+    "url": "https://gh-proxy.com/https://github.com/KartKrewDev/RingRacers/releases/download/v2.4/Dr.Robotnik.s-Ring-Racers-v2.4-Installer.exe#/dl.7z",
+    "hash": "d8ea271245ae348adc76020407c03c46c2082cb646fab84fdfddefbf16f4ae77",
+    "bin": "ringracers.exe",
+    "shortcuts": [
+        [
+            "ringracers.exe",
+            "Ring Racers"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/KartKrewDev/RingRacers"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/KartKrewDev/RingRacers/releases/download/v$version/Dr.Robotnik.s-Ring-Racers-v$version-Installer.exe#/dl.7z"
+    }
+}
