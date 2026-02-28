@@ -1,0 +1,30 @@
+{
+    "version": "3.9.0",
+    "description": "Open-source gaming platform",
+    "homepage": "https://hydralauncher.gg",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/hydralauncher/hydra/releases/download/v3.9.0/hydralauncher-3.9.0-portable.exe#/dl.7z",
+            "hash": "75b52cdbbdd9686f7c27ca91204cc56bd1720da0fcc6fbef9d8294ab9f376bb5"
+        }
+    },
+    "pre_install": "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\resources\\app-update.yml\" -Recurse -Force",
+    "shortcuts": [
+        [
+            "Hydra.exe",
+            "Hydra"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/hydralauncher/hydra"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/hydralauncher/hydra/releases/download/v$version/hydralauncher-$version-portable.exe#/dl.7z"
+            }
+        }
+    }
+}
