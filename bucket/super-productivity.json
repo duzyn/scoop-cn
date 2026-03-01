@@ -1,20 +1,20 @@
 {
-    "version": "17.2.1",
+    "version": "17.2.4",
     "description": "To-do list & time tracker for programmers and other digital workers with Jira, Github, and Gitlab integration",
     "homepage": "https://super-productivity.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/super-productivity/super-productivity/releases/download/v17.2.1/superProductivity-x64.exe#/dl.7z",
-            "hash": "c706c884f16da36e94e93f2d46cbd95ff9c6302b1649341bb359185fefd43047",
+            "url": "https://gh-proxy.com/https://github.com/super-productivity/super-productivity/releases/download/v17.2.4/superProductivity-x64.exe#/dl.7z",
+            "hash": "f2a5cee90f4a42f8fdbbeac57760347a5d674828b6edc62ef242d8103e2fd0ba",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse"
             ]
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/super-productivity/super-productivity/releases/download/v17.2.1/superProductivity-arm64.exe#/dl.7z",
-            "hash": "15b0563a29c1c054a33ae68ce097e9d09bdaab8360d707cc8ec16b07621c35bf",
+            "url": "https://gh-proxy.com/https://github.com/super-productivity/super-productivity/releases/download/v17.2.4/superProductivity-arm64.exe#/dl.7z",
+            "hash": "6f17ab418fdd0fbb43e638dfc73faa8c0429a8550e08a4e70e610523cfc3f0a4",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\Uninst*\" -Force -Recurse"
