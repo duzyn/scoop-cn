@@ -5,11 +5,7 @@
     "license": "GPL-3.0-only",
     "url": "https://gh-proxy.com/https://github.com/nbauma109/jd-gui-duo/releases/download/2.0.105/jd-gui-duo-windows-2.0.105.tar.xz",
     "hash": "d3e5e37c6180a9332bd574bb5f0ce8ffbbf3a6d809228086b227c2d494cec0e4",
-    "pre_install": [
-        "Move-Item \"$dir\\jd-gui-duo-$version.exe\" \"$dir\\jd-gui-duo.exe\"",
-        "# Properly set working directory of batch file",
-        "(Get-Content \"$dir\\jd-gui-duo.bat\") -replace '^@echo off$', \"@echo off`r`ncd /d `\"%~dp0`\"\" | Set-Content \"$dir\\jd-gui-duo.bat\""
-    ],
+    "pre_install": "Move-Item \"$dir\\jd-gui-duo-$version.exe\" \"$dir\\jd-gui-duo.exe\"",
     "bin": "jd-gui-duo.bat",
     "shortcuts": [
         [
