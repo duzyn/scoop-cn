@@ -1,22 +1,23 @@
 {
-    "##": "Scheduled for deprecation on 2026-03-01.",
-    "version": "1.1.29",
-    "description": "AI coding agent, built for the terminal. (Deprecated, moved to Main bucket)",
+    "version": "1.2.15",
+    "description": "The open source AI coding agent.",
     "homepage": "https://opencode.ai/",
     "license": "MIT",
-    "notes": "This package has been moved to the Main bucket and will no longer receive updates. Please use `main/opencode` instead.",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/anomalyco/opencode/releases/download/v1.1.29/opencode-windows-x64.zip",
-            "hash": "ac7a61e72ece17d1d3d984e9eb92552b67ebb43f7c5476fb5f16025609a7273f"
+            "url": "https://gh-proxy.com/https://github.com/anomalyco/opencode/releases/download/v1.2.15/opencode-windows-x64.zip",
+            "hash": "ab65f06a01bb3adab6094735ebb9249efce500aaebda7388d5bfd95c8d377e0d"
         }
     },
-    "post_install": "Write-Host \"`nThis package has been moved to the Main bucket and will no longer receive updates. Please use `main/opencode` instead.\" -Foreground Darkred",
     "bin": "opencode.exe",
-    "shortcuts": [
-        [
-            "opencode.exe",
-            "OpenCode"
-        ]
-    ]
+    "checkver": {
+        "github": "https://github.com/anomalyco/opencode"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/anomalyco/opencode/releases/download/v$version/opencode-windows-x64.zip"
+            }
+        }
+    }
 }
