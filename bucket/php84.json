@@ -1,19 +1,19 @@
 {
-    "version": "8.4.16",
+    "version": "8.4.19",
     "description": "PHP, a popular general-purpose scripting language that is especially suited to web development. (version 8.4)",
-    "homepage": "https://windows.php.net/",
+    "homepage": "https://www.php.net",
     "license": "PHP-3.01",
     "suggest": {
         "vcredist": "vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.4.16-Win32-vs17-x64.zip",
-            "hash": "e638541bbf8e1794f57a3c2522b09e6cf8bf33f0c09b86050acd8ffd683e7d6a"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.4.19-Win32-vs17-x64.zip",
+            "hash": "145712ab250a8a1855ade60b7ce8dbe177064f61f31c3edda8cb2af8400e1e8f"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.4.16-Win32-vs17-x86.zip",
-            "hash": "77630c6cf305eb761989fdc1da430a88b6ec6dc6a6becb39fc7fb1b05047f0cf"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.4.19-Win32-vs17-x86.zip",
+            "hash": "2a9289593fb26dff8c45fb370c766bb0b661c22bffcf2bee09da33b706a7790b"
         }
     },
     "pre_install": [
@@ -42,20 +42,20 @@
         ]
     ],
     "checkver": {
-        "url": "https://windows.php.net/download/",
-        "regex": "<h3 id=\"php-8.4\".*?>.*?\\(([\\d.]+)\\)</h3>"
+        "url": "https://www.php.net/releases/branches.php",
+        "jsonpath": "$.[?(@.branch == '8.4')].latest"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x64.zip"
             },
             "32bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs17-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs17-x86.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/sha256sum.txt"
+            "url": "https://downloads.php.net/~windows/releases/sha256sum.txt"
         }
     }
 }
