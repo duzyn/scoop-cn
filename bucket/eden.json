@@ -8,11 +8,11 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v0.2.0-rc1/Eden-Windows-v0.2.0-rc1-amd64-msvc-standard.zip",
+            "url": "https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc1/Eden-Windows-v0.2.0-rc1-amd64-msvc-standard.zip",
             "hash": "f5abaad71d9375aba746f7c091eddce3c17d2c062f1d5eeb5449400c793d8cc7"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v0.2.0-rc1/Eden-Windows-v0.2.0-rc1-mingw-arm64-clang-standard.zip",
+            "url": "https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc1/Eden-Windows-v0.2.0-rc1-mingw-arm64-clang-standard.zip",
             "hash": "e7c874bd7cbf9212629b5e598b01366ec6a8bbe0bec22ef22339ef76809179ec"
         }
     },
@@ -36,16 +36,17 @@
     ],
     "persist": "user",
     "checkver": {
-        "github": "https://github.com/eden-emulator/Releases/",
+        "url": "https://git.eden-emu.dev/api/v1/repos/eden-emu/eden/releases/latest",
+        "jsonpath": "$.tag_name",
         "regex": "v([\\d]+(?:\\.[\\d]+)+(?:-[A-Za-z\\d.-]+)?)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v$version/Eden-Windows-v$version-amd64-msvc-standard.zip"
+                "url": "https://git.eden-emu.dev/eden-emu/eden/releases/download/v$version/Eden-Windows-v$version-amd64-msvc-standard.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/eden-emulator/Releases/releases/download/v$version/Eden-Windows-v$version-mingw-arm64-clang-standard.zip"
+                "url": "https://git.eden-emu.dev/eden-emu/eden/releases/download/v$version/Eden-Windows-v$version-mingw-arm64-clang-standard.zip"
             }
         }
     }
