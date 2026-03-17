@@ -1,18 +1,18 @@
 {
     "version": "8.0.30",
     "description": "PHP, a popular general-purpose scripting language that is especially suited to web development. (version 8.0)",
-    "homepage": "https://windows.php.net/",
+    "homepage": "https://www.php.net",
     "license": "PHP-3.01",
     "suggest": {
         "vcredist": "vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.0.30-Win32-vs16-x64.zip",
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.0.30-Win32-vs16-x64.zip",
             "hash": "8697972b5f704885e3444422ede2b5c25d025f614ea96dc67de74dc582471562"
         },
         "32bit": {
-            "url": "https://windows.php.net/downloads/releases/php-8.0.30-Win32-vs16-x86.zip",
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.0.30-Win32-vs16-x86.zip",
             "hash": "8dec05f39e6618ee20e252b180d69f8cd0162a3dd2545321593d8f4f44f4af52"
         }
     },
@@ -42,20 +42,20 @@
         ]
     ],
     "checkver": {
-        "url": "https://windows.php.net/download/",
-        "regex": "<h3 id=\"php-8.0\".*?>.*?\\(([\\d.]+)\\)</h3>"
+        "url": "https://www.php.net/releases/branches.php",
+        "jsonpath": "$.[?(@.branch == '8.0')].latest"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs16-x64.zip"
             },
             "32bit": {
-                "url": "https://windows.php.net/downloads/releases/php-$version-Win32-vs16-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-Win32-vs16-x86.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/sha256sum.txt"
+            "url": "https://downloads.php.net/~windows/releases/sha256sum.txt"
         }
     }
 }
