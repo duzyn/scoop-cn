@@ -1,0 +1,39 @@
+{
+    "version": "20251206",
+    "homepage": "https://github.com/captainys/TOWNSEMU",
+    "license": "BSD-3-Clause",
+    "description": "FM Towns/Marty Emulator",
+    "url": "https://gh-proxy.com/https://github.com/captainys/TOWNSEMU/releases/download/v20251206/windows_binary_latest.zip",
+    "hash": "aac8fc7c29e637b18a1df35c340491a6cd542823c23fb4f0c277e7bab0d90835",
+    "bin": [
+        "Tsugaru_CUI.exe",
+        "Tsugaru_GUI.exe"
+    ],
+    "shortcuts": [
+        [
+            "Tsugaru_CUI.exe",
+            "Tsugaru (CLI)",
+            "-basedir \"$dir\\Tsugaru_TOWNS\""
+        ],
+        [
+            "Tsugaru_GUI.exe",
+            "Tsugaru",
+            "-basedir \"$dir\\Tsugaru_TOWNS\""
+        ]
+    ],
+    "post_install": [
+        "if (!(Test-Path \"$dir\\Tsugaru_TOWNS\\*\") -and (Test-Path \"$env:USERPROFILE\\Documents\\Tsugaru_TOWNS\")) {",
+        "    info '[Portable Mode]: Copying data...'",
+        "    Copy-Item \"$env:USERPROFILE\\Documents\\Tsugaru_TOWNS\\*\" \"$dir\\Tsugaru_TOWNS\" -Recurse",
+        "}"
+    ],
+    "persist": "Tsugaru_TOWNS",
+    "notes": "FM TOWNS ROM is required to run Tsugaru. If you don't have extracted ROM image from an actual FM TOWNS hardware, you can download compatible FreeTOWNS ROM set at https://ysflight.in.coocan.jp/FM/towns/FreeTOWNS/ROMS.zip",
+    "checkver": {
+        "url": "https://github.com/captainys/TOWNSEMU/releases",
+        "regex": "Auto Release v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/captainys/TOWNSEMU/releases/download/v$version/windows_binary_latest.zip"
+    }
+}

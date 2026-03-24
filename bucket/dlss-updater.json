@@ -1,0 +1,26 @@
+{
+    "version": "3.9.3",
+    "description": "A tool that allows you to conveniently update all the DLSS/XeSS/FSR DLLs for the games detected on your system",
+    "homepage": "https://github.com/Recol/DLSS-Updater",
+    "license": "AGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/Recol/DLSS-Updater/releases/download/V3.9.3/DLSS.Updater.3.9.3.zip",
+            "hash": "be42f2411281b2e31fa7fe75e5b00621a02ecf65aab072774ff95e992dbf76df"
+        }
+    },
+    "shortcuts": [
+        [
+            "DLSS_Updater.exe",
+            "DLSS Updater"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/Recol/DLSS-Updater/releases/download/V$version/DLSS.Updater.$version.zip"
+            }
+        }
+    }
+}
