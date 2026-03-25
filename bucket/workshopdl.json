@@ -1,0 +1,28 @@
+{
+    "version": "2.0.4",
+    "description": "Program for downloading files from the Steam Workshop",
+    "homepage": "https://github.com/imwaitingnow/WorkshopDL",
+    "license": "MIT",
+    "url": "https://gh-proxy.com/https://github.com/imwaitingnow/WorkshopDL/releases/download/2.0.4/WorkshopDLv2.0.4.7z",
+    "hash": "91c4c9d3be903775878e99c4f17d23904a2a7976ca2368828dfb005059e58fb2",
+    "pre_install": [
+        "if (-not (Test-Path \"$persist_dir\\WorkshopDL.ini\")) {",
+        "    $inicontents = @('[WorkshopDL]', 'Initialize=1', 'Anonymous Mode=1', 'Auto try SteamWebAPI=1', 'Check for updates on startup=0', 'Auto Find Game ID=1', '[Version]', \"WorkshopDL Stable=$($version -replace '\\.', '')\")",
+        "    Set-Content -Path \"$dir\\WorkshopDL.ini\" -Value ($inicontents -join \"`r`n\")",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "WorkshopDL.exe",
+            "WorkshopDL"
+        ]
+    ],
+    "persist": [
+        "steamcmd",
+        "WorkshopDL.ini"
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/imwaitingnow/WorkshopDL/releases/download/$version/WorkshopDLv$version.7z"
+    }
+}
