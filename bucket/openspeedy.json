@@ -1,20 +1,28 @@
 {
-    "version": "1.7.6",
+    "version": "1.7.9",
     "description": "Game speed control tool that helps you break frame rate limitations and provides a smoother, silkier gaming acceleration experience",
     "homepage": "https://github.com/game1024/OpenSpeedy",
-    "license": "GPL-3.0 license",
-    "url": "https://gh-proxy.com/https://github.com/game1024/OpenSpeedy/releases/download/v1.7.6/OpenSpeedy-v1.7.6.zip",
-    "hash": "ac069cad89ebfcdff8fa7bb99aa2790ba64f0ccee38a276563000b28a083acab",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/game1024/OpenSpeedy/releases/download/v1.7.9/Speedy-1.7.9.zip",
+            "hash": "d4c531fc055094a98a9c7442c072402eb55986c3ab382828c69faeccae032134"
+        }
+    },
     "pre_install": "if (!(Test-Path \"$persist_dir\\config.ini\")) { New-Item \"$dir\\config.ini\" | Out-Null }",
     "shortcuts": [
         [
-            "OpenSpeedy.exe",
+            "Speedy.exe",
             "OpenSpeedy"
         ]
     ],
     "persist": "config.ini",
     "checkver": "github",
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/game1024/OpenSpeedy/releases/download/v$version/OpenSpeedy-v$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/game1024/OpenSpeedy/releases/download/v$version/Speedy-$version.zip"
+            }
+        }
     }
 }
