@@ -136,6 +136,6 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # depends 
     $content = $content -replace '\"depends\":\s*\"(scoop\-cn/)?', '"depends": "' 
     
-		Set-Content -Path $_.FullName -Value $content
+    Set-Content -Path $_.FullName -Value $content
 }
 
