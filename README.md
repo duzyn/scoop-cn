@@ -109,7 +109,6 @@ scoop install APPNAME
 ```powershell
 scoop config scoop_repo https://gh-proxy.com/https://github.com/ScoopInstaller/Scoop.git
 git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式二使用
-git -C "$env:USERPROFILE\scoop\buckets\scoop-cn" remote set-url origin https://gh-proxy.com/https://github.com/duzyn/scoop-cn.git # 方式三使用
 ```
 
 ## 贡献者
