@@ -56,19 +56,18 @@
         "Formats"
     ],
     "checkver": {
-        "url": "https://www.7-zip.org/download.html",
-        "regex": "Download 7-Zip ([\\d.]+) \\(\\d{4}-\\d{2}-\\d{2}\\)"
+        "github": "https://github.com/ip7z/7zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion-x64.msi"
+                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-x64.msi"
             },
             "32bit": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion.msi"
+                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion.msi"
             },
             "arm64": {
-                "url": "https://www.7-zip.org/a/7z$cleanVersion-arm64.exe"
+                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-arm64.exe"
             }
         }
     }
