@@ -31,7 +31,7 @@
     "checkver": {
         "script": [
             "try {",
-            "    $api = (Invoke-RestMethod 'https://api.github.com/repositories/123522764/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0]",
+            "    $api = (Invoke-RestMethod 'https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0]",
             "    ($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '",
             "}",
             "catch { '' }"

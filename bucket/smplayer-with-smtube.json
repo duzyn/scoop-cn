@@ -62,7 +62,7 @@
             "if ((Invoke-RestMethod $url1).architecture.'32bit'.url -notmatch $regex1) { error \"Could not match '$regex1' on '$url1'\"; continue }",
             "$smplayer_ver = $matches[1]; $smplayer_qtver = $matches[2]",
             "",
-            "$url2 = 'https://api.github.com/repositories/347901241/releases/latest'",
+            "$url2 = 'https://api.github.com/repos/smplayer-dev/smtube/releases/latest'",
             "$regex2 = '\\bsmtube-([\\d.]+)-win32-qt([\\d.]+)\\.exe\\b'",
             "if ((Invoke-RestMethod $url2).assets.name -join \"`n\" -notmatch $regex2) { error \"Could not match '$regex2' on '$url2'\"; continue }",
             "$smtube_ver = $matches[1]; $smtube_qtver = $matches[2]",

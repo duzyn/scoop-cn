@@ -19,7 +19,7 @@
     "checkver": {
         "script": [
             "try {",
-            "    if (($ver = (Invoke-RestMethod https://api.github.com/repositories/4732425/releases)[0].tag_name)[0] -eq ($prefix = 'v')) { $ver = $ver.Substring(1) } else { $prefix = '' }",
+            "    if (($ver = (Invoke-RestMethod https://api.github.com/repos/Syncplay/syncplay/releases)[0].tag_name)[0] -eq ($prefix = 'v')) { $ver = $ver.Substring(1) } else { $prefix = '' }",
             "    $prefix, $ver, $ver.Replace('-', '_') -join ' '",
             "}",
             "catch { '' }"

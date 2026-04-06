@@ -23,7 +23,7 @@
     ],
     "persist": "lapce-data",
     "checkver": {
-        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repositories/120425779/releases/tags/nightly).published_at -UFormat %s } catch { '' }",
+        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repos/lapce/lapce/releases/tags/nightly).published_at -UFormat %s } catch { '' }",
         "regex": "\\A(\\d+)\\Z"
     },
     "autoupdate": {
