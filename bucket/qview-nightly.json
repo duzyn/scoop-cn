@@ -5,16 +5,16 @@
     "license": "GPL-3.0-only",
     "architecture": {
         "arm64": {
-            "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_arm64-2025-10-11.1.zip",
-            "hash": "06180ecab5ce7927ddb4adb366cc97815d831bd402c364063685c89fd82b753e"
+            "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_arm64-2025-10-11.1.zip",
+            "hash": "ad9887085aad19c44ba90b59e654e7e147514e4cfce424185a87e098f8deaaca"
         },
         "64bit": {
-            "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_64-2025-10-11.1.zip",
-            "hash": "d26e2fda7b96c2c6b382fd8df3d83396c17d3778fa1ec52c1aa84f47b5a2b7b7"
+            "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_64-2025-10-11.1.zip",
+            "hash": "57dfd29a9b9233df0b8d1de97ca57d4353cd2034e672327e921f6af3e591b6a7"
         },
         "32bit": {
-            "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_32-2025-10-11.1.zip",
-            "hash": "0e957d9f578efe3b5b877d2c2565936b7e8a44997043b540013732242671c611"
+            "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_32-2025-10-11.1.zip",
+            "hash": "bb74811d061c97d7e049f50c5d41456060e241fcdedd4a397334c6fce6fb461d"
         }
     },
     "pre_install": [
@@ -29,25 +29,24 @@
         ]
     ],
     "checkver": {
+        "url": "https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success",
         "script": [
-            "try {",
-            "    $api = (Invoke-RestMethod 'https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success').workflow_runs[0]",
-            "    ($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '",
-            "}",
-            "catch { '' }"
+            "$workflows = $page | ConvertFrom-Json",
+            "$api = $workflows.workflow_runs[0]",
+            "($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '"
         ],
         "regex": "\\A(\\d+) (?<date>\\d{4}(?:-\\d{2}){2}) (?<attempt>\\d+)\\Z"
     },
     "autoupdate": {
         "architecture": {
             "arm64": {
-                "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_arm64-$matchDate.$matchAttempt.zip"
+                "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_arm64-$matchDate.$matchAttempt.zip"
             },
             "64bit": {
-                "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_64-$matchDate.$matchAttempt.zip"
+                "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_64-$matchDate.$matchAttempt.zip"
             },
             "32bit": {
-                "url": "https://nightly.link/jurplel/qView/workflows/build/master/qView-nightly-Windows_32-$matchDate.$matchAttempt.zip"
+                "url": "https://gh-proxy.com/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_32-$matchDate.$matchAttempt.zip"
             }
         }
     }

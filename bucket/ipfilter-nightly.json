@@ -6,7 +6,11 @@
     "url": "https://gh-proxy.com/https://github.com/DavidMoore/ipfilter/releases/download/lists/ipfilter.zip",
     "hash": "a7f254e778d83ac96ef21d7bcf36b73cd77279c6e61eddb94282c90a9827dcb4",
     "checkver": {
-        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repos/DavidMoore/ipfilter/releases/tags/lists).assets[0].updated_at -UFormat %s } catch { '' }",
+        "url": "https://api.github.com/repos/DavidMoore/ipfilter/releases/tags/lists",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "Get-Date $release.assets[0].updated_at -UFormat %s"
+        ],
         "regex": "\\A(\\d+)\\Z"
     },
     "autoupdate": {

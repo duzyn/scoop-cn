@@ -1,11 +1,11 @@
 {
     "version": "1775509943",
     "description": "G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)",
-    "homepage": "https://github.com/SoftFever/OrcaSlicer",
+    "homepage": "https://github.com/OrcaSlicer/OrcaSlicer",
     "license": "AGPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_nightly_portable.zip",
+            "url": "https://gh-proxy.com/https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_nightly_portable.zip",
             "hash": "f37bd138987ada1abaeafc0784d7a09c339542d9e01768bfe68d864d460d401e"
         }
     },
@@ -17,19 +17,14 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/SoftFever/OrcaSlicer/releases/tags/nightly-builds",
-        "script": [
-            "try {",
-            "    ($page | ConvertFrom-Json).updated_at | Get-Date -UFormat %s",
-            "}",
-            "catch { '' }"
-        ],
+        "url": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/releases/tags/nightly-builds",
+        "script": "($page | ConvertFrom-Json).updated_at | Get-Date -UFormat %s",
         "regex": "^(\\d+)$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_nightly_portable.zip"
+                "url": "https://gh-proxy.com/https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_nightly_portable.zip"
             }
         }
     }

@@ -80,9 +80,10 @@
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     ],
     "checkver": {
+        "url": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push",
         "script": [
-            "$apiUrl = 'https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push'",
-            "$fullSha = (Invoke-RestMethod -Uri $apiUrl).workflow_runs[0].head_sha",
+            "$workflows = $page | ConvertFrom-Json",
+            "$fullSha = $workflows.workflow_runs[0].head_sha",
             "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.com/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
             "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",

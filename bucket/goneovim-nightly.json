@@ -28,15 +28,10 @@
     "checkver": {
         "url": "https://api.github.com/repos/akiyosi/goneovim/releases/tags/nightly",
         "script": [
-            "try {",
-            "    $release = $page | ConvertFrom-Json",
-            "    $date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
-            "    $commit = $release.target_commitish",
-            "    return \"$date-$commit\"",
-            "",
-            "}catch {",
-            "    return ''",
-            "}"
+            "$release = $page | ConvertFrom-Json",
+            "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
+            "$commit = $release.target_commitish",
+            "Write-Output \"$date-$commit\""
         ],
         "regex": "(?<version>^\\d{8}-[0-9a-f]{7})"
     },

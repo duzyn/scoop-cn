@@ -17,12 +17,11 @@
     ],
     "persist": "syncplay.ini",
     "checkver": {
+        "url": "https://api.github.com/repos/Syncplay/syncplay/releases",
         "script": [
-            "try {",
-            "    if (($ver = (Invoke-RestMethod https://api.github.com/repos/Syncplay/syncplay/releases)[0].tag_name)[0] -eq ($prefix = 'v')) { $ver = $ver.Substring(1) } else { $prefix = '' }",
-            "    $prefix, $ver, $ver.Replace('-', '_') -join ' '",
-            "}",
-            "catch { '' }"
+            "$releases = $page | ConvertFrom-Json",
+            "if (($ver = $releases[0].tag_name)[0] -eq ($prefix = 'v')) { $ver = $ver.Substring(1) } else { $prefix = '' }",
+            "$prefix, $ver, $ver.Replace('-', '_') -join ' '"
         ],
         "regex": "\\A(?<prefix>v)? (\\S+) (?<underscore>\\S+)\\Z"
     },

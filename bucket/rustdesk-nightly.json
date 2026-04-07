@@ -20,15 +20,11 @@
         ]
     ],
     "checkver": {
+        "url": "https://api.github.com/repos/rustdesk/rustdesk/releases/tags/nightly",
         "script": [
-            "try {",
-            "    $api = Invoke-RestMethod 'https://api.github.com/repos/rustdesk/rustdesk/releases/tags/nightly'",
-            "    foreach ($name in $api.assets.name) { if ($name -clike '*-x86_64.exe') { $asset = $name; break } }",
-            "    (Get-Date $api.assets[0].updated_at -UFormat %s), $asset -join ' '",
-            "}",
-            "catch {",
-            "    ''",
-            "}"
+            "$api = $page | ConvertFrom-Json",
+            "foreach ($name in $api.assets.name) { if ($name -clike '*-x86_64.exe') { $asset = $name; break } }",
+            "(Get-Date $api.assets[0].updated_at -UFormat %s), $asset -join ' '"
         ],
         "regex": "\\A(\\d+) rustdesk-(?<release>[\\d.-]+)-x86_64.exe\\Z"
     },

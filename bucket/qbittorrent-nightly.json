@@ -65,12 +65,12 @@
         "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     },
     "checkver": {
+        "url": "https://api.github.com/repos/qbittorrent/qBittorrent/actions/workflows/ci_windows.yaml/runs?branch=master&status=success",
         "script": [
-            "try {",
-            "    (Invoke-RestMethod 'https://api.github.com/repos/qbittorrent/qBittorrent/actions/workflows/ci_windows.yaml/runs?branch=master&status=success').workflow_runs[0].id,",
-            "    (Invoke-RestMethod https://gh-proxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml | Select-String 'libtorrent:\\n.*version:\\s*\"(\\d+(?:\\.\\d+){2})\"').matches.groups[1].value -join ' '",
-            "}",
-            "catch { '' }"
+            "$ci_workflows = $page | ConvertFrom-Json",
+            "$ci_file = Invoke-RestMethod https://gh-proxy.com/https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/.github/workflows/ci_windows.yaml",
+            "$libtorrent_version = ( $ci_file | Select-String 'libtorrent:\\n.*version:\\s*\"(\\d+(?:\\.\\d+){2})\"').matches.groups[1].value",
+            "$ci_workflows.workflow_runs[0].id, $libtorrent_version -join ' '"
         ],
         "regex": "\\A(\\d+) (?<libtorrent>[\\d.]+)\\Z"
     },

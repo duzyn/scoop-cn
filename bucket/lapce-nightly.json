@@ -23,7 +23,11 @@
     ],
     "persist": "lapce-data",
     "checkver": {
-        "script": "try { Get-Date (Invoke-RestMethod https://api.github.com/repos/lapce/lapce/releases/tags/nightly).published_at -UFormat %s } catch { '' }",
+        "url": "https://api.github.com/repos/lapce/lapce/releases/tags/nightly",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "Get-Date $release.published_at -UFormat %s"
+        ],
         "regex": "\\A(\\d+)\\Z"
     },
     "autoupdate": {
