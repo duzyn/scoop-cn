@@ -1,5 +1,5 @@
 {
-    "version": "1.29.50",
+    "version": "1.29.70",
     "description": "Windows Package Manager CLI (aka winget)",
     "homepage": "https://github.com/microsoft/winget-cli",
     "license": "MIT",
@@ -10,8 +10,8 @@
     "suggest": {
         "vcredist": "vcredist2022"
     },
-    "url": "https://gh-proxy.com/https://github.com/microsoft/winget-cli/releases/download/v1.29.50-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
-    "hash": "7264f8b55a271ae7078b25749d0b9e2b6f55d1b84073bb982d030947da8822b0",
+    "url": "https://gh-proxy.com/https://github.com/microsoft/winget-cli/releases/download/v1.29.70-preview/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle#/dl.7z",
+    "hash": "0da5dc0079dd862446edb7f3edaecaed698927c0ba96782458a273bc2b660789",
     "architecture": {
         "64bit": {
             "pre_install": "Get-ChildItem \"$dir\" -Exclude '*x64.msix' | Remove-Item -Force -Recurse"
