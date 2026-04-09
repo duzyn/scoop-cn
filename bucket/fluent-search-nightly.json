@@ -1,0 +1,41 @@
+{
+    "version": "1.1.1.6",
+    "description": "Nightly build of Fluent Search, a search tool for running apps, browser tabs, in-app content, files and more.",
+    "homepage": "https://fluentsearch.net/",
+    "license": "Freeware",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/adirh3/Fluent-Search/releases/download/1.1.1.6/fluent-search-portable-x64.zip",
+            "hash": "56af7baa3ab7f43a594b7d70eab82cbf6646b05622862098b2603652c3b7bc77"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/adirh3/Fluent-Search/releases/download/1.1.1.6/fluent-search-portable-arm64.zip",
+            "hash": "593ac57b3b6accfd8ba2968f3e7475528356cd68107b96a6af474d78c7fdaf9d"
+        }
+    },
+    "pre_install": "if([Environment]::OSVersion.Version.Major -lt 10) { error 'This app requires Windows 10 or 11'; break }",
+    "shortcuts": [
+        [
+            "FluentSearch.exe",
+            "Fluent Search Nightly"
+        ]
+    ],
+    "persist": [
+        "Blast\\FluentSearchPlugins",
+        "Blast\\Settings"
+    ],
+    "checkver": {
+        "url": "https://github.com/adirh3/Fluent-Search/releases",
+        "regex": "releases/tag/(?<version>[\\d.]+)\"[^>]*>[^<]+ Nightly<"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/adirh3/Fluent-Search/releases/download/$version/fluent-search-portable-x64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/adirh3/Fluent-Search/releases/download/$version/fluent-search-portable-arm64.zip"
+            }
+        }
+    }
+}
