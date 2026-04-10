@@ -1,0 +1,28 @@
+{
+    "version": "1.7.8.0",
+    "description": "UPM provides an easy way to install, update, and configure Ultra+ mods",
+    "homepage": "https://theultraplace.com",
+    "license": "GPL-3.0-only",
+    "url": "https://d25cpafae92g0h.cloudfront.net/installers/UltraPlusManager-Setup-1.7.8.0.exe",
+    "hash": "588bb5d624b8803f395b6d85a171f27314c16d82adb539b7c429a677eda16247",
+    "innosetup": true,
+    "shortcuts": [
+        [
+            "UltraPlusManager.exe",
+            "UltraPlusManager"
+        ]
+    ],
+    "persist": "Data",
+    "checkver": {
+        "url": "https://d25cpafae92g0h.cloudfront.net/version.json",
+        "jp": "$.version"
+    },
+    "autoupdate": {
+        "hash": {
+            "mode": "json",
+            "url": "https://d25cpafae92g0h.cloudfront.net/version.json",
+            "jp": "$.sha256"
+        },
+        "url": "https://d25cpafae92g0h.cloudfront.net/installers/UltraPlusManager-Setup-$version.exe"
+    }
+}
