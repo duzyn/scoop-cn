@@ -1,0 +1,26 @@
+{
+    "version": "1.2.0",
+    "description": "Unofficial Amazon Games Client",
+    "homepage": "https://github.com/imLinguin/nile",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/imLinguin/nile/releases/download/v1.2.0/nile_windows_x86_64.exe",
+            "hash": "6531790c59f78cea4a8743bf0582d5afda7fb887f5c143391d7339ad0f42ab88"
+        }
+    },
+    "bin": [
+        [
+            "nile_windows_x86_64.exe",
+            "nile"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/imLinguin/nile/releases/download/v$version/nile_windows_x86_64.exe"
+            }
+        }
+    }
+}

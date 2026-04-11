@@ -1,0 +1,33 @@
+{
+    "version": "1.2.1",
+    "description": "GOG download module for Heroic Games Launcher",
+    "homepage": "https://github.com/Heroic-Games-Launcher/heroic-gogdl",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v1.2.1/gogdl_windows_x86_64.exe",
+            "hash": "5d4eaab6593eb203af09970b11b4125da4a575d525e4cff838d234f41d804728"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v1.2.1/gogdl_windows_arm64.exe",
+            "hash": "79104e732c2d9e524820af09940c092961212b07b7d202401b16074fa4d5e3ed"
+        }
+    },
+    "bin": [
+        [
+            "gogdl_windows_x86_64.exe",
+            "gogdl"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v$version/gogdl_windows_x86_64.exe"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/Heroic-Games-Launcher/heroic-gogdl/releases/download/v$version/gogdl_windows_arm64.exe"
+            }
+        }
+    }
+}

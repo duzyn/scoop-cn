@@ -1,0 +1,33 @@
+{
+    "version": "0.3.2",
+    "description": "Open Source implementation of GOG Galaxy Communication Service for SDK bundled with GOG games",
+    "homepage": "https://github.com/imLinguin/comet",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/imLinguin/comet/releases/download/v0.3.2/comet-x86_64-pc-windows-msvc.exe",
+            "hash": "181f9a3644eabbdf396037de135583e92cf4a08029be30c9ee4e2479ff11ae8c"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/imLinguin/comet/releases/download/v0.3.2/comet-aarch64-pc-windows-msvc.exe",
+            "hash": "d4dee6ad92beb110b474198ed178dd255e5e3226d4912bd5d658cd5c046af825"
+        }
+    },
+    "bin": [
+        [
+            "comet-x86_64-pc-windows-msvc.exe",
+            "comet"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/imLinguin/comet/releases/download/v$version/comet-x86_64-pc-windows-msvc.exe"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/imLinguin/comet/releases/download/v$version/comet-aarch64-pc-windows-msvc.exe"
+            }
+        }
+    }
+}
