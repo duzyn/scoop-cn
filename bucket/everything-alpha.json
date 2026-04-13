@@ -3,7 +3,10 @@
     "description": "Locate files and folders by name instantly.",
     "homepage": "https://www.voidtools.com",
     "license": "MIT",
-    "notes": "Run '$dir\\install-context.reg' to add Everything to right-click context menu.",
+    "notes": [
+        "To add Everything to right-click context menu, run:",
+        "reg import \"$dir\\install-context.reg\""
+    ],
     "architecture": {
         "64bit": {
             "url": "https://www.voidtools.com/Everything-1.5.0.1408a.x64.zip",
@@ -12,13 +15,17 @@
         "32bit": {
             "url": "https://www.voidtools.com/Everything-1.5.0.1408a.x86.zip",
             "hash": "d7e211b0c0126fdaa256099e6c6a204ec960f8777b173c11d0d1f1956365fe66"
+        },
+        "arm64": {
+            "url": "https://www.voidtools.com/Everything-1.5.0.1408a.ARM64.zip",
+            "hash": "786a799a301184a428492bd28abb699b99add9f834d10c821c030cf94d27b701"
         }
     },
     "pre_install": [
         "ensure \"$persist_dir\" | Out-Null",
         "if (Test-Path \"$dir\\Everything64.exe\") { Rename-Item \"$dir\\Everything64.exe\" 'Everything.exe' }",
         "if (!(Test-Path \"$persist_dir\\Everything*.ini\")) { Invoke-ExternalCommand \"$dir\\Everything.exe\" -Args @('-install-config', 'null') | Out-Null }",
-        "Get-ChildItem \"$persist_dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
+        "Get-ChildItem \"$persist_dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv', 'Session*.json', 'NO_ALPHA_INSTANCE', 'Omit Results.csv' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
         "Copy-Item \"$bucketsdir\\main\\scripts\\everything\\uninstall-context.reg\" \"$dir\\\""
     ],
     "post_install": [
@@ -38,7 +45,7 @@
         "    sc.exe delete 'Everything'",
         "}",
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
-        "Get-ChildItem \"$dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+        "Get-ChildItem \"$dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv', 'Session*.json', 'NO_ALPHA_INSTANCE', 'Omit Results.csv' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
     ],
     "bin": "Everything.exe",
     "shortcuts": [
@@ -47,6 +54,7 @@
             "Everything"
         ]
     ],
+    "persist": "plugins",
     "checkver": {
         "url": "https://www.voidtools.com/forum/viewtopic.php?f=12&t=9787",
         "regex": "Everything-([\\d.]+a)\\.x86"
@@ -58,6 +66,9 @@
             },
             "32bit": {
                 "url": "https://www.voidtools.com/Everything-$version.x86.zip"
+            },
+            "arm64": {
+                "url": "https://www.voidtools.com/Everything-$version.ARM64.zip"
             }
         }
     }

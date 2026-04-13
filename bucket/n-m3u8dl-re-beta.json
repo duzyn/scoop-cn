@@ -1,0 +1,51 @@
+{
+    "version": "0.5.1-beta",
+    "description": "Continuation of N_m3u8DL-CLI -- A modern and powerful stream downloader for MPD/M3U8/ISM.",
+    "homepage": "https://github.com/nilaoda/N_m3u8DL-RE",
+    "license": "MIT",
+    "suggest": {
+        "FFmpeg": [
+            "ffmpeg",
+            "ffmpeg-essentials",
+            "ffmpeg-shared"
+        ]
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.5.1-beta/N_m3u8DL-RE_v0.5.1-beta_win-x64_20251029.zip",
+            "hash": "7e2e5e64c2893aef118febc2213cd43706fce8bd0ffd5e8dd94024d79ea365e9"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.5.1-beta/N_m3u8DL-RE_v0.5.1-beta_win-NT6.0-x86_20251029.zip",
+            "hash": "0d301c77e56cd327e9c5c7846ce170e6bb609aabf8340a0854f9a79ba4ea1190"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v0.5.1-beta/N_m3u8DL-RE_v0.5.1-beta_win-arm64_20251029.zip",
+            "hash": "eb7f645399ae4b67101070d14f05c8af905ce94bc4d83cb4323456c8f267d53e"
+        }
+    },
+    "bin": [
+        "N_m3u8DL-RE.exe",
+        [
+            "N_m3u8DL-RE.exe",
+            "N_m3u8DL"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/nilaoda/N_m3u8DL-RE",
+        "regex": "N_m3u8DL-RE_v(?<version>[\\d.]+-beta)_win-x64_(?<date>\\d+)\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v$version/N_m3u8DL-RE_v$version_win-x64_$matchDate.zip"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v$version/N_m3u8DL-RE_v$version_win-NT6.0-x86_$matchDate.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/nilaoda/N_m3u8DL-RE/releases/download/v$version/N_m3u8DL-RE_v$version_win-arm64_$matchDate.zip"
+            }
+        }
+    }
+}
