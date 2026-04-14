@@ -1,0 +1,35 @@
+{
+    "version": "9.2",
+    "description": "A software reverse engineering (SRE) framework (version 9.2).",
+    "homepage": "https://github.com/NationalSecurityAgency/ghidra",
+    "license": "Apache-2.0",
+    "notes": "Ghidra requires JDK on the PATH to run.",
+    "suggest": {
+        "JDK": "openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_9.2_build/ghidra_9.2_PUBLIC_20201113.zip",
+            "hash": "ffebd3d87bc7c6d9ae1766dd3293d1fdab3232a99b170f8ea8b57497a1704ff6"
+        }
+    },
+    "extract_dir": "ghidra_9.2_PUBLIC",
+    "post_install": [
+        "# Copy default Configurations to persisting dir.",
+        "if (Test-Path \"$dir\\Ghidra\\Configurations.original\") {",
+        "    Copy-Item \"$dir\\Ghidra\\Configurations.original\\*\" \"$persist_dir\\Ghidra\\Configurations\" -Force -Recurse",
+        "    Remove-Item \"$dir\\Ghidra\\Configurations.original\" -Force -Recurse | Out-Null",
+        "}"
+    ],
+    "env_set": {
+        "GHIDRA_INSTALL_DIR": "$dir"
+    },
+    "bin": "ghidraRun.bat",
+    "shortcuts": [
+        [
+            "ghidraRun.bat",
+            "ghidra"
+        ]
+    ],
+    "persist": "Ghidra/Configurations"
+}
