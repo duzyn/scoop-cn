@@ -1,0 +1,38 @@
+{
+    "version": "5.1.2",
+    "description": "Disk space cleaner, privacy manager, and computer system optimizer (beta version).",
+    "homepage": "https://www.bleachbit.org",
+    "license": "GPL-3.0-or-later",
+    "url": "https://download.bleachbit.org/beta/5.1.2/BleachBit-5.1.2-portable.zip",
+    "hash": "29c8483612cb094fad82ac579b5fb78c1de1f88081b43a00122387a3b3b2c95c",
+    "extract_dir": "BleachBit-portable",
+    "bin": [
+        "bleachbit_console.exe",
+        [
+            "bleachbit_console.exe",
+            "bleachbit"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bleachbit.exe",
+            "BleachBit"
+        ]
+    ],
+    "persist": [
+        "cleaners",
+        "BleachBit.ini"
+    ],
+    "checkver": {
+        "url": "https://download.bleachbit.org/beta/",
+        "regex": "href=\"/beta/([\\d.]+)/\"",
+        "reverse": true
+    },
+    "autoupdate": {
+        "url": "https://download.bleachbit.org/beta/$version/BleachBit-$version-portable.zip",
+        "hash": {
+            "url": "$baseurl",
+            "regex": "(?sm)$basename.*?$sha256"
+        }
+    }
+}
