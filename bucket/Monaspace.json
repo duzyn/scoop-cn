@@ -1,11 +1,11 @@
 {
-    "version": "1.200",
+    "version": "1.400",
     "description": "An innovative superfamily of fonts for code.",
     "homepage": "https://monaspace.githubnext.com",
     "license": "OFL-1.1",
-    "url": "https://gh-proxy.com/https://github.com/githubnext/monaspace/releases/download/v1.200/monaspace-v1.200.zip",
-    "hash": "544b94719be76dd2d7e69f8464c5f8c0d612e59e9bde8d9ecc8867c9aa4940af",
-    "extract_dir": "monaspace-v1.200/fonts/otf",
+    "url": "https://gh-proxy.com/https://github.com/githubnext/monaspace/releases/download/v1.400/monaspace-static-v1.400.zip",
+    "hash": "ab66d71be751495f679727332a3345597943bd4d7beebca03f5cde04bf994de7",
+    "extract_dir": "Static Fonts",
     "installer": {
         "script": [
             "$currentBuildNumber = [int] (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\").CurrentBuildNumber",
@@ -38,7 +38,7 @@
             "}",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.otf' -Recurse | ForEach-Object {",
             "    $value = if ($global) { $_.Name } else { \"$fontInstallDir\\$($_.Name)\" }",
             "    New-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $value -Force | Out-Null",
             "    Copy-Item -LiteralPath $_.FullName -Destination $fontInstallDir",
@@ -47,7 +47,7 @@
     },
     "pre_uninstall": [
         "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
-        "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
+        "Get-ChildItem $dir -Filter '*.otf' -Recurse | ForEach-Object {",
         "    Get-ChildItem $fontInstallDir -Filter $_.Name | ForEach-Object {",
         "        try {",
         "            Rename-Item $_.FullName $_.FullName -ErrorVariable LockError -ErrorAction Stop",
@@ -77,7 +77,7 @@
             "$fontInstallDir = if ($global) { \"$env:windir\\Fonts\" } else { \"$env:LOCALAPPDATA\\Microsoft\\Windows\\Fonts\" }",
             "$registryRoot = if ($global) { \"HKLM\" } else { \"HKCU\" }",
             "$registryKey = \"${registryRoot}:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts\"",
-            "Get-ChildItem $dir -Filter '*.otf' | ForEach-Object {",
+            "Get-ChildItem $dir -Filter '*.otf' -Recurse | ForEach-Object {",
             "    Remove-ItemProperty -Path $registryKey -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
             "    Remove-Item \"$fontInstallDir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
             "}",
@@ -90,7 +90,7 @@
         "github": "https://github.com/githubnext/monaspace"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/githubnext/monaspace/releases/download/v$version/monaspace-v$version.zip",
-        "extract_dir": "monaspace-v$version/fonts/otf"
+        "url": "https://gh-proxy.com/https://github.com/githubnext/monaspace/releases/download/v$version/monaspace-static-v$version.zip",
+        "extract_dir": "Static Fonts"
     }
 }
