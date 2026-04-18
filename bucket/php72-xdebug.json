@@ -6,6 +6,10 @@
         "identifier": "Xdebug-1.01",
         "url": "https://xdebug.org/license.php"
     },
+    "notes": [
+        "Xdebug is already enabled if PHP 7.2 was installed through scoop!",
+        "Otherwise add '$dir\\php_xdebug.dll' to your php.ini"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://xdebug.org/files/php_xdebug-3.1.6-7.2-vc15-x86_64.dll#/php_xdebug.dll",
@@ -17,19 +21,31 @@
         }
     },
     "post_install": [
-        "$phpconfd = \"$persist_dir\\..\\php72\\cli\\conf.d\"",
-        "$ini = \"zend_extension=$dir\\php_xdebug.dll`n[xdebug]`nxdebug.remote_enable=on`nxdebug.remote_autostart=on`nxdebug.remote_connect_back=on\"",
-        "if(!(test-path $phpconfd\\xdebug.ini)) {",
-        "    Write-Output \"Enabling extension $(Convert-Path $phpconfd)\\xdebug.ini\"",
-        "    Add-Content -Value $ini -Path \"$phpconfd\\xdebug.ini\"",
-        "} else {",
-        "    Write-Host -f Yellow \"PHP 7.2 was not installed through scoop, you have to activate php_xdebug.dll manually! Add the following:`n\"",
-        "    Write-Host -f Cyan \"$ini`n`n\"",
+        "$config = @(",
+        "    \"zend_extension=$dir\\php_xdebug.dll\",",
+        "    \"[xdebug]\",",
+        "    \"xdebug.mode=develop,debug\",",
+        "    \"xdebug.client_port=9003\",",
+        "    \"xdebug.start_with_request=trigger   # If you always want to use debug, set the value to 'yes'\"",
+        ") -join \"`n\"",
+        "$php = $app -Split '-' | Select-Object -First 1",
+        "$configUpdated = $false",
+        "foreach ($phpGlobal in @($false, $true)) {",
+        "    if (installed $php $phpGlobal) {",
+        "        $configPath = \"$(persistdir $php $phpGlobal)\\cli\\conf.d\\xdebug.ini\"",
+        "        if(-not (Test-Path -Path $configPath)) {",
+        "            $configUpdated = $true",
+        "            ensure (Split-Path $configPath -Parent) | Out-Null",
+        "            Write-Host \"Enabling extension $configPath\"",
+        "            Add-Content -Value $config -Path $configPath",
+        "        }",
+        "        break",
+        "    }",
+        "}",
+        "if(-not $configUpdated) {",
+        "    Write-Host -ForegroundColor Yellow \"You may need to manually enable php_xdebug.dll. Add the following:`n\"",
+        "    Write-Host -ForegroundColor Cyan \"$config`n`n\"",
         "}"
-    ],
-    "notes": [
-        "Xdebug is already enabled if PHP 7.2 was installed through scoop!",
-        "Otherwise add '$dir\\php_xdebug.dll' to your php.ini"
     ],
     "checkver": {
         "url": "https://xdebug.org/download/historical",
