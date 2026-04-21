@@ -7,13 +7,13 @@
     "hash": "730f9a6aa5a0ef005b00997dce061fa43d331a1a71484bda4138745aa62b168d",
     "bin": [
         [
-            "SkyEmu-v4-Windows.exe",
+            "SkyEmu-v5-Windows.exe",
             "SkyEmu"
         ]
     ],
     "shortcuts": [
         [
-            "SkyEmu-v4-Windows.exe",
+            "SkyEmu-v5-Windows.exe",
             "SkyEmu"
         ]
     ],
@@ -51,7 +51,19 @@
         "github": "https://github.com/skylersaleh/SkyEmu"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/skylersaleh/SkyEmu/releases/download/v$version/SkyEmu-v$version-Windows.exe"
+        "url": "https://gh-proxy.com/https://github.com/skylersaleh/SkyEmu/releases/download/v$version/SkyEmu-v$version-Windows.exe",
+        "bin": [
+            [
+                "SkyEmu-v$version-Windows.exe",
+                "SkyEmu"
+            ]
+        ],
+        "shortcuts": [
+            [
+                "SkyEmu-v$version-Windows.exe",
+                "SkyEmu"
+            ]
+        ]
     },
     "notes": [
         "To use Scoop-managed persistent folders (bios, cheats, saves), configure the search paths inside SkyEmu accordingly.",

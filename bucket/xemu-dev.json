@@ -1,0 +1,83 @@
+{
+    "version": "0.8.134-26-gdc69fb4d6e",
+    "description": "Original Xbox Emulator (development version)",
+    "homepage": "https://xemu.app",
+    "license": {
+        "identifier": "GPL-2.0",
+        "url": "https://github.com/xemu-project/xemu/blob/master/COPYING"
+    },
+    "notes": [
+        "ATTENTION: xemu requires a dump of the Xbox Boot ROM, Flash ROM (BIOS) & Hard Disk Image to function.",
+        "Place the Boot ROM file in $persist_dir\\bootrom",
+        "Place the Flash ROM (BIOS) file in $persist_dir\\flashrom",
+        "Place the Hard Disk Image file in $persist_dir\\hdd",
+        "You must still manually load the Boot ROM, Flash ROM (BIOS) & Hard Disk Image inside xemu.",
+        "Learn more at https://xemu.app/docs/required-files/"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/xemu-project/xemu/releases/download/pre-release/xemu-0.8.134-26-gdc69fb4d6e-windows-x86_64.zip",
+            "hash": "33f7482c850b99568d299572d71f01f2a55101e04318dbce61b22b0af5fb9d65"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/xemu-project/xemu/releases/download/pre-release/xemu-0.8.134-26-gdc69fb4d6e-windows-arm64.zip",
+            "hash": "79d50a596e66b0335efc84fd2e48e610b11a1b7b3b2921d941a3b908e00c8094"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   if (Test-Path \"$env:APPDATA\\xemu\\xemu\") {",
+        "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
+        "       Copy-Item -Path \"$env:APPDATA\\xemu\\xemu\\*\" -Destination \"$persist_dir\" -Recurse",
+        "       Remove-Item -Path \"$env:APPDATA\\xemu\" -Recurse",
+        "   } else {",
+        "       New-item \"$persist_dir\\xemu.toml\" -ItemType File | Out-Null",
+        "       New-item \"$persist_dir\\shader_cache_list\" -ItemType File | Out-Null",
+        "   }",
+        "}"
+    ],
+    "post_install": [
+        "if (Test-Path \"$persist_dir\\eeprom.bin\") {",
+        "   Move-Item -Path \"$persist_dir\\eeprom.bin\" -Destination \"$persist_dir\\eeprom\\eeprom.bin\"",
+        "   (Get-Content -Path \"$persist_dir\\xemu.toml\").Replace(\"eeprom_path = '$env:APPDATA\\xemu\\xemu\\eeprom.bin'\", \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\") | Set-Content -Path \"$persist_dir\\xemu.toml\"",
+        "} elseif (!(Get-Content \"$persist_dir\\xemu.toml\")) {",
+        "    '[sys.files]', \"eeprom_path = '$dir\\eeprom\\eeprom.bin'\" | Set-Content \"$persist_dir\\xemu.toml\"",
+        "}"
+    ],
+    "bin": [
+        [
+            "xemu.exe",
+            "xemu-dev"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "xemu.exe",
+            "xemu (Development)"
+        ]
+    ],
+    "persist": [
+        "bootrom",
+        "flashrom",
+        "eeprom",
+        "hdd",
+        "shaders",
+        "shader_cache_list",
+        "xemu.toml"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/xemu-project/xemu/releases/tags/pre-release",
+        "regex": "xemu-(?<version>[\\d.]+-\\d+-g[a-f0-9]+)-windows-x86_64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/xemu-project/xemu/releases/download/pre-release/xemu-$version-windows-x86_64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/xemu-project/xemu/releases/download/pre-release/xemu-$version-windows-arm64.zip"
+            }
+        }
+    }
+}
