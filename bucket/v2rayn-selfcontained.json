@@ -1,14 +1,18 @@
 {
+    "##": "Deprecate this manifest after 2026-06-01.",
     "version": "7.17.3",
-    "description": "v2rayN (WPF-based version) is a GUI client for V2Ray, with support for Xray, sing-box, and other compatible cores.",
+    "description": "v2rayN (WPF-based version) is a GUI client for V2Ray, with support for Xray, sing-box, and other compatible cores (Deprecated, please use `extras/v2rayn` instead)",
     "homepage": "https://github.com/2dust/v2rayN",
     "license": "GPL-3.0-only",
     "notes": [
         "Since v7.17.0, v2rayN is self-contained and no longer requires the .NET 8.0 Desktop Runtime.",
-        "For more information, see: https://github.com/2dust/v2rayN/releases/tag/7.17.0"
+        "For more information, see: https://github.com/2dust/v2rayN/releases/tag/7.17.0",
+        "",
+        "This manifest is deprecated and scheduled for removal on 2026-06-01. Please use `extras/v2rayn` instead."
     ],
     "suggest": {
-        "v2fly-core": "v2ray"
+        "v2fly-core": "v2ray",
+        "v2rayN": "v2rayn"
     },
     "architecture": {
         "64bit": {
