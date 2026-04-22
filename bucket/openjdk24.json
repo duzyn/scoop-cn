@@ -15,8 +15,8 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://jdk.java.net/24",
-        "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
+        "url": "https://jdk.java.net/archive/",
+        "re": "https://download\\.java\\.net/java/(?<type>GA)/(?<path>jdk(?<major>24(?:\\.[\\d]+)*)/[^/]+/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>24(?:\\.[\\d]+)*)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin\\.(zip|tar.gz))",
         "replace": "${version}-${build}${ea}"
     },
     "autoupdate": {

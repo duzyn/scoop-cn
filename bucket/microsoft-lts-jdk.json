@@ -1,16 +1,16 @@
 {
-    "description": "The Microsoft Build of OpenJDK is a no-cost long-term supported distribution and Microsoft's way to collaborate and contribute to the Java ecosystem.",
+    "description": "The Microsoft Build of OpenJDK is a new no-cost long-term supported distribution and Microsoft's new way to collaborate and contribute to the Java ecosystem",
     "homepage": "https://www.microsoft.com/openjdk/",
-    "version": "21.0.10",
+    "version": "25.0.2",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.10-windows-x64.zip",
-            "hash": "45a44af1f832e720ea6ad90dd7b2c94a48b2e5bf2fab92b2403e975f78d7d5e1"
+            "url": "https://aka.ms/download-jdk/microsoft-jdk-25.0.2-windows-x64.zip",
+            "hash": "38d1a42d189c50b24152014ef131931f25f4cc80400ce618f0477f5e4e5aa252"
         },
         "arm64": {
-            "url": "https://aka.ms/download-jdk/microsoft-jdk-21.0.10-windows-aarch64.zip",
-            "hash": "924c7127929aeb90019c1982a26b0a88337aed00ef333afb0bec28c06a6b5767"
+            "url": "https://aka.ms/download-jdk/microsoft-jdk-25.0.2-windows-aarch64.zip",
+            "hash": "e0d9380cf3d0b5efc675664fa0db22cc9eb5d77c4fd2a132f4b58df0608593cf"
         }
     },
     "extract_to": "tmp",
@@ -25,8 +25,8 @@
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://docs.microsoft.com/java/openjdk/download",
-        "regex": "(?<ms>microsoft-jdk-((?<ver>21[\\d.]*?).(?<build>[\\d]+).[\\d]+)-windows-x64).zip"
+        "url": "https://learn.microsoft.com/en-us/java/openjdk/download",
+        "regex": "(?<ms>microsoft-jdk-((?<ver>25[\\d.]*?).(?<build>[\\d]+).[\\d]+)-windows-x64).zip"
     },
     "autoupdate": {
         "architecture": {
