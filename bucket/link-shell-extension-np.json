@@ -1,0 +1,53 @@
+{
+    "version": "3.9.3.5",
+    "description": "A Windows shell extension for creating and managing NTFS links, including Hardlinks, Junctions, Volume Mountpoints, and Symbolic Links, directly through the file manager interface.",
+    "homepage": "https://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://schinagl.priv.at/nt/hardlinkshellext/license.txt"
+    },
+    "suggest": {
+        "vcredist": "vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://schinagl.priv.at/nt/hardlinkshellext/save/3935/HardLinkShellExt_X64.exe#/HardLinkShellExt.exe",
+            "hash": "ca3f26ebf49dc4ea8b5d8c0154acca0de59a8689e5907fe748ffaeaa357ff3a0"
+        },
+        "32bit": {
+            "url": "https://schinagl.priv.at/nt/hardlinkshellext/save/3935/HardLinkShellExt_win32.exe#/HardLinkShellExt.exe",
+            "hash": "b7e7227e960f025be992c398dafacd03c416adf5210d3fc0ff1d5b5771afdc4b"
+        }
+    },
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "installer": {
+        "script": [
+            "$install_args = @('/S', '/noredist', '/Language=English', \"/D=$dir\")",
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList $install_args -WindowStyle Hidden -Wait",
+            "Remove-Item -Path \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue"
+        ]
+    },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
+    "uninstaller": {
+        "script": [
+            "$removal_args = @('/S' , '/noredist')",
+            "$uninstaller_file = Get-ChildItem -Path $dir -Filter 'uninst*' -File | Select-Object -ExpandProperty FullName -First 1",
+            "if (-not $uninstaller_file) { abort \"`nInstallation Failed: Uninstaller not found in '$dir'.\" }",
+            "Start-Process -FilePath $uninstaller_file -ArgumentList $removal_args -WindowStyle Hidden -Wait"
+        ]
+    },
+    "checkver": {
+        "url": "https://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html",
+        "regex": "Last Updated.+?Version ([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://schinagl.priv.at/nt/hardlinkshellext/save/$cleanVersion/HardLinkShellExt_X64.exe#/HardLinkShellExt.exe"
+            },
+            "32bit": {
+                "url": "https://schinagl.priv.at/nt/hardlinkshellext/save/$cleanVersion/HardLinkShellExt_win32.exe#/HardLinkShellExt.exe"
+            }
+        }
+    }
+}
