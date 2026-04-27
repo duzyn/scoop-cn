@@ -1,10 +1,10 @@
 {
     "description": "High-performance, embeddable, polyglot Virtual Machine for JVM-langs (Java, Scala, Kotlin), JavaScript/NodeJS, Python, Ruby, R, and LLVM-langs (C, C++, Rust)",
-    "version": "21.0.2",
+    "version": "17.0.9",
     "homepage": "https://www.graalvm.org/",
     "license": "GPL-2.0",
-    "url": "https://gh-proxy.com/https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_windows-x64_bin.zip",
-    "hash": "e17b7bead097bf372a5c75df17815b0a2f30b777a019d25eff7706b21421f7fa",
+    "url": "https://gh-proxy.com/https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-17.0.9/graalvm-community-jdk-17.0.9_windows-x64_bin.zip",
+    "hash": "285e045bfc0b87d2b61958fea97444c3c6c7e68fba3fdbbe146622328b52ec38",
     "extract_to": "tmp",
     "installer": {
         "script": [
@@ -20,7 +20,7 @@
     "checkver": {
         "url": "https://api.github.com/repos/graalvm/graalvm-ce-builds/releases?per_page=100",
         "jsonpath": "$[*].tag_name",
-        "regex": "jdk-(21\\.[\\d.]+)"
+        "regex": "jdk-(17\\.[\\d.]+)"
     },
     "autoupdate": {
         "url": "https://gh-proxy.com/https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-$version/graalvm-community-jdk-$version_windows-x64_bin.zip",

@@ -1,19 +1,15 @@
 {
     "description": "Eclipse Temurin is a runtime provided by Eclipse Adoptium for general use across the Java ecosystem",
     "homepage": "https://adoptium.net",
-    "version": "11.0.29-7",
+    "version": "11.0.30-7",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.29+7/OpenJDK11U-jre_x64_windows_hotspot_11.0.29_7.zip",
-            "hash": "b619e5e2434ac1a6cf7a33d6e93827d832a16484e4d0beb9fff60760472ae76a"
-        },
-        "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.29+7/OpenJDK11U-jre_x86-32_windows_hotspot_11.0.29_7.zip",
-            "hash": "b747698a05a39391a58b9caac30310275e4e6bd9fef92d6c149cba310d91d2be"
+            "url": "https://gh-proxy.com/https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.30+7/OpenJDK11U-jre_x64_windows_hotspot_11.0.30_7.zip",
+            "hash": "db7fe2f05857074e73ef2bb10bfb95556ad110cf1ba0c82d101f93b3a93862ff"
         }
     },
-    "extract_dir": "jdk-11.0.29+7-jre",
+    "extract_dir": "jdk-11.0.30+7-jre",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
@@ -33,9 +29,6 @@
         "architecture": {
             "64bit": {
                 "url": "https://github.com/$matchLink/download/$matchTag/$matchName"
-            },
-            "32bit": {
-                "url": "https://github.com/$matchLink/download/$matchTag/$matchPrefix_x86-32_$matchSuffix"
             }
         },
         "hash": {

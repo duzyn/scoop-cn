@@ -21,9 +21,9 @@
         "GRAALVM_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://www.oracle.com/java/technologies/downloads/",
+        "url": "https://www.oracle.com/java/technologies/javase/graalvm-jdk17-archive-downloads.html",
         "useragent": "Mozilla/5.0",
-        "regex": "GraalVM for JDK ((?<ver>17)\\.[\\d.]+) downloads"
+        "regex": "graalvm-jdk-((?<ver>17)\\.(?<build>[\\d.]+))_windows-x64_bin\\.zip"
     },
     "autoupdate": {
         "url": "https://download.oracle.com/graalvm/$matchVer/archive/graalvm-jdk-$version_windows-x64_bin.zip",

@@ -20,7 +20,7 @@
     },
     "checkver": {
         "url": "https://api.bell-sw.com/v1/liberica/releases?version-feature=17&bundle-type=jdk-lite&version-modifier=latest&release-type=all&os=windows&arch=x86&installation-type=archive&package-type=zip&output=json&fields=version",
-        "jsonpath": "$.version",
+        "jsonpath": "$[*].version",
         "regex": "(?<major>[\\d.]+)(?:\\+)(?<build>[\\d]+)",
         "replace": "${major}-${build}"
     },

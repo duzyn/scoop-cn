@@ -1,0 +1,36 @@
+{
+    "version": "4.14_BETA",
+    "description": "A utility that helps format and create bootable USB flash drives (beta version).",
+    "homepage": "https://rufus.ie/",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/pbatard/rufus/releases/download/v4.14_BETA/rufus-4.14_BETA.exe#/rufus.exe",
+            "hash": "b7b7e9810475d3155b6829558770f039bcc5466bc30aa50820374d523898c908"
+        }
+    },
+    "pre_install": "if (!(Test-Path \"$persist_dir\\rufus.ini\")) { New-Item \"$dir\\rufus.ini\" | Out-Null }",
+    "bin": "rufus.exe",
+    "shortcuts": [
+        [
+            "rufus.exe",
+            "Rufus Beta"
+        ]
+    ],
+    "persist": [
+        "rufus.ini",
+        "rufus_files"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/pbatard/rufus/releases?per_page=1",
+        "jsonpath": "$[0].tag_name",
+        "regex": "v([\\w._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/pbatard/rufus/releases/download/v$version/rufus-$version.exe#/rufus.exe"
+            }
+        }
+    }
+}
