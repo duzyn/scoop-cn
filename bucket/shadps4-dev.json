@@ -1,27 +1,87 @@
 {
-    "version": "2025-10-30-715eb51",
-    "description": "PlayStation 4 emulator for Windows, Linux and macOS (development version)",
+    "version": "20260427081821-76246a3",
+    "description": "PlayStation 4 emulator (development version)",
     "homepage": "https://shadps4.net/",
     "license": {
         "identifier": "GPL-2.0-only",
-        "url": "https://github.com/shadps4-emu/shadPS4/blob/main/LICENSE"
+        "url": "https://github.com/shadps4-emu/shadps4-qtlauncher/blob/main/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/Pre-release-shadPS4-2025-10-30-715eb512c9b84bfcc5f208881a657dd02a58393e/shadps4-win64-qt-2025-10-30-715eb51.zip",
-    "hash": "2d0d67816f628582776ff5b390f7567c0aff342c8293e3d2d5e9309302936ace",
-    "bin": "shadPS4.exe",
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-2026-04-27-76246a327b8805d355738157ea444e4d9a799ea3/shadPS4QtLauncher-win64-qt-2026-04-27-76246a3.zip",
+            "hash": "9b27d71a0c1b4979d93e21a8f021c2199b21f33d120857df494460b52502d818"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "    New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "    $map = @{ 'shadPS4' = 'user'; 'shadPS4QtLauncher' = 'launcher' }",
+        "    $found = $map.Keys.Where({ Test-Path \"$env:APPDATA\\$_\" })",
+        "    if ($found) {",
+        "        Write-Host 'Migrating AppData...' -ForegroundColor Yellow",
+        "        foreach ($folder in $found) {",
+        "            $dest = \"$persist_dir\\$($map[$folder])\"",
+        "            New-Item $dest -ItemType Directory | Out-Null",
+        "            Copy-Item -Path \"$env:APPDATA\\$folder\\*\" -Destination $dest -Recurse",
+        "            Remove-Item -Path \"$env:APPDATA\\$folder\" -Recurse",
+        "        }",
+        "    }",
+        "}"
+    ],
+    "post_install": [
+        "if (Test-Path \"$persist_dir\\user\\config.toml\") {",
+        "    $oldAddonDir = ($env:APPDATA + '\\shadPS4\\addcont').Replace('\\', '\\\\')",
+        "    $newAddonDir = ($dir + '\\user\\addcont').Replace('\\', '\\\\')",
+        "    (Get-Content \"$persist_dir\\user\\config.toml\").Replace($oldAddonDir, $newAddonDir) | Set-Content \"$persist_dir\\user\\config.toml\"",
+        "}",
+        "if (Test-Path \"$persist_dir\\launcher\\qt_ui.ini\") {",
+        "    $oldVersionPath = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '\\\\')",
+        "    $newVersionPath = ($dir + '\\launcher\\versions').Replace('\\', '\\\\')",
+        "    $oldVersionSel = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '/')",
+        "    $newVersionSel = ($dir + '\\launcher\\versions').Replace('\\', '/')",
+        "    (Get-Content \"$persist_dir\\launcher\\qt_ui.ini\").Replace($oldVersionPath, $newVersionPath).Replace($oldVersionSel, $newVersionSel) | Set-Content \"$persist_dir\\launcher\\qt_ui.ini\"",
+        "}",
+        "if (Test-Path \"$persist_dir\\launcher\\versions.json\") {",
+        "    $oldPath = ($env:APPDATA + '\\shadPS4QtLauncher\\versions').Replace('\\', '/')",
+        "    $newPath = ($dir + '\\launcher\\versions').Replace('\\', '/')",
+        "    (Get-Content \"$persist_dir\\launcher\\versions.json\").Replace($oldPath, $newPath) | Set-Content \"$persist_dir\\launcher\\versions.json\"",
+        "}"
+    ],
+    "bin": [
+        [
+            "shadPS4QtLauncher.exe",
+            "shadPS4-dev"
+        ]
+    ],
     "shortcuts": [
         [
-            "shadPS4.exe",
+            "shadPS4QtLauncher.exe",
             "shadPS4 (Development)"
         ]
     ],
-    "persist": "user",
+    "persist": [
+        "launcher",
+        "user"
+    ],
     "checkver": {
-        "url": "https://api.github.com/repos/shadps4-emu/shadPS4/releases?per_page=1",
-        "jsonpath": "$[?(@.prerelease == true)]",
-        "regex": "/(?<tag>[\\w-]+)/shadps4-win64-qt-(?<version>[\\w-]+)\\.zip"
+        "url": "https://api.github.com/repos/shadps4-emu/shadps4-qtlauncher/releases?per_page=1",
+        "script": [
+            "$release = (Invoke-RestMethod $url | Where-Object { $_.prerelease })[0]",
+            "$time = (Get-Date $release.published_at).ToString('yyyyMMddHHmmss')",
+            "$suffix = $release.name -replace '^shadPS4QtLauncher-'",
+            "$commit = ($suffix -split '-')[-1]",
+            "return \"$time-$commit $($release.tag_name) $suffix\""
+        ],
+        "regex": "(?<version>[\\w-]+) (?<tag>[\\w-]+) (?<suffix>[\\w.-]+)"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadPS4/releases/download/$matchTag/shadps4-win64-qt-$version.zip"
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/$matchTag/shadPS4QtLauncher-win64-qt-$matchSuffix.zip"
+            }
+        }
     }
 }
