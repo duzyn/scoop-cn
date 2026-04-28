@@ -1,0 +1,56 @@
+{
+    "version": "1.3.8",
+    "description": "Custom Minecraft Classic compatible client",
+    "homepage": "https://www.classicube.net/",
+    "license": {
+        "identifier": "BSD-3-Clause",
+        "url": "https://github.com/ClassiCube/ClassiCube/blob/master/license.txt"
+    },
+    "architecture": {
+        "32bit": {
+            "url": "https://cdn.classicube.net/client/release/win32/ClassiCube.zip",
+            "hash": "2dc9ad2a8a7f7443327733ff0c99f8a29e13b5e092e3ebf7beb0adaf442863f3"
+        },
+        "64bit": {
+            "url": "https://cdn.classicube.net/client/release/win64/ClassiCube.zip",
+            "hash": "bdaac36561278c94b2e2fa5be777c1e052d0643e2afef216341faff69b9a8f3e"
+        }
+    },
+    "extract_dir": "ClassiCube",
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-item \"$persist_dir\\fontscache.txt\" -ItemType File | Out-Null",
+        "   New-item \"$persist_dir\\options.txt\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "ClassiCube.exe",
+            "ClassiCube"
+        ]
+    ],
+    "persist": [
+        "audio",
+        "logs",
+        "maps",
+        "plugins",
+        "texpacks",
+        "texturecache",
+        "fontscache.txt",
+        "options.txt"
+    ],
+    "checkver": {
+        "github": "https://github.com/ClassiCube/ClassiCube"
+    },
+    "autoupdate": {
+        "architecture": {
+            "32bit": {
+                "url": "https://cdn.classicube.net/client/release/win32/ClassiCube.zip"
+            },
+            "64bit": {
+                "url": "https://cdn.classicube.net/client/release/win64/ClassiCube.zip"
+            }
+        }
+    }
+}

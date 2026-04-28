@@ -1,0 +1,44 @@
+{
+    "version": "0.10.1",
+    "description": "Yet Another NSP Updater for Skyline",
+    "homepage": "https://github.com/nozwock/yanu",
+    "license": {
+        "identifier": "GPL-2.0-only",
+        "url": "https://github.com/nozwock/yanu/blob/main/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/nozwock/yanu/releases/download/0.10.1/yanu-cli-x86_64-pc-windows-msvc.exe",
+                "https://gh-proxy.com/https://github.com/nozwock/yanu/releases/download/0.10.1/yanu-x86_64-pc-windows-msvc.exe"
+            ],
+            "hash": [
+                "f755172899a979681dc12d4185940bb8f015f145845f4bdcbdea6de5cb3bdee2",
+                "12f5020d71555a865f07816fcd8db46577ca3133d1ca93dcd89944cace3b927c"
+            ]
+        }
+    },
+    "bin": [
+        [
+            "yanu-cli-x86_64-pc-windows-msvc.exe",
+            "yanu"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "yanu-x86_64-pc-windows-msvc.exe",
+            "yanu"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/nozwock/yanu/releases/download/$version/yanu-cli-x86_64-pc-windows-msvc.exe",
+                    "https://gh-proxy.com/https://github.com/nozwock/yanu/releases/download/$version/yanu-x86_64-pc-windows-msvc.exe"
+                ]
+            }
+        }
+    }
+}

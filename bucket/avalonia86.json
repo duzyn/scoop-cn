@@ -1,0 +1,57 @@
+{
+    "version": "1.4.0",
+    "description": "Configuration manager for 86Box",
+    "homepage": "https://github.com/notBald/Avalonia86",
+    "license": {
+        "identifier": "MIT",
+        "url": "https://github.com/notBald/Avalonia86/blob/master/LICENSE"
+    },
+    "notes": [
+        "ATTENTION: You must manually set the path to the 86box executable within the app.",
+        "  1. Run 'scoop prefix 86box' in a terminal and copy the output.",
+        "  2. Open Avalonia 86, click 'Tools' > 'Program Settings'.",
+        "  3. Paste the path into the 86box executable path field.",
+        "Learn more: https://github.com/notBald/Avalonia86#how-to-use"
+    ],
+    "depends": [
+        "86box",
+        "86box-roms"
+    ],
+    "suggest": {
+        ".NET Desktop Runtime 9.0": "windowsdesktop-runtime-9.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/notBald/Avalonia86/releases/download/v1.4.0/Avalonia-86-for-Windows7-x64-v1.4.0.zip",
+            "hash": "da38ac83e72b5acb6cd93a67cc95163faa873450f554222af362f34d789fecb3"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/notBald/Avalonia86/releases/download/v1.4.0/Avalonia-86-for-Windows-ARM64-v1.4.0.zip",
+            "hash": "01b1184b70f2ea41499e36269933342eb37b9704f703aedcb86035c0b449c784"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\")) {",
+        "   New-Item \"$persist_dir\" -ItemType Directory | Out-Null",
+        "   New-Item \"$persist_dir\\Avalonia86.sqlite\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "Avalonia86.exe",
+            "Avalonia 86"
+        ]
+    ],
+    "persist": "Avalonia86.sqlite",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.com/https://github.com/notBald/Avalonia86/releases/download/v$version/Avalonia-86-for-Windows7-x64-v$version.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/notBald/Avalonia86/releases/download/v$version/Avalonia-86-for-Windows-ARM64-v$version.zip"
+            }
+        }
+    }
+}

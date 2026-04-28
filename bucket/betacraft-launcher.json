@@ -1,0 +1,32 @@
+{
+    "version": "1.09_17",
+    "description": "Unofficial launcher for legacy versions of Minecraft",
+    "homepage": "https://betacraft.uk/",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/betacraftuk/betacraft-launcher/blob/v1/LICENSE"
+    },
+    "notes": "Jave Runtime Environment (JRE) 1.8 is required.",
+    "url": "https://gh-proxy.com/https://github.com/betacraftuk/betacraft-launcher/releases/download/1.09_17/launcher-1.09_17-portable.exe",
+    "hash": "4196fa3b83a0cfbc2f5daa2f8ed5c2c9176c3b3daa0ca06e469c6219410355f1",
+    "shortcuts": [
+        [
+            "launcher-1.09_17-portable.exe",
+            "Betacraft Launcher"
+        ]
+    ],
+    "persist": ".betacraft",
+    "checkver": {
+        "url": "https://api.github.com/repos/betacraftuk/betacraft-launcher/releases",
+        "jsonpath": "$[?(@.target_commitish == 'v1')].tag_name"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/betacraftuk/betacraft-launcher/releases/download/$version/launcher-$version-portable.exe",
+        "shortcuts": [
+            [
+                "launcher-$version-portable.exe",
+                "Betacraft Launcher"
+            ]
+        ]
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0-alpha.20230623",
+    "description": "Unofficial launcher for legacy versions of Minecraft (v2 alpha)",
+    "homepage": "https://betacraft.uk/",
+    "license": {
+        "identifier": "GPL-3.0-only",
+        "url": "https://github.com/betacraftuk/betacraft-launcher/blob/v2/LICENSE"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.com/https://github.com/betacraftuk/betacraft-launcher/releases/download/2.0.0-alpha.20230623/betacraft-2.0.0-alpha.20230623-win64.zip",
+            "hash": "4fba435ee222a261de63f759f638e4bf9bf2471aa2cd050e1e6d808683d26f9c"
+        }
+    },
+    "extract_dir": "Betacraft",
+    "shortcuts": [
+        [
+            "Betacraft.exe",
+            "Betacraft Launcher (alpha)"
+        ]
+    ],
+    "persist": "betacraft",
+    "checkver": {
+        "url": "https://api.github.com/repos/betacraftuk/betacraft-launcher/releases",
+        "jsonpath": "$[?(@.target_commitish == 'v2')].tag_name"
+    },
+    "autoupdate": {
+        "url": "https://gh-proxy.com/https://github.com/betacraftuk/betacraft-launcher/releases/download/$version/betacraft-$version-win64.zip"
+    }
+}
