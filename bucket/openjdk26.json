@@ -1,0 +1,33 @@
+{
+    "description": "Official General-Availability Release of OpenJDK",
+    "homepage": "https://jdk.java.net/",
+    "version": "26-35",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk26/c3cc523845074aa0af4f5e1e1ed4151d/35/GPL/openjdk-26_windows-x64_bin.zip",
+            "hash": "2dd2d92c9374cd49a120fe9d916732840bf6bb9f0e0cc29794917a3c08b99c5f"
+        }
+    },
+    "extract_dir": "jdk-26",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://jdk.java.net/archive/",
+        "re": "https://download\\.java\\.net/java/(?<type>GA)/(?<path>jdk(?<major>26(?:\\.[\\d]+)*)/[^/]+/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>26(?:\\.[\\d]+)*)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin\\.(zip|tar.gz))",
+        "replace": "${version}-${build}${ea}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.java.net/java/$matchType/$matchPath/$matchFile"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jdk-$matchVersion"
+    }
+}

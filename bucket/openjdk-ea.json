@@ -1,21 +1,21 @@
 {
     "description": "Official Early-Access Builds of OpenJDK",
     "homepage": "https://jdk.java.net/",
-    "version": "25.0.2-10",
+    "version": "27-19-ea",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.java.net/java/GA/jdk25.0.2/b1e0dfa218384cb9959bdcb897162d4e/10/GPL/openjdk-25.0.2_windows-x64_bin.zip",
-            "hash": "74784a0c07258f32d36e9224dd79187c566d831c30d47dc06888d4212087331d"
+            "url": "https://download.java.net/java/early_access/jdk27/19/GPL/openjdk-27-ea+19_windows-x64_bin.zip",
+            "hash": "b2a6d883cbb261ccbc1f52e039ead30aa07359cc31cd35f3afe2101de05f06d1"
         }
     },
-    "extract_dir": "jdk-25.0.2",
+    "extract_dir": "jdk-27",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://jdk.java.net/25",
+        "url": "https://jdk.java.net/27",
         "re": "/(?<type>early_access|GA)/(?<path>jdk(?<major>[\\d.]+)(?:.*)?/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin.(zip|tar.gz))",
         "replace": "${version}-${build}${ea}"
     },
