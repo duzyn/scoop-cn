@@ -1,24 +1,24 @@
 {
-    "version": "1.25.923.0",
+    "version": "1.25.1171.0",
     "description": "The new Windows Terminal, and the original Windows console host - all in the same place! (Preview version)",
     "homepage": "https://github.com/microsoft/terminal",
     "license": "MIT",
     "notes": "Add Windows Terminal Preview as a context menu option by running `reg import \"$dir\\install-context.reg\"`",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.923.0/Microsoft.WindowsTerminalPreview_1.25.923.0_x64.zip",
-            "hash": "d8b915f56e4c6680ad88949c3ab724f8973679c066d2cac4f7b1aa0576aec88a"
+            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.1171.0/Microsoft.WindowsTerminalPreview_1.25.1171.0_x64.zip",
+            "hash": "0c2b6d00c1615e108d879ea14e6eefb5ae2dc8d71663efe7ae01815471e54117"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.923.0/Microsoft.WindowsTerminalPreview_1.25.923.0_x86.zip",
-            "hash": "f7ba58884dd588f7e689cf580d5858c9c3242388d3385ef2da0d19ebfcfad983"
+            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.1171.0/Microsoft.WindowsTerminalPreview_1.25.1171.0_x86.zip",
+            "hash": "1b7c949dcec5faae39634e55b1630e6f8f1ee04b5ef1e204daaedfc1e9591699"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.923.0/Microsoft.WindowsTerminalPreview_1.25.923.0_arm64.zip",
-            "hash": "2b0abbfefb06e5a49374566c2d9e81b3647a220b774a3a1d25c7da774e9bfdf8"
+            "url": "https://gh-proxy.com/https://github.com/microsoft/terminal/releases/download/v1.25.1171.0/Microsoft.WindowsTerminalPreview_1.25.1171.0_arm64.zip",
+            "hash": "795ce42a0866bfb5d14f81f257c0fe78b63f4071ad83ce8567fc38d00d277e18"
         }
     },
-    "extract_dir": "terminal-1.25.923.0",
+    "extract_dir": "terminal-1.25.1171.0",
     "pre_install": [
         "# Remove this hint in 2023-12-01",
         "$settings_path = \"$env:LOCALAPPDATA\\Packages\\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\\LocalState\"",

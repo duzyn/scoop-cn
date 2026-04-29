@@ -1,16 +1,20 @@
 {
-    "version": "20260413",
+    "version": "20260428-4b96149",
     "description": "DB Browser for SQLite (DB4S) project (nightly build)",
     "homepage": "https://github.com/sqlitebrowser/sqlitebrowser",
     "license": "MPL-2.0|GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20260413-x64.zip",
-            "hash": "945ed0d82188a51e7a4c131efdbb823ba9e2a5ac2a679b42ac7b82f47a8f67e9"
+            "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-4b96149-win-x64.zip",
+            "hash": "11d81fb0aff30fc44b907f349194827e220a0ec200d505dde38cbb5017a1f4d2"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-20260413-x86.zip",
-            "hash": "33e0486c0e130d870d3160e43f78540ac53fc0d33ae3e7d050c7e15ca089541f"
+            "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-4b96149-win-x86.zip",
+            "hash": "dc25f4e7cae900d4d96f0c85d33d2edad5f8ed535cd0eeea2a2dfa4635d8f266"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-4b96149-win-arm64.zip",
+            "hash": "964e8ad0485adfdfe6823bc336fd511918f9ff2babe5526d23b229a78b7e2aa0"
         }
     },
     "bin": [
@@ -29,18 +33,25 @@
     ],
     "persist": "Data",
     "checkver": {
-        "url": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/nightly",
-        "jsonpath": "$.assets..browser_download_url",
-        "regex": "SQLite-(?<version>\\d{8})-x64\\.",
-        "reverse": true
+        "url": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/continuous",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
+            "$page -match 'SQLite-dev-(?<commit>[0-9a-f]{7})-win-x64.zip' | Out-Null",
+            "Write-Output \"$date-$($matches['commit'])\""
+        ],
+        "regex": "^(?<version>\\d{8}-(?<commit>[0-9a-f]{7}))$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x64.zip"
+                "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-x64.zip"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/nightly/DB.Browser.for.SQLite-$matchVersion-x86.zip"
+                "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-x86.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/sqlitebrowser/sqlitebrowser/releases/download/continuous/DB.Browser.for.SQLite-dev-$matchCommit-win-arm64.zip"
             }
         }
     }
