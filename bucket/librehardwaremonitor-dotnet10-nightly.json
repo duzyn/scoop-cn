@@ -1,0 +1,54 @@
+{
+    "version": "24963003480",
+    "description": "Libre Hardware Monitor is free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer (.NET 10 nightly version).",
+    "homepage": "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
+    "license": "MPL-2.0",
+    "suggest": {
+        ".NET Desktop Runtime 10.0": "windowsdesktop-runtime-10.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/24963003480/LibreHardwareMonitor%20%28.NET%2010%29.zip",
+            "hash": "ab17431e9ae234fd01c1b4a3c5a1d41e2a723d3b36bffb212741610d343b221a"
+        }
+    },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "    if (Test-Path -Path \"$persist_dir\\$_\" -PathType Leaf) {",
+        "        Copy-Item -Path \"$persist_dir\\$_\" -Destination $dir -Force",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "LibreHardwareMonitor.exe",
+            "Libre Hardware Monitor (.NET 10 Nightly)"
+        ]
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_\" -PathType Leaf) {",
+        "        ensure $persist_dir | Out-Null",
+        "        Copy-Item -Path \"$dir\\$_\" -Destination $persist_dir -Force",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/workflows/master.yml/runs?branch=master&status=success",
+        "jsonpath": "$.workflow_runs[0].id"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor%20%28.NET%2010%29.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+                    "mode": "json",
+                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor (.NET 10)')].digest"
+                }
+            }
+        }
+    }
+}
