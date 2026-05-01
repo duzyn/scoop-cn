@@ -1,8 +1,14 @@
 {
+    "##": "Deprecate this manifest after 2026-06-01.",
     "version": "b5449",
-    "description": "Inference of LLaMA model in pure C/C++ (HIP version for AMD gfx1030)",
+    "description": "Inference of LLaMA model in pure C/C++ (HIP version for AMD gfx1030. Deprecated, please use `versions/llama.cpp-hip-radeon` instead)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
+    "notes": [
+        "As of version b5460, upstream no longer distributes llama.cpp-hip-gfx1030/gfx1100/gfx1101 separately.",
+        "For details, see: https://github.com/ggml-org/llama.cpp/commit/3079e9ac8e04ef6eddeb0c164d72edb6b6fd2df5",
+        "This manifest is deprecated and scheduled for removal on 2026-06-01. Please use `versions/llama.cpp-hip-radeon` instead."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b5449/llama-b5449-bin-win-hip-x64-gfx1030.zip",
