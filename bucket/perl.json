@@ -3,6 +3,19 @@
     "description": "A programming language suitable for writing simple scripts as well as complex applications.",
     "homepage": "https://strawberryperl.com",
     "license": "GPL-1.0-or-later|Artistic-1.0-Perl",
+    "notes": [
+        "To avoid conflicts with other C/C++ compilers, '$dir\\c\\bin' will not be added to the PATH.",
+        "For more information, see: https://github.com/ScoopInstaller/Main/pull/2832",
+        "",
+        "This may cause some preinstalled Perl modules to fail.",
+        "If you encounter this issue, please run the following command to manually add it to the PATH:",
+        "",
+        "# To add to the user PATH, run PowerShell and execute:",
+        "[Environment]::SetEnvironmentVariable(\"Path\", $env:Path + \";$dir\\c\\bin\", 'User')",
+        "",
+        "# To add to the system PATH instead, run PowerShell as administrator and execute:",
+        "[Environment]::SetEnvironmentVariable(\"Path\", $env:Path + \";$dir\\c\\bin\", 'Machine')"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.com/https://github.com/StrawberryPerl/Perl-Dist-Strawberry/releases/download/SP_54221_64bit/strawberry-perl-5.42.2.1-64bit-portable.zip",
