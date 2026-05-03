@@ -1,16 +1,16 @@
 {
-    "version": "10.33.2",
+    "version": "11.0.4",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v10.33.2/pnpm-win-x64.exe#/pnpm.exe",
-            "hash": "3d1af71e9da7081efd58f95942e1f7e2107bf8fcdae03eb2331c0b6cea59510b"
+            "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v11.0.4/pnpm-win32-x64.zip",
+            "hash": "9dacdc858b58a069112eb02e78947e45727bd61fdfb8c77fcc8c08d922de180a"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v10.33.2/pnpm-win-arm64.exe#/pnpm.exe",
-            "hash": "0605f8a3a707cf9a5e525ebbb84282f095668f928e1cd6e6a3a31bf78571e8d0"
+            "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v11.0.4/pnpm-win32-arm64.zip",
+            "hash": "c829dab6cba99aa88a8613f047f2d079a2ac9fe0b2d186a61d093a1d8dc9ee94"
         }
     },
     "bin": [
@@ -44,10 +44,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-x64.exe#/pnpm.exe"
+                "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-x64.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win-arm64.exe#/pnpm.exe"
+                "url": "https://gh-proxy.com/https://github.com/pnpm/pnpm/releases/download/v$version/pnpm-win32-arm64.zip"
             }
         }
     }

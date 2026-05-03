@@ -15,7 +15,7 @@
     },
     "bin": "WinSW.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/winsw/winsw/releases",
+        "github": "https://api.github.com/repos/winsw/winsw/releases",
         "jsonpath": "$[?(@.prerelease == true)].tag_name",
         "regex": "v(?<version>[\\w-.]+)"
     },

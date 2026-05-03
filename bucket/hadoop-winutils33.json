@@ -46,7 +46,7 @@
     },
     "pre_install": "New-Item -ItemType SymbolicLink -Path \"$dir\\bin\" -Value \".\" | Out-Null",
     "checkver": {
-        "url": "https://api.github.com/repos/cdarlint/winutils/contents/",
+        "github": "https://api.github.com/repos/cdarlint/winutils/contents/",
         "jsonpath": "$..name",
         "reverse": true,
         "regex": "hadoop-(3.3\\.\\d+)"

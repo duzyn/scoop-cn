@@ -31,7 +31,7 @@
     ],
     "persist": "freac.xml",
     "checkver": {
-        "url": "https://api.github.com/repos/enzo1982/freac/actions/workflows/continuous-build-windows.yml/runs?branch=master&status=success",
+        "github": "https://api.github.com/repos/enzo1982/freac/actions/workflows/continuous-build-windows.yml/runs?branch=master&status=success",
         "jsonpath": "$.workflow_runs[0].id"
     },
     "autoupdate": {

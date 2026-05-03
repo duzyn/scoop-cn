@@ -23,7 +23,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/RandomEngy/VidCoder/releases",
+        "github": "https://api.github.com/repos/RandomEngy/VidCoder/releases",
         "jsonpath": "$[?(@.target_commitish == 'beta')].tag_name",
         "regex": "v([\\d.]+-beta)"
     },

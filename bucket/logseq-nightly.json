@@ -16,7 +16,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly",
+        "github": "https://api.github.com/repos/logseq/logseq/releases/tags/nightly",
         "jsonpath": "$.assets..browser_download_url",
         "regex": "Logseq-darwin-x64-(?<version>[\\d.]+)-alpha%2Bnightly.(?<date>\\d+).zip",
         "replace": "${version}-${date}"

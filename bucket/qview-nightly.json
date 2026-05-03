@@ -29,7 +29,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success",
+        "github": "https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success",
         "script": [
             "$workflows = $page | ConvertFrom-Json",
             "$api = $workflows.workflow_runs[0]",

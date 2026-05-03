@@ -23,7 +23,7 @@
     ],
     "persist": "lapce-data",
     "checkver": {
-        "url": "https://api.github.com/repos/lapce/lapce/releases/tags/nightly",
+        "github": "https://api.github.com/repos/lapce/lapce/releases/tags/nightly",
         "script": [
             "$release = $page | ConvertFrom-Json",
             "Get-Date $release.published_at -UFormat %s"

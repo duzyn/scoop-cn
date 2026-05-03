@@ -20,7 +20,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/qt-creator/qt-creator/releases/latest",
+        "github": "https://api.github.com/repos/qt-creator/qt-creator/releases/latest",
         "jsonpath": "$.assets[0].browser_download_url",
         "regex": "/releases/download/v([\\w.-]+)/qt-creator-\\w+-(?<nums>\\d+)\\.\\w+$"
     },

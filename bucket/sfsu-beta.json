@@ -20,7 +20,7 @@
     "notes": "In order to replace scoop commands use `Invoke-Expression (&sfsu hook)` in your Powershell profile.",
     "bin": "sfsu.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/winpax/sfsu/releases",
+        "github": "https://api.github.com/repos/winpax/sfsu/releases",
         "jsonpath": "$[?(@.prerelease == true)].tag_name",
         "regex": "v([\\w.-]+)"
     },

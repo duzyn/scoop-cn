@@ -33,7 +33,7 @@
     ],
     "persist": "Data",
     "checkver": {
-        "url": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/continuous",
+        "github": "https://api.github.com/repos/sqlitebrowser/sqlitebrowser/releases/tags/continuous",
         "script": [
             "$release = $page | ConvertFrom-Json",
             "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",

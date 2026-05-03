@@ -29,7 +29,7 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases",
+        "github": "https://api.github.com/repos/yt-dlp/FFmpeg-Builds/releases",
         "jsonpath": "$..assets[?(@.browser_download_url =~ /ffmpeg-N-\\d+-g[0-9a-f]+-win64-gpl\\.zip/i)].browser_download_url",
         "regex": "autobuild-(?<buildtime>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[\\d-]+)/ffmpeg-N-(?<commitnum>\\d+)-g(?<commithash>[0-9a-f]+)-win64-gpl\\.zip",
         "replace": "${year}${month}${day}-${commitnum}-g${commithash}"

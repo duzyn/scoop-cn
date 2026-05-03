@@ -80,7 +80,7 @@
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push",
+        "github": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push",
         "script": [
             "$workflows = $page | ConvertFrom-Json",
             "$fullSha = $workflows.workflow_runs[0].head_sha",

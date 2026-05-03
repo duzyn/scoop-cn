@@ -18,7 +18,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/prusa3d/PrusaSlicer/releases",
+        "github": "https://api.github.com/repos/prusa3d/PrusaSlicer/releases",
         "jsonpath": "$[0].assets..name",
         "regex": "PrusaSlicer-([\\d.]+(?:-[a-z]+\\d+)?)\\+win64-(?<timestamp>\\d{12})_signed\\.zip"
     },

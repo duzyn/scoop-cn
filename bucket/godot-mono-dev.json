@@ -37,7 +37,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repos/godotengine/godot-builds/tags",
+        "github": "https://api.github.com/repos/godotengine/godot-builds/tags",
         "jsonpath": "$[?(@.name =~ /^[\\d.]+-dev\\d+$/)].name"
     },
     "autoupdate": {

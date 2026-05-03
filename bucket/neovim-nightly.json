@@ -23,7 +23,7 @@
     },
     "bin": "bin\\nvim.exe",
     "checkver": {
-        "url": "https://api.github.com/repos/neovim/neovim/releases/tags/nightly",
+        "github": "https://api.github.com/repos/neovim/neovim/releases/tags/nightly",
         "jsonpath": "$.body",
         "regex": "NVIM v([\\d.]+)-dev-([a-f\\d]+)",
         "replace": "${1}-${2}"

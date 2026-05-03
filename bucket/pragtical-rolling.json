@@ -19,7 +19,7 @@
     ],
     "persist": "user",
     "checkver": {
-        "url": "https://api.github.com/repos/pragtical/pragtical/actions/workflows/rolling.yml/runs?branch=master&status=success",
+        "github": "https://api.github.com/repos/pragtical/pragtical/actions/workflows/rolling.yml/runs?branch=master&status=success",
         "script": [
             "$content = ConvertFrom-Json $page",
             "if ((-not $content) -or (-not $content.workflow_runs) -or ($content.workflow_runs.Count -eq 0)) {",
