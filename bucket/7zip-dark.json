@@ -1,0 +1,105 @@
+{
+    "version": "26.01-v0.61.0",
+    "description": "A multi-format file archiver with high compression ratios (Dark Mode patched by ozone10)",
+    "homepage": "https://github.com/ozone10/7zip-Dark7zip",
+    "license": {
+        "identifier": "MIT,MPL-2.0,BSD-2-Clause,BSD-3-Clause,LGPL-2.1-or-later",
+        "url": "https://github.com/ozone10/7zip-Dark7zip/blob/main/LICENSE.md"
+    },
+    "notes": [
+        "To avoid Scoop installing a duplicate default 7zip, please execute the following command:",
+        "scoop config use_external_7zip true",
+        "",
+        "To register the context menu entry, please execute the following command:",
+        "reg import \"$dir\\install-context.reg\"",
+        "",
+        "If an error occurs while attempting to delete files during uninstallation, run the following command and then retry:",
+        "Stop-Process -Name 'explorer'"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-x64.msi",
+                "https://gh-proxy.com/https://github.com/ozone10/7zip-Dark7zip/releases/download/v26.01-v0.61.0/7z26.01-v0.61.0-x64.zip#/patch.dl"
+            ],
+            "hash": [
+                "a47ea8dcf8bc08e6de474cae77c828e031fa22cb528f6095defffebf11cd02f2",
+                "5fab69ad6a906ff06ad497a6954877218819f356c375d52d3bda6b5785ae6e25"
+            ],
+            "extract_dir": "Files\\7-Zip",
+            "pre_install": [
+                "Invoke-ExternalCommand \"$dir\\7z.exe\" @('x', \"$dir\\patch.dl\", \"-o$dir\", '-y') | Out-Null",
+                "Remove-Item \"$dir\\patch.dl\" -Force"
+            ]
+        },
+        "arm64": {
+            "url": [
+                "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-arm64.exe",
+                "https://gh-proxy.com/https://github.com/ozone10/7zip-Dark7zip/releases/download/v26.01-v0.61.0/7z26.01-v0.61.0-arm64.zip#/patch.dl"
+            ],
+            "hash": [
+                "1fecf4e3407950939c8ffcc3e42e3039821997dea155301c75369474e5f15175",
+                "8c9af32b1c66ad4b1b8597b054b82719045327fe0dcab8986186600ba8b7133d"
+            ],
+            "pre_install": [
+                "$7zr = Join-Path $env:TMP '7zr.exe'",
+                "$7zVersion = $version -split '-' | Select-Object -First 1",
+                "Invoke-WebRequest -Uri \"https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$7zVersion/7zr.exe\" -OutFile $7zr",
+                "$arm_exe = (Get-ChildItem \"$dir\\*-arm64.exe\").FullName",
+                "Invoke-ExternalCommand $7zr @('x', $arm_exe, \"-o$dir\", '-y') | Out-Null",
+                "Invoke-ExternalCommand \"$dir\\7z.exe\" @('x', \"$dir\\patch.dl\", \"-o$dir\", '-y') | Out-Null",
+                "Remove-Item \"$dir\\Uninstall.exe\", $arm_exe, \"$dir\\patch.dl\", $7zr -Force"
+            ]
+        }
+    },
+    "post_install": [
+        "$7zip_dir = $dir -replace '\\\\', '\\\\'",
+        "Get-ChildItem -Path \"$bucketsdir\\main\\scripts\\7-zip\" -Filter '*.reg' -File | ForEach-Object {",
+        "    $content = Get-Content -Path $_.FullName -Encoding utf8",
+        "    if ($global) { $content = $content -replace 'HKEY_CURRENT_USER(?=.+Classes)', 'HKEY_LOCAL_MACHINE' }",
+        "    $content -replace '{{7zip_dir}}', $7zip_dir | Set-Content -Path \"$dir\\$($_.Name)\" -Encoding unicode",
+        "}"
+    ],
+    "bin": [
+        "7z.exe",
+        "7zG.exe",
+        "7zFM.exe"
+    ],
+    "shortcuts": [
+        [
+            "7zFM.exe",
+            "7-Zip\\7-Zip File Manager (Dark Mode)"
+        ],
+        [
+            "7-zip.chm",
+            "7-Zip\\7-Zip Help"
+        ]
+    ],
+    "persist": [
+        "Codecs",
+        "Formats"
+    ],
+    "uninstaller": {
+        "script": "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" *> $null }"
+    },
+    "checkver": {
+        "github": "https://github.com/ozone10/7zip-Dark7zip",
+        "regex": "v([\\d.]+-v[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$matchHead/7z$majorVersion$minorVersion-x64.msi",
+                    "https://gh-proxy.com/https://github.com/ozone10/7zip-Dark7zip/releases/download/v$version/7z$version-x64.zip#/patch.dl"
+                ]
+            },
+            "arm64": {
+                "url": [
+                    "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$matchHead/7z$majorVersion$minorVersion-arm64.exe",
+                    "https://gh-proxy.com/https://github.com/ozone10/7zip-Dark7zip/releases/download/v$version/7z$version-arm64.zip#/patch.dl"
+                ]
+            }
+        }
+    }
+}
