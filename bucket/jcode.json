@@ -1,16 +1,16 @@
 {
-    "version": "0.11.15",
+    "version": "0.11.16",
     "description": "Coding Agent Harness.",
     "homepage": "https://github.com/1jehuang/jcode",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/1jehuang/jcode/releases/download/v0.11.15/jcode-windows-x86_64.tar.gz",
-            "hash": "0c036736ab3f3248d5f0ae60bf9721635557a0a29058f35a77252c9bb1dc0a31"
+            "url": "https://gh-proxy.com/https://github.com/1jehuang/jcode/releases/download/v0.11.16/jcode-windows-x86_64.tar.gz",
+            "hash": "921d5a4bee1a7a07c41cd6a7611100e64f6e7467d5bf29e3b793728f8972ac90"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/1jehuang/jcode/releases/download/v0.11.15/jcode-windows-aarch64.tar.gz",
-            "hash": "a5be7e2f15965c3f8881ab258502ed85d1c6d96fe3c0f9cf63bd91d7e093f71e"
+            "url": "https://gh-proxy.com/https://github.com/1jehuang/jcode/releases/download/v0.11.16/jcode-windows-aarch64.tar.gz",
+            "hash": "58dcb82958e5a3d1d7fce03ec0fa9c236a58ee54eb7f5a78a1f89f57339b5f40"
         }
     },
     "pre_install": "Get-ChildItem -Path \"$dir\\jcode-windows-*.exe\" | Select-Object -First 1 | Rename-Item -NewName 'jcode.exe'",
