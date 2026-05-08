@@ -1,14 +1,14 @@
 {
-    "version": "8.14.5",
+    "version": "9.5.0",
     "description": "An open-source build automation tool focused on flexibility and performance. (Binaries only without documentation)",
     "homepage": "https://gradle.org",
     "license": "Apache-2.0",
     "suggest": {
         "JDK": "openjdk"
     },
-    "url": "https://mirror.nju.edu.cn/gradle/gradle-8.14.5-bin.zip",
-    "hash": "6f74b601422d6d6fc4e1f9a1ab6522f642c2fdcbc15ae33ebd30ba3d7198e854",
-    "extract_dir": "gradle-8.14.5",
+    "url": "https://mirror.nju.edu.cn/gradle/gradle-9.5.0-bin.zip",
+    "hash": "553c78f50dafcd54d65b9a444649057857469edf836431389695608536d6b746",
+    "extract_dir": "gradle-9.5.0",
     "post_install": [
         "$current_env = Get-EnvVar -Name GRADLE_USER_HOME -Global:$global",
         "If ($null -eq $current_env) {",
@@ -21,8 +21,8 @@
     "persist": ".gradle",
     "bin": "bin\\gradle.bat",
     "checkver": {
-        "url": "https://gradle.org/releases/",
-        "regex": ">([\\d.]+)</a"
+        "url": "https://services.gradle.org/versions/current",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
         "url": "https://mirror.nju.edu.cn/gradle/gradle-$version-bin.zip",
