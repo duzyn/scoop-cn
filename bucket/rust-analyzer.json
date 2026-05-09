@@ -1,23 +1,36 @@
 {
-    "version": "2026-04-27",
+    "version": "2026-05-04",
     "description": "A Rust compiler front-end for IDEs",
     "homepage": "https://rust-analyzer.github.io/",
     "license": "Apache-2.0|MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/2026-04-27/rust-analyzer-x86_64-pc-windows-msvc.zip",
-            "hash": "739f07575d5a2a96e3607db6d841d88101b28dbdbe8956357f4c730309a7f592"
+            "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/2026-05-04/rust-analyzer-x86_64-pc-windows-msvc.zip",
+            "hash": "a9703da68a13ca5a4fab7dbcd4d3cc868fad52725fa819b1b9f8d92a7196bc84"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/2026-05-04/rust-analyzer-i686-pc-windows-msvc.zip",
+            "hash": "66cdee4f1dbfd3409d578118a5663d2dfd2b5bb0b7a628171547903c8ca67bb4"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/2026-05-04/rust-analyzer-aarch64-pc-windows-msvc.zip",
+            "hash": "ab2ee9e5719a122c611bcc7e13c7a73fa3b2f9f0ea110cffcb2ca83624718bf0"
         }
     },
     "bin": "rust-analyzer.exe",
     "checkver": {
-        "github": "https://github.com/rust-lang/rust-analyzer",
-        "regex": "releases/tag/([\\d-]+)"
+        "github": "https://github.com/rust-lang/rust-analyzer"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-x86_64-pc-windows-msvc.zip"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/rust-lang/rust-analyzer/releases/download/$version/rust-analyzer-aarch64-pc-windows-msvc.zip"
             }
         }
     }
