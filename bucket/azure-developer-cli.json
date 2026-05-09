@@ -1,5 +1,5 @@
 {
-    "version": "1.24.3",
+    "version": "1.25.0",
     "description": "A developer CLI that provides commands for working with Azure resources that map to key workflow stages: code, build, deploy, monitor, repeat.",
     "homepage": "https://aka.ms/azd",
     "license": "MIT",
@@ -9,12 +9,12 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.24.3/azd-windows-amd64.zip",
-            "hash": "c52b74b071168d28357e130d2cf88c75655a3cd663f9d1d94f09999e6134f96c"
+            "url": "https://gh-proxy.com/https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.25.0/azd-windows-amd64.zip",
+            "hash": "d64db8652420b266151ffc8a6ab9cd987e8b77ec4f1f1b239c6f5f0485f968bd"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.24.3/azd-windows-arm64-alpha.zip",
-            "hash": "91a3ab7f81114c71b2157917fc479d152ce6b6ced754911bc8163d52b24bf7e9"
+            "url": "https://gh-proxy.com/https://github.com/Azure/azure-dev/releases/download/azure-dev-cli_1.25.0/azd-windows-arm64-alpha.zip",
+            "hash": "1ae775baffe4914033122a5f20f63a94704a0335db0fecd49580e97f6a6da8af"
         }
     },
     "pre_install": "Get-Item \"$dir\\azd-*.exe\" | Rename-Item -NewName \"azd.exe\"",
