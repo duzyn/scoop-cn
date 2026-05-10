@@ -1,16 +1,16 @@
 {
-    "version": "b9010",
+    "version": "b9093",
     "description": "Inference of LLaMA model in pure C/C++ (CPU version)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9010/llama-b9010-bin-win-cpu-x64.zip",
-            "hash": "430f2107d69aa6fe22623fcdcb5a01f5b2126d16f6c2606fb52e5ff4db09bf90"
+            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9093/llama-b9093-bin-win-cpu-x64.zip",
+            "hash": "863ba23a532e737e4bce06a5ce1ec0d68cfebbb26086e003dc4f7c6a43433463"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9010/llama-b9010-bin-win-cpu-arm64.zip",
-            "hash": "8e90e26b0d8a6d704c38f0505631ce891aa265af24fcce3450ddb67289cb2b8d"
+            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9093/llama-b9093-bin-win-cpu-arm64.zip",
+            "hash": "8c338c1d492ab89060de9f59af6ce9614ad89cad494c357cc25607ae52e4dd0b"
         }
     },
     "bin": [
@@ -35,7 +35,7 @@
     "persist": "models",
     "checkver": {
         "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "/releases/tag/(b[\\d]+)"
+        "regex": "(b[\\d]+)"
     },
     "autoupdate": {
         "architecture": {

@@ -1,12 +1,12 @@
 {
-    "version": "b9010",
+    "version": "b9093",
     "description": "Inference of LLaMA model in pure C/C++ (Vulkan version)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9010/llama-b9010-bin-win-vulkan-x64.zip",
-            "hash": "3ba5176beb7fc94ef68d91b261b14f7b1ef9d9e3b34a4ca1b9caeb85371fd9f9"
+            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9093/llama-b9093-bin-win-vulkan-x64.zip",
+            "hash": "8ecc802eb849702bb62c3f1e1eeb830229abff3cb303a8ba3eb2fefe502d1bb1"
         }
     },
     "bin": [
@@ -31,7 +31,7 @@
     "persist": "models",
     "checkver": {
         "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "/releases/tag/(b[\\d]+)"
+        "regex": "(b[\\d]+)"
     },
     "autoupdate": {
         "architecture": {

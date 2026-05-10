@@ -1,12 +1,12 @@
 {
-    "version": "b9010",
+    "version": "b9093",
     "description": "Inference of LLaMA model in pure C/C++ (HIP version for AMD GPUs)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9010/llama-b9010-bin-win-hip-radeon-x64.zip",
-            "hash": "0d3ef8352dbf791771f5d059b8a22fb1b79d90105ee58f95720748ed5f6dd4e2"
+            "url": "https://gh-proxy.com/https://github.com/ggml-org/llama.cpp/releases/download/b9093/llama-b9093-bin-win-hip-radeon-x64.zip",
+            "hash": "662f0ada6b98f8e2b55600ecf63866f54493d706b8c570ef80c7f675e38c12af"
         }
     },
     "bin": [
@@ -31,7 +31,7 @@
     "persist": "models",
     "checkver": {
         "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "/releases/tag/(b[\\d]+)"
+        "regex": "(b[\\d]+)"
     },
     "autoupdate": {
         "architecture": {
