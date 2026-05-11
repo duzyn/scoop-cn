@@ -1,20 +1,20 @@
 {
-    "version": "1.63.0",
+    "version": "1.64.0",
     "description": "A collection of JavaScript tools written in Rust.",
     "homepage": "https://github.com/oxc-project/oxc",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.63.0/oxlint-x86_64-pc-windows-msvc.zip",
-            "hash": "d514b21945deecb1ace4b08ce9f851403f57519e1d5787df8975fc21e79e1826"
+            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.64.0/oxlint-x86_64-pc-windows-msvc.zip",
+            "hash": "06f8b8fafbef54458da38fc7bcebff3f58d56e74f0515be2aa52e9245ed652af"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.63.0/oxlint-i686-pc-windows-msvc.zip",
-            "hash": "2e8f4ced504cdc418b5a931372f1c5733c6a56971f5d656aec6f1c9b21c7205c"
+            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.64.0/oxlint-i686-pc-windows-msvc.zip",
+            "hash": "f03b6dd286f5b60630a8724f417f2cec3c3180608e22c88b3ef501efe5bbf5bb"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.63.0/oxlint-aarch64-pc-windows-msvc.zip",
-            "hash": "3d1e9be29d70f7e3cdb2a1718ef6b3830c7581ae54032d2598fc09ab261a2532"
+            "url": "https://gh-proxy.com/https://github.com/oxc-project/oxc/releases/download/apps_v1.64.0/oxlint-aarch64-pc-windows-msvc.zip",
+            "hash": "e156c48078e7c11d443625a2da792ed3596740d80eaf900113fdc4e8b1412205"
         }
     },
     "pre_install": "Get-Item \"$dir\\oxlint-*.exe\" | Rename-Item -NewName \"$dir\\oxlint.exe\"",
