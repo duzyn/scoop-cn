@@ -1,12 +1,12 @@
 {
-    "version": "4.0.37.0",
+    "version": "4.1.0.0",
     "homepage": "https://files.community/",
     "description": "A modern file manager that helps users organize their files and folders.",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://cdn.files.community/files/stable/Files.Package_4.0.37.0_Test/Files.Package_4.0.37.0_x64_arm64.msixbundle",
-            "hash": "efa4f03033c9eee09e79324eb2c66e67bce5fc23f605590ecdd2ef0760e883a3"
+            "url": "https://cdn.files.community/files/stable/Files.Package/Files.Package_x64_arm64.msixbundle",
+            "hash": "2b2ef40cce77ae9369ee8e656d5c625026e3a2d1a04bc3f5e2bd4b0652121573"
         }
     },
     "installer": {
@@ -19,25 +19,17 @@
     "checkver": {
         "script": [
             "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/f/FilesCommunity/Files'",
-            "$first_letter, $publisher, $package = $package_url.Split('/') | Select-Object -Last 3",
             "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
-            "$path_segments = $response | Where-Object { $_.type -eq 'dir' } |",
-            "        Sort-Object -Property { [version]$_.name } -Descending | ForEach-Object -MemberName name",
-            "foreach ($path_segment in $path_segments) {",
-            "    $manifest_url = \"$package_url/{2}/{0}.{1}.installer.yaml\" -f $publisher, $package, $path_segment",
-            "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -Headers @{ 'Accept' = 'application/vnd.github.v3.raw' } -ErrorAction Stop",
-            "    if ($null -ne $manifest_info -and $manifest_info -match 'Files.Package_(?<version>[\\d.]+)_Test') {",
-            "        Write-Output $Matches['version']",
-            "        break",
-            "    }",
-            "}"
+            "$latest_version = $response | Where-Object { $_.type -eq 'dir' } |",
+            "        Sort-Object -Property { [version]$_.name } -Descending | Select-Object -ExpandProperty name -First 1",
+            "Write-Output $latest_version"
         ],
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://cdn.files.community/files/stable/Files.Package_$version_Test/Files.Package_$version_x64_arm64.msixbundle"
+                "url": "https://cdn.files.community/files/stable/Files.Package/Files.Package_x64_arm64.msixbundle"
             }
         },
         "hash": {
