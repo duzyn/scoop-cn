@@ -1,21 +1,21 @@
 {
-    "version": "9.0.15",
+    "version": "9.0.16",
     "description": "Microsoft .NET 9.0 Desktop Runtime",
     "homepage": "https://dotnet.microsoft.com/download/dotnet",
     "license": "MIT",
     "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-9.0'",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.15/windowsdesktop-runtime-9.0.15-win-x64.exe",
-            "hash": "sha512:d43eac7404f59db137fb79e87d20952374c6c659642e665976bf5469d8459a906dc362082ba9523596c50d10575f055630614d2300517c8e08f21c7e0dde1b6d"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.16/windowsdesktop-runtime-9.0.16-win-x64.exe",
+            "hash": "sha512:bafec4c0763f8610b63537611bcaeb65b3e6e2a40528f7c4d6bfb1a39352e47ddd9f3383027695e9ee8cfc141dcd645590b7f1d3845f2a4c82f7c5e0b8afb877"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.15/windowsdesktop-runtime-9.0.15-win-x86.exe",
-            "hash": "sha512:8e5ccc23acce41248e28f111bfb284f0c986a96af052aba69cf4f1184f290e76ac37f5509f6834be9c432442c81f5e4acaf9c0d4d01995f9f704644dc64c0088"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.16/windowsdesktop-runtime-9.0.16-win-x86.exe",
+            "hash": "sha512:0c83de3dbe8a506ff3ab818be5ef06a2557c630c8e85c829b920434dc8ade8256f86ea49336a2b0aabb34c2873cb43af04c02310b9ec1474d35de4bd7b4bc1fd"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.15/windowsdesktop-runtime-9.0.15-win-arm64.exe",
-            "hash": "sha512:7e7c13fc0d257538d8a3ffb8ff86f08bb1e221e6a2b74dd92e5a6b14bbf9620e3f75677fce66427f079202eb226992ca09864571aeaf9f8919aa87e44b5b00c7"
+            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/9.0.16/windowsdesktop-runtime-9.0.16-win-arm64.exe",
+            "hash": "sha512:2b7059e43473f022eaf7872a686e6555f10e79db70bb45b06e6c068dff049e1bc72459ff4cde217e656a0d9a772c4faf8083195bcda411057197c7e8e2e5ba82"
         }
     },
     "pre_install": "if (!(is_admin)) { error 'Admin privileges are required.'; break }",
