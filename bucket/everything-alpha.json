@@ -1,24 +1,23 @@
 {
-    "version": "1.5.0.1408a",
+    "version": "1.5.0.1409a",
     "description": "Locate files and folders by name instantly.",
     "homepage": "https://www.voidtools.com",
     "license": "MIT",
     "notes": [
+        "Everything 1.5 is now in BETA. The BETA version is available in Scoop as \"everything-beta\".",
+        "For upgrade guide, please visit: https://www.voidtools.com/forum/viewtopic.php?t=17663#portable",
+        "",
         "To add Everything to right-click context menu, run:",
         "reg import \"$dir\\install-context.reg\""
     ],
     "architecture": {
         "64bit": {
-            "url": "https://www.voidtools.com/Everything-1.5.0.1408a.x64.zip",
-            "hash": "28984cbb8c3b748e3af5cf0a66cf7d7f0f28dab18483e4381f5e74d3242ddbd2"
+            "url": "https://www.voidtools.com/Everything-1.5.0.1409a.x64.zip",
+            "hash": "e16b3e3f562b13dbc3368b4a78357274ee9515bd3eaada58302c0f3c26af9c0c"
         },
         "32bit": {
-            "url": "https://www.voidtools.com/Everything-1.5.0.1408a.x86.zip",
-            "hash": "d7e211b0c0126fdaa256099e6c6a204ec960f8777b173c11d0d1f1956365fe66"
-        },
-        "arm64": {
-            "url": "https://www.voidtools.com/Everything-1.5.0.1408a.ARM64.zip",
-            "hash": "786a799a301184a428492bd28abb699b99add9f834d10c821c030cf94d27b701"
+            "url": "https://www.voidtools.com/Everything-1.5.0.1409a.x86.zip",
+            "hash": "f1fffd46f6075fa6cc1d9286df260f190f2e30c038680460ec25b2be20c4830f"
         }
     },
     "pre_install": [
@@ -56,8 +55,8 @@
     ],
     "persist": "plugins",
     "checkver": {
-        "url": "https://www.voidtools.com/forum/viewtopic.php?f=12&t=9787",
-        "regex": "Everything-([\\d.]+a)\\.x86"
+        "url": "https://www.voidtools.com/forum/viewtopic.php?sd=d&t=9787",
+        "regex": "Everything-([\\d.]+a)\\.x64"
     },
     "autoupdate": {
         "architecture": {
@@ -66,9 +65,6 @@
             },
             "32bit": {
                 "url": "https://www.voidtools.com/Everything-$version.x86.zip"
-            },
-            "arm64": {
-                "url": "https://www.voidtools.com/Everything-$version.ARM64.zip"
             }
         }
     }

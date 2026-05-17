@@ -1,23 +1,27 @@
 {
-    "version": "1.4.1.1032",
-    "description": "Locate files and folders by name instantly.",
+    "version": "1.5.0.1412b",
+    "description": "Locate files and folders by name instantly (beta version).",
     "homepage": "https://www.voidtools.com",
     "license": "MIT",
-    "notes": "Run '$dir\\install-context.reg' to add Everything to right-click context menu.",
+    "notes": [
+        "To add Everything to right-click context menu, run:",
+        "reg import \"$dir\\install-context.reg\""
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://www.voidtools.com/Everything-1.4.1.1032.x64.zip",
-            "hash": "698df475ec44e638f66f1b6a32d28fea613cec78d3b6310e6abe53431eeb940c"
+            "url": "https://www.voidtools.com/Everything-1.5.0.1412b.x64.zip",
+            "hash": "c8b8fa12e8641992295dc513d57ad9de06d8f4ea551d9a3550a7c142aa7a4967"
         },
         "32bit": {
-            "url": "https://www.voidtools.com/Everything-1.4.1.1032.x86.zip",
-            "hash": "156db5beb747d69470518a7b9b55af11efc4d3285ddb7cc013c0cc13ced5f237"
+            "url": "https://www.voidtools.com/Everything-1.5.0.1412b.x86.zip",
+            "hash": "d1776f0dcb91cec49722e0a4b68f87c134e30c7a71c4bc7bfd2a21a1e38c1bca"
         }
     },
     "pre_install": [
         "ensure \"$persist_dir\" | Out-Null",
-        "if (!(Test-Path \"$persist_dir\\Everything.ini\")) { Invoke-ExternalCommand \"$dir\\Everything.exe\" -Args @('-install-config null') | Out-Null }",
-        "Get-ChildItem \"$persist_dir\\*\" -Include 'Bookmarks.csv', 'Everything.db', 'Everything.ini', 'Filters.csv', 'Search History.csv' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
+        "if (Test-Path \"$dir\\Everything64.exe\") { Rename-Item \"$dir\\Everything64.exe\" 'Everything.exe' }",
+        "if (!(Test-Path \"$persist_dir\\Everything*.ini\")) { Invoke-ExternalCommand \"$dir\\Everything.exe\" -Args @('-install-config', 'null') | Out-Null }",
+        "Get-ChildItem \"$persist_dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv', 'Session*.json', 'Omit Results.csv' | Copy-Item -Destination \"$dir\" -ErrorAction SilentlyContinue",
         "Copy-Item \"$bucketsdir\\main\\scripts\\everything\\uninstall-context.reg\" \"$dir\\\""
     ],
     "post_install": [
@@ -37,7 +41,7 @@
         "    sc.exe delete 'Everything'",
         "}",
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-context.reg\" }",
-        "Get-ChildItem \"$dir\\*\" -Include 'Bookmarks.csv', 'Everything.db', 'Everything.ini', 'Filters.csv', 'Search History.csv' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
+        "Get-ChildItem \"$dir\\*\" -Include 'Bookmarks*.csv', 'Everything.lng', 'Everything*.db', 'Everything*.ini', 'Filters*.csv', 'Plugins*.ini', 'Run History*.csv', 'Search History*.csv', 'Session*.json', 'Omit Results.csv' | Copy-Item -Destination \"$persist_dir\" -ErrorAction SilentlyContinue -Force"
     ],
     "bin": "Everything.exe",
     "shortcuts": [
@@ -46,9 +50,10 @@
             "Everything"
         ]
     ],
+    "persist": "plugins",
     "checkver": {
-        "url": "https://www.voidtools.com/forum/viewtopic.php?f=2&t=5718",
-        "regex": "Everything-([\\d.]+)\\.x86"
+        "url": "https://www.voidtools.com/forum/viewtopic.php?sd=d&t=9787",
+        "regex": "Everything-([\\d.]+b)\\.x64"
     },
     "autoupdate": {
         "architecture": {
@@ -58,9 +63,6 @@
             "32bit": {
                 "url": "https://www.voidtools.com/Everything-$version.x86.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/Everything-$version.sha256"
         }
     }
 }
