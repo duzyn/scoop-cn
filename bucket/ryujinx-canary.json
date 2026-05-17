@@ -4,18 +4,18 @@
     "homepage": "https://ryujinx.app/",
     "license": {
         "identifier": "MIT",
-        "url": "https://git.ryujinx.app/ryubing/ryujinx/-/blob/master/LICENSE.txt"
+        "url": "https://git.ryujinx.app/ryubing/ryujinx/raw/branch/master/LICENSE.txt"
     },
     "notes": [
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
-        "Learn more at https://git.ryujinx.app/ryubing/ryujinx/-/wikis/FAQ-&-Troubleshooting"
+        "Learn more at https://git.ryujinx.app/ryubing/ryujinx/wiki/FAQ-&-Troubleshooting"
     ],
     "suggest": {
         "Switch Army Knife (SAK)": "sak"
     },
     "architecture": {
         "64bit": {
-            "url": "https://git.ryujinx.app/api/v4/projects/68/packages/generic/Ryubing-Canary/1.3.266/ryujinx-canary-1.3.266-win_x64.zip",
+            "url": "https://git.ryujinx.app/ryubing/canary/releases/download/1.3.266/ryujinx-canary-1.3.266-win_x64.zip",
             "hash": "1194165b7e8cfa393ec26afbd8d43968e2970275a7939f6746bd2fc5983b92bf"
         }
     },
@@ -39,13 +39,13 @@
     ],
     "persist": "portable",
     "checkver": {
-        "url": "https://git.ryujinx.app/api/v4/projects/ryubing%2Fcanary/releases",
+        "url": "https://git.ryujinx.app/api/v1/repos/ryubing/canary/releases?limit=1",
         "jsonpath": "$[0].tag_name"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://git.ryujinx.app/api/v4/projects/68/packages/generic/Ryubing-Canary/$version/ryujinx-canary-$version-win_x64.zip"
+                "url": "https://git.ryujinx.app/ryubing/canary/releases/download/$version/ryujinx-canary-$version-win_x64.zip"
             }
         }
     }
