@@ -1,0 +1,43 @@
+{
+    "url": "https://gh-proxy.com/https://github.com/Moulberry/PandoraLauncher/releases/download/v5.2.2/PandoraLauncher-Windows-x86_64-Portable.exe",
+    "description": "Pandora is a modern Minecraft launcher that balances ease-of-use with powerful instance management features",
+    "homepage": "https://pandora.moulberry.com/",
+    "version": "5.2.2",
+    "license": "MIT",
+    "hash": "3cdb8dddf1f83ca23538a4481942129e1d25f922c6bb5987d04af6dd083ffcc5",
+    "shortcuts": [
+        [
+            "PandoraLauncher-Windows-x86_64-Portable.exe",
+            "Pandora Launcher"
+        ]
+    ],
+    "persist": [
+        "PandoraLauncher/assets",
+        "PandoraLauncher/instances",
+        "PandoraLauncher/synced"
+    ],
+    "post_install": [
+        "# Thx to the Prism Launcher json for making this alot easier!",
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "$contents = @{",
+        "}",
+        "'accounts.json', 'interface.json', 'config.json' | ForEach-Object {",
+        "    if (Test-Path \"$persist_dir\\$_\") {",
+        "        Copy-Item \"$persist_dir\\$_\" \"$dir\\PandoraLauncher\\$_\" -Force",
+        "    } else {",
+        "        Set-Content -Path \"$dir\\PandoraLauncher\\$_\" -Value $contents[$_]",
+        "    }",
+        "}"
+    ],
+    "pre_uninstall": [
+        "# Thx to the Prism Launcher json for making this alot easier!",
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "# Please keep the file list the same in both pre_install and pre_uninstall scripts.",
+        "'accounts.json', 'interface.json', 'config.json' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\PandoraLauncher\\$_\") {",
+        "        Copy-Item -Path \"$dir\\PandoraLauncher\\$_\" -Destination \"$persist_dir\\$_\" -Force",
+        "    }",
+        "}"
+    ]
+}
