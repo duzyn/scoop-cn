@@ -1,0 +1,35 @@
+{
+    "version": "4.1.1.0",
+    "homepage": "https://files.community",
+    "description": "A pre-release version of a modern file manager that helps users organize their files and folders.",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.files.community/files/preview/Files.Package_4.1.1.0_Test/Files.Package_4.1.1.0_x64_arm64.msixbundle",
+            "hash": "f2a6cc989a26d26e80760dab7929076e6aadb2e4fa93bbc8dfe0dd90eba2b6a4"
+        }
+    },
+    "installer": {
+        "script": "Add-AppxPackage -Path \"$dir\\$fname\""
+    },
+    "post_install": "Remove-Item \"$dir\\$fname\"",
+    "uninstaller": {
+        "script": "Get-AppxPackage 'FilesPreview' | Remove-AppxPackage"
+    },
+    "checkver": {
+        "github": "https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/f/FilesCommunity/FilesPreview",
+        "jsonpath": "$[?(@.type == 'dir')].name",
+        "regex": "([\\d.]+)(?=\"\\])"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.files.community/files/preview/Files.Package_$version_Test/Files.Package_$version_x64_arm64.msixbundle"
+            }
+        },
+        "hash": {
+            "url": "https://gh-proxy.com/https://raw.githubusercontent.com/microsoft/winget-pkgs/HEAD/manifests/f/FilesCommunity/FilesPreview/$version/FilesCommunity.FilesPreview.installer.yaml",
+            "regex": "(?s)$basename.+?$sha256"
+        }
+    }
+}
