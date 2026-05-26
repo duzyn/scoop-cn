@@ -1,5 +1,5 @@
 {
-    "version": "26436250859",
+    "version": "26459081292",
     "description": "Free and reliable P2P Bittorent client.",
     "homepage": "https://github.com/qbittorrent/qBittorrent",
     "license": {
@@ -15,8 +15,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-2.1.0-rc1.zip",
-            "hash": "8451683212aaa03834656216a7a53f984606c07055072d9eda3be0835e862e57",
+            "url": "https://nightly.link/qbittorrent/qBittorrent/actions/runs/26459081292/qBittorrent-CI_Windows-x64_libtorrent-2.1.0-rc1.zip",
+            "hash": "293f7387858d71a68193821e6e07c22db3d35eaf27a141a1555e135332c12973",
             "extract_dir": "qBittorrent"
         }
     },
@@ -79,8 +79,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/qbittorrent/qBittorrent/workflows/ci_windows.yaml/master/qBittorrent-CI_Windows-x64_libtorrent-$matchLibtorrent.zip"
+                "url": "https://nightly.link/qbittorrent/qBittorrent/actions/runs/$version/qBittorrent-CI_Windows-x64_libtorrent-$matchLibtorrent.zip"
             }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/qbittorrent/qBittorrent/actions/runs/$version/artifacts",
+            "jsonpath": "$.artifacts[?(@.name == '$basenameNoExt')].digest"
         }
     }
 }
