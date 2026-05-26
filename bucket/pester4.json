@@ -15,7 +15,8 @@
     },
     "checkver": {
         "github": "https://api.github.com/repos/pester/Pester/tags?per_page=100",
-        "regex": "tags/(4[\\d.]+)\""
+        "jsonpath": "$[?(@.name =~ /^4\\.[\\d.]+$/)].name",
+        "regex": "(4\\.[\\d.]+)"
     },
     "autoupdate": {
         "url": "https://globalcdn.nuget.org/packages/pester.$version.nupkg"

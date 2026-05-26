@@ -1,16 +1,16 @@
 {
-    "version": "3.5.9-beta2",
+    "version": "3.5.12-beta1",
     "description": "Extend your GitHub workflow beyond your browser.",
     "homepage": "https://desktop.github.com/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/desktop/desktop/releases/download/release-3.5.9-beta2/GitHubDesktop-3.5.9-beta2-x64-full.nupkg",
-            "hash": "91658c6309c21bd3876463564b7858c6742c56e0c911fe1cadf84184ff0bbf47"
+            "url": "https://gh-proxy.com/https://github.com/desktop/desktop/releases/download/release-3.5.12-beta1/GitHubDesktop-3.5.12-beta1-x64-full.nupkg",
+            "hash": "0cb34674a286ba67b7dbcb3c43ca2258a6638019d187e0fa1ac540c6c5d2c956"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/desktop/desktop/releases/download/release-3.5.9-beta2/GitHubDesktop-3.5.9-beta2-arm64-full.nupkg",
-            "hash": "e364622150edf7a9aef24bbe70b365dd025ef5533395d69310eb1c770ea9684f"
+            "url": "https://gh-proxy.com/https://github.com/desktop/desktop/releases/download/release-3.5.12-beta1/GitHubDesktop-3.5.12-beta1-arm64-full.nupkg",
+            "hash": "eede1606e2b7a522ef201f1fe1b34ec218c26171ab1a2bf89cd08e0b2ad808fa"
         }
     },
     "extract_dir": "lib\\net45",
@@ -23,7 +23,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/desktop/desktop/tags",
-        "regex": "tags/release-([\\d.]+-beta\\d+)\""
+        "jsonpath": "$..name",
+        "regex": "release-([\\d.]+-beta\\d+)"
     },
     "autoupdate": {
         "architecture": {
