@@ -17,6 +17,7 @@
     "persist": "greenshot.ini",
     "checkver": {
         "github": "https://api.github.com/repos/greenshot/greenshot/releases",
+        "jsonpath": "$..browser_download_url",
         "regex": "Greenshot-INSTALLER-([\\d.]+)-UNSTABLE-UNSIGNED"
     },
     "autoupdate": {

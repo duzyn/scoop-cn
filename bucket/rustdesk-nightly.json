@@ -1,16 +1,16 @@
 {
-    "version": "1777770779",
+    "version": "1779758387",
     "description": "An open-source remote desktop software, written in Rust.",
     "homepage": "https://github.com/rustdesk/rustdesk",
     "license": "AGPL-3.0-only",
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.com/https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.4.6-x86_64.exe#/RustDesk.exe",
-            "hash": "27ae2a715dea6d7490cf7f530c0739a11d954d7ce008aa9670e585202f14976d"
+            "hash": "4a80b9bbb97f1e95dc6fda56aa44b59c7fc65341e7bc7304ad26cd891475ca7d"
         },
         "32bit": {
             "url": "https://gh-proxy.com/https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.4.6-x86-sciter.exe#/RustDesk.exe",
-            "hash": "ea6dc3aeb7102951a21f059393cae026c87c8494f1702d74d851928a599fc67a"
+            "hash": "007bf6fb18774d0179b13dd6758dd54c9bd27397671161ff0fce9d8335b1ecdb"
         }
     },
     "shortcuts": [
@@ -24,8 +24,11 @@
         "script": [
             "$api = $page | ConvertFrom-Json",
             "foreach ($name in $api.assets.name) { if ($name -clike '*-x86_64.exe') { $asset = $name; break } }",
-            "(Get-Date $api.assets[0].updated_at -UFormat %s), $asset -join ' '"
+            "$result = (Get-Date $api.assets[0].updated_at -UFormat %s), $asset -join ' '",
+            "$output = @{'result' = \"$result\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
+        "jsonpath": "$.result",
         "regex": "\\A(\\d+) rustdesk-(?<release>[\\d.-]+)-x86_64.exe\\Z"
     },
     "autoupdate": {

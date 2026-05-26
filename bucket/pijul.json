@@ -12,7 +12,8 @@
     "bin": "pijul.exe",
     "checkver": {
         "github": "https://github.com/boringcactus/pijul-windows-builds/",
-        "regex": "(?<version>[\\d\\w.-]+)/pijul\\.exe"
+        "jsonpath": "$.tag_name",
+        "regex": "(?<version>[\\d\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {

@@ -38,8 +38,10 @@
             "$release = $page | ConvertFrom-Json",
             "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
             "$page -match 'SQLite-dev-(?<commit>[0-9a-f]{7})-win-x64.zip' | Out-Null",
-            "Write-Output \"$date-$($matches['commit'])\""
+            "$output = @{'result' = \"$date-$($matches['commit'])\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
+        "jsonpath": "$.result",
         "regex": "^(?<version>\\d{8}-(?<commit>[0-9a-f]{7}))$"
     },
     "autoupdate": {

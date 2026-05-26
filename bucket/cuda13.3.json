@@ -1,6 +1,6 @@
 {
     "version": "13.3.0",
-    "description": "A parallel computing platform and programming model invented by NVIDIA",
+    "description": "A parallel computing platform and programming model invented by NVIDIA (version 13.3)",
     "homepage": "https://developer.nvidia.com/cuda-toolkit",
     "license": {
         "identifier": "Freeware",
@@ -12,7 +12,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "http://developer.download.nvidia.com/compute/cuda/13.3.0/local_installers/cuda_13.3.0_windows.exe#/dl.7z",
+            "url": "https://developer.download.nvidia.com/compute/cuda/13.3.0/local_installers/cuda_13.3.0_windows.exe#/dl.7z",
             "hash": "md5:74c041e24025375843b528b8484a3f17",
             "env_add_path": [
                 "bin",
@@ -32,16 +32,17 @@
         ]
     },
     "env_set": {
-        "CUDA_PATH": "$dir"
+        "CUDA_PATH": "$dir",
+        "CUDA_PATH_V13_3": "$dir"
     },
     "checkver": {
         "url": "https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_local",
-        "regex": "/cuda_([\\d._]+)_windows\\.exe"
+        "regex": "/cuda_(13\\.3\\.[\\d._]+)_windows\\.exe"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "http://developer.download.nvidia.com/compute/cuda/$matchHead/local_installers/cuda_$version_windows.exe#/dl.7z"
+                "url": "https://developer.download.nvidia.com/compute/cuda/$matchHead/local_installers/cuda_$version_windows.exe#/dl.7z"
             }
         },
         "hash": {

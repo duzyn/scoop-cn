@@ -33,8 +33,11 @@
         "script": [
             "$workflows = $page | ConvertFrom-Json",
             "$api = $workflows.workflow_runs[0]",
-            "($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '"
+            "$result = ($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '",
+            "$output = @{'result' = \"$result\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
+        "jsonpath": "$.result",
         "regex": "\\A(\\d+) (?<date>\\d{4}(?:-\\d{2}){2}) (?<attempt>\\d+)\\Z"
     },
     "autoupdate": {

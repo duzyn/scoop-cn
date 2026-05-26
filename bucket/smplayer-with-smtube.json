@@ -68,8 +68,11 @@
             "$regex2 = '\\bsmtube-([\\d.]+)-win32-qt([\\d.]+)\\.exe\\b'",
             "if ($latest_release.assets.name -join \"`n\" -notmatch $regex2) { error \"Could not match '$regex2'\"; continue }",
             "$smtube_ver = $matches[1]; $smtube_qtver = $matches[2]",
-            "Write-Output $smplayer_ver $smplayer_qtver $smtube_ver  $smtube_qtver"
+            "$result = ($smplayer_ver, $smplayer_qtver, $smtube_ver, $smtube_qtver) -join ' '",
+            "$output = @{'result' = \"$result\"} | ConvertTo-Json -Compress",
+            "Write-Output $output"
         ],
+        "jsonpath": "$.result",
         "regex": "\\A(?<smplayerver>[\\d.]+) (?<smplayerqtver>[\\d.]+) (?<smtubever>[\\d.]+) (?<smtubeqtver>[\\d.]+)\\Z",
         "replace": "${smplayerver}-smtube${smtubever}"
     },

@@ -34,19 +34,5 @@
     "env_set": {
         "CUDA_PATH": "$dir",
         "CUDA_PATH_V13_2": "$dir"
-    },
-    "checkver": {
-        "url": "https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exe_local",
-        "regex": "/cuda_(13\\.2\\.[\\d._]+)_windows\\.exe"
-    },
-    "autoupdate": {
-        "architecture": {
-            "64bit": {
-                "url": "https://developer.download.nvidia.com/compute/cuda/$matchHead/local_installers/cuda_$version_windows.exe#/dl.7z"
-            }
-        },
-        "hash": {
-            "url": "https://developer.download.nvidia.com/compute/cuda/$matchHead/docs/sidebar/md5sum.txt"
-        }
     }
 }
