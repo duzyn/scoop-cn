@@ -1,12 +1,16 @@
 {
-    "version": "4.0.1-dev.36",
+    "version": "4.0.4-dev.10",
     "description": "Nightly builds for spotify-qt",
     "homepage": "https://github.com/kraxarn/spotify-qt-nightly",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v4.0.1-dev.36-win64.zip",
-            "hash": "e456e5670711ab70ebbaecc483a2328ff259362188f014223cc94c1c7ca30131"
+            "url": "https://gh-proxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v4.0.4-dev.10-win64.zip",
+            "hash": "94b1d712ad5280c0049d66d38c389af1cacce6f5cd79fdd3378605e1b81d25e3"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v4.0.4-dev.10-woa64.zip",
+            "hash": "629d6bd3e5e668951c058ac22a374f61a0fb8aec4af4e5067b6c07a076f2c9c3"
         }
     },
     "shortcuts": [
@@ -18,13 +22,16 @@
     "bin": "spotify-qt.exe",
     "checkver": {
         "github": "https://api.github.com/repos/kraxarn/spotify-qt-nightly/releases/latest",
-        "jsonpath": "$.assets[0].name",
-        "regex": "\\Aspotify-qt-v([\\w.-]+)-win(?:64|32)\\.zip\\Z"
+        "jsonpath": "$.assets[*].name",
+        "regex": "spotify-qt-v([\\w.-]+)-(?:win64|woa64)\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://gh-proxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v$version-win64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.com/https://github.com/kraxarn/spotify-qt-nightly/releases/download/latest/spotify-qt-v$version-woa64.zip"
             }
         }
     }

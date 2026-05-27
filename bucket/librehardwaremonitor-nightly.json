@@ -1,17 +1,22 @@
 {
-    "version": "25811650602",
+    "version": "26364198285",
     "description": "Libre Hardware Monitor is free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer (nightly version).",
     "homepage": "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/25811650602/LibreHardwareMonitor.zip",
-            "hash": "eb61d22f87ae93013f1a65354e4e3a7eb3bccf0febf387f3e6da9bdb4cba874f"
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/26364198285/LibreHardwareMonitor.Windows.Forms.zip",
+            "hash": "d831f2cb3906f36fbe168fbb6f2d15a0c8d74df24d04e6fe859927d0277160e3"
         }
     },
     "pre_install": [
+        "# Rename old config file after app name changed",
+        "if (Test-Path -Path \"$persist_dir\\LibreHardwareMonitor.config\" -PathType Leaf) {",
+        "    Rename-Item -Path \"$persist_dir\\LibreHardwareMonitor.config\" -NewName 'LibreHardwareMonitor.Windows.Forms.config' -Force",
+        "}",
+        "",
         "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "'LibreHardwareMonitor.Windows.Forms.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
         "    if (Test-Path -Path \"$persist_dir\\$_\" -PathType Leaf) {",
         "        Copy-Item -Path \"$persist_dir\\$_\" -Destination $dir -Force",
         "    }",
@@ -19,13 +24,13 @@
     ],
     "shortcuts": [
         [
-            "LibreHardwareMonitor.exe",
+            "LibreHardwareMonitor.Windows.Forms.exe",
             "Libre Hardware Monitor (Nightly)"
         ]
     ],
     "pre_uninstall": [
         "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "'LibreHardwareMonitor.Windows.Forms.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
         "    if (Test-Path -Path \"$dir\\$_\" -PathType Leaf) {",
         "        ensure $persist_dir | Out-Null",
         "        Copy-Item -Path \"$dir\\$_\" -Destination $persist_dir -Force",
@@ -39,13 +44,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.zip",
-                "hash": {
-                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
-                    "mode": "json",
-                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor')].digest"
-                }
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.Windows.Forms.zip"
             }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+            "jsonpath": "$.artifacts[?(@.name== '$basenameNoExt')].digest"
         }
     }
 }

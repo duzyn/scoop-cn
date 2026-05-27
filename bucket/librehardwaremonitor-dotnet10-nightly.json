@@ -1,5 +1,5 @@
 {
-    "version": "25811650602",
+    "version": "26364198285",
     "description": "Libre Hardware Monitor is free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer (.NET 10 nightly version).",
     "homepage": "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
     "license": "MPL-2.0",
@@ -8,13 +8,18 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/25811650602/LibreHardwareMonitor%20%28.NET%2010%29.zip",
-            "hash": "c02844c39285a2451d17317b26f5a51b4de8a1e2b6c5caef856cb93de5b58778"
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/26364198285/LibreHardwareMonitor.Windows.Forms%20%28.NET%2010%29.zip",
+            "hash": "978ea5197a907bab3af92afb50b1799d138b8e0a0ab5a93c5baf3912c5356861"
         }
     },
     "pre_install": [
+        "# Rename old config file after app name changed",
+        "if (Test-Path -Path \"$persist_dir\\LibreHardwareMonitor.config\" -PathType Leaf) {",
+        "    Rename-Item -Path \"$persist_dir\\LibreHardwareMonitor.config\" -NewName 'LibreHardwareMonitor.Windows.Forms.config' -Force",
+        "}",
+        "",
         "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "'LibreHardwareMonitor.Windows.Forms.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
         "    if (Test-Path -Path \"$persist_dir\\$_\" -PathType Leaf) {",
         "        Copy-Item -Path \"$persist_dir\\$_\" -Destination $dir -Force",
         "    }",
@@ -22,13 +27,13 @@
     ],
     "shortcuts": [
         [
-            "LibreHardwareMonitor.exe",
+            "LibreHardwareMonitor.Windows.Forms.exe",
             "Libre Hardware Monitor (.NET 10 Nightly)"
         ]
     ],
     "pre_uninstall": [
         "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
-        "'LibreHardwareMonitor.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "'LibreHardwareMonitor.Windows.Forms.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
         "    if (Test-Path -Path \"$dir\\$_\" -PathType Leaf) {",
         "        ensure $persist_dir | Out-Null",
         "        Copy-Item -Path \"$dir\\$_\" -Destination $persist_dir -Force",
@@ -42,13 +47,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor%20%28.NET%2010%29.zip",
-                "hash": {
-                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
-                    "mode": "json",
-                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor (.NET 10)')].digest"
-                }
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.Windows.Forms%20%28.NET%2010%29.zip"
             }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+            "jsonpath": "$.artifacts[?(@.name== '$basenameNoExt')].digest"
         }
     }
 }
