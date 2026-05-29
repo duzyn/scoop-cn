@@ -1,13 +1,13 @@
 {
-    "version": "3.14.0",
+    "version": "3.14.1",
     "description": "Tool for setting the artwork of your Steam library",
     "homepage": "https://github.com/Tormak9970/Steam-Art-Manager",
     "license": {
         "identifier": "GPL-3.0-only",
         "url": "https://github.com/Tormak9970/Steam-Art-Manager/blob/main/LICENSE"
     },
-    "url": "https://gh-proxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.14.0/steam-art-manager_3.14.0.msi.zip",
-    "hash": "3023da5b25e6f22fe1d261e03c5257809f0957d5ee55f4b3ac89128d76f85098",
+    "url": "https://gh-proxy.com/https://github.com/Tormak9970/Steam-Art-Manager/releases/download/v3.14.1/steam-art-manager_3.14.1.msi.zip",
+    "hash": "58bbf38207bcacf537d1ec7ec1450f39b4cb4d0e8c00ab9d0b18bf2d689a576e",
     "pre_install": [
         "Get-ChildItem \"$dir\\Steam Art Manager_*.msi\" | Select-Object -First 1 | ForEach-Object { Rename-Item $_ \"dl.msi\" }",
         "Expand-MsiArchive \"$dir\\dl.msi\" \"$dir\" -ExtractDir \"PFiles\\Steam Art Manager\" -Removal | Out-Null"
