@@ -11,7 +11,7 @@
     },
     "extract_dir": "$PLUGINSDIR",
     "pre_install": [
-        "Remove-Item *.dll",
+        "Remove-Item $dir\\*.dll",
         "Expand-7zipArchive -Path $dir\\app-64.7z -DestinationPath $dir -Removal"
     ],
     "installer": {
