@@ -1,6 +1,6 @@
 {
     "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
-    "version": "11.0-2338455",
+    "version": "12.0.0-2378-6f3574f",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
@@ -13,12 +13,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-2338455-Debug.zip",
-            "hash": "50d6fae7147252222239206d0005647ac0866c16e38d1592c8cbd333b527cdaf"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/26933127415/PrismLauncher-Windows-MinGW-w64-Portable-6f3574f-Debug.zip",
+            "hash": "56aaa6b6e759350ae7d81f4508d8866a164ba142b88523aa5eb941b4ab372f91"
         },
         "arm64": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-2338455-Debug.zip",
-            "hash": "649a28b29771e5720cde226d567e60579471ff21cb0dc2b023e05fb01694922f"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/26933127415/PrismLauncher-Windows-MinGW-arm64-Portable-6f3574f-Debug.zip",
+            "hash": "f9194486bdcd6bca8e39bc383efebcd0e4c3241f94305505a532a03716488743"
         }
     },
     "pre_install": [
@@ -80,29 +80,37 @@
         "if ($cmd -eq 'uninstall') { reg import \"$dir\\uninstall-associations.reg\" }"
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?branch=develop&status=success&event=push",
+        "github": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/workflows/build.yml/runs?status=success&event=merge_group",
         "script": [
             "$workflows = $page | ConvertFrom-Json",
-            "$fullSha = $workflows.workflow_runs[0].head_sha",
+            "$workflowResult = $workflows.workflow_runs | Where-Object { $_.head_branch -like 'gh-readonly-queue/develop/*' } | Select-Object -First 1",
+            "$fullSha = $workflowResult.head_sha",
+            "$workflowId = $workflowResult.id",
+            "$runNumber = $workflowResult.run_number",
             "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.com/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" -UseBasicParsing | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
             "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",
-            "$version = \"$majorVersion.$minorVersion-$fullSha\"",
-            "$output = @{'result' = \"$version\"} | ConvertTo-Json -Compress",
+            "$patchVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_PATCH (\\d+)\\)').Groups[1].Value",
+            "# Embed the run number into the semantic version string to guarantee strictly increasing versions.",
+            "$version = \"$majorVersion.$minorVersion.$patchVersion-$runNumber-$fullSha\"",
+            "$output = @{'result' = \"$version $workflowId\"} | ConvertTo-Json -Compress",
             "Write-Output $output"
         ],
         "jsonpath": "$.result",
-        "regex": "(?<version>[\\d.]+)-(?<sha>[a-f0-9]{7,7})",
-        "replace": "${version}-${sha}"
+        "regex": "(?<version>[\\d.]+-\\d+-(?<sha>[a-f0-9]{7}))[a-f0-9]* (?<id>\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-w64-Portable-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MinGW-w64-Portable-$matchSha-Debug.zip"
             },
             "arm64": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/workflows/build/develop/PrismLauncher-Windows-MinGW-arm64-Portable-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MinGW-arm64-Portable-$matchSha-Debug.zip"
             }
+        },
+        "hash": {
+            "url": "https://api.github.com/repos/PrismLauncher/PrismLauncher/actions/runs/$matchId/artifacts",
+            "jsonpath": "$.artifacts[?(@.name== '$basenameNoExt')].digest"
         }
     }
 }
