@@ -1,34 +1,35 @@
 {
-    "version": "2.105.0",
-    "description": "An open-source Firebase alternative. (Beta channel)",
-    "homepage": "https://supabase.com/",
+    "version": "2.106.0-beta.5",
+    "description": "Supabase CLI (beta channel).",
+    "homepage": "https://supabase.com",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v2.105.0/supabase_windows_amd64.tar.gz",
-            "hash": "f4c11bb8b3c34fcf5ab6dd41cb1e9403416c7c319d668f24b3769f004bd24824"
+            "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v2.106.0-beta.5/supabase_2.106.0-beta.5_windows_amd64.zip",
+            "hash": "62626b38b3c84697bcb488ae7348b99ec1f294f32511b4557bb6f3a8fe6ed4c3"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v2.105.0/supabase_windows_arm64.tar.gz",
-            "hash": "676118fb1d5b48cc9b88f06fac87bbc261bc910ce91f7e235c12854644857929"
+            "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v2.106.0-beta.5/supabase_2.106.0-beta.5_windows_arm64.zip",
+            "hash": "62bbef883e5b1fbe90d1f80c83e56ab4853231f65501ab4f24ef9f284e6650cd"
         }
     },
     "bin": "supabase.exe",
     "checkver": {
-        "url": "https://github.com/supabase/cli/releases",
-        "regex": "/tag/v([\\d.]+)"
+        "github": "https://api.github.com/repos/supabase/cli/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"v([\\d.]+-beta\\.\\d+)\""
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v$version/supabase_windows_amd64.tar.gz"
+                "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v$version/supabase_$version_windows_amd64.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v$version/supabase_windows_arm64.tar.gz"
+                "url": "https://gh-proxy.com/https://github.com/supabase/cli/releases/download/v$version/supabase_$version_windows_arm64.zip"
             }
         },
         "hash": {
-            "url": "$baseurl/supabase_$version_checksums.txt"
+            "url": "$baseurl/checksums.txt"
         }
     }
 }
