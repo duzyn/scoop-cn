@@ -1,15 +1,19 @@
 {
-    "version": "2026.5.1",
+    "version": "2026.4.3",
     "homepage": "https://portswigger.net/burp",
     "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
     "license": {
         "identifier": "Shareware",
-        "url": "https://portswigger.net/legal"
+        "url": "https://portswigger.net/burp/eula"
     },
     "architecture": {
         "64bit": {
-            "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=2026.5.1&type=WindowsX64#/setup.exe",
-            "hash": "38e562aae984b8bf840c23ad13ea6794a883ef33c01bd3f162a3ef44c70da808"
+            "url": "https://portswigger.net/burp/releases/download?product=desktop&version=2026.4.3&type=WindowsX64#/setup.exe",
+            "hash": "81da742afcfa00abf35327c71d57a6d7308fa7264d0250e787cc6652f9fbc92f"
+        },
+        "arm64": {
+            "url": "https://portswigger.net/burp/releases/download?product=desktop&version=2026.4.3&type=WindowsArm64#/setup.exe",
+            "hash": "42773bbcbb5d13656d03d1f4758aa92efc1880d87d014046bf92ea961006c851"
         }
     },
     "post_install": [
@@ -22,13 +26,24 @@
     ],
     "checkver": {
         "url": "https://portswigger.net/burp/releases/data",
-        "jsonpath": "$.ResultSet.Results..version",
+        "jsonpath": "$.ResultSet.Results[?(@.buildCategory == 'desktop' && @.releaseChannels[0] == 'Stable')].version",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://portswigger-cdn.net/burp/releases/download?product=pro&version=$version&type=WindowsX64#/setup.exe"
+                "url": "https://portswigger.net/burp/releases/download?product=desktop&version=$version&type=WindowsX64#/setup.exe",
+                "hash": {
+                    "url": "https://portswigger.net/burp/releases/data",
+                    "jsonpath": "$.ResultSet.Results[?(@.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsX64')].Sha256Checksum"
+                }
+            },
+            "arm64": {
+                "url": "https://portswigger.net/burp/releases/download?product=desktop&version=$version&type=WindowsArm64#/setup.exe",
+                "hash": {
+                    "url": "https://portswigger.net/burp/releases/data",
+                    "jsonpath": "$.ResultSet.Results[?(@.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsArm64')].Sha256Checksum"
+                }
             }
         }
     }
