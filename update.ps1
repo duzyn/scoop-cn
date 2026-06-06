@@ -39,38 +39,38 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     $content = Get-Content $_.FullName
 
     # GitHub Releases
-    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.com/$1'
+    $content = $content -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.org/$1'
 
     # GitHub Archive
-    $content = $content -replace '(https?://github\.com/.+/archive/)', 'https://gh-proxy.com/$1'
+    $content = $content -replace '(https?://github\.com/.+/archive/)', 'https://gh-proxy.org/$1'
 
     # GitHub Gists
-    $content = $content -replace '(https?://gist.github\.com/.+/)', 'https://gh-proxy.com/$1'
+    $content = $content -replace '(https?://gist.github\.com/.+/)', 'https://gh-proxy.org/$1'
 
     # GitHub Raw
-    $content = $content -replace '(https?://raw\.githubusercontent\.com)', 'https://gh-proxy.com/$1'
-    $content = $content -replace '(https?://github\.com/.+/raw/)', 'https://gh-proxy.com/$1'         
+    $content = $content -replace '(https?://raw\.githubusercontent\.com)', 'https://gh-proxy.org/$1'
+    $content = $content -replace '(https?://github\.com/.+/raw/)', 'https://gh-proxy.org/$1'         
 
     # DBeaver，not debaver-ea
-    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', 'https://gh-proxy.com/https://github.com/dbeaver/dbeaver/releases/download/$1/'
+    $content = $content -replace 'https?://dbeaver\.io/files/([\d\.]+)/', 'https://gh-proxy.org/https://github.com/dbeaver/dbeaver/releases/download/$1/'
     
     # FastCopy
-    $content = $content -replace 'https?://fastcopy\.jp/archive', 'https://gh-proxy.com/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
+    $content = $content -replace 'https?://fastcopy\.jp/archive', 'https://gh-proxy.org/https://raw.githubusercontent.com/FastCopyLab/FastCopyDist2/main'
 
     # OBS Studio
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows', 'https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Windows', 'https://gh-proxy.org/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Windows'
 
     # OBS Studio 2.7
-    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://gh-proxy.com/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
+    $content = $content -replace 'https?://cdn-fastly\.obsproject\.com/downloads/OBS-Studio-(.+)-Full', 'https://gh-proxy.org/https://github.com/obsproject/obs-studio/releases/download/$1/OBS-Studio-$1-Full'
 
     # Strawberry
-    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'https://gh-proxy.com/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x'
+    $content = $content -replace 'https?://files\.jkvinge\.net/packages/strawberry/StrawberrySetup-(.+)-mingw-x', 'https://gh-proxy.org/https://github.com/strawberrymusicplayer/strawberry/releases/download/$1/StrawberrySetup-$1-mingw-x'
 
     # KDE Apps
     # $content = $content -replace 'download\.kde\.org', 'mirrors.nju.edu.cn/kde'
 
     # 7-Zip
-    $content = $content -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
+    $content = $content -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2'
 
     # Blender
     $content = $content -replace 'download\.blender\.org', 'mirrors.tuna.tsinghua.edu.cn/blender'
@@ -91,7 +91,7 @@ Get-ChildItem -Recurse -Path .\bucket | ForEach-Object -Process {
     # $content = $content -replace 'media\.inkscape\.org/dl/resources/file', 'mirrors.nju.edu.cn/inkscape'
 
     # ffmpeg
-    $content = $content -replace 'www.gyan.dev/ffmpeg/builds/packages/ffmpeg-(.*)-', 'gh-proxy.com/https://github.com/GyanD/codexffmpeg/releases/download/$1/ffmpeg-$1-'
+    $content = $content -replace 'www.gyan.dev/ffmpeg/builds/packages/ffmpeg-(.*)-', 'gh-proxy.org/https://github.com/GyanD/codexffmpeg/releases/download/$1/ffmpeg-$1-'
 
     # Kodi
     $content = $content -replace 'mirrors\.kodi\.tv', 'mirrors.tuna.tsinghua.edu.cn/kodi'
