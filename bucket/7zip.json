@@ -15,21 +15,21 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-x64.msi",
+            "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-x64.msi",
             "hash": "a47ea8dcf8bc08e6de474cae77c828e031fa22cb528f6095defffebf11cd02f2",
             "extract_dir": "Files\\7-Zip"
         },
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/26.01/7z2601.msi",
+            "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/26.01/7z2601.msi",
             "hash": "9643110e10bd0f2f31afa30d904da77f91161b95cc9b744d2f58c9167e23c1a7",
             "extract_dir": "Files\\7-Zip"
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-arm64.exe",
+            "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/26.01/7z2601-arm64.exe",
             "hash": "1fecf4e3407950939c8ffcc3e42e3039821997dea155301c75369474e5f15175",
             "pre_install": [
                 "$7zr = Join-Path $env:TMP '7zr.exe'",
-                "Invoke-WebRequest -Uri \"https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7zr.exe\" -OutFile $7zr",
+                "Invoke-WebRequest -Uri \"https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$version/7zr.exe\" -OutFile $7zr",
                 "Invoke-ExternalCommand $7zr @('x', \"$dir\\$fname\", \"-o$dir\", '-y') | Out-Null",
                 "Remove-Item \"$dir\\Uninstall.exe\", \"$dir\\*-arm64.exe\", $7zr"
             ]
@@ -71,13 +71,13 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-x64.msi"
+                "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-x64.msi"
             },
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion.msi"
+                "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion.msi"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-arm64.exe"
+                "url": "https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$version/7z$cleanVersion-arm64.exe"
             }
         }
     }

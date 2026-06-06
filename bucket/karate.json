@@ -6,7 +6,7 @@
     "suggest": {
         "Java": "openjdk"
     },
-    "url": "https://gh-proxy.com/https://github.com/karatelabs/karate/releases/download/v2.0.10/karate-2.0.10.jar#/karate.jar",
+    "url": "https://gh-proxy.org/https://github.com/karatelabs/karate/releases/download/v2.0.10/karate-2.0.10.jar#/karate.jar",
     "hash": "4d0ada48e75182f880cf8ffcaabc6c17bee710879b5e88014511ef994f238280",
     "pre_install": [
         "$cont = \"@echo off`r`n\" + 'cd /d \"%~dp0\"' + \"`r`njava -cp karate.jar;. com.intuit.karate.Main %*\"",
@@ -18,6 +18,6 @@
         "github": "https://github.com/karatelabs/karate"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/karatelabs/karate/releases/download/v$version/karate-$version.jar#/karate.jar"
+        "url": "https://gh-proxy.org/https://github.com/karatelabs/karate/releases/download/v$version/karate-$version.jar#/karate.jar"
     }
 }

@@ -87,7 +87,7 @@
             "$fullSha = $workflowResult.head_sha",
             "$workflowId = $workflowResult.id",
             "$runNumber = $workflowResult.run_number",
-            "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.com/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" -UseBasicParsing | Select-Object -ExpandProperty Content",
+            "$cmakeContent = Invoke-WebRequest \"https://gh-proxy.org/https://raw.githubusercontent.com/PrismLauncher/PrismLauncher/$fullSha/CMakeLists.txt\" -UseBasicParsing | Select-Object -ExpandProperty Content",
             "$majorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MAJOR (\\d+)\\)').Groups[1].Value",
             "$minorVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_MINOR (\\d+)\\)').Groups[1].Value",
             "$patchVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_PATCH (\\d+)\\)').Groups[1].Value",

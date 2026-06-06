@@ -5,21 +5,21 @@
     "license": "GPL-3.0",
     "architecture": {
         "32bit": {
-            "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_x86_26.6.4.0.exe",
+            "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_x86_26.6.4.0.exe",
             "hash": "017f4fb1ac37b1a0d85bed2e3a78b4f94de8a133802bae2a25dc9c64cdea1e63",
             "installer": {
                 "script": "Start-Process \"$dir\\Sucrose_Bundle_.NET_Framework_4.8_x86_$version.exe\" -ArgumentList '/s' -Wait"
             }
         },
         "64bit": {
-            "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_x64_26.6.4.0.exe",
+            "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_x64_26.6.4.0.exe",
             "hash": "f4f3b81c0cabad45dec6728e8b9000a36287875506ee12af5f4bc9fd5487ccca",
             "installer": {
                 "script": "Start-Process \"$dir\\Sucrose_Bundle_.NET_Framework_4.8_x64_$version.exe\" -ArgumentList '/s' -Wait"
             }
         },
         "arm64": {
-            "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_ARM64_26.6.4.0.exe",
+            "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v26.6.4.0/Sucrose_Bundle_.NET_Framework_4.8_ARM64_26.6.4.0.exe",
             "hash": "bda6c1ccffc4d117730bb21bd7a2941946938e7bb2425caba8a5e4ff311fda74",
             "installer": {
                 "script": "Start-Process \"$dir\\Sucrose_Bundle_.NET_Framework_4.8_ARM64_$version.exe\" -ArgumentList '/s' -Wait"
@@ -35,13 +35,13 @@
     "autoupdate": {
         "architecture": {
             "32bit": {
-                "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_x86_$version.exe"
+                "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_x86_$version.exe"
             },
             "64bit": {
-                "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_x64_$version.exe"
+                "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_x64_$version.exe"
             },
             "arm64": {
-                "url": "https://gh-proxy.com/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_ARM64_$version.exe"
+                "url": "https://gh-proxy.org/https://github.com/Taiizor/Sucrose/releases/download/v$version/Sucrose_Bundle_.NET_Framework_4.8_ARM64_$version.exe"
             }
         }
     }

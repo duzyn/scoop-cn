@@ -24,7 +24,7 @@
             "$build = Invoke-RestMethod 'https://ci.freerdp.com/job/freerdp-nightly-windows/lastSuccessfulBuild/api/json?tree=actions[lastBuiltRevision[SHA1]],number'",
             "$sha = ($build.actions | Where-Object { $_.lastBuiltRevision.SHA1 } | Select-Object -First 1 -ExpandProperty lastBuiltRevision).SHA1",
             "if (-not $sha) { error 'Unable to determine the FreeRDP commit SHA from Jenkins.'; break }",
-            "$cmake = Invoke-RestMethod \"https://gh-proxy.com/https://raw.githubusercontent.com/FreeRDP/FreeRDP/$sha/cmake/GetProjectVersion.cmake\"",
+            "$cmake = Invoke-RestMethod \"https://gh-proxy.org/https://raw.githubusercontent.com/FreeRDP/FreeRDP/$sha/cmake/GetProjectVersion.cmake\"",
             "$versionMatch = [regex]::Match($cmake, 'set\\(RAW_VERSION_STRING\\s+\"(?<baseVersion>[^\"]+)\"\\s*\\)')",
             "if (-not $versionMatch.Success) { error 'Unable to determine the FreeRDP version from GetProjectVersion.cmake.'; break }",
             "\"$($versionMatch.Groups['baseVersion'].Value)-$($build.number).$($sha.Substring(0, 9))#$($build.number)\""

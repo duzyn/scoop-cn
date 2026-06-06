@@ -7,7 +7,7 @@
         "Run 'clink inject' to start clink on the current cmd",
         "Run 'clink autorun install' to auto start clink"
     ],
-    "url": "https://gh-proxy.com/https://github.com/chrisant996/clink/releases/download/v1.9.25/clink.1.9.25.dc17e7.zip",
+    "url": "https://gh-proxy.org/https://github.com/chrisant996/clink/releases/download/v1.9.25/clink.1.9.25.dc17e7.zip",
     "hash": "142e700d8f6bc8a2b1f8700eacd46c71798b6a9c5cb336eb45e8b70af55d0538",
     "env_set": {
         "CLINK_DIR": "$dir"
@@ -19,6 +19,6 @@
         "regex": "/v(?<tag>[\\d.]+)/clink\\.([\\d.]+)\\.(?<commit>[\\w.]+)\\.zip"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.com/https://github.com/chrisant996/clink/releases/download/v$matchTag/clink.$version.$matchCommit.zip"
+        "url": "https://gh-proxy.org/https://github.com/chrisant996/clink/releases/download/v$matchTag/clink.$version.$matchCommit.zip"
     }
 }

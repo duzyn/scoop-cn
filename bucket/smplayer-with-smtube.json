@@ -6,7 +6,7 @@
     "architecture": {
         "64bit": {
             "url": [
-                "https://gh-proxy.com/https://github.com/smplayer-dev/smplayer/releases/download/v25.6.0/smplayer-portable-25.6.0.0-x64.7z",
+                "https://gh-proxy.org/https://github.com/smplayer-dev/smplayer/releases/download/v25.6.0/smplayer-portable-25.6.0.0-x64.7z",
                 "https://sourceforge.net/projects/smtube/files/SMTube/21.10.0/smtube-21.10.0-x64.exe#/smtube.7z"
             ],
             "hash": [
@@ -16,7 +16,7 @@
         },
         "32bit": {
             "url": [
-                "https://gh-proxy.com/https://github.com/smplayer-dev/smplayer/releases/download/v25.6.0/smplayer-portable-25.6.0.0-win32-qt5.6.7z",
+                "https://gh-proxy.org/https://github.com/smplayer-dev/smplayer/releases/download/v25.6.0/smplayer-portable-25.6.0.0-win32-qt5.6.7z",
                 "https://sourceforge.net/projects/smtube/files/SMTube/21.10.0/smtube-21.10.0-win32-qt5.6.exe#/smtube.7z"
             ],
             "hash": [
@@ -59,7 +59,7 @@
         "github": "https://api.github.com/repos/smplayer-dev/smtube/releases/latest",
         "script": [
             "# matching from Extras bucket to avoid mangling FossHub mode in the script",
-            "$url = 'https://gh-proxy.com/https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/smplayer.json'",
+            "$url = 'https://gh-proxy.org/https://raw.githubusercontent.com/ScoopInstaller/Extras/master/bucket/smplayer.json'",
             "$regex1 = 'smplayer-portable-([\\d.]+)-win32-qt([\\d.]+)\\.7z'",
             "if ((Invoke-RestMethod $url).architecture.'32bit'.url -notmatch $regex1) { error \"Could not match '$regex1' on '$url'\"; continue }",
             "$smplayer_ver = $matches[1]; $smplayer_qtver = $matches[2]",
@@ -80,13 +80,13 @@
         "architecture": {
             "64bit": {
                 "url": [
-                    "https://gh-proxy.com/https://github.com/smplayer-dev/smplayer/releases/download/v$matchHead/smplayer-portable-$matchSmplayerver-x64.7z",
+                    "https://gh-proxy.org/https://github.com/smplayer-dev/smplayer/releases/download/v$matchHead/smplayer-portable-$matchSmplayerver-x64.7z",
                     "https://sourceforge.net/projects/smtube/files/SMTube/$matchSmtubever/smtube-$matchSmtubever-x64.exe#/smtube.7z"
                 ]
             },
             "32bit": {
                 "url": [
-                    "https://gh-proxy.com/https://github.com/smplayer-dev/smplayer/releases/download/v$matchHead/smplayer-portable-$matchSmplayerver-win32-qt$matchSmplayerqtver.7z",
+                    "https://gh-proxy.org/https://github.com/smplayer-dev/smplayer/releases/download/v$matchHead/smplayer-portable-$matchSmplayerver-win32-qt$matchSmplayerqtver.7z",
                     "https://sourceforge.net/projects/smtube/files/SMTube/$matchSmtubever/smtube-$matchSmtubever-win32-qt$matchSmtubeqtver.exe#/smtube.7z"
                 ]
             }

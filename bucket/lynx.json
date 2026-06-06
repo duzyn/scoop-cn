@@ -20,7 +20,7 @@
         "}",
         "",
         "# Get the latest OpenSSL 3.0.x for Win32/32bit from slproweb/opensslhashes",
-        "$result = Invoke-RestMethod -Uri 'https://gh-proxy.com/https://raw.githubusercontent.com/slproweb/opensslhashes/refs/heads/master/win32_openssl_hashes.json'",
+        "$result = Invoke-RestMethod -Uri 'https://gh-proxy.org/https://raw.githubusercontent.com/slproweb/opensslhashes/refs/heads/master/win32_openssl_hashes.json'",
         "$openssl_info = $result.files.PSObject.Properties | Where-Object {",
         "    $_.Value.light -eq $true -and",
         "    $_.Value.installer -eq 'exe' -and",
