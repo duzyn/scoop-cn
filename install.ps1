@@ -2,7 +2,7 @@
 $global:ProgressPreference = 'SilentlyContinue'
 
 # --- Configuration ---
-$GithubProxy = "https://gh-proxy.com"
+$GithubProxy = "https://gh-proxy.org"
 $ScoopPath = if ($env:SCOOP) { $env:SCOOP } else { "$env:USERPROFILE\scoop" }
 $ScoopCNRepo = "$GithubProxy/https://github.com/duzyn/scoop-cn.git"
 
@@ -17,7 +17,7 @@ function Set-ExecutionPolicyAndEnvironment {
 
 function Install-Scoop {
     Write-Host "Installing Scoop..."
-    # gh-proxy.com 无需替换字符串，网站自动替换了
+    # gh-proxy.org 无需替换字符串，网站自动替换了
     Invoke-RestMethod "$GithubProxy/https://raw.githubusercontent.com/ScoopInstaller/Install/master/install.ps1" | Invoke-Expression
 
     Write-Host "Setting Scoop core repo to use proxy..."
@@ -37,11 +37,11 @@ function Prepare-And-Install-Essentials {
     $GitManifestPath = "$Path\buckets\main\bucket\git.json"
 
     if (Test-Path -Path $7zipManifestPath) {
-        (Get-Content $7zipManifestPath) -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.com/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content $7zipManifestPath
+        (Get-Content $7zipManifestPath) -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content $7zipManifestPath
     }
 
     if (Test-Path -Path $GitManifestPath) {
-        (Get-Content $GitManifestPath) -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.com/$1' | Set-Content $GitManifestPath
+        (Get-Content $GitManifestPath) -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.org/$1' | Set-Content $GitManifestPath
     }
 
     Write-Host "Installing essential apps (7zip, git)..."
