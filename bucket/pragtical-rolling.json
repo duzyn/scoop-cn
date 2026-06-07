@@ -1,5 +1,5 @@
 {
-    "version": "20260607-2a7481d-671",
+    "version": "20260607-671-2a7481d",
     "description": "The practical and pragmatic code editor (rolling release).",
     "homepage": "https://pragtical.dev/",
     "license": "MIT",
@@ -31,7 +31,7 @@
         ],
         "jsonpath": "$.result",
         "regex": "^(?<runId>\\d+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}) (?<hash>.{7})(?<rest>.*)$",
-        "replace": "${year}${month}${day}-${hash}-${runId}"
+        "replace": "${year}${month}${day}-${runId}-${hash}"
     },
     "autoupdate": {
         "architecture": {
