@@ -1,5 +1,5 @@
 {
-    "version": "1.9.9",
+    "version": "1.10.0",
     "description": "Next-Generation of Chiaki (the open-source remote play client for PlayStation)",
     "homepage": "https://streetpea.github.io/chiaki-ng/",
     "license": {
@@ -11,15 +11,19 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v1.9.9/chiaki-ng-win_x64-MSYS2-portable-1.9.9.zip",
-            "hash": "fb6f2c92812f084f358a9b0e7620d336081ab6d23afd30cab5c374cd965f1484"
+            "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v1.10.0/chiaki-ng-win_x64-MSYS2-Release-portable.zip",
+            "hash": "4f1e824fc522560730e0b7a901e8811de2bab4a45ad5000386f7124bd855e4ac"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v1.9.9/chiaki-ng-win_arm64-MSYS2-portable-1.9.9.zip",
-            "hash": "66d80182e53ea5a488dc4d14a3c2ed3b76eb5bc3cbe65334f373bdf08553a959"
+            "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v1.10.0/chiaki-ng-win_arm64-MSYS2-Release-portable.zip",
+            "hash": "37fdb2b02229544927dc3577ff25b1c7398eae795ed85f75de1ef9dfdede5df3"
         }
     },
-    "extract_dir": "chiaki-ng-Win",
+    "pre_install": [
+        "$inner = Get-ChildItem \"$dir\" -Filter '*.zip' | Select-Object -First 1",
+        "if ($inner) { [System.IO.Compression.ZipFile]::ExtractToDirectory($inner.FullName, $dir); Remove-Item $inner.FullName -Force }",
+        "if (Test-Path \"$dir\\chiaki-ng-Win\") { Move-Item \"$dir\\chiaki-ng-Win\\*\" \"$dir\" -Force; Remove-Item \"$dir\\chiaki-ng-Win\" -Recurse -Force }"
+    ],
     "bin": [
         [
             "chiaki.exe",
@@ -38,10 +42,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v$version/chiaki-ng-win_x64-MSYS2-portable-$version.zip"
+                "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v$version/chiaki-ng-win_x64-MSYS2-Release-portable.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v$version/chiaki-ng-win_arm64-MSYS2-portable-$version.zip"
+                "url": "https://gh-proxy.org/https://github.com/streetpea/chiaki-ng/releases/download/v$version/chiaki-ng-win_arm64-MSYS2-Release-portable.zip"
             }
         }
     }

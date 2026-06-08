@@ -23,7 +23,6 @@
         "       Copy-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\\*\" -Destination \"$persist_dir\" -Recurse",
         "       Remove-Item -Path \"$env:USERPROFILE\\Documents\\Xenia\" -Recurse",
         "   } else {",
-        "       New-Item \"$dir\\recent.toml\" -ItemType File | Out-Null",
         "       New-Item \"$dir\\xenia-edge.config.toml\" -ItemType File | Out-Null",
         "   }",
         "}"
@@ -41,9 +40,9 @@
         "cache_host",
         "config",
         "content",
+        "library",
         "patches",
         "screenshots",
-        "recent.toml",
         "xenia-edge.config.toml"
     ],
     "checkver": {

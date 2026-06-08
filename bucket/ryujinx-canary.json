@@ -1,6 +1,6 @@
 {
     "version": "1.3.308",
-    "description": "A simple, experimental Nintendo Switch emulator",
+    "description": "A simple, experimental Nintendo Switch emulator (canary version)",
     "homepage": "https://ryujinx.app/",
     "license": {
         "identifier": "MIT",
@@ -10,13 +10,14 @@
         "ATTENTION: Ryujinx requires Nintendo Switch firmware and a prod.keys file to function.",
         "Learn more at https://git.ryujinx.app/ryubing/ryujinx/wiki/FAQ-&-Troubleshooting"
     ],
-    "suggest": {
-        "Switch Army Knife (SAK)": "sak"
-    },
     "architecture": {
         "64bit": {
             "url": "https://git.ryujinx.app/ryubing/canary/releases/download/1.3.308/ryujinx-canary-1.3.308-win_x64.zip",
             "hash": "aedbc0cff468c69d9d27251c5dc8d146111700dcaa1196b96cc91c83cb70f83c"
+        },
+        "arm64": {
+            "url": "https://git.ryujinx.app/ryubing/canary/releases/download/1.3.308/ryujinx-canary-1.3.308-win_arm64.zip",
+            "hash": "90e456b59f12f40da6f3a8c3456699fea8778d2e1cc23f53df2530527ab801ac"
         }
     },
     "extract_dir": "publish",
@@ -30,22 +31,28 @@
         "   }",
         "}"
     ],
-    "bin": "Ryujinx.exe",
+    "bin": [
+        "Ryujinx.exe",
+        "ryujinx-canary"
+    ],
     "shortcuts": [
         [
             "Ryujinx.exe",
-            "Ryujinx"
+            "Ryujinx (canary)"
         ]
     ],
     "persist": "portable",
     "checkver": {
-        "url": "https://git.ryujinx.app/api/v1/repos/ryubing/canary/releases?limit=1",
-        "jsonpath": "$[0].tag_name"
+        "url": "https://git.ryujinx.app/api/v1/repos/ryubing/canary/releases/latest",
+        "jsonpath": "$.tag_name"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
                 "url": "https://git.ryujinx.app/ryubing/canary/releases/download/$version/ryujinx-canary-$version-win_x64.zip"
+            },
+            "arm64": {
+                "url": "https://git.ryujinx.app/ryubing/canary/releases/download/$version/ryujinx-canary-$version-win_arm64.zip"
             }
         }
     }
