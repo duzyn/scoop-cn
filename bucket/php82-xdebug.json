@@ -1,5 +1,5 @@
 {
-    "version": "3.4.0-8.2",
+    "version": "3.5.3-8.2",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (version 8.2)",
     "homepage": "https://xdebug.org/",
     "license": {
@@ -12,8 +12,8 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://xdebug.org/files/php_xdebug-3.4.0-8.2-vs16-x86_64.dll#/php_xdebug.dll",
-            "hash": "9887f4e282172fdbe0142d9fe7dbea997e2940f840a46fccf2774ec6165ecfe9"
+            "url": "https://xdebug.org/files/php_xdebug-3.5.3-8.2-ts-vs16-x86_64.dll#/php_xdebug.dll",
+            "hash": "56a62ebd342a143ced245f30de375f5b907ba50efaacf42801a5dd280006e127"
         }
     },
     "post_install": [
@@ -45,12 +45,12 @@
     ],
     "checkver": {
         "url": "https://xdebug.org/download/historical",
-        "regex": "php_xdebug-([\\d.]+-8.2)-vs16-x86_64.dll"
+        "regex": "php_xdebug-([\\d.]+-8.2)-ts-vs16-x86_64.dll"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://xdebug.org/files/php_xdebug-$version-vs16-x86_64.dll#/php_xdebug.dll"
+                "url": "https://xdebug.org/files/php_xdebug-$version-ts-vs16-x86_64.dll#/php_xdebug.dll"
             }
         },
         "hash": {

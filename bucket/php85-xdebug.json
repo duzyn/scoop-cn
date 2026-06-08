@@ -1,19 +1,19 @@
 {
-    "version": "3.5.3-8.3",
-    "description": "A popular general-purpose scripting language that is especially suited to web development. (version 8.3)",
+    "version": "3.5.3-8.5",
+    "description": "A popular general-purpose scripting language that is especially suited to web development. (version 8.5)",
     "homepage": "https://xdebug.org/",
     "license": {
-        "identifier": "Xdebug-1.01",
-        "url": "https://xdebug.org/license.php"
+        "identifier": "Xdebug-1.03",
+        "url": "https://xdebug.org/license"
     },
     "notes": [
-        "Xdebug is already enabled if PHP 8.3 was installed through scoop!",
+        "Xdebug is already enabled if PHP 8.5 was installed through scoop!",
         "Otherwise add '$dir\\php_xdebug.dll' to your php.ini"
     ],
     "architecture": {
         "64bit": {
-            "url": "https://xdebug.org/files/php_xdebug-3.5.3-8.3-ts-vs16-x86_64.dll#/php_xdebug.dll",
-            "hash": "c178f05068a6f0cef4a37eaca6003a56120004bf4ac20db6ff20f6f1ce0b439e"
+            "url": "https://xdebug.org/files/php_xdebug-3.5.3-8.5-ts-vs17-x86_64.dll#/php_xdebug.dll",
+            "hash": "c75623ba050ddef734ba28a957e92df9ce5b8dfdb1a0569e5071bd6b68a12292"
         }
     },
     "post_install": [
@@ -45,12 +45,12 @@
     ],
     "checkver": {
         "url": "https://xdebug.org/download/historical",
-        "regex": "php_xdebug-([\\d.]+-8.3)-ts-vs16-x86_64.dll"
+        "regex": "php_xdebug-([\\d.]+-8\\.5)-ts-vs17-x86_64\\.dll"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://xdebug.org/files/php_xdebug-$version-ts-vs16-x86_64.dll#/php_xdebug.dll"
+                "url": "https://xdebug.org/files/php_xdebug-$version-ts-vs17-x86_64.dll#/php_xdebug.dll"
             }
         },
         "hash": {

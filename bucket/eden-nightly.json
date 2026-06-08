@@ -1,6 +1,6 @@
 {
-    "version": "0.2.1",
-    "description": "Open source Nintendo Switch emulator (forked from yuzu)",
+    "version": "1780772850.5ba3ae32dc",
+    "description": "Open source Nintendo Switch emulator (forked from yuzu — nightly build)",
     "homepage": "https://eden-emu.dev/",
     "license": {
         "identifier": "GPL-3.0-or-later",
@@ -15,12 +15,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://stable.eden-emu.dev/v0.2.1/Eden-Windows-v0.2.1-amd64-clang-pgo.zip",
-            "hash": "6c1b53ce325170a026cc0f87098380027dc6170d94ba95f913aab7596fd097cb"
+            "url": "https://nightly.eden-emu.dev/v1780772850.5ba3ae32dc/Eden-Windows-5ba3ae32dc-amd64-clang-pgo.zip",
+            "hash": "ac8481f2e8a9ae8dd55fa72cc3eed4c8da41f0d05f9ce9db572fe0256c5f2beb"
         },
         "arm64": {
-            "url": "https://stable.eden-emu.dev/v0.2.1/Eden-Windows-v0.2.1-arm64-clang-pgo.zip",
-            "hash": "ed03e04606d06d8efa63f239775e19a3b5539227c042f133c3170234c9fd277a"
+            "url": "https://nightly.eden-emu.dev/v1780772850.5ba3ae32dc/Eden-Windows-5ba3ae32dc-arm64-clang-pgo.zip",
+            "hash": "b354034c7433d5501ab10a6b592d72d100b49da7d3b357f1a1ff209bcca27b63"
         }
     },
     "pre_install": [
@@ -34,26 +34,31 @@
         "   }",
         "}"
     ],
-    "bin": "eden.exe",
+    "bin": [
+        [
+            "eden.exe",
+            "eden-nightly"
+        ]
+    ],
     "shortcuts": [
         [
             "eden.exe",
-            "Eden"
+            "Eden (nightly)"
         ]
     ],
     "persist": "user",
     "checkver": {
-        "url": "https://git.eden-emu.dev/api/v1/repos/eden-emu/eden/releases/latest",
+        "url": "https://git.eden-emu.dev/api/v1/repos/eden-ci/nightly/releases/latest",
         "jsonpath": "$.tag_name",
-        "regex": "v([\\d]+(?:\\.[\\d]+)+(?:-[A-Za-z\\d.-]+)?)"
+        "regex": "v([\\d]+\\.(?<commit>[a-f\\d]+))"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://stable.eden-emu.dev/v$version/Eden-Windows-v$version-amd64-clang-pgo.zip"
+                "url": "https://nightly.eden-emu.dev/v$version/Eden-Windows-$matchCommit-amd64-clang-pgo.zip"
             },
             "arm64": {
-                "url": "https://stable.eden-emu.dev/v$version/Eden-Windows-v$version-arm64-clang-pgo.zip"
+                "url": "https://nightly.eden-emu.dev/v$version/Eden-Windows-$matchCommit-arm64-clang-pgo.zip"
             }
         }
     }
