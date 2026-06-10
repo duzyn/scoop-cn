@@ -37,7 +37,7 @@ function Prepare-And-Install-Essentials {
     $GitManifestPath = "$Path\buckets\main\bucket\git.json"
 
     if (Test-Path -Path $7zipManifestPath) {
-        (Get-Content $7zipManifestPath) -replace 'https?://www\.7-zip\.org/a/7z(\d{2})(\d{2})', 'https://gh-proxy.org/https://github.com/ip7z/7zip/releases/download/$1.$2/7z$1$2' | Set-Content $7zipManifestPath
+        (Get-Content $7zipManifestPath) -replace '(https?://github\.com/.+/releases/.*download)', 'https://gh-proxy.org/$1' | Set-Content $7zipManifestPath
     }
 
     if (Test-Path -Path $GitManifestPath) {
