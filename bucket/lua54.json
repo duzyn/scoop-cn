@@ -1,0 +1,56 @@
+{
+    "version": "5.4.8",
+    "description": "A powerful, efficient, lightweight, embeddable scripting language",
+    "homepage": "http://www.lua.org",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.8/Tools%20Executables/lua-5.4.8_Win64_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.8/Windows%20Libraries/Dynamic/lua-5.4.8_Win64_dllw6_lib.zip"
+            ],
+            "hash": [
+                "sha1:bfa45b037d3e21efe4a0b197f89a3a2735733959",
+                "sha1:cf0a41a96f54e41639907cd2cf7b0ce9b003cc74"
+            ]
+        },
+        "32bit": {
+            "url": [
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.8/Tools%20Executables/lua-5.4.8_Win32_bin.zip",
+                "https://downloads.sourceforge.net/project/luabinaries/5.4.8/Windows%20Libraries/Dynamic/lua-5.4.8_Win32_dllw6_lib.zip"
+            ],
+            "hash": [
+                "sha1:497fb1df6f44f8080b7e9f01efed217e8c56bf98",
+                "sha1:50964884ae5ecddfdef9d09cca6be3607baf0261"
+            ]
+        }
+    },
+    "bin": [
+        "lua54.exe",
+        "luac54.exe"
+    ],
+    "env_set": {
+        "LUA_PATH_5_4": "$dir",
+        "LUA_CPATH_5_4": "$dir"
+    },
+    "checkver": {
+        "url": "http://luabinaries.sourceforge.net/download.html",
+        "regex": "LuaBinaries (5\\.4\\.[\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win64_bin.zip",
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win64_dllw6_lib.zip"
+                ]
+            },
+            "32bit": {
+                "url": [
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Tools%20Executables/lua-$version_Win32_bin.zip",
+                    "https://downloads.sourceforge.net/project/luabinaries/$version/Windows%20Libraries/Dynamic/lua-$version_Win32_dllw6_lib.zip"
+                ]
+            }
+        }
+    }
+}
