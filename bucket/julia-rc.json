@@ -1,24 +1,25 @@
 {
-    "version": "1.12.0-rc3",
-    "description": "Julia. A programming language that is a fresh approach to technical computing. (Release candidate)",
-    "homepage": "https://julialang.org",
+    "version": "1.13.0-rc1",
+    "description": "The Julia programming language (Release Candidate)",
+    "homepage": "https://julialang.org/",
     "license": "MIT",
+    "notes": "The `juliaup` tool supports installing and using different versions of Julia simultaneously.",
     "architecture": {
         "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.12/julia-1.12.0-rc3-win64.zip",
-            "hash": "59ddd141c6f1711eac919d23f6956bbfb3d9b86a707178af09f7c275d20dfcd4",
-            "extract_dir": "julia-1.12.0-rc3"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.13/julia-1.13.0-rc1-win64.zip",
+            "hash": "61fbb8b96409de1c267fbf7af266e6b80b3addd3cd66bd28bad509ee1d59f9ff",
+            "extract_dir": "julia-1.13.0-rc1"
         },
         "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.12/julia-1.12.0-rc3-win32.zip",
-            "hash": "150abf103b0ccdfcb8643bbc35256ae4687d7cc38d0a41bee73e1eec256ce27b",
-            "extract_dir": "julia-1.12.0-rc3"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.13/julia-1.13.0-rc1-win32.zip",
+            "hash": "46707c17958fde639fd6687ddfab18f773bf64618b01b9a97516eaf12a311af5",
+            "extract_dir": "julia-1.13.0-rc1"
         }
     },
     "bin": "bin\\julia.exe",
     "checkver": {
-        "url": "https://julialang.org/downloads/",
-        "regex": "Upcoming release: v([\\d.]+(-rc\\d+))"
+        "url": "https://gh-proxy.org/https://github.com/JuliaLang/www.julialang.org/raw/main/config.md",
+        "regex": "(?m:^upcoming_release *= *\"([0-9.a-z-]+)\"$)"
     },
     "autoupdate": {
         "architecture": {

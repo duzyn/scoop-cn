@@ -1,24 +1,25 @@
 {
-    "version": "1.10.10",
-    "description": "Julia. A programming language that is a fresh approach to technical computing. (Long-Term support version)",
-    "homepage": "https://julialang.org",
+    "version": "1.10.11",
+    "description": "The Julia programming language (Long-Term Support)",
+    "homepage": "https://julialang.org/",
     "license": "MIT",
+    "notes": "The `juliaup` tool supports installing and using different versions of Julia simultaneously.",
     "architecture": {
         "64bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.10/julia-1.10.10-win64.zip",
-            "hash": "035c084d69046722a0b2ceda31e00065f7512380ffd0f03b33ef4429eec92a7c",
-            "extract_dir": "julia-1.10.10"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x64/1.10/julia-1.10.11-win64.zip",
+            "hash": "11ba52fd1384f82d09ea232eb1552b6694bb2083e6adfe3ae2f9e1e663ed8cf8",
+            "extract_dir": "julia-1.10.11"
         },
         "32bit": {
-            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.10/julia-1.10.10-win32.zip",
-            "hash": "91bcb3e725ff056801a7057661c36a47d0fd3327a83342656bce11d6ed71b13d",
-            "extract_dir": "julia-1.10.10"
+            "url": "https://julialang-s3.julialang.org/bin/winnt/x86/1.10/julia-1.10.11-win32.zip",
+            "hash": "13a82256a98eed2d30346d8434a222755f9ac47f89ab17b57b1c47a567a2855e",
+            "extract_dir": "julia-1.10.11"
         }
     },
     "bin": "bin\\julia.exe",
     "checkver": {
-        "url": "https://julialang.org/downloads/",
-        "regex": "LTS\\) release: v([\\d.]+)"
+        "url": "https://gh-proxy.org/https://github.com/JuliaLang/www.julialang.org/raw/main/config.md",
+        "regex": "(?m:^lts_release *= *\"([0-9.]+)\"$)"
     },
     "autoupdate": {
         "architecture": {
