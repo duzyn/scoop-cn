@@ -34,7 +34,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/mcmilk/7-Zip-zstd/releases",
-        "jsonpath": "$[0].tag_name"
+        "jsonpath": "$[0].tag_name",
+        "regex": "([\\d\\w.-]+)"
     },
     "autoupdate": {
         "architecture": {
