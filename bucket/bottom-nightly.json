@@ -1,30 +1,38 @@
 {
-    "version": "20355766445",
+    "version": "20260624-ea24ae66-1782263505",
     "description": "Graphical process/system monitor",
     "homepage": "https://github.com/ClementTsang/bottom",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip",
-            "hash": "219c18b560ee97e98995901e116ba30c670fe6c5abd28037545247a550fbc03a"
+            "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-ea24ae66-1782263505/bottom_x86_64-pc-windows-msvc.zip",
+            "hash": "82be8481a28fb3a99b329e8c4219d5cff79f93372c0eee651e5355a1b5019914"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip",
-            "hash": "cfa5130711f9b0d76a972e44fd2500b7d05dc0c2cf110a4ecd3e297d6863ed80"
+            "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-ea24ae66-1782263505/bottom_i686-pc-windows-msvc.zip",
+            "hash": "deeaa5c0354d29808b0cab27923908aaf48c59ea5133df87b26dad599a7c8efd"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-ea24ae66-1782263505/bottom_aarch64-pc-windows-msvc.zip",
+            "hash": "25751c1a442b556099991e1f265b1d0c3072f3bf282153d772e8a5e297ed38ac"
         }
     },
     "bin": "btm.exe",
     "checkver": {
-        "github": "https://api.github.com/repos/ClementTsang/bottom/actions/workflows/nightly.yml/runs?branch=main&status=success",
-        "jsonpath": "$.workflow_runs[0].id"
+        "url": "https://github.com/ClementTsang/bottom/releases?q=nightly",
+        "regex": "releases/tag/nightly-(?<tag>[\\w]+-[\\d]+)\".+?>Nightly.+?\\((?<date>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}))\\)<",
+        "replace": "${year}${month}${day}-${tag}"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_x86_64-pc-windows-msvc.zip"
+                "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-$matchTag/bottom_x86_64-pc-windows-msvc.zip"
             },
             "32bit": {
-                "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly/bottom_i686-pc-windows-msvc.zip"
+                "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-$matchTag/bottom_i686-pc-windows-msvc.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/ClementTsang/bottom/releases/download/nightly-$matchTag/bottom_aarch64-pc-windows-msvc.zip"
             }
         }
     }
