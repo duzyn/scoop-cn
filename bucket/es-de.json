@@ -1,0 +1,71 @@
+{
+    "version": "3.4.1",
+    "description": "EmulationStation Desktop Edition is a frontend for browsing and launching games from your multi-platform collection",
+    "homepage": "https://gitlab.com/es-de/emulationstation-de",
+    "license": "MIT",
+    "notes": "Check out this issue to solve HDR problems: https://gitlab.com/es-de/emulationstation-de/-/issues/1880",
+    "suggest": {
+        "vcredist": "vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gitlab.com/es-de/emulationstation-de/-/package_files/288156909/download#/dl.7z",
+            "hash": "b082110241a5a672353729e3787609f406c4c149dddbd791993bda0a3185d4b5"
+        }
+    },
+    "extract_dir": "ES-DE",
+    "post_install": [
+        "'ROMs', 'Emulators', 'ES-DE' | ForEach-Object {",
+        "    $source_dir = Join-Path $dir \"$_.original\"",
+        "    $destination_dir = Join-Path $dir $_",
+        "    if (Test-Path \"$source_dir\") {",
+        "        Copy-Item -Path \"$source_dir\\*\" -Destination $destination_dir -Force -Recurse",
+        "        Remove-Item -Path $source_dir -Recurse -Force -ErrorAction SilentlyContinue",
+        "    }",
+        "}"
+    ],
+    "bin": [
+        [
+            "ES-DE.exe",
+            "es-de"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "ES-DE.exe",
+            "EmulationStation Desktop Edition"
+        ],
+        [
+            "ES-DE.exe",
+            "EmulationStation Desktop Edition (1080p)",
+            "--resolution 1921 1080"
+        ],
+        [
+            "ES-DE.exe",
+            "EmulationStation Desktop Edition (1440p)",
+            "--resolution 2561 1440"
+        ],
+        [
+            "ES-DE.exe",
+            "EmulationStation Desktop Edition (2160p)",
+            "--resolution 3841 2160"
+        ]
+    ],
+    "persist": [
+        "ES-DE",
+        "Emulators",
+        "ROMs"
+    ],
+    "checkver": {
+        "url": "https://gitlab.com/api/v4/projects/18817634/releases/permalink/latest",
+        "jsonpath": "$..links[?(@.name =~ /.*x64_Portable\\.zip/)]",
+        "regex": "(?s)ES-DE_([\\d.]+)-x64_Portable\\.zip.*?/package_files/(?<url>[^\"]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gitlab.com/es-de/emulationstation-de/-/package_files/$matchUrl#/dl.7z"
+            }
+        }
+    }
+}
