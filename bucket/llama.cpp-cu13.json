@@ -1,12 +1,12 @@
 {
     "version": "b9789",
-    "description": "Inference of LLaMA model in pure C/C++ (SYCL version)",
-    "homepage": "https://github.com/ggml-org/llama.cpp",
+    "description": "Inference of LLaMA model in pure C/C++ (CUDA 13 version)",
+    "homepage": "https://llama.app",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b9789/llama-b9789-bin-win-sycl-x64.zip",
-            "hash": "1dc6f314c9a4114ad3318f5fcecb1beb589e572226111aa2f3007bfd3a528b0a"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b9789/llama-b9789-bin-win-cuda-13.3-x64.zip",
+            "hash": "075f5531794c09f4529ada0dc42d21fbd90bfcd9f468b810df41f014f8d80e2a"
         }
     },
     "bin": [
@@ -30,13 +30,14 @@
     ],
     "persist": "models",
     "checkver": {
-        "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "(b[\\d]+)"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest",
+        "jsonpath": "$.assets[*].browser_download_url",
+        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-cuda-(?<cuda>13\\.\\d+)-x64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-sycl-x64.zip"
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda-$matchCuda-x64.zip"
             }
         }
     }
