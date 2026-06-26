@@ -1,0 +1,28 @@
+{
+    "version": "25.1",
+    "description": "Arcade management tool to handle your MAME/FBA romsets",
+    "homepage": "https://cosmo0.github.io/arcade-manager",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/cosmo0/arcade-manager/releases/download/v25.1/ArcadeManager-win-25.1.0-win.zip",
+            "hash": "da4c0c41b126ec69ede39770b6d14d76a0e592f11ad1dec46052c25409bcef5a"
+        }
+    },
+    "shortcuts": [
+        [
+            "ArcadeManager.exe",
+            "Arcade Manager"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/cosmo0/arcade-manager"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/cosmo0/arcade-manager/releases/download/v$version/ArcadeManager-win-$version.0-win.zip"
+            }
+        }
+    }
+}
