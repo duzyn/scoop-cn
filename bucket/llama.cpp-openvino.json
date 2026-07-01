@@ -1,0 +1,50 @@
+{
+    "version": "b9852",
+    "description": "Inference of LLaMA model in pure C/C++ (OpenVINO version)",
+    "homepage": "https://github.com/ggml-org/llama.cpp",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b9852/llama-b9852-bin-win-openvino-2026.2.1-x64.zip",
+            "hash": "b75fc9d893f55059f247fb0831e55b1466a5c5e706f6edd038e1ae5304e5b56b"
+        }
+    },
+    "bin": [
+        "llama-batched-bench.exe",
+        "llama-bench.exe",
+        "llama-cli.exe",
+        "llama-completion.exe",
+        "llama-cvector-generator.exe",
+        "llama-export-lora.exe",
+        "llama-fit-params.exe",
+        "llama-gemma3-cli.exe",
+        "llama-gguf-split.exe",
+        "llama-imatrix.exe",
+        "llama-llava-cli.exe",
+        "llama-minicpmv-cli.exe",
+        "llama-mtmd-cli.exe",
+        "llama-mtmd-debug.exe",
+        "llama-perplexity.exe",
+        "llama-quantize.exe",
+        "llama-qwen2vl-cli.exe",
+        "llama-results.exe",
+        "llama-server.exe",
+        "llama-template-analysis.exe",
+        "llama-tokenize.exe",
+        "llama-tts.exe",
+        "llama.exe"
+    ],
+    "persist": "models",
+    "checkver": {
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest",
+        "jsonpath": "$.assets[*].browser_download_url",
+        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-openvino-(?<openvino>\\d+(?:\\.\\d+)+)-x64\\.zip"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-openvino-$matchOpenvino-x64.zip"
+            }
+        }
+    }
+}
