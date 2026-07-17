@@ -16,14 +16,14 @@
     "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR]  $app requires admin rights to $cmd.\" }",
     "installer": {
         "script": [
-            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList @('/S', \"/D=$dir\") -WindowStyle Hidden -Wait",
+            "$install_args = @(",
+            "    '/S', '-install-options'",
+            "    '\"-uninstall-desktop-shortcut -uninstall-start-menu-shortcuts\"', \"/D=$dir\"",
+            ")",
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList $install_args -WindowStyle Hidden -Wait",
             "Remove-Item -Path \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue"
         ]
     },
-    "post_install": [
-        "Remove-Item -Path \"$Env:Public\\Desktop\\Everything.lnk\" -Force",
-        "Remove-Item -Path \"$([Environment]::GetFolderPath('commonstartmenu'))\\Programs\\Everything.lnk\" -Force"
-    ],
     "bin": "Everything.exe",
     "shortcuts": [
         [
@@ -36,7 +36,7 @@
         "Stop-Process -Name 'Everything' -Force -ErrorAction SilentlyContinue"
     ],
     "uninstaller": {
-        "script": "Start-Process -FilePath \"$dir\\Uninstall.exe\" -ArgumentList @('/S') -WindowStyle Hidden -Wait"
+        "script": "Start-Process -FilePath \"$dir\\Everything.exe\" -ArgumentList @('-unsetup', '-silent') -WindowStyle Hidden -Wait"
     },
     "checkver": {
         "url": "https://www.voidtools.com/forum/viewtopic.php?sd=d&t=9787",
