@@ -1,25 +1,49 @@
 {
-    "version": "3.17",
+    "version": "4.0.3.2",
     "description": "Utility for copying files.",
     "homepage": "https://www.codesector.com/teracopy",
-    "license": "Freeware",
-    "url": "http://www.codesector.com/files/teracopy.exe",
-    "hash": "ac03db52bb68a013d3a8bf4db703ec11976fa1d0aa557eb988e3f926a26656cf",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://support.codesector.com/articles/8789959-end-user-license-agreement"
+    },
+    "url": "https://codesector.com/files/teracopy4.0.3.2.exe",
+    "hash": "c1a7d43f85f109c663eb57b9a3bfd03f12f27f70d3472c52b5f6d77c537c9547",
+    "pre_install": "if (-not (is_admin)) { abort \"`n[ERROR] $app requires admin rights to $cmd\" }",
     "installer": {
-        "file": "teracopy.exe",
-        "args": [
-            "/qn",
-            "/passive"
+        "script": [
+            "$install_args = @('/exenoupdates', '/exenoui', '/quiet', '/norestart')",
+            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList $install_args -WindowStyle Hidden -Wait",
+            "Remove-Item -Path \"$dir\\$fname\" -Force -ErrorAction SilentlyContinue"
         ]
     },
+    "pre_uninstall": "if (-not (is_admin)) { abort \"`n[ERROR] $app requires admin rights to $cmd\" }",
     "uninstaller": {
-        "script": "Invoke-ExternalCommand msiexec -ArgumentList @('/x', '{C38F85E6-6E93-4963-A29E-B871C8A28D13}', '/qn', '/norestart') -RunAs | Out-Null"
+        "script": [
+            "$registry_path = 'HKLM:\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\*'",
+            "$product_id = Get-ItemProperty -Path $registry_path | Where-Object { $_.DisplayName -like '*TeraCopy*' } |",
+            "        Select-Object -ExpandProperty PSChildName -First 1",
+            "if (-not $product_id) { abort \"`nUninstallation Failed: Could not locate the product identity for TeraCopy.\" }",
+            "$removal_args = @('/x', $product_id, '/qn', '/norestart')",
+            "$removal_status = Invoke-ExternalCommand -FilePath 'msiexec.exe' -ArgumentList $removal_args -LogPath \"$dir\\uninstall.log\"",
+            "if(-not $removal_status) { abort \"`nUninstallation Failed: Process did not complete.`nReference Log: '$dir\\uninstall.log'.\" }",
+            "Remove-Item -Path \"$dir\\*.log\" -Force -ErrorAction SilentlyContinue"
+        ]
     },
     "checkver": {
-        "url": "https://www.codesector.com/downloads",
-        "regex": "(?s)TeraCopy ([\\d.]+)</td>\\s+<td>Windows"
+        "script": [
+            "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/c/CodeSector/TeraCopy'",
+            "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
+            "$latest_version = $response | Where-Object { $_.type -eq 'dir' } |",
+            "        Sort-Object -Property { [version]$_.name } -Descending | Select-Object -ExpandProperty name -First 1",
+            "Write-Output $latest_version"
+        ],
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
-        "url": "http://www.codesector.com/files/teracopy.exe"
+        "url": "https://codesector.com/files/teracopy$version.exe",
+        "hash": {
+            "url": "https://gh-proxy.org/https://raw.githubusercontent.com/microsoft/winget-pkgs/HEAD/manifests/c/CodeSector/TeraCopy/$version/CodeSector.TeraCopy.installer.yaml",
+            "regex": "(?s)$basename.+?$sha256"
+        }
     }
 }
