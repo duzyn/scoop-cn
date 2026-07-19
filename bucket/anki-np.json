@@ -36,7 +36,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://api.github.com/repositories/7270538/releases",
+        "github": "https://api.github.com/repos/ankitects/anki/releases",
         "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /windows/i)].browser_download_url",
         "regex": "(?i)download/([\\d.]+)/anki-launcher-[\\d.]+-windows"
     },

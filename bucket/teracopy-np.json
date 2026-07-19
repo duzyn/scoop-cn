@@ -30,13 +30,15 @@
         ]
     },
     "checkver": {
+        "github": "https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/c/CodeSector/TeraCopy",
         "script": [
-            "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/c/CodeSector/TeraCopy'",
-            "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
-            "$latest_version = $response | Where-Object { $_.type -eq 'dir' } |",
+            "$release = $page | ConvertFrom-Json -ErrorAction Stop",
+            "$latest_version = $release | Where-Object { $_.type -eq 'dir' } |",
             "        Sort-Object -Property { [version]$_.name } -Descending | Select-Object -ExpandProperty name -First 1",
-            "Write-Output $latest_version"
+            "$version_info = @{ result = $latest_version } | ConvertTo-Json -Compress",
+            "Write-Output $version_info"
         ],
+        "jsonpath": "$.result",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {

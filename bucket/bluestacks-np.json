@@ -31,21 +31,24 @@
         ]
     },
     "checkver": {
+        "github": "https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/b/BlueStack/BlueStacks",
         "script": [
-            "$package_url = 'https://api.github.com/repositories/197275551/contents/manifests/b/BlueStack/BlueStacks'",
-            "$first_letter, $publisher, $package = $package_url.Split('/') | Select-Object -Last 3",
-            "$response = Invoke-RestMethod -Uri $package_url -Method Get -ErrorAction Stop",
-            "$path_segments = $response | Where-Object { $_.type -eq 'dir' } |",
+            "$release = $page | ConvertFrom-Json -ErrorAction Stop",
+            "$first_letter, $publisher, $package = $url.Split('/') | Select-Object -Last 3",
+            "$path_segments = $release | Where-Object { $_.type -eq 'dir' } |",
             "        Sort-Object -Property { [version]$_.name } -Descending | ForEach-Object -MemberName name",
+            "$package_url = $url -replace 'api\\.github\\.com/repos(.+?)contents', 'raw.githubusercontent.com$1HEAD'",
             "foreach ($path_segment in $path_segments) {",
             "    $manifest_url = \"$package_url/{2}/{0}.{1}.installer.yaml\" -f $publisher, $package, $path_segment",
-            "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -Headers @{ 'Accept' = 'application/vnd.github.v3.raw' } -ErrorAction Stop",
+            "    $manifest_info = Invoke-RestMethod -Uri $manifest_url -ErrorAction Stop",
             "    if ($null -ne $manifest_info -and $manifest_info -match 'nxt/(?<version>[\\d.]+)/(?<token>[^/]+)') {",
-            "        Write-Output \"$($Matches['version']), $($Matches['token'])\"",
+            "        $version_info = @{ result = \"$($Matches['version']), $($Matches['token'])\" } | ConvertTo-Json -Compress",
+            "        Write-Output $version_info",
             "        break",
             "    }",
             "}"
         ],
+        "jsonpath": "$.result",
         "regex": "([\\d.]+), (?<token>.+)"
     },
     "autoupdate": {

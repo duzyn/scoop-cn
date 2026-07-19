@@ -30,7 +30,7 @@
     ],
     "env_add_path": "bin",
     "checkver": {
-        "url": "https://api.github.com/repos/freelan-developers/freelan/releases/latest",
+        "github": "https://api.github.com/repos/freelan-developers/freelan/releases/latest",
         "jsonpath": "$.assets..browser_download_url",
         "regex": "/(?<Half>[\\d.]+)/freelan-([\\d.]+)-(?:x86|amd64)-install\\.exe"
     },

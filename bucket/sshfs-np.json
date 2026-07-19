@@ -9,11 +9,11 @@
     "depends": "winfsp-np",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/billziss-gh/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x64.msi#/setup.msi_",
+            "url": "https://gh-proxy.org/https://github.com/winfsp/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x64.msi#/setup.msi_",
             "hash": "76080d7bfb1ba0a807f8874d07388bec4bc30893f2da511d5cb7a16d4490f7d1"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/billziss-gh/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x86.msi#/setup.msi_",
+            "url": "https://gh-proxy.org/https://github.com/winfsp/sshfs-win/releases/download/v3.7.21011/sshfs-win-3.7.21011-x86.msi#/setup.msi_",
             "hash": "f74e399a44b54b447f7e8ed4f012ba1932c5f90be71a6942ea304841eab610b0"
         }
     },
@@ -26,17 +26,17 @@
         "script": "Start-Process -FilePath 'msiexec.exe' -ArgumentList @('/x', \"$dir\\setup.msi_\", '/qn') -WindowStyle Hidden -Wait"
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/61451917/releases",
+        "github": "https://api.github.com/repos/winfsp/sshfs-win/releases",
         "jsonpath": "$[*].assets[?(@.name =~ /sshfs-win/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/sshfs-win-([\\d.]+)-x"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/billziss-gh/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x64.msi#/setup.msi_"
+                "url": "https://gh-proxy.org/https://github.com/winfsp/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x64.msi#/setup.msi_"
             },
             "32bit": {
-                "url": "https://gh-proxy.org/https://github.com/billziss-gh/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x86.msi#/setup.msi_"
+                "url": "https://gh-proxy.org/https://github.com/winfsp/sshfs-win/releases/download/$matchTag/sshfs-win-$version-x86.msi#/setup.msi_"
             }
         }
     }

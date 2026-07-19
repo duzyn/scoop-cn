@@ -26,7 +26,7 @@
         "script": "Start-Process -FilePath \"$dir\\setup.exe\" -ArgumentList @('/remove', '/S') -WindowStyle 'Hidden' -Wait"
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/254327261/releases/latest",
+        "github": "https://api.github.com/repos/sandboxie-plus/Sandboxie/releases/latest",
         "jsonpath": "$.assets[?(@.name =~ /Classic/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/Sandboxie-Classic-x64-v([\\d.]+)\\.exe"
     },

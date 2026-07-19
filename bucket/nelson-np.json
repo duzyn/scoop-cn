@@ -33,7 +33,7 @@
         ]
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/77338134/releases/latest",
+        "github": "https://api.github.com/repos/nelson-lang/nelson/releases/latest",
         "jsonpath": "$.assets[?(@.name =~ /Nelson/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/Nelson-([\\d.]+)"
     },

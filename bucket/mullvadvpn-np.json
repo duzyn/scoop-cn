@@ -30,7 +30,7 @@
         ]
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/114742422/releases",
+        "github": "https://api.github.com/repos/mullvad/mullvadvpn-app/releases",
         "jsonpath": "$[*].assets[?(@.name =~ /\\.exe$/i)].browser_download_url",
         "regex": "(?i)download/(?<tag>[^/]+)/MullvadVPN-([\\w.-]+)_(?:x|arm)"
     },

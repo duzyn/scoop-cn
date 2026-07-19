@@ -18,8 +18,15 @@
     },
     "checkver": {
         "github": "https://api.github.com/repos/microsoft/winget-pkgs/contents/manifests/f/FilesCommunity/FilesPreview",
-        "jsonpath": "$[?(@.type == 'dir')].name",
-        "regex": "([\\d.]+)(?=\"\\])"
+        "script": [
+            "$release = $page | ConvertFrom-Json -ErrorAction Stop",
+            "$latest_version = $release | Where-Object { $_.type -eq 'dir' } |",
+            "        Sort-Object -Property { [version]$_.name } -Descending | Select-Object -ExpandProperty name -First 1",
+            "$version_info = @{ result = $latest_version } | ConvertTo-Json -Compress",
+            "Write-Output $version_info"
+        ],
+        "jsonpath": "$.result",
+        "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {

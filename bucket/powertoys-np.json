@@ -28,9 +28,9 @@
         ]
     },
     "checkver": {
-        "url": "https://api.github.com/repositories/184456251/releases/latest",
-        "jsonpath": "$.tag_name",
-        "regex": "(?:v|V)?([\\d.]+)"
+        "github": "https://api.github.com/repos/microsoft/PowerToys/releases",
+        "jsonpath": "$[?(@.prerelease == false)].assets[?(@.name =~ /PowerToysSetup/i)].browser_download_url",
+        "regex": "(?i)download/(?<tag>[^/]+)/PowerToysSetup-([\\d.]+)-x64\\.exe"
     },
     "autoupdate": {
         "architecture": {
