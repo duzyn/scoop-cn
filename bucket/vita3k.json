@@ -4,8 +4,15 @@
     "homepage": "https://vita3k.org",
     "license": "GPL-2.0-only",
     "suggest": {
-        "vcredist": "vcredist2022"
+        "vcredist": "vcredist2022",
+        "PS Vita Firmware": "psv-system-software"
     },
+    "notes": [
+        "ATTENTION: Vita3K requires official PS Vita firmware to function.",
+        "Install the psv-system-software package.",
+        "You must still manually load PSVUPDAT.PUP and PSP2UPDAT.PUP through Vita3K",
+        "See the quickstart guide for further instructions: https://vita3k.org/quickstart"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.org/https://github.com/Vita3K/Vita3K/releases/download/continuous/windows-latest.zip",

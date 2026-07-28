@@ -3,18 +3,20 @@
     "description": "Modern model editor for boxy models and pixel art textures.",
     "homepage": "https://blockbench.net/",
     "license": "GPL-3.0-or-later",
-    "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v5.1.6/Blockbench_5.1.6.exe#/dl.7z",
-    "hash": "sha512:e93c79f3bcfd88f61276d3ea3b8a7c836866124494a5abafd0e049369060019749aaee74107d675e2a2cff4e4a1c0a6d712bfce711756e74810b6b2a5ee0ac73",
     "architecture": {
-        "32bit": {
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v5.1.6/Blockbench_arm64_5.1.6.exe#/dl.7z",
+            "hash": "8a788708d62bad41aa578c8b89bb4078f77b1eb8a6d766e08a2473786239d515",
             "installer": {
                 "script": [
-                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-32.7z\" \"$dir\"",
+                    "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.7z\" \"$dir\"",
                     "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
                 ]
             }
         },
         "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v5.1.6/Blockbench_x64_5.1.6.exe#/dl.7z",
+            "hash": "fb209ebf7be3a2b077ee0d2a817a31e2ca8e837e4f42c714fc7659c414ece5ed",
             "installer": {
                 "script": [
                     "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
@@ -33,10 +35,13 @@
         "github": "https://github.com/JannisX11/blockbench/"
     },
     "autoupdate": {
-        "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v$version/Blockbench_$version.exe#/dl.7z",
-        "hash": {
-            "url": "$baseurl/latest.yml",
-            "find": "sha512:\\s+(.*)"
+        "architecture": {
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v$version/Blockbench_arm64_$version.exe#/dl.7z"
+            },
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/JannisX11/blockbench/releases/download/v$version/Blockbench_x64_$version.exe#/dl.7z"
+            }
         }
     }
 }
