@@ -1,19 +1,20 @@
 {
-    "version": "8.8",
+    "version": "8.9",
     "description": "Servy lets you run any app as a native Windows service with full control over the working directory, startup type, process priority, logging, health checks, environment variables, dependencies, pre-launch and post-launch hooks, pre-stop and post-stop hooks, and parameters.",
     "homepage": "https://servy-win.github.io",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v8.8/servy-8.8-x64-installer.exe",
-            "hash": "d21158c52ac231ea2b4d6d72abd98e630e27e8622a6efc6af93adbc639bb9063"
+            "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v8.9/servy-8.9-x64-portable.7z",
+            "hash": "33a6faeba9aa2a3e9f96acd03b3a3050568752dbdc20267fc486cbacdebcb520",
+            "extract_dir": "servy-8.9-x64-portable"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v8.8/servy-8.8-arm64-installer.exe",
-            "hash": "a2eafde697f1dc7c4f4598bb9972f09ec7ac9ade4ffc0c935ad7074326afdb40"
+            "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v8.9/servy-8.9-arm64-portable.7z",
+            "hash": "bc618ef44eb7cfeff5021c7137618b1952bc6fc69e4db6268779680defe94bc5",
+            "extract_dir": "servy-8.9-arm64-portable"
         }
     },
-    "innosetup": true,
     "bin": "servy-cli.exe",
     "shortcuts": [
         [
@@ -31,10 +32,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v$version/servy-$version-x64-installer.exe"
+                "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v$version/servy-$version-x64-portable.7z",
+                "extract_dir": "servy-$version-x64-portable"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v$version/servy-$version-arm64-installer.exe"
+                "url": "https://gh-proxy.org/https://github.com/aelassas/servy/releases/download/v$version/servy-$version-arm64-portable.7z",
+                "extract_dir": "servy-$version-arm64-portable"
             }
         }
     }
