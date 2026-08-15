@@ -1,0 +1,61 @@
+{
+    "version": "3.5.0-beta",
+    "description": "Cross-platform advanced subtitle editor (beta version).",
+    "homepage": "https://www.aegisub.org/",
+    "license": {
+        "identifier": "BSD-3-Clause,MIT,BSDL,MPL-1.1",
+        "url": "https://github.com/TypesettingTools/Aegisub/blob/master/LICENCE"
+    },
+    "suggest": {
+        "vcredist": "vcredist2022"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/TypesettingTools/Aegisub/releases/download/v3.5.0-beta/aegisub-3.5.0-beta-portable.zip",
+            "hash": "171abe39ea3ac59ed8551afc8cdf0bb33726b97a7212697bd4de4931a65f1856"
+        }
+    },
+    "extract_dir": "aegisub-portable",
+    "pre_install": [
+        "# Hardlinks won't work properly here to persist files, because this app creates a new file instead of writing to the existing one.",
+        "Get-ChildItem -LiteralPath \"$persist_dir\" -File -Filter '*.json' -ErrorAction Ignore | Copy-Item -Destination $dir -Force"
+    ],
+    "post_install": [
+        "'automation' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_.original\" -PathType Container) {",
+        "        Copy-Item -Path \"$dir\\$_.original\\*\" -Destination \"$dir\\$_\" -Force -Recurse",
+        "        Remove-Item -Path \"$dir\\$_.original\" -Recurse -Force -ErrorAction SilentlyContinue",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "aegisub.exe",
+            "Aegisub (Beta)"
+        ]
+    ],
+    "persist": [
+        "autoback",
+        "automation",
+        "autosave",
+        "catalog",
+        "config"
+    ],
+    "pre_uninstall": [
+        "# Hardlinks won't work properly here to persist files, because this app creates a new file instead of writing to the existing one.",
+        "ensure $persist_dir | Out-Null",
+        "Get-ChildItem -LiteralPath \"$dir\" -File -Filter '*.json' | Where-Object { $_.Name -notin @('manifest.json', 'install.json') } | Copy-Item -Destination $persist_dir -Force"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/TypesettingTools/Aegisub/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "^v(\\d+(?:\\.\\d+)+(?:-beta)?)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/TypesettingTools/Aegisub/releases/download/v$version/aegisub-$version-portable.zip"
+            }
+        }
+    }
+}
