@@ -1,0 +1,49 @@
+{
+    "version": "9.5.32.0",
+    "description": "An Android emulator optimized for mobile gaming with lower resource consumption (Version 9).",
+    "homepage": "https://www.ldplayer.net",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.ldplayer.net/other/terms-of-use.html"
+    },
+    "notes": "Administrator privileges are required to run repairer.",
+    "url": "https://static.ldrescdn.com/download/package/LDPlayer_9.5.32.0.exe",
+    "hash": "7f5e639fb8fb58c68c626ef58beb0cf329d02e2eea504aac488b1afccef37e62",
+    "installer": {
+        "script": [
+            "Expand-7zipArchive \"$dir\\$fname\" \"$dir\\installer\" -Switches \"-t#\" -Removal",
+            "Get-ChildItem -LiteralPath \"$dir\\installer\" -Filter '*.7z' -File | ForEach-Object {",
+            "    Expand-7zipArchive $_.FullName $dir",
+            "}",
+            "Remove-Item \"$dir\\installer\" -Force -Recurse"
+        ]
+    },
+    "shortcuts": [
+        [
+            "dnplayer.exe",
+            "LDPlayer\\LDPlayer9"
+        ],
+        [
+            "dnmultiplayer.exe",
+            "LDPlayer\\LDMultiPlayer9"
+        ],
+        [
+            "dnrepairer.exe",
+            "LDPlayer\\LDPlayer9 Repairer"
+        ]
+    ],
+    "uninstaller": {
+        "file": "dnuninst.exe"
+    },
+    "persist": [
+        "ldrecord\\video",
+        "vms"
+    ],
+    "checkver": {
+        "url": "https://www.ldplayer.net/other/version-history-and-release-notes.html",
+        "regex": "download/package/LDPlayer_(9[\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "url": "https://static.ldrescdn.com/download/package/LDPlayer_$version.exe"
+    }
+}

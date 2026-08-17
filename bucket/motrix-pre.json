@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0-beta.18",
+    "description": "A full-featured download manager (Pre-release).",
+    "homepage": "https://motrix.app",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v2.0.0-beta.18/Motrix-2.0.0-beta.18-win.zip",
+            "hash": "e82f106d3e9e2ac0b531b13de747e9e2cda2b4a4cfe13ba87af443dbb728cafd"
+        }
+    },
+    "shortcuts": [
+        [
+            "Motrix.exe",
+            "Motrix (Pre-release)"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/agalwood/Motrix/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "^v([\\w.-]+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v$version/Motrix-$version-win.zip"
+            }
+        }
+    }
+}
