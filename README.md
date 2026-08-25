@@ -119,4 +119,4 @@ git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-pr
 <a href="https://github.com/Zacharia2"><img src="https://github.com/Zacharia2.png" width="50px;" alt="Zacharia2"/></a>
 
 
-![Star History Chart](https://api.star-history.com/svg?repos=duzyn/scoop-cn&type=Date)
+![Star History Chart](https://star-history.dera.page/svg?repos=duzyn/scoop-cn&type=Date)
