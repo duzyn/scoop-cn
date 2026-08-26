@@ -15,7 +15,7 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 
 如果你使用 Scoop 没有遇到这些问题，恭喜你，后面的内容不用看了。
 
-## 本应用库介绍
+## 简介
 
 本应用库为了解决上述问题，把各个环节的下载地址替换成了国内可加速访问的地址。本应用库使用的是 [GitHub Proxy](https://gh-proxy.org/) 和 [GitHub Actions](https://github.com/features/actions) 。
 
@@ -26,89 +26,23 @@ Scoop 是一个很优秀的软件包管理工具，官方的安装说明也简�
 3. 本应用库把应用的下载地址替换成了国内可加速访问的地址，真正做到能更快更方便地下载和安装应用。
 4. 本应用库每小时自动更新一次
 
-## 前提条件
+## 安装
 
-[PowerShell](https://learn.microsoft.com/zh-cn/powershell/) 版本在 5.1 或以上，如果没有 PowerShell 大于 5.1 版本，可以下载安装 [PowerShell Core](https://github.com/PowerShell/PowerShell)。运行以下命令查看：
+打开命令提示符，运行以下命令：
 
-```powershell
-$PSVersionTable.PSVersion.Major # 应该 >= 5.1
-```
-
-其次，允许本地运行 PowerShell 脚本，以管理员打开 PowerShell，运行以下命令，回答 Y：
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-## 方式一：安装 Scoop 和 scoop-cn（推荐）
-
-此方法会把安装 Scoop 过程中的地址都换成中国可快速访问的地址，并设置好 Scoop，添加本库为 main 库。打开 PowerShell，输入以下命令下载安装：
-
-```powershell
-irm https://gh-proxy.org/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | iex
-```
-
-或使用其他镜像地址：
-
-```powershell
-# 以下命令二选一
-irm https://cdn.jsdelivr.net/gh/duzyn/scoop-cn/install.ps1 | iex
-irm https://raw.gitmirror.com/duzyn/scoop-cn/master/install.ps1 | iex
-```
-
-安装成功后，会提示“scoop-cn was installed successfully!”
-
-安装之后，main 库的地址会换为本库地址。可以运行以下命令安装 app：
-
-```powershell
-scoop install APPNAME
-```
-
-## 方式二：添加 scoop-cn 库，并替换 main 库
-
-如果已经安装了 Scoop，不想重新安装可以按以下步骤进行：
-
-运行以下命令添加本库：
-
-```powershell
-scoop bucket rm main # 根据自己情况，库添加了几个，就删几个
-scoop bucket rm extras
-scoop bucket rm versions
-scoop bucket rm nirsoft
-scoop bucket rm sysinternals
-scoop bucket rm php
-scoop bucket rm nerd-fonts
-scoop bucket rm nonportable
-scoop bucket rm java
-scoop bucket rm games
-scoop bucket add main https://gh-proxy.org/https://github.com/duzyn/scoop-cn.git
-```
-
-添加之后，本库将作为 main 库。把已经安装的 app 改为使用本库来更新。每个 app 安装后在 app 的 current 路径下有个 install.json，里面的 bucket 项的值改为 main。可以运行以下命令来批量替换：
-
-```powershell
-Get-ChildItem -Path "$env:USERPROFILE\scoop\apps" -Recurse -Filter "install.json" | ForEach-Object { (Get-Content -Path $_.FullName -Raw) -replace '"bucket": "(main|extras|versions|nirsoft|sysinternals|php|nerd-fonts|nonportable|java|games|scoop-cn)"', '"bucket": "main"' | Set-Content -Path $_.FullName }
-```
-
-命令中的 `$env:USERPROFILE\scoop\apps` 需根据你实际的 Scoop 安装路径来修改，如果你安装 Scoop 时没有改过安装路径，默认应该是这个。如果你设置过 SCOOP 环境变量，需将 `$env:USERPROFILE\scoop\apps` 改成 `$env:SCOOP\apps`。
-
-可以运行 `scoop list` 来检查替换是否成功。
-
-可以运行以下命令安装 app：
-
-```powershell
-scoop install APPNAME
+```cmd
+powershell -ExecutionPolicy RemoteSigned -Command "Invoke-RestMethod -Uri https://gh-proxy.org/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | Invoke-Expression"
 ```
 
 ## 更新 GitHub 代理地址
 
-如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本库，需要更新本库的 GitHub 代理地址。
+如果因为 GitHub 代理无法访问（这是时不时会发生的事），导致无法更新本库，需要更新本库的 GitHub 代理地址（当前使用 `https://gh-proxy.org`）。
 
-运行以下命令设置新 GitHub 代理地址，下例中 `https://gh-proxy.org` 是当前在使用的：
+打开命令提示符，运行以下命令设置新 GitHub 代理地址：
 
-```powershell
+```cmd
 scoop config scoop_repo https://gh-proxy.org/https://github.com/ScoopInstaller/Scoop.git
-git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-proxy.org/https://github.com/duzyn/scoop-cn.git # 方式二使用
+git -C "%USERPROFILE%\scoop\buckets\main" remote set-url origin https://gh-proxy.org/https://github.com/duzyn/scoop-cn.git
 ```
 
 ## 贡献者
@@ -117,6 +51,3 @@ git -C "$env:USERPROFILE\scoop\buckets\main" remote set-url origin https://gh-pr
 <a href="https://github.com/maoyeedy"><img src="https://github.com/maoyeedy.png" width="50px;" alt="maoyeedy"/></a>
 <a href="https://github.com/techoc"><img src="https://github.com/techoc.png" width="50px;" alt="techoc"/></a>
 <a href="https://github.com/Zacharia2"><img src="https://github.com/Zacharia2.png" width="50px;" alt="Zacharia2"/></a>
-
-
-![Star History Chart](https://api.star-history.com/svg?repos=duzyn/scoop-cn&type=Date)
