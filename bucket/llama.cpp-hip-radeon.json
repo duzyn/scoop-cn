@@ -1,12 +1,16 @@
 {
-    "version": "b10355",
-    "description": "Inference of LLaMA model in pure C/C++ (HIP version for AMD GPUs)",
+    "version": "b10729",
+    "description": "Inference of LLaMA model in pure C/C++ (HIP/ROCm version for AMD GPUs)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
+    "notes": [
+        "For instructions on installing llama.cpp on Windows with AMD ROCm (HIP), please refer to:",
+        "https://github.com/ggml-org/llama.cpp/discussions/27047"
+    ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10355/llama-b10355-bin-win-hip-radeon-x64.zip",
-            "hash": "d141e3cc480ec6c3a04fea8837dc361409a93fae0102b7c3de9338fb303d2153"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-rocm-7.14-x64.zip",
+            "hash": "a7ae481c7db0510739ca9f86c5daef17bacfe13bbca1ebb0e42c4457bc65ed80"
         }
     },
     "bin": [
@@ -26,17 +30,19 @@
         "llama-qwen2vl-cli.exe",
         "llama-server.exe",
         "llama-tokenize.exe",
-        "llama-tts.exe"
+        "llama-tts.exe",
+        "llama.exe"
     ],
     "persist": "models",
     "checkver": {
-        "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "(b[\\d]+)"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
+        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-rocm-(?<rocm>[\\d\\.]+)-x64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-hip-radeon-x64.zip"
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-rocm-$matchRocm-x64.zip"
             }
         }
     }

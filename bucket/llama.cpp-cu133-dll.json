@@ -1,18 +1,19 @@
 {
-    "version": "b10549",
+    "version": "b10729",
     "description": "CUDA DLLs for llama.cpp (version 13.3)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10549/cudart-llama-bin-win-cuda-13.3-x64.zip",
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/cudart-llama-bin-win-cuda-13.3-x64.zip",
             "hash": "1462a050eb4c684921ba51dcc4cc488a036674c3e73e9945ee705b854808d03e"
         }
     },
     "env_add_path": ".",
     "checkver": {
-        "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "(b[\\d]+)"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"(b[\\d]+)\""
     },
     "autoupdate": {
         "architecture": {

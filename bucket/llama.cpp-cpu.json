@@ -1,16 +1,16 @@
 {
-    "version": "b10549",
+    "version": "b10729",
     "description": "Inference of LLaMA model in pure C/C++ (CPU version)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-cpu-x64.zip",
-            "hash": "11d38f2ed878489b2c3d02b3d1a67683c02fbfb3d265876b9ede749a8dff5f1c"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-cpu-x64.zip",
+            "hash": "628ad9516f13c1b01727657987abdf57c019f58af074e6f3e5ec36996188f6cd"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-cpu-arm64.zip",
-            "hash": "88453b6c9ca186885ac22b3505f5591381068d830ebc622a499af73a3607d8c2"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-cpu-arm64.zip",
+            "hash": "ed6dafdcca0dee11996a1dade13395140892032af0b8030efbeb9bff6a38e5fe"
         }
     },
     "bin": [
@@ -30,12 +30,14 @@
         "llama-qwen2vl-cli.exe",
         "llama-server.exe",
         "llama-tokenize.exe",
-        "llama-tts.exe"
+        "llama-tts.exe",
+        "llama.exe"
     ],
     "persist": "models",
     "checkver": {
-        "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "(b[\\d]+)"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"(b[\\d]+)\""
     },
     "autoupdate": {
         "architecture": {

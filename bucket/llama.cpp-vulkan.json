@@ -1,12 +1,12 @@
 {
-    "version": "b10549",
+    "version": "b10729",
     "description": "Inference of LLaMA model in pure C/C++ (Vulkan version)",
     "homepage": "https://github.com/ggml-org/llama.cpp",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-vulkan-x64.zip",
-            "hash": "8e7b0e6382a5bcbf57c79cf54b61483e9f7b26561d4413f28095cdaee256207b"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-vulkan-x64.zip",
+            "hash": "9cd33342899c279eef18a12871cc4d1226ad8c3f6b9f2f5235609897449bffb2"
         }
     },
     "bin": [
@@ -26,12 +26,14 @@
         "llama-qwen2vl-cli.exe",
         "llama-server.exe",
         "llama-tokenize.exe",
-        "llama-tts.exe"
+        "llama-tts.exe",
+        "llama.exe"
     ],
     "persist": "models",
     "checkver": {
-        "github": "https://github.com/ggml-org/llama.cpp",
-        "regex": "(b[\\d]+)"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"(b[\\d]+)\""
     },
     "autoupdate": {
         "architecture": {

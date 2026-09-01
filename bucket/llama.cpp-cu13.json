@@ -1,12 +1,16 @@
 {
-    "version": "b10549",
+    "version": "b10729",
     "description": "Inference of LLaMA model in pure C/C++ (CUDA 13 version)",
     "homepage": "https://llama.app",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10549/llama-b10549-bin-win-cuda-13.3-x64.zip",
-            "hash": "67a1097716a4b4c20b94d248d1b3886fd7b91b73d9af5e0630fd6a25a32309a5"
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-cuda-13.3-x64.zip",
+            "hash": "32d3d52795da2f001ceb74cd0d27ae4bb42d403bd9a5e53ee482ab65affcc571"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/b10729/llama-b10729-bin-win-cuda-13.4-arm64.zip",
+            "hash": "166e47db5eaa1798fe884b248aaacb9cf63482b8939d8a3930b71fcb663c3fa0"
         }
     },
     "bin": [
@@ -26,18 +30,22 @@
         "llama-qwen2vl-cli.exe",
         "llama-server.exe",
         "llama-tokenize.exe",
-        "llama-tts.exe"
+        "llama-tts.exe",
+        "llama.exe"
     ],
     "persist": "models",
     "checkver": {
-        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases/latest",
-        "jsonpath": "$.assets[*].browser_download_url",
-        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-cuda-(?<cuda>13\\.\\d+)-x64\\.zip"
+        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
+        "jsonpath": "$[*].assets[*].browser_download_url",
+        "regex": "download/(?<version>b[\\d]+)/llama-\\k<version>-bin-win-cuda-(?<cudax64>13\\.\\d+)-x64\\.zip.*cuda-(?<cudaarm64>13\\.\\d+)-arm64\\.zip"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda-$matchCuda-x64.zip"
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda-$matchCudax64-x64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/llama.cpp/releases/download/$version/llama-$version-bin-win-cuda-$matchCudaarm64-arm64.zip"
             }
         }
     }
