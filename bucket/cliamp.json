@@ -1,12 +1,13 @@
 {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "A retro terminal music player inspired by Winamp.",
     "homepage": "https://www.cliamp.stream",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/bjarneo/cliamp/releases/download/v2.0.0/cliamp-windows-amd64.exe#/cliamp.exe",
-            "hash": "14980d71183a3bfa7931e12be9977754451a2a5c209d9639755bfed277e1d819"
+            "url": "https://gh-proxy.org/https://github.com/bjarneo/cliamp/releases/download/v2.0.1/cliamp-windows-amd64.zip",
+            "hash": "2b874b74caee3426cc39b55719e7cfc63a06739cd1d7f56649f31ed16cbe9f8f",
+            "extract_dir": "cliamp-windows-amd64"
         }
     },
     "bin": "cliamp.exe",
@@ -16,7 +17,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/bjarneo/cliamp/releases/download/v$version/cliamp-windows-amd64.exe#/cliamp.exe"
+                "url": "https://gh-proxy.org/https://github.com/bjarneo/cliamp/releases/download/v$version/cliamp-windows-amd64.zip"
             }
         }
     }
