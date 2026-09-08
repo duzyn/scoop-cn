@@ -1,27 +1,27 @@
 {
-    "version": "18",
+    "version": "19",
     "description": "Free and open-source UCI chess engine",
     "homepage": "https://stockfishchess.org/",
     "license": "GPL-3.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_18/stockfish-windows-x86-64-avx2.zip",
-            "hash": "6f6c272ebd6ea594377715235c8a7326f75940ef4f4f856f45106028fe6ae900",
+            "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-windows-x86-64-universal.zip",
+            "hash": "3c8bf1f9ea66a09350a40df4f632288285ac206d99f33ab5842c408fc30b48a7",
             "extract_dir": "stockfish",
             "bin": [
                 [
-                    "stockfish-windows-x86-64-avx2.exe",
+                    "stockfish-windows-x86-64-universal.exe",
                     "stockfish"
                 ]
             ]
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_18/stockfish-windows-armv8.zip",
-            "hash": "7bc5880c11a58b2fdc4fcd606bf5cb593230026eb501a5a8865dc79fda5ea5fd",
+            "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-windows-arm64-universal.zip",
+            "hash": "8372ad3f0d7276deb2c70f801f541ec7db463219fc6d9c7592864e542aa4f401",
             "extract_dir": "stockfish",
             "bin": [
                 [
-                    "stockfish-windows-armv8.exe",
+                    "stockfish-windows-arm64-universal.exe",
                     "stockfish"
                 ]
             ]
@@ -34,10 +34,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_$version/stockfish-windows-x86-64-avx2.zip"
+                "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_$version/stockfish-windows-x86-64-universal.zip"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_$version/stockfish-windows-armv8.zip"
+                "url": "https://gh-proxy.org/https://github.com/official-stockfish/Stockfish/releases/download/sf_$version/stockfish-windows-arm64-universal.zip"
             }
         }
     }
