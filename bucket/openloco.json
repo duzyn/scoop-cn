@@ -1,13 +1,22 @@
 {
-    "version": "25.11",
+    "version": "26.08",
     "description": "Open source re-implementation of Chris Sawyer's Locomotion",
-    "homepage": "https://github.com/OpenLoco/OpenLoco",
+    "homepage": "https://openloco.io",
     "license": {
         "identifier": "MIT",
         "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/raw/master/LICENSE"
     },
-    "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v25.11/OpenLoco-v25.11-win32.zip",
-    "hash": "bdf2cc5a0c375ca8d41f616f48e81d6551bac12d2749cd6c31bdf8ed07d912b8",
+    "notes": "OpenLoco requires original Chris Sawyer's Locomotion game assets to run.",
+    "architecture": {
+        "32bit": {
+            "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v26.08/OpenLoco-v26.08-windows-portable-win32.zip",
+            "hash": "dc53b8ffc6177ac9c985a6a10f15576a7fc1a4765fe6e74e9ddb5c7386a5ad00"
+        },
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v26.08/OpenLoco-v26.08-windows-portable-x64.zip",
+            "hash": "90bd890a30e8d9bb905af579e82ec20a7a95d3775aba74109cbe2f2ef9e414b7"
+        }
+    },
     "bin": "OpenLoco.exe",
     "shortcuts": [
         [
@@ -15,8 +24,17 @@
             "OpenLoco"
         ]
     ],
-    "checkver": "github",
+    "checkver": {
+        "github": "https://github.com/OpenLoco/OpenLoco"
+    },
     "autoupdate": {
-        "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v$version/OpenLoco-v$version-win32.zip"
+        "architecture": {
+            "32bit": {
+                "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v$version/OpenLoco-v$version-windows-portable-win32.zip"
+            },
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/OpenLoco/OpenLoco/releases/download/v$version/OpenLoco-v$version-windows-portable-x64.zip"
+            }
+        }
     }
 }

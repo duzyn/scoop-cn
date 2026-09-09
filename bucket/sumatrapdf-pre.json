@@ -1,16 +1,16 @@
 {
-    "version": "3.7.20303",
+    "version": "3.7.22119",
     "description": "PDF and eBook reader (Pre-release).",
     "homepage": "https://www.sumatrapdfreader.org/free-pdf-reader",
     "license": "GPL-3.0-only,BSD-2-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://www.sumatrapdfreader.org/dl/prerel/20303/SumatraPDF-prerel-64.zip",
-            "hash": "da685c80f2fbeedcca11b3dbe83054e480ddc19ba8f53a9689ac97486401740e"
+            "url": "https://www.sumatrapdfreader.org/dl/prerel/22119/SumatraPDF-prerel-64.exe#/SumatraPDF.exe",
+            "hash": "1ab78c7529a400951e87a15ce5db3e43ed5ee35a07f3db66ade01bb7d28b748b"
         },
         "arm64": {
-            "url": "https://www.sumatrapdfreader.org/dl/prerel/20303/SumatraPDF-prerel-arm64.zip",
-            "hash": "ef6b31102365b1ffb190712422d81d81df19ab0f6e0672d74b1caf9917edcc97"
+            "url": "https://www.sumatrapdfreader.org/dl/prerel/22119/SumatraPDF-prerel-arm64.exe#/SumatraPDF.exe",
+            "hash": "ac25677ef8dbd46aba1a5d1adc29931f3fe4268ffe0488ce3949534ddba7d3f4"
         }
     },
     "pre_install": [
@@ -18,8 +18,7 @@
         "if (!(Test-Path \"$persist_dir\\$file\")) {",
         "    Write-Host 'File' $file 'does not exist. Creating.' -f Yellow",
         "    Set-Content \"$dir\\$file\" 'CheckForUpdates = false' -Encoding Ascii",
-        "}",
-        "Get-ChildItem \"$dir\\SumatraPDF-*.exe\" | Rename-Item -NewName 'SumatraPDF.exe'"
+        "}"
     ],
     "bin": "SumatraPDF.exe",
     "shortcuts": [
@@ -47,10 +46,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://www.sumatrapdfreader.org/dl/prerel/$patchVersion/SumatraPDF-prerel-64.zip"
+                "url": "https://www.sumatrapdfreader.org/dl/prerel/$patchVersion/SumatraPDF-prerel-64.exe#/SumatraPDF.exe"
             },
             "arm64": {
-                "url": "https://www.sumatrapdfreader.org/dl/prerel/$patchVersion/SumatraPDF-prerel-arm64.zip"
+                "url": "https://www.sumatrapdfreader.org/dl/prerel/$patchVersion/SumatraPDF-prerel-arm64.exe#/SumatraPDF.exe"
             }
         }
     }

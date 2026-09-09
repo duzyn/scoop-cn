@@ -1,0 +1,38 @@
+{
+    "version": "2751",
+    "description": "KDE web browser using QtWebEngine rendering engine, previously known as QupZilla (nightly version).",
+    "homepage": "https://apps.kde.org/falkon",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://cdn.kde.org/ci-builds/network/falkon/master/windows/falkon-master-2751-windows-cl-msvc2022-x86_64.7z",
+            "hash": "c7061b2d9fc65b320e6ec3b35ac49c6bfcec7389a879a4644a8bdfedaba2a212"
+        }
+    },
+    "bin": [
+        [
+            "bin\\falkon.exe",
+            "falkon"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "bin\\falkon.exe",
+            "Falkon Nightly"
+        ]
+    ],
+    "checkver": {
+        "url": "https://cdn.kde.org/ci-builds/network/falkon/master/windows/",
+        "regex": "falkon-master-(\\d+)-windows-cl-(?<lib>\\w+)-x86_64\\.7z"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://cdn.kde.org/ci-builds/network/falkon/master/windows/falkon-master-$version-windows-cl-$matchLib-x86_64.7z"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        }
+    }
+}
