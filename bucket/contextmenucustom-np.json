@@ -1,0 +1,66 @@
+{
+    "version": "5.8.0.0",
+    "description": "Adds customizable entries to the Windows 11 context menu.",
+    "homepage": "https://github.com/ikas-mc/ContextMenuForWindows11",
+    "license": "LGPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/ikas-mc/ContextMenuForWindows11/releases/download/5.8.0.0/ContextMenuCustom-CMC_GITHUB_RELEASE-x64.zip",
+            "hash": "431f8a3206146140155f0b761b831d785b9c89e9eda713181a91a5345db6e3aa"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/ikas-mc/ContextMenuForWindows11/releases/download/5.8.0.0/ContextMenuCustom-CMC_GITHUB_RELEASE-ARM64.zip",
+            "hash": "332464ca80e3f92b4db543bd168c5ebab3d663cefffdd727ebbd0da58ff1e10b"
+        }
+    },
+    "installer": {
+        "script": [
+            "if ($global) { error \"Global installation is not supported for $cmd.\"; break }",
+            "if (!(is_admin)) { error \"Administrator rights are required to install $app.\"; break }",
+            "$ProgressPreference = 'SilentlyContinue'",
+            "Add-Type -AssemblyName System.IO.Compression.FileSystem",
+            "$dependencies = @(Get-ChildItem -Path \"$dir\\*\\Dependencies\\*\\*.appx\" -File)",
+            "foreach ($dependency in $dependencies) {",
+            "    $archive = [System.IO.Compression.ZipFile]::OpenRead($dependency.FullName)",
+            "    try {",
+            "        $manifest_entry = $archive.GetEntry('AppxManifest.xml')",
+            "        $reader = [System.IO.StreamReader]::new($manifest_entry.Open())",
+            "        try { [xml]$manifest = $reader.ReadToEnd() } finally { $reader.Dispose() }",
+            "    } finally { $archive.Dispose() }",
+            "    $dependency_name = [string]$manifest.Package.Identity.Name",
+            "    $dependency_version = [version]$manifest.Package.Identity.Version",
+            "    $dependency_architecture = [string]$manifest.Package.Identity.ProcessorArchitecture",
+            "    $installed = Get-AppxPackage -Name $dependency_name | Where-Object {",
+            "        ([string]$_.Architecture -eq $dependency_architecture) -and ([version]$_.Version -ge $dependency_version)",
+            "    }",
+            "    if (!$installed) { Add-AppxPackage -Path $dependency.FullName }",
+            "}",
+            "$certificate = Get-ChildItem -Path $dir -Filter '*.cer' -Recurse -File | Select-Object -First 1",
+            "$thumbprint = (Get-PfxCertificate -FilePath $certificate.FullName).Thumbprint",
+            "if (!(Test-Path \"Cert:\\LocalMachine\\TrustedPeople\\$thumbprint\")) {",
+            "    Import-Certificate -FilePath $certificate.FullName -CertStoreLocation 'Cert:\\LocalMachine\\TrustedPeople' | Out-Null",
+            "}",
+            "$bundle = Get-ChildItem -Path $dir -Filter '*.msixbundle' -Recurse -File | Select-Object -First 1",
+            "Add-AppxPackage -Path $bundle.FullName"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$package_name = 'Custom Context Menu (Github)'",
+            "Get-AppxPackage | Where-Object {",
+            "    (Get-AppxPackageManifest -Package $_ -ErrorAction SilentlyContinue).Package.Properties.DisplayName -eq $package_name",
+            "} | Remove-AppxPackage"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/ikas-mc/ContextMenuForWindows11/releases/download/$version/ContextMenuCustom-CMC_GITHUB_RELEASE-x64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/ikas-mc/ContextMenuForWindows11/releases/download/$version/ContextMenuCustom-CMC_GITHUB_RELEASE-ARM64.zip"
+            }
+        }
+    }
+}

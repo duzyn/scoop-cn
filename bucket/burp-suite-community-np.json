@@ -1,11 +1,16 @@
 {
+    "##": "Deprecate this manifest after 2027-01-01.",
     "version": "2026.8",
+    "description": "An application that comes with set of tools used for penetration and security testing of web applications (Deprecated, please use `nonportable/burp-suite-np` instead).",
     "homepage": "https://portswigger.net/burp",
-    "description": "An application that comes with set of tools used for penetration and security testing of web applications.",
     "license": {
         "identifier": "Freeware",
         "url": "https://portswigger.net/burp/eula"
     },
+    "notes": [
+        "`nonportable/burp-suite-community-np` and `nonportable/burp-suite-pro-np` have been merged into a single manifest.",
+        "This manifest is deprecated and scheduled for removal on 2027-01-01. Please use `nonportable/burp-suite-np` instead."
+    ],
     "architecture": {
         "64bit": {
             "url": "https://portswigger.net/burp/releases/download?product=desktop&version=2026.8&type=WindowsX64#/setup.exe",
@@ -35,14 +40,14 @@
                 "url": "https://portswigger.net/burp/releases/download?product=desktop&version=$version&type=WindowsX64#/setup.exe",
                 "hash": {
                     "url": "https://portswigger.net/burp/releases/data",
-                    "jsonpath": "$.ResultSet.Results[?(@.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsX64')].Sha256Checksum"
+                    "jsonpath": "$.ResultSet.Results[?(@.buildCategory == 'desktop' && @.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsX64')].Sha256Checksum"
                 }
             },
             "arm64": {
                 "url": "https://portswigger.net/burp/releases/download?product=desktop&version=$version&type=WindowsArm64#/setup.exe",
                 "hash": {
                     "url": "https://portswigger.net/burp/releases/data",
-                    "jsonpath": "$.ResultSet.Results[?(@.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsArm64')].Sha256Checksum"
+                    "jsonpath": "$.ResultSet.Results[?(@.buildCategory == 'desktop' && @.version == '$version')].builds[?(@.BuildCategoryPlatform == 'WindowsArm64')].Sha256Checksum"
                 }
             }
         }
