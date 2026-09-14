@@ -1,0 +1,25 @@
+{
+    "version": "1.71",
+    "description": "Scan your system for rootkit-based malware.",
+    "homepage": "https://learn.microsoft.com/sysinternals/downloads/rootkit-revealer",
+    "license": {
+        "identifier": "Freeware",
+        "url": "https://learn.microsoft.com/sysinternals/license-terms"
+    },
+    "url": "https://download.sysinternals.com/files/RootkitRevealer.zip",
+    "hash": "e43c338065e4f0b44d73cdda38b9d3ba1bcca2504960fa921cdf071da9a046f1",
+    "bin": "RootkitRevealer.exe",
+    "shortcuts": [
+        [
+            "RootkitRevealer.exe",
+            "RootkitRevealer"
+        ]
+    ],
+    "checkver": {
+        "url": "https://gh-proxy.org/https://raw.githubusercontent.com/MicrosoftDocs/sysinternals/main/sysinternals/downloads/rootkit-revealer.md",
+        "regex": "#.*?v([\\d.]+)"
+    },
+    "autoupdate": {
+        "url": "https://download.sysinternals.com/files/RootkitRevealer.zip"
+    }
+}
