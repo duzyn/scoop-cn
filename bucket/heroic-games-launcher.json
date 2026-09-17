@@ -1,12 +1,12 @@
 {
-    "version": "2.22.2",
+    "version": "2.22.3",
     "description": "Unofficial native GUI reimplementation for GOG and Epic Games Launcher",
     "homepage": "https://heroicgameslauncher.com/",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.2/Heroic-2.22.2-Setup-x64.exe#/dl.7z",
-            "hash": "99a7b294ad448877893886dfe7906ad16b3d491b961fab39e5eddd13e4f90c65",
+            "url": "https://gh-proxy.org/https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.22.3/Heroic-2.22.3-Setup-x64.exe#/dl.7z",
+            "hash": "3c74b3f1727a005d9d578880a97e0b94c8ce04c94c6e08f99e644b072878360b",
             "pre_install": "Remove-Item \"$dir\\*.dll\"; Expand-7ZipArchive \"$dir\\app-64.7z\" \"$dir\" -Removal"
         }
     },
