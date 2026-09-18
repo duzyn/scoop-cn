@@ -1,0 +1,50 @@
+{
+    "version": "2.0.7",
+    "description": "The open source AI coding agent. (v2)",
+    "homepage": "https://opencode.ai/v2",
+    "license": "MIT",
+    "notes": [
+        "The v2 configuration is incompatible with v1. Uninstall 'opencode' first, then install this version.",
+        "See https://opencode.ai/v2/docs/migrate-v1/ for migration steps."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://registry.npmjs.org/@opencode/cli-windows-x64/-/cli-windows-x64-2.0.7.tgz",
+            "hash": "sha512:1e15a539b3cfb071f159949c0f9f65682621b0e75a018fceeba67437a8337107113e2d550d574fe39b94899045adbae0894b35d303217c033a05d2a3b3188233"
+        },
+        "arm64": {
+            "url": "https://registry.npmjs.org/@opencode/cli-windows-arm64/-/cli-windows-arm64-2.0.7.tgz",
+            "hash": "sha512:dd0acddd32c4efdb7516be8fd60cfbb13e62932692f11d0ae56b3c0517414f7a2c149208f041406b66a3a4bd1f1c9b1680f4fbe737d799cd31ad92f15fe3596f"
+        }
+    },
+    "extract_dir": "package\\bin",
+    "bin": [
+        "opencode.exe",
+        [
+            "opencode.exe",
+            "opencode2"
+        ]
+    ],
+    "checkver": {
+        "url": "https://registry.npmjs.org/@opencode%2fcli/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://registry.npmjs.org/@opencode/cli-windows-x64/-/cli-windows-x64-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@opencode%2fcli-windows-x64",
+                    "regex": "(?s)$url.*?$base64"
+                }
+            },
+            "arm64": {
+                "url": "https://registry.npmjs.org/@opencode/cli-windows-arm64/-/cli-windows-arm64-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@opencode%2fcli-windows-arm64",
+                    "regex": "(?s)$url.*?$base64"
+                }
+            }
+        }
+    }
+}
