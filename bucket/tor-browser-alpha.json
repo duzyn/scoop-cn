@@ -36,8 +36,9 @@
         ]
     ],
     "checkver": {
-        "url": "https://www.torproject.org/download/alpha/",
-        "regex": "tor-browser-windows-x86_64-portable-([\\w.]+)\\.exe"
+        "url": "https://download.torproject.org/tor-browser-for-desktop/",
+        "regex": "tor-browser-windows-x86_64-portable-([\\w.]+)\\.exe",
+        "reverse": true
     },
     "autoupdate": {
         "architecture": {
