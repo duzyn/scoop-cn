@@ -1,0 +1,33 @@
+{
+    "description": "Official production-ready open-source builds of OpenJDK 27",
+    "homepage": "https://jdk.java.net/27",
+    "version": "27-35",
+    "license": "GPL-2.0-only WITH Classpath-exception-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_windows-x64_bin.zip",
+            "hash": "41172837168dd25a8d9fe5eb253ac1efc568c5f9ff608144bcacadfdf50f876c"
+        }
+    },
+    "extract_dir": "jdk-27",
+    "env_add_path": "bin",
+    "env_set": {
+        "JAVA_HOME": "$dir"
+    },
+    "checkver": {
+        "url": "https://jdk.java.net/27/",
+        "re": "https://download\\.java\\.net/java/(?<type>GA)/(?<path>jdk(?<major>27(?:\\.[\\d]+)*)/[^/]+/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>27(?:\\.[\\d]+)*)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin\\.(zip|tar.gz))",
+        "replace": "${version}-${build}${ea}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.java.net/java/$matchType/$matchPath/$matchFile"
+            }
+        },
+        "hash": {
+            "url": "$url.sha256"
+        },
+        "extract_dir": "jdk-$matchVersion"
+    }
+}

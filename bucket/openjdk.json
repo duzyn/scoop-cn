@@ -1,21 +1,21 @@
 {
     "description": "Official General-Availability Release of OpenJDK",
     "homepage": "https://jdk.java.net/",
-    "version": "26.0.2.1-1",
+    "version": "27-35",
     "license": "GPL-2.0-only WITH Classpath-exception-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_windows-x64_bin.zip",
-            "hash": "0c3a8a30993de864937e6bced5270edc39c80c584cfd359ac222638c42758f1c"
+            "url": "https://download.java.net/java/GA/jdk27/55ce5470a6294008af0057ff4626d0e5/35/GPL/openjdk-27_windows-x64_bin.zip",
+            "hash": "41172837168dd25a8d9fe5eb253ac1efc568c5f9ff608144bcacadfdf50f876c"
         }
     },
-    "extract_dir": "jdk-26.0.2.1",
+    "extract_dir": "jdk-27",
     "env_add_path": "bin",
     "env_set": {
         "JAVA_HOME": "$dir"
     },
     "checkver": {
-        "url": "https://jdk.java.net/archive/",
+        "url": "https://jdk.java.net/27/",
         "re": "https://download\\.java\\.net/java/(?<type>GA)/(?<path>jdk(?<major>[\\d.]+)/[^/]+/(?<build>[\\d]+)(?:/GPL|/binaries)?)/(?<file>openjdk-(?<version>[\\d.]+)(?<ea>-ea)?(?:\\+[\\d]+)?_windows-x64_bin\\.(zip|tar.gz))",
         "replace": "${version}-${build}${ea}"
     },

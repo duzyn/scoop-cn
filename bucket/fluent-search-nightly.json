@@ -1,16 +1,16 @@
 {
-    "version": "1.5.0.1",
+    "version": "1.5.0.2",
     "description": "Nightly build of Fluent Search, a search tool for running apps, browser tabs, in-app content, files and more.",
     "homepage": "https://fluentsearch.net/",
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/adirh3/Fluent-Search/releases/download/1.5.0.1/fluent-search-portable-x64.zip",
-            "hash": "84f6dc6da2c60f46dcebc9cb5b6f3c94d8fdfec54d5933ea35e45d77ee6b9d9b"
+            "url": "https://gh-proxy.org/https://github.com/adirh3/Fluent-Search/releases/download/1.5.0.2/fluent-search-portable-x64.zip",
+            "hash": "d361311facef7ee8852055be7865cfa0dbf8cbba85561144efe4f947ad210cb4"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/adirh3/Fluent-Search/releases/download/1.5.0.1/fluent-search-portable-arm64.zip",
-            "hash": "cc463ac67a8ae8807b5da4a94592a26bc47d5f2b3e3181550dec36e3c8069e10"
+            "url": "https://gh-proxy.org/https://github.com/adirh3/Fluent-Search/releases/download/1.5.0.2/fluent-search-portable-arm64.zip",
+            "hash": "f51e5ccec24ea18ecad06175c18e1b91813ba2b07cc59b5e38ef74f191fa33a0"
         }
     },
     "pre_install": "if([Environment]::OSVersion.Version.Major -lt 10) { error 'This app requires Windows 10 or 11'; break }",
