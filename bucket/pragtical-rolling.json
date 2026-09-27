@@ -1,5 +1,5 @@
 {
-    "version": "20260924-746-d3db654",
+    "version": "20260915-737-ed39cd4",
     "description": "The practical and pragmatic code editor (rolling release).",
     "homepage": "https://pragtical.dev/",
     "license": "MIT",
@@ -26,10 +26,8 @@
             "    return $null",
             "}",
             "$release = $content.workflow_runs[0]",
-            "$output = @{'result' = \"$($release.run_number) $($release.created_at | Get-Date -Format 'yyyy-MM-dd') $($release.head_sha)\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Write-Output \"$($release.run_number) $($release.created_at | Get-Date -Format 'yyyy-MM-dd') $($release.head_sha)\""
         ],
-        "jsonpath": "$.result",
         "regex": "^(?<runId>\\d+) (?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2}) (?<hash>.{7})(?<rest>.*)$",
         "replace": "${year}${month}${day}-${runId}-${hash}"
     },

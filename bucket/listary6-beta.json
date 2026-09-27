@@ -1,0 +1,22 @@
+{
+    "version": "6.3.6.99",
+    "description": "A revolutionary search utility (v6 beta).",
+    "homepage": "https://help.listary.com/changelog-beta",
+    "license": "Shareware",
+    "url": "https://dl.listary.net/beta/Listary.exe#/dl.exe",
+    "hash": "01ad053fa747bacf9ccc336156ed9d67ff449974ca19b6c14f914a60652984c8",
+    "innosetup": true,
+    "shortcuts": [
+        [
+            "Listary.exe",
+            "Listary6 (Beta) "
+        ]
+    ],
+    "checkver": {
+        "url": "https://dl.listary.com/beta/auto_update_beta_v2.xml",
+        "regex": "(?i)<version>\\s*(6(?:\\.\\d+)+)\\s*</version>"
+    },
+    "autoupdate": {
+        "url": "https://dl.listary.net/beta/Listary.exe#/dl.exe"
+    }
+}

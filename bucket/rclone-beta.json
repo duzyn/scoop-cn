@@ -1,18 +1,23 @@
 {
+    "version": "1.76.0-beta.10425.9dc8b71ae",
+    "description": "Sync files and directories to and from multiple cloud / FTP / HTTP hosters (beta version).",
     "homepage": "https://rclone.org",
-    "description": "rsync for cloud storage",
-    "version": "1.76.0-beta.10412.3ac301eff",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://beta.rclone.org/v1.76.0-beta.10412.3ac301eff/rclone-v1.76.0-beta.10412.3ac301eff-windows-amd64.zip",
-            "extract_dir": "rclone-v1.76.0-beta.10412.3ac301eff-windows-amd64",
-            "hash": "0dd601405ebc62d019619f48b5afa1327ce9e7a38179befafbc2cee2fbdf5fb3"
+            "url": "https://beta.rclone.org/v1.76.0-beta.10425.9dc8b71ae/rclone-v1.76.0-beta.10425.9dc8b71ae-windows-amd64.zip",
+            "extract_dir": "rclone-v1.76.0-beta.10425.9dc8b71ae-windows-amd64",
+            "hash": "96af364f7319cb35f2e461eb8b0c805583a27b65365325586d08e66e2f366d52"
         },
         "32bit": {
-            "url": "https://beta.rclone.org/v1.76.0-beta.10412.3ac301eff/rclone-v1.76.0-beta.10412.3ac301eff-windows-386.zip",
-            "extract_dir": "rclone-v1.76.0-beta.10412.3ac301eff-windows-386",
-            "hash": "c48ece5077cd7d128293a96210fb80ddcb8278d15a902f06bdc7ca310c37798f"
+            "url": "https://beta.rclone.org/v1.76.0-beta.10425.9dc8b71ae/rclone-v1.76.0-beta.10425.9dc8b71ae-windows-386.zip",
+            "extract_dir": "rclone-v1.76.0-beta.10425.9dc8b71ae-windows-386",
+            "hash": "b914f16f5d67e72ee3d02854d66d02bb420c5cdcb548a1929e79da7d105bc1fd"
+        },
+        "arm64": {
+            "url": "https://beta.rclone.org/v1.76.0-beta.10425.9dc8b71ae/rclone-v1.76.0-beta.10425.9dc8b71ae-windows-arm64.zip",
+            "hash": "8590e722a8af5bf7dc8a16d91067264c72b49716cc3ac8f3fcdc1e31278c0336",
+            "extract_dir": "rclone-v1.76.0-beta.10425.9dc8b71ae-windows-arm64"
         }
     },
     "bin": [
@@ -35,6 +40,10 @@
             "32bit": {
                 "url": "https://beta.rclone.org/v$version/rclone-v$version-windows-386.zip",
                 "extract_dir": "rclone-v$version-windows-386"
+            },
+            "arm64": {
+                "url": "https://beta.rclone.org/v$version/rclone-v$version-windows-arm64.zip",
+                "extract_dir": "rclone-v$version-windows-arm64"
             }
         }
     }

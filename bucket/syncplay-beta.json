@@ -22,10 +22,8 @@
             "$releases = $page | ConvertFrom-Json",
             "if (($ver = $releases[0].tag_name)[0] -eq ($prefix = 'v')) { $ver = $ver.Substring(1) } else { $prefix = '' }",
             "$result = ($prefix, $ver, $ver.Replace('-', '_')) -join ' '",
-            "$output = @{'result' = \"$result\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Write-Output $result"
         ],
-        "jsonpath": "$.result",
         "regex": "\\A(?<prefix>v)? (\\S+) (?<underscore>\\S+)\\Z"
     },
     "autoupdate": {

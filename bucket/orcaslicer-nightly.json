@@ -1,16 +1,16 @@
 {
-    "version": "1790360491",
+    "version": "1790457465",
     "description": "G-code generator for 3D printers (Bambu, Prusa, Voron, VzBot, RatRig, Creality, etc.)",
     "homepage": "https://github.com/OrcaSlicer/OrcaSlicer",
     "license": "AGPL-3.0-or-later",
     "architecture": {
         "64bit": {
             "url": "https://gh-proxy.org/https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_x64_nightly_portable.zip",
-            "hash": "5748bfbd7a6d192861d2eef39a110be9e8a5d636742ce50586a8bc11eae50471"
+            "hash": "f762f847442b027eccf2c2d04307467ba719a60e43e31a917eda497bd6dc997a"
         },
         "arm64": {
             "url": "https://gh-proxy.org/https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Windows_arm64_nightly_portable.zip",
-            "hash": "690043f804e0b6c0df3d4ac31b2ed639993f1bb7410da99226c8208699ad8ede"
+            "hash": "3821a25df81aa1e4e620f2f7f98281fa16335b4353f9bdcd90a34487d8d07c6b"
         }
     },
     "extract_dir": "OrcaSlicer",
@@ -24,10 +24,8 @@
         "github": "https://api.github.com/repos/OrcaSlicer/OrcaSlicer/releases/tags/nightly-builds",
         "script": [
             "$release = $page | ConvertFrom-Json",
-            "$output = @{'result' = \"$(Get-Date $release.updated_at -UFormat %s)\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Get-Date $release.updated_at -UFormat %s"
         ],
-        "jsonpath": "$.result",
         "regex": "^(\\d+)$"
     },
     "autoupdate": {

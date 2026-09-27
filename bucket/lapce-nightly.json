@@ -26,10 +26,8 @@
         "github": "https://api.github.com/repos/lapce/lapce/releases/tags/nightly",
         "script": [
             "$release = $page | ConvertFrom-Json",
-            "$output = @{'result' = \"$(Get-Date $release.published_at -UFormat %s)\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Get-Date $release.published_at -UFormat %s"
         ],
-        "jsonpath": "$.result",
         "regex": "\\A(\\d+)\\Z"
     },
     "autoupdate": {

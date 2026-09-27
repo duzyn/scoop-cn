@@ -1,23 +1,23 @@
 {
-    "version": "4.6.2-rc2",
+    "version": "4.7.2-rc1",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.6.2-rc2/Godot_v4.6.2-rc2_mono_win64.zip",
-            "hash": "sha512:05657eccc390415983be86f3bfde03cb299c088a2d31f2de33d23610155de2abd3c9077367b331a00f9a726723f205a150dd0cd3436234fb0b63c3c41b9d98f6",
-            "extract_dir": "Godot_v4.6.2-rc2_mono_win64"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7.2-rc1/Godot_v4.7.2-rc1_mono_win64.zip",
+            "hash": "sha512:ee602c20561d6dfc938471e3d196c7136bac844fabd8d90a2abc2834a71b4f315846f8a4acca4928fb77f030288cc359aef3b69a2eae1814358901a444e87520",
+            "extract_dir": "Godot_v4.7.2-rc1_mono_win64"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.6.2-rc2/Godot_v4.6.2-rc2_mono_win32.zip",
-            "hash": "sha512:c9439395de2afd9c36ac495dbf27b1aba1e355a39f5f18f009c0da357d3047052208498c61e09e4863873a3b87db486156a5173d4969a9b7c0b48e33d541bfb6",
-            "extract_dir": "Godot_v4.6.2-rc2_mono_win32"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7.2-rc1/Godot_v4.7.2-rc1_mono_win32.zip",
+            "hash": "sha512:99e15380a8e5ca696e818fbf8a1d482ee83afac73e04033d58893ea7c0f6db2aace857bafc1a87d9cbcdee82154812e196ae7797e8f6b54019953ca11f2f796b",
+            "extract_dir": "Godot_v4.7.2-rc1_mono_win32"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.6.2-rc2/Godot_v4.6.2-rc2_mono_windows_arm64.zip",
-            "hash": "sha512:12dc0f29213939be46574131651987a795c05feed4f13fbf6a986547f92e5e58d54845eabe0fe7005456436bae43576b04f15177b1108c433fb8e7fe412d868c",
-            "extract_dir": "Godot_v4.6.2-rc2_mono_windows_arm64"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7.2-rc1/Godot_v4.7.2-rc1_mono_windows_arm64.zip",
+            "hash": "sha512:7d39845d8e61e35caa7c5681624ea80c5591132c1fb0dd3831138bfdf1fed80bf1f9cab4b5e409e2f7253e1233314a34406d19d819c17590534c85646de12d03",
+            "extract_dir": "Godot_v4.7.2-rc1_mono_windows_arm64"
         }
     },
     "pre_install": [
@@ -38,7 +38,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/godotengine/godot-builds/tags",
-        "jsonpath": "$[?(@.name =~ /^[\\d.]+-rc\\d+$/)].name"
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-rc\\d+$/)].name",
+        "regex": "\"(\\d+(?:\\.\\d+)+-rc\\d+)\""
     },
     "autoupdate": {
         "architecture": {

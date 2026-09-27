@@ -1,0 +1,47 @@
+{
+    "version": "b5130",
+    "description": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (nightly version).",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
+    "license": "MIT",
+    "notes": [
+        "Whisper Model files are not included. You can download them here:",
+        "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-x64.zip",
+            "hash": "f9ec6c52a2e949b62ab51fa21d0d497958f9e41c3010c157c4e42932d5316f3c"
+        },
+        "32bit": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/b5130/whisper-bin-Win32.zip",
+            "hash": "7c0b2c10a0c30acddcf77c3d72f31a02c3a09a11a2b1e13d6693d3d0f1f7d169"
+        }
+    },
+    "extract_dir": "Release",
+    "bin": [
+        "whisper-bench.exe",
+        "whisper-cli.exe",
+        "whisper-command.exe",
+        "whisper-lsp.exe",
+        "whisper-quantize.exe",
+        "whisper-server.exe",
+        "whisper-stream.exe",
+        "whisper-talk-llama.exe",
+        "whisper-vad-speech-segments.exe"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/ggml-org/whisper.cpp/releases",
+        "jsonpath": "$[*].tag_name",
+        "regex": "\"(b\\d+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/$version/whisper-bin-x64.zip"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/$version/whisper-bin-Win32.zip"
+            }
+        }
+    }
+}

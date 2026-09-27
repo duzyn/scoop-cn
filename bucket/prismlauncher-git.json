@@ -1,6 +1,6 @@
 {
     "##": "Please keep the key properties of games/prismlauncher and versions/prismlauncher-git in sync.",
-    "version": "12.0.0-2756-81978aa",
+    "version": "12.0.0-3599-3ea780f",
     "description": "An open source Minecraft launcher with the ability to manage multiple instances, accounts and mods. Focused on user freedom and free redistributability.",
     "homepage": "https://prismlauncher.org/",
     "license": "GPL-3.0-only",
@@ -13,12 +13,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/31089081556/PrismLauncher-Windows-MinGW-w64-Portable-81978aa-Debug.zip",
-            "hash": "319469f6c8774f0679563b34216828c5a0053426233aeb73492f3b33ee75d23d"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/36262187133/PrismLauncher-Windows-MSVC-Portable-3ea780f-Debug.zip",
+            "hash": "0dd9e75601d540d86ea494b7e808574019f4283c3ad453e348f29bd4754ff83e"
         },
         "arm64": {
-            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/31089081556/PrismLauncher-Windows-MinGW-arm64-Portable-81978aa-Debug.zip",
-            "hash": "878c9d13ea7f47cc0d84eaafa5c2d098149e0efb1168494fc128220f2556b55a"
+            "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/36262187133/PrismLauncher-Windows-MSVC-arm64-Portable-3ea780f-Debug.zip",
+            "hash": "731e6b7b994985d9bd0c982b702b632f0ff3cd425f9338b4fdaa94a0a202e4f7"
         }
     },
     "pre_install": [
@@ -93,19 +93,17 @@
             "$patchVersion = [regex]::Match($cmakeContent, 'set\\(Launcher_VERSION_PATCH (\\d+)\\)').Groups[1].Value",
             "# Embed the run number into the semantic version string to guarantee strictly increasing versions.",
             "$version = \"$majorVersion.$minorVersion.$patchVersion-$runNumber-$fullSha\"",
-            "$output = @{'result' = \"$version $workflowId\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Write-Output \"$version $workflowId\""
         ],
-        "jsonpath": "$.result",
         "regex": "(?<version>[\\d.]+-\\d+-(?<sha>[a-f0-9]{7}))[a-f0-9]* (?<id>\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MinGW-w64-Portable-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MSVC-Portable-$matchSha-Debug.zip"
             },
             "arm64": {
-                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MinGW-arm64-Portable-$matchSha-Debug.zip"
+                "url": "https://nightly.link/PrismLauncher/PrismLauncher/actions/runs/$matchId/PrismLauncher-Windows-MSVC-arm64-Portable-$matchSha-Debug.zip"
             }
         },
         "hash": {

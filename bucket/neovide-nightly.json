@@ -1,0 +1,41 @@
+{
+    "version": "20260920-105fd64",
+    "description": "A simple GUI for Neovim (nightly version)",
+    "homepage": "https://neovide.dev",
+    "license": "MIT",
+    "suggest": {
+        "neovim": "neovim"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/neovide/neovide/releases/download/nightly/neovide-windows-x86_64.zip",
+            "hash": "8a9c1e9b1b25475f0257998a26ee7f4b5982c6e084624eec6ca4452ff65da5b7"
+        }
+    },
+    "bin": "neovide.exe",
+    "shortcuts": [
+        [
+            "neovide.exe",
+            "Neovide (Nightly)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://api.github.com/repos/neovide/neovide/releases/tags/nightly",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "$updated = [regex]::Match($page, '\"updated_at\"\\s*:\\s*\"([^\"]+)\"').Groups[1].Value",
+            "$date = ([DateTimeOffset]::Parse($updated, [Globalization.CultureInfo]::InvariantCulture)).ToUniversalTime().ToString('yyyyMMdd', [Globalization.CultureInfo]::InvariantCulture)",
+            "$commit = [string]$release.target_commitish",
+            "if ($commit -notmatch '^[0-9a-fA-F]{7,40}$') { $commit = (Invoke-RestMethod \"https://api.github.com/repos/neovide/neovide/commits/$commit\").sha }",
+            "Write-Output \"$date-$($commit.Substring(0, 7).ToLowerInvariant())\""
+        ],
+        "regex": "(?<version>^\\d{8}-[0-9a-f]{7})"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/neovide/neovide/releases/download/nightly/neovide-windows-x86_64.zip"
+            }
+        }
+    }
+}

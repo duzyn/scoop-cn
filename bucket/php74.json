@@ -44,10 +44,6 @@
     "env_set": {
         "PHP_INI_SCAN_DIR": "$dir\\cli;$dir\\cli\\conf.d;"
     },
-    "checkver": {
-        "url": "https://www.php.net/releases/branches.php",
-        "jsonpath": "$.[?(@.branch == '7.4')].latest"
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {

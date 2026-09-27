@@ -30,11 +30,6 @@
         "llama.exe"
     ],
     "persist": "models",
-    "checkver": {
-        "github": "https://api.github.com/repos/ggml-org/llama.cpp/releases",
-        "jsonpath": "$[*].tag_name",
-        "regex": "\"(b[\\d]+)\""
-    },
     "autoupdate": {
         "architecture": {
             "64bit": {

@@ -1,20 +1,20 @@
 {
-    "version": "4.7-dev5",
+    "version": "4.8-dev6",
     "description": "A feature-packed, cross-platform game engine to create 2D and 3D games from a unified interface.",
     "homepage": "https://godotengine.org/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7-dev5/Godot_v4.7-dev5_win64.exe.zip",
-            "hash": "sha512:d8505a89940a89a75375b1dd4353675e24971ecb864b86a2f71389eb0e6a12d69fd04820f2fd6e46410b6e27ef0183e59573804c336b8845d576f863dd91eef8"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.8-dev6/Godot_v4.8-dev6_win64.exe.zip",
+            "hash": "sha512:084dc2407503c13a0e73e23b56efe239b8e2405cd4436faedf0cd75def87bebd2e7130ea0ad1be09418911983a1ace7cca3607e17ea40b99291485d163b936da"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7-dev5/Godot_v4.7-dev5_win32.exe.zip",
-            "hash": "sha512:110f0746d2c830a3139fb27f1ad80f807e009360e676de1169dbb3393b5fa8565d99f3882defdf531a013d0474c03c127da7b9f379b692f13831c471bd8b66a4"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.8-dev6/Godot_v4.8-dev6_win32.exe.zip",
+            "hash": "sha512:0f85c7de669ae3087e1e0e0cc351c807ca3f7f8045c2898631020bbfa1f452ee92832a9bf502ff7f3c28b71daf61f25c56e144653bf88c242f220fc09a620809"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.7-dev5/Godot_v4.7-dev5_windows_arm64.exe.zip",
-            "hash": "sha512:b128503b1a298d553e020ebdc6ac5d29f130b8cfa5694d151bab417630cf22e8057f8a14d6e0f43d9735e6a5f6f21523ff0f647794f95eec43d8b2402e22234c"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.8-dev6/Godot_v4.8-dev6_windows_arm64.exe.zip",
+            "hash": "sha512:d6617514614ac8f25cf40c2157f4eec58f4952fd6e28e3efa8430c879d837026468b47b10a7b25616f32601820104569f555497d5cd17dadfe27ad6298ea023d"
         }
     },
     "pre_install": [
@@ -35,7 +35,8 @@
     ],
     "checkver": {
         "github": "https://api.github.com/repos/godotengine/godot-builds/tags",
-        "jsonpath": "$[?(@.name =~ /^[\\d.]+-dev\\d+$/)].name"
+        "jsonpath": "$[?(@.name =~ /^[\\d.]+-dev\\d+$/)].name",
+        "regex": "\"(\\d+(?:\\.\\d+)+-dev\\d+)\""
     },
     "autoupdate": {
         "architecture": {

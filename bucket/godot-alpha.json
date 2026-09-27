@@ -5,12 +5,12 @@
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/alpha17/Godot_v4.0-alpha17_win64.exe.zip",
-            "hash": "sha512:ebb1b9533c09b01caa03dcbb02485bf87115a543ddb50506679b80dbfe11fbd07ab03459a31b9a0943a37521e77d5aa020b4e111fb69eaf8dbe5e238a28aa7e2"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.0-alpha17/Godot_v4.0-alpha17_win64.exe.zip",
+            "hash": "f9e0f32a72107bd8f2640cd38379aff62f72da35701802f3c0609965cfe12369"
         },
         "32bit": {
-            "url": "https://downloads.tuxfamily.org/godotengine/4.0/alpha17/Godot_v4.0-alpha17_win32.exe.zip",
-            "hash": "sha512:f0bd28389368862363be2b67675f5c217dc3716aa09055a671426dfaf80148a26d42a10c1c196de044717f01f8502506c5ec08d21daec5747b538cad3176eb1f"
+            "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/4.0-alpha17/Godot_v4.0-alpha17_win32.exe.zip",
+            "hash": "4df1790c95ff2a2fcf547728b252cbfd8f67d47b6124c6b75b4526ed47c56d55"
         }
     },
     "pre_install": [
@@ -25,21 +25,17 @@
         ]
     ],
     "checkver": {
-        "url": "https://godotengine.org/blog/pre-release/",
-        "regex": "Dev snapshot: Godot (?<ver>[\\d.]+) alpha (?<alpha>[\\d.]+)",
-        "replace": "${1}-alpha${2}"
+        "url": "https://godotengine.org/download/archive/",
+        "regex": "(\\d+(?:\\.\\d+)-alpha\\d+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/alpha$matchAlpha/Godot_v$version_win64.exe.zip"
+                "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_win64.exe.zip"
             },
             "32bit": {
-                "url": "https://downloads.tuxfamily.org/godotengine/$matchVer/alpha$matchAlpha/Godot_v$version_win32.exe.zip"
+                "url": "https://gh-proxy.org/https://github.com/godotengine/godot-builds/releases/download/$version/Godot_v$version_win32.exe.zip"
             }
-        },
-        "hash": {
-            "url": "$baseurl/SHA512-SUMS.txt"
         }
     }
 }

@@ -1,0 +1,61 @@
+{
+    "version": "0.4.9.12-16.0a12",
+    "description": "Enables anonymous communication over the onion network (expert mode, alpha build variant).",
+    "homepage": "https://www.torproject.org",
+    "license": "BSD-3-Clause",
+    "notes": [
+        "You will need to configure Tor before using, as it does not come pre-configured.",
+        "See https://tb-manual.torproject.org/ for details."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://tor.calyxinstitute.org/dist/torbrowser/16.0a12/tor-expert-bundle-windows-x86_64-16.0a12.tar.gz",
+            "hash": "2a698fa6220db329c70428e7b7233df6ae49d9a2e346a62ef7c38f65f9af9ee8"
+        },
+        "32bit": {
+            "url": "https://tor.calyxinstitute.org/dist/torbrowser/16.0a12/tor-expert-bundle-windows-i686-16.0a12.tar.gz",
+            "hash": "90a084e7029a32e114bc66eca4e7586b32ed3ad582b8956bb826111dccc2f1b3"
+        }
+    },
+    "pre_install": [
+        "$current_dir = if (get_config NO_JUNCTIONS) { $dir } else { \"$(appdir $app $global)\\current\" }",
+        "$content = @(",
+        "    \"DataDirectory `\"$current_dir\\data`\"\"",
+        "    \"GeoIPFile `\"$current_dir\\data\\geoip`\"\"",
+        "    \"GeoIPv6File `\"$current_dir\\data\\geoip6`\"\"",
+        ")",
+        "if (!(Test-Path \"$persist_dir\\torrc\")) {",
+        "    Add-Content \"$dir\\torrc\" $content.Replace('\\', '/') -Encoding ASCII -Force",
+        "}"
+    ],
+    "bin": [
+        [
+            "tor\\tor.exe",
+            "tor",
+            "-f \"$dir\\torrc\""
+        ],
+        "tor\\tor-gencert.exe"
+    ],
+    "persist": [
+        "data",
+        "torrc"
+    ],
+    "checkver": {
+        "url": "https://download.torproject.org/tor/",
+        "regex": "(?<browser>\\d+(?:\\.\\d+)+a\\d+)[\\s\\u200F]*\\(tor\\s*(?<tor>\\d+(?:\\.\\d+)+)\\)",
+        "replace": "${tor}-${browser}"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://tor.calyxinstitute.org/dist/torbrowser/$matchBrowser/tor-expert-bundle-windows-x86_64-$matchBrowser.tar.gz"
+            },
+            "32bit": {
+                "url": "https://tor.calyxinstitute.org/dist/torbrowser/$matchBrowser/tor-expert-bundle-windows-i686-$matchBrowser.tar.gz"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/sha256sums-signed-build.txt"
+        }
+    }
+}

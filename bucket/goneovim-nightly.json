@@ -31,10 +31,8 @@
             "$release = $page | ConvertFrom-Json",
             "$date = Get-Date $release.updated_at -Format 'yyyyMMdd'",
             "$commit = $release.target_commitish",
-            "$output = @{'result' = \"$date-$commit\"} | ConvertTo-Json -Compress",
-            "Write-Output $output"
+            "Write-Output \"$date-$commit\""
         ],
-        "jsonpath": "$.result",
         "regex": "(?<version>^\\d{8}-[0-9a-f]{7})"
     },
     "autoupdate": {
