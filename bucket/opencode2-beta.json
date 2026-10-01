@@ -1,37 +1,37 @@
 {
-    "version": "0.0.0-beta-19271",
+    "version": "0.0.0-beta-19507",
     "description": "The open source AI coding agent. (v2)",
     "homepage": "https://opencode.ai/v2",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://registry.npmjs.org/@opencode-ai/cli-windows-x64/-/cli-windows-x64-0.0.0-beta-19271.tgz",
-            "hash": "8bf1afe1b9bc7ad1d2b2045daf8a85a70038f48866dcbecd7d55f4c75f0b6e97"
+            "url": "https://registry.npmjs.org/@opencode/cli-windows-x64/-/cli-windows-x64-0.0.0-beta-19507.tgz",
+            "hash": "sha512:e8be7db9b7362f47f5020a887152ab0a9d3c63faf585547cec3dc001ba49682c97d7889f32d435411e0bcb32c823b91d24065f7f2222bfc6c8e5925bb8255525"
         },
         "arm64": {
-            "url": "https://registry.npmjs.org/@opencode-ai/cli-windows-arm64/-/cli-windows-arm64-0.0.0-beta-19271.tgz",
-            "hash": "sha512:17a41d8635b13916008cad2f15e6006208a249e742c5db3152ba9f8943c6c44e7da1d73521505a99c43eff2254b2acbdc1fd7509207f627393f053c8cbc371c3"
+            "url": "https://registry.npmjs.org/@opencode/cli-windows-arm64/-/cli-windows-arm64-0.0.0-beta-19507.tgz",
+            "hash": "sha512:21fcf307b674e2f944263517c36c5bda68d38623ac3a7e48a8c03b0705d27ca52c0af67483359853c4f614d69dfd73afc861e7b74cff622cd34adbdae2e8992d"
         }
     },
     "extract_dir": "package\\bin",
     "bin": "opencode2.exe",
     "checkver": {
-        "url": "https://registry.npmjs.org/@opencode-ai%2fcli/beta",
+        "url": "https://registry.npmjs.org/@opencode%2fcli/beta",
         "jsonpath": "$.version"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://registry.npmjs.org/@opencode-ai/cli-windows-x64/-/cli-windows-x64-$version.tgz",
+                "url": "https://registry.npmjs.org/@opencode/cli-windows-x64/-/cli-windows-x64-$version.tgz",
                 "hash": {
-                    "url": "https://registry.npmjs.org/@opencode-ai%2fcli-windows-x64",
+                    "url": "https://registry.npmjs.org/@opencode%2fcli-windows-x64",
                     "regex": "(?s)$url.*?$base64"
                 }
             },
             "arm64": {
-                "url": "https://registry.npmjs.org/@opencode-ai/cli-windows-arm64/-/cli-windows-arm64-$version.tgz",
+                "url": "https://registry.npmjs.org/@opencode/cli-windows-arm64/-/cli-windows-arm64-$version.tgz",
                 "hash": {
-                    "url": "https://registry.npmjs.org/@opencode-ai%2fcli-windows-arm64",
+                    "url": "https://registry.npmjs.org/@opencode%2fcli-windows-arm64",
                     "regex": "(?s)$url.*?$base64"
                 }
             }

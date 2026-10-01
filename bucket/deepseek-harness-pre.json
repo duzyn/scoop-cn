@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0-rc.2",
+    "description": "Open-source agent harness developed by DeepSeek AI (desktop preview).",
+    "homepage": "https://deepseek.com/harness",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.2.0-rc.2-win-x64.exe#/dl.7z",
+            "hash": "sha512:ada225c4c41df44497824b665625bb43054b723051e4922cacd3aef92a5e958f24b24752af61f9d7f7fe7b2d44a8523f78822b2900ae44034c79be52a6d45972",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "DeepSeek Harness.exe",
+            "DeepSeek Harness (Preview)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://download.deepseek.com/dsh-desk/feeds/win-x64/nightly.yml",
+        "regex": "version: ([\\w.-]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-$version-win-x64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "https://download.deepseek.com/dsh-desk/feeds/win-x64/nightly.yml",
+            "regex": "(?s)sha512:.*?$base64"
+        }
+    }
+}
