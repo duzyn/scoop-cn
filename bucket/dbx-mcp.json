@@ -1,0 +1,46 @@
+{
+    "version": "0.4.104",
+    "description": "Lightweight, cross-platform database client (MCP Server)",
+    "homepage": "https://dbxio.com/en/docs/mcp",
+    "license": "Apache-2.0",
+    "suggest": {
+        "DBX": "dbx"
+    },
+    "notes": "Do not manage Scoop-installed DBX MCP Server in DBX Desktop application",
+    "architecture": {
+        "64bit": {
+            "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-x64/-/mcp-win32-x64-0.4.104.tgz",
+            "hash": "sha512:7b81f394955694362f5be8fd3a4a72ba26a8de08009c8efb31cb072978070dc55204e0cc12c0e130976e4a6723c4cf51026a983ee3885bef520733aa03c47cf3"
+        },
+        "arm64": {
+            "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-arm64/-/mcp-win32-arm64-0.4.104.tgz",
+            "hash": "sha512:a4a7ae8574a4245f12e8e520bcc73bae7e9409c5f54f1db2fbbb7ff2bac4be9b082478e5abe719c25a39fc8cf6eb4dad485a60af1a7f88b6056a73940a6b8f79"
+        }
+    },
+    "extract_dir": "package\\bin",
+    "bin": "dbx-mcp.exe",
+    "post_install": "New-Item -ItemType Junction -Force \"$env:USERPROFILE\\.dbx\\bin\" -Target \"$dir\" | Out-Null",
+    "pre_uninstall": "Remove-Item \"$env:USERPROFILE\\.dbx\" -Recurse -Force",
+    "checkver": {
+        "url": "https://registry.npmjs.org/@dbx-app/mcp-server/latest",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-x64/-/mcp-win32-x64-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-x64/$version",
+                    "regex": "sha512-$base64"
+                }
+            },
+            "arm64": {
+                "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-arm64/-/mcp-win32-arm64-$version.tgz",
+                "hash": {
+                    "url": "https://registry.npmjs.org/@dbx-app/mcp-win32-arm64/$version",
+                    "regex": "sha512-$base64"
+                }
+            }
+        }
+    }
+}
