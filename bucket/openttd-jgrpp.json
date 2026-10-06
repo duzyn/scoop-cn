@@ -1,0 +1,60 @@
+{
+    "version": "0.73.3",
+    "description": "Simulation game based upon Transport Tycoon Deluxe (JGR's Patchpack)",
+    "homepage": "https://github.com/JGRennison/OpenTTD-patches",
+    "license": "GPL-2.0-or-later",
+    "notes": [
+        "This install does not come with graphics, sounds or music.",
+        "They could be downloaded from the OpenTTD content delivery network",
+        "or via the in-game content download service."
+    ],
+    "architecture": {
+        "32bit": {
+            "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-0.73.3/openttd-jgrpp-0.73.3-windows-win32.zip",
+            "hash": "84608329a64e3f7cdbcca4d468977fab9057aa5d31c9fd56e536f469cadae9fc",
+            "extract_dir": "openttd-jgrpp-0.73.3-windows-win32"
+        },
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-0.73.3/openttd-jgrpp-0.73.3-windows-win64.zip",
+            "hash": "6ba934b4af650d8c24e4529b5841c5596c4f89e429723cd0929817be0e8576c8",
+            "extract_dir": "openttd-jgrpp-0.73.3-windows-win64"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-0.73.3/openttd-jgrpp-0.73.3-windows-arm64.zip",
+            "hash": "3ce30e074caed536fc7b793a8830a87d3c31b25cd009ac82c100510e3a1686b6",
+            "extract_dir": "openttd-jgrpp-0.73.3-windows-arm64"
+        }
+    },
+    "bin": [
+        [
+            "openttd.exe",
+            "openttd-jgrpp"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "openttd.exe",
+            "OpenTTD (JGR's Patchpack)"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/JGRennison/OpenTTD-patches",
+        "regex": "jgrpp-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-$version/openttd-jgrpp-$version-windows-win64.zip",
+                "extract_dir": "openttd-jgrpp-$version-windows-win64"
+            },
+            "32bit": {
+                "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-$version/openttd-jgrpp-$version-windows-win32.zip",
+                "extract_dir": "openttd-jgrpp-$version-windows-win32"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/JGRennison/OpenTTD-patches/releases/download/jgrpp-$version/openttd-jgrpp-$version-windows-arm64.zip",
+                "extract_dir": "openttd-jgrpp-$version-windows-arm64"
+            }
+        }
+    }
+}

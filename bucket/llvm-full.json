@@ -1,0 +1,39 @@
+{
+    "version": "23.1.2",
+    "description": "Collection of modular and reusable compiler and toolchain technologies (full build with libraries and tools not normally used in a toolchain).",
+    "homepage": "https://www.llvm.org",
+    "license": "NCSA",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.2/clang%2Bllvm-23.1.2-x86_64-pc-windows-msvc.tar.xz",
+            "hash": "8fb91cdc44fcbbdcf6b3ffd0a1f9859abd14a3c3aae4423c2b6d4a4f90bf0095",
+            "extract_dir": "clang+llvm-23.1.2-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/llvm/llvm-project/releases/download/llvmorg-23.1.2/clang%2Bllvm-23.1.2-aarch64-pc-windows-msvc.tar.xz",
+            "hash": "9703cceafb5a0efd6c8720c9b6d35a0d0858079cd2175229e7fa4b922f3d8822",
+            "extract_dir": "clang+llvm-23.1.2-aarch64-pc-windows-msvc"
+        }
+    },
+    "env_add_path": "bin",
+    "env_set": {
+        "LIBCLANG_PATH": "$dir\\bin",
+        "LLVM_LIB_DIR": "$dir\\lib"
+    },
+    "checkver": {
+        "github": "https://github.com/llvm/llvm-project",
+        "regex": "llvmorg-([\\d._]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/clang%2Bllvm-$version-x86_64-pc-windows-msvc.tar.xz",
+                "extract_dir": "clang+llvm-$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/clang%2Bllvm-$version-aarch64-pc-windows-msvc.tar.xz",
+                "extract_dir": "clang+llvm-$version-aarch64-pc-windows-msvc"
+            }
+        }
+    }
+}

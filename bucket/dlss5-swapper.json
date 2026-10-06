@@ -1,0 +1,26 @@
+{
+    "version": "2.2.9",
+    "description": "Tool for installing, tuning, and restoring DLSS 5 Neural Rendering in games",
+    "homepage": "https://github.com/rakanki911/DLSS5-Swapper",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/rakanki911/DLSS5-Swapper/releases/download/v2.2.9/DLSS5-Swapper-2.2.9-portable.exe#/DLSS5-Swapper.exe",
+            "hash": "6b064ecba6e487a87302c1d75c3fd2d8189e78fdf3c91e705eee3d4539ae23c8"
+        }
+    },
+    "shortcuts": [
+        [
+            "DLSS5-Swapper.exe",
+            "DLSS5-Swapper"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/rakanki911/DLSS5-Swapper/releases/download/v$version/DLSS5-Swapper-$version-portable.exe#/DLSS5-Swapper.exe"
+            }
+        }
+    }
+}
