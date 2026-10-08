@@ -1,0 +1,36 @@
+{
+    "version": "1.9.5",
+    "description": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (OpenCL version).",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
+    "license": "MIT",
+    "notes": [
+        "Whisper Model files are not included. You can download them here:",
+        "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
+    ],
+    "architecture": {
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-win-opencl-adreno-arm64.zip",
+            "hash": "915b48289f362c5f4cf33f3ffdd30f1f43de68f6103a3088858e346635719007"
+        }
+    },
+    "extract_dir": "Release",
+    "bin": [
+        "whisper-bench.exe",
+        "whisper-cli.exe",
+        "whisper-quantize.exe",
+        "whisper-server.exe",
+        "whisper-vad-speech-segments.exe"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/ggml-org/whisper.cpp/releases/latest",
+        "jsonpath": "$..['tag_name', 'body']",
+        "regex": "\"v?(?<version>\\d+(?:\\.\\d+)+)\".*?\\(https://github\\.com/ggml-org/whisper\\.cpp/releases/tag/(?<build>b\\d+)\\)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-win-opencl-adreno-arm64.zip"
+            }
+        }
+    }
+}

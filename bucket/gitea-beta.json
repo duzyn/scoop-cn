@@ -1,17 +1,17 @@
 {
-    "version": "1.27.3",
+    "version": "28.1.0",
     "description": "Git with a cup of tea, painless self-hosted git service. (beta channel)",
     "homepage": "https://gitea.io/",
     "license": "MIT",
     "notes": "Run 'gitea web -c \"$persist_dir\\custom\\conf\\app.ini\"' to start the webserver",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v1.27.3/gitea-1.27.3-windows-4.0-amd64.exe#/gitea.exe",
-            "hash": "d9ed1fc48ec33a8cb97d7fed3882b4e159efc3fcae3a77d0d240e250d5bf6e21"
+            "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v28.1.0/gitea-28.1.0-windows-amd64.exe#/gitea.exe",
+            "hash": "68495c963bab1bfcbbe5b48916c7f362a49aca931583575e09763a02ddf63e2d"
         },
-        "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v1.27.3/gitea-1.27.3-windows-4.0-386.exe#/gitea.exe",
-            "hash": "c153cba5362ec35845e51bf3c83c45e874ccb262ca6e22eae834eb6bb1ecc885"
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v28.1.0/gitea-28.1.0-windows-arm64.exe#/gitea.exe",
+            "hash": "04e2bc31d61e8e3335be8816ea7fc6dea22fa723822d9a6159161f95a49bae5a"
         }
     },
     "post_install": [
@@ -26,16 +26,17 @@
     ],
     "bin": "gitea.exe",
     "checkver": {
-        "url": "https://github.com/go-gitea/gitea/releases",
-        "regex": ">v([\\d.]+(-\\w+)?)<"
+        "github": "https://api.github.com/repos/go-gitea/gitea/releases",
+        "jsonpath": "$[0].tag_name",
+        "regex": "^v([\\d.]+(-\\w+)?)$"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-amd64.exe#/gitea.exe"
+                "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-amd64.exe#/gitea.exe"
             },
-            "32bit": {
-                "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-4.0-386.exe#/gitea.exe"
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/go-gitea/gitea/releases/download/v$version/gitea-$version-windows-arm64.exe#/gitea.exe"
             }
         },
         "hash": {

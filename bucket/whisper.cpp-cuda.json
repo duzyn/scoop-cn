@@ -1,0 +1,81 @@
+{
+    "version": "1.9.5",
+    "description": "High-performance inference of OpenAI's Whisper automatic speech recognition (ASR) model (CUDA version)",
+    "homepage": "https://github.com/ggml-org/whisper.cpp",
+    "license": "MIT",
+    "notes": [
+        "Requires an NVIDIA GPU and a driver supporting the bundled CUDA (x64: 12.4.0, arm64: 13.4) runtime.",
+        "Whisper Model files are not included. You can download them here:",
+        "https://huggingface.co/ggerganov/whisper.cpp/tree/main"
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-win-cuda-12.4.0-x64.zip",
+            "hash": "afef0b881c500958921c3f5523b50e59ee2ec9b6f5cbd25b324c51ed308a957a",
+            "bin": [
+                "whisper-bench.exe",
+                "whisper-cli.exe",
+                "whisper-command.exe",
+                "whisper-lsp.exe",
+                "whisper-quantize.exe",
+                "whisper-server.exe",
+                "whisper-stream.exe",
+                "whisper-talk-llama.exe",
+                "whisper-vad-speech-segments.exe"
+            ]
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-win-cuda-13.4-arm64.zip",
+            "hash": "6184ae8887d38ea9add68e883b9c846e7bf562ba1bf619ffc7ee9f8ec7e1699c",
+            "bin": [
+                "whisper-bench.exe",
+                "whisper-cli.exe",
+                "whisper-quantize.exe",
+                "whisper-server.exe",
+                "whisper-vad-speech-segments.exe"
+            ]
+        }
+    },
+    "extract_dir": "Release",
+    "checkver": {
+        "url": "https://api.github.com/repos/ggml-org/whisper.cpp/releases",
+        "script": [
+            "$releases = $page | ConvertFrom-Json -ErrorAction Stop",
+            "$release = $releases | Where-Object { (-not $_.prerelease) -and ($_.tag_name -match '^v\\d+(?:\\.\\d+)+$') } | Select-Object -First 1",
+            "if (-not $release) { throw 'No valid release found for whisper.cpp.' }",
+            "$version = $release.tag_name",
+            "$build = $null",
+            "if ($release.body -match '\\(https://github\\.com/ggml-org/whisper\\.cpp/releases/tag/(?<build>b\\d+)\\)') {",
+            "    $build = $Matches['build']",
+            "}",
+            "if (-not $build) { throw 'No corresponding nightly build information found in the release body for whisper.cpp.' }",
+            "$release = $releases | Where-Object { $_.tag_name -eq $build } | Select-Object -First 1",
+            "if (-not $release) { throw \"No corresponding nightly build found for $version.\" }",
+            "$cudax64 = $null",
+            "$cudaarm64 = $null",
+            "$patternCudax64 = '^whisper-bin-win-cuda-(?<cuda>\\d+(?:\\.\\d+)+)-x64\\.zip$'",
+            "$patternCudaarm64 = '^whisper-bin-win-cuda-(?<cuda>\\d+(?:\\.\\d+)+)-arm64\\.zip$'",
+            "foreach ($asset in $release.assets) {",
+            "    if ($asset.name -match $patternCudax64) {",
+            "        if (-not $cudax64 -or [version]$Matches['cuda'] -gt [version]$cudax64) { $cudax64 = $Matches['cuda'] }",
+            "    } elseif ($asset.name -match $patternCudaarm64) {",
+            "        if (-not $cudaarm64 -or [version]$Matches['cuda'] -gt [version]$cudaarm64) { $cudaarm64 = $Matches['cuda'] }",
+            "    }",
+            "}",
+            "if (-not $cudax64 -or -not $cudaarm64) { throw \"No CUDA (cublas) x64 ($cudax64) or arm64 ($cudaarm64) asset found for whisper.cpp.\" }",
+            "\"$version $build $cudax64 $cudaarm64\""
+        ],
+        "regex": "(?<version>\\d+(?:\\.\\d+)+) (?<build>b\\d+) (?<cudax64>\\d+(?:\\.\\d+)+) (?<cudaarm64>\\d+(?:\\.\\d+)+)"
+    },
+    "autoupdate": {
+        "notes": "Requires an NVIDIA GPU and a driver supporting the bundled CUDA (x64: $matchCudax64, arm64: $matchCudaarm64) runtime.",
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-win-cuda-$matchCudax64-x64.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/ggml-org/whisper.cpp/releases/download/$matchBuild/whisper-bin-win-cuda-$matchCudaarm64-arm64.zip"
+            }
+        }
+    }
+}
