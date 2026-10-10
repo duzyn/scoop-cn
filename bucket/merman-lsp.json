@@ -1,15 +1,15 @@
 {
     "version": "0.8.0",
-    "description": "Headless Mermaid-compatible diagram renderer for SVG, PNG, JPEG, PDF, ASCII, and Unicode output.",
+    "description": "Local Mermaid language intelligence for .mmd, .mermaid, Markdown, and MDX documents.",
     "homepage": "https://frankorz.com/merman/",
     "license": "MIT|Apache-2.0",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/Latias94/merman/releases/download/v0.8.0/merman-cli-x86_64-pc-windows-msvc.zip",
-            "hash": "55ed5d0edc5e2c5f543e7722493416ba850b38cf0072b6637184b0aa38daace6"
+            "url": "https://gh-proxy.org/https://github.com/Latias94/merman/releases/download/v0.8.0/merman-lsp-x86_64-pc-windows-msvc.zip",
+            "hash": "b53d986ec1c75a719464d835aba8efe63b1a03dbe221050c66f77555cf51012e"
         }
     },
-    "bin": "merman-cli.exe",
+    "bin": "merman-lsp.exe",
     "checkver": {
         "github": "https://api.github.com/repos/Latias94/merman/releases",
         "jsonpath": "$[?(@.prerelease == false)].tag_name",
@@ -18,7 +18,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/Latias94/merman/releases/download/v$version/merman-cli-x86_64-pc-windows-msvc.zip"
+                "url": "https://gh-proxy.org/https://github.com/Latias94/merman/releases/download/v$version/merman-lsp-x86_64-pc-windows-msvc.zip"
             }
         },
         "hash": {

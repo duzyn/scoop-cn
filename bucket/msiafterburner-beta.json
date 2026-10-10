@@ -43,21 +43,21 @@
     "checkver": {
         "url": "https://www.guru3d.com/download/msi-afterburner-beta-download",
         "script": [
-            "if (-not $page) { throw 'Failed to retrieve page content.' }",
+            "if (-not $page) { error 'Failed to retrieve page content.'; return }",
             "$matchesFound = $page -match 'aform.*?value=\"(?<aform>[0-9a-f]+)\".*?Download (?<version>[\\d.]+)[\\w\\s]*\\(Beta (?<beta>\\d+)\\)'",
-            "if (-not $matchesFound -or -not $Matches.beta -or -not $Matches.version -or -not $Matches.aform) { throw 'Failed to match version, beta, or aform.' }",
+            "if (-not $matchesFound -or -not $Matches.beta -or -not $Matches.version -or -not $Matches.aform) { error 'Failed to match version, beta, or aform.'; return }",
             "$version = '{0}-beta{1}' -f $Matches.version, $Matches.beta",
             "$body = @{ aform = $Matches.aform }",
             "$response = Invoke-WebRequest -Uri $url -Method Post -Body $body -UseBasicParsing",
             "$matchesFound = $response.Content -match 'location=\"(?<redirect_url>https://www.guru3d.com/getdownload/[0-9a-f]+)\"'",
-            "if (-not $matchesFound) { throw 'Failed to match redirect URL.' }",
+            "if (-not $matchesFound) { error 'Failed to match redirect URL.'; return }",
             "$response = if ($PSVersionTable.PSVersion.Major -lt 7.0) {",
             "    Invoke-WebRequest -Uri $Matches.redirect_url -MaximumRedirection 0 -ErrorAction SilentlyContinue -UseBasicParsing",
             "} else {",
             "    Invoke-WebRequest -Uri $Matches.redirect_url -MaximumRedirection 0 -ErrorAction SilentlyContinue -UseBasicParsing -SkipHttpErrorCheck",
             "}",
             "$matchesFound = [string]($response.Headers.Location) -match 'https://ftp\\.nluug\\.nl/pub/games/PC/guru3d/(?<file_path>[^/]+?)/(?<file_name>.+)'",
-            "if (-not $matchesFound) { throw 'Failed to match file path and name.' }",
+            "if (-not $matchesFound) { error 'Failed to match file path and name.'; return }",
             "Write-Output \"$version $($Matches.file_path)/$([System.Net.WebUtility]::UrlEncode($Matches.file_name))\""
         ],
         "regex": "^(?<version>[\\d.]+-beta\\d+) (?<file>.+)$"
