@@ -1,16 +1,16 @@
 {
-    "version": "12.12.0",
+    "version": "12.12.1",
     "description": "A fast and disk space efficient Node package manager.",
     "homepage": "https://pnpm.io/",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/pnpm/pnpm/releases/download/v12.12.0/pnpm-win32-x64.zip",
-            "hash": "2ec165178c682a82dfbe608ddcf0c55108b61b0941342bce2ca4b1a26faa2c7c"
+            "url": "https://gh-proxy.org/https://github.com/pnpm/pnpm/releases/download/v12.12.1/pnpm-win32-x64.zip",
+            "hash": "5c5c72892414b3c9e42a3c9e447f070e8c46b4fface4692e45cc8cb46ed57027"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/pnpm/pnpm/releases/download/v12.12.0/pnpm-win32-arm64.zip",
-            "hash": "ffccf13b02a13dcb4bd8b92b8ae2bd26a012f5d7bde98db5de6b65aec7ce9ae0"
+            "url": "https://gh-proxy.org/https://github.com/pnpm/pnpm/releases/download/v12.12.1/pnpm-win32-arm64.zip",
+            "hash": "4ad43d28934813c07e5635b9f7f38c97827ab07c845d9e0ed211b8902ffff4a2"
         }
     },
     "bin": [
@@ -47,21 +47,18 @@
         "state"
     ],
     "checkver": {
+        "github": "https://api.github.com/repos/pnpm/pnpm/releases",
         "script": [
             "# Using checkver script to check through all release tags",
-            "$auth = Get-GitHubToken",
-            "$head = @{}",
-            "if($auth) { $head.add('authorization', \"Bearer $auth\") }",
-            "$url = 'https://api.github.com/repos/pnpm/pnpm/releases'",
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
             "$latest_ver = [Version]::new(0,0,0,0) # note: Powershell 5 does not support casting 'int' or 'float' to 'System.Version'",
-            "$releases = $(Invoke-WebRequest -Headers $head $url).Content | ConvertFrom-Json",
             "$releases | ForEach-Object {",
             "    if (!($_.tag_name -match '([\\d.]+)')) { return }",
             "    if ($_.prerelease) { return }",
             "    $ver = [Version]::new($matches[1])",
             "    if ($ver -gt $latest_ver) { $latest_ver = $ver }",
             "}",
-            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; continue }",
+            "if ($latest_ver -eq [Version]::new(0,0,0,0)) { error \"Could not match version string in '$url'\"; return }",
             "Write-Output $latest_ver"
         ],
         "regex": "([\\d.]+)"
