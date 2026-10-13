@@ -1,13 +1,13 @@
 {
-    "version": "3.27.1",
+    "version": "3.27.3",
     "description": "An Erlang tool that makes it easy to create, develop, and release Erlang libraries, applications, and systems in a repeatable manner.",
     "homepage": "https://rebar3.org/",
     "license": "Apache-2.0",
     "suggest": {
         "Erlang compiler": "erlang"
     },
-    "url": "https://gh-proxy.org/https://github.com/erlang/rebar3/releases/download/3.27.1/rebar3",
-    "hash": "708407032479514dd68b581a0b09a68b5a781fb6f53dcf4ad81ce4ef6b92940f",
+    "url": "https://gh-proxy.org/https://github.com/erlang/rebar3/releases/download/3.27.3/rebar3",
+    "hash": "f1d87d78decfc56b87d971c75ee6355698ec0c49fadd57f2c056043b7ca291b5",
     "pre_install": [
         "$content = @('@echo off', 'setlocal', 'set rebarscript=%~f0', 'escript.exe \"%rebarscript:.cmd=%\" %*')",
         "Set-Content \"$dir\\rebar3.cmd\" -Value $content -Encoding ascii"
