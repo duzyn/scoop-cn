@@ -1,0 +1,48 @@
+{
+    "version": "0.86.12",
+    "description": "Beautiful, AI-native markdown IDE and LLM wiki",
+    "homepage": "https://openknowledge.ai",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.86.12/OpenKnowledge-Setup-x64.exe#/dl.7z",
+            "hash": "sha512:37c76621958104fcaa5521dee59b3bc5dbda9eaf341349bd94a422743e2d2340c7d437e2f0701853ec887d7b8c2b9759bb33883d59ceb5ddd4c151e0ab1ced6e",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.zip\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\*.nsi\", \"$dir\\Uninst*\" -Recurse"
+            ]
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.86.12/OpenKnowledge-Setup-arm64.exe#/dl.7z",
+            "hash": "sha512:2fa4bac3083ed438f7bab2f50c2ce39ae9e37559caaa5631df79195514d082dc93c7588ba239d1df28ab6e8d2005fb52ecb659742169ac80fe62cedca5f6bf35",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.zip\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\", \"$dir\\*.nsi\", \"$dir\\Uninst*\" -Recurse"
+            ]
+        }
+    },
+    "bin": "resources\\cli\\bin\\ok.cmd",
+    "shortcuts": [
+        [
+            "OpenKnowledge.exe",
+            "OpenKnowledge"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/inkeep/open-knowledge"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v$version/OpenKnowledge-Setup-x64.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v$version/OpenKnowledge-Setup-arm64.exe#/dl.7z"
+            }
+        },
+        "hash": {
+            "url": "$baseurl/latest.yml",
+            "regex": "(?s)$basename.*?$base64"
+        }
+    }
+}
