@@ -19,7 +19,7 @@ jobs:
       - name: Test
         shell: pwsh
         run: |
-          .\install.ps1
+          powershell -ExecutionPolicy RemoteSigned -Command "Invoke-RestMethod -Uri https://gh-proxy.org/https://raw.githubusercontent.com/duzyn/scoop-cn/master/install.ps1 | Invoke-Expression"
           echo "Scoop repo has been set to $(scoop config scoop_repo)"
           echo "7-Zip was installed to $(scoop which 7z)"
           echo "Git was installed to $(scoop which git)"
