@@ -1,0 +1,70 @@
+{
+    "version": "1.18.250",
+    "description": "Transparent, community-powered CCleaner alternative for Windows (Classic Edition).",
+    "homepage": "https://github.com/builtbybel/FluentCleaner",
+    "license": "Freeware",
+    "notes": "FluentCleaner Classic requires .NET Framework 4.8 to work properly.",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/builtbybel/FluentCleaner/releases/download/26.09.01/FluentCleaner-Classic-net48.zip",
+            "hash": "42703e673cff81eb9d2ec7f8eacaaf93fa009915ffca40e54b63ba789d80fe85",
+            "extract_dir": "FluentCleaner-Classic-net48"
+        }
+    },
+    "pre_install": [
+        "if (-not (Test-Path \"$persist_dir\\settings.json\") -and (Test-Path \"$env:APPDATA\\FluentCleaner\\settings.json\")) {",
+        "    info \"Migrating legacy settings from '$env:APPDATA\\FluentCleaner\\settings.json' to '$dir\\settings.json'\"",
+        "    Move-Item \"$env:APPDATA\\FluentCleaner\\settings.json\" \"$dir\\settings.json\" -Force",
+        "}",
+        "# Winapp2.ini is excluded from persistence because it is updated together with the app",
+        "'settings.json', 'Winapp3.ini' | ForEach-Object {",
+        "    if ((-not (Test-Path \"$persist_dir\\$_\")) -and (-not (Test-Path \"$dir\\$_\"))) {",
+        "        [System.IO.File]::WriteAllText((Join-Path -Path $dir -ChildPath $_), '', [System.Text.UTF8Encoding]::new($false))",
+        "    }",
+        "}"
+    ],
+    "bin": [
+        "FluentCleaner.Classic.exe",
+        [
+            "FluentCleaner.Classic.exe",
+            "fluentcleaner"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "FluentCleaner.Classic.exe",
+            "Fluent Cleaner (Classic)"
+        ]
+    ],
+    "persist": [
+        "Custom",
+        "settings.json",
+        "Winapp3.ini"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/builtbybel/FluentCleaner/releases",
+        "script": [
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
+            "$release = $releases | Where-Object { $_.assets.name -match '^FluentCleaner-Classic' } | Select-Object -First 1",
+            "if (-not $release) { error 'No FluentCleaner Classic release found'; return }",
+            "$tag = $release.tag_name",
+            "if ($tag -match '(?i)^classic-(?<version>[\\d.]+)$') {",
+            "    $version = $Matches['version']",
+            "} elseif ($release.body -match '(?s)\\|\\s*\\*\\*Classic\\*\\*[^|]*\\|\\s*`(?<version>[\\d.]+)`') {",
+            "    $version = $Matches['version']",
+            "} else {",
+            "    error 'Unable to determine FluentCleaner Classic version'",
+            "    return",
+            "}",
+            "\"$version $tag\""
+        ],
+        "regex": "^(?<version>\\d+(?:\\.\\d+)+) (?<tag>.+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/builtbybel/FluentCleaner/releases/download/$matchTag/FluentCleaner-Classic-net48.zip"
+            }
+        }
+    }
+}
