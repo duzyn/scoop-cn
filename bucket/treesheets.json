@@ -1,18 +1,18 @@
 {
-    "version": "3523",
+    "version": "2.20.1",
     "description": "A free form data organizer and a replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases.",
     "homepage": "https://strlen.com/treesheets",
     "license": "ZLIB",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/3523/TreeSheets-3523-winx64.zip",
-            "hash": "8e87596d5abab94b17ec612356c2ff8eea7a8eee8b6af06a7c6442beab7de3c2",
-            "extract_dir": "TreeSheets-3523-winx64"
+            "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/v2.20.1/TreeSheets-2.20.1-winx64.zip",
+            "hash": "ded3f653bc46f8f5a591ab1c9f76ddc8b612c2406eabd2288633208dfddc5e3d",
+            "extract_dir": "TreeSheets-2.20.1-winx64"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/3523/TreeSheets-3523-winarm64.zip",
-            "hash": "eb659e6e6f3b0fe13197f204bd10081fb6176356d842e4217541c42122ffecde",
-            "extract_dir": "TreeSheets-3523-winarm64"
+            "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/v2.20.1/TreeSheets-2.20.1-winarm64.zip",
+            "hash": "c20c9f850fdeb957a5a48561c01140556a3829db3ebca0707563506e1ee28ade",
+            "extract_dir": "TreeSheets-2.20.1-winarm64"
         }
     },
     "pre_install": [
@@ -39,11 +39,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/$version/TreeSheets-$version-winx64.zip",
+                "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/v$version/TreeSheets-$version-winx64.zip",
                 "extract_dir": "TreeSheets-$version-winx64"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/$version/TreeSheets-$version-winarm64.zip",
+                "url": "https://gh-proxy.org/https://github.com/aardappel/treesheets/releases/download/v$version/TreeSheets-$version-winarm64.zip",
                 "extract_dir": "TreeSheets-$version-winarm64"
             }
         }

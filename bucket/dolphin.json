@@ -1,5 +1,5 @@
 {
-    "version": "2606",
+    "version": "2609a",
     "description": "Nintendo GameCube and Wii emulator, with enhancements and Netplay",
     "homepage": "https://dolphin-emu.org/",
     "license": {
@@ -11,14 +11,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://dl.dolphin-emu.org/releases/2606/dolphin-2606-x64.7z",
-            "hash": "c6ea821c820cdc5d52d9f4d315fdca629d51a1b9f4f7e671948b905c085d7f59",
+            "url": "https://dl.dolphin-emu.org/releases/2609a/dolphin-2609a-x64.7z",
+            "hash": "bbfd13bf9e6d2a4164a15c392b1f32a9b18150e5136746b388704608fbb60f76",
             "extract_dir": "Dolphin-x64"
         },
         "arm64": {
-            "url": "https://dl.dolphin-emu.org/releases/2606/dolphin-2606-ARM64.7z",
-            "hash": "ab5df5a8bc88e820714afbd7f78de6a36ed23a98c141b1e41ca12d7a08c5201e",
-            "extract_dir": "Dolphin-ARM64"
+            "url": "https://dl.dolphin-emu.org/releases/2609a/dolphin-2609a-arm64.7z",
+            "hash": "54be09b5de21ad21764a3f2675f30e9da0b60d40ee88bd460a1fc1e7f7fce81a",
+            "extract_dir": "Dolphin-arm64"
         }
     },
     "pre_install": [
@@ -51,7 +51,7 @@
                 "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-x64.7z"
             },
             "arm64": {
-                "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-ARM64.7z"
+                "url": "https://dl.dolphin-emu.org/releases/$version/dolphin-$version-arm64.7z"
             }
         }
     }
