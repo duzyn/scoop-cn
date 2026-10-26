@@ -1,19 +1,19 @@
 {
     "version": "0.7.0-r1439",
     "description": "A manga reader compatible with Tachiyomi extensions and backups",
-    "homepage": "https://github.com/Suwayomi/Tachidesk-Server",
+    "homepage": "https://github.com/Suwayomi/Suwayomi-Server",
     "license": {
         "identifier": "MPL-2.0",
-        "url": "https://github.com/Suwayomi/Tachidesk-Server/blob/master/LICENSE"
+        "url": "https://github.com/Suwayomi/Suwayomi-Server/blob/master/LICENSE"
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1439/Tachidesk-Server-v0.7.0-r1439-windows-x64.zip",
+            "url": "https://gh-proxy.org/https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1439/Tachidesk-Server-v0.7.0-r1439-windows-x64.zip",
             "hash": "800fb4d057592a2b75ca88ccef06a5db7d65232b4b5c8e86ebddcfea1965beaa",
             "extract_dir": "Tachidesk-Server-v0.7.0-r1439-windows-x64"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v0.7.0-r1439/Tachidesk-Server-v0.7.0-r1439-windows-x86.zip",
+            "url": "https://gh-proxy.org/https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v0.7.0-r1439/Tachidesk-Server-v0.7.0-r1439-windows-x86.zip",
             "hash": "4566a582d131180aabc822e108fdaa365115c86bad0a9752e4525d541d6c3baa",
             "extract_dir": "Tachidesk-Server-v0.7.0-r1439-windows-x86"
         }
@@ -25,17 +25,17 @@
         "tachidesk-debug.ps1"
     ],
     "checkver": {
-        "github": "https://github.com/Suwayomi/Tachidesk-Server-preview",
+        "github": "https://github.com/Suwayomi/Suwayomi-Server-preview",
         "regex": "v([\\d.]+-r[\\d]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x64.zip",
+                "url": "https://gh-proxy.org/https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x64.zip",
                 "extract_dir": "Tachidesk-Server-v$version-windows-x64"
             },
             "32bit": {
-                "url": "https://gh-proxy.org/https://github.com/Suwayomi/Tachidesk-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x86.zip",
+                "url": "https://gh-proxy.org/https://github.com/Suwayomi/Suwayomi-Server-preview/releases/download/v$version/Tachidesk-Server-v$version-windows-x86.zip",
                 "extract_dir": "Tachidesk-Server-v$version-windows-x86"
             }
         }
