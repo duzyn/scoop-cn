@@ -1,20 +1,20 @@
 {
-    "version": "0.88.2",
+    "version": "0.88.5",
     "description": "Beautiful, AI-native markdown IDE and LLM wiki",
     "homepage": "https://openknowledge.ai",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.88.2/OpenKnowledge-Setup-x64.exe#/dl.7z",
-            "hash": "sha512:ac792593327f8c0720ae142cf9f5bdd96baedf393a82a1b113cc80364956418b9e985c7949f77ca07fd185d414d54a286bd209f5d9c23ae3fe152806410c712d",
+            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.88.5/OpenKnowledge-Setup-x64.exe#/dl.7z",
+            "hash": "sha512:cced99c60b2ebd83849fae5b9aa821538cfa2fc3469e8186eaa054e705e8294684b00f3c50221f5bc2042f4a1af974d3ba243b5966fca27d7628b2e9491e404e",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.zip\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\*.nsi\", \"$dir\\Uninst*\" -Recurse"
             ]
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.88.2/OpenKnowledge-Setup-arm64.exe#/dl.7z",
-            "hash": "sha512:8eb26d858b4d9c7c9cb2b725d68e3c8ccb43e588a6a2df610ba71a38f5c1340510e506f1740f76c5d2595efd4c9fe4eba983c635fe041334996ef2dfd28ddf51",
+            "url": "https://gh-proxy.org/https://github.com/inkeep/open-knowledge/releases/download/v0.88.5/OpenKnowledge-Setup-arm64.exe#/dl.7z",
+            "hash": "sha512:ca0ae08b0f28052c00b864c369669d2bbfae67df2b8246ee01ef35e1127130881d42957c6039fcc6ae3cec77bc730804a7ad2f488ac4642861773dab798917df",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-arm64.zip\" \"$dir\"",
                 "Remove-Item \"$dir\\`$*\", \"$dir\\*.nsi\", \"$dir\\Uninst*\" -Recurse"
