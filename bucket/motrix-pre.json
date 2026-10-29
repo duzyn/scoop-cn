@@ -1,14 +1,26 @@
 {
-    "version": "2.0.1",
+    "version": "2.1.0",
     "description": "A full-featured download manager (Pre-release).",
     "homepage": "https://motrix.app",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v2.0.1/Motrix-2.0.1-win.zip",
-            "hash": "cd32454df95c24458e37aeb3db85b6ed34ba9da3ff8acebfffa8fac025b2d645"
+            "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v2.1.0/Motrix-2.1.0-win.zip",
+            "hash": "9e55ea57c94a3d04a0a99f825cdf14635d28497d03562d2d40c820d82b6e0f54"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v2.1.0/Motrix-2.1.0-win-arm64.zip",
+            "hash": "dff01c37085ac3840d7a92ff901de2ed9ba609e944816d6baf794aae2d660ffe"
         }
     },
+    "post_install": [
+        "# Disable built-in update mechanism to prevent conflicts with Scoop's update management",
+        "$yaml = \"$dir\\resources\\app-update.yml\"",
+        "$content = Get-Content -Path $yaml | Foreach-Object {",
+        "    if ($_.StartsWith('url')) { \"$($_.Replace('url', '# url')) # Disabled by Scoop\" } else { $_ }",
+        "}",
+        "Set-Content $yaml -Value $content -Encoding ascii"
+    ],
     "shortcuts": [
         [
             "Motrix.exe",
@@ -24,6 +36,9 @@
         "architecture": {
             "64bit": {
                 "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v$version/Motrix-$version-win.zip"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/agalwood/Motrix/releases/download/v$version/Motrix-$version-win-arm64.zip"
             }
         }
     }
