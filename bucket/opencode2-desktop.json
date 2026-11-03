@@ -1,0 +1,45 @@
+{
+    "version": "2.2.5",
+    "description": "The open source AI coding agent. (v2 desktop)",
+    "homepage": "https://opencode.ai/v2",
+    "license": "MIT",
+    "notes": [
+        "The v2 configuration is incompatible with v1. Uninstall 'opencode' and 'opencode-desktop' first, then install this version.",
+        "See https://opencode.ai/v2/docs/migrate-v1/ for migration steps."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/v2.2.5/opencode-desktop-win-x64.exe#/dl.7z",
+            "hash": "634cd9b3b0e6dea71285dc4ed98d54d6617721d5e302bc8c8661fc957c321cc8"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/v2.2.5/opencode-desktop-win-arm64.exe#/dl.7z",
+            "hash": "435a9f0c931cc9ab8657f57528d4791b058d56f4fc01238e1e9deaf45923ffb5"
+        }
+    },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-*.7z\" \"$dir\"",
+        "& \"$env:SystemRoot\\System32\\icacls.exe\" \"$dir\" /grant '*S-1-15-2-2:(OI)(CI)(RX)'",
+        "Remove-Item \"$dir\\`$*\", \"$dir\\Uninstall*\" -Force -Recurse -ErrorAction Ignore"
+    ],
+    "shortcuts": [
+        [
+            "OpenCode.exe",
+            "OpenCode v2"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/anomalyco/opencode/releases?per_page=100",
+        "jsonpath": "$[?(@.tag_name =~ /^v2\\./)].tag_name"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/v$version/opencode-desktop-win-x64.exe#/dl.7z"
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/anomalyco/opencode/releases/download/v$version/opencode-desktop-win-arm64.exe#/dl.7z"
+            }
+        }
+    }
+}
