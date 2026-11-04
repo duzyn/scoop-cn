@@ -1,0 +1,60 @@
+{
+    "version": "4.0.0-alpha.20261014041807",
+    "description": "The modern Java bytecode editor",
+    "homepage": "https://recaf.coley.software/",
+    "license": "MIT",
+    "suggest": {
+        "JDK": "openjdk"
+    },
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://gh-proxy.org/https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-win-86-x64.jar#/recaf.jar",
+                "https://gh-proxy.org/https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo.png#/recaf.png"
+            ],
+            "hash": [
+                "d84f35c8d681d84a6c085e1aea7a4fe4e14d7046eecae9a2b3a07c7d6eee1aec",
+                "16ad4c3102ef1768d2a70bea211ac61f7a7cfdfae17e5b400244a7d1e02bcf58"
+            ]
+        }
+    },
+    "pre_install": [
+        "# Wrap the PNG icon to an .ico file.",
+        "$png = [System.IO.File]::ReadAllBytes(\"$dir\\recaf.png\")",
+        "$header = [byte[]](0, 0, 1, 0, 1, 0, 128, 128, 0, 0, 1, 0, 32, 0)",
+        "$header += [BitConverter]::GetBytes([int]$png.Length) + [BitConverter]::GetBytes([int]22)",
+        "[System.IO.File]::WriteAllBytes(\"$dir\\recaf.ico\", [byte[]]($header + $png))",
+        "Set-Content \"$dir\\recaf.bat\" '@start javaw.exe -jar \"%~dp0recaf.jar\" %*' -Encoding Ascii",
+        "Set-Content \"$dir\\recaf.cmd\" '@java.exe -jar \"%~dp0recaf.jar\" %*' -Encoding Ascii"
+    ],
+    "bin": "recaf.cmd",
+    "shortcuts": [
+        [
+            "recaf.bat",
+            "Recaf (Alpha)",
+            "",
+            "recaf.ico"
+        ]
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/Col-E/Recaf/releases/latest",
+        "script": [
+            "$release = $page | ConvertFrom-Json",
+            "$asset = $release.assets | Where-Object name -like '*-alpha-win-86-x64.jar' | Select-Object -First 1",
+            "if (!$asset) { error 'Windows release asset not found'; continue }",
+            "$timestamp = ([DateTimeOffset]$asset.updated_at).UtcDateTime.ToString('yyyyMMddHHmmss', [Globalization.CultureInfo]::InvariantCulture)",
+            "'{0}.{1} {2}' -f $release.tag_name, $timestamp, $asset.name"
+        ],
+        "regex": "^((?<tag>[\\w.-]+)\\.\\d{14}) (?<asset>\\S+)$"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://gh-proxy.org/https://github.com/Col-E/Recaf/releases/download/$matchTag/$matchAsset#/recaf.jar",
+                    "https://gh-proxy.org/https://raw.githubusercontent.com/Col-E/Recaf/$matchTag/recaf-ui/src/main/resources/icons/logo.png#/recaf.png"
+                ]
+            }
+        }
+    }
+}
