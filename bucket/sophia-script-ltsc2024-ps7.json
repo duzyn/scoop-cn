@@ -1,0 +1,50 @@
+{
+    "version": "8.1.0",
+    "description": "Sophia Script for Windows (Windows 11 Enterprise LTSC 2024, PowerShell 7). The most advanced PowerShell module on GitHub for fine-tuning Windows and automating routine tasks.",
+    "homepage": "https://github.com/farag2/Sophia-Script-for-Windows",
+    "license": "MIT",
+    "notes": [
+        "This package provides Sophia Script for Windows 11 Enterprise LTSC 2024, PowerShell 7 only.",
+        "Other editions: sophia-script, sophia-script-ps7, sophia-script-ltsc2024, sophia-script-win10, sophia-script-win10-ps7, sophia-script-ltsc2019, sophia-script-ltsc2021.",
+        "The Sophia and SophiaScript commands always run Sophia.ps1 in PowerShell 7 (pwsh.exe). Scoop finds pwsh.exe when you install this package. If pwsh.exe moves later, run 'scoop reset sophia-script-ltsc2024-ps7'. The preset needs PowerShell 7.6 or newer.",
+        "Run Sophia or SophiaScript in an elevated terminal (Run as administrator): Windows PowerShell, PowerShell 7 or CMD. The preset stops without administrator rights. It also stops in the VS Code terminal and in PowerShell ISE.",
+        "Sophia.ps1 is the preset. Edit \"$dir\\Sophia.ps1\" before you run Sophia: select the functions you want. Your selections are not kept on update. Keep a copy of your edited file. After each update, apply your selections to the new \"$dir\\Sophia.ps1\" again. Do not run the copy from another folder: it cannot load the Sophia module there.",
+        "Export-Associations saves Application_Associations.json in \"$dir\". Copy this file to another folder before you update or uninstall the package. Import-Associations lets you pick the file from any folder."
+    ],
+    "suggest": {
+        "PowerShell 7": "pwsh"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/farag2/Sophia-Script-for-Windows/releases/download/8.1.0/Sophia.Script.for.Windows.11.LTSC.2024.PowerShell.7.v8.1.0.zip",
+            "hash": "38a158454cdaae3aa127d5ffcaa9275e7f45dc0e4a668d9984ff8a3372892847",
+            "extract_dir": "Sophia_Script_for_Windows_11_LTSC_2024_PowerShell_7_v8.1.0"
+        }
+    },
+    "pre_install": [
+        "if (-not (Get-Command -Name pwsh.exe -CommandType Application -ErrorAction SilentlyContinue)) {",
+        "    abort 'PowerShell 7 (pwsh.exe) was not found on PATH. Install it first, for example: scoop install main/pwsh'",
+        "}"
+    ],
+    "bin": [
+        [
+            "pwsh.exe",
+            "Sophia",
+            "-NoProfile -ExecutionPolicy Bypass -File \"$dir\\Sophia.ps1\""
+        ],
+        [
+            "pwsh.exe",
+            "SophiaScript",
+            "-NoProfile -ExecutionPolicy Bypass -File \"$dir\\Sophia.ps1\""
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/farag2/Sophia-Script-for-Windows/releases/download/$version/Sophia.Script.for.Windows.11.LTSC.2024.PowerShell.7.v$version.zip",
+                "extract_dir": "Sophia_Script_for_Windows_11_LTSC_2024_PowerShell_7_v$version"
+            }
+        }
+    }
+}
