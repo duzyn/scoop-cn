@@ -1,21 +1,17 @@
 {
-    "version": "0.1.3115",
+    "version": "0.1.2115",
     "description": "Unified model, provider, and gateway manager for AI coding agents.",
     "homepage": "https://usemagpie.ai",
     "license": "MIT",
-    "notes": [
-        "Scoop persists data since version 0.1.1067. You may need to move data by yourself.",
-        "Before: '$env:USERPROFILE\\.config\\magpie'",
-        "After : '$persist_dir\\data'"
-    ],
+    "notes": "This manifest tracks the stable releases of Magpie. For the latest releases, use 'versions/magpie-ai-latest'",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/yetone/magpie-releases/releases/download/v0.1.3115/magpie-windows-amd64.exe#/magpie.exe",
-            "hash": "7d12850a6b59ec5c08e5df134a68324549156bf983879076bda0f6d71a1e071a"
+            "url": "https://gh-proxy.org/https://github.com/yetone/magpie-releases/releases/download/v0.1.2115/magpie-windows-amd64.exe#/magpie.exe",
+            "hash": "d37546a89ecfd249aa582776af0d5cffe7e2114ed0a6d7f54462a2b3a73cffed"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/yetone/magpie-releases/releases/download/v0.1.3115/magpie-windows-arm64.exe#/magpie.exe",
-            "hash": "abfd7e0eb6a6ab94913e3167161749e539bd4c2f09583d0d6ed2c8004d0e1025"
+            "url": "https://gh-proxy.org/https://github.com/yetone/magpie-releases/releases/download/v0.1.2115/magpie-windows-arm64.exe#/magpie.exe",
+            "hash": "b14a18a399e94cfb564a7cd793d0a488848fde7746fa0089e56e581e3952675d"
         }
     },
     "pre_install": [
@@ -32,7 +28,8 @@
     ],
     "persist": "data",
     "checkver": {
-        "github": "https://github.com/yetone/magpie-releases"
+        "url": "https://usemagpie.ai/api/latest?channel=stable",
+        "jsonpath": "$.version"
     },
     "autoupdate": {
         "architecture": {
