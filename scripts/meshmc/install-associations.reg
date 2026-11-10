@@ -1,0 +1,46 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Classes\meshmc.exe]
+@="Minecraft Mod-Pack"
+
+[HKEY_CURRENT_USER\Software\Classes\meshmc.exe\DefaultIcon]
+@="$EXEPATH,0"
+
+[HKEY_CURRENT_USER\Software\Classes\meshmc.exe\shell]
+@="open"
+
+[HKEY_CURRENT_USER\Software\Classes\meshmc.exe\shell\open]
+@="Import into MeshMC"
+
+[HKEY_CURRENT_USER\Software\Classes\meshmc.exe\shell\open\command]
+@="$EXEPATH"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\meshmc.exe\shell\open\command]
+@="$EXEPATH -I \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\meshmc.exe]
+"FriendlyAppName"= "MeshMC"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\meshmc.exe\Capabilities]
+"ApplicationDescription"="Minecraft Mod-Pack"
+
+[HKEY_CURRENT_USER\Software\RegisteredApplications]
+"MeshMC"="Software\Classes\Applications\meshmc.exe\Capabilities"
+
+[HKEY_CURRENT_USER\Software\Classes\.zip\OpenWithList]
+"meshmc.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.zip\OpenWithProgids]
+"meshmc.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.mrpack\OpenWithList]
+"meshmc.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\.mrpack\OpenWithProgids]
+"meshmc.exe"=""
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\meshmc.exe\Capabilities\FileAssociations]
+".mrpack"="meshmc.exe"
+
+[HKEY_CURRENT_USER\Software\Classes\Applications\meshmc.exe\Capabilities\FileAssociations]
+".zip"="meshmc.exe"

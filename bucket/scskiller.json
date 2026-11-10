@@ -1,0 +1,28 @@
+{
+    "version": "1.4.7",
+    "description": "Kill shader compilation stutter before you play",
+    "homepage": "https://github.com/BlueHeisenberg/SCSKiller",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/BlueHeisenberg/SCSKiller/releases/download/v1.4.7/SCSKiller-1.4.7-Portable.zip",
+            "hash": "0ef1963c723c9328cf5503f010313b17fcb9d0b83b7007c166fdd76ce0236757"
+        }
+    },
+    "shortcuts": [
+        [
+            "SCSKiller.exe",
+            "SCSKiller"
+        ]
+    ],
+    "pre_install": "if (!(Test-Path \"$persist_dir\\data\\migrated\")) { New-Item -Path \"$persist_dir\\data\\migrated\" -ItemType File -Force | Out-Null }",
+    "persist": "data",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/BlueHeisenberg/SCSKiller/releases/download/v$version/SCSKiller-$version-Portable.zip"
+            }
+        }
+    }
+}
