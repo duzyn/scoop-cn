@@ -1,5 +1,5 @@
 {
-    "version": "0.3.99",
+    "version": "0.3.101",
     "description": "Cross-platform GUI desktop management client for CLIProxyAPI",
     "homepage": "https://github.com/router-for-me/EasyCLIProxyAPI",
     "license": "MIT",
@@ -8,14 +8,14 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/router-for-me/EasyCLIProxyAPI/releases/download/v0.3.99/EasyCLIProxyAPI-v0.3.99-Windows-amd64.zip",
-            "hash": "2eb10c133b1eda94f3b5e15017089e0c7302bc1b8e78188b7bb045ce649eccf9",
-            "extract_dir": "EasyCLIProxyAPI-v0.3.99-Windows-amd64"
+            "url": "https://gh-proxy.org/https://github.com/router-for-me/EasyCLIProxyAPI/releases/download/v0.3.101/EasyCLIProxyAPI-v0.3.101-Windows-amd64.zip",
+            "hash": "a92ef4e37c738411f4be012166b85c2a982f0e6adfea0784539a00ffae43e5de",
+            "extract_dir": "EasyCLIProxyAPI-v0.3.101-Windows-amd64"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/router-for-me/EasyCLIProxyAPI/releases/download/v0.3.99/EasyCLIProxyAPI-v0.3.99-Windows-aarch64.zip",
-            "hash": "c4c2b5d642785dd90dde600dacd120b7ba598a0884ea0607c93b71377e44cae0",
-            "extract_dir": "EasyCLIProxyAPI-v0.3.99-Windows-aarch64"
+            "url": "https://gh-proxy.org/https://github.com/router-for-me/EasyCLIProxyAPI/releases/download/v0.3.101/EasyCLIProxyAPI-v0.3.101-Windows-aarch64.zip",
+            "hash": "d8df86cb63998a1a48fe8b5a1f38c7746eea185537a843a3969ac4a4215ed711",
+            "extract_dir": "EasyCLIProxyAPI-v0.3.101-Windows-aarch64"
         }
     },
     "pre_install": [
@@ -53,6 +53,7 @@
         ]
     ],
     "persist": [
+        "agents",
         "config.toml",
         "theme-selection.json",
         "themes",

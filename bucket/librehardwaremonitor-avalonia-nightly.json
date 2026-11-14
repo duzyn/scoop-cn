@@ -1,0 +1,75 @@
+{
+    "version": "43023959618",
+    "description": "Libre Hardware Monitor is free software that can monitor the temperature sensors, fan speeds, voltages, load and clock speeds of your computer (Avalonia nightly version).",
+    "homepage": "https://github.com/LibreHardwareMonitor/LibreHardwareMonitor",
+    "license": "MPL-2.0",
+    "suggest": {
+        ".NET Desktop Runtime 10.0": "windowsdesktop-runtime-10.0"
+    },
+    "architecture": {
+        "arm64": {
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/43023959618/LibreHardwareMonitor.Avalonia%20%28win-arm64%29.zip",
+            "hash": "b43bed289ff7f9e72aabcdd2f079aa409dc7d5de9e7bf94620ed648f48511b29"
+        },
+        "64bit": {
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/43023959618/LibreHardwareMonitor.Avalonia%20%28win-x64%29.zip",
+            "hash": "e6c4972bcbf65aaabc7addb1914e384f12b41d86c13c1730e5f85c8561946b12"
+        },
+        "32bit": {
+            "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/43023959618/LibreHardwareMonitor.Avalonia%20%28win-x86%29.zip",
+            "hash": "740e5da874eec9f60b43d1a47f10edd75377818346bf713d3084df4ef2cd2cb7"
+        }
+    },
+    "pre_install": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "'LibreHardwareMonitor.Avalonia.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "    if (Test-Path -Path \"$persist_dir\\$_\" -PathType Leaf) {",
+        "        Copy-Item -Path \"$persist_dir\\$_\" -Destination $dir -Force",
+        "    }",
+        "}"
+    ],
+    "shortcuts": [
+        [
+            "LibreHardwareMonitor.Avalonia.exe",
+            "Libre Hardware Monitor (Avalonia Nightly)"
+        ]
+    ],
+    "pre_uninstall": [
+        "# Hardlinks cannot work properly here, as this app would create a new file instead of writing directly.",
+        "'LibreHardwareMonitor.Avalonia.config', 'LibreHardwareMonitorLog*.csv' | ForEach-Object {",
+        "    if (Test-Path -Path \"$dir\\$_\" -PathType Leaf) {",
+        "        ensure $persist_dir | Out-Null",
+        "        Copy-Item -Path \"$dir\\$_\" -Destination $persist_dir -Force",
+        "    }",
+        "}"
+    ],
+    "checkver": {
+        "github": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/workflows/master.yml/runs?branch=master&status=success",
+        "jsonpath": "$.workflow_runs[0].id"
+    },
+    "autoupdate": {
+        "architecture": {
+            "arm64": {
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.Avalonia%20%28win-arm64%29.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor.Avalonia (win-arm64)')].digest"
+                }
+            },
+            "64bit": {
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.Avalonia%20%28win-x64%29.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor.Avalonia (win-x64)')].digest"
+                }
+            },
+            "32bit": {
+                "url": "https://nightly.link/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/LibreHardwareMonitor.Avalonia%20%28win-x86%29.zip",
+                "hash": {
+                    "url": "https://api.github.com/repos/LibreHardwareMonitor/LibreHardwareMonitor/actions/runs/$version/artifacts",
+                    "jsonpath": "$.artifacts[?(@.name== 'LibreHardwareMonitor.Avalonia (win-x86)')].digest"
+                }
+            }
+        }
+    }
+}
