@@ -1,0 +1,51 @@
+{
+    "version": "2.4.0",
+    "description": "Desktop application for managing WSL containers, Kubernetes (k3s), and container registries.",
+    "homepage": "https://github.com/mhackermsft/wslcontainerdesktop",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": [
+                "https://gh-proxy.org/https://github.com/mhackermsft/wslcontainerdesktop/releases/download/v2.4.0/WSLContainerDesktop_2.4.0_x64.msix#/WSLContainerDesktop.msix",
+                "https://gh-proxy.org/https://github.com/mhackermsft/wslcontainerdesktop/releases/download/v2.4.0/WSLContainerDesktop-Signing.cer"
+            ],
+            "hash": [
+                "bd21e0d6b87d5425a0497f73d06eda67ff8c932b997e390e4933944da8965fe1",
+                "c00c709f618dae0f782f6f76b7602942fa965e3b088fa9942c2eff9b07a53028"
+            ]
+        }
+    },
+    "pre_install": "if ($global) { throw 'Global installation is not supported.' }",
+    "installer": {
+        "script": [
+            "$certificate = Join-Path $dir 'WSLContainerDesktop-Signing.cer'",
+            "$thumbprint = (Get-PfxCertificate -FilePath $certificate).Thumbprint",
+            "if (!(Test-Path \"Cert:\\LocalMachine\\TrustedPeople\\$thumbprint\")) {",
+            "    if (!(is_admin)) { throw 'Administrator rights are required to import the signing certificate.' }",
+            "    Import-Certificate -FilePath $certificate -CertStoreLocation 'Cert:\\LocalMachine\\TrustedPeople' -ErrorAction Stop | Out-Null",
+            "}",
+            "Add-AppxPackage -Path \"$dir\\WSLContainerDesktop.msix\" -ForceUpdateFromAnyVersion -ErrorAction Stop"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "if ($cmd -eq 'uninstall') {",
+            "    $package_name = 'WSL Container Desktop'",
+            "    Get-AppxPackage | Where-Object {",
+            "        (Get-AppxPackageManifest -Package $_ -ErrorAction SilentlyContinue).Package.Properties.DisplayName -eq $package_name",
+            "    } | Remove-AppxPackage -ErrorAction Stop",
+            "}"
+        ]
+    },
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": [
+                    "https://gh-proxy.org/https://github.com/mhackermsft/wslcontainerdesktop/releases/download/v$version/WSLContainerDesktop_$version_x64.msix#/WSLContainerDesktop.msix",
+                    "https://gh-proxy.org/https://github.com/mhackermsft/wslcontainerdesktop/releases/download/v$version/WSLContainerDesktop-Signing.cer"
+                ]
+            }
+        }
+    }
+}

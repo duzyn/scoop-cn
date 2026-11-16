@@ -1,16 +1,16 @@
 {
-    "version": "0.102.2933.0",
+    "version": "0.102.3101.0",
     "description": "System utilities to maximize productivity.",
     "homepage": "https://github.com/microsoft/PowerToys",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v0.102.2933.0/PowerToysSetup-0.102.2933.0-x64.exe#/setup.exe",
-            "hash": "ebaddacfa615614d8b8ec695009ea092c2b64d039ae629a4b9bf0b541e854c3d"
+            "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v0.102.3101/PowerToysSetup-0.102.3101.0-x64.exe#/setup.exe",
+            "hash": "f1d24a49346167322eb64a2458bd82810519920d1da4c0aeb1788e54c345d142"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v0.102.2933.0/PowerToysSetup-0.102.2933.0-arm64.exe#/setup.exe",
-            "hash": "c98c741e283d13c8308491d9e185f287323f2727f1c3c1c9e59dc6843330b6cd"
+            "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v0.102.3101/PowerToysSetup-0.102.3101.0-arm64.exe#/setup.exe",
+            "hash": "65663afb8fa77b4db257bc9494f66ac91a2b063ae0bfe2cd85e9de958c92ee8b"
         }
     },
     "installer": {
@@ -35,14 +35,14 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v$version/PowerToysSetup-$version-x64.exe#/setup.exe"
+                "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v$matchHead/PowerToysSetup-$version-x64.exe#/setup.exe"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v$version/PowerToysSetup-$version-arm64.exe#/setup.exe"
+                "url": "https://gh-proxy.org/https://github.com/microsoft/PowerToys/releases/download/v$matchHead/PowerToysSetup-$version-arm64.exe#/setup.exe"
             }
         },
         "hash": {
-            "url": "https://github.com/microsoft/PowerToys/releases/tag/v$version",
+            "url": "https://github.com/microsoft/PowerToys/releases/tag/v$matchHead",
             "regex": "(?s)$basename.*?$sha256<"
         }
     }
