@@ -1,0 +1,41 @@
+{
+    "version": "9.5.0.08040",
+    "description": "Official PS5 and PS4 Remote Play client for PC",
+    "homepage": "https://remoteplay.dl.playstation.net/remoteplay/lang/en/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.playstation.com/en-us/legal/software-eula/"
+    },
+    "notes": [
+        "Windows N and KN editions need the Media Feature Pack installed.",
+        "Learn more at https://remoteplay.dl.playstation.net/remoteplay/mediaFeaturePack.html"
+    ],
+    "suggest": {
+        "Microsoft Visual C++ Runtime 2022": "vcredist2022",
+        "Microsoft Edge WebView2 Runtime": "webview2"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://remoteplay.dl.playstation.net/remoteplay/module/win/RemotePlayInstaller_9.5.0.08040_x64.msi",
+            "hash": "a67d36c6fb14e67ec78858b831153fe372a0af5f7c41649ef710e3e8fc30bc25"
+        }
+    },
+    "extract_dir": "program files\\Sony\\PS Remote Play",
+    "shortcuts": [
+        [
+            "RemotePlay.exe",
+            "PS Remote Play"
+        ]
+    ],
+    "checkver": {
+        "url": "https://remoteplay.dl.playstation.net/remoteplay/module/win/rp-version-win.json",
+        "jsonpath": "$.version"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://remoteplay.dl.playstation.net/remoteplay/module/win/RemotePlayInstaller_$version_x64.msi"
+            }
+        }
+    }
+}

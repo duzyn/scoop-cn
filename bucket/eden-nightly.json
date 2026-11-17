@@ -1,5 +1,5 @@
 {
-    "version": "1794693050.6828dc59dc",
+    "version": "1794878467.d85bad8924",
     "description": "Open source Nintendo Switch emulator (forked from yuzu — nightly build)",
     "homepage": "https://eden-emu.dev/",
     "license": {
@@ -8,19 +8,19 @@
     },
     "notes": [
         "ATTENTION: Eden requires Nintendo Switch firmware and decryption keys to function.",
-        "Learn more at https://git.eden-emu.dev/eden-emu/eden/src/branch/master/docs/user/QuickStart.md#steps"
+        "Learn more at https://git.eden-emu.dev/eden-emu/eden/src/branch/master/docs/user/QuickStart.md"
     ],
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "vcredist2022"
     },
     "architecture": {
         "64bit": {
-            "url": "https://nightly.eden-emu.dev/v1794693050.6828dc59dc/Eden-Windows-6828dc59dc-amd64-clang-pgo.zip",
-            "hash": "de33bc0313fd6182c3622ee112aa801f709591f3e108540f08db8b40f8c3dc69"
+            "url": "https://nightly.eden-emu.dev/v1794878467.d85bad8924/Eden-Windows-d85bad8924-amd64-clang-pgo.zip",
+            "hash": "146195ad463b537a764571b4f65e09589778c2fc19a85a395626adf2982c137f"
         },
         "arm64": {
-            "url": "https://nightly.eden-emu.dev/v1794693050.6828dc59dc/Eden-Windows-6828dc59dc-arm64-clang-pgo.zip",
-            "hash": "4aaa64adc6602878be2478351e5575fad5b2eed4c9b59aa8ffa8553dd7cd6434"
+            "url": "https://nightly.eden-emu.dev/v1794878467.d85bad8924/Eden-Windows-d85bad8924-arm64-clang-pgo.zip",
+            "hash": "0b4b1084d33e1baa9236381e9fca74da5446a16bd2d90068fd3cc83f7f9a99ef"
         }
     },
     "pre_install": [
@@ -30,7 +30,11 @@
         "   if (Test-Path \"$env:APPDATA\\eden\") {",
         "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:APPDATA\\eden\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       (Get-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\" -Encoding UTF8).Replace('check_for_updates\\default=true', 'check_for_updates\\default=false').Replace('check_for_updates=true', 'check_for_updates=false') | Set-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\" -Encoding UTF8",
         "       Remove-Item -Path \"$env:APPDATA\\eden\" -Recurse",
+        "   } else {",
+        "       New-Item \"$persist_dir\\user\\config\" -ItemType Directory -Force | Out-Null",
+        "       '[UI]', 'check_for_updates\\default=false', 'check_for_updates=false' | Set-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\"",
         "   }",
         "}"
     ],

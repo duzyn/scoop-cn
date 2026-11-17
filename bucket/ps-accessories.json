@@ -1,0 +1,41 @@
+{
+    "version": "2.2.1.2",
+    "description": "Official firmware updater and configuration utility for DualSense controllers",
+    "homepage": "https://controller.dl.playstation.net/controller/lang/en/2100004.html",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.playstation.com/en-us/legal/eula-firmware-updater/"
+    },
+    "depends": "isx",
+    "suggest": {
+        ".NET Desktop Runtime 8.0": "windowsdesktop-runtime-8.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://fwupdater.dl.playstation.net/fwupdater/installer/2.2.1.2/PlayStationAccessoriesInstaller.exe",
+            "hash": "37d2d7337e83558486fb4a811368ec76f2d5cedb329207040e9b5a55a9029e43"
+        }
+    },
+    "pre_install": [
+        "isx.exe \"$dir\\$fname\" \"$dir\\_isx\" | Out-Null",
+        "Expand-MsiArchive (Get-Item \"$dir\\_isx\\*.msi\").FullName $dir -ExtractDir 'Program Files 64\\Sony\\PlayStationAccessories'",
+        "Remove-Item \"$dir\\_isx\", \"$dir\\$fname\" -Recurse -Force"
+    ],
+    "shortcuts": [
+        [
+            "PlayStationAccessories.exe",
+            "PlayStation® Accessories"
+        ]
+    ],
+    "checkver": {
+        "url": "https://fwupdater.dl.playstation.net/fwupdater/info.json",
+        "jsonpath": "$.ApplicationLatestVersion"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://fwupdater.dl.playstation.net/fwupdater/installer/$version/PlayStationAccessoriesInstaller.exe"
+            }
+        }
+    }
+}

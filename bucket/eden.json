@@ -8,7 +8,7 @@
     },
     "notes": [
         "ATTENTION: Eden requires Nintendo Switch firmware and decryption keys to function.",
-        "Learn more at https://git.eden-emu.dev/eden-emu/eden/src/branch/master/docs/user/QuickStart.md#steps"
+        "Learn more at https://git.eden-emu.dev/eden-emu/eden/src/branch/master/docs/user/QuickStart.md"
     ],
     "suggest": {
         "Microsoft Visual C++ Runtime 2022": "vcredist2022"
@@ -30,7 +30,11 @@
         "   if (Test-Path \"$env:APPDATA\\eden\") {",
         "       Write-host \"Migrating AppData...\" -ForegroundColor yellow",
         "       Copy-Item -Path \"$env:APPDATA\\eden\\*\" -Destination \"$persist_dir\\user\" -Recurse",
+        "       (Get-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\" -Encoding UTF8).Replace('check_for_updates\\default=true', 'check_for_updates\\default=false').Replace('check_for_updates=true', 'check_for_updates=false') | Set-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\" -Encoding UTF8",
         "       Remove-Item -Path \"$env:APPDATA\\eden\" -Recurse",
+        "   } else {",
+        "       New-Item \"$persist_dir\\user\\config\" -ItemType Directory -Force | Out-Null",
+        "       '[UI]', 'check_for_updates\\default=false', 'check_for_updates=false' | Set-Content -Path \"$persist_dir\\user\\config\\qt-config.ini\"",
         "   }",
         "}"
     ],
