@@ -1,0 +1,41 @@
+{
+    "version": "12.6.11",
+    "description": "A fast, reliable homebrew and game uploader for jailbroken PS5s",
+    "homepage": "https://github.com/phantomptr/ps5upload",
+    "license": "GPL-3.0-or-later",
+    "architecture": {
+        "64bit": {
+            "url": "https://gh-proxy.org/https://github.com/phantomptr/ps5upload/releases/download/v12.6.11/PS5Upload-12.6.11-win-x64.zip",
+            "hash": "db9f1833481c6c681f7a6408d21a00b550233cc4d1ca1f543dff30ed5be54b71"
+        },
+        "arm64": {
+            "url": "https://gh-proxy.org/https://github.com/phantomptr/ps5upload/releases/download/v12.6.11/PS5Upload-12.6.11-win-arm64.zip",
+            "hash": "df612816cad8ddfe645f609cabf2404de2394436e7926a8d3d4cdb92f6c389a7"
+        }
+    },
+    "shortcuts": [
+        [
+            "PS5Upload.exe",
+            "PS5Upload"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://gh-proxy.org/https://github.com/phantomptr/ps5upload/releases/download/v$version/PS5Upload-$version-win-x64.zip",
+                "hash": {
+                    "url": "$baseurl/latest.json",
+                    "jsonpath": "$.sha256.windows-x86_64"
+                }
+            },
+            "arm64": {
+                "url": "https://gh-proxy.org/https://github.com/phantomptr/ps5upload/releases/download/v$version/PS5Upload-$version-win-arm64.zip",
+                "hash": {
+                    "url": "$baseurl/latest.json",
+                    "jsonpath": "$.sha256.windows-aarch64"
+                }
+            }
+        }
+    }
+}

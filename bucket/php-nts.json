@@ -1,5 +1,5 @@
 {
-    "version": "8.5.12-1",
+    "version": "8.6.0",
     "description": "A popular general-purpose scripting language that is especially suited to web development. (non-thread safe)",
     "homepage": "https://www.php.net/",
     "license": "PHP-3.01",
@@ -8,12 +8,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.12-1-nts-Win32-vs17-x64.zip",
-            "hash": "2a36a2edcb7a5b9252f638fd5e4cf84d7f6e066092654220dc0b63e5cf4e9723"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.6.0-nts-Win32-vs18-x64.zip",
+            "hash": "d4783fffe1f4ab072600daff1622a7a2df936957a787a338c59e3dbd4d846d98"
         },
         "32bit": {
-            "url": "https://downloads.php.net/~windows/releases/archives/php-8.5.12-1-nts-Win32-vs17-x86.zip",
-            "hash": "3a8af36358704905feaf346d63ee2d3f70474689ff74f028fa9c8c66008ca01d"
+            "url": "https://downloads.php.net/~windows/releases/archives/php-8.6.0-nts-Win32-vs18-x86.zip",
+            "hash": "a3006c641c5684ac7a8178ff3df2f2994e864e2b0339b84eba928ae4a699459d"
         }
     },
     "pre_install": [
@@ -43,16 +43,16 @@
     ],
     "checkver": {
         "url": "https://downloads.php.net/~windows/releases/releases.json",
-        "regex": "\"version\"\\s*:\\s*\"(\\d+(?:\\.\\d+)+(?:-\\d+)?)\"",
+        "regex": "(?i)php-(\\d+(?:\\.\\d+)+(?:-\\d+)?)-Win32-(?<vs>VS\\d+)-x64.zip",
         "reverse": true
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-vs17-x64.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-$matchVs-x64.zip"
             },
             "32bit": {
-                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-vs17-x86.zip"
+                "url": "https://downloads.php.net/~windows/releases/archives/php-$version-nts-Win32-$matchVs-x86.zip"
             }
         },
         "hash": {

@@ -1,20 +1,20 @@
 {
     "version": "8.0.34",
     "description": "Microsoft .NET 8.0 Desktop Runtime",
-    "homepage": "https://dotnet.microsoft.com/download/dotnet",
+    "homepage": "https://dotnet.microsoft.com/download/dotnet/8.0",
     "license": "MIT",
     "notes": "You can now remove this installer with 'scoop uninstall -p windowsdesktop-runtime-8.0'",
     "architecture": {
         "64bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-x64.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-x64.exe",
             "hash": "sha512:e5d9049668425fdf88029005b33b563cd4793d5afc6841c9b9e1622119a06466536a60cb09708e0b6d58457c1c0c49ac415decba47ec7a06ebdf828aff903f62"
         },
         "32bit": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-x86.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-x86.exe",
             "hash": "sha512:85172b8067f0201b6a4907c27e005947865859bd1be7bd17c9383474a68e7d5ec36ad2751d4fc5c10d4cce03a70fc03ee52a6652217c6f9eaa3ea683e1e71b7b"
         },
         "arm64": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-arm64.exe",
+            "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.34/windowsdesktop-runtime-8.0.34-win-arm64.exe",
             "hash": "sha512:7ac7224c9ab6a22f2bb0087379f5c5ef0a5a0ea01a637c042c687da46563c289bbc74c52261ae7b200f9ca4000a2fba497c35e5061255656246e5c64105830c3"
         }
     },
@@ -23,24 +23,24 @@
         "script": "Invoke-ExternalCommand \"$dir\\$fname\" -ArgumentList '/install', '/quiet', '/norestart' -RunAs | Out-Null"
     },
     "checkver": {
-        "url": "https://dotnetcli.blob.core.windows.net/dotnet/release-metadata/releases-index.json",
+        "url": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/releases-index.json",
         "jsonpath": "$.releases-index[?(@.channel-version == '8.0')].latest-runtime",
         "regex": "([\\d.]+)"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x64.exe"
             },
             "32bit": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-x86.exe"
             },
             "arm64": {
-                "url": "https://dotnetcli.blob.core.windows.net/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
+                "url": "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/$version/windowsdesktop-runtime-$version-win-arm64.exe"
             }
         },
         "hash": {
-            "url": "https://dotnetcli.blob.core.windows.net/dotnet/checksums/$version-sha.txt"
+            "url": "https://builds.dotnet.microsoft.com/dotnet/checksums/$version-sha.txt"
         }
     }
 }
