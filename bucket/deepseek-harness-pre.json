@@ -1,12 +1,12 @@
 {
-    "version": "0.2.2-rc.5",
+    "version": "0.2.3-alpha.2",
     "description": "Open-source agent harness developed by DeepSeek AI (desktop preview).",
     "homepage": "https://deepseek.com/harness",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.2.2-rc.5-win-x64.exe#/dl.7z",
-            "hash": "sha512:c16c92469ec793981c1f7db88c1c4073b295d269e21f3403a1fc907b13893080165c19201d3b110abdc8addc17d573bc38884366c2d89af7b898bc6c92291822",
+            "url": "https://download.deepseek.com/dsh-desk/bin/win-x64/deepseek-harness-0.2.3-alpha.2-win-x64.exe#/dl.7z",
+            "hash": "sha512:caa673445b306fbf50b9825492ad9d546593523bab71a6d80eebbecc6bce50d5f83cd2a13cd304aa3ea2b0cb8168d093381d88741d934d1fa409463ba2086141",
             "pre_install": [
                 "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
                 "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\Uninstall*\" -Force -Recurse"
