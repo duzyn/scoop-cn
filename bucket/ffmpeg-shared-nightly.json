@@ -1,18 +1,18 @@
 {
-    "version": "20261123-129241-g05c674c913",
+    "version": "20261125-129288-gc81e35cf2b",
     "description": "A complete, cross-platform solution to record, convert and stream audio and video.",
     "homepage": "https://ffmpeg.org",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-11-23-12-43/ffmpeg-N-129241-g05c674c913-win64-gpl-shared.zip",
-            "hash": "b7c9ed7d95abef011e212960be4c527389fb76d435134a8fc56b306c67b91728",
-            "extract_dir": "ffmpeg-N-129241-g05c674c913-win64-gpl-shared"
+            "url": "https://gh-proxy.org/https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-2026-11-25-12-41/ffmpeg-N-129288-gc81e35cf2b-win64-gpl-shared.zip",
+            "hash": "cfbd8d1c44942ff93e213ff16f61118c1a982aa0e6a2b3187dec0cf31fdf5462",
+            "extract_dir": "ffmpeg-N-129288-gc81e35cf2b-win64-gpl-shared"
         },
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2026-11-23-12-43/ffmpeg-N-129241-g05c674c913-winarm64-gpl-shared.zip",
-            "hash": "9a19d28d9b0c59ff1ffa8b3e40b467d28765cb01095085094bdd07b165554321",
-            "extract_dir": "ffmpeg-N-129241-g05c674c913-winarm64-gpl-shared"
+            "url": "https://gh-proxy.org/https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-2026-11-25-12-41/ffmpeg-N-129288-gc81e35cf2b-winarm64-gpl-shared.zip",
+            "hash": "7ec37bc729aceb1e74656b44417ad2a6017dcdcafd80785872b05054f73b07fb",
+            "extract_dir": "ffmpeg-N-129288-gc81e35cf2b-winarm64-gpl-shared"
         }
     },
     "bin": [
@@ -21,7 +21,7 @@
         "bin\\ffprobe.exe"
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/BtbN/FFmpeg-Builds/releases",
+        "github": "https://api.github.com/repos/FFmpeg-Builds/FFmpeg-Builds/releases",
         "jsonpath": "$..assets[?(@.browser_download_url =~ /ffmpeg-N-\\d+-g[0-9a-f]+-win64-gpl-shared\\.zip/i)].browser_download_url",
         "regex": "autobuild-(?<buildtime>(?<year>\\d{4})-(?<month>\\d{2})-(?<day>\\d{2})[\\d-]+)/ffmpeg-N-(?<commitnum>\\d+)-g(?<commithash>[0-9a-f]+)-win64-gpl-shared\\.zip",
         "replace": "${year}${month}${day}-${commitnum}-g${commithash}"
@@ -29,11 +29,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/ffmpeg-N-$matchCommitnum-g$matchCommithash-win64-gpl-shared.zip",
+                "url": "https://gh-proxy.org/https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/ffmpeg-N-$matchCommitnum-g$matchCommithash-win64-gpl-shared.zip",
                 "extract_dir": "ffmpeg-N-$matchCommitnum-g$matchCommithash-win64-gpl-shared"
             },
             "arm64": {
-                "url": "https://gh-proxy.org/https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/ffmpeg-N-$matchCommitnum-g$matchCommithash-winarm64-gpl-shared.zip",
+                "url": "https://gh-proxy.org/https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-$matchBuildtime/ffmpeg-N-$matchCommitnum-g$matchCommithash-winarm64-gpl-shared.zip",
                 "extract_dir": "ffmpeg-N-$matchCommitnum-g$matchCommithash-winarm64-gpl-shared"
             }
         },

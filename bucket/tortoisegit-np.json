@@ -1,5 +1,5 @@
 {
-    "version": "2.19.1.0",
+    "version": "2.19.2.0",
     "description": "TortoiseGit is a Windows Shell Interface to Git and based on TortoiseSVN.",
     "homepage": "https://tortoisegit.org/",
     "license": {
@@ -12,12 +12,12 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://download.tortoisegit.org/tgit/2.19.0.0/TortoiseGit-2.19.1.0-64bit.msi#/dl._msi",
-            "hash": "e07ebf37063023d96dc8509a5d69ffa52d316cda8feea08beddad4b9818e7be5"
+            "url": "https://download.tortoisegit.org/tgit/2.19.0.0/TortoiseGit-2.19.2.0-64bit.msi#/dl._msi",
+            "hash": "93675de8f097f5cd77ec90c21317b938260215cc3c819fbee8e7e581619ffe07"
         },
         "arm64": {
-            "url": "https://download.tortoisegit.org/tgit/2.19.0.0/TortoiseGit-2.19.1.0-arm64.msi#/dl._msi",
-            "hash": "1706cb8093486e40080e0a156499e653fc916b0258a7d5121b4e8d84736b0c13"
+            "url": "https://download.tortoisegit.org/tgit/2.19.0.0/TortoiseGit-2.19.2.0-arm64.msi#/dl._msi",
+            "hash": "2290f0a0fa40eb77c5413eaa607965487b7ca03e7289fa43a7ddf4c9366f2adf"
         }
     },
     "pre_install": "if (!(is_admin)) { error \"Admin rights required to install TortoiseGit\"; break }",
@@ -47,10 +47,10 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.$patchVersion.0/TortoiseGit-$version-64bit.msi#/dl._msi"
+                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.0.0/TortoiseGit-$version-64bit.msi#/dl._msi"
             },
             "arm64": {
-                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.$patchVersion.0/TortoiseGit-$version-arm64.msi#/dl._msi"
+                "url": "https://download.tortoisegit.org/tgit/$majorVersion.$minorVersion.0.0/TortoiseGit-$version-arm64.msi#/dl._msi"
             }
         }
     }

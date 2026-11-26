@@ -40,17 +40,17 @@
     "checkver": {
         "url": "https://api.github.com/repos/ggml-org/whisper.cpp/releases",
         "script": [
-            "$releases = $page | ConvertFrom-Json -ErrorAction Stop",
+            "$releases = $page | ConvertFrom-Json -ErrorAction Ignore",
             "$release = $releases | Where-Object { (-not $_.prerelease) -and ($_.tag_name -match '^v\\d+(?:\\.\\d+)+$') } | Select-Object -First 1",
-            "if (-not $release) { throw 'No valid release found for whisper.cpp.' }",
+            "if (-not $release) { error 'No valid release found for whisper.cpp.'; return }",
             "$version = $release.tag_name",
             "$build = $null",
             "if ($release.body -match '\\(https://github\\.com/ggml-org/whisper\\.cpp/releases/tag/(?<build>b\\d+)\\)') {",
             "    $build = $Matches['build']",
             "}",
-            "if (-not $build) { throw 'No corresponding nightly build information found in the release body for whisper.cpp.' }",
+            "if (-not $build) { error 'No corresponding nightly build information found in the release body for whisper.cpp.'; return }",
             "$release = $releases | Where-Object { $_.tag_name -eq $build } | Select-Object -First 1",
-            "if (-not $release) { throw \"No corresponding nightly build found for $version.\" }",
+            "if (-not $release) { error \"No corresponding nightly build found for $version.\"; return }",
             "$cudax64 = $null",
             "$cudaarm64 = $null",
             "$patternCudax64 = '^whisper-bin-win-cuda-(?<cuda>\\d+(?:\\.\\d+)+)-x64\\.zip$'",
@@ -62,7 +62,7 @@
             "        if (-not $cudaarm64 -or [version]$Matches['cuda'] -gt [version]$cudaarm64) { $cudaarm64 = $Matches['cuda'] }",
             "    }",
             "}",
-            "if (-not $cudax64 -or -not $cudaarm64) { throw \"No CUDA (cublas) x64 ($cudax64) or arm64 ($cudaarm64) asset found for whisper.cpp.\" }",
+            "if (-not $cudax64 -or -not $cudaarm64) { error \"No CUDA (cublas) x64 ($cudax64) or arm64 ($cudaarm64) asset found for whisper.cpp.\"; return }",
             "\"$version $build $cudax64 $cudaarm64\""
         ],
         "regex": "(?<version>\\d+(?:\\.\\d+)+) (?<build>b\\d+) (?<cudax64>\\d+(?:\\.\\d+)+) (?<cudaarm64>\\d+(?:\\.\\d+)+)"

@@ -1,20 +1,20 @@
 {
-    "version": "18433912418",
+    "version": "41787387905",
     "description": "Practical and minimal image viewer",
     "homepage": "https://github.com/jurplel/qView",
     "license": "GPL-3.0-only",
     "architecture": {
         "arm64": {
-            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_arm64-2025-10-11.1.zip",
-            "hash": "ad9887085aad19c44ba90b59e654e7e147514e4cfce424185a87e098f8deaaca"
+            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_arm64-2026-11-04.1.zip",
+            "hash": "d299578540117960690978b9e461c8a4fc09e6ccce9bc83e8cd097ecb4f4472f"
         },
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_64-2025-10-11.1.zip",
-            "hash": "57dfd29a9b9233df0b8d1de97ca57d4353cd2034e672327e921f6af3e591b6a7"
+            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_64-2026-11-04.1.zip",
+            "hash": "63f44686e67ff3e4f17b6ec715258357da7fefb5863c301b9518a53d7508a9c6"
         },
         "32bit": {
-            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_32-2025-10-11.1.zip",
-            "hash": "bb74811d061c97d7e049f50c5d41456060e241fcdedd4a397334c6fce6fb461d"
+            "url": "https://gh-proxy.org/https://github.com/jurplel/qView/releases/download/nightly/qView-nightly-Windows_32-2026-11-04.1.zip",
+            "hash": "c6851ca93b7800a8245661c4a1e1beb1b23b6e849d8afca59efa808c0ebd2ebf"
         }
     },
     "pre_install": [
@@ -29,9 +29,10 @@
         ]
     ],
     "checkver": {
-        "github": "https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=master&status=success",
+        "github": "https://api.github.com/repos/jurplel/qView/actions/workflows/build.yml/runs?branch=main&status=success",
         "script": [
-            "$workflows = $page | ConvertFrom-Json",
+            "$workflows = $page | ConvertFrom-Json -ErrorAction Ignore",
+            "if ((-not $workflows) -or (-not $workflows.workflow_runs) -or ($workflows.workflow_runs.Count -eq 0)) { error 'No workflow runs found.'; return '' }",
             "$api = $workflows.workflow_runs[0]",
             "$result = ($api.id, (Get-Date $api.updated_at -Format 'yyyy-MM-dd'), $api.run_attempt) -join ' '",
             "Write-Output $result"

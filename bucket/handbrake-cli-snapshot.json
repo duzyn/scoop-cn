@@ -1,17 +1,17 @@
 {
-    "version": "20261116172309-005b91a69",
+    "version": "20261122213704-bf63cdcf3",
     "description": "Snapshot releases of the video transcoder with extensive support for multiple formats. (CLI version)",
     "homepage": "https://handbrake.fr",
     "license": "GPL-2.0-only",
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrakeCLI-20261116172309-005b91a69-master-win-x86_64.zip",
-            "hash": "3b57bdb19ae02ab7722d2f3d4fd2683ea3c4021598590841b1de34fba014c866"
+            "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrakeCLI-20261122213704-bf63cdcf3-master-win-x86_64.zip",
+            "hash": "c7baaa2d7c394cef37286b83e850449b70cefd515dd7c15fa4d7154eda2351a5"
         }
     },
     "bin": "HandBrakeCLI.exe",
     "checkver": {
-        "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+        "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/tag/win",
         "regex": "<td>HandBrakeCLI-([\\d]+-[\\w]+)-master-win-x86_64.zip</td>"
     },
     "autoupdate": {
@@ -19,7 +19,7 @@
             "64bit": {
                 "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrakeCLI-$version-master-win-x86_64.zip",
                 "hash": {
-                    "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+                    "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/tag/win",
                     "regex": "<td>$sha256</td>\\s+<td>HandBrakeCLI-([\\d]+-[\\w]+)-master-win-x86_64.zip</td>"
                 }
             }

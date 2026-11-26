@@ -1,7 +1,7 @@
 {
     "version": "2026.712.43005",
     "description": "A Gamestream host for Moonlight",
-    "homepage": "https://github.com/LizardByte/Sunshine",
+    "homepage": "https://github.com/SunshineStream/Sunshine",
     "license": "GPL-3.0-only",
     "notes": [
         "Check the '$dir\\scripts' folder to setup the service and firewall rules.",
@@ -9,7 +9,7 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/LizardByte/Sunshine/releases/download/v2026.712.43005/Sunshine-Windows-AMD64-portable.zip",
+            "url": "https://gh-proxy.org/https://github.com/SunshineStream/Sunshine/releases/download/v2026.712.43005/Sunshine-Windows-AMD64-portable.zip",
             "hash": "2cf72e6b0e4d1efdecedd426c9a2ad2e0b36413fd22e3f5cab619cccc78a83e3"
         }
     },
@@ -28,14 +28,14 @@
     ],
     "persist": "config",
     "checkver": {
-        "github": "https://api.github.com/repos/LizardByte/Sunshine/releases",
+        "github": "https://api.github.com/repos/SunshineStream/Sunshine/releases",
         "jsonpath": "$[0].tag_name",
         "regex": "\\Av([\\d.]+)\\Z"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://gh-proxy.org/https://github.com/LizardByte/Sunshine/releases/download/v$version/Sunshine-Windows-AMD64-portable.zip"
+                "url": "https://gh-proxy.org/https://github.com/SunshineStream/Sunshine/releases/download/v$version/Sunshine-Windows-AMD64-portable.zip"
             }
         }
     }

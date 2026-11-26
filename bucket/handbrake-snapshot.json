@@ -1,5 +1,5 @@
 {
-    "version": "20261116-005b91a69",
+    "version": "20261122-bf63cdcf3",
     "description": "Snapshot releases of the tool for converting video from nearly any format to a selection of modern, widely supported codecs.",
     "homepage": "https://handbrake.fr",
     "license": "GPL-2.0-only",
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-20261116-005b91a69-x86_64-Win_GUI.zip",
-            "hash": "ba77c7bcdd51e3abc56d5b853366391df3b0ee571f086f14b339bf334a54fa44"
+            "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-20261122-bf63cdcf3-x86_64-Win_GUI.zip",
+            "hash": "d3535ed902068df0d3ca1bc34bd912175b76ba2853a8476afe76307797f4179f"
         }
     },
     "extract_dir": "HandBrake",
@@ -36,7 +36,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+        "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/tag/win",
         "regex": "<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>"
     },
     "autoupdate": {
@@ -44,7 +44,7 @@
             "64bit": {
                 "url": "https://gh-proxy.org/https://github.com/HandBrake/HandBrake-snapshots/releases/download/win/HandBrake-$version-x86_64-Win_GUI.zip",
                 "hash": {
-                    "url": "https://github.com/HandBrake/handbrake-snapshots/releases/tag/win",
+                    "url": "https://github.com/HandBrake/HandBrake-snapshots/releases/tag/win",
                     "regex": "<td>$sha256</td>\\s+<td>HandBrake-([\\d]+-[\\w]+)-x86_64-Win_GUI.zip</td>"
                 }
             }
